@@ -68,15 +68,16 @@ test('tasklist2', async ({ page, manual: screenshot }) => {
 
 test('task_list', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_tasks');
+  await page.goto('/dashboard/tasks');
   await expectLabel(page.locator('.dashboard-page'), 'Confirm bottle washer capacity with suppliers');
-  await screenshot.capture('discussions/tasks/task_list', {
+  await screenshot.captureElement('discussions/tasks/task_list', '.dashboard-page', {
     spotlight: {
-      selector: '.sidenav-left a[href="/tasks"]',
+      selector: '.dashboard-cards__tasks',
       padding: 10,
       radius: 12
     },
     width: 1280,
-    height: 757
+    height: 1200
   });
 });
 

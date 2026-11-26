@@ -93,7 +93,7 @@ test('permissions_manage_threads', async ({ page, manual: screenshot }) => {
 test('pin_thread', async ({ page, manual: screenshot }) => {
   await openThreadMenu(page);
   await screenshot.captureRegion('discussions/discussion_management/pin_thread', [
-    '.group-page .v-tabs',
+    '.group-cards',
     '.discussions-panel > .d-flex',
     '.manual-topic',
     '.v-overlay--active .v-list'

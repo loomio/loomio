@@ -2,7 +2,7 @@
 
 # Starting a new group
 
-If you are new to Loomio, you can start a group on a free trial from the [Loomio website](https://www.loomio.com/). If you already use Loomio and want to start another group, select **New group** in the sidebar.
+If you are new to Loomio, you can start a group on a free trial from the [Loomio website](https://www.loomio.com/). During a free trial, your group unlocks 30 extra days—with subgroups and guests enabled—once three people vote in a proposal or poll. If you already use Loomio and want to start another group, select **New group** in the sidebar, or from the group switcher menu at the top of the page when the sidebar is closed.
 
 Most organizations only need one parent group, with as many [subgroups](/en/user_manual/groups/subgroups) as needed inside it.
 

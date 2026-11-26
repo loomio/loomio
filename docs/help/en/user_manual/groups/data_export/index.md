@@ -18,9 +18,9 @@ You can use this feature to move from Loomio's hosted service to a [self-hosted 
 
 ## Export data
 
-Only a group admin can export group data. Open the group's actions menu and select **Export group data**.
+Only a group admin can export group data. Open **Settings** on the group page and select **Export group data**.
 
-![Export group data action in the Oatmilk Cooperative menu](group_export_group_data.png)
+![Export group data action on the Oatmilk Cooperative settings page](group_export_group_data.png)
 
 Loomio prepares the export in the background and emails you a download link when it is ready. The link stays active for one week.
 

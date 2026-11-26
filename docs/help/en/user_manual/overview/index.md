@@ -20,7 +20,7 @@ Loomio has three main parts: groups, discussions, and polls.
 
 ### Groups
 
-A group is a place for an organization, team, or community to work together. Its home page explains the group's purpose and links to its discussions, polls, members, and files.
+A group is a place for an organization, team, or community to work together. Its home page explains the group's purpose and links to its threads, polls, members, files, tasks, bookmarks, and settings.
 
 ![](orientation_group.png)
 
@@ -42,7 +42,7 @@ Polls help a group understand preferences, gather advice, and make decisions. Di
 
 ![](orientation_proposal.png)
 
-Polls can be part of a discussion or run independently from the **Polls** tab on a group page.
+Polls can be part of a discussion or run independently from **Polls** on a group page.
 
 To learn where these parts appear in the interface, see the [Quick tour](/en/user_manual/overview/orientation). To start contributing, see [How to participate](/en/user_manual/overview/how-to-participate).
 

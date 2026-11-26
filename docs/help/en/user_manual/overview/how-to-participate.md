@@ -40,7 +40,7 @@ Add an emoji reaction to acknowledge a comment without writing a reply or sendin
 
 ## Vote
 
-Open a poll from an email invitation, an in-app notification, or your group's **Polls** tab. Read the poll and any attached files, then select your choice.
+Open a poll from an email invitation, an in-app notification, **All groups**, or your group's **Polls** section. Read the poll and any attached files, then select your choice.
 
 Loomio has several poll types. The example below shows a proposal with **Agree**, **Abstain**, and **Disagree** options.
 

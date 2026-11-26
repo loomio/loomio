@@ -32,13 +32,23 @@ test('group_example', async ({ page, manual: screenshot }) => {
   await screenshot.captureElement('overview/group_example', '.group-page', {width: 1280, height: 2000});
 });
 
+test('all_groups', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_invitations');
+  await expect(page.locator('.group-page')).toBeVisible();
+  await ensureSidebar(page);
+  await page.locator('.sidenav-left a[href="/dashboard"]').click();
+  await expect(page.locator('.dashboard-page .dashboard-cards')).toBeVisible();
+  await expect(page.locator('.topic-preview').first()).toBeVisible();
+  await screenshot.captureElement('overview/all_groups', '.dashboard-page', {width: 1280, height: 1400});
+});
+
 test('orientation_group', async ({ page, manual: screenshot }) => {
   await openGroup(page);
   await screenshot.captureRegion('overview/orientation_group', [
     '.group-page .v-img',
     '.group-page__name',
     '.group-page__description',
-    '.group-page .v-tabs'
+    '.group-cards'
   ], {width: 1100, height: 900, padding: 16});
 });
 
@@ -70,14 +80,14 @@ test('orientation_proposal', async ({ page, manual: screenshot }) => {
 test('sidebar', async ({ page, manual: screenshot }) => {
   await openGroup(page);
   await ensureSidebar(page);
-  await screenshot.captureElement('overview/sidebar', '.sidenav-left', {width: 1100, height: 1700});
+  await screenshot.captureElement('overview/sidebar', '.sidenav-left', {width: 1100, height: 600});
 });
 
 test('user_settings_sidebar', async ({ page, manual: screenshot }) => {
   await openGroup(page);
   await ensureSidebar(page);
   await page.locator('.sidebar__user-dropdown').click();
-  await screenshot.captureElement('overview/user_settings_sidebar', '.sidenav-left', {width: 1100, height: 1700});
+  await screenshot.captureElement('overview/user_settings_sidebar', '.sidenav-left', {width: 1100, height: 600});
 });
 
 test('in_app_notifications', async ({ page, manual: screenshot }) => {

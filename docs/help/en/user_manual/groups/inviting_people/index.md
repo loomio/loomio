@@ -2,7 +2,7 @@
 
 # Invite people to a Loomio group
 
-You can invite people to your Loomio group by email, share an invitation link, or let people request to join. Open the **Members** tab on your group page to get started.
+You can invite people to your Loomio group by email, share an invitation link, or let people request to join. Select **Invite** on the **Members** card, or open **Members** on your group page to get started.
 
 ![](group_join_group_invite.png)
 
@@ -39,11 +39,11 @@ When inviting people to a parent group, you can add them to one or more subgroup
 
 ## Share a link to your group
 
-Select **Share** to generate a reusable invitation link for a newsletter, chat channel, email, or website.
+Select **Share** to generate a reusable invitation link for a newsletter, chat channel, email, or website. Turn on **Include intro message** to copy a short message along with the link.
 
 ![](group_invite_sharable_link.png)
 
-To stop people from joining with an existing link, select **Reset this link**. This invalidates the old link and creates a new one.
+To stop people from joining with an existing link, select **Reset the link**. This invalidates the old link and creates a new one.
 
 <!-- translation-section: request-to-join-group -->
 

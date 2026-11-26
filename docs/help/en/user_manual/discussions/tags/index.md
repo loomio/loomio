@@ -6,7 +6,7 @@ Category tags help you find discussions, polls, outcomes, and comments about a t
 
 Tags belong to the whole organization. A tag created in a parent group is shared with its subgroups, so you can track related work across groups. Loomio lists tags alphabetically with a colored dot beside each name.
 
-On your group page, select **Tags** above the thread list and choose a tag to show threads that contain at least one item with that tag. Type in the filter box to search a long list.
+On **All groups** or a group page, select **Tags** above the thread, poll, or task list and choose a tag to show items with that tag. Type in the filter box to search a long list.
 
 ![](tags_view.png)
 
@@ -57,7 +57,7 @@ When someone starts a discussion or poll from a template, Loomio applies matchin
 
 Only parent-group admins can rename, recolor, merge, or delete tags. Changes apply across the whole organization, including all subgroups.
 
-On the group page, open **Tags** and select **Edit tags**.
+On the group page, open **Tags** and select **Edit tags**, or open **Settings** and select **Category tags**.
 
 ![edit category tags](tags_edit_new.png)
 

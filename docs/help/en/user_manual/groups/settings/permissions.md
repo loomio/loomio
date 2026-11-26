@@ -2,7 +2,7 @@
 
 # Group permissions
 
-The **Permissions** tab controls what members can do in the group and, for non-secret groups, what non-members can do. Open **Edit group settings** from the group's actions menu, then select **Permissions**.
+The **Permissions** tab controls what members can do in the group and, for non-secret groups, what non-members can do. On the group page, open **Settings**, select **Edit group settings**, and choose **Permissions**.
 
 ![Group permission settings](group_group_settings_permissions.png)
 

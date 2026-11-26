@@ -2,7 +2,7 @@
 
 # Group privacy
 
-Privacy controls who can find a group and who can read its content. Open **Edit group settings** from the group's actions menu, then select **Privacy**.
+Privacy controls who can find a group and who can read its content. On the group page, open **Settings**, select **Edit group settings**, and choose **Privacy**.
 
 ![Group privacy settings](group_privacy_settings.png#width-90)
 

@@ -2,7 +2,7 @@
 
 # Group profile
 
-The profile tab controls how your group is identified and introduced. Open **Edit group settings** from the group page, then select **Profile**.
+The profile tab controls how your group is identified and introduced. On the group page, open **Settings**, select **Edit group settings**, and choose **Profile**.
 
 ![Group profile settings](group_profile.png)
 

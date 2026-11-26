@@ -32,7 +32,7 @@ Type a word or phrase and press Enter. For example, searching for **bottle** fin
 
 ## Filter discussions
 
-On a group's **Discussions** tab, you can filter threads by open or closed status or by category tag. Combine a filter with the list's search box to narrow a long discussion list quickly.
+On a group's **Threads** page, you can filter threads by lock status, unread activity, category tag, or subgroup (choosing **This group only**, **My subgroups**, or **All subgroups**). On **All groups**, you can also filter by **Unread**, **Direct**, and category tag, or use **Search** to narrow the list.
 
 <!-- translation-section: category-tags -->
 
@@ -42,7 +42,7 @@ Tags group related discussions, polls, outcomes, and comments under names chosen
 
 ![](tags.png)
 
-Select a tag on the **Discussions** tab to show discussions that contain tagged items. Inside a discussion, select a tag in the sidebar to see matching comments, polls, or outcomes along with the items they reply to.
+Select a tag on **Threads**, **Polls**, or **Tasks** to show items with that tag. Inside a discussion, select a tag in the sidebar to see matching comments, polls, or outcomes along with the items they reply to.
 
 Authors can tag their own posts. Group admins, thread admins, and anyone who can edit the discussion context can tag any item. See [Category tags](/en/user_manual/discussions/tags) for setup and permissions.
 
@@ -50,16 +50,16 @@ Authors can tag their own posts. Group admins, thread admins, and anyone who can
 
 ## Unread discussions
 
-Select **Unread discussions** in the sidebar to see threads with new activity. Inside a discussion, use the timeline to jump to unread items and key events.
+Select **Unread** on **All groups** or on a group's **Threads** page (or select the unread count on the **Threads** card) to see threads with new activity in the last six weeks. Inside a discussion, use the timeline to jump to unread items and key events.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## Polls awaiting your vote
 
-Select **Polls to vote on** in the sidebar to see open polls you are invited to that you have not voted in yet. You can also open a group's **Polls** tab to view both active and closed polls.
+Open **Polls** on **All groups** (or select the vote count on the **Polls** card) to see open polls you are invited to that you have not voted in yet. You can also filter by **Need Vote**, **Open**, **Closed**, poll type, or tag on **All groups** or any group page.
 
 <!-- translation-section: bookmarks -->
 
 ## Bookmarks
 
-Bookmark a discussion, comment, poll, vote, or outcome when you want to return to it. Open **Bookmarks** from your user menu to see everything you have saved. See [Bookmarks](/en/user_manual/users/bookmarks) for details.
+Bookmark a discussion, comment, poll, vote, or outcome when you want to return to it. Open **Bookmarks** on **All groups** to see everything you have saved, or open **Bookmarks** on a group page to see bookmarks in that group. See [Bookmarks](/en/user_manual/users/bookmarks) for details.

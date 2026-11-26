@@ -946,7 +946,7 @@ The User API is request-based: an integration calls Loomio when it wants to read
 Webhooks are configured per group and require group admin permission. They can be managed through the Loomio interface:
 
 1. Open the group.
-2. Open the group menu and select **Chat integrations**.
+2. Open **Settings** and select **Chat integrations**.
 3. Add the integration matching the payload format your endpoint accepts. For a general-purpose endpoint, use the Mattermost/Markdown format.
 4. Enter a name and the destination URL.
 5. Select the events that Loomio should send automatically.

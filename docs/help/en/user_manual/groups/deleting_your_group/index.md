@@ -6,9 +6,9 @@ Only a group admin can delete a group. Deleting a group removes access immediate
 
 Before you delete a group, [export the group data](/en/user_manual/groups/data_export) and download any uploaded files you want to keep.
 
-To delete a group, open the group's actions menu and select **Delete group**.
+To delete a group, open **Settings** on the group page and select **Delete group**.
 
-![Delete group action in the Oatmilk Cooperative menu](group_delete_group.png)
+![Delete group action on the Oatmilk Cooperative settings page](group_delete_group.png)
 
 Enter the group handle to confirm deletion.
 

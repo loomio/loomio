@@ -37,14 +37,18 @@ test('direct_discussion_example', async ({ page, manual: screenshot }) => {
 
 test('direct_discussion_sidebar', async ({ page, manual: screenshot }) => {
   await openDirectDiscussions(page);
-  await ensureSidebar(page)
-  await screenshot.capture('discussions/direct_discussions/direct-discussion-sidebar', {
+  await ensureSidebar(page);
+  await page.locator('.sidenav-left a[href="/dashboard"]').click();
+  await expect(page.locator('.dashboard-page .discussions-panel__direct-toggle')).toBeVisible();
+  await page.locator('.discussions-panel__direct-toggle').click();
+  await expectLabel(page.locator('.dashboard-page'), 'Cafe bottle collection check-in');
+  await screenshot.captureElement('discussions/direct_discussions/direct-discussion-sidebar', '.dashboard-page', {
     spotlight: {
-      selector: '.sidebar__list-item-button--private',
+      selector: '.discussions-panel__direct-toggle',
       padding: 10,
       radius: 12
     },
     width: 1280,
-    height: 757
+    height: 1200
   });
 });

@@ -12,7 +12,8 @@ async function openSidebarSettings(page) {
 
 async function openGroupMenu(page) {
   await page.goto('/dev/setup_manual_oatmilk_group')
-  await page.locator('.group-page__actions .action-menu--btn').click()
+  await page.locator('.group-cards__settings').click()
+  await expect(page.locator('.group-settings-panel')).toBeVisible()
 }
 
 async function openThreadNotifications(page, scenario) {
@@ -125,7 +126,7 @@ test('sidebar_notification_settings', async ({ page, manual: screenshot }) => {
   await openSidebarSettings(page);
   await screenshot.captureElement('users/email_settings/sidebar_notification_settings', '.sidenav-left', {
     width: 1100,
-    height: 1200,
+    height: 600,
     spotlight: '.user-dropdown__list-item-button--email-settings'
   });
 });
@@ -178,17 +179,17 @@ test('push_notification_settings', async ({ page, manual: screenshot }) => {
 
 test('group_notifications', async ({ page, manual: screenshot }) => {
   await openGroupMenu(page);
-  await expect(page.locator('.v-overlay--active .action-dock__button--change_volume')).toBeVisible()
-  await screenshot.capture('users/email_settings/group_notifications', {
-    width: 1100,
-    height: 1057,
-    spotlight: '.v-overlay--active .action-dock__button--change_volume'
+  await expect(page.locator('.group-settings-panel .action-dock__button--change_volume')).toBeVisible()
+  await screenshot.captureElement('users/email_settings/group_notifications', '.group-page', {
+    width: 1280,
+    height: 1800,
+    spotlight: '.group-settings-panel .action-dock__button--change_volume'
   });
 });
 
 test('group_notification_settings', async ({ page, manual: screenshot }) => {
   await openGroupMenu(page);
-  await page.locator('.v-overlay--active .action-dock__button--change_volume').click()
+  await page.locator('.group-settings-panel .action-dock__button--change_volume').click()
   await expect(page.locator('.change-volume-form--push-disabled')).toBeVisible()
   await screenshot.captureElement('users/email_settings/group_notification_settings', '.change-volume-form', {width: 1100, height: 1300});
 });
@@ -309,7 +310,7 @@ test('sidebar_profile', async ({ page, manual: screenshot }) => {
   await ensureSidebar(page);
   await screenshot.captureElement('users/user_profile/sidebar_profile', '.sidenav-left', {
     width: 1100,
-    height: 1200,
+    height: 600,
     spotlight: '.sidebar__user-dropdown'
   });
 });

@@ -8,9 +8,9 @@ You can choose which groups to include, set a start and end date, and group resu
 
 Every group member can view the report, but each person only sees results for groups they belong to. Different members may therefore see different totals.
 
-To open the report, open the group's actions menu and select **Participation report**. In any table in the report, select a column heading to sort by that column.
+To open the report, open **Settings** on the group page and select **Participation report**. In any table in the report, select a column heading to sort by that column.
 
-![Participation report action in the Oatmilk Cooperative menu](group_participation_report.png)
+![Participation report action on the Oatmilk Cooperative settings page](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

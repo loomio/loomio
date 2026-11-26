@@ -12,7 +12,7 @@ This guide uses the Element client.
 
 1. Create a Matrix user account for Loomio, sign in to it in Element, and invite that account to the Matrix room where you want notifications to appear. Keep this session signed in — signing out invalidates the access token.
 
-2. In your Loomio group, open the group menu, select **Chat integrations**, and add a **Matrix** chat integration.
+2. In your Loomio group, open **Settings**, select **Chat integrations**, and add a **Matrix** chat integration.
 
    ![loomio matrix bot menu](loomio-add-matrix-bot.png)
 

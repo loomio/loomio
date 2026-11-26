@@ -68,11 +68,13 @@ test('participation_report_actions_per_country', async ({ page, manual: screensh
 test('participation_report_action', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group');
   await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative');
-  await page.locator('.group-page__actions .action-menu--btn').click();
-  await expectLabel(page.locator('.v-overlay--active .action-dock__button--group_stats'), 'Participation report');
-  await screenshot.capture('groups/participation_report/group_participation_report', {
+  await page.locator('.group-cards__settings').click();
+  await expectLabel(page.locator('.group-settings-panel .action-dock__button--group_stats'), 'Participation report');
+  await screenshot.captureElement('groups/participation_report/group_participation_report', '.group-page', {
+    width: 1280,
+    height: 1800,
     spotlight: {
-      selector: '.v-overlay .action-dock__button--group_stats',
+      selector: '.group-settings-panel .action-dock__button--group_stats',
       padding: 14,
       radius: 14,
       opacity: 0.4,
