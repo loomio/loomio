@@ -1,3 +1,4 @@
-web:        bundle exec puma -C config/puma.rb
-solid_queue: bin/jobs start
-vite:       cd vue && npm run serve
+web:         HOTCELL_ROOT=/tmp/loomio-hotcell bundle exec puma -C config/puma.rb
+solid_queue: HOTCELL_ROOT=/tmp/loomio-hotcell bin/jobs start
+cell:        mkdir -p /tmp/loomio-hotcell/active_storage && BUNDLE_GEMFILE=$PWD/hotcell/Gemfile HOTCELL_CONFIG=$PWD/hotcell/config.rb HOTCELL_OPERATIONS=$PWD/hotcell/operations HOTCELL_DIR=/tmp/loomio-hotcell/active_storage bundle exec hotcell --development
+vite:        cd vue && npm run serve

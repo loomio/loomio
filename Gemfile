@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby file: '.ruby-version'
-gem 'rails', '~> 8.1.0'
+gem 'rails', github: 'rails/rails', branch: 'main'
 # Active Support 8.1 passes JSON.parse options as a positional hash, which json 3 rejects.
 gem 'json', '< 3'
 gem 'uri', '1.1.2'
@@ -31,6 +31,7 @@ gem "aws-sdk-s3", require: false
 gem "aws-sdk-sesv2", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.62", require: false
+gem 'activestorage-hotcell-client'
 gem 'image_processing', '~> 2.2'
 gem 'mini_magick', '~> 5.4'
 gem "ruby-vips"

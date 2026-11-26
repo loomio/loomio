@@ -12,4 +12,18 @@ class PieChartControllerTest < ActionController::TestCase
     assert_equal [ 0, 0, 0, 0 ], pixels.first.first
     assert_equal [ 226, 85, 85, 255 ], pixels[256][256]
   end
+
+  test "rejects invalid color parameters" do
+    get :show, params: { scores: '1', colors: 'e25555"><script>alert(1)</script>' }
+
+    assert_response :bad_request
+  end
+
+  test "rejects missing or excessive slices" do
+    get :show, params: { scores: '', colors: 'e25555' }
+    assert_response :bad_request
+
+    get :show, params: { scores: Array.new(51, '1').join(','), colors: 'e25555' }
+    assert_response :bad_request
+  end
 end

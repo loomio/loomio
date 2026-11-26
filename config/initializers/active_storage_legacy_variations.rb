@@ -48,7 +48,11 @@ end
 module ActiveStorageRepresentationLegacyRescue
   private
 
-  LEGACY_ERRORS = [TypeError, defined?(Vips::Error) ? Vips::Error : nil].compact.freeze
+  LEGACY_ERRORS = [
+    TypeError,
+    defined?(Vips::Error) ? Vips::Error : nil,
+    defined?(LoomioHotCell::UnprocessableUpload) ? LoomioHotCell::UnprocessableUpload : nil
+  ].compact.freeze
 
   def set_representation
     super
