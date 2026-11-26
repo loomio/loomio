@@ -596,5 +596,5 @@ Rails.application.routes.draw do
   mount LoomioSubs::Engine, at: "/" if Object.const_defined?('LoomioSubs')
 
   get ":id", to: 'groups#show', as: :group_handle
-  get ":id/:section", to: 'groups#show', constraints: { section: /polls|members|files|tasks|bookmarks/ }
+  get ":id/:section", to: 'groups#show', constraints: { section: /polls|members|files|tasks|bookmarks|settings/ }
 end

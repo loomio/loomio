@@ -185,7 +185,7 @@ div
           v-btn.my-2(
             variant="tonal"
             color='primary'
-            v-if="!attachmentLoader.exhausted"
+            v-if="items.length && !attachmentLoader.exhausted"
             :loading="loading"
             @click="fetch()"
           )

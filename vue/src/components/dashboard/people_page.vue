@@ -90,8 +90,7 @@ component(:is="embedded ? 'div' : 'v-main'")
       )
 
     v-card(v-if="loading && people.length === 0" variant="flat")
-      v-list(lines="two")
-        loading-content(:lineCount="2" v-for="n in 4" :key="n")
+      loading
 
     v-card(v-else-if="people.length > 0" variant="flat")
       v-list(lines="two")

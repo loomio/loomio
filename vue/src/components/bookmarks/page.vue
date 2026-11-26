@@ -81,10 +81,8 @@ component(:is="embedded ? 'div' : 'v-main'")
     .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2(v-if="group")
       subgroups-filter-menu(:group="group" :selected="subgroupsFilter" @select="subgroupsFilter = $event")
 
-    section.bookmarks-page__loading(v-if='loading && bookmarks.length == 0')
-      v-card.mb-2
-        v-list(lines="two")
-          loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index')
+    v-card.mb-2(v-if='loading && bookmarks.length == 0' variant="flat")
+      loading
 
     template(v-else)
       v-card.mb-2(v-if='bookmarks.length > 0')

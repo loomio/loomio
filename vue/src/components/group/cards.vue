@@ -39,6 +39,14 @@ const pollsRoute = computed(() => `${basePath.value}/polls`);
 const tasksRoute = computed(() => `${basePath.value}/tasks`);
 const filesRoute = computed(() => `${basePath.value}/files`);
 const bookmarksRoute = computed(() => `${basePath.value}/bookmarks`);
+const settingsRoute = computed(() => `${basePath.value}/settings`);
+
+const hasSettingsActions = computed(() => (
+  isSignedIn.value && Boolean(group) && (
+    GroupAbility.canUpdate(group) ||
+    (typeof group.membersInclude === 'function' && group.membersInclude(Session.user()))
+  )
+));
 
 const activeSection = computed(() => {
   const segments = (route?.path || '').split('/').filter(Boolean);
@@ -47,8 +55,8 @@ const activeSection = computed(() => {
   if (segments.includes('tasks')) { return 'tasks'; }
   if (segments.includes('files')) { return 'files'; }
   if (segments.includes('bookmarks')) { return 'bookmarks'; }
-  if (segments.includes('stats') || segments.includes('participation_report') ||
-      segments.includes('membership_requests') || segments.includes('emails') || segments.includes('tags')) { return null; }
+  if (segments.includes('settings') || segments.includes('stats') || segments.includes('participation_report') ||
+      segments.includes('membership_requests') || segments.includes('emails') || segments.includes('tags')) { return 'settings'; }
   return 'threads';
 });
 
@@ -123,7 +131,7 @@ function isCollapsed(section) {
   const w = containerWidth.value;
   if (w <= 380) { return true; }
   if (activeSection.value === section) { return false; }
-  if (section === 'tasks' || section === 'bookmarks') { return true; }
+  if (section === 'tasks' || section === 'bookmarks' || section === 'settings') { return true; }
   if (section === 'files') { return w < 900; }
   if (section === 'members') { return w <= 680; }
   if (section === 'polls') { return w <= 500; }
@@ -281,6 +289,23 @@ function isCollapsed(section) {
             .group-cards__label
               .text-title-small.text-truncate {{ t('bookmarks.bookmarks') }}
               .text-body-small.text-medium-emphasis.text-truncate {{ t('dashboard_cards.bookmarks_saved_count', { count: bookmarksCount }, bookmarksCount) }}
+
+    v-tooltip(v-if="hasSettingsActions" location="bottom" :text="t('common.settings')" :disabled="!isCollapsed('settings')")
+      template(#activator="{ props }")
+        v-card.group-cards__card.group-cards__settings.group-cards__tile-default(
+          v-bind="props"
+          variant="tonal"
+          :color="activeSection === 'settings' ? 'primary' : undefined"
+          :class="{ 'group-cards__card--active': activeSection === 'settings' }"
+          :active="false"
+          :to="settingsRoute"
+          :aria-label="t('common.settings')"
+        )
+          .group-cards__inner
+            common-icon(name="mdi-cog")
+            .group-cards__label
+              .text-title-small.text-truncate {{ t('common.settings') }}
+              .text-body-small.text-medium-emphasis.text-truncate {{ t('group_settings_panel.subtitle') }}
 </template>
 
 <style scoped>
@@ -371,7 +396,8 @@ function isCollapsed(section) {
   .group-cards__members,
   .group-cards__tasks,
   .group-cards__files,
-  .group-cards__bookmarks {
+  .group-cards__bookmarks,
+  .group-cards__settings {
     flex: 0 0 48px;
   }
   .group-cards__polls .group-cards__inner {

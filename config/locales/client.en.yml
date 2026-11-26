@@ -1452,8 +1452,8 @@ en:
     success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
     scheduled_for_deletion: This group is scheduled for permanent deletion in 2 weeks
     deletion_after_grace_period: This group is unavailable and will be permanently deleted after %{days} days
-    discard_title: "Remove group"
-    discard_subgroup_title: "Remove subgroup"
+    discard_title: "Delete group"
+    discard_subgroup_title: "Delete subgroup"
     discard_parent_body: "This group and its subgroups will be removed from view immediately, and its Loomio subscription will be cancelled. Group data is not automatically permanently deleted and can be restored by a site administrator."
     discard_body: "This subgroup will be removed from view immediately. Subgroup data is not automatically permanently deleted and can be restored by a site administrator."
     discard_confirm: "Type '%{name}' to confirm"
@@ -1542,6 +1542,24 @@ en:
     browse_files: View files
     files_count: "1 file | {count} files"
     invite_get_started: Click here to get started
+  group_settings_panel:
+    subtitle: Group options
+    group_administration: Group administration
+    your_membership: Your membership
+    integrations_and_data: Integrations & data
+    leave_or_delete: Leave or delete
+    edit_group_description: Update the group name, description, logo, cover photo, privacy, and member permissions.
+    edit_tags_description: Create, rename, merge, and color-code tags used to organize threads and polls.
+    manage_subscription_description: View your plan, billing details, and member limits.
+    change_volume_description: Choose how often you receive email and push notifications from this group.
+    email_group_description: Start a new thread in this group by sending an email to this address.
+    group_stats_description: See member activity, thread engagement, and voting participation over time.
+    become_coordinator_description: Claim group admin permissions for this group.
+    chatbots_description: Connect Slack, Mattermost, Discord, or other chat tools to post group updates.
+    api_docs_description: Configure API access and webhooks to integrate Loomio with your own tools.
+    export_data_description: Download a copy of this group's threads, polls, comments, and members.
+    leave_group_description: Remove yourself from this group and stop receiving notifications.
+    destroy_group_description: Schedule this group and its content for permanent deletion.
   onboarding_card:
     view_plans: View plans
     upgrade_now: Upgrade now

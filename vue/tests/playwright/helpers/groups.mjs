@@ -1,9 +1,9 @@
 import { expect } from '../fixtures.mjs';
 
-// Runs an action from the group page's settings menu.
+// Runs an action from the group page's settings tab.
 export async function groupAction(page, action) {
-  await page.locator('.group-page__actions .action-menu--btn').click();
-  await page.locator(`.v-overlay--active .action-dock__button--${action}`).click();
+  await page.locator('.group-cards__settings').click();
+  await page.locator(`.group-settings-panel .action-dock__button--${action}`).click();
 }
 
 // Makes sure the sidebar is open. Wide windows open it by themselves soon after

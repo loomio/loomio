@@ -385,8 +385,7 @@ component(:is="embedded ? 'div' : 'v-main'")
       )
 
     v-card(v-if="loading && allTasks.length === 0" variant="flat")
-      v-list(lines="two")
-        loading-content(:lineCount="2" v-for="n in 3" :key="n")
+      loading
 
     .tasks-page__list(v-else-if="groupedEntries.length > 0")
       v-card.tasks-page__group.mb-4(

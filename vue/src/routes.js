@@ -21,6 +21,7 @@ const MembersPanel = () => import('./components/group/members_panel');
 const MemberWeightsPage = () => import('./components/group/member_weights_page.vue');
 const GroupTagsPanel = () => import('./components/group/tags_panel');
 const GroupFilesPanel = () => import('./components/group/files_panel');
+const GroupSettingsPanel = () => import('./components/group/settings_panel.vue');
 const MembershipRequestsPanel = () => import('./components/group/requests_panel');
 const StartGroupPage = () => import('./components/start_group/page');
 const ContactPage = () => import('./components/contact/page');
@@ -48,6 +49,7 @@ const groupPageChildren = [
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},
   {path: 'tasks', component: TasksPage, props: { embedded: true }, meta: {noScroll: true}},
   {path: 'bookmarks', component: BookmarksPage, props: { embedded: true }, meta: {noScroll: true}},
+  {path: 'settings', component: GroupSettingsPanel, meta: {noScroll: true}},
   {path: ':stub?', component: GroupThreadsPanel, meta: {noScroll: true}}
 ];
 

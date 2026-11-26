@@ -106,13 +106,9 @@ v-main
             space
           plain-text.group-page__name(:model="group" field="name")
       action-dock.group-page__actions(
+        v-if="Object.keys(dockActions).length > 0"
         :model='group'
-        :actions='dockActions'
-        :menu-icon="canEditGroup ? 'mdi-cog' : 'mdi-dots-horizontal'"
-        :menu-name="canEditGroup ? $t('common.settings') : $t('action_dock.more')"
-        :menu-icon-only="false"
-        menu-show-icon
-        :menu-actions='menuActions')
+        :actions='dockActions')
     formatted-text.group-page__description(
       v-if="group"
       :model="group"
