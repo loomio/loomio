@@ -57,6 +57,7 @@ boot(function(data) {
         "Permission denied to access property \"dispatchEvent\" on cross-origin object",
         "TypeError: Failed to fetch",
         "TypeError: Load failed",
+        "Unable to preload CSS for ",
         "Non-Error promise rejection captured with keys: exception, ok, status, statusText",
         /__firefox__/
       ],

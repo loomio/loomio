@@ -7,6 +7,7 @@ Bundler.require(*Rails.groups)
 require_relative '../lib/version'
 require_relative '../lib/test_database_url'
 require_relative '../lib/spam_rules_middleware'
+require_relative '../lib/immutable_asset_cache_middleware'
 require_relative '../lib/spam_mail_interceptor'
 
 def lmo_asset_host(path = nil)
@@ -30,6 +31,7 @@ module Loomio
     end
 
     config.load_defaults 6.0
+    config.middleware.insert_before 0, ImmutableAssetCacheMiddleware
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
     config.middleware.use SpamRulesMiddleware
