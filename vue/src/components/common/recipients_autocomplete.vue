@@ -1,7 +1,7 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import AppConfig from '@/shared/services/app_config';
-import {map, debounce, filter, uniq, uniqBy, find, difference, escapeRegExp} from 'lodash-es';
+import {map, debounce, filter, uniq, uniqBy, difference, escapeRegExp} from 'lodash-es';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import GroupAbility from '@/shared/abilities/group_ability';
 import PollAbility from '@/shared/abilities/poll_ability';
@@ -183,8 +183,11 @@ export default {
       });
     },
 
+    // Multiple selected audiences are joined as a comma-separated string
+    // (e.g. "group-10,group-20") on the existing recipientAudience param/field.
     newRecipients(val) {
-      this.model.recipientAudience = (find(val, o => o.type === 'audience') || {}).id;
+      const audienceIds = map(filter(val, o => o.type === 'audience'), 'id');
+      this.model.recipientAudience = audienceIds.length ? audienceIds.join(',') : null;
       this.model.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
       this.model.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
       this.model.recipientChatbotIds = map(filter(val, o => o.type === 'chatbot'), 'id');
@@ -217,17 +220,16 @@ export default {
           ...this.model.bestNamedId()
         }})
       .then(data => {
-        this.remove(item);
+        const remaining = filter(this.recipients, r => !((r.id === item.id) && (r.type === item.type)));
         const userIds = (data['users'] || []).map(u => u.id);
         this.suggestedUserIds = uniq(this.suggestedUserIds.concat(userIds));
-        Records.users.find(userIds).forEach(u => {
-          this.recipients.push({
-            id: u.id,
-            type: 'user',
-            name: u.nameOrEmail(),
-            user: u
-          });
-        });
+        const expanded = Records.users.find(userIds).map(u => ({
+          id: u.id,
+          type: 'user',
+          name: u.nameOrEmail(),
+          user: u
+        }));
+        this.recipients = uniqBy(remaining.concat(expanded), r => `${r.type}:${r.id}`);
       });
     },
 
@@ -350,8 +352,6 @@ export default {
     },
 
     audiences() {
-      if (this.recipients.length > 0) { return []; }
-
       return this.availableAudiences.map(audience => ({
         id: audience.id,
         type: 'audience',

@@ -143,8 +143,11 @@ class UserInviter
   def self.authorize_preview!(model:, actor:, emails:, audience:)
     authorize_recipient_discovery!(model: model, actor: actor)
     auth_target = model.respond_to?(:topic) ? model.topic : model
+    # audience may be a single ID, a comma-separated list (e.g. "group-10,group-20"),
+    # or an array; NotificationAudienceService.resolve authorizes every entry.
+    audience_kinds = NotificationAudienceService.normalize_kinds(audience)
 
-    if %w[group topic].include?(audience)
+    if audience_kinds.any? { |kind| %w[group topic].include?(kind) }
       NotificationAudienceService.authorize_notify!(model: model, actor: actor)
     end
 
@@ -171,15 +174,18 @@ class UserInviter
     # check inviter can invite guests (from the org, or external) if that's happening
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).map(&:presence).compact.uniq
+    # audience may be a single ID, a comma-separated list (e.g. "group-10,group-20"),
+    # or an array; NotificationAudienceService.resolve authorizes every entry.
+    audience_kinds = NotificationAudienceService.normalize_kinds(audience)
     authorize_email_invitations!(emails: emails, model: model, actor: actor)
     # Nobody can notify people from a locked thread, including thread admins
     # who can still edit it.
     topic = model.is_a?(Topic) ? model : (model.topic if model.respond_to?(:topic))
-    if topic&.locked_at && (audience.present? || user_ids.any? || emails.any?)
+    if topic&.locked_at && (audience_kinds.any? || user_ids.any? || emails.any?)
       raise CanCan::AccessDenied
     end
-    if audience.present?
-      NotificationAudienceService.resolve(model: model, kind: audience, actor: actor)
+    if audience_kinds.any?
+      NotificationAudienceService.resolve(model: model, kind: audience_kinds, actor: actor)
     end
 
     # members belong to group
@@ -191,7 +197,7 @@ class UserInviter
     # guests are outside of the group, but allowed to be referenced by user query
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
-    if %w[group topic].include?(audience)
+    if audience_kinds.any? { |kind| %w[group topic].include?(kind) }
       NotificationAudienceService.authorize_notify!(model: model, actor: actor)
     end
     auth_target = model.respond_to?(:topic) ? model.topic : model
@@ -221,10 +227,13 @@ class UserInviter
     authorize_email_invitations!(emails: emails, model: model, actor: actor)
     emails = safe_emails(emails)
 
-    audience_user_ids = if audience
+    # audience may be a single ID, a comma-separated list (e.g. "group-10,group-20"),
+    # or an array; NotificationAudienceService.resolve authorizes every entry.
+    audience_kinds = NotificationAudienceService.normalize_kinds(audience)
+    audience_user_ids = if audience_kinds.any?
       NotificationAudienceService.resolve(
         model: model,
-        kind: audience,
+        kind: audience_kinds,
         actor: actor,
         include_actor: include_actor
       ).pluck(:id)

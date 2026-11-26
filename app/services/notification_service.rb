@@ -23,7 +23,7 @@ class NotificationService
       actor: actor,
       kind: kind,
       subject: subject,
-      recipient_audience: recipient_audience.presence,
+      recipient_audience: NotificationAudienceService.serialize(recipient_audience),
       recipient_user_ids: Array(recipient_user_ids).compact.map(&:to_i).uniq,
       recipient_chatbot_ids: Array(recipient_chatbot_ids).compact.map(&:to_i).uniq,
       recipient_message: recipient_message.presence,
