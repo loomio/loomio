@@ -496,7 +496,6 @@ Rails.application.routes.draw do
 
   get 'try'                                => 'application#index', as: :start_trial
   get 'dashboard'                          => 'application#index', as: :dashboard
-  get 'dashboard/people'                   => 'application#index'
   get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox
   get 'groups'                             => 'application#index', as: :groups

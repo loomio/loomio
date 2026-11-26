@@ -278,6 +278,17 @@ function formatDueDate(dueOn) {
   return format(date, pattern, { locale: dateLocale });
 }
 
+function canUpdateTask(task) {
+  const user = Session.user();
+  if (!user?.id) { return false; }
+  if (task.authorId === user.id) { return true; }
+  if (Array.isArray(task.assigneeIds) && task.assigneeIds.includes(user.id)) { return true; }
+  const g = groupForRecord(task.record());
+  if (g && typeof g.adminsInclude === 'function' && g.adminsInclude(user)) { return true; }
+  if (g && g.membersCanEditDiscussions && typeof g.membersInclude === 'function' && g.membersInclude(user)) { return true; }
+  return false;
+}
+
 function toggleDone(task) {
   const next = new Set(recentlyToggledIds.value);
   next.add(task.id);
@@ -404,7 +415,7 @@ component(:is="embedded ? 'div' : 'v-main'")
             template(#prepend)
               v-checkbox-btn.mr-2(
                 :model-value="Boolean(task.doneAt)"
-                :disabled="Boolean(task.processing) || task.canUpdate === false"
+                :disabled="Boolean(task.processing) || !canUpdateTask(task)"
                 @update:model-value="toggleDone(task)"
               )
             v-list-item-title.text-body-medium.text-wrap

@@ -128,10 +128,7 @@ module Null::Group
     %w[
       memberships_count
       polls_count
-      proposals_count
       active_polls_count
-      closed_polls_count
-      current_user_votes_needed_count
       discussions_count
       pending_memberships_count
       poll_templates_count

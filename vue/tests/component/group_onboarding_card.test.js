@@ -104,7 +104,6 @@ describe('GroupCards and PlanBanner', () => {
       orgMembersCount: 2,
       pollsCount: 5,
       activePollsCount: 2,
-      closedPollsCount: 3,
       currentUserVotesNeededCount: 1,
       trialParticipantsCount: 1,
       subscription: {
@@ -157,7 +156,7 @@ describe('GroupCards and PlanBanner', () => {
     expect(wrapper.find('.group-page-members-tab').text()).toContain('2 members');
     expect(wrapper.find('.group-page-members-tab').text()).not.toContain('delegate');
     expect(wrapper.find('.group-page-polls-tab').text()).toContain('Polls');
-    expect(wrapper.find('.group-page-polls-tab').text()).toContain('1 needs vote');
+    expect(wrapper.find('.group-page-polls-tab').text()).toContain('0 need vote');
     expect(wrapper.find('.group-page-polls-tab').text()).toContain('2 open');
     expect(wrapper.find('.group-page-files-tab').exists()).toBe(true);
 

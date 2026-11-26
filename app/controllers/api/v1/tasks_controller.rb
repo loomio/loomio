@@ -22,11 +22,12 @@ class Api::V1::TasksController < Api::V1::RestfulController
           .distinct
       end
 
-      self.collection = scope.includes(:record).select { |task| task.record.present? && current_user.can?(:show, task.record) }
+      self.collection = scope.includes(:record, :tasks_users).select { |task| task.record.present? && current_user.can?(:show, task.record) }
     else
       self.collection = Task.kept.joins('left outer join tasks_users on tasks_users.task_id = tasks.id')
           .where("author_id = :user_id OR doer_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
           .distinct
+          .includes(:tasks_users)
           .select { |task| current_user.can?(:show, task) }
     end
 

@@ -8,6 +8,7 @@ import Session from '@/shared/services/session';
 import GroupAbility from '@/shared/abilities/group_ability';
 import { unreadCutoffDate } from '@/shared/helpers/unread_cutoff.mjs';
 import { useBookmarks } from '@/composables/useBookmarks';
+import { usePendingPolls } from '@/composables/usePendingPolls';
 import { useTasks } from '@/composables/useTasks';
 import { useFilesSummary } from '@/composables/useFilesSummary';
 
@@ -18,10 +19,12 @@ const router = useRouter();
 const isSignedIn = computed(() => Session.isSignedIn());
 
 const { loadBookmarks } = useBookmarks();
+const { loadPendingPolls, findPendingPolls } = usePendingPolls();
 const { loadTasks, taskIds } = useTasks();
 const { loadFilesSummary, getFilesCount } = useFilesSummary();
 
 if (isSignedIn.value && Records.bookmarks?.fetch) { loadBookmarks(); }
+if (isSignedIn.value && Records.polls?.fetch) { loadPendingPolls(); }
 if (isSignedIn.value && Records.tasks?.remote?.fetch) { loadTasks(); }
 watch(() => group?.id, id => {
   if (isSignedIn.value && id) { loadFilesSummary(id); }
@@ -78,8 +81,12 @@ const membersSubtitle = computed(() => {
   }
   return parts.join(', ');
 });
-const votesNeededCount = computed(() => group.currentUserVotesNeededCount || 0);
-const openPollsCount = computed(() => group.activePollsCount || 0);
+const votesNeededCount = computed(() => (
+  isSignedIn.value && Records.polls?.collection
+    ? findPendingPolls().filter(poll => poll.groupId === group.id).length
+    : 0
+));
+const openPollsCount = computed(() => Math.max(group.activePollsCount || 0, votesNeededCount.value));
 
 function groupIdForTask(task) {
   const record = task?.record?.();
