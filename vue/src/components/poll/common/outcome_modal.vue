@@ -83,7 +83,8 @@ export default {
 
     newRecipients(val) {
       this.recipients = val;
-      this.outcome.recipientAudience = (val.find(i => i.type === 'audience') || {}).id;
+      const audienceIds = val.filter(i => i.type === 'audience').map(i => i.id);
+      this.outcome.recipientAudience = audienceIds.length ? audienceIds.join(',') : null;
       this.outcome.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
       this.outcome.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
     }

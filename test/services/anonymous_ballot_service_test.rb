@@ -448,6 +448,49 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     refute @poll.poll_options.first.update(name: "Changed")
   end
 
+  test "permanent group deletion removes anonymous ballots and legacy reasons" do
+    previous_days = ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"]
+    ballot = cast_ballot_for_purge_test
+    @poll.update_column(:closed_at, Time.current)
+    LegacyAnonymousVoteReason.create!(anonymous_ballot: ballot, body: "Legacy reason")
+    @group.discard!(at: 91.days.ago)
+
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "90"
+    DestroyGroupWorker.perform_now(@group.id, @group.discarded_at.iso8601(6))
+
+    refute Group.exists?(@group.id)
+    refute Poll.exists?(@poll.id)
+    refute AnonymousBallot.exists?(ballot.id)
+    refute AnonymousBallotChoice.exists?(anonymous_ballot_id: ballot.id)
+    refute LegacyAnonymousVoteReason.exists?(ballot.id)
+  ensure
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = previous_days
+  end
+
+  test "permanent thread deletion preserves ballots in another thread" do
+    previous_days = ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"]
+    ballot = cast_ballot_for_purge_test
+    other_poll = create_anonymous_poll
+    other_ballot = other_poll.anonymous_ballots.build(anonymous_ballot_choices_attributes: [
+      { poll_option_id: other_poll.poll_options.first.id, score: 1 }
+    ])
+    AnonymousBallotService.create(anonymous_ballot: other_ballot, actor: @voter)
+    topic = @poll.topic
+    topic.update_column(:discarded_at, 91.days.ago)
+
+    ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = "90"
+    DestroyTopicWorker.perform_now(topic.id, topic.discarded_at.iso8601(6))
+
+    refute Topic.exists?(topic.id)
+    refute Poll.exists?(@poll.id)
+    refute AnonymousBallot.exists?(ballot.id)
+    refute AnonymousBallotChoice.exists?(anonymous_ballot_id: ballot.id)
+    assert AnonymousBallot.exists?(other_ballot.id)
+    assert AnonymousBallotChoice.exists?(anonymous_ballot_id: other_ballot.id)
+  ensure
+    ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = previous_days
+  end
+
   test "database rejects a negative detached anonymous score" do
     ballot_id = SecureRandom.uuid
     AnonymousBallot.insert_all!([{
@@ -768,6 +811,12 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
   end
 
   private
+
+  def cast_ballot_for_purge_test
+    ballot = build_ballot(@poll.poll_options.first)
+    AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+    ballot
+  end
 
   def create_anonymous_poll(**settings)
     PollService.create(params: {

@@ -21,7 +21,7 @@
     "test": "node --test"
   },
   "dependencies": {
-    "haraka": "3.4.0",
+    "haraka": "3.4.1",
     "haraka-plugin-mailauth": "1.1.1"
   },
   "overrides": {

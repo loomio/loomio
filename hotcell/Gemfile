@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+# The cell's Gemfile. Keep it short: every gem loaded here is inside the blast radius and paid for on
+# every request. hotcell-client and rails do not belong here.
+
+source "https://rubygems.org"
+
+# Keep this at the application's hotcell-client version; HotCell.describe_cells warns at boot otherwise.
+gem "hotcell-server", "1.2.0"
+gem "activestorage-hotcell-server", "1.2.0"
+
+gem "image_processing"
+gem "ruby-vips"

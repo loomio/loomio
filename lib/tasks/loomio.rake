@@ -283,6 +283,7 @@ namespace :loomio do
   end
 
   task generate_email_icons: :environment do
+    require "vips"
     colors = AppConfig.colors.flatten.flatten.filter {|c| c.starts_with?("#")}.map {|c| c[1..-1]}
     source_path = Rails.root.join("app", "assets", "images", "icons", "svgs", "*.svg").to_s
     dest_path = Rails.root.join("app", "assets", "images", "icons")

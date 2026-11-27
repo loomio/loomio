@@ -441,6 +441,8 @@ class DemoGroupTemplateService
   # Route synchronously so the unread items exist as soon as the task returns.
   # Quiet email volume prevents demo provisioning from sending mail; normal push
   # volume still exercises registered browser and native notification channels.
+  # Demo personas are shared across every visitor's walkthrough, so seeded
+  # notifications skip the per-actor and per-IP trial invitation limits.
   def create_notifications!(definitions, people, discussions, polls)
     definitions.map do |definition|
       subject = if definition.key?("discussion")
@@ -455,7 +457,8 @@ class DemoGroupTemplateService
         kind: definition.fetch("kind"),
         subject: subject,
         actor: people.fetch(definition.fetch("actor")),
-        recipient_user_ids: [ user.id ]
+        recipient_user_ids: [ user.id ],
+        skip_invitation_limit: true
       )
       notification
     end

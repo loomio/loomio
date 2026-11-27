@@ -60,6 +60,12 @@ RUN apt-get update -qq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
+# Unprivileged user and socket mountpoint for the TASK=hotcell media-processing sidecar.
+RUN groupadd --gid 10001 hotcell && \
+    useradd --uid 10001 --gid 10001 --no-create-home --shell /usr/sbin/nologin hotcell && \
+    mkdir -p /run/hotcell/cell && \
+    chown -R hotcell:hotcell /run/hotcell
+
 # Copy Ruby dependency metadata first (better cache)
 COPY Gemfile Gemfile.lock .ruby-version ./
 
@@ -67,8 +73,17 @@ COPY Gemfile Gemfile.lock .ruby-version ./
 RUN bundle install && \
     bundle exec bootsnap precompile --gemfile app/ lib/
 
+# Install isolated Hot Cell sidecar bundle (used only by TASK=hotcell; never loads Rails)
+COPY hotcell/Gemfile hotcell/Gemfile.lock ./hotcell/
+RUN BUNDLE_GEMFILE=/loomio/hotcell/Gemfile \
+    BUNDLE_PATH=/loomio/hotcell/bundle \
+    BUNDLE_WITHOUT=development \
+    BUNDLE_FROZEN=true \
+    bundle install
+
 # Copy entire app source
 COPY . .
+RUN chmod -R go-w /loomio/hotcell
 
 COPY --from=nodebuild /tmp/pagefind /usr/local/bin/pagefind
 COPY --from=nodebuild /tmp/pagefind-LICENSE /usr/local/share/licenses/pagefind/LICENSE

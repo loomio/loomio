@@ -272,8 +272,10 @@ test.describe('signing up', () => {
     await form.locator('.start-trial-form__submit').click();
     await expect(page.locator('.trial-started')).toContainText(`We have created a user account for ${address}`);
     await page.locator('.trial-started__sign-in').click();
-    await expect(emailInput(page)).toHaveValue(address);
-    await requestLoginCode(page);
+    const codeForm = page.locator('.auth-email-code-form');
+    await expect(codeForm.locator('.auth-email-code-form__email input')).toHaveValue(address);
+    await codeForm.locator('.auth-email-code-form__submit').click();
+    await expect(authComplete(page)).toContainText('Check your email');
     await enterLoginCode(page);
     await expect(page.locator('.account-completion__name input')).toHaveValue('Trial Person');
     await page.locator('.account-completion__legal-accepted input').check();

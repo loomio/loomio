@@ -206,6 +206,17 @@ module PurgeService
     record_ids
   end
 
+  def self.delete_anonymous_ballots_for_topics!(topic_ids)
+    # Votes are immutable during normal use. Only purge ballots belonging to
+    # the polls in this deletion transaction, under the same lock as voting.
+    poll_ids = Poll.where(topic_id: topic_ids).order(:id).lock.ids
+    ballots = AnonymousBallot.where(poll_id: poll_ids)
+    ballot_ids = ballots.select(:id)
+    AnonymousBallotChoice.where(anonymous_ballot_id: ballot_ids).delete_all
+    LegacyAnonymousVoteReason.where(anonymous_ballot_id: ballot_ids).delete_all
+    ballots.delete_all
+  end
+
   def self.delete_destroyed_versions!(record_ids)
     record_ids.each do |model, ids|
       ids.each_slice(1_000) do |batch|

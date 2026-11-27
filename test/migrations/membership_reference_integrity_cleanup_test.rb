@@ -20,21 +20,22 @@ class MembershipReferenceIntegrityCleanupTest < ActiveSupport::TestCase
       volume_push: Membership.volume_pushes.fetch("normal")
     }
 
-    invalid_ids = ActiveRecord::Base.connection.disable_referential_integrity do
-      Membership.insert_all!([
+    invalid_ids = nil
+    ActiveRecord::Base.connection.disable_referential_integrity do
+      invalid_ids = Membership.insert_all!([
         attributes,
         attributes.merge(group_id: missing_group_id, user_id: user.id)
       ]).rows.flatten
-    end
-    group.update_columns(
-      memberships_count: 99,
-      pending_memberships_count: 99,
-      admin_memberships_count: 99,
-      org_members_count: 99
-    )
-    user.update_columns(memberships_count: 99)
+      group.update_columns(
+        memberships_count: 99,
+        pending_memberships_count: 99,
+        admin_memberships_count: 99,
+        org_members_count: 99
+      )
+      user.update_columns(memberships_count: 99)
 
-    MembershipReferenceIntegrityCleanup.run!(ActiveRecord::Base.connection)
+      MembershipReferenceIntegrityCleanup.run!(ActiveRecord::Base.connection)
+    end
 
     assert_not Membership.where(id: invalid_ids).exists?
     group.reload

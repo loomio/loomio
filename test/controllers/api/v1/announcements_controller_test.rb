@@ -1440,4 +1440,92 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     assert_response :not_found
   end
+
+  test "topic count and create support inviting multiple groups at once without duplicates" do
+    hex = SecureRandom.hex(4)
+    alice = User.create!(name: "alice#{hex}", email: "alice#{hex}@example.com", username: "alice#{hex}")
+    bob = User.create!(name: "bob#{hex}", email: "bob#{hex}@example.com", username: "bob#{hex}")
+    carol = User.create!(name: "carol#{hex}", email: "carol#{hex}@example.com", username: "carol#{hex}")
+    sub_a = Group.create!(name: "Sub A #{hex}", parent: @group, group_privacy: @group.group_privacy, handle: "#{@group.handle}-suba-#{hex}")
+    sub_b = Group.create!(name: "Sub B #{hex}", parent: @group, group_privacy: @group.group_privacy, handle: "#{@group.handle}-subb-#{hex}")
+
+    sub_a.add_admin!(@admin)
+    sub_b.add_admin!(@admin)
+    sub_a.add_member!(alice, inviter: @admin)
+    sub_a.add_member!(bob, inviter: @admin)
+    sub_b.add_member!(bob, inviter: @admin)
+    sub_b.add_member!(carol, inviter: @admin)
+
+    audience = "group-#{sub_a.id},group-#{sub_b.id}"
+
+    get :count, params: { topic_id: @discussion.topic.id, recipient_audience: audience }
+    assert_response :success
+    assert_equal 3, JSON.parse(response.body).fetch("count")
+
+    assert_difference -> { Notification.where(kind: "discussion_announced").count }, 1 do
+      post :create, params: { topic_id: @discussion.topic.id, recipient_audience: audience }
+    end
+
+    assert_response :success
+    reader_user_ids = JSON.parse(response.body).fetch("topic_readers").pluck("user_id").sort
+    assert_equal [alice.id, bob.id, carol.id].sort, reader_user_ids
+
+    notification = Notification.where(kind: "discussion_announced").order(:id).last
+    assert_equal audience, notification.recipient_audience
+    assert_equal [alice.id, bob.id, carol.id].sort, notification.recipient_user_ids.sort
+  end
+
+  test "topic create rejects multiple audiences when any audience is unauthorized or from another org" do
+    hex = SecureRandom.hex(4)
+    alice = User.create!(name: "alice#{hex}", email: "alice#{hex}@example.com", username: "alice#{hex}")
+    member = users(:user)
+    sub_allowed = Group.create!(name: "Allowed #{hex}", parent: @group, group_privacy: @group.group_privacy, handle: "#{@group.handle}-allow-#{hex}", members_can_announce: true)
+    sub_denied = Group.create!(name: "Denied #{hex}", parent: @group, group_privacy: @group.group_privacy, handle: "#{@group.handle}-deny-#{hex}", members_can_announce: false)
+
+    sub_allowed.add_admin!(@admin)
+    sub_allowed.add_member!(member, inviter: @admin)
+    sub_allowed.add_member!(alice, inviter: @admin)
+    sub_denied.add_member!(member, inviter: @admin)
+    sub_denied.add_member!(alice, inviter: @admin)
+
+    sign_in member
+    assert_no_difference ["TopicReader.count", "Notification.count"] do
+      post :create, params: {
+        topic_id: @discussion.topic.id,
+        recipient_audience: "group-#{sub_allowed.id},group-#{sub_denied.id}"
+      }
+    end
+    assert_response :forbidden
+
+    sign_in @admin
+    assert_no_difference ["TopicReader.count", "Notification.count"] do
+      post :create, params: {
+        topic_id: @discussion.topic.id,
+        recipient_audience: "group-#{sub_allowed.id},group-#{groups(:alien_group).id}"
+      }
+    end
+    assert_response :not_found
+  end
+
+  test "topic create with multiple groups enforces add_guests permission" do
+    hex = SecureRandom.hex(4)
+    outsider = User.create!(name: "out#{hex}", email: "out#{hex}@example.com", username: "out#{hex}")
+    member = users(:user)
+    @group.update!(members_can_add_guests: false, members_can_announce: true)
+    sub_a = Group.create!(name: "Sub A #{hex}", parent: @group, group_privacy: @group.group_privacy, handle: "#{@group.handle}-ga-#{hex}", members_can_announce: true)
+    sub_b = Group.create!(name: "Sub B #{hex}", parent: @group, group_privacy: @group.group_privacy, handle: "#{@group.handle}-gb-#{hex}", members_can_announce: true)
+
+    sub_a.add_member!(member, inviter: @admin)
+    sub_b.add_member!(member, inviter: @admin)
+    sub_b.add_member!(outsider, inviter: @admin)
+
+    sign_in member
+    assert_no_difference ["TopicReader.count", "Notification.count"] do
+      post :create, params: {
+        topic_id: @discussion.topic.id,
+        recipient_audience: "group-#{sub_a.id},group-#{sub_b.id}"
+      }
+    end
+    assert_response :forbidden
+  end
 end

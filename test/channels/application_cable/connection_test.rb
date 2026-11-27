@@ -61,4 +61,9 @@ class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCase
       assert_reject_connection { connect }
     end
   end
+
+  test "handle_open and handle_close remain public for ActionCable::Server::Socket" do
+    assert ApplicationCable::Connection.public_method_defined?(:handle_open)
+    assert ApplicationCable::Connection.public_method_defined?(:handle_close)
+  end
 end

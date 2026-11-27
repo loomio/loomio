@@ -1,3 +1,6 @@
+_fixture:
+  model_class: ActiveStorage::Blob
+
 cleanup_group_blob:
   key: cleanup_group_blob_key
   filename: cleanup.txt
