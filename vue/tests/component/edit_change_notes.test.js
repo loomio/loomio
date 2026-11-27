@@ -187,7 +187,7 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
         params: expect.objectContaining({group_id: 7, recipient_audience: 'group'})
       }));
       expect(model.recipientUserIds).toEqual([recipient.id]);
-      expect(model.recipientAudience).toBeUndefined();
+      expect(model.recipientAudience).toBeNull();
     });
   }
 
@@ -201,7 +201,7 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
     await expectSavedRecipients({
       recipient_user_ids: [], recipient_emails: [], recipient_chatbot_ids: [], notify_recipients: true
     });
-    expect(model.recipientAudience).toBeUndefined();
+    expect(model.recipientAudience).toBeNull();
     expect(mocks.count).not.toHaveBeenCalled();
   });
 
@@ -250,7 +250,7 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
     expect(wrapper.get('.recipients-autocomplete').text()).toContain('Jamie Recipient');
     expect(mocks.count).toHaveBeenLastCalledWith({path: 'announcements/count', params: {
       recipient_emails_cmr: '', recipient_user_xids: '2', recipient_chatbot_xids: '',
-      recipient_audience: undefined, include_actor: null, [`${kind}_id`]: 41
+      recipient_audience: null, include_actor: null, [`${kind}_id`]: 41
     }});
     await expectSavedRecipients({recipient_user_ids: [2], recipient_emails: [], recipient_chatbot_ids: []});
   });
@@ -265,7 +265,7 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
     expect(wrapper.get('.recipients-autocomplete').text()).toContain('guest@example.test');
     expect(mocks.count).toHaveBeenLastCalledWith({path: 'announcements/count', params: {
       recipient_emails_cmr: 'guest@example.test', recipient_user_xids: '', recipient_chatbot_xids: '',
-      recipient_audience: undefined, include_actor: null, [`${kind}_id`]: 41
+      recipient_audience: null, include_actor: null, [`${kind}_id`]: 41
     }});
     await expectSavedRecipients({recipient_user_ids: [], recipient_emails: ['guest@example.test'], recipient_chatbot_ids: []});
   });
@@ -278,7 +278,7 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
     expect(model.recipientChatbotIds).toEqual([91]);
     expect(mocks.count).toHaveBeenLastCalledWith({path: 'announcements/count', params: {
       recipient_emails_cmr: '', recipient_user_xids: '', recipient_chatbot_xids: '91',
-      recipient_audience: undefined, include_actor: null, [`${kind}_id`]: 41
+      recipient_audience: null, include_actor: null, [`${kind}_id`]: 41
     }});
     await expectSavedRecipients({recipient_user_ids: [], recipient_emails: [], recipient_chatbot_ids: [91]});
   });
@@ -290,7 +290,7 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
     await wrapper.get('.recipients-autocomplete .v-chip__close').trigger('click');
     await flushPromises();
 
-    expect(model.recipientAudience).toBeUndefined();
+    expect(model.recipientAudience).toBeNull();
     expect(wrapper.find('.recipients-autocomplete .v-chip').exists()).toBe(false);
     await expectSavedRecipients({recipient_user_ids: [], recipient_emails: [], recipient_chatbot_ids: []});
   });
@@ -308,7 +308,7 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
     await flushPromises();
 
     expect(wrapper.find('.recipients-autocomplete .v-chip').exists()).toBe(false);
-    expect(model.recipientAudience).toBeUndefined();
+    expect(model.recipientAudience).toBeNull();
     expect(notifyInput().element.value).toBe('');
     await expectSavedRecipients({recipient_user_ids: [], recipient_emails: [], recipient_chatbot_ids: []});
   });
