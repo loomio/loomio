@@ -10,11 +10,11 @@ You can ask a simple question or share a detailed brief with links and attached 
 
 ## Start a new discussion
 
-Select **Start discussion** on your group page or any subgroup page.
+Select **New thread** on your group page or any subgroup page.
 
 Loomio shows your group's [discussion templates](/en/user_manual/discussions/templates/). Choose a template—or **Blank template**—to open the discussion form.
 
-![Start discussion button on the Oatmilk Cooperative page](new-discussion-button.png)
+![New thread button on the Oatmilk Cooperative page](new-discussion-button.png)
 
 ![Start a discussion form for planning the returnable bottle trial](new-discussion-example.png)
 

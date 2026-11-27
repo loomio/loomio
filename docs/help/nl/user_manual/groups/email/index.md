@@ -1,15 +1,15 @@
 ---
 title: E-mailadres
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: fc0fa9159f83a9c0
+  introduction: 4b1675f403a48f9d
   preventing-unauthorized-emails: f0488efa24cc4f6a
 title_source: f2488fd4ef4adbc6
 title_generated: ca351133d550c4ae
@@ -21,9 +21,9 @@ title_generated: ca351133d550c4ae
 
 Elke Loomio-groep heeft een eigen e-mailadres. Je kunt een e-mail naar dit adres sturen of doorsturen om een nieuwe thread in de groep te starten.
 
-Je vindt het e-mailadres van de groep op de groepspagina:
+Je vindt het e-mailadres van de groep onder **Instellingen** op de groepspagina:
 
-![Locatie van het e-mailadres op de groepspagina](email_email_button.png)
+![Locatie van het e-mailadres onder Instellingen op de groepspagina](email_email_button.png)
 
 Als je een e-mail naar dit adres stuurt, maakt Loomio een nieuwe thread aan. Het onderwerp van de e-mail wordt de titel van de thread, de tekst van de e-mail wordt de beschrijving van de thread en eventuele bijlagen worden aan de thread toegevoegd.
 

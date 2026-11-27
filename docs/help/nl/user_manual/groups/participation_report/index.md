@@ -1,12 +1,12 @@
 ---
 title: Participatierapport
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: bf9919fa44cb4f73
+  introduction: c18fae28b32e6717
   what-s-in-the-report: 518d209b301c14e8
   actions-per-month: 5fa4a49994103d66
   tag-usage: 67e28fad9852bbe7
@@ -37,9 +37,9 @@ Je kunt kiezen welke groepen je opneemt, een begin- en einddatum instellen en re
 
 Elk groepslid kan het rapport bekijken, maar iedereen ziet alleen resultaten voor groepen waarvan diegene lid is. Verschillende leden kunnen daardoor verschillende totalen zien.
 
-Open het actiemenu van de groep en selecteer **Deelname verslag** om het rapport te openen. Selecteer in een tabel in het rapport een kolomkop om op die kolom te sorteren.
+Open **Instellingen** op de groepspagina en selecteer **Deelname verslag** om het rapport te openen. Selecteer in een tabel in het rapport een kolomkop om op die kolom te sorteren.
 
-![Optie voor het deelnameverslag in het menu van Oatmilk Cooperative](group_participation_report.png)
+![Optie voor het deelnameverslag op de instellingenpagina van Oatmilk Cooperative](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

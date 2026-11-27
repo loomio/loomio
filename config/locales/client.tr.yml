@@ -43,6 +43,19 @@ tr:
     task_updated_not_done: Görev yapılmadı olarak işaretlendi
     no_tasks_assigned: Size atanan herhangi bir görev yok
     task_placeholder: Bir görev girin ve {'@'} atamak için birinden bahsedin
+    status_todo: Yapılacak
+    status_done: Tamamlandı
+    due_any: Herhangi bir bitiş tarihi
+    due_overdue: Süresi geçti
+    due_next_7_days: Önümüzdeki 7 gün
+    due_later: Daha sonra
+    due_none: Bitiş tarihi yok
+    assigned_anyone: Herkes
+    assigned_me: Bana atanan
+    search_members: Üye ara
+    search_tasks: Görev ara
+    no_open_tasks: Açık göreviniz yok.
+    no_matching_tasks: Filtrelerinize uyan görev yok.
   templates:
     template_gallery: Şablon galerisi
     title_template: "%{title} Şablonu"
@@ -646,6 +659,7 @@ tr:
     direct_discussions: Doğrudan görüşmeler
     unread_discussions: Okunmamış tartışmalar
     unread_threads_count: Okunmamış iletiler (%{count})
+    votes_count: 1 oy | {count} oy
   strand_nav:
     newest: En yeni
     oldest: En eski
@@ -1580,6 +1594,8 @@ tr:
       Birlikte tartışıp karar alabilmemiz için %{site_name} üzerinde %{groupName} grubunu kurdum. Bu bağlantıyla katılın:
       %{link}
     trial_shareable_link_note: Grubunuza kişi davet etmek için davet bağlantısını kopyalayıp e-posta veya sohbet yoluyla gönderin. Katıldıktan sonra onlara doğrudan Loomio'dan e-posta ve mobil bildirimler gönderebilirsiniz. E-postayla davet göndermek için <a href="%{upgradeUrl}">planınızı yükseltin</a>.
+    include_intro_message: Tanıtım mesajı ekle
+    trial_shareable_invitation_message: "%{groupName} içinde karar vermemize yardımcı olup olmayacağını görmek için 7 günlük %{site_name} denemesi başlattım. Birlikte deneyebilmemiz için lütfen bu bağlantıya tıklayıp katılın: %{link}"
   memberships_page:
     members: Üyeler
     name_label: İsim
@@ -2177,6 +2193,7 @@ tr:
     unlocked: Kilidi Açıldı
     no_threads_found_that_match_your_query_or_filters: Sorgunuza veya filtrelerinize uyan hiçbir konu bulunamadı.
     no_threads_found_that_match_your_filters: Filtrelerinize uyan hiçbir konu bulunamadı.
+    new_thread: Yeni ileti dizisi
   members_panel:
     bot: Bot
     no_results: Üye bulunamadı
@@ -3269,3 +3286,103 @@ tr:
     bounced: E-postanın geri döndüğü bildirildi
     complained: Spam şikayeti bildirildi
     skipped: E-posta gönderilmedi
+  group_cards:
+    admins_count: 1 yönetici | {count} yönetici
+    members_count: 1 üye | {count} üye
+    delegates_count: 1 delege | {count} delege
+    polls_count: 1 anket | {count} anket
+    proposals_count: 1 teklif | {count} teklif
+    needs_your_vote: 1 tanesi oyunuzu bekliyor | {count} tanesi oyunuzu bekliyor
+    no_open_polls: Açık anket yok
+    browse_files: Dosyaları görüntüle
+    invite_get_started: Başlamak için buraya tıklayın
+    threads: İleti dizileri
+    threads_count: 1 ileti dizisi | {count} ileti dizisi
+    view_threads: İleti dizilerini görüntüle
+    no_threads: İleti dizisi yok
+    this_group_only: Yalnızca bu grup
+    my_subgroups: Alt gruplarım
+    all_subgroups: Tüm alt gruplar
+    filter_tags: Etiketleri filtrele
+    filter_groups: Grupları filtrele
+    filter_subgroups: Alt grupları filtrele
+    filter_qualifier_unread: okunmamış
+    filter_qualifier_direct: doğrudan
+    filter_qualifier_locked: kilitli
+    filter_qualifier_unlocked: kilitsiz
+    no_filtered_threads: "{filters} ileti dizisi yok"
+    no_filtered_threads_with_tag: "{tag} etiketiyle eşleşen {filters} ileti dizisi yok"
+    no_threads_with_tag: "{tag} etiketiyle eşleşen ileti dizisi yok"
+    recent_count: "{count} yeni"
+    need_vote_count: 1 tanesi oy bekliyor | {count} tanesi oy bekliyor
+    open_count: "{count} açık"
+    files_count: 1 dosya | {count} dosya
+  onboarding_card:
+    verified_badge: Doğrulandı
+    view_plans: Planları gör
+    upgrade_now: Şimdi yükselt
+    extend_trial_title: 30 ek gün & ücretsiz eğitim görüşmesi kazanın
+    trial_verified: Grubunuzu gördük ve yardım için buradayız. Artık e-postayla davet gönderebilirsiniz — 30 ek gün, Pro özellikleri ve ekibimizle ücretsiz eğitim görüşmesi kazanmak için devam edin.
+    trial_extended_title: 30 ek gün & ücretsiz eğitim görüşmesi kazanıldı
+    book_training_call: Eğitim görüşmesi ayarlayın
+    extend_trial_initial: Gruba {count} kişi daha katıldığında 30 ek gün ve bir Loomio ekip üyesiyle ücretsiz eğitim görüşmesi kazanın.
+    extend_trial_remaining: Gruba 1 kişi daha katıldığında 30 ek gün ve bir Loomio ekip üyesiyle ücretsiz eğitim görüşmesi kazanın. | Gruba {count} kişi daha katıldığında 30 ek gün ve bir Loomio ekip üyesiyle ücretsiz eğitim görüşmesi kazanın.
+    trial_extended_description: Deneme süreniz 30 gün uzatıldı.
+  dashboard_cards:
+    all_groups: Tüm gruplar
+    unread_count: "{count} okunmamış"
+    direct: Doğrudan
+    direct_count: "{count} doğrudan"
+    people: Kişiler
+    recently_online: Yakın zamanda çevrimiçi
+    recently_online_count: "{count} yakın zamanda çevrimiçi"
+    your_tasks: Görevleriniz
+    tasks_todo_count: "{count} yapılacak"
+    bookmarks_saved_count: "{count} kaydedilmiş"
+    search_people: Kişi ara
+    direct_thread: Doğrudan ileti dizisi
+    view_profile: Profili görüntüle
+    no_people_found: Kimse bulunamadı
+  group_settings_panel:
+    subtitle: Grup seçenekleri
+    group_administration: Grup yönetimi
+    your_membership: Üyeliğiniz
+    integrations_and_data: Entegrasyonlar & veriler
+    leave_or_delete: Ayrıl veya sil
+    edit_group_description: Grup adını, açıklamasını, logosunu, kapak fotoğrafını, gizliliğini ve üye izinlerini güncelleyin.
+    edit_tags_description: İleti dizilerini ve anketleri düzenlemek için kullanılan etiketleri oluşturun, yeniden adlandırın, birleştirin ve renklendirin.
+    manage_subscription_description: Planınızı, fatura bilgilerinizi ve üye sınırlarınızı görüntüleyin.
+    change_volume_description: Bu gruptan ne sıklıkla e-posta ve anlık bildirim alacağınızı seçin.
+    email_group_description: Bu adrese e-posta göndererek bu grupta yeni bir ileti dizisi başlatın.
+    group_stats_description: Zaman içindeki üye etkinliğini, ileti dizilerine ve oylamalara katılımı görün.
+    become_coordinator_description: Bu grubun yöneticisi olma yetkilerini alın.
+    chatbots_description: Grup güncellemelerini paylaşmak için Slack, Mattermost, Discord veya diğer sohbet araçlarını bağlayın.
+    api_docs_description: Loomio'yu kendi araçlarınızla entegre etmek için API erişimini ve webhook'ları yapılandırın.
+    export_data_description: Bu grubun ileti dizilerinin, anketlerinin, yorumlarının ve üyelerinin bir kopyasını indirin.
+    leave_group_description: Bu gruptan ayrılın ve bildirim almayı durdurun.
+    destroy_group_description: Bu grubun ve içeriğinin kalıcı olarak silinmesini planlayın.
+  pagination:
+    page_of: Sayfa {page} / {total}
+    previous_page: Önceki sayfa
+    next_page: Sonraki sayfa
+    sort_by: Sırala
+    per_page: Sayfa başına
+    jump_to_page: Sayfaya git
+    sort:
+      recent_activity: Son etkinlik
+      newest: En yeni
+      oldest: En eski
+      closing_soon: Yakında kapanacak
+      name: Ad
+      last_seen: Son görülme
+    edit_tags_description: İleti dizilerini ve anketleri düzenlemek için etiket oluşturun, adlarını değiştirin, birleştirin ve renklendirin.
+    manage_subscription_description: Planınızı, fatura bilgilerinizi ve üye sınırlarınızı görün.
+    change_volume_description: Bu gruptan ne sıklıkla e-posta ve anlık bildirim alacağınızı seçin.
+    email_group_description: Bu adrese e-posta göndererek grupta yeni bir ileti dizisi başlatın.
+    group_stats_description: Üye etkinliğini, ileti dizilerindeki etkileşimi ve oylamalara katılımı zaman içinde izleyin.
+    become_coordinator_description: Bu grubun yöneticisi olmak için yetkileri alın.
+    chatbots_description: Grup güncellemelerini paylaşmak için Slack, Mattermost, Discord veya diğer sohbet araçlarını bağlayın.
+    api_docs_description: Loomio'yu kendi araçlarınızla entegre etmek için API erişimini ve web kancalarını yapılandırın.
+    export_data_description: Bu grubun ileti dizilerinin, anketlerinin, yorumlarının ve üyelerinin bir kopyasını indirin.
+    leave_group_description: Bu gruptan ayrılın ve bildirim almayı durdurun.
+    destroy_group_description: Bu grubun ve içeriğinin kalıcı olarak silinmesini planlayın.

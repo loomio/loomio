@@ -1,21 +1,21 @@
 ---
 title: Raccogli contributi privati
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: 46fde4afc0cc27eb
-  enable-private-submissions: cddbdd432739851a
+  enable-private-submissions: 2347edde69246198
   set-up-a-private-submission-process: 58a9efcea7a836c6
-  make-a-submission: 1438f3a13b1b6747
+  make-a-submission: 0a7d5f59ca498f42
   review-submissions: 7128e2cecb680b8e
 title_source: e82ab76916d594f4
 title_generated: d6af203f13b75d5b
@@ -46,7 +46,7 @@ Questo processo mantiene i contributi privati rispetto alle altre persone che li
 Devi essere un amministratore del gruppo o del sottogruppo in cui vuoi raccogliere i contributi.
 
 1. Apri il gruppo.
-2. Seleziona **Configurazione** (oppure **Di più**, poi **Modifica le impostazioni del gruppo**).
+2. Apri **Configurazione**, poi seleziona **Modifica le impostazioni del gruppo**.
 3. Apri **Permessi**.
 4. Abilita **Anche i non membri possono avviare discussioni**.
 5. Salva le impostazioni del gruppo.
@@ -73,7 +73,7 @@ Abilitare questo permesso non rende pubbliche le discussioni del gruppo. Una per
 
 ## Invia un contributo
 
-Chi invia un contributo apre il sottogruppo e seleziona **Inizia la discussione**. Loomio mostra i modelli di discussione del sottogruppo. La persona sceglie il modello adatto, risponde alle domande e avvia la discussione.
+Chi invia un contributo apre il sottogruppo e seleziona **Nuova conversazione**. Loomio mostra i modelli di discussione del sottogruppo. La persona sceglie il modello adatto, risponde alle domande e avvia la discussione.
 
 La discussione appartiene al sottogruppo e Loomio aggiunge chi invia il contributo come ospite della relativa conversazione, non come membro del sottogruppo. Questa persona può partecipare alla propria conversazione con il team di valutazione, ma non può vedere le altre discussioni private o gli altri contributi nel sottogruppo.
 

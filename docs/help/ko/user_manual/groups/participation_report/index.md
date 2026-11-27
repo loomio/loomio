@@ -1,6 +1,6 @@
 ---
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -9,7 +9,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: e48478c75f2ea916
+  introduction: 742ad6eb4f8b1d37
   what-s-in-the-report: a553b0f4c95f0968
   actions-per-month: ec30351f50e2672d
   tag-usage: cf72c36931f61b27
@@ -20,11 +20,11 @@ generated:
 title: 참여 보고서
 title_source: ee140bf2af2bcf29
 title_generated: e4082227753fba26
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -37,9 +37,9 @@ translated:
 
 그룹의 모든 멤버가 보고서를 볼 수 있지만, 각 멤버는 자신이 속한 그룹의 결과만 볼 수 있습니다. 따라서 멤버마다 합계가 다르게 표시될 수 있습니다.
 
-보고서를 열려면 그룹의 작업 메뉴를 열고 **참여 보고서**를 선택하세요. 보고서의 모든 표에서 열 제목을 선택하면 해당 열을 기준으로 정렬할 수 있습니다.
+보고서를 열려면 그룹 페이지에서 **설정**을 열고 **참여 보고서**를 선택하세요. 보고서의 모든 표에서 열 제목을 선택하면 해당 열을 기준으로 정렬할 수 있습니다.
 
-![Oatmilk Cooperative 메뉴의 참여 보고서 항목](group_participation_report.png)
+![Oatmilk Cooperative 설정 페이지의 참여 보고서 항목](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

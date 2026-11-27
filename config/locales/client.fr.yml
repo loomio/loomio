@@ -43,6 +43,19 @@ fr:
     task_updated_not_done: Tâche marquée comme pas terminée !
     no_tasks_assigned: Aucune tâche ne vous a été assignée
     task_placeholder: Saisissez une tâche et {'@'}mentionnez quelqu'un à qui l'attribuer
+    status_todo: À faire
+    status_done: Terminées
+    due_any: Toutes les échéances
+    due_overdue: En retard
+    due_next_7_days: 7 prochains jours
+    due_later: Plus tard
+    due_none: Sans échéance
+    assigned_anyone: Tout le monde
+    assigned_me: Attribuées à moi
+    search_members: Rechercher des membres
+    search_tasks: Rechercher des tâches
+    no_open_tasks: Vous n’avez aucune tâche en cours.
+    no_matching_tasks: Aucune tâche ne correspond à vos filtres.
   templates:
     template_gallery: Galerie de modèles
     title_template: "%{title} Modèle"
@@ -656,6 +669,7 @@ fr:
     direct_discussions: Discussions directes
     unread_discussions: Discussions non lues
     unread_threads_count: Sujets non lus (%{count})
+    votes_count: 1 vote | {count} votes
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens
@@ -1615,6 +1629,8 @@ fr:
       J’ai créé %{groupName} sur %{site_name} pour que nous puissions discuter et prendre des décisions ensemble. Rejoignez le groupe avec ce lien :
       %{link}
     trial_shareable_link_note: Copiez le lien d’invitation et envoyez-le par e-mail ou dans une discussion pour inviter des personnes dans votre groupe. Une fois ces personnes membres, vous pourrez leur envoyer des notifications par e-mail et sur mobile directement depuis Loomio. <a href="%{upgradeUrl}">Passez au forfait supérieur</a> pour envoyer des invitations par e-mail.
+    include_intro_message: Inclure un message de présentation
+    trial_shareable_invitation_message: 'J’ai lancé un essai de 7 jours de %{site_name} pour voir si cet outil peut nous aider à prendre des décisions au sein de %{groupName}. Cliquez sur ce lien pour nous rejoindre et l’essayer ensemble : %{link}'
   memberships_page:
     members: Les membres
     name_label: Nom
@@ -2219,6 +2235,7 @@ fr:
     unlocked: Déverrouillé
     no_threads_found_that_match_your_query_or_filters: Aucun sujet ne correspond à votre requête ou à vos filtres.
     no_threads_found_that_match_your_filters: Aucun sujet correspondant à vos filtres n'a été trouvé.
+    new_thread: Nouveau fil
   members_panel:
     bot: Bot
     no_results: 'Aucun membres trouvés '
@@ -3317,3 +3334,103 @@ fr:
     bounced: Échec de livraison signalé
     complained: Signalement comme indésirable reçu
     skipped: Courriel non envoyé
+  group_cards:
+    admins_count: 1 admin | {count} admins
+    members_count: 1 membre | {count} membres
+    delegates_count: 1 délégué | {count} délégués
+    polls_count: 1 sondage | {count} sondages
+    proposals_count: 1 proposition | {count} propositions
+    needs_your_vote: 1 attend votre vote | {count} attendent votre vote
+    no_open_polls: Aucun sondage ouvert
+    browse_files: Voir les fichiers
+    invite_get_started: Cliquez ici pour commencer
+    threads: Fils
+    threads_count: 1 fil | {count} fils
+    view_threads: Voir les fils
+    no_threads: Aucun fil
+    this_group_only: Ce groupe uniquement
+    my_subgroups: Mes sous-groupes
+    all_subgroups: Tous les sous-groupes
+    filter_tags: Filtrer les tags
+    filter_groups: Filtrer les groupes
+    filter_subgroups: Filtrer les sous-groupes
+    filter_qualifier_unread: non lus
+    filter_qualifier_direct: directs
+    filter_qualifier_locked: verrouillés
+    filter_qualifier_unlocked: déverrouillés
+    no_filtered_threads: Aucun fil {filters}
+    no_filtered_threads_with_tag: 'Aucun fil {filters} avec le tag : {tag}'
+    no_threads_with_tag: 'Aucun fil avec le tag : {tag}'
+    recent_count: "{count} récents"
+    need_vote_count: 1 attend votre vote | {count} attendent votre vote
+    open_count: "{count} ouverts"
+    files_count: 1 fichier | {count} fichiers
+  onboarding_card:
+    verified_badge: Vérifié
+    view_plans: Voir les offres
+    upgrade_now: Passer à une offre payante
+    extend_trial_title: Débloquez 30 jours de plus & un appel de formation gratuit
+    trial_verified: Nous avons pris connaissance de votre groupe et sommes là pour vous aider. Vous pouvez maintenant envoyer des invitations par e-mail — continuez pour débloquer 30 jours de plus, les fonctionnalités Pro et un appel de formation gratuit avec notre équipe.
+    trial_extended_title: 30 jours de plus & un appel de formation gratuit débloqués
+    book_training_call: Réserver un appel de formation
+    extend_trial_initial: Débloquez 30 jours de plus et un appel de formation gratuit avec un membre de l’équipe Loomio quand {count} autres personnes rejoignent le groupe.
+    extend_trial_remaining: Débloquez 30 jours de plus et un appel de formation gratuit avec un membre de l’équipe Loomio quand 1 personne de plus rejoint le groupe. | Débloquez 30 jours de plus et un appel de formation gratuit avec un membre de l’équipe Loomio quand {count} personnes de plus rejoignent le groupe.
+    trial_extended_description: Votre essai a été prolongé de 30 jours.
+  dashboard_cards:
+    all_groups: Tous les groupes
+    unread_count: "{count} non lus"
+    direct: Directs
+    direct_count: "{count} directs"
+    people: Personnes
+    recently_online: En ligne récemment
+    recently_online_count: "{count} en ligne récemment"
+    your_tasks: Vos tâches
+    tasks_todo_count: "{count} à faire"
+    bookmarks_saved_count: "{count} enregistrés"
+    search_people: Rechercher des personnes
+    direct_thread: Fil direct
+    view_profile: Voir le profil
+    no_people_found: Aucune personne trouvée
+  group_settings_panel:
+    subtitle: Options du groupe
+    group_administration: Administration du groupe
+    your_membership: Votre adhésion
+    integrations_and_data: Intégrations et données
+    leave_or_delete: Quitter ou supprimer
+    edit_group_description: Modifiez le nom, la description, le logo, la photo de couverture, la confidentialité et les permissions des membres du groupe.
+    edit_tags_description: Créez, renommez, fusionnez et colorez les tags servant à organiser les fils et les sondages.
+    manage_subscription_description: Consultez votre forfait, vos informations de facturation et vos limites de membres.
+    change_volume_description: Choisissez la fréquence des notifications par e-mail et push de ce groupe.
+    email_group_description: Créez un fil dans ce groupe en envoyant un e-mail à cette adresse.
+    group_stats_description: Suivez l’activité des membres, les échanges dans les fils et la participation aux votes au fil du temps.
+    become_coordinator_description: Obtenez les permissions d’administrateur de ce groupe.
+    chatbots_description: Connectez Slack, Mattermost, Discord ou d’autres outils de messagerie pour publier les actualités du groupe.
+    api_docs_description: Configurez l’accès à l’API et les webhooks pour intégrer Loomio à vos outils.
+    export_data_description: Téléchargez une copie des fils, sondages, commentaires et membres de ce groupe.
+    leave_group_description: Quittez ce groupe et cessez de recevoir ses notifications.
+    destroy_group_description: Programmez la suppression définitive de ce groupe et de son contenu.
+  pagination:
+    page_of: Page {page} sur {total}
+    previous_page: Page précédente
+    next_page: Page suivante
+    sort_by: Trier par
+    per_page: Par page
+    jump_to_page: Aller à la page
+    sort:
+      recent_activity: Activité récente
+      newest: Plus récents
+      oldest: Plus anciens
+      closing_soon: Clôture prochaine
+      name: Nom
+      last_seen: Dernière connexion
+    edit_tags_description: Créez, renommez, fusionnez et colorez les tags servant à organiser les fils et les sondages.
+    manage_subscription_description: Consultez votre forfait, vos informations de facturation et vos limites de membres.
+    change_volume_description: Choisissez la fréquence des notifications par e-mail et push de ce groupe.
+    email_group_description: Créez un fil dans ce groupe en envoyant un e-mail à cette adresse.
+    group_stats_description: Suivez l’activité des membres, les échanges dans les fils et la participation aux votes au fil du temps.
+    become_coordinator_description: Obtenez les droits d’administrateur de ce groupe.
+    chatbots_description: Connectez Slack, Mattermost, Discord ou d’autres outils de messagerie pour publier les nouvelles du groupe.
+    api_docs_description: Configurez l’accès à l’API et les webhooks pour intégrer Loomio à vos outils.
+    export_data_description: Téléchargez une copie des fils, sondages, commentaires et membres de ce groupe.
+    leave_group_description: Quittez ce groupe et cessez de recevoir ses notifications.
+    destroy_group_description: Programmez la suppression définitive de ce groupe et de son contenu.

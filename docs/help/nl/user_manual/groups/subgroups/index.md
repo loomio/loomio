@@ -1,34 +1,34 @@
 ---
 title: Subgroepen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: a3b87b9571e51e1a
-  add-a-subgroup: 007aa64be6341162
+  add-a-subgroup: 6390a1ca55b2e7d9
   subgroup-settings: ad0c7b923b9ddc01
   privacy: 30b0f59dc28ef42e
   permissions: 0ea18cffc3f75b8c
-  find-subgroups: bf8a3455bd894d52
+  find-subgroups: 6a8968082a76f12c
   invite-to-a-subgroup: b976d3ab3269df58
   simultaneously-invite-people-to-subgroups-and-parent-group: 34c4ec18743185e5
   administer-a-subgroup: 7c0ebc9b41c2f3cb
   delete-a-subgroup: da23517ae7001fdb
-  how-people-join: c315bd87164f3308
+  how-people-join: df25f34f7e0ad2ae
 title_source: 9f81e728f70cae3e
 title_generated: 6fe3105765e4acd6
 ---
@@ -58,7 +58,7 @@ Open de pagina van jouw hoofdgroep om een subgroep te maken, selecteer **Nieuwe 
 
 ![Formulier voor een nieuwe subgroep voor de Packaging Working Group](subgroups_new.png)
 
-Als de subgroep klaar is, kun je [mensen uitnodigen](/en/user_manual/groups/inviting_people) om lid te worden. Je kunt de [groepsinstellingen](/en/user_manual/groups/settings) van de subgroep wijzigen via het actiemenu op de pagina van de subgroep.
+Als de subgroep klaar is, kun je [mensen uitnodigen](/en/user_manual/groups/inviting_people) om lid te worden. Je kunt de [groepsinstellingen](/en/user_manual/groups/settings) van de subgroep wijzigen via **Instellingen** op de pagina van de subgroep.
 
 ![Actie om de groepsinstellingen van de Packaging Working Group te bewerken](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ Als de hoofdgroep privé is, kunnen subgroepen alleen **Zichtbaar voor de bovenl
 
 ### Hoe mensen lid worden
 
-Kies [hoe mensen lid worden](/en/user_manual/groups/settings/privacy#how-people-join) bij het aanmaken van de subgroep, of onder **Bewerk groepsinstellingen** > **Privacy**.
+Kies [hoe mensen lid worden](/en/user_manual/groups/settings/privacy#how-people-join) bij het aanmaken van de subgroep, of onder **Instellingen** > **Bewerk groepsinstellingen** > **Privacy**.
 
 ![Privacyinstellingen en instellingen voor lid worden van de subgroep](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ Schakel **Leden van de hoofdgroep kunnen privéthreads zien** in onder **Toestem
 
 ## Subgroepen vinden
 
-Selecteer de naam van jouw hoofdgroep in de zijbalk om de subgroepen te bekijken.
+Selecteer de naam van jouw hoofdgroep in de zijbalk om de subgroepen te bekijken. Gebruik op de pagina's **Threads**, **Peilingen**, **Leden**, **Bestanden**, **Taken** en **Bladwijzers** van een hoofdgroep het filter **Subgroepen** om te wisselen tussen **Alleen deze groep**, **Mijn subgroepen** en **Alle subgroepen**, of ga rechtstreeks naar een subgroep.
 
 ![Subgroepen van Oatmilk Cooperative in de zijbalk](subgroups_find_subgroups.png)
 

@@ -1,10 +1,10 @@
 ---
 title: Уведомления
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 25fc6fe9cb35c981
   two-ways-to-begin: 3b42b0d12bbd2ba0
@@ -13,7 +13,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -26,7 +26,7 @@ generated:
   choose-your-catch-up-schedule: e33e70b9b944509c
   mark-a-catch-up-as-read: 66ff4c3c764518ec
   group-and-thread-notification-settings: 5db559e522c3482c
-  group-notification-settings: c173712c13c8ef06
+  group-notification-settings: 6fec8cb16e703c90
   thread-notification-settings: 40111dfafe66533c
   email-delivery: 62b4cd76860c9628
   enable-mobile-notifications-with-web-push: 6ff8ed923a521009
@@ -136,7 +136,7 @@ Loomio отправляет письмо со сводкой утром по ч�
 Чтобы изменить настройку уведомлений для группы:
 
 1. Откройте страницу группы.
-2. Откройте настройки уведомлений для группы.
+2. Откройте **Настройки** и выберите **Настройки уведомлений**.
 
 ![Настройки уведомлений на странице группы](group_notifications.png)
 

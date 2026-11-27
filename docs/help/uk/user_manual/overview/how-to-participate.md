@@ -1,17 +1,17 @@
 ---
 title: Як брати участь
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: e5ba1a5268e225d3
   get-someone-s-attention: 707e7469cd37eebe
   reactions: 1e1800dfe8d78f37
-  vote: 782bc26f9053c84b
+  vote: e627ab0596aa3ba5
   state-a-reason: 23e079326fea7d50
   change-your-vote: 9112943dea2911ef
   results: 9e1c675449d29d89
@@ -73,7 +73,7 @@ title_generated: cbfe62a187742f83
 
 ## Голос
 
-Відкрийте опитування із запрошення в електронному листі, зі сповіщення в застосунку або з вкладки **Опитування** вашої групи. Прочитайте опитування та всі прикріплені файли, а потім виберіть свій варіант.
+Відкрийте опитування із запрошення в електронному листі, зі сповіщення в застосунку, з розділу **Усі групи** або з розділу **Опитування** вашої групи. Прочитайте опитування та всі прикріплені файли, а потім виберіть свій варіант.
 
 У Loomio є кілька типів опитувань. У прикладі нижче показано пропозицію з варіантами **Згоден**, **Утриматися** та **Не погоджуюся**.
 

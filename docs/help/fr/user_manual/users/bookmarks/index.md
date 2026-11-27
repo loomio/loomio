@@ -1,19 +1,19 @@
 ---
 title: Signets
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/users/bookmarks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4526320029ca0268
   save-a-bookmark: 3855beff6126a218
-  view-your-bookmarks: 0512e42564819ba7
+  view-your-bookmarks: 36d441a4ada6425f
   remove-a-bookmark: 5e66cedf4b86c3fa
 generated:
   introduction: bcc67a115060ed9f
   save-a-bookmark: e02eb5e058fb0f09
-  view-your-bookmarks: 45f3cddf345d169f
+  view-your-bookmarks: c905ea2934ab86a2
   remove-a-bookmark: d52fa73369a65ceb
 title_source: 96316f0f6404dbe1
 title_generated: e0a402588c50bd65
@@ -45,7 +45,7 @@ Ouvrez le menu d’actions de l’élément et sélectionnez **Enregistrer le si
 
 ## Consulter vos signets
 
-Ouvrez la barre latérale et sélectionnez **Signets**. Le nombre à côté du lien indique combien de signets vous avez enregistrés.
+Ouvrez **Signets** dans **Tous les groupes** pour voir tous les éléments que vous avez enregistrés dans vos groupes, ou ouvrez **Signets** sur la page d’un groupe pour voir les signets de ce groupe (avec un filtre **Sous-groupes** dans les groupes parents).
 
 La page Signets affiche d’abord les éléments enregistrés le plus récemment. Chaque ligne indique le type d’élément et son auteur. Sélectionnez une ligne pour revenir à l’élément enregistré dans vos signets.
 

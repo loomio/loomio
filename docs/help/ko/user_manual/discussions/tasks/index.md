@@ -2,23 +2,23 @@
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: 7e6a3e3340555bd5
   add-a-task: 550d398bd8186100
-  name-and-assign-the-task-to-a-person: 579d1dc65e209d5a
+  name-and-assign-the-task-to-a-person: 686d299dfb060830
   set-a-reminder: adf49013027def05
   mark-it-as-done: d58db2bb6a358c5e
 title: 할 일
 title_source: b3a60e61a5233d05
 title_generated: e83a4ca66eed3a76
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -43,7 +43,7 @@ translated:
 
 ![](tasklist2.png)
 
-배정받은 할 일은 **할 일** 페이지에 표시됩니다. 사이드바에서 **할 일**을 열면 스레드 또는 투표별로 묶인 할 일을 확인할 수 있습니다.
+**모든 그룹**에서 **할 일**을 열면 소속된 모든 그룹에서 배정받은 할 일을 확인할 수 있습니다. 그룹 페이지에서 **할 일**을 열면 해당 그룹의 할 일을 확인할 수 있습니다. 할 일은 스레드 또는 투표별로 묶이며, 상태(**미완료**, **완료**, **전체**), 마감일(**기한 지남**, **앞으로 7일**, **그 이후**, **마감일 없음**), 담당자(그룹 페이지에서), 하위 그룹, 분류 태그 또는 검색으로 필터링할 수 있습니다.
 
 ![](task_list.png)
 

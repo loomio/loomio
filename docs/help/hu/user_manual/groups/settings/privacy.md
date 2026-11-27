@@ -1,12 +1,12 @@
 ---
 title: Adatvédelem
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -15,7 +15,7 @@ sections:
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 9b0ea2bd48ff0d1c
+  introduction: 007b5b05bc6433f7
   open: daff33e7d00f4fa5
   follow-an-open-group: a753fd8a37fa8252
   closed: f152334a5ced467a
@@ -31,7 +31,7 @@ title_generated: ea2f113c76e353a2
 
 # A csoport adatvédelme
 
-Az adatvédelmi beállítások határozzák meg, ki találhatja meg a csoportot, és ki olvashatja a tartalmát. A csoport műveleti menüjében nyisd meg **A csoportbeállítások szerkesztése** menüpontot, majd válaszd ki az **Adatvédelem** lehetőséget.
+Az adatvédelmi beállítások határozzák meg, ki találhatja meg a csoportot, és ki olvashatja a tartalmát. A csoport oldalán nyisd meg a **Beállítások** menüt, válaszd ki **A csoportbeállítások szerkesztése** menüpontot, majd az **Adatvédelem** lehetőséget.
 
 ![A csoport adatvédelmi beállításai](group_privacy_settings.png#width-90)
 

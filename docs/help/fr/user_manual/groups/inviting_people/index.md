@@ -1,16 +1,16 @@
 ---
 title: Inviter des personnes
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 3dad6fa0c2128854
+  introduction: b57597b17b7124a3
   send-invitations-via-email: a0fec9edf4eb8313
   invite-many-at-once: dcbb6e7dde8e5123
   invite-people-to-subgroups: f5119ba832f2d196
-  share-a-link-to-your-group: c697b699a820c67a
+  share-a-link-to-your-group: 0f606ec798667606
   request-to-join-group: 9d04a0b8d5f92c83
   review-membership-requests: 716e282dec3fe6e7
   managing-invitations: 96bd668176e6e9d7
@@ -37,7 +37,7 @@ title_generated: 6dcdecac01939914
 
 # Inviter des personnes dans un groupe Loomio
 
-Vous pouvez inviter des personnes dans votre groupe Loomio par e-mail, partager un lien d’invitation ou permettre aux personnes de demander à rejoindre le groupe. Ouvrez l’onglet **Membres** sur la page de votre groupe pour commencer.
+Vous pouvez inviter des personnes dans votre groupe Loomio par e-mail, partager un lien d’invitation ou permettre aux personnes de demander à rejoindre le groupe. Sélectionnez **Inviter** sur la carte **Membres**, ou ouvrez **Membres** sur la page de votre groupe pour commencer.
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ Lorsque vous invitez des personnes dans un groupe parent, vous pouvez les ajoute
 
 ## Partager un lien vers votre groupe
 
-Sélectionnez **Partager** pour générer un lien d’invitation réutilisable à diffuser dans une newsletter, un canal de messagerie, un e-mail ou sur un site web.
+Sélectionnez **Partager** pour générer un lien d’invitation réutilisable à diffuser dans une newsletter, un canal de messagerie, un e-mail ou sur un site web. Activez **Inclure un message de présentation** pour copier un court message avec le lien.
 
 ![](group_invite_sharable_link.png)
 
-Pour empêcher de nouvelles personnes de rejoindre le groupe avec un lien existant, sélectionnez **Réinitialiser ce lien**. Cette action invalide l’ancien lien et en crée un nouveau.
+Pour empêcher de nouvelles personnes de rejoindre le groupe avec un lien existant, sélectionnez **Réinitialiser le lien**. Cette action invalide l’ancien lien et en crée un nouveau.
 
 <!-- translation-section: request-to-join-group -->
 

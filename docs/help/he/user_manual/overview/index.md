@@ -1,24 +1,24 @@
 ---
 title: מתחילים
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: 89425758038d8d03
   how-loomio-works: 0d3c9d7fd639c845
-  groups: 2f6583d39f8730f9
+  groups: a8b4fcd9e8e0d943
   discussions: 930d99675d3eef2d
-  polls-and-proposals: c500f07607dc05a6
+  polls-and-proposals: 6b6838088281f359
   try-it-out: be7803f028264719
   how-people-use-loomio: 8ded4f8d25d011ab
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ Loomio הוא כלי לדיון ולקבלת החלטות עבור ארגוני�
 
 ### קבוצות
 
-קבוצה היא מקום שבו ארגון, צוות או קהילה יכולים לעבוד יחד. דף הבית שלה מסביר את מטרת הקבוצה ומקשר לדיונים, לסקרים, לחברים ולקבצים שלה.
+קבוצה היא מקום שבו ארגון, צוות או קהילה יכולים לעבוד יחד. דף הבית שלה מסביר את מטרת הקבוצה ומקשר לשרשורים, לסקרים, לחברים, לקבצים, למשימות, לסימניות ולהגדרות שלה.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ Loomio הוא כלי לדיון ולקבלת החלטות עבור ארגוני�
 
 ![](orientation_proposal.png)
 
-סקרים יכולים להיות חלק מדיון או להתנהל באופן עצמאי דרך הלשונית **סקרים** בדף הקבוצה.
+סקרים יכולים להיות חלק מדיון או להתנהל באופן עצמאי דרך **סקרים** בדף הקבוצה.
 
 כדי להכיר את מיקומם של החלקים האלה בממשק, ניתן לעיין ב[סיור הקצר](/en/user_manual/overview/orientation). כדי להתחיל להשתתף, ניתן לעיין ב[איך להשתתף](/en/user_manual/overview/how-to-participate).
 

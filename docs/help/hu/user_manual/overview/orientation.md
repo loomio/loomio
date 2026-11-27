@@ -1,28 +1,30 @@
 ---
 title: Gyors áttekintés
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: ecd0fe0598db0af5
   group-page: b351d5f2c21b5300
-  tabs: fa2b8c5dbc1e9e15
-  sidebar: 6fcc6fb14f4584c4
+  tabs: 86954790e9ef59f7
+  sidebar: c6de16f7a7779148
   user-settings: fc19e4048d467aed
   notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 8c209bc2f042ae96
+  mobile-navigation: 2be6c40d260c3dd1
+  all-groups: d71bbbd8a059f5db
 generated:
   introduction: dbc5d4ac256e48ba
   group-page: 88b5e1568f1c1744
-  tabs: 6b419a78ffcc289d
-  sidebar: 4360c2180d0d8608
+  tabs: fccc6d9caf1e3f52
+  sidebar: f465b684620f1d2d
   user-settings: 323649da598cb49e
   notifications: 4999d9a28ffdc31a
   what-to-do-next: c106e04cbffabed6
-  mobile-navigation: 68be1608fdd4e1f3
+  mobile-navigation: 12591d28f3abcee9
+  all-groups: 0d8a2fe46e91fec5
 title_source: c41a33370cd580dd
 title_generated: 4c340dbdce7d1abd
 ---
@@ -43,16 +45,27 @@ A csoportod kezdőoldala bemutatja a csoportot, és hivatkozásokat tartalmaz a 
 
 <!-- translation-section: tabs -->
 
-### Fülek
+### Szakaszok
 
-A csoport leírása alatti füleken a következőket találod:
+A csoport leírása alatti navigációs kártyákon a következőket találod:
 
-- **Beszélgetések**: A csoport beszélgetési szálai és legutóbbi tevékenységei.
-- **Szavazások**: A csoport nyitott és lezárt szavazásai.
-- **Tagok**: A csoporthoz tartozó emberek.
+- **Szálak**: A csoport beszélgetési szálai és legutóbbi vagy olvasatlan tevékenységei.
+- **Szavazások**: A csoport nyitott és lezárt szavazásai, köztük a szavazatodra váró szavazások.
+- **Tagok**: A csoporthoz tartozó emberek, valamint egy gomb új tagok meghívásához.
 - **Fájlok**: A csoport beszélgetéseihez, hozzászólásaihoz, javaslataihoz és szavazásaihoz csatolt fájlok, így akkor is megtalálhatsz egy dokumentumot, ha nem emlékszel, hol osztották meg.
+- **Feladatok**: A csoport nyitott és befejezett feladatai, állapot, határidő, felelős és címkék szerinti szűrőkkel.
+- **Könyvjelzők**: A csoportban könyvjelzővel megjelölt beszélgetéseid, hozzászólásaid, szavazásaid, szavazataid és következtetéseid.
+- **Beállítások**: A csoport kezelése, tagsági lehetőségek, értesítési beállítások, integrációk és adatexportálás.
 
 A keresésről, a szűrőkről, a címkékről, a könyvjelzőkről és az olvasatlan beszélgetésekről a [Tartalmak keresése](/en/user_manual/overview/finding-content) oldalon találsz segítséget.
+
+<!-- translation-section: all-groups -->
+
+## Összes csoport
+
+Válaszd ki az **Összes csoport** elemet az oldalsávban, hogy az összes csoportodban végzett munkádat egy helyen lásd. Itt ugyanazokat a navigációs kártyákat találod, mint egy csoport oldalán: **Szálak** (az olvasatlan és közvetlen szálakkal együtt), **Szavazások**, **Emberek** (azoknak az embereknek a kereshető névjegyzéke, akikkel közös csoportokhoz tartoztok, és azt is mutatja, ki volt nemrég online), **Fájlok**, **Feladatok** és **Könyvjelzők**.
+
+![](all_groups.png)
 
 <!-- translation-section: sidebar -->
 
@@ -62,7 +75,7 @@ Nyisd meg az oldalsávot a menügombbal (**☰**), amely asztali gépen a bal fe
 
 ![](sidebar.png)
 
-Az oldalsávból megnyithatod az áttekintésedet, a szavazatodra váró szavazásokat, az olvasatlan és közvetlen beszélgetéseket, a feladatokat és a csoportokat. Innen a felhasználói kézikönyvet és a támogatást is elérheted.
+Az oldalsávban válthatsz az **Összes csoport** nézet, a csoportjaid és az alcsoportjaid között, valamint új csoportot vagy alcsoportot indíthatsz. Ha az oldalsáv zárva van, válaszd ki a csoport nevét (vagy az **Összes csoport** elemet) az oldal tetején, hogy csoportot válts vagy új csoportot indíts. Az oldalsávból a felhasználói kézikönyvet és a támogatást is elérheted.
 
 <!-- translation-section: user-settings -->
 
@@ -88,7 +101,7 @@ Az alkalmazáson belüli értesítésekről, az e-mail-beállításokról, valam
 
 ## Mobilos navigáció
 
-Mobilon az alsó navigációs sávból megnyithatod az oldalsávot, az áttekintést és az értesítéseket. Egy beszélgetésen belül a szál menüjéből elérheted a szál tartalmát és a hozzá kapcsolódó műveleteket.
+Mobilon az alsó navigációs sávból megnyithatod az oldalsávot, az **Összes csoport** nézetet és az értesítéseket. Egy beszélgetésen belül a szál menüjéből elérheted a szál tartalmát és a hozzá kapcsolódó műveleteket.
 
 <!-- translation-section: what-to-do-next -->
 

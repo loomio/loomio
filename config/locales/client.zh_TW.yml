@@ -44,6 +44,19 @@ zh_TW:
     task_updated_not_done: 工作被標記為未完成
     no_tasks_assigned: 沒有分配給您的工作
     task_placeholder: 輸入任務並{'@'}提及某人來分配它
+    status_todo: 待辦
+    status_done: 已完成
+    due_any: 任何到期日
+    due_overdue: 已逾期
+    due_next_7_days: 未來 7 天
+    due_later: 更晚
+    due_none: 無到期日
+    assigned_anyone: 任何人
+    assigned_me: 指派給我
+    search_members: 搜尋成員
+    search_tasks: 搜尋工作
+    no_open_tasks: 您沒有待辦工作。
+    no_matching_tasks: 沒有符合篩選條件的工作。
   templates:
     template_gallery: 範本庫
     title_template: "%{title} 模板"
@@ -649,6 +662,7 @@ zh_TW:
     direct_discussions: 直接討論
     unread_discussions: 未讀討論
     unread_threads_count: 未讀對話串 (%{count})
+    votes_count: 1 票 | {count} 票
   strand_nav:
     newest: 最新
     oldest: 最舊
@@ -1597,6 +1611,8 @@ zh_TW:
       我已在 %{site_name} 建立 %{groupName}，讓我們一起討論並做出決定。請用此連結加入：
       %{link}
     trial_shareable_link_note: 複製邀請連結，透過電子郵件或聊天傳送，邀請夥伴加入群組。加入後，即可直接從 Loomio 傳送電子郵件和手機通知給他們。<a href="%{upgradeUrl}">升級方案</a>即可寄送電子郵件邀請。
+    include_intro_message: 附上介紹訊息
+    trial_shareable_invitation_message: 我已開始試用 %{site_name} 7 天，看看是否能幫助 %{groupName} 做決定。請點此連結加入，一起試用：%{link}
   memberships_page:
     members: 成員
     name_label: 名字
@@ -2203,6 +2219,7 @@ zh_TW:
     unlocked: 已解鎖
     no_threads_found_that_match_your_query_or_filters: 未找到符合您的查詢或篩選條件的對話串
     no_threads_found_that_match_your_filters: 未找到符合您篩選條件的對話串
+    new_thread: 新增對話串
   members_panel:
     bot: 機器人
     no_results: 找不到成員
@@ -3300,3 +3317,103 @@ zh_TW:
     bounced: 已回報退信
     complained: 已回報垃圾郵件投訴
     skipped: 未寄送電子郵件
+  group_cards:
+    admins_count: 1 位管理員 | {count} 位管理員
+    members_count: 1 位成員 | {count} 位成員
+    delegates_count: 1 位代表 | {count} 位代表
+    polls_count: 1 項投票 | {count} 項投票
+    proposals_count: 1 項提案 | {count} 項提案
+    needs_your_vote: 1 項待您投票 | {count} 項待您投票
+    no_open_polls: 沒有進行中的投票
+    browse_files: 查看檔案
+    invite_get_started: 點此開始
+    threads: 對話串
+    threads_count: 1 個對話串 | {count} 個對話串
+    view_threads: 查看對話串
+    no_threads: 沒有對話串
+    this_group_only: 僅此群組
+    my_subgroups: 我的子群組
+    all_subgroups: 所有子群組
+    filter_tags: 篩選標籤
+    filter_groups: 篩選群組
+    filter_subgroups: 篩選子群組
+    filter_qualifier_unread: 未讀
+    filter_qualifier_direct: 私人
+    filter_qualifier_locked: 已鎖定
+    filter_qualifier_unlocked: 未鎖定
+    no_filtered_threads: 沒有符合 {filters} 條件的對話串
+    no_filtered_threads_with_tag: 沒有符合 {filters} 條件且標籤為 {tag} 的對話串
+    no_threads_with_tag: 沒有標籤為 {tag} 的對話串
+    recent_count: "{count} 個近期對話串"
+    need_vote_count: 1 項待投票 | {count} 項待投票
+    open_count: "{count} 項進行中"
+    files_count: 1 個檔案 | {count} 個檔案
+  onboarding_card:
+    verified_badge: 已驗證
+    view_plans: 查看方案
+    upgrade_now: 立即升級
+    extend_trial_title: 解鎖額外 30 天試用與免費教學通話
+    trial_verified: 我們已查看您的群組，隨時可以提供協助。現在可以傳送電子郵件邀請了 — 繼續參與，即可解鎖額外 30 天試用、Pro 功能，以及與我們團隊的免費教學通話。
+    trial_extended_title: 已解鎖額外 30 天試用與免費教學通話
+    book_training_call: 預約教學通話
+    extend_trial_initial: 再有 {count} 人加入群組，即可解鎖額外 30 天試用，以及與 Loomio 團隊成員的免費教學通話。
+    extend_trial_remaining: 再有 1 人加入群組，即可解鎖額外 30 天試用，以及與 Loomio 團隊成員的免費教學通話。 | 再有 {count} 人加入群組，即可解鎖額外 30 天試用，以及與 Loomio 團隊成員的免費教學通話。
+    trial_extended_description: 試用期已延長 30 天。
+  dashboard_cards:
+    all_groups: 所有群組
+    unread_count: "{count} 個未讀"
+    direct: 私人對話串
+    direct_count: "{count} 個私人對話串"
+    people: 人員
+    recently_online: 最近上線
+    recently_online_count: "{count} 人最近上線"
+    your_tasks: 您的工作
+    tasks_todo_count: "{count} 項待辦"
+    bookmarks_saved_count: "{count} 個已儲存"
+    search_people: 搜尋人員
+    direct_thread: 私人對話串
+    view_profile: 查看個人資料
+    no_people_found: 找不到人員
+  group_settings_panel:
+    subtitle: 群組選項
+    group_administration: 群組管理
+    your_membership: 您的成員資格
+    integrations_and_data: 整合與資料
+    leave_or_delete: 退出或刪除
+    edit_group_description: 更新群組名稱、說明、標誌、封面照片、隱私設定及成員權限。
+    edit_tags_description: 建立、重新命名、合併標籤及設定標籤顏色，用來整理對話串和投票。
+    manage_subscription_description: 查看方案、帳單明細及成員人數上限。
+    change_volume_description: 選擇接收此群組電子郵件和推播通知的頻率。
+    email_group_description: 寄電子郵件到此地址，即可在此群組建立新對話串。
+    group_stats_description: 查看成員活動、對話串互動及投票參與情況隨時間的變化。
+    become_coordinator_description: 取得此群組的管理員權限。
+    chatbots_description: 連接 Slack、Mattermost、Discord 或其他聊天工具，發布群組最新動態。
+    api_docs_description: 設定 API 存取權限和 webhook，將 Loomio 與自己的工具整合。
+    export_data_description: 下載此群組的對話串、投票、評論及成員資料副本。
+    leave_group_description: 退出此群組並停止接收通知。
+    destroy_group_description: 排程永久刪除此群組及其內容。
+  pagination:
+    page_of: 第 {page} 頁，共 {total} 頁
+    previous_page: 上一頁
+    next_page: 下一頁
+    sort_by: 排序方式
+    per_page: 每頁筆數
+    jump_to_page: 跳至頁面
+    sort:
+      recent_activity: 最近動態
+      newest: 最新
+      oldest: 最舊
+      closing_soon: 即將截止
+      name: 名稱
+      last_seen: 上次上線
+    edit_tags_description: 建立、重新命名、合併用來整理對話串和投票的標籤，並設定標籤顏色。
+    manage_subscription_description: 查看方案、帳單資料和成員人數上限。
+    change_volume_description: 選擇接收此群組電子郵件和推播通知的頻率。
+    email_group_description: 寄送電子郵件至此地址，即可在此群組建立新對話串。
+    group_stats_description: 查看成員活動、對話串互動和投票參與情況隨時間的變化。
+    become_coordinator_description: 取得此群組的群組管理員權限。
+    chatbots_description: 連接 Slack、Mattermost、Discord 或其他聊天工具，發布群組動態。
+    api_docs_description: 設定 API 存取權和 webhook，將 Loomio 與您自己的工具整合。
+    export_data_description: 下載此群組的對話串、投票、評論和成員資料副本。
+    leave_group_description: 退出此群組並停止接收通知。
+    destroy_group_description: 排定永久刪除此群組及其內容。

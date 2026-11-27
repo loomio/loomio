@@ -1,18 +1,18 @@
 ---
 title: Стварэнне групы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 792e23f7fcb36aec
+  introduction: 87ff87d962c1b084
   group-details: 0fcf6c809c12050b
   group-name: 2ba5592281dfcbcb
   group-handle: 64928a4bbab65b9b
   group-description: 48af06ef795dd9a9
 generated:
-  introduction: 357b7dcfe5032388
+  introduction: 18254185d1d06f9c
   group-details: 93f4d774f293f85d
   group-name: c9fc41111956c301
   group-handle: 19355e2c29eb951a
@@ -25,7 +25,7 @@ title_generated: c17338ac5d86ef88
 
 # Стварэнне новай групы
 
-Калі вы толькі пачынаеце карыстацца Loomio, вы можаце стварыць групу з бясплатным пробным перыядам на [сайце Loomio](https://www.loomio.com/). Калі вы ўжо карыстаецеся Loomio і хочаце стварыць яшчэ адну групу, выберыце **Новая група** на бакавой панэлі.
+Калі вы толькі пачынаеце карыстацца Loomio, вы можаце стварыць групу з бясплатным пробным перыядам на [сайце Loomio](https://www.loomio.com/). Падчас бясплатнага пробнага перыяду ваша група атрымлівае 30 дадатковых дзён з магчымасцю выкарыстоўваць падгрупы і запрашаць гасцей, калі тры чалавекі прагаласуюць па прапанове або ў апытанні. Калі вы ўжо карыстаецеся Loomio і хочаце стварыць яшчэ адну групу, выберыце **Новая група** на бакавой панэлі або ў меню пераключэння груп уверсе старонкі, калі бакавая панэль закрытая.
 
 Большасці арганізацый патрэбна толькі адна бацькоўская група, унутры якой можна стварыць столькі [падгруп](/en/user_manual/groups/subgroups), колькі трэба.
 

@@ -1,15 +1,15 @@
 ---
 title: כתובת דוא״ל
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: e5b7381f9f93638c
+  introduction: a62b879ab0e9d891
   preventing-unauthorized-emails: f7e6285a8e44707d
 title_source: f2488fd4ef4adbc6
 title_generated: 4f01adb47cbdf230
@@ -21,9 +21,9 @@ title_generated: 4f01adb47cbdf230
 
 לכל קבוצה ב-Loomio יש כתובת דוא״ל משלה. ניתן לשלוח או להעביר הודעת דוא״ל לכתובת זו כדי לפתוח שרשור חדש בקבוצה.
 
-ניתן למצוא את כתובת הדוא״ל של הקבוצה בדף הקבוצה:
+ניתן למצוא את כתובת הדוא״ל של הקבוצה תחת **הגדרות** בדף הקבוצה:
 
-![מיקום כתובת הדוא״ל בדף הקבוצה](email_email_button.png)
+![מיקום כתובת הדוא״ל תחת הגדרות בדף הקבוצה](email_email_button.png)
 
 בעת שליחת הודעת דוא״ל לכתובת זו, Loomio יוצרת שרשור חדש. נושא ההודעה הופך לכותרת השרשור, גוף ההודעה הופך לתיאור השרשור, וכל הקבצים המצורפים מתווספים לשרשור.
 

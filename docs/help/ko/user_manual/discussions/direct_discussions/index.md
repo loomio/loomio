@@ -1,18 +1,18 @@
 ---
 sections:
-  introduction: c617bad25b64654f
+  introduction: 1a0632592c683296
   contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: 12725b10489b2a9b
+  introduction: fa0aa0c2f7cef4d8
   contacting-someone-via-a-direct-discussion: 3be4b0b57906fb69
 title: 다이렉트 토론
 title_source: ccfab058f1f7c146
 title_generated: c75526b5bcf24356
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -27,11 +27,11 @@ translated:
 
 ![그룹이 선택되지 않고 초대 입력란에 Samira Patel이 추가된 다이렉트 토론 양식](direct-discussion-example.png)
 
-사이드바에서 **다이렉트 스레드**를 선택하면 다이렉트 토론과 투표를 볼 수 있습니다. 여기에서 **새로 만들기** 메뉴를 열고 **새 토론**을 선택하여 다이렉트 토론을 시작하거나, **새 투표**를 선택하여 그룹에 속하지 않는 투표를 시작하세요.
+**모든 그룹**을 열고 **스레드**에서 **다이렉트**를 선택하거나 **스레드** 카드에서 다이렉트 항목의 개수를 선택하면 다이렉트 토론을 볼 수 있습니다. 여기에서 **새 스레드**를 선택하여 다이렉트 토론을 시작하세요. **모든 그룹**에서 **사람**을 열고 이름 옆의 **다이렉트 스레드**를 선택할 수도 있습니다.
 
 다이렉트 투표는 초대한 사람에게만 표시됩니다. 투표를 만든 후 [투표자 관리](/en/user_manual/polls/manage_voters)에서 사람이나 이메일 주소를 추가하여 초대하세요.
 
-![사이드바의 다이렉트 스레드 항목과 다이렉트 토론 목록](direct-discussion-sidebar.png)
+![다이렉트 토론을 표시하는 모든 그룹의 다이렉트 필터](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 

@@ -1,20 +1,20 @@
 ---
 title: タスク
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: a375b5368937de28
   add-a-task: 15bae3c3ad4117fe
-  name-and-assign-the-task-to-a-person: a701d5ca4652243a
+  name-and-assign-the-task-to-a-person: 9e1d474dd173a4b9
   set-a-reminder: 01e433ad17903711
   mark-it-as-done: cbed409f6bd077fa
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ title_generated: bfde2580bd828333
 
 ![](tasklist2.png)
 
-自分に割り当てられたタスクは、**タスク**ページに表示されます。サイドバーから**タスク**を開くと、スレッドやアンケートごとにまとめられたタスクを確認できます。
+**すべてのグループ**で**タスク**を開くと、所属するグループ全体で自分に割り当てられたタスクを確認できます。グループページで**タスク**を開くと、そのグループのタスクを確認できます。タスクはスレッドやアンケートごとにまとめられており、ステータス（**未完了**、**完了**、**全て**）、期限（**期日超過**、**今後7日間**、**それ以降**、**期日なし**）、担当者（グループページの場合）、サブグループ、カテゴリタグ、または検索で絞り込めます。
 
 ![](task_list.png)
 

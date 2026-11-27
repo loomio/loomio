@@ -1,10 +1,10 @@
 ---
 title: ユーザーAPI
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 2d91e17b37de30b4
   response-size-and-related-records: 3bdd69fb0fcdd958
@@ -12,7 +12,7 @@ sections:
   groups: 0473f1f7fb78f074
   list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: 3533fbb996deebf6
+  webhooks: 44f627e517bbd9e6
   list-webhooks: 3f5d857fe7f844bd
   create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
@@ -88,7 +88,7 @@ generated:
   groups: 95e133438e155e03
   list-groups: 1aad4a6ced9907f1
   get-a-group: 56a4ce2d25a152a9
-  webhooks: a97fdb82fc1bf29e
+  webhooks: 8403be9eed2a76e1
   list-webhooks: '8716849316074560'
   create-a-webhook: cdf787748041f9af
   update-a-webhook: a2eac18b4b67c21c
@@ -1111,7 +1111,7 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 Webhookはグループごとに設定し、設定にはグループ管理者の権限が必要です。Loomioの画面から次の手順で管理できます。
 
 1. グループを開きます。
-2. グループメニューを開き、**チャット連携**を選択します。
+2. **設定**を開き、**チャット連携**を選択します。
 3. エンドポイントが受け付けるペイロード形式に合う連携を追加します。汎用のエンドポイントには、Mattermost/Markdown形式を使用してください。
 4. 名前と送信先URLを入力します。
 5. Loomioが自動送信するイベントを選択します。

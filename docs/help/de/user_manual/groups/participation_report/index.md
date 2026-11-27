@@ -1,12 +1,12 @@
 ---
 title: Teilnahmebericht
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 800b5ce58329bb3a
+  introduction: f7854c0341a559c6
   what-s-in-the-report: 8eb103b6001bd79c
   actions-per-month: d1cd4500f98f0617
   tag-usage: 077cd1d4eb80fcac
@@ -37,9 +37,9 @@ Du kannst auswählen, welche Gruppen einbezogen werden, ein Start- und Enddatum 
 
 Jedes Gruppenmitglied kann den Bericht ansehen, sieht aber nur Ergebnisse für Gruppen, denen es angehört. Verschiedene Mitglieder sehen deshalb möglicherweise unterschiedliche Gesamtzahlen.
 
-Öffne das Aktionsmenü der Gruppe und wähle **Teilnahmebericht**, um den Bericht zu öffnen. Wähle in einer beliebigen Tabelle des Berichts eine Spaltenüberschrift, um nach dieser Spalte zu sortieren.
+Öffne auf der Gruppenseite **Einstellungen** und wähle **Teilnahmebericht**, um den Bericht zu öffnen. Wähle in einer beliebigen Tabelle des Berichts eine Spaltenüberschrift, um nach dieser Spalte zu sortieren.
 
-![Teilnahmebericht im Aktionsmenü der Oatmilk Cooperative](group_participation_report.png)
+![Teilnahmebericht auf der Einstellungsseite der Oatmilk Cooperative](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

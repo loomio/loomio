@@ -55,11 +55,11 @@ You can add removed members back later. Rejoining restores their access and exis
 
 ## Leaving a group
 
-To leave a group, open the group's actions menu and select **Leave group**.
+To leave a group, open **Settings** on the group page and select **Leave group**.
 
 Leaving has the same effect on group and subgroup access as being removed by a group admin.
 
-![Leave group action in the Oatmilk Cooperative settings menu](member_leave_group.png)
+![Leave group action on the Oatmilk Cooperative settings page](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 

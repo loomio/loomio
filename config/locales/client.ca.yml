@@ -43,6 +43,19 @@ ca:
     task_updated_not_done: Tasca marcada com a no feta
     no_tasks_assigned: No hi ha cap tasca assignada
     task_placeholder: Introdueix una tasca i {'@'}menciona algú per assignar-li-la
+    status_todo: Per fer
+    status_done: Fetes
+    due_any: Qualsevol data de venciment
+    due_overdue: Vençudes
+    due_next_7_days: Pròxims 7 dies
+    due_later: Més endavant
+    due_none: Sense data de venciment
+    assigned_anyone: Qualsevol
+    assigned_me: Assignades a mi
+    search_members: Cerca membres
+    search_tasks: Cerca tasques
+    no_open_tasks: No tens cap tasca pendent.
+    no_matching_tasks: Cap tasca coincideix amb els teus filtres.
   templates:
     template_gallery: Galeria de plantilles
     title_template: Plantilla %{title}
@@ -648,6 +661,7 @@ ca:
     direct_discussions: Discussions directes
     unread_discussions: Discussions no llegides
     unread_threads_count: Fils no llegits (%{count})
+    votes_count: 1 vot | {count} vots
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -1594,6 +1608,8 @@ ca:
       He creat %{groupName} a %{site_name} perquè puguem debatre i prendre decisions junts. Uneix-t'hi amb aquest enllaç:
       %{link}
     trial_shareable_link_note: Copia l'enllaç d'invitació i envia'l per correu o xat per convidar gent al teu grup. Quan s'hi uneixin, els podràs enviar notificacions per correu i al mòbil directament des de Loomio. <a href="%{upgradeUrl}">Millora el teu pla</a> per enviar invitacions per correu.
+    include_intro_message: Inclou un missatge de presentació
+    trial_shareable_invitation_message: 'He iniciat una prova de 7 dies de %{site_name} per veure si ens pot ajudar a prendre decisions a %{groupName}. Fes clic en aquest enllaç per unir-t''hi i provar-ho: %{link}'
   memberships_page:
     members: Membres
     name_label: Nom
@@ -2200,6 +2216,7 @@ ca:
     unlocked: Desbloquejat
     no_threads_found_that_match_your_query_or_filters: No s'han trobat fils que coincideixin amb la consulta o els filtres.
     no_threads_found_that_match_your_filters: No s'han trobat fils que coincideixin amb els filtres
+    new_thread: Fil nou
   members_panel:
     bot: Bot
     everyone: Tothom
@@ -3299,3 +3316,103 @@ ca:
     bounced: Retorn notificat
     complained: Queixa per correu brossa notificada
     skipped: Correu no enviat
+  group_cards:
+    admins_count: 1 admin | {count} admins
+    members_count: 1 membre | {count} membres
+    delegates_count: 1 delegat | {count} delegats
+    polls_count: 1 enquesta | {count} enquestes
+    proposals_count: 1 proposta | {count} propostes
+    needs_your_vote: 1 necessita el teu vot | {count} necessiten el teu vot
+    no_open_polls: Cap enquesta oberta
+    browse_files: Mostra els fitxers
+    invite_get_started: Fes clic aquí per començar
+    threads: Fils
+    threads_count: 1 fil | {count} fils
+    view_threads: Mostra els fils
+    no_threads: Cap fil
+    this_group_only: Només aquest grup
+    my_subgroups: Els meus subgrups
+    all_subgroups: Tots els subgrups
+    filter_tags: Filtra etiquetes
+    filter_groups: Filtra grups
+    filter_subgroups: Filtra subgrups
+    filter_qualifier_unread: no llegits
+    filter_qualifier_direct: directes
+    filter_qualifier_locked: bloquejats
+    filter_qualifier_unlocked: desbloquejats
+    no_filtered_threads: No hi ha fils {filters}
+    no_filtered_threads_with_tag: 'No hi ha fils {filters} amb l''etiqueta: {tag}'
+    no_threads_with_tag: 'No hi ha fils amb l''etiqueta: {tag}'
+    recent_count: "{count} recents"
+    need_vote_count: 1 necessita un vot | {count} necessiten un vot
+    open_count: "{count} obertes"
+    files_count: 1 fitxer | {count} fitxers
+  onboarding_card:
+    verified_badge: Verificat
+    view_plans: Veure els plans
+    upgrade_now: Millora el pla ara
+    extend_trial_title: Desbloqueja 30 dies extra i una trucada de formació gratuïta
+    trial_verified: Hem vist el teu grup i som aquí per ajudar-te. Ja pots enviar invitacions per correu — continua per desbloquejar 30 dies extra, funcions Pro i una trucada de formació gratuïta amb el nostre equip.
+    trial_extended_title: 30 dies extra i una trucada de formació gratuïta desbloquejats
+    book_training_call: Reserva una trucada de formació
+    extend_trial_initial: Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan {count} persones més s'uneixin al grup.
+    extend_trial_remaining: Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan 1 persona més s'uneixi al grup. | Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan {count} persones més s'uneixin al grup.
+    trial_extended_description: El teu període de prova s'ha ampliat 30 dies.
+  dashboard_cards:
+    all_groups: Tots els grups
+    unread_count: "{count} no llegits"
+    direct: Directes
+    direct_count: "{count} directes"
+    people: Persones
+    recently_online: En línia fa poc
+    recently_online_count: "{count} en línia fa poc"
+    your_tasks: Les teves tasques
+    tasks_todo_count: "{count} per fer"
+    bookmarks_saved_count: "{count} desats"
+    search_people: Cerca persones
+    direct_thread: Fil directe
+    view_profile: Mostra el perfil
+    no_people_found: No s'ha trobat ningú
+  group_settings_panel:
+    subtitle: Opcions del grup
+    group_administration: Administració del grup
+    your_membership: La teva pertinença al grup
+    integrations_and_data: Integracions i dades
+    leave_or_delete: Surt o elimina
+    edit_group_description: Actualitza el nom, la descripció, el logotip, la foto de portada, la privacitat i els permisos dels membres del grup.
+    edit_tags_description: Crea, canvia el nom, fusiona i assigna colors a les etiquetes que organitzen fils i enquestes.
+    manage_subscription_description: Consulta el teu pla, les dades de facturació i els límits de membres.
+    change_volume_description: Tria amb quina freqüència reps notificacions per correu i notificacions push d'aquest grup.
+    email_group_description: Inicia un fil nou en aquest grup enviant un correu a aquesta adreça.
+    group_stats_description: Consulta l'activitat dels membres i la participació en fils i votacions al llarg del temps.
+    become_coordinator_description: Obtén permisos d'admin del grup.
+    chatbots_description: Connecta Slack, Mattermost, Discord o altres eines de xat per publicar novetats del grup.
+    api_docs_description: Configura l'accés a l'API i els webhooks per integrar Loomio amb les teves eines.
+    export_data_description: Descarrega una còpia dels fils, les enquestes, els comentaris i els membres d'aquest grup.
+    leave_group_description: Surt d'aquest grup i deixa de rebre'n notificacions.
+    destroy_group_description: Programa l'eliminació definitiva d'aquest grup i del seu contingut.
+  pagination:
+    page_of: Pàgina {page} de {total}
+    previous_page: Pàgina anterior
+    next_page: Pàgina següent
+    sort_by: Ordena per
+    per_page: Per pàgina
+    jump_to_page: Ves a la pàgina
+    sort:
+      recent_activity: Activitat recent
+      newest: Més recents
+      oldest: Més antics
+      closing_soon: Tan =quen aviat
+      name: Nom
+      last_seen: Última visita
+    edit_tags_description: Crea, canvia el nom, fusiona i assigna colors a les etiquetes per organitzar fils i enquestes.
+    manage_subscription_description: Consulta el teu pla, les dades de facturació i els límits de membres.
+    change_volume_description: Tria amb quina freqüència reps correus i notificacions push d'aquest grup.
+    email_group_description: Inicia un fil nou en aquest grup enviant un correu a aquesta adreça.
+    group_stats_description: Consulta l'activitat dels membres, les interaccions als fils i la participació en les votacions al llarg del temps.
+    become_coordinator_description: Assumeix els permisos d'admin d'aquest grup.
+    chatbots_description: Connecta Slack, Mattermost, Discord o altres eines de xat per publicar novetats del grup.
+    api_docs_description: Configura l'accés a l'API i els webhooks per integrar Loomio amb les teves eines.
+    export_data_description: Descarrega una còpia dels fils, les enquestes, els comentaris i els membres d'aquest grup.
+    leave_group_description: Surt d'aquest grup i deixa de rebre'n notificacions.
+    destroy_group_description: Programa l'eliminació permanent d'aquest grup i del seu contingut.

@@ -1,18 +1,18 @@
 ---
 title: Csoport indítása
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 792e23f7fcb36aec
+  introduction: 87ff87d962c1b084
   group-details: 0fcf6c809c12050b
   group-name: 2ba5592281dfcbcb
   group-handle: 64928a4bbab65b9b
   group-description: 48af06ef795dd9a9
 generated:
-  introduction: baae7b526b1427c6
+  introduction: 441e516fa21ef19e
   group-details: ce336c3095b8ff96
   group-name: 8b701ba9c37c1017
   group-handle: f3c834159dc2828f
@@ -25,7 +25,7 @@ title_generated: a40889da54a4f18b
 
 # Új csoport indítása
 
-Ha még nem használod a Loomiót, ingyenes próbaidőszakkal indíthatsz csoportot a [Loomio weboldalán](https://www.loomio.com/). Ha már használod a Loomiót, és szeretnél egy másik csoportot indítani, válaszd ki az **Új csoport** lehetőséget az oldalsávban.
+Ha még nem használod a Loomiót, ingyenes próbaidőszakkal indíthatsz csoportot a [Loomio weboldalán](https://www.loomio.com/). Az ingyenes próbaidőszak alatt a csoportod további 30 napot kap, az alcsoportok és a vendégek használatának lehetőségével együtt, amint három ember szavaz egy javaslatban vagy szavazásban. Ha már használod a Loomiót, és szeretnél egy másik csoportot indítani, válaszd ki az **Új csoport** lehetőséget az oldalsávban, vagy ha az oldalsáv be van zárva, az oldal tetején található csoportváltó menüben.
 
 A legtöbb szervezetnek csak egy szülőcsoportra van szüksége, amelyen belül annyi [alcsoport](/en/user_manual/groups/subgroups) lehet, amennyire szükség van.
 

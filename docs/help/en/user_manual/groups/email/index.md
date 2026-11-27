@@ -4,9 +4,9 @@
 
 Each Loomio group has its own email address. You can send or forward an email to this address to start a new thread in the group.
 
-You can find the group's email address on the group page:
+You can find the group's email address under **Settings** on the group page:
 
-![Location of the email address on the group page](email_email_button.png)
+![Location of the email address under Settings on the group page](email_email_button.png)
 
 When you email this address, Loomio creates a new thread. The email subject becomes the thread title, the body becomes the thread description, and any attached files are added to the thread.
 

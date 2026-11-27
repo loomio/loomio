@@ -23,7 +23,7 @@ To create a subgroup, open your parent group page, select **New subgroup** in th
 
 ![New subgroup form for the Packaging Working Group](subgroups_new.png)
 
-When the subgroup is ready, [invite people](/en/user_manual/groups/inviting_people) to join it. You can change the subgroup's [group settings](/en/user_manual/groups/settings) from the actions menu on the subgroup page.
+When the subgroup is ready, [invite people](/en/user_manual/groups/inviting_people) to join it. You can change the subgroup's [group settings](/en/user_manual/groups/settings) from **Settings** on the subgroup page.
 
 ![Edit group settings action on the Packaging Working Group](subgroups_edit_group_settings.png)
 
@@ -52,7 +52,7 @@ When the parent group is private, subgroups can only be **Visible to parent grou
 
 ### How people join
 
-Choose [how people join](/en/user_manual/groups/settings/privacy#how-people-join) when creating the subgroup, or in **Edit group settings** > **Privacy**.
+Choose [how people join](/en/user_manual/groups/settings/privacy#how-people-join) when creating the subgroup, or in **Settings** > **Edit group settings** > **Privacy**.
 
 ![Subgroup privacy and joining settings](subgroups_privacy_settings.png)
 
@@ -68,7 +68,7 @@ Turn on **Parent group members can see private threads** in **Permissions** to l
 
 ## Find subgroups
 
-Select your parent group name in the sidebar to see its subgroups.
+Select your parent group name in the sidebar to see its subgroups. On a parent group's **Threads**, **Polls**, **Members**, **Files**, **Tasks**, and **Bookmarks** pages, use the **Subgroups** filter to switch between **This group only**, **My subgroups**, and **All subgroups**, or jump directly to a subgroup.
 
 ![Oatmilk Cooperative subgroups listed in the sidebar](subgroups_find_subgroups.png)
 

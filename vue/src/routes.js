@@ -3,7 +3,7 @@ import GroupPage from './components/group/page.vue';
 import TopicPage from './components/topic/page';
 
 const InboxPage = () => import('./components/inbox/page');
-const PollsToVoteOnPage = () => import('./components/dashboard/polls_to_vote_on_page');
+const DashboardPeoplePage = () => import('./components/dashboard/people_page.vue');
 const NotificationsPage = () => import('./components/notifications/page');
 const ExplorePage = () => import('./components/explore/page');
 const ProfilePage = () => import('./components/profile/page');
@@ -13,13 +13,14 @@ const PollTemplateFormPage = () => import('./components/poll_template/form_page'
 const PollTemplateBrowsePage = () => import('./components/poll_template/browse_page');
 const TasksPage = () => import('./components/tasks/page');
 const BookmarksPage = () => import('./components/bookmarks/page');
-const GroupDiscussionsPanel = () => import('./components/group/discussions_panel');
+const GroupThreadsPanel = () => import('./components/group/threads_panel');
 const GroupPollsPanel = () => import('./components/group/polls_panel');
 const GroupEmailsPanel = () => import('./components/group/emails_panel');
 const MembersPanel = () => import('./components/group/members_panel');
 const MemberWeightsPage = () => import('./components/group/member_weights_page.vue');
 const GroupTagsPanel = () => import('./components/group/tags_panel');
 const GroupFilesPanel = () => import('./components/group/files_panel');
+const GroupSettingsPanel = () => import('./components/group/settings_panel.vue');
 const MembershipRequestsPanel = () => import('./components/group/requests_panel');
 const StartGroupPage = () => import('./components/start_group/page');
 const ContactPage = () => import('./components/contact/page');
@@ -45,7 +46,10 @@ const groupPageChildren = [
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},
-  {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
+  {path: 'tasks', component: TasksPage, props: { embedded: true }, meta: {noScroll: true}},
+  {path: 'bookmarks', component: BookmarksPage, props: { embedded: true }, meta: {noScroll: true}},
+  {path: 'settings', component: GroupSettingsPanel, meta: {noScroll: true}},
+  {path: ':stub?', component: GroupThreadsPanel, meta: {noScroll: true}}
 ];
 
 const router = createRouter({
@@ -69,11 +73,21 @@ const router = createRouter({
     {path: '/tasks', component: TasksPage},
     {path: '/bookmarks', component: BookmarksPage},
     {path: '/report', component: ReportPage},
-    {path: '/dashboard', component: DashboardPage},
-    {path: '/dashboard/polls_to_vote_on', component: PollsToVoteOnPage},
+    {
+      path: '/dashboard',
+      component: DashboardPage,
+      children: [
+        { path: '', component: GroupThreadsPanel, props: { dashboard: true } },
+        { path: 'polls', component: GroupPollsPanel, props: { dashboard: true } },
+        { path: 'polls_to_vote_on', component: GroupPollsPanel, props: { dashboard: true, defaultStatus: 'vote' } },
+        { path: 'members', alias: 'people', component: DashboardPeoplePage, props: { embedded: true } },
+        { path: 'files', component: GroupFilesPanel, props: { dashboard: true } },
+        { path: 'tasks', component: TasksPage, props: { embedded: true } },
+        { path: 'bookmarks', component: BookmarksPage, props: { embedded: true } },
+        { path: 'direct_discussions', component: TopicsPage, props: { embedded: true } }
+      ]
+    },
     {path: '/notifications', component: NotificationsPage},
-    {path: '/dashboard/:filter', component: DashboardPage},
-    {path: '/dashboard/direct_discussions', component: TopicsPage},
     {path: '/inbox', component: InboxPage },
     {path: '/explore', component: ExplorePage},
     {path: '/profile', component: ProfilePage},

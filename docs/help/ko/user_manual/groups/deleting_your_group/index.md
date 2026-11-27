@@ -1,18 +1,18 @@
 ---
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: a8eb46fe9552ce97
+  introduction: 3fc2b743413a6703
   group-data-is-permanently-deleted-after-90-days: b9298a6ba0c7a9f1
 title: 그룹 삭제
 title_source: 9a0868f49f1262ea
 title_generated: a718f47633a8062a
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -23,9 +23,9 @@ translated:
 
 그룹을 삭제하기 전에 [그룹 데이터를 내보내고](/en/user_manual/groups/data_export) 업로드한 파일 중 보관할 파일을 다운로드하세요.
 
-그룹을 삭제하려면 그룹의 작업 메뉴를 열고 **그룹 삭제**를 선택하세요.
+그룹을 삭제하려면 그룹 페이지에서 **설정**을 열고 **그룹 삭제**를 선택하세요.
 
-![Oatmilk Cooperative 메뉴의 그룹 삭제 항목](group_delete_group.png)
+![Oatmilk Cooperative 설정 페이지의 그룹 삭제 항목](group_delete_group.png)
 
 그룹 핸들을 입력하여 삭제를 확정하세요.
 

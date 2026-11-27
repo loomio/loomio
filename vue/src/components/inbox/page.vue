@@ -1,5 +1,6 @@
 <script setup lang="js">
 import { ref, computed, onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { sumBy, sortBy } from 'lodash-es';
 
 import Session       from '@/shared/services/session';
@@ -9,6 +10,7 @@ import ThreadFilter  from '@/shared/services/thread_filter';
 import TopicPreviewCollection from '@/components/topic/preview_collection';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
+const { t } = useI18n();
 const topicLimit = 50;
 const filters = [
   'only_threads_in_my_groups',
@@ -66,31 +68,32 @@ fetchInbox();
 
 <template lang="pug">
 v-main
-  v-container.inbox-page.topic-preview-collection__container.max-width-1024.px-0.px-sm-3(grid-list-lg)
-    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'inbox_page.unread_threads'")
+  v-container.inbox-page.topic-preview-collection__container.max-width-1024.px-2.px-sm-4(grid-list-lg)
+    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}") {{ t('dashboard_page.dashboard') }}
+    dashboard-cards
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .topic-previews-container
         loading-content.topic-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')
     section.inbox-page__topics(v-if='unreadCount > 0 || !loading')
       v-card.mb-3(v-show='unreadCount == 0')
         v-card-text
-          span(v-t="'inbox_page.no_discussions'")
+          span {{ t('inbox_page.no_discussions') }}
           span 🙌
       v-card.mb-3(v-show='groups.length == 0 && Session.user().membershipsCount === 0')
         v-card-text
-        p(v-t="'inbox_page.no_groups.explanation'")
-        button.lmo-btn-link--blue(v-t="'inbox_page.no_groups.start'", @click='startGroup()')
+        p {{ t('inbox_page.no_groups.explanation') }}
+        button.lmo-btn-link--blue(@click='startGroup()') {{ t('inbox_page.no_groups.start') }}
         | &nbsp;
-        span(v-t="'inbox_page.no_groups.or'")
+        span {{ t('inbox_page.no_groups.or') }}
         | &nbsp;
-        span(v-html="$t('inbox_page.no_groups.join_group')")
+        span(v-html="t('inbox_page.no_groups.join_group')")
       .inbox-page__group(v-for='group in groups', :key='group.id')
         v-card.mb-3(v-if='viewsByGroup[group.key].length > 0')
           v-list
             v-list-subheader
               router-link.inbox-page__group-link(:to="'/g/' + group.key") {{group.name}}
             topic-preview-collection(:topics="viewsByGroup[group.key]", :limit="topicLimit")
-      p.text-body-small.text-medium-emphasis.text-center.mt-4(v-t="'inbox_page.recent_activity_notice'")
+      p.text-body-small.text-medium-emphasis.text-center.mt-4 {{ t('inbox_page.recent_activity_notice') }}
 </template>
 
 <style>

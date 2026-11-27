@@ -1,34 +1,34 @@
 ---
 title: Падгрупы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: b2e5dbbf4a65e4b5
-  add-a-subgroup: dc907c1e47d2d467
+  add-a-subgroup: 2381ff2042a74d26
   subgroup-settings: 7f07de40f539d0f6
   privacy: fd2d90995b1929a0
   permissions: 8c327a236e35959d
-  find-subgroups: 4b7a14e27dcc4420
+  find-subgroups: a5a1a77e0ce75b77
   invite-to-a-subgroup: 4c0139b137c3eded
   simultaneously-invite-people-to-subgroups-and-parent-group: f2c861bc08fb57a3
   administer-a-subgroup: 63637459b64bcb0a
   delete-a-subgroup: 339125c633f65bd2
-  how-people-join: 7344f5f40bf0e8fb
+  how-people-join: ba6c3cf2e4c5f5b4
 title_source: 9f81e728f70cae3e
 title_generated: 419292afc0b8cfee
 ---
@@ -58,7 +58,7 @@ title_generated: 419292afc0b8cfee
 
 ![Форма стварэння новай падгрупы для рабочай групы па ўпакоўцы](subgroups_new.png)
 
-Калі падгрупа будзе гатовая, [запрасіце людзей](/en/user_manual/groups/inviting_people) далучыцца да яе. Вы можаце змяніць [налады групы](/en/user_manual/groups/settings) для падгрупы праз меню дзеянняў на яе старонцы.
+Калі падгрупа будзе гатовая, [запрасіце людзей](/en/user_manual/groups/inviting_people) далучыцца да яе. Вы можаце змяніць [налады групы](/en/user_manual/groups/settings) для падгрупы праз **Налады** на яе старонцы.
 
 ![Дзеянне «Рэдагаваць налады групы» для рабочай групы па ўпакоўцы](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ title_generated: 419292afc0b8cfee
 
 ### Як людзі далучаюцца
 
-Вызначце, [як людзі далучаюцца](/en/user_manual/groups/settings/privacy#how-people-join), пры стварэнні падгрупы або ў раздзеле **Рэдагаваць налады групы** > **Канфідэнцыяльнасць**.
+Вызначце, [як людзі далучаюцца](/en/user_manual/groups/settings/privacy#how-people-join), пры стварэнні падгрупы або ў раздзеле **Налады** > **Рэдагаваць налады групы** > **Канфідэнцыяльнасць**.
 
 ![Налады прыватнасці падгрупы і далучэння да яе](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ title_generated: 419292afc0b8cfee
 
 ## Знайсці падгрупы
 
-Выберыце назву вашай бацькоўскай групы на бакавой панэлі, каб убачыць яе падгрупы.
+Выберыце назву вашай бацькоўскай групы на бакавой панэлі, каб убачыць яе падгрупы. На старонках **Тэмы**, **Апытанні**, **Удзельнікі**, **Файлы**, **Задачы** і **Закладкі** бацькоўскай групы выкарыстоўвайце фільтр **Падгрупы**, каб пераключацца паміж варыянтамі **Толькі гэтая група**, **Мае падгрупы** і **Усе падгрупы** або пераходзіць непасрэдна да падгрупы.
 
 ![Падгрупы кааператыва Oatmilk на бакавой панэлі](subgroups_find_subgroups.png)
 

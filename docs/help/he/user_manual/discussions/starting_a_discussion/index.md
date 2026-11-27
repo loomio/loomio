@@ -1,13 +1,13 @@
 ---
 title: פתיחת דיון
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: 6ddf04f5d699d5c0
-  new-discussion: f0e8eb09608cbf81
+  new-discussion: 109d460ec853b932
   group: 269171a69469ba0f
   invite-and-notify: ab7a51dc78b71633
   tags: cf6a09b146d96a4b
@@ -39,11 +39,11 @@ needs_review:
 
 ## פתיחת דיון חדש
 
-יש לבחור באפשרות **התחל דיון** בדף הקבוצה או בדף של כל תת־קבוצה.
+יש לבחור באפשרות **שרשור חדש** בדף הקבוצה או בדף של כל תת־קבוצה.
 
 Loomio מציג את [תבניות הדיון](/en/user_manual/discussions/templates/) של הקבוצה. בחירה בתבנית או באפשרות **תבנית ריקה** פותחת את טופס הדיון.
 
-![כפתור פתיחת דיון בדף קואופרטיב Oatmilk](new-discussion-button.png)
+![כפתור שרשור חדש בדף קואופרטיב Oatmilk](new-discussion-button.png)
 
 ![טופס פתיחת דיון לתכנון ניסוי בבקבוקים להחזרה](new-discussion-example.png)
 

@@ -5,7 +5,7 @@ sections:
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -16,7 +16,7 @@ generated:
   reply-to-a-comment: 8bb86fb651f2a9ed
   get-someone-s-attention: d79833378b7cdca8
   reactions: 2439e76bb9a0dc79
-  vote: 22b8c9e33cd9fa51
+  vote: 9b01ccd3d5b098af
   state-a-reason: 9b87e3f59e971cac
   change-your-vote: bb0da3c2aa4b7ed1
   results: 41f9ba88f8df512a
@@ -24,11 +24,11 @@ generated:
 title: 참여 방법
 title_source: a7854841fbd99ee4
 title_generated: 99145aa307e21eb7
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -73,7 +73,7 @@ Loomio 그룹에 로그인하면 토론에 참여하고 투표할 수 있습니�
 
 ## 투표하기
 
-이메일 초대, 앱 내 알림 또는 그룹의 **투표** 탭에서 투표를 여세요. 투표 내용과 첨부 파일을 읽은 후 원하는 선택지를 선택하세요.
+이메일 초대, 앱 내 알림, **모든 그룹** 또는 그룹의 **투표** 섹션에서 투표를 여세요. 투표 내용과 첨부 파일을 읽은 후 원하는 선택지를 선택하세요.
 
 Loomio에는 여러 유형의 투표가 있습니다. 아래 예시는 **동의**, **기권**, **반대** 선택지가 있는 제안입니다.
 

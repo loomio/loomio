@@ -1,25 +1,25 @@
 ---
 title: Luokkatunnisteet
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 57e3c841b24e06c1
+  introduction: 6dda6568598f888e
   apply-tags: 0c95f728852b2b85
   create-tags: '019b8ba64f865d18'
-  edit-tags: c0a3f73ecbc9206d
+  edit-tags: a3bad2c9a08579ed
   edit-tag-in-thread-or-poll: 47285acd1c32a9cd
   template-tags: edab862b678acd7f
   tag-contributions: 9e762448a15e8e55
@@ -37,7 +37,7 @@ Luokkatunnisteiden avulla löydät tiettyyn aiheeseen tai työalueeseen liittyv�
 
 Tunnisteet kuuluvat koko organisaatiolle. Pääryhmässä luotu tunniste on yhteinen sen alaryhmien kanssa, joten voit seurata toisiinsa liittyvää työtä eri ryhmissä. Loomio näyttää tunnisteet aakkosjärjestyksessä ja värillisen pisteen kunkin nimen vieressä.
 
-Valitse ryhmäsi sivulla ketjuluettelon yläpuolelta **Tunnisteet** ja valitse tunniste näyttääksesi ketjut, joissa ainakin yhdessä sisällössä on kyseinen tunniste. Hae pitkästä luettelosta kirjoittamalla suodatuskenttään.
+Valitse **Kaikki ryhmät** -sivulla tai ryhmän sivulla ketju-, kysely- tai tehtäväluettelon yläpuolelta **Tunnisteet** ja valitse tunniste näyttääksesi sillä merkityt sisällöt. Hae pitkästä luettelosta kirjoittamalla suodatuskenttään.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ Kun joku aloittaa keskustelun tai kyselyn mallista, Loomio lisää siihen vastaa
 
 Vain pääryhmän ylläpitäjät voivat nimetä tunnisteita uudelleen, muuttaa niiden värejä, yhdistää niitä tai poistaa niitä. Muutokset koskevat koko organisaatiota ja kaikkia sen alaryhmiä.
 
-Avaa ryhmän sivulla **Tunnisteet** ja valitse **Muokkaa tunnisteita**.
+Avaa ryhmän sivulla **Tunnisteet** ja valitse **Muokkaa tunnisteita** tai avaa **asetukset** ja valitse **Luokkatunnisteet**.
 
 ![Muokkaa luokkatunnisteita](tags_edit_new.png)
 

@@ -1,23 +1,23 @@
 ---
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: 2f0bffc06ef40b58
+  introduction: ebc08f1580da8543
 title: 권한
 title_source: abccc78cc93c0793
 title_generated: a9fa0dfa453c97bb
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
 
 # 그룹 권한
 
-**권한** 탭에서는 멤버가 그룹에서 할 수 있는 작업을 설정합니다. 숨김 그룹이 아닌 경우에는 멤버가 아닌 사람이 할 수 있는 작업도 설정합니다. 그룹의 작업 메뉴에서 **그룹 설정 수정**을 연 다음 **권한**을 선택하세요.
+**권한** 탭에서는 멤버가 그룹에서 할 수 있는 작업을 설정합니다. 숨김 그룹이 아닌 경우에는 멤버가 아닌 사람이 할 수 있는 작업도 설정합니다. 그룹 페이지에서 **설정**을 열고 **그룹 설정 수정**을 선택한 다음 **권한**을 선택하세요.
 
 ![그룹 권한 설정](group_group_settings_permissions.png)
 

@@ -1,14 +1,14 @@
 ---
 title: הרשאות
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: 5bc3338196bcb913
+  introduction: 372390e2eeaa4a1c
 title_source: abccc78cc93c0793
 title_generated: 030fdcae68675d73
 ---
@@ -17,7 +17,7 @@ title_generated: 030fdcae68675d73
 
 # הרשאות קבוצה
 
-הלשונית **הרשאות** קובעת מה חברים יכולים לעשות בקבוצה, ובקבוצות שאינן סודיות, גם מה יכולים לעשות מי שאינם חברי הקבוצה. יש לפתוח את **ערוך הגדרות קבוצה** מתפריט הפעולות של הקבוצה, ואז לבחור ב־**הרשאות**.
+הלשונית **הרשאות** קובעת מה חברים יכולים לעשות בקבוצה, ובקבוצות שאינן סודיות, גם מה יכולים לעשות מי שאינם חברי הקבוצה. בעמוד הקבוצה יש לפתוח את **הגדרות**, לבחור ב־**ערוך הגדרות קבוצה**, ואז לבחור ב־**הרשאות**.
 
 ![הגדרות הרשאות קבוצה](group_group_settings_permissions.png)
 

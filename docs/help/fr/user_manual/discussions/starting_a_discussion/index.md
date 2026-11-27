@@ -1,13 +1,13 @@
 ---
 title: Démarrer une discussion
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: 9b7b69b29690f7bb
-  new-discussion: 79008f905ab4020e
+  new-discussion: 8978a4e45a8e936b
   group: a6441b24a64720dd
   invite-and-notify: 8bd43f4c13502240
   tags: 7440d278138f713a
@@ -39,11 +39,11 @@ Vous pouvez poser une simple question ou partager une présentation détaillée 
 
 ## Démarrer une nouvelle discussion
 
-Sélectionnez **Lancer une discussion** sur la page de votre groupe ou de n’importe quel sous-groupe.
+Sélectionnez **Nouveau fil** sur la page de votre groupe ou de n’importe quel sous-groupe.
 
 Loomio affiche les [modèles de discussion](/en/user_manual/discussions/templates/) de votre groupe. Choisissez un modèle ou **Modèle vierge** pour ouvrir le formulaire de discussion.
 
-![Bouton Lancer une discussion sur la page de la coopérative Oatmilk](new-discussion-button.png)
+![Bouton Nouveau fil sur la page de la coopérative Oatmilk](new-discussion-button.png)
 
 ![Formulaire de création d’une discussion pour planifier l’essai de bouteilles consignées](new-discussion-example.png)
 

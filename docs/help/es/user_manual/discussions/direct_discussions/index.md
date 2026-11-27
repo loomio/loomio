@@ -1,15 +1,15 @@
 ---
 title: Discusiones directas
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: c617bad25b64654f
+  introduction: 1a0632592c683296
   contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: bdb6d25a29d6514f
+  introduction: 752da0ce3a7134e6
   contacting-someone-via-a-direct-discussion: d6ea2823e2a742ce
 title_source: ccfab058f1f7c146
 title_generated: c08ae97a0efd5d85
@@ -27,11 +27,11 @@ Los hilos directos permiten usar los mismos comentarios, encuestas y herramienta
 
 ![Un formulario de hilo directo sin ningún grupo seleccionado y con Samira Patel en el campo Invitar](direct-discussion-example.png)
 
-Selecciona **Hilos directos** en la barra lateral para ver tus hilos directos y encuestas. Desde allí, abre **Nuevo** y elige **Nueva discusión** para iniciar un hilo directo, o **Nuevo sondeo** para iniciar una encuesta sin un grupo.
+Abre **Todos los grupos** y selecciona **Directos** en **Hilos** (o selecciona el número de hilos directos en la tarjeta **Hilos**) para ver tus hilos directos. Desde allí, selecciona **Nuevo hilo** para iniciar un hilo directo. También puedes abrir **Personas** en **Todos los grupos** y seleccionar **Hilo directo** junto al nombre de alguien.
 
 Una encuesta directa solo es visible para las personas que invites. Después de crearla, usa [Gestionar a los votantes](/en/user_manual/polls/manage_voters) para invitar a personas o direcciones de correo electrónico.
 
-![La opción Hilos directos en la barra lateral y la lista de hilos directos](direct-discussion-sidebar.png)
+![El filtro Directos en Todos los grupos mostrando hilos directos](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 

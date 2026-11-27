@@ -1,15 +1,15 @@
 ---
 title: מחיקת הקבוצה
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: a467353784814584
+  introduction: f0e1ba7b93627a18
   group-data-is-permanently-deleted-after-90-days: 2523b75c4e8d5c49
 title_source: 9a0868f49f1262ea
 title_generated: 4cab4974d0ca49e8
@@ -21,11 +21,11 @@ title_generated: 4cab4974d0ca49e8
 
 מחיקת קבוצה מחייבת הרשאות מנהל קבוצה. מחיקת קבוצה מסירה את הגישה מיד ומתזמנת את כל נתוני הקבוצה ותת־הקבוצות שלה למחיקה לצמיתות לאחר 90 יום.
 
-לפני מחיקת קבוצה, יש [לייצא את נתוני הקבוצה](/en/user_manual/groups/data_export) ולהוריד את כל הקבצים שהועלו שברצונכם לשמור.
+לפני מחיקת קבוצה, יש [לייצא את נתוני הקבוצה](/en/user_manual/groups/data_export) ולהוריד את כל הקבצים שהועלו ושיש צורך לשמור.
 
-כדי למחוק קבוצה, יש לפתוח את תפריט הפעולות של הקבוצה ולבחור באפשרות **מחק קבוצה**.
+כדי למחוק קבוצה, יש לפתוח את **הגדרות** בדף הקבוצה ולבחור באפשרות **מחק קבוצה**.
 
-![פעולת מחיקת קבוצה בתפריט של קואופרטיב Oatmilk](group_delete_group.png)
+![פעולת מחיקת קבוצה בדף ההגדרות של קואופרטיב Oatmilk](group_delete_group.png)
 
 יש להזין את מזהה הקבוצה כדי לאשר את המחיקה.
 

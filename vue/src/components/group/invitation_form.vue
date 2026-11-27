@@ -64,6 +64,7 @@ export default
         recipient_message: this.message
       }).then(data => {
         Records.groups.findOrFetchById(this.group.id);
+        EventBus.$emit('membersInvited', this.group.id);
         Flash.success('announcement.flash.success', { count: data.memberships.length });
         EventBus.$emit('closeModal');
       }).catch(error => {

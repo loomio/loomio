@@ -1,25 +1,25 @@
 ---
 title: Мітки категорій
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 60349965f93f5970
+  introduction: d4370ff9a0946fd0
   apply-tags: d17b4678c0086808
   create-tags: 65e1f04235480058
-  edit-tags: 12ad42f756425655
+  edit-tags: 7d9230970c163531
   edit-tag-in-thread-or-poll: b9ae2dd5ab36adcd
   template-tags: ccd36fd7a1516ca6
   tag-contributions: 4435d72f153201eb
@@ -39,7 +39,7 @@ needs_review:
 
 Теги належать усій організації. Тег, створений у батьківській групі, доступний і в її підгрупах, тож ви можете відстежувати пов’язану роботу в різних групах. Loomio відображає теги за абеткою з кольоровою крапкою поруч із кожною назвою.
 
-На сторінці вашої групи виберіть **Теги** над списком тем і виберіть тег, щоб показати теми, які містять принаймні один допис із цим тегом. Введіть текст у полі фільтра для пошуку в довгому списку.
+На сторінці **Усі групи** або на сторінці групи виберіть **Теги** над списком тем, опитувань або завдань і виберіть тег, щоб показати елементи з цим тегом. Введіть текст у полі фільтра для пошуку в довгому списку.
 
 ![](tags_view.png)
 
@@ -90,7 +90,7 @@ needs_review:
 
 Лише адміністратори батьківської групи можуть перейменовувати теги, змінювати їхні кольори, об’єднувати або видаляти їх. Зміни застосовуються в усій організації, включно з усіма підгрупами.
 
-На сторінці групи відкрийте **Теги** та виберіть **Редагувати мітки**.
+На сторінці групи відкрийте **Теги** та виберіть **Редагувати мітки** або відкрийте **Налаштування** та виберіть **Мітки категорій**.
 
 ![редагування тегів категорій](tags_edit_new.png)
 

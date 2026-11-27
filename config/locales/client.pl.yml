@@ -43,6 +43,19 @@ pl:
     task_updated_not_done: Zadanie oznaczone jako niewykonane
     no_tasks_assigned: Nie ma przypisanych Ci zadań
     task_placeholder: Wprowadź zadanie i {'@'}wspomnij kogoś, komu chcesz je przypisać
+    status_todo: Do zrobienia
+    status_done: Wykonane
+    due_any: Dowolny termin
+    due_overdue: Po terminie
+    due_next_7_days: Najbliższe 7 dni
+    due_later: Później
+    due_none: Bez terminu
+    assigned_anyone: Każdy
+    assigned_me: Przypisane do mnie
+    search_members: Szukaj członków
+    search_tasks: Szukaj zadań
+    no_open_tasks: Nie masz zadań do zrobienia.
+    no_matching_tasks: Żadne zadania nie pasują do filtrów.
   templates:
     template_gallery: Galeria szablonów
     title_template: Szablon %{title}
@@ -648,6 +661,7 @@ pl:
     direct_discussions: Dyskusje bezpośrednie
     unread_discussions: Nieprzeczytane dyskusje
     unread_threads_count: Nieprzeczytane wątki (%{count})
+    votes_count: 1 głos | {count} głosów
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '
@@ -1594,6 +1608,8 @@ pl:
       Grupa %{groupName} na %{site_name} jest już gotowa, by wspólnie rozmawiać i podejmować decyzje. Dołącz przez ten link:
       %{link}
     trial_shareable_link_note: Skopiuj link zaproszenia i wyślij go e-mailem lub na czacie, by zaprosić ludzi do swojej grupy. Gdy dołączą, możesz wysyłać im powiadomienia e-mail i na telefon bezpośrednio z Loomio. <a href="%{upgradeUrl}">Przejdź na wyższy plan</a>, by wysyłać zaproszenia e-mailem.
+    include_intro_message: Dołącz wiadomość powitalną
+    trial_shareable_invitation_message: 'Rozpoczynam 7-dniowy okres próbny w %{site_name}, by sprawdzić, czy pomoże nam podejmować decyzje w %{groupName}. Kliknij ten link, by dołączyć i wspólnie wypróbować: %{link}'
   memberships_page:
     members: Osoby
     name_label: Nazwa
@@ -2200,6 +2216,7 @@ pl:
     unlocked: Odblokowany
     no_threads_found_that_match_your_query_or_filters: Nie znaleziono wątków odpowiadających Twojemu zapytaniu lub filtrom
     no_threads_found_that_match_your_filters: Nie znaleziono wątków spełniających Twoje kryteria
+    new_thread: Nowy wątek
   members_panel:
     bot: Nerw
     no_results: Nie znaleziono osób
@@ -3299,3 +3316,103 @@ pl:
     bounced: Zgłoszono zwrot e-maila
     complained: Zgłoszono spam
     skipped: E-mail nie został wysłany
+  group_cards:
+    admins_count: 1 administrator | {count} administratorów
+    members_count: 1 członek | {count} członków
+    delegates_count: 1 delegat | {count} delegatów
+    polls_count: 1 ankieta | {count} ankiet
+    proposals_count: 1 propozycja | {count} propozycji
+    needs_your_vote: 1 czeka na twój głos | {count} czeka na twój głos
+    no_open_polls: Brak otwartych ankiet
+    browse_files: Zobacz pliki
+    invite_get_started: Kliknij tutaj, aby zacząć
+    threads: Wątki
+    threads_count: 1 wątek | {count} wątków
+    view_threads: Zobacz wątki
+    no_threads: Brak wątków
+    this_group_only: Tylko ta grupa
+    my_subgroups: Moje podgrupy
+    all_subgroups: Wszystkie podgrupy
+    filter_tags: Filtruj tagi
+    filter_groups: Filtruj grupy
+    filter_subgroups: Filtruj podgrupy
+    filter_qualifier_unread: nieprzeczytane
+    filter_qualifier_direct: bezpośrednie
+    filter_qualifier_locked: zablokowane
+    filter_qualifier_unlocked: odblokowane
+    no_filtered_threads: 'Brak wątków pasujących do filtrów: {filters}'
+    no_filtered_threads_with_tag: 'Brak wątków pasujących do filtrów: {filters} i tagu: {tag}'
+    no_threads_with_tag: 'Brak wątków z tagiem: {tag}'
+    recent_count: "{count} ostatnich"
+    need_vote_count: 1 czeka na głos | {count} czeka na głos
+    open_count: "{count} otwartych"
+    files_count: 1 plik | {count} plików
+  onboarding_card:
+    verified_badge: Zweryfikowano
+    view_plans: Zobacz plany
+    upgrade_now: Przejdź na wyższy plan
+    extend_trial_title: Zyskaj 30 dodatkowych dni & bezpłatną rozmowę szkoleniową
+    trial_verified: Znamy już twoją grupę i chętnie pomożemy. Możesz już wysyłać zaproszenia e-mailem — działaj dalej, by zyskać 30 dodatkowych dni, funkcje Pro i bezpłatną rozmowę szkoleniową z naszym zespołem.
+    trial_extended_title: Masz już 30 dodatkowych dni & bezpłatną rozmowę szkoleniową
+    book_training_call: Umów rozmowę szkoleniową
+    extend_trial_initial: Zyskaj 30 dodatkowych dni i bezpłatną rozmowę szkoleniową z osobą z zespołu Loomio po dołączeniu do grupy {count} innych osób.
+    extend_trial_remaining: Zyskaj 30 dodatkowych dni i bezpłatną rozmowę szkoleniową z osobą z zespołu Loomio po dołączeniu do grupy jeszcze jednej osoby. | Zyskaj 30 dodatkowych dni i bezpłatną rozmowę szkoleniową z osobą z zespołu Loomio po dołączeniu do grupy kolejnych {count} osób.
+    trial_extended_description: Twój okres próbny został przedłużony o 30 dni.
+  dashboard_cards:
+    all_groups: Wszystkie grupy
+    unread_count: "{count} nieprzeczytanych"
+    direct: Bezpośrednie
+    direct_count: "{count} bezpośrednich"
+    people: Osoby
+    recently_online: Ostatnio online
+    recently_online_count: "{count} ostatnio online"
+    your_tasks: Twoje zadania
+    tasks_todo_count: "{count} do zrobienia"
+    bookmarks_saved_count: "{count} zapisanych"
+    search_people: Szukaj osób
+    direct_thread: Bezpośredni wątek
+    view_profile: Zobacz profil
+    no_people_found: Nie znaleziono osób
+  group_settings_panel:
+    subtitle: Opcje grupy
+    group_administration: Zarządzanie grupą
+    your_membership: Twoje członkostwo
+    integrations_and_data: Integracje i dane
+    leave_or_delete: Opuść lub usuń
+    edit_group_description: Zmień nazwę, opis, logo, zdjęcie w tle, prywatność i uprawnienia członków grupy.
+    edit_tags_description: Twórz, nazywaj, łącz i oznaczaj kolorami tagi do porządkowania wątków i ankiet.
+    manage_subscription_description: Sprawdź swój plan, dane rozliczeniowe i limity członków.
+    change_volume_description: Wybierz, jak często otrzymujesz powiadomienia e-mail i push z tej grupy.
+    email_group_description: Rozpocznij nowy wątek w tej grupie, wysyłając e-mail na ten adres.
+    group_stats_description: Sprawdź aktywność członków, udział w wątkach i głosowaniu na przestrzeni czasu.
+    become_coordinator_description: Uzyskaj uprawnienia administratora tej grupy.
+    chatbots_description: Połącz Slack, Mattermost, Discord lub inne czaty, by publikować aktualności grupy.
+    api_docs_description: Skonfiguruj dostęp do API i webhooki, by połączyć Loomio ze swoimi narzędziami.
+    export_data_description: Pobierz kopię wątków, ankiet, komentarzy i członków tej grupy.
+    leave_group_description: Opuść tę grupę i przestań otrzymywać powiadomienia.
+    destroy_group_description: Zaplanuj trwałe usunięcie tej grupy i jej treści.
+  pagination:
+    page_of: Strona {page} z {total}
+    previous_page: Poprzednia strona
+    next_page: Następna strona
+    sort_by: Sortuj według
+    per_page: Na stronie
+    jump_to_page: Przejdź do strony
+    sort:
+      recent_activity: Ostatnia aktywność
+      newest: Najnowsze
+      oldest: Najstarsze
+      closing_soon: Wkrótce się kończą
+      name: Nazwa
+      last_seen: Ostatnia wizyta
+    edit_tags_description: Twórz, zmieniaj nazwy, łącz i koloruj tagi do porządkowania wątków i ankiet.
+    manage_subscription_description: Sprawdź swój plan, dane rozliczeniowe i limity członków.
+    change_volume_description: Wybierz, jak często otrzymujesz powiadomienia e-mail i push z tej grupy.
+    email_group_description: Rozpocznij nowy wątek w tej grupie, wysyłając e-mail na ten adres.
+    group_stats_description: Sprawdź aktywność członków, zaangażowanie w wątki i udział w głosowaniu na przestrzeni czasu.
+    become_coordinator_description: Uzyskaj uprawnienia administratora tej grupy.
+    chatbots_description: Połącz Slack, Mattermost, Discord lub inne czaty, by publikować aktualności grupy.
+    api_docs_description: Skonfiguruj dostęp do API i webhooki, by połączyć Loomio ze swoimi narzędziami.
+    export_data_description: Pobierz kopię wątków, ankiet, komentarzy i członków tej grupy.
+    leave_group_description: Opuść tę grupę i przestań otrzymywać powiadomienia.
+    destroy_group_description: Zaplanuj trwałe usunięcie tej grupy i jej treści.

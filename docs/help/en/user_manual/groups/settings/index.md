@@ -4,7 +4,7 @@
 
 Group settings control how your group is presented, who can find and join it, and what members are allowed to do. Only group administrators can edit these settings.
 
-On the group page, open the actions menu and select **Edit group settings**.
+On the group page, open **Settings** and select **Edit group settings**.
 
 ![Edit group settings from the group page](group_settings.png)
 

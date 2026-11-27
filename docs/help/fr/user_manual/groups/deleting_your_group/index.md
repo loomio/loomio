@@ -1,15 +1,15 @@
 ---
 title: Supprimer votre groupe
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: 9ec14748193bd9cc
+  introduction: 360ddedb2008afdf
   group-data-is-permanently-deleted-after-90-days: 0dcc62a32697b6c4
 title_source: 9a0868f49f1262ea
 title_generated: 276b9af64d1f291a
@@ -23,9 +23,9 @@ Seul un administrateur du groupe peut supprimer un groupe. La suppression d’un
 
 Avant de supprimer un groupe, [exportez les données du groupe](/en/user_manual/groups/data_export) et téléchargez les fichiers importés que vous souhaitez conserver.
 
-Pour supprimer un groupe, ouvrez le menu des actions du groupe et choisissez **Supprimer le groupe**.
+Pour supprimer un groupe, ouvrez **Paramètres** sur la page du groupe et choisissez **Supprimer le groupe**.
 
-![Action de suppression du groupe dans le menu d’Oatmilk Cooperative](group_delete_group.png)
+![Action de suppression du groupe sur la page des paramètres d’Oatmilk Cooperative](group_delete_group.png)
 
 Saisissez l’identifiant du groupe pour confirmer la suppression.
 

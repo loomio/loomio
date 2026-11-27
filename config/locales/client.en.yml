@@ -40,6 +40,19 @@ en:
     add_due_date: Add due date
     task_updated_done: Task marked as done!
     task_updated_not_done: Task marked as incomplete
+    status_todo: To do
+    status_done: Done
+    due_any: Any due date
+    due_overdue: Overdue
+    due_next_7_days: Next 7 days
+    due_later: Later
+    due_none: No due date
+    assigned_anyone: Anyone
+    assigned_me: Assigned to me
+    search_members: Search members
+    search_tasks: Search tasks
+    no_open_tasks: You don't have any open tasks.
+    no_matching_tasks: No tasks match your filters.
     no_tasks_assigned: There are no tasks assigned to you
   tips:
     get_started_here: Experience Loomio in 4 easy steps
@@ -689,6 +702,7 @@ en:
     unread_discussions_count: Unread discussions (%{count})
     unread_threads: Unread threads
     unread_threads_count: Unread threads (%{count})
+    votes_count: "1 vote | {count} votes"
     new_group: New group
     new_subgroup: New subgroup
     start_subgroup: New subgroup
@@ -1439,8 +1453,8 @@ en:
     success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
     scheduled_for_deletion: This group is scheduled for permanent deletion in 2 weeks
     deletion_after_grace_period: This group is unavailable and will be permanently deleted after %{days} days
-    discard_title: "Remove group"
-    discard_subgroup_title: "Remove subgroup"
+    discard_title: "Delete group"
+    discard_subgroup_title: "Delete subgroup"
     discard_parent_body: "This group and its subgroups will be removed from view immediately, and its Loomio subscription will be cancelled. Group data is not automatically permanently deleted and can be restored by a site administrator."
     discard_body: "This subgroup will be removed from view immediately. Subgroup data is not automatically permanently deleted and can be restored by a site administrator."
     discard_confirm: "Type '%{name}' to confirm"
@@ -1484,6 +1498,94 @@ en:
     month: Month
     year: Year
     country_disclaimer: Country is based on the user's IP address and is not very accurate. Consider this a rough guide only.
+  dashboard_cards:
+    all_groups: All groups
+    unread_count: "{count} unread"
+    direct: Direct
+    direct_count: "{count} direct"
+    people: People
+    recently_online: Recently online
+    recently_online_count: "{count} recently online"
+    your_tasks: Your tasks
+    tasks_todo_count: "{count} to do"
+    bookmarks_saved_count: "{count} saved"
+    search_people: Search people
+    direct_thread: Direct thread
+    view_profile: View profile
+    no_people_found: No people found
+  group_cards:
+    this_group_only: This group only
+    my_subgroups: My subgroups
+    all_subgroups: All subgroups
+    filter_tags: Filter tags
+    filter_groups: Filter groups
+    filter_subgroups: Filter subgroups
+    filter_qualifier_unread: unread
+    filter_qualifier_direct: direct
+    filter_qualifier_locked: locked
+    filter_qualifier_unlocked: unlocked
+    no_filtered_threads: "There are no {filters} threads"
+    no_filtered_threads_with_tag: "There are no {filters} threads matching tag: {tag}"
+    no_threads_with_tag: "There are no threads matching tag: {tag}"
+    threads: Threads
+    recent_count: "{count} recent"
+    threads_count: "1 thread | {count} threads"
+    no_threads: No threads
+    admins_count: "1 admin | {count} admins"
+    members_count: "1 member | {count} members"
+    delegates_count: "1 delegate | {count} delegates"
+    polls_count: "1 poll | {count} polls"
+    proposals_count: "1 proposal | {count} proposals"
+    needs_your_vote: "1 needs your vote | {count} need your vote"
+    need_vote_count: "1 needs vote | {count} need vote"
+    open_count: "{count} open"
+    no_open_polls: No open polls
+    browse_files: View files
+    files_count: "1 file | {count} files"
+    invite_get_started: Click here to get started
+  group_settings_panel:
+    subtitle: Group options
+    group_administration: Group administration
+    your_membership: Your membership
+    integrations_and_data: Integrations & data
+    leave_or_delete: Leave or delete
+    edit_group_description: Update the group name, description, logo, cover photo, privacy, and member permissions.
+  pagination:
+    page_of: "Page {page} of {total}"
+    previous_page: Previous page
+    next_page: Next page
+    sort_by: Sort by
+    per_page: Per page
+    jump_to_page: Jump to page
+    sort:
+      recent_activity: Recent activity
+      newest: Newest
+      oldest: Oldest
+      closing_soon: Closing soon
+      name: Name
+      last_seen: Last seen
+    edit_tags_description: Create, rename, merge, and color-code tags used to organize threads and polls.
+    manage_subscription_description: View your plan, billing details, and member limits.
+    change_volume_description: Choose how often you receive email and push notifications from this group.
+    email_group_description: Start a new thread in this group by sending an email to this address.
+    group_stats_description: See member activity, thread engagement, and voting participation over time.
+    become_coordinator_description: Claim group admin permissions for this group.
+    chatbots_description: Connect Slack, Mattermost, Discord, or other chat tools to post group updates.
+    api_docs_description: Configure API access and webhooks to integrate Loomio with your own tools.
+    export_data_description: Download a copy of this group's threads, polls, comments, and members.
+    leave_group_description: Remove yourself from this group and stop receiving notifications.
+    destroy_group_description: Schedule this group and its content for permanent deletion.
+  onboarding_card:
+    view_plans: View plans
+    upgrade_now: Upgrade now
+    extend_trial_title: Unlock 30 extra days & a free training call
+    extend_trial_initial: "Unlock 30 extra days and a free training call with a Loomio team member when {count} other people join the group."
+    extend_trial_remaining: "Unlock 30 extra days and a free training call with a Loomio team member when 1 more person joins the group. | Unlock 30 extra days and a free training call with a Loomio team member when {count} more people join the group."
+    verified_badge: Verified
+    trial_verified: We've seen your group and we're here to help. You can now send email invitations — keep going to unlock 30 extra days, Pro features, and a free training call with our team.
+    trial_extended_title: 30 extra days & free training call unlocked
+    trial_extended_description: Your trial has been extended by 30 days.
+    book_training_call: Book a training call
   group_page:
     stats: Group stats
     participation_report: Participation report
@@ -1756,12 +1858,16 @@ en:
     secret_group_url_explanation: This is the address for your group. Only invited members will be able to see the group.
     shareable_invitation_explanation: Anyone with this link can join your group immediately.
     invite_link: Invite link
+    include_intro_message: Include intro message
     shareable_invitation_message_label: Message to copy into an email or chat
     members_used: "%{used} of %{max} members"
     shareable_invitation_message: |-
       I've set up %{groupName} on %{site_name} so we can discuss and make decisions together. Join using this link:
       %{link}
-    trial_shareable_link_note: Copy the invite link and send it by email or chat to invite people to your group. Once they join, you can send them email and mobile notifications from Loomio directly. <a href="%{upgradeUrl}">Upgrade your plan</a> to send email invitations.
+    trial_shareable_invitation_message: |-
+      I've started a %{site_name} trial for %{groupName}. It's designed to help groups make decisions together and keep a record along the way. Join here:
+      %{link}
+    trial_shareable_link_note: Copy the invite link and send it by email or chat to invite people to your group. <a href="%{upgradeUrl}">Upgrade your plan</a> to send email invitations.
     shareable_link_to_join_group: Shareable link to join group
     shareable_link_reset: Shareable link reset. The previous link will no longer work.
     reset_the_link: Reset the link
@@ -2445,6 +2551,7 @@ en:
     welcome_to_your_new_group: Welcome to your new Loomio group!
     lets_start_a_discussion: Let's start a discussion. Click "New discussion" to continue.
     new_discussion: New discussion
+    new_thread: New thread
   members_panel:
     edit_vote_weights: Edit vote weights
     vote_weights_are_defaults: These default vote weights apply to new votes. Changes here do not affect vote weights already issued.

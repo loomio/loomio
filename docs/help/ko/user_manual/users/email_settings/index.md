@@ -7,7 +7,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -20,7 +20,7 @@ generated:
   choose-your-catch-up-schedule: dc8f5c203c70b18c
   mark-a-catch-up-as-read: 3dce5db0813bc1ac
   group-and-thread-notification-settings: 9e3866d804e92cb8
-  group-notification-settings: 49f0a77e19a674ab
+  group-notification-settings: fc38bd625488d706
   thread-notification-settings: eb8c543044cda1bc
   email-delivery: 26303e32648b4a77
   enable-mobile-notifications-with-web-push: 5d334e8c75f843aa
@@ -28,11 +28,11 @@ generated:
 title: 알림
 title_source: 788011833a5a0f22
 title_generated: 12ddd6ca69068faa
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -136,7 +136,7 @@ Loomio는 프로필에 설정된 시간대를 기준으로 아침에 활동 요�
 그룹의 알림 설정을 변경하려면 다음 단계를 따르세요.
 
 1. 그룹 페이지를 여세요.
-2. 해당 그룹의 알림 설정을 여세요.
+2. **설정**을 열고 **알림 설정**을 선택하세요.
 
 ![그룹 페이지의 알림 설정](group_notifications.png)
 

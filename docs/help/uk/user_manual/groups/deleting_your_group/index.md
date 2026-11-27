@@ -1,15 +1,15 @@
 ---
 title: Видалення вашої групи
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: 623d416d645445f7
+  introduction: 1831a9aebbe06903
   group-data-is-permanently-deleted-after-90-days: 95cec4df96bea0e3
 title_source: 9a0868f49f1262ea
 title_generated: 95d3a1c367c79d06
@@ -23,9 +23,9 @@ title_generated: 95d3a1c367c79d06
 
 Перш ніж видалити групу, [експортуйте дані групи](/en/user_manual/groups/data_export) та завантажте всі додані файли, які ви хочете зберегти.
 
-Щоб видалити групу, відкрийте меню дій групи та виберіть **Видалити групу**.
+Щоб видалити групу, відкрийте **Налаштування** на сторінці групи та виберіть **Видалити групу**.
 
-![Дія «Видалити групу» в меню Oatmilk Cooperative](group_delete_group.png)
+![Дія «Видалити групу» на сторінці налаштувань Oatmilk Cooperative](group_delete_group.png)
 
 Введіть ідентифікатор групи, щоб підтвердити видалення.
 

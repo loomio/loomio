@@ -15,6 +15,6 @@ export function prefetchNavigation(path) {
     usePendingPolls().loadPendingPolls(),
     useCurrentUserNotifications().loadNotifications(),
     import('@/components/notifications/page.vue'),
-    import('@/components/dashboard/polls_to_vote_on_page.vue')
+    import('@/components/group/polls_panel.vue')
   ]);
 }

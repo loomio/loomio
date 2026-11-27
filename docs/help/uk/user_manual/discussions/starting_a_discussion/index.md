@@ -1,13 +1,13 @@
 ---
 title: Розпочати обговорення
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: 3e993c8f49777118
-  new-discussion: 07c97a9da7d0affb
+  new-discussion: 5f5aaa16f72f7bb7
   group: 85fa3301bd202177
   invite-and-notify: e9a969424ba8dc4d
   tags: e5a380a239150c6f
@@ -37,11 +37,11 @@ title_generated: 6637be1d688b43d8
 
 ## Розпочати нове обговорення
 
-Натисніть **Розпочати обговорення** на сторінці вашої групи або будь-якої підгрупи.
+Натисніть **Нова тема** на сторінці вашої групи або будь-якої підгрупи.
 
 Loomio показує [шаблони обговорень](/en/user_manual/discussions/templates/) вашої групи. Оберіть шаблон або **Порожній шаблон**, щоб відкрити форму обговорення.
 
-![Кнопка «Розпочати обговорення» на сторінці кооперативу Oatmilk](new-discussion-button.png)
+![Кнопка «Нова тема» на сторінці кооперативу Oatmilk](new-discussion-button.png)
 
 ![Форма початку обговорення для планування випробування зворотних пляшок](new-discussion-example.png)
 

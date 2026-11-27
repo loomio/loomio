@@ -60,10 +60,12 @@ test('remove_member', async ({ page, manual: screenshot }) => {
 test('leave_group', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
   await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative')
-  await page.locator('.group-page__actions .action-menu--btn').click()
-  await expect(page.locator('.v-overlay--active .action-dock__button--leave_group')).toBeVisible()
-  await screenshot.capture('groups/member_management/member_leave_group', {
-    spotlight: menuSpotlight('.v-overlay .action-dock__button--leave_group')
+  await page.locator('.group-cards__settings').click()
+  await expect(page.locator('.group-settings-panel .action-dock__button--leave_group')).toBeVisible()
+  await screenshot.captureElement('groups/member_management/member_leave_group', '.group-page', {
+    width: 1280,
+    height: 2000,
+    spotlight: menuSpotlight('.group-settings-panel .action-dock__button--leave_group')
   });
 });
 

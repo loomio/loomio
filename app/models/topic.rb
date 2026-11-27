@@ -72,7 +72,7 @@ class Topic < ApplicationRecord
     where("topics.tags @> ARRAY[?]::varchar[]", tags)
   }
 
-  scope :recent_activity_first, -> { order(last_activity_at: :desc) }
+  scope :recent_activity_first, -> { order(Arel.sql("topics.last_activity_at DESC NULLS LAST")) }
 
   scope :visible_to, ->(user) {
     joins_groups

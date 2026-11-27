@@ -1,17 +1,17 @@
 ---
 title: So beteiligst du dich
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: 7a96490c41c553b2
   get-someone-s-attention: 73734726248c5c9c
   reactions: 9099e534d87cb50d
-  vote: bdc304c1b53d329b
+  vote: e7dfda1fd2973d2b
   state-a-reason: 23ae61f3ddc61d83
   change-your-vote: 48b05af7fcdb690b
   results: b8b5ca20c09c86ee
@@ -73,7 +73,7 @@ Füge eine Emoji-Reaktion hinzu, um einen Kommentar zu würdigen, ohne eine Antw
 
 ## Stimme abgeben
 
-Öffne eine Abstimmung über eine Einladung per E-Mail, eine Benachrichtigung in Loomio oder den Tab **Abstimmungen** deiner Gruppe. Lies die Abstimmung und alle angehängten Dateien und wähle dann deine Option aus.
+Öffne eine Abstimmung über eine Einladung per E-Mail, eine Benachrichtigung in Loomio, **Alle Gruppen** oder den Bereich **Abstimmungen** deiner Gruppe. Lies die Abstimmung und alle angehängten Dateien und wähle dann deine Option aus.
 
 Loomio bietet verschiedene Arten von Abstimmungen. Das folgende Beispiel zeigt einen Vorschlag mit den Optionen **Zustimmung**, **Enthaltung** und **Widerspruch**.
 

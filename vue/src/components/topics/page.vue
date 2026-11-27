@@ -7,6 +7,10 @@ import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import RecordLoader from '@/shared/services/record_loader';
 
+const { embedded } = defineProps({
+  embedded: { type: Boolean, default: false }
+});
+
 const route = useRoute();
 const { t } = useI18n();
 const loader = ref({});
@@ -39,9 +43,11 @@ init();
 </script>
 
 <template lang="pug">
-v-main
-  v-container.topics-page.max-width-1024.px-0.px-sm-3
-    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'sidebar.direct_discussions'")
+component(:is="embedded ? 'div' : 'v-main'")
+  component(:is="embedded ? 'div' : 'v-container'" :class="embedded ? 'topics-page pt-2' : 'topics-page max-width-1024 px-2 px-sm-4'")
+    template(v-if="!embedded")
+      h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}") {{ t('dashboard_page.dashboard') }}
+      dashboard-cards
     .d-flex.justify-end.pb-3
       v-menu
         template(v-slot:activator="{ props }")
@@ -60,8 +66,8 @@ v-main
     div(v-else)
       section.topics-page__loaded
         v-alert.mb-3(v-if='topics.length == 0' type="info" variant="tonal")
-          div(v-t="'threads_page.no_direct_discussions_title'")
-          div.text-body-medium.mt-2(v-t="'threads_page.no_direct_discussions_helptext'")
+          div {{ t('threads_page.no_direct_discussions_title') }}
+          div.text-body-medium.mt-2 {{ t('threads_page.no_direct_discussions_helptext') }}
         .topics-page__collections(v-else)
           v-card.mb-3.topic-preview-collection__container
             v-list.topic-previews(lines="two")
@@ -70,5 +76,5 @@ v-main
       .d-flex.align-center.justify-center(v-if='topics.length > 0')
         div
           p.text-center.text-medium-emphasis {{ t('members_panel.topics_loaded_of_total', { loaded: topics.length, total: loader.total }) }}
-          v-btn(variant="tonal" color="primary" v-if="!loader.exhausted" @click="loader.fetchRecords()", :loading="loader.loading", v-t="'common.action.load_more'")
+          v-btn(variant="tonal" color="primary" v-if="!loader.exhausted" @click="loader.fetchRecords()", :loading="loader.loading") {{ t('common.action.load_more') }}
 </template>

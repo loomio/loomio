@@ -1,21 +1,21 @@
 ---
 title: Private Einreichungen sammeln
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: 4beb574cc6fcda0a
-  enable-private-submissions: b395067ce8219e7e
+  enable-private-submissions: 9e0f535fbb47531f
   set-up-a-private-submission-process: 6c14a6f4529343f3
-  make-a-submission: 72f68b2b4f3b24cc
+  make-a-submission: c84dbf5cbe281570
   review-submissions: 8f1000ce2475d59e
 title_source: e82ab76916d594f4
 title_generated: 1ce4c8fe13e04a50
@@ -46,7 +46,7 @@ Bei diesem Verfahren können Einreichende die Einreichungen anderer nicht sehen,
 Du musst Gruppenadmin der Gruppe oder Untergruppe sein, in der du Einreichungen sammeln möchtest.
 
 1. Öffne die Gruppe.
-2. Wähle **Einstellungen** (oder **Mehr**, dann **Gruppeneinstellungen bearbeiten**).
+2. Öffne **Einstellungen** und wähle dann **Gruppeneinstellungen bearbeiten**.
 3. Öffne **Berechtigungen**.
 4. Aktiviere **Nichtmitglieder können Diskussionen starten**.
 5. Speichere die Gruppeneinstellungen.
@@ -73,7 +73,7 @@ Wenn du diese Berechtigung aktivierst, werden die Diskussionen der Gruppe nicht 
 
 ## Etwas einreichen
 
-Die einreichende Person öffnet die Untergruppe und wählt **Diskussion starten**. Loomio zeigt die Diskussionsvorlagen der Untergruppe an. Die einreichende Person wählt die passende Vorlage, beantwortet die darin enthaltenen Fragen und startet die Diskussion.
+Die einreichende Person öffnet die Untergruppe und wählt **Neuer Thread**. Loomio zeigt die Diskussionsvorlagen der Untergruppe an. Die einreichende Person wählt die passende Vorlage, beantwortet die darin enthaltenen Fragen und startet die Diskussion.
 
 Die Diskussion gehört zur Untergruppe, und Loomio fügt die einreichende Person als Gast dieses Threads hinzu, nicht als Mitglied der Untergruppe. Die Person kann sich in ihrem eigenen Thread mit dem Prüfungsteam austauschen, aber andere private Diskussionen oder Einreichungen in der Untergruppe nicht sehen.
 

@@ -20,6 +20,7 @@ class StanceService
     publish_stance_directly!(stance, publication)
     Sentry.metrics.count("stance.create", attributes: { poll_type: stance.poll.poll_type })
     on_topic_item&.call(publication[:topic_item]) if publication[:topic_item]
+    EventBus.broadcast("vote_cast", stance.poll.group, stance.poll)
     stance
   end
 
@@ -90,6 +91,7 @@ class StanceService
     publish_stance_directly!(stance_changed, publication)
     Sentry.metrics.count(metric_name, attributes: { poll_type: stance.poll.poll_type })
     on_topic_item&.call(publication[:topic_item]) if publication[:topic_item]
+    EventBus.broadcast("vote_cast", stance.poll.group, stance.poll) if stance_changed.cast_at?
     stance_changed
   end
 

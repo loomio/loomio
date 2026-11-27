@@ -43,6 +43,19 @@ el:
     task_updated_not_done: Η εργασία επισημάνθηκε ως μη ολοκληρωμένη
     no_tasks_assigned: Δεν σας έχουν ανατεθεί εργασίες
     task_placeholder: Εισαγάγετε μια εργασία και {'@'}αναφέρετε κάποιον για να την αναθέσει
+    status_todo: Προς ολοκλήρωση
+    status_done: Ολοκληρωμένες
+    due_any: Οποιαδήποτε ημερομηνία λήξης
+    due_overdue: Εκπρόθεσμες
+    due_next_7_days: Επόμενες 7 μέρες
+    due_later: Αργότερα
+    due_none: Χωρίς ημερομηνία λήξης
+    assigned_anyone: Οποιοσδήποτε
+    assigned_me: Ανατεθειμένες σε εμένα
+    search_members: Αναζήτηση μελών
+    search_tasks: Αναζήτηση εργασιών
+    no_open_tasks: Δεν έχετε ανοιχτές εργασίες.
+    no_matching_tasks: Καμία εργασία δεν ταιριάζει με τα φίλτρα σας.
   templates:
     template_gallery: Γκαλερί προτύπων
     title_template: Πρότυπο %{title}
@@ -646,6 +659,7 @@ el:
     direct_discussions: Άμεσες συζητήσεις
     unread_discussions: Μη αναγνωσμένες συζητήσεις
     unread_threads_count: Μη αναγνωσμένα νήματα (%{count})
+    votes_count: 1 ψήφος | {count} ψήφοι
   strand_nav:
     newest: Νεότερο
     oldest: Το πιο παλιό
@@ -1580,6 +1594,8 @@ el:
       Δημιούργησα την ομάδα %{groupName} στο %{site_name} για να συζητάμε και να παίρνουμε αποφάσεις μαζί. Μπείτε από αυτόν τον σύνδεσμο:
       %{link}
     trial_shareable_link_note: Αντιγράψτε τον σύνδεσμο πρόσκλησης και στείλτε τον με email ή σε συνομιλία για να προσκαλέσετε άτομα στην ομάδα σας. Μόλις γίνουν μέλη, μπορείτε να τους στέλνετε ειδοποιήσεις με email και στο κινητό απευθείας από το Loomio. <a href="%{upgradeUrl}">Αναβαθμίστε το πακέτο σας</a> για να στέλνετε προσκλήσεις με email.
+    include_intro_message: Συμπερίληψη εισαγωγικού μηνύματος
+    trial_shareable_invitation_message: 'Ξεκίνησα μια δοκιμή 7 ημερών του %{site_name} για να δούμε αν μπορεί να βοηθήσει στη λήψη αποφάσεων στην ομάδα %{groupName}. Πατήστε αυτόν τον σύνδεσμο για να συμμετάσχετε και να το δοκιμάσουμε: %{link}'
   memberships_page:
     members: Μέλη
     name_label: Όνομα
@@ -2177,6 +2193,7 @@ el:
     unlocked: Ακλείδωτος
     no_threads_found_that_match_your_query_or_filters: Δεν βρέθηκαν θέματα που να ταιριάζουν με το ερώτημά σας ή τα φίλτρα σας
     no_threads_found_that_match_your_filters: Δεν βρέθηκαν θέματα που να ταιριάζουν με τα φίλτρα σας
+    new_thread: Νέο νήμα
   members_panel:
     bot: Bot
     no_results: Δεν βρέθηκαν μέλη
@@ -3272,3 +3289,103 @@ el:
     bounced: Αναφέρθηκε επιστροφή email
     complained: Αναφέρθηκε ως ανεπιθύμητο
     skipped: Το email δεν στάλθηκε
+  group_cards:
+    admins_count: 1 διαχειριστής | {count} διαχειριστές
+    members_count: 1 μέλος | {count} μέλη
+    delegates_count: 1 εκπρόσωπος | {count} εκπρόσωποι
+    polls_count: 1 δημοσκόπηση | {count} δημοσκοπήσεις
+    proposals_count: 1 πρόταση | {count} προτάσεις
+    needs_your_vote: 1 χρειάζεται την ψήφο σας | {count} χρειάζονται την ψήφο σας
+    no_open_polls: Δεν υπάρχουν ανοιχτές δημοσκοπήσεις
+    browse_files: Προβολή αρχείων
+    invite_get_started: Πατήστε εδώ για να ξεκινήσετε
+    threads: Νήματα
+    threads_count: 1 νήμα | {count} νήματα
+    view_threads: Προβολή νημάτων
+    no_threads: Δεν υπάρχουν νήματα
+    this_group_only: Μόνο αυτή η ομάδα
+    my_subgroups: Οι υποομάδες μου
+    all_subgroups: Όλες οι υποομάδες
+    filter_tags: Φιλτράρισμα ετικετών
+    filter_groups: Φιλτράρισμα ομάδων
+    filter_subgroups: Φιλτράρισμα υποομάδων
+    filter_qualifier_unread: αδιάβαστα
+    filter_qualifier_direct: άμεσα
+    filter_qualifier_locked: κλειδωμένα
+    filter_qualifier_unlocked: ξεκλείδωτα
+    no_filtered_threads: Δεν υπάρχουν {filters} νήματα
+    no_filtered_threads_with_tag: 'Δεν υπάρχουν {filters} νήματα με ετικέτα: {tag}'
+    no_threads_with_tag: 'Δεν υπάρχουν νήματα με ετικέτα: {tag}'
+    recent_count: "{count} πρόσφατα"
+    need_vote_count: 1 χρειάζεται ψήφο | {count} χρειάζονται ψήφο
+    open_count: "{count} ανοιχτά"
+    files_count: 1 αρχείο | {count} αρχεία
+  onboarding_card:
+    verified_badge: Επαληθεύτηκε
+    view_plans: Δείτε τα πακέτα
+    upgrade_now: Αναβαθμίστε τώρα
+    extend_trial_title: Ξεκλειδώστε 30 επιπλέον ημέρες & μια δωρεάν κλήση εκπαίδευσης
+    trial_verified: Είδαμε την ομάδα σας και είμαστε εδώ για να βοηθήσουμε. Μπορείτε πλέον να στέλνετε προσκλήσεις μέσω email — συνεχίστε για να ξεκλειδώσετε 30 επιπλέον ημέρες, λειτουργίες Pro και μια δωρεάν κλήση εκπαίδευσης με την ομάδα μας.
+    trial_extended_title: Ξεκλειδώθηκαν 30 επιπλέον ημέρες & μια δωρεάν κλήση εκπαίδευσης
+    book_training_call: Κλείστε μια κλήση εκπαίδευσης
+    extend_trial_initial: Ξεκλειδώστε 30 επιπλέον ημέρες και μια δωρεάν κλήση εκπαίδευσης με μέλος της ομάδας του Loomio όταν {count} άλλα άτομα μπουν στην ομάδα.
+    extend_trial_remaining: Ξεκλειδώστε 30 επιπλέον ημέρες και μια δωρεάν κλήση εκπαίδευσης με μέλος της ομάδας του Loomio όταν 1 ακόμη άτομο μπει στην ομάδα. | Ξεκλειδώστε 30 επιπλέον ημέρες και μια δωρεάν κλήση εκπαίδευσης με μέλος της ομάδας του Loomio όταν {count} ακόμη άτομα μπουν στην ομάδα.
+    trial_extended_description: Η δοκιμαστική σας περίοδος παρατάθηκε κατά 30 ημέρες.
+  dashboard_cards:
+    all_groups: Όλες οι ομάδες
+    unread_count: "{count} αδιάβαστα"
+    direct: Άμεσα
+    direct_count: "{count} άμεσα"
+    people: Άτομα
+    recently_online: Πρόσφατα σε σύνδεση
+    recently_online_count: "{count} πρόσφατα σε σύνδεση"
+    your_tasks: Οι εργασίες σας
+    tasks_todo_count: "{count} προς ολοκλήρωση"
+    bookmarks_saved_count: "{count} αποθηκευμένα"
+    search_people: Αναζήτηση ατόμων
+    direct_thread: Άμεσο νήμα
+    view_profile: Προβολή προφίλ
+    no_people_found: Δεν βρέθηκαν άτομα
+  group_settings_panel:
+    subtitle: Επιλογές ομάδας
+    group_administration: Διαχείριση ομάδας
+    your_membership: Η ιδιότητά σας ως μέλους
+    integrations_and_data: Διασυνδέσεις & δεδομένα
+    leave_or_delete: Αποχώρηση ή διαγραφή
+    edit_group_description: Ενημερώστε το όνομα, την περιγραφή, το λογότυπο, τη φωτογραφία εξωφύλλου, το απόρρητο και τα δικαιώματα των μελών της ομάδας.
+    edit_tags_description: Δημιουργήστε, μετονομάστε, συγχωνεύστε και χρωματίστε ετικέτες για την οργάνωση νημάτων και δημοσκοπήσεων.
+    manage_subscription_description: Δείτε το πρόγραμμά σας, τα στοιχεία χρέωσης και τα όρια μελών.
+    change_volume_description: Επιλέξτε πόσο συχνά λαμβάνετε email και ειδοποιήσεις push από αυτή την ομάδα.
+    email_group_description: Ξεκινήστε νέο νήμα σε αυτή την ομάδα στέλνοντας email σε αυτή τη διεύθυνση.
+    group_stats_description: Δείτε τη δραστηριότητα των μελών και τη συμμετοχή σε νήματα και ψηφοφορίες με την πάροδο του χρόνου.
+    become_coordinator_description: Αποκτήστε δικαιώματα διαχειριστή ομάδας για αυτή την ομάδα.
+    chatbots_description: Συνδέστε το Slack, το Mattermost, το Discord ή άλλα εργαλεία συνομιλίας για να δημοσιεύετε ενημερώσεις της ομάδας.
+    api_docs_description: Ρυθμίστε την πρόσβαση στο API και τα webhooks για να συνδέσετε το Loomio με τα δικά σας εργαλεία.
+    export_data_description: Κατεβάστε αντίγραφο των νημάτων, δημοσκοπήσεων, σχολίων και μελών αυτής της ομάδας.
+    leave_group_description: Αποχωρήστε από αυτή την ομάδα και σταματήστε να λαμβάνετε ειδοποιήσεις.
+    destroy_group_description: Προγραμματίστε την οριστική διαγραφή αυτής της ομάδας και του περιεχομένου της.
+  pagination:
+    page_of: Σελίδα {page} από {total}
+    previous_page: Προηγούμενη σελίδα
+    next_page: Επόμενη σελίδα
+    sort_by: Ταξινόμηση κατά
+    per_page: Ανά σελίδα
+    jump_to_page: Μετάβαση στη σελίδα
+    sort:
+      recent_activity: Πρόσφατη δραστηριότητα
+      newest: Νεότερα
+      oldest: Παλαιότερα
+      closing_soon: Λήγουν σύντομα
+      name: Όνομα
+      last_seen: Τελευταία εμφάνιση
+    edit_tags_description: Δημιουργήστε, μετονομάστε, συγχωνεύστε και χρωματίστε ετικέτες για την οργάνωση νημάτων και δημοσκοπήσεων.
+    manage_subscription_description: Δείτε το πακέτο σας, τα στοιχεία χρέωσης και τα όρια μελών.
+    change_volume_description: Επιλέξτε πόσο συχνά λαμβάνετε email και ειδοποιήσεις push από αυτή την ομάδα.
+    email_group_description: Ξεκινήστε νέο νήμα σε αυτή την ομάδα στέλνοντας email σε αυτή τη διεύθυνση.
+    group_stats_description: Δείτε τη δραστηριότητα των μελών, τη συμμετοχή στα νήματα και στις ψηφοφορίες με την πάροδο του χρόνου.
+    become_coordinator_description: Αποκτήστε δικαιώματα διαχειριστή ομάδας για αυτή την ομάδα.
+    chatbots_description: Συνδέστε το Slack, το Mattermost, το Discord ή άλλα εργαλεία συνομιλίας για να δημοσιεύετε ενημερώσεις της ομάδας.
+    api_docs_description: Ρυθμίστε την πρόσβαση API και τα webhooks για να συνδέσετε το Loomio με τα δικά σας εργαλεία.
+    export_data_description: Κατεβάστε αντίγραφο των νημάτων, δημοσκοπήσεων, σχολίων και μελών αυτής της ομάδας.
+    leave_group_description: Αποχωρήστε από αυτή την ομάδα και σταματήστε να λαμβάνετε ειδοποιήσεις.
+    destroy_group_description: Προγραμματίστε την οριστική διαγραφή αυτής της ομάδας και του περιεχομένου της.

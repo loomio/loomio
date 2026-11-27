@@ -1,17 +1,17 @@
 ---
 title: Як удзельнічаць
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: 3f49d14c3a6f72b8
   get-someone-s-attention: 8cd364648cd373c7
   reactions: f62f3e41a59599b1
-  vote: f6788ae8df9d80b7
+  vote: 2793f0008f0c3df8
   state-a-reason: 072adbfdc6f9b0e5
   change-your-vote: 0e39e7c7039610ce
   results: 44284feede1311fc
@@ -73,7 +73,7 @@ title_generated: 6b124a72925b4b4d
 
 ## Голас
 
-Адкрыйце апытанне праз запрашэнне ў электронным лісце, апавяшчэнне ў праграме або ўкладку **Апытанні** вашай групы. Прачытайце апытанне і ўсе далучаныя файлы, затым выберыце свой варыянт.
+Адкрыйце апытанне праз запрашэнне ў электронным лісце, апавяшчэнне ў праграме, **Усе групы** або раздзел **Апытанні** вашай групы. Прачытайце апытанне і ўсе далучаныя файлы, затым выберыце свой варыянт.
 
 У Loomio ёсць некалькі тыпаў апытанняў. У прыкладзе ніжэй паказана прапанова з варыянтамі **Пагаджаюся**, **Устрымацца** і **Не пагаджаюся**.
 

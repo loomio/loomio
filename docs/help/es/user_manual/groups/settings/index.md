@@ -1,17 +1,17 @@
 ---
 title: Configuración del grupo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/settings/index.md
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
+source_file: docs/help/en/user_manual/groups/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: b975fe0dc7787563
+  introduction: e22d1f7356e9be93
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: 2cff0fbd706d3cc5
+  introduction: 3396f2ad3eb08806
   group-profile: 833ce8cc365b3b0f
   group-privacy: 46f72a4ef5c718f9
   group-permissions: 2ca0dd502e42eb2a
@@ -25,7 +25,7 @@ title_generated: 5c11432f7425c34d
 
 La configuración del grupo controla cómo se presenta tu grupo, quién puede encontrarlo y unirse a él, y qué pueden hacer los miembros. Solo los administradores del grupo pueden editar esta configuración.
 
-En la página del grupo, abre el menú de acciones y selecciona **Editar la configuración del grupo**.
+En la página del grupo, abre **Configuración ** y selecciona **Editar la configuración del grupo**.
 
 ![Editar la configuración del grupo desde la página del grupo](group_settings.png)
 

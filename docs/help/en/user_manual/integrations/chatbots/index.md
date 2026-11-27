@@ -36,7 +36,7 @@ You can also connect other services that accept incoming webhooks with HTML or M
 
 You must be a group admin to add or edit chat integrations.
 
-1. After setting up your chat service (see above), open the group menu in Loomio and select **Chat integrations**.
+1. After setting up your chat service (see above), open **Settings** on your group page in Loomio and select **Chat integrations**.
 
    ![](loomio-group-settings.png)
 

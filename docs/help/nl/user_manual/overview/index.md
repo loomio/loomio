@@ -1,24 +1,24 @@
 ---
 title: Aan de slag
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: ce2e70ad020bae80
   how-loomio-works: 6285228aba199186
-  groups: 011c1b73784fbcb5
+  groups: 2e5ccd39f66a7bbe
   discussions: f6bcba7d6b90ed44
-  polls-and-proposals: aac8c5caa757bd15
+  polls-and-proposals: 15601e9c62ae84ba
   try-it-out: 0d87ae04de8f9e3d
   how-people-use-loomio: 7e5e102327518eab
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ Loomio heeft drie hoofdonderdelen: groepen, discussies en peilingen.
 
 ### Groepen
 
-Een groep is een plek waar een organisatie, team of gemeenschap samenwerkt. De startpagina legt het doel van de groep uit en bevat links naar de discussies, peilingen, leden en bestanden van de groep.
+Een groep is een plek waar een organisatie, team of gemeenschap samenwerkt. De startpagina legt het doel van de groep uit en bevat links naar de threads, peilingen, leden, bestanden, taken, bladwijzers en instellingen van de groep.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ Peilingen helpen een groep om voorkeuren te begrijpen, advies te verzamelen en b
 
 ![](orientation_proposal.png)
 
-Peilingen kunnen deel uitmaken van een discussie of zelfstandig worden gestart via het tabblad **Peilingen** op een groepspagina.
+Peilingen kunnen deel uitmaken van een discussie of zelfstandig worden gestart via **Peilingen** op een groepspagina.
 
 Bekijk de [Korte rondleiding](/en/user_manual/overview/orientation) om te zien waar je deze onderdelen in de interface vindt. Lees [Hoe je kunt deelnemen](/en/user_manual/overview/how-to-participate) om te beginnen met bijdragen.
 

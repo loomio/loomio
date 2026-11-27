@@ -1,18 +1,18 @@
 ---
 title: Creare un gruppo
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 792e23f7fcb36aec
+  introduction: 87ff87d962c1b084
   group-details: 0fcf6c809c12050b
   group-name: 2ba5592281dfcbcb
   group-handle: 64928a4bbab65b9b
   group-description: 48af06ef795dd9a9
 generated:
-  introduction: c53efccd20b6dc37
+  introduction: b63d3aea99749d9f
   group-details: 347ad726b7e73e91
   group-name: b7b1297fcf61d8d6
   group-handle: 445b57b60b75444c
@@ -25,7 +25,7 @@ title_generated: 4784aaeb8249d342
 
 # Creare un nuovo gruppo
 
-Se sei nuovo su Loomio, puoi creare un gruppo con una prova gratuita dal [sito web di Loomio](https://www.loomio.com/). Se usi già Loomio e vuoi creare un altro gruppo, seleziona **Nuovo gruppo** nella barra laterale.
+Se sei nuovo su Loomio, puoi creare un gruppo con una prova gratuita dal [sito web di Loomio](https://www.loomio.com/). Durante la prova gratuita, il tuo gruppo ottiene 30 giorni aggiuntivi, con sottogruppi e ospiti abilitati, quando tre persone votano in una proposta o in un sondaggio. Se usi già Loomio e vuoi creare un altro gruppo, seleziona **Nuovo gruppo** nella barra laterale oppure nel menu per cambiare gruppo in cima alla pagina quando la barra laterale è chiusa.
 
 Alla maggior parte delle organizzazioni basta un solo gruppo principale, con tutti i [sottogruppi](/en/user_manual/groups/subgroups) necessari al suo interno.
 

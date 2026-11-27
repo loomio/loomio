@@ -21,7 +21,7 @@ const isGroupAdmin = ref({});
 const isTopicAdmin = ref({});
 const reset = ref(false);
 const saving = ref(false);
-const loading = ref(false);
+const isLoading = ref(false);
 const query = ref('');
 const message = ref('');
 const stanceIdsByUserId = ref({});
@@ -64,7 +64,7 @@ function toHash(ids) {
 // Keep the server's page, total, and voter metadata together; ignore responses
 // from an older search or page.
 const fetchStances = debounce(() => {
-  loading.value = true;
+  isLoading.value = true;
   const currentQuery = query.value;
   const currentPage = page.value;
   const sequence = ++fetchSequence;
@@ -95,7 +95,7 @@ const fetchStances = debounce(() => {
   }).catch(error => {
     Flash.fromServer(error);
   }).finally(() => {
-    if (sequence === fetchSequence && currentQuery === query.value && currentPage === page.value) loading.value = false;
+    if (sequence === fetchSequence && currentQuery === query.value && currentPage === page.value) isLoading.value = false;
   });
 }, 300);
 
@@ -105,14 +105,14 @@ function newQuery(value) {
   page.value = 1;
   userIds.value = [];
   voterTotal.value = 0;
-  loading.value = true;
+  isLoading.value = true;
   fetchStances();
 }
 
 function changePage(value) {
   page.value = value;
   userIds.value = [];
-  loading.value = true;
+  isLoading.value = true;
   fetchStances();
 }
 
@@ -276,9 +276,9 @@ v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="max
           @click="openRemoveDialog(user)")
           common-icon(name="mdi-delete-outline")
 
-    v-list-item(v-if="query && users.length == 0 && !loading")
+    v-list-item(v-if="query && users.length == 0 && !isLoading")
       v-list-item-title {{ t('discussions_panel.no_results_found', { search: query }) }}
-    .d-flex.justify-center(v-if="loading")
+    .d-flex.justify-center(v-if="isLoading")
       loading
   .d-flex.flex-wrap.align-center.justify-space-between.ga-2.px-4.py-2(v-if="!someRecipients")
     span.poll-members-form__page-count.text-body-small.text-medium-emphasis {{ t('poll_common_form.voter_page_count', {first: pageFirst, last: pageLast, total: voterTotal}) }}
@@ -287,7 +287,7 @@ v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="max
       :model-value="page"
       :length="totalPages"
       :total-visible="7"
-      :disabled="loading"
+      :disabled="isLoading"
       @update:model-value="changePage")
   v-dialog.poll-members-form__set-all-dialog(v-model="setAllDialog" max-width="480")
     v-card(:title="t('poll_common_form.set_all_vote_weights_title')")

@@ -45,7 +45,7 @@ class MoveCommentsWorker < ApplicationJob
       source_topic.update!(discarded_at: Time.current, discarded_by: actor_id) if source_was_discarded
       TopicService.repair(source_topic_id) unless source_was_discarded
 
-      ActiveStorage::Attachment.where(record: all_topic_items.map(&:itemable).compact).update_all(group_id: target_topic.group_id)
+      # Attachments resolve their group through their record; no denormalized group_id to update.
     end
 
     ActiveRecord.after_all_transactions_commit do

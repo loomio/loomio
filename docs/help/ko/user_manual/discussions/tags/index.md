@@ -1,20 +1,20 @@
 ---
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
   template-tags: 3ddcc6c204aa843f
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 6cf7ef518af11ef2
+  introduction: 0f010196c44a3b9d
   apply-tags: e2106e1b1ce0133a
   create-tags: 981cc28b1744e0e3
   template-tags: '096af33ec02d914d'
-  edit-tags: 2880f2cdebb5e0ea
+  edit-tags: 05fab017a22c48da
   edit-tag-in-thread-or-poll: 69a8264f0230dc94
   tag-contributions: 833069724c4bdb18
   find-tagged-contributions: aae68efec1787588
@@ -22,11 +22,11 @@ generated:
 title: 분류 태그
 title_source: c86f6830bf302394
 title_generated: 3796507790b8738d
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -37,7 +37,7 @@ translated:
 
 태그는 조직 전체에 속합니다. 상위 그룹에서 만든 태그는 하위 그룹과 공유되므로 그룹 전반의 관련 업무를 추적할 수 있습니다. Loomio는 태그를 알파벳순으로 나열하고 각 이름 옆에 색상 점을 표시합니다.
 
-그룹 페이지에서 스레드 목록 위의 **태그**를 선택하고 태그를 고르면 해당 태그가 적용된 항목이 하나 이상 있는 스레드가 표시됩니다. 목록이 길면 필터 입력란에 입력하여 검색하세요.
+**모든 그룹** 또는 그룹 페이지에서 스레드, 투표, 할 일 목록 위의 **태그**를 선택하고 태그를 고르면 해당 태그가 적용된 항목이 표시됩니다. 목록이 길면 필터 입력란에 입력하여 검색하세요.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ translated:
 
 상위 그룹 관리자만 태그의 이름과 색상을 변경하거나 태그를 병합하거나 삭제할 수 있습니다. 변경 사항은 모든 하위 그룹을 포함한 조직 전체에 적용됩니다.
 
-그룹 페이지에서 **태그**를 열고 **태그 편집**을 선택하세요.
+그룹 페이지에서 **태그**를 열고 **태그 편집**을 선택하거나, **설정**을 열고 **분류 태그**를 선택하세요.
 
 ![분류 태그 편집](tags_edit_new.png)
 

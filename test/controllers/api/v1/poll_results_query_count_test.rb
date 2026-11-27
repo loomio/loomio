@@ -21,6 +21,9 @@ require 'test_helper'
 # lowering the current show/index baselines from 25/30 to 24/29.
 # Enforcing managed spam rules adds one rule-snapshot query per request,
 # raising the show/index baselines to 25/30 without per-poll queries.
+# Group serialization now includes one batched query for active_polls_count
+# via RecordCache, raising the show/index baselines to 26/31 without
+# per-poll or per-option growth.
 #
 # Weighted polls may add a constant number of queries, but their cost must not
 # grow with the number of options, voters, or polls faster than unweighted
@@ -44,13 +47,13 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
 
     assert_equal 2, calculate_results_queries(small)
     assert_equal 2, calculate_results_queries(large)
-    assert_equal 25, show_queries(small)
-    assert_equal 25, show_queries(large)
+    assert_equal 26, show_queries(small)
+    assert_equal 26, show_queries(large)
   end
 
   test "unweighted poll index does not grow with the number of polls" do
-    assert_equal 30, index_queries(polls_count: 1)
-    assert_equal 30, index_queries(polls_count: 4)
+    assert_equal 31, index_queries(polls_count: 1)
+    assert_equal 31, index_queries(polls_count: 4)
   end
 
   test "weighted poll results cost a bounded constant more than unweighted results" do

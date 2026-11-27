@@ -1,32 +1,70 @@
 <script setup lang="js">
 import { ref, computed, onMounted } from 'vue';
-import { orderBy } from 'lodash-es';
+import { useI18n } from 'vue-i18n';
+import { useRoute, useRouter } from 'vue-router';
+import { intersection, orderBy, uniq } from 'lodash-es';
 
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
+import { useBookmarks } from '@/composables/useBookmarks';
+import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
 
-const loading = ref(true);
+const { embedded } = defineProps({
+  embedded: { type: Boolean, default: false }
+});
 
-const bookmarks = computed(() => orderBy(
-  Records.bookmarks.find({userId: Session.userId, discardedAt: null}),
-  ['createdAt'],
-  ['desc']
+const { t } = useI18n();
+const route = useRoute();
+const router = useRouter();
+const { loadBookmarks } = useBookmarks();
+const isLoading = ref(true);
+
+const group = computed(() => (
+  route.params.key ? Records.groups.fuzzyFind(route.params.key) : null
 ));
+
+const subgroupsFilter = computed({
+  get: () => (group.value && group.value.subgroupsCount > 0 && ['mine', 'all'].includes(route.query?.subgroups) ? route.query.subgroups : null),
+  set: (val) => {
+    const query = { ...route.query };
+    if (!val) { delete query.subgroups; } else { query.subgroups = val; }
+    router.replace({ query });
+  }
+});
+
+const allowedGroupIds = computed(() => {
+  if (!group.value) { return null; }
+  if (subgroupsFilter.value === 'all') { return group.value.organisationIds(); }
+  if (subgroupsFilter.value === 'mine') {
+    return uniq([group.value.id].concat(intersection(group.value.organisationIds(), Session.user().groupIds())));
+  }
+  return [group.value.id];
+});
+
+const bookmarks = computed(() => {
+  const all = Records.bookmarks.find({userId: Session.userId, discardedAt: null});
+  const filtered = allowedGroupIds.value
+    ? all.filter(b => allowedGroupIds.value.includes(b.groupId))
+    : all;
+  return orderBy(filtered, ['createdAt'], ['desc']);
+});
 
 const remove = (bookmark) => {
   bookmark.destroy().then(() => Flash.success('bookmarks.removed'));
 };
 
 onMounted(() => {
-  EventBus.$emit('currentComponent', {
-    titleKey: 'bookmarks.bookmarks',
-    page: 'bookmarksPage'
-  });
+  if (!embedded && !group.value) {
+    EventBus.$emit('currentComponent', {
+      titleKey: 'bookmarks.bookmarks',
+      page: 'bookmarksPage'
+    });
+  }
 
-  Records.bookmarks.fetch({}).finally(() => {
-    loading.value = false;
+  loadBookmarks().finally(() => {
+    isLoading.value = false;
   });
 });
 
@@ -36,14 +74,17 @@ const titleVisible = (visible) => {
 </script>
 
 <template lang="pug">
-v-main
-  v-container.bookmarks-page.max-width-1024.px-0.px-sm-3
-    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'bookmarks.bookmarks'")
+component(:is="embedded ? 'div' : 'v-main'")
+  component(:is="embedded ? 'div' : 'v-container'" :class="embedded ? 'bookmarks-page pt-2' : 'bookmarks-page max-width-1024 px-2 px-sm-4'")
+    template(v-if="!embedded")
+      h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}") {{ t('dashboard_page.dashboard') }}
+      dashboard-cards
 
-    section.bookmarks-page__loading(v-if='loading && bookmarks.length == 0')
-      v-card.mb-2
-        v-list(lines="two")
-          loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index')
+    .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2(v-if="group")
+      subgroups-filter-menu(:group="group" :selected="subgroupsFilter" @select="subgroupsFilter = $event")
+
+    v-card.mb-2(v-if='isLoading && bookmarks.length == 0' variant="flat")
+      loading
 
     template(v-else)
       v-card.mb-2(v-if='bookmarks.length > 0')
@@ -66,6 +107,6 @@ v-main
               )
                 common-icon(name="mdi-bookmark-remove-outline")
 
-      v-alert.mb-2(v-else type="info" variant="tonal" :title="$t('bookmarks.empty')")
-        span(v-t="'bookmarks.empty_help'")
+      v-alert.mb-2(v-else type="info" variant="tonal" :title="t('bookmarks.empty')")
+        span {{ t('bookmarks.empty_help') }}
 </template>

@@ -1,19 +1,19 @@
 ---
 title: Закладкі
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/users/bookmarks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4526320029ca0268
   save-a-bookmark: 3855beff6126a218
-  view-your-bookmarks: 0512e42564819ba7
+  view-your-bookmarks: 36d441a4ada6425f
   remove-a-bookmark: 5e66cedf4b86c3fa
 generated:
   introduction: a280581144b3ac19
   save-a-bookmark: 1c10088811f88f5c
-  view-your-bookmarks: db10b4a5abdb3487
+  view-your-bookmarks: '077379a83da86adf'
   remove-a-bookmark: e97f3439a4fd57e7
 title_source: 96316f0f6404dbe1
 title_generated: 9ca3f43265498c75
@@ -45,7 +45,7 @@ title_generated: 9ca3f43265498c75
 
 ## Прагляд вашых закладак
 
-Адкрыйце бакавую панэль і выберыце **Закладкі**. Лік побач са спасылкай паказвае, колькі закладак вы захавалі.
+Адкрыйце **Закладкі** на старонцы **Усе групы**, каб убачыць усё, што вы захавалі ва ўсіх вашых групах, або адкрыйце **Закладкі** на старонцы групы, каб убачыць закладкі ў гэтай групе (з фільтрам **Падгрупы** ў бацькоўскіх групах).
 
 На старонцы «Закладкі» першымі паказваюцца элементы, якія вы захавалі апошнімі. У кожным радку паказаны тып элемента і звесткі пра аўтарства. Выберыце радок, каб вярнуцца да элемента, захаванага ў закладках.
 

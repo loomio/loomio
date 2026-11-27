@@ -1,19 +1,19 @@
 ---
 title: Segnalibri
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/users/bookmarks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4526320029ca0268
   save-a-bookmark: 3855beff6126a218
-  view-your-bookmarks: 0512e42564819ba7
+  view-your-bookmarks: 36d441a4ada6425f
   remove-a-bookmark: 5e66cedf4b86c3fa
 generated:
   introduction: fb9a26dac0185652
   save-a-bookmark: e312f067c9b9ab78
-  view-your-bookmarks: 9d4942adab5a8c90
+  view-your-bookmarks: e8fdf656a835903c
   remove-a-bookmark: 173a237f070727b5
 title_source: 96316f0f6404dbe1
 title_generated: 60e82b4411450ecd
@@ -45,7 +45,7 @@ Apri il menu delle azioni dell'elemento e seleziona **Salva segnalibro**. Il men
 
 ## Visualizza i tuoi segnalibri
 
-Apri la barra laterale e seleziona **Segnalibri**. Il numero accanto al link indica quanti segnalibri hai salvato.
+Apri **Segnalibri** in **Tutti i gruppi** per vedere tutto ciò che hai salvato nei tuoi gruppi, oppure apri **Segnalibri** nella pagina di un gruppo per vedere i segnalibri di quel gruppo (con un filtro **Sottogruppi** nei gruppi principali).
 
 La pagina Segnalibri mostra per primi gli elementi salvati più di recente. Ogni riga mostra il tipo di elemento e il suo autore. Seleziona una riga per tornare all'elemento aggiunto ai segnalibri.
 

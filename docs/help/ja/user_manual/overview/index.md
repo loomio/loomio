@@ -1,24 +1,24 @@
 ---
 title: はじめに
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: 00a8c5f1d9d0f031
   how-loomio-works: cd6cd08682bb0091
-  groups: ed9860b4e2cb9fef
+  groups: 715ff49cfac5c605
   discussions: c426d9f792108161
-  polls-and-proposals: b0162b1901e4fa80
+  polls-and-proposals: b1afbd3613b0a44f
   try-it-out: f831c4f90c870b10
   how-people-use-loomio: 3905e54f1cd66fdf
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ Loomioには、グループ、ディスカッション、アンケートとい�
 
 ### グループ
 
-グループは、組織、チーム、コミュニティが協力して活動する場所です。ホームページにはグループの目的が示され、ディスカッション、アンケート、メンバー、ファイルへのリンクがあります。
+グループは、組織、チーム、コミュニティが協力して活動する場所です。ホームページにはグループの目的が示され、スレッド、アンケート、メンバー、ファイル、タスク、ブックマーク、設定へのリンクがあります。
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ Loomioには、グループ、ディスカッション、アンケートとい�
 
 ![](orientation_proposal.png)
 
-アンケートはディスカッションの一部として使うことも、グループページの**アンケート**タブから単独で実施することもできます。
+アンケートはディスカッションの一部として使うことも、グループページの**アンケート**から単独で実施することもできます。
 
 これらの要素が画面のどこに表示されるかは、[クイックツアー](/en/user_manual/overview/orientation)をご覧ください。参加を始めるには、[参加方法](/en/user_manual/overview/how-to-participate)をご覧ください。
 

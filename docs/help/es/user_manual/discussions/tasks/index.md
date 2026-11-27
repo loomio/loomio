@@ -1,20 +1,20 @@
 ---
 title: Tareas
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: 683878b2363a7566
   add-a-task: aa8cb935638c2802
-  name-and-assign-the-task-to-a-person: ab0428bdfd67a84d
+  name-and-assign-the-task-to-a-person: 42a1a0364f0f4f17
   set-a-reminder: 132f564df470ef87
   mark-it-as-done: 4212698d6c333b70
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ Usa una @mención en la tarea para asignársela a un miembro del grupo. El botó
 
 ![](tasklist2.png)
 
-Las tareas que tienes asignadas aparecen en tu página de **Tareas**. Abre **Tareas** desde la barra lateral para verlas agrupadas por hilo o encuesta.
+Abre **Tareas** en **Todos los grupos** para ver las tareas que tienes asignadas en todos tus grupos, o abre **Tareas** en la página de un grupo para ver las tareas de ese grupo. Las tareas se agrupan por hilo o encuesta, y puedes filtrarlas por estado (**Por hacer**, **Hechas** o **Todo**), fecha de vencimiento (**Vencidas**, **Próximos 7 días**, **Más adelante** o **Sin fecha de vencimiento**), persona asignada (en la página de un grupo), subgrupo o etiqueta de categoría, o usar la búsqueda.
 
 ![](task_list.png)
 

@@ -1,16 +1,16 @@
 ---
 title: Mensen uitnodigen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 6a697be314f5bcb3
+  introduction: 8909a26aa92d9965
   send-invitations-via-email: c0967f9edf179ba2
   invite-many-at-once: e43a70c46a8f2702
   invite-people-to-subgroups: f65eb153d9cc4ae6
-  share-a-link-to-your-group: bac5ee27a5c4a01a
+  share-a-link-to-your-group: f0ef17a75448801f
   request-to-join-group: d255c53045deef85
   review-membership-requests: e1cbffb38539f3da
   managing-invitations: 7896188a28edae82
@@ -37,7 +37,7 @@ title_generated: 5cf9fd03683405f5
 
 # Mensen uitnodigen voor een Loomio-groep
 
-Je kunt mensen per e-mail uitnodigen voor je Loomio-groep, een uitnodigingslink delen of mensen een lidmaatschapsverzoek laten indienen. Open het tabblad **Leden** op je groepspagina om te beginnen.
+Je kunt mensen per e-mail uitnodigen voor je Loomio-groep, een uitnodigingslink delen of mensen een lidmaatschapsverzoek laten indienen. Selecteer **Uitnodigen** op de kaart **Leden** of open **Leden** op je groepspagina om te beginnen.
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ Wanneer je mensen uitnodigt voor een hoofdgroep, kun je ze tegelijk toevoegen aa
 
 ## Een link naar je groep delen
 
-Selecteer **Delen** om een herbruikbare uitnodigingslink aan te maken voor een nieuwsbrief, chatkanaal, e-mail of website.
+Selecteer **Delen** om een herbruikbare uitnodigingslink aan te maken voor een nieuwsbrief, chatkanaal, e-mail of website. Schakel **Voeg een welkomstbericht toe** in om samen met de link een kort bericht te kopiëren.
 
 ![](group_invite_sharable_link.png)
 
-Selecteer **Deze link opnieuw instellen** om te voorkomen dat mensen via een bestaande link lid worden. De oude link werkt dan niet meer en er wordt een nieuwe link aangemaakt.
+Selecteer **Link resetten** om te voorkomen dat mensen via een bestaande link lid worden. De oude link werkt dan niet meer en er wordt een nieuwe link aangemaakt.
 
 <!-- translation-section: request-to-join-group -->
 

@@ -1,15 +1,15 @@
 ---
 title: グループの削除
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: 8926303698ed9c38
+  introduction: 9028df6bcc41f566
   group-data-is-permanently-deleted-after-90-days: b71e13399e4becf1
 title_source: 9a0868f49f1262ea
 title_generated: 7ebf6aa58d5c25aa
@@ -23,9 +23,9 @@ title_generated: 7ebf6aa58d5c25aa
 
 グループを削除する前に、[グループのデータをエクスポート](/en/user_manual/groups/data_export)し、アップロードしたファイルのうち残しておきたいものをダウンロードしてください。
 
-グループを削除するには、グループの操作メニューを開き、**グループの削除**を選択します。
+グループを削除するには、グループページの**設定**を開き、**グループの削除**を選択します。
 
-![Oatmilk Cooperativeのメニューにあるグループの削除操作](group_delete_group.png)
+![Oatmilk Cooperativeの設定ページにあるグループの削除操作](group_delete_group.png)
 
 グループのハンドル名を入力して、削除を確定します。
 

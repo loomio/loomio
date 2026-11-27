@@ -1,28 +1,30 @@
 ---
 title: Panoramica rapida
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: ecd0fe0598db0af5
   group-page: b351d5f2c21b5300
-  tabs: fa2b8c5dbc1e9e15
-  sidebar: 6fcc6fb14f4584c4
+  tabs: 86954790e9ef59f7
+  sidebar: c6de16f7a7779148
   user-settings: fc19e4048d467aed
   notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 8c209bc2f042ae96
+  mobile-navigation: 2be6c40d260c3dd1
+  all-groups: d71bbbd8a059f5db
 generated:
   introduction: bf8768ad16cd7f16
   group-page: 847d547e94769517
-  tabs: 7468e89aa58d0413
-  sidebar: ad5d3db7aaf7a4cb
+  tabs: 3c66b0b1e1963023
+  sidebar: 4c0fe33a1cdbb70e
   user-settings: ded0b71affd6fdb4
   notifications: 3bfc8116f9828818
   what-to-do-next: 1f6b6022f77503a7
-  mobile-navigation: f62732d85b6aeaaa
+  mobile-navigation: 622bb294dc8e215c
+  all-groups: d5ec0a36cb1b3d04
 title_source: c41a33370cd580dd
 title_generated: 1567395c8aacbba6
 ---
@@ -43,16 +45,27 @@ La pagina iniziale del tuo gruppo descrive il gruppo e contiene i link al suo la
 
 <!-- translation-section: tabs -->
 
-### Schede
+### Sezioni
 
-Le schede sotto la descrizione del gruppo mostrano:
+Le schede di navigazione sotto la descrizione del gruppo mostrano:
 
-- **Discussioni**: Le conversazioni delle discussioni del gruppo e le attività recenti.
-- **Sondaggi**: I sondaggi aperti e chiusi nel gruppo.
-- **Membri**: Le persone che fanno parte del gruppo.
+- **Conversazioni**: Le conversazioni delle discussioni del gruppo e le attività recenti o non lette.
+- **Sondaggi**: I sondaggi aperti e chiusi nel gruppo, compresi quelli in attesa del tuo voto.
+- **Membri**: Le persone che fanno parte del gruppo, con un collegamento rapido per invitare nuovi membri.
 - **File**: I file allegati a discussioni, commenti, proposte e sondaggi in tutto il gruppo, così puoi trovare un documento senza ricordare dove è stato condiviso.
+- **Compiti**: I compiti aperti e completati nel gruppo, con filtri per stato, scadenza, assegnatario e tag.
+- **Segnalibri**: Le discussioni, i commenti, i sondaggi, i voti e le conclusioni che hai aggiunto ai segnalibri nel gruppo.
+- **Configurazione**: L'amministrazione del gruppo, le opzioni di adesione, le impostazioni delle notifiche, le integrazioni e l'esportazione dei dati.
 
 Consulta [Trovare contenuti](/en/user_manual/overview/finding-content) per informazioni su ricerca, filtri, tag, segnalibri e discussioni non lette.
+
+<!-- translation-section: all-groups -->
+
+## Tutti i gruppi
+
+Seleziona **Tutti i gruppi** nella barra laterale per vedere il tuo lavoro in tutti i gruppi di cui fai parte. Questa pagina usa le stesse schede di navigazione della pagina di un gruppo, con **Conversazioni** (comprese quelle non lette e le conversazioni dirette), **Sondaggi**, **Persone** (un elenco consultabile tramite ricerca delle persone con cui condividi dei gruppi, che mostra chi è stato online di recente), **File**, **Compiti** e **Segnalibri**.
+
+![](all_groups.png)
 
 <!-- translation-section: sidebar -->
 
@@ -62,7 +75,7 @@ Apri la barra laterale con il pulsante del menu (**☰**) in alto a sinistra sul
 
 ![](sidebar.png)
 
-Usa la barra laterale per aprire la tua dashboard, i sondaggi in attesa del tuo voto, le discussioni non lette e quelle dirette, i compiti e i gruppi. Contiene anche collegamenti al manuale utente e all'assistenza.
+Usa la barra laterale per passare da **Tutti i gruppi** ai tuoi gruppi e sottogruppi e per creare un nuovo gruppo o sottogruppo. Quando la barra laterale è chiusa, seleziona il nome del gruppo (o **Tutti i gruppi**) in cima alla pagina per passare a un altro gruppo o crearne uno nuovo. La barra laterale contiene anche collegamenti al manuale utente e all'assistenza.
 
 <!-- translation-section: user-settings -->
 
@@ -88,7 +101,7 @@ Consulta [Notifiche](/en/user_manual/users/email_settings) per informazioni sull
 
 ## Navigazione sui dispositivi mobili
 
-Sui dispositivi mobili, la barra di navigazione in basso apre la barra laterale, la dashboard e le notifiche. All'interno di una discussione, il menu della conversazione ne mostra i contenuti e le azioni disponibili.
+Sui dispositivi mobili, la barra di navigazione in basso apre la barra laterale, **Tutti i gruppi** e le notifiche. All'interno di una discussione, il menu della conversazione ne mostra i contenuti e le azioni disponibili.
 
 <!-- translation-section: what-to-do-next -->
 

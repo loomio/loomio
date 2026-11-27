@@ -4,13 +4,13 @@ const chatbotName = 'Oatmilk Cooperative chat';
 
 async function openGroupMenu(page) {
   await page.goto('/dev/setup_manual_oatmilk_chatbot');
-  await page.locator('.group-page__actions .action-menu--btn').click();
-  await expect(page.locator('.v-overlay--active .action-dock__button--chatbots')).toBeVisible();
+  await page.locator('.group-cards__settings').click();
+  await expect(page.locator('.group-settings-panel .action-dock__button--chatbots')).toBeVisible();
 }
 
 async function openChatbots(page) {
   await openGroupMenu(page);
-  await page.locator('.v-overlay--active .action-dock__button--chatbots').click();
+  await page.locator('.group-settings-panel .action-dock__button--chatbots').click();
   await expect(page.locator('.chatbot-list__chatbot', { hasText: chatbotName })).toBeVisible();
 }
 
@@ -39,10 +39,10 @@ async function openInviteSuggestions(page) {
 
 test('loomio-group-settings', async ({ page, manual: screenshot }) => {
   await openGroupMenu(page);
-  await screenshot.capture('integrations/chatbots/loomio-group-settings', {
+  await screenshot.captureElement('integrations/chatbots/loomio-group-settings', '.group-page', {
     width: 1280,
-    height: 857,
-    spotlight: '.v-overlay--active .action-dock__button--chatbots'
+    height: 2000,
+    spotlight: '.group-settings-panel .action-dock__button--chatbots'
   });
 });
 

@@ -25,6 +25,7 @@ class GroupSerializer < ApplicationSerializer
              :admins_can_edit_user_content,
              :token,
              :polls_count,
+             :active_polls_count,
              :poll_templates_count,
              :discussions_count,
              :group_privacy,
@@ -62,6 +63,12 @@ class GroupSerializer < ApplicationSerializer
     cache_fetch(:subgroups_counts_by_group_id, object.id) { object.subgroups.count }
   end
 
+  def active_polls_count
+    cache_fetch(:active_polls_counts_by_group_id, object.id) do
+      Poll.active.joins(:topic).where(topics: { group_id: object.id }).count
+    end
+  end
+
   def current_user_membership
     cache_fetch(:memberships_by_group_id, object.id) { nil }
   end
@@ -96,6 +103,7 @@ class GroupSerializer < ApplicationSerializer
       allow_subgroups:         sub.allow_subgroups,
       allow_guests:            sub.allow_guests,
       allow_email_invitations: sub.allow_email_invitations,
+      trial_extended_at:       sub.trial_extended_at,
       plan:                    sub.plan,
       members_count:           sub.members_count
     }

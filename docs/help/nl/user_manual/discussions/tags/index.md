@@ -1,25 +1,25 @@
 ---
 title: Categorielabels
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 8bba031b4fe0fe40
+  introduction: 10786ea3061ed28a
   apply-tags: 3745238da4446528
   create-tags: 7e101283209f8c5d
-  edit-tags: e2e17752eb9d2175
+  edit-tags: 3d24b1e02322e53a
   edit-tag-in-thread-or-poll: fc7c5fb7246ca704
   template-tags: 0afd14cbf08de5cb
   tag-contributions: b38d0589256b7658
@@ -37,7 +37,7 @@ Met categorielabels vind je discussies, peilingen, conclusies en reacties over e
 
 Labels horen bij de hele organisatie. Een label dat in een hoofdgroep wordt aangemaakt, wordt gedeeld met de subgroepen, zodat je samenhangend werk in verschillende groepen kunt volgen. Loomio toont labels in alfabetische volgorde met een gekleurde stip naast elke naam.
 
-Selecteer op je groepspagina **Labels** boven de lijst met threads en kies een label om threads te tonen die minstens één item met dat label bevatten. Typ in het filterveld om in een lange lijst te zoeken.
+Selecteer op **Alle groepen** of een groepspagina **Labels** boven de lijst met threads, peilingen of taken en kies een label om items met dat label te tonen. Typ in het filterveld om in een lange lijst te zoeken.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ Wanneer iemand een discussie of peiling vanuit een sjabloon start, kent Loomio o
 
 Alleen admins van de hoofdgroep kunnen labels hernoemen, een andere kleur geven, samenvoegen of verwijderen. Wijzigingen gelden voor de hele organisatie, inclusief alle subgroepen.
 
-Open **Labels** op de groepspagina en selecteer **Labels bewerken**.
+Open **Labels** op de groepspagina en selecteer **Labels bewerken**, of open **Instellingen** en selecteer **Categorie labels**.
 
 ![categorielabels bewerken](tags_edit_new.png)
 

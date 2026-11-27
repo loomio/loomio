@@ -1,13 +1,13 @@
 ---
 title: Aloita keskustelu
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: b8fb27d03edaf932
-  new-discussion: c53ec10305aef985
+  new-discussion: 5ec4d613de2879c8
   group: 9ff9a97de4fb46be
   invite-and-notify: 0dc58d9941898fc1
   tags: dadc00066d74d490
@@ -37,11 +37,11 @@ Voit esittää yksinkertaisen kysymyksen tai jakaa yksityiskohtaisen kuvauksen l
 
 ## Aloita uusi keskustelu
 
-Valitse **Aloita keskustelu** ryhmäsi sivulla tai minkä tahansa alaryhmän sivulla.
+Valitse **Uusi ketju** ryhmäsi sivulla tai minkä tahansa alaryhmän sivulla.
 
 Loomio näyttää ryhmäsi [keskustelumallit](/en/user_manual/discussions/templates/). Avaa keskustelulomake valitsemalla malli tai **Tyhjä malli**.
 
-![Aloita keskustelu -painike Oatmilk Cooperative -ryhmän sivulla](new-discussion-button.png)
+![Uusi ketju -painike Oatmilk Cooperative -ryhmän sivulla](new-discussion-button.png)
 
 ![Keskustelun aloituslomake palautettavien pullojen kokeilun suunnitteluun](new-discussion-example.png)
 

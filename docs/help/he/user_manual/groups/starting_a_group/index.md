@@ -1,18 +1,18 @@
 ---
 title: פתיחת קבוצה
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 792e23f7fcb36aec
+  introduction: 87ff87d962c1b084
   group-details: 0fcf6c809c12050b
   group-name: 2ba5592281dfcbcb
   group-handle: 64928a4bbab65b9b
   group-description: 48af06ef795dd9a9
 generated:
-  introduction: 981b8db2e20dd2be
+  introduction: 61075b4a62055a63
   group-details: b230cdb2d5eaae16
   group-name: fc5b788ad7f47dbd
   group-handle: 98f734d8f919994c
@@ -25,7 +25,7 @@ title_generated: e1f28364a62dc255
 
 # פתיחת קבוצה חדשה
 
-בתחילת השימוש ב־Loomio, ניתן לפתוח קבוצה לתקופת ניסיון בחינם דרך [אתר Loomio](https://www.loomio.com/). אם כבר נעשה שימוש ב־Loomio ונדרשת קבוצה נוספת, יש לבחור **קבוצה חדשה** בסרגל הצד.
+בתחילת השימוש ב־Loomio, ניתן לפתוח קבוצה לתקופת ניסיון בחינם דרך [אתר Loomio](https://www.loomio.com/). במהלך תקופת הניסיון בחינם, הקבוצה מקבלת 30 ימים נוספים, עם אפשרות להשתמש בתת־קבוצות ובאורחים, לאחר ששלושה אנשים מצביעים בהצעה או בסקר. אם כבר נעשה שימוש ב־Loomio ונדרשת קבוצה נוספת, יש לבחור **קבוצה חדשה** בסרגל הצד, או בתפריט החלפת הקבוצות שבראש העמוד כאשר סרגל הצד סגור.
 
 לרוב הארגונים נדרשת רק קבוצת אם אחת, ובתוכה [תת־קבוצות](/en/user_manual/groups/subgroups) ככל שנדרש.
 

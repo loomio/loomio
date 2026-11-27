@@ -1,23 +1,34 @@
 <script setup lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
-import { ref, computed } from 'vue';
+import { ref, computed, mergeProps, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { uniqBy } from 'lodash-es';
+import { mdiMagnify } from '@mdi/js';
 
 const { group, selectedTag } = defineProps({
   group: {
     type: Object,
-    required: true
+    default: null
   },
   selectedTag: String
 });
 
 const emit = defineEmits(['select']);
+const { t } = useI18n();
 
 const open = ref(false);
 const filter = ref('');
 
+watch(open, isOpen => {
+  if (!isOpen) { filter.value = ''; }
+});
+
 const groupTags = computed(() => {
-  return group.tags().slice().sort((a, b) => a.name.localeCompare(b.name));
+  const tags = group
+    ? group.tags().slice()
+    : uniqBy(Session.user().groups().flatMap(g => g.tags()), 'name');
+  return tags.sort((a, b) => a.name.localeCompare(b.name));
 });
 
 const filteredGroupTags = computed(() => {
@@ -27,7 +38,7 @@ const filteredGroupTags = computed(() => {
   return groupTags.value.filter(tag => tag.name.toLowerCase().includes(query));
 });
 
-const canAdminTags = computed(() => group.parentOrSelf().adminsInclude(Session.user()));
+const canAdminTags = computed(() => Boolean(group) && group.parentOrSelf().adminsInclude(Session.user()));
 
 const selectedTagRecord = computed(() => {
   return selectedTag ? groupTags.value.find(tag => tag.name === selectedTag) : null;
@@ -53,31 +64,44 @@ function openTagsSelect() {
 
 <template lang="pug">
 v-menu.tags-filter-menu(v-model="open" offset-y :close-on-content-click="false")
-  template(v-slot:activator="{ props }")
-    v-btn.tags-filter-menu__button.mr-2.text-medium-emphasis(v-bind="props" variant="tonal")
-      span.tags-filter-menu__selected-tag(v-if="selectedTagRecord")
-        .tag-color-dot.tags-filter-menu__selected-tag-dot(:style="tagDotStyle(selectedTagRecord)")
-        span {{ selectedTag }}
-      span(v-else-if="selectedTag") {{ selectedTag }}
-      span(v-else v-t="'loomio_tags.tags'")
-      common-icon(name="mdi-menu-down")
-  v-card.tags-filter-menu__card(min-width="280" max-width="360")
-    .pa-2
+  template(#activator="{ props: menuProps }")
+    v-tooltip(location="bottom" :text="t('loomio_tags.tags')" :disabled="Boolean(selectedTag)")
+      template(#activator="{ props: tooltipProps }")
+        v-btn.tags-filter-menu__button.text-medium-emphasis(
+          v-bind="mergeProps(menuProps, tooltipProps)"
+          variant="tonal"
+          :icon="!selectedTag"
+          :density="!selectedTag ? 'comfortable' : undefined"
+          :aria-label="t('loomio_tags.tags')"
+        )
+          template(v-if="selectedTagRecord")
+            span.tags-filter-menu__selected-tag
+              .tag-color-dot.tags-filter-menu__selected-tag-dot(:style="tagDotStyle(selectedTagRecord)")
+              span {{ selectedTag }}
+            common-icon(name="mdi-menu-down")
+          template(v-else-if="selectedTag")
+            span {{ selectedTag }}
+            common-icon(name="mdi-menu-down")
+          common-icon(v-else name="mdi-tag-outline")
+  v-card.tags-filter-menu__card(min-width="240" max-width="360")
+    .pa-2(v-if="groupTags.length > 8")
       v-text-field(
         v-model="filter"
-        :placeholder="$t('common.action.filter')"
+        :placeholder="t('group_cards.filter_tags')"
         autofocus
         density="compact"
         hide-details
-        prepend-inner-icon="mdi-magnify"
+        :prepend-inner-icon="mdiMagnify"
         variant="outlined"
       )
-    v-list(density="compact")
+    v-list(density="compact" max-height="60vh")
       v-list-item.tags-filter-menu__all-tags(
         :active="!selectedTag"
         @click="selectTag(null)"
       )
-        v-list-item-title(v-t="'loomio_tags.all_tags'")
+        template(v-slot:prepend)
+          common-icon.text-medium-emphasis.mr-3(name="mdi-tag-outline" size="16")
+        v-list-item-title {{ t('loomio_tags.all_tags') }}
         template(v-slot:append)
           common-icon(v-if="!selectedTag" name="mdi-check")
       v-list-item.tags-filter-menu__tag(
@@ -97,7 +121,7 @@ v-menu.tags-filter-menu(v-model="open" offset-y :close-on-content-click="false")
         v-list-item.tags-filter-menu__edit-tags(@click="openTagsSelect")
           template(v-slot:prepend)
             common-icon.text-medium-emphasis(name="mdi-tag-outline")
-          v-list-item-title(v-t="'loomio_tags.edit_tags'")
+          v-list-item-title {{ t('loomio_tags.edit_tags') }}
 </template>
 
 <style>

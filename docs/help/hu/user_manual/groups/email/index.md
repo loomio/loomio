@@ -1,15 +1,15 @@
 ---
 title: E-mail-cím
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: a2212a40ea30201e
+  introduction: 58b0c2d9bacda149
   preventing-unauthorized-emails: 3e9042929d6c2a49
 title_source: f2488fd4ef4adbc6
 title_generated: '032933089746e946'
@@ -21,9 +21,9 @@ title_generated: '032933089746e946'
 
 Minden Loomio-csoportnak saját e-mail-címe van. Erre a címre küldhetsz vagy továbbíthatsz e-mailt, hogy új szálat indíts a csoportban.
 
-A csoport e-mail-címét a csoport oldalán találod:
+A csoport e-mail-címét a csoport oldalán, a **Beállítások** alatt találod:
 
-![Az e-mail-cím helye a csoport oldalán](email_email_button.png)
+![Az e-mail-cím helye a csoport oldalán, a Beállítások alatt](email_email_button.png)
 
 Ha e-mailt küldesz erre a címre, a Loomio új szálat hoz létre. Az e-mail tárgya lesz a szál címe, a szövege lesz a szál leírása, a csatolt fájlok pedig a szálhoz kerülnek.
 

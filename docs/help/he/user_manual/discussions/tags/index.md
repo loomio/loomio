@@ -1,25 +1,25 @@
 ---
 title: תגיות קטגוריה
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: eb48974f0faeb930
+  introduction: 5d25152170153634
   apply-tags: 49e879c19598814f
   create-tags: 44525df7fa376cad
-  edit-tags: 356ad11d1c2f92f8
+  edit-tags: bea4236bc396883b
   edit-tag-in-thread-or-poll: d823c5d6db90bcff
   template-tags: 19c49e3711b03226
   tag-contributions: eb71043534cb4c20
@@ -37,7 +37,7 @@ title_generated: ba4a4c7ac3257538
 
 התגיות שייכות לארגון כולו. תגית שנוצרת בקבוצת אם משותפת לתת־הקבוצות שלה, וכך ניתן לעקוב אחר עבודה קשורה בקבוצות שונות. Loomio מציג את התגיות בסדר אלפביתי עם נקודה צבעונית לצד כל שם.
 
-בעמוד הקבוצה, יש לבחור **תגיות** מעל רשימת השרשורים ולבחור תגית כדי להציג שרשורים שמכילים לפחות פריט תוכן אחד עם אותה תגית. ניתן להקליד בשדה הסינון כדי לחפש ברשימה ארוכה.
+בעמוד **כל הקבוצות** או בעמוד קבוצה, יש לבחור **תגיות** מעל רשימת השרשורים, הסקרים או המשימות ולבחור תגית כדי להציג פריטים עם אותה תגית. ניתן להקליד בשדה הסינון כדי לחפש ברשימה ארוכה.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ title_generated: ba4a4c7ac3257538
 
 רק מנהלי קבוצת האם יכולים לשנות שמות וצבעים של תגיות, למזג תגיות או למחוק אותן. השינויים חלים ברחבי הארגון כולו, כולל כל תת־הקבוצות.
 
-בעמוד הקבוצה, יש לפתוח את **תגיות** ולבחור באפשרות **עריכת תגיות**.
+בעמוד הקבוצה, יש לפתוח את **תגיות** ולבחור באפשרות **עריכת תגיות**, או לפתוח את **הגדרות** ולבחור באפשרות **תגי קטגוריה**.
 
 ![עריכת תגיות קטגוריה](tags_edit_new.png)
 

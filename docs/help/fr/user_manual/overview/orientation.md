@@ -1,28 +1,30 @@
 ---
 title: Visite rapide
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: ecd0fe0598db0af5
   group-page: b351d5f2c21b5300
-  tabs: fa2b8c5dbc1e9e15
-  sidebar: 6fcc6fb14f4584c4
+  tabs: 86954790e9ef59f7
+  sidebar: c6de16f7a7779148
   user-settings: fc19e4048d467aed
   notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 8c209bc2f042ae96
+  mobile-navigation: 2be6c40d260c3dd1
+  all-groups: d71bbbd8a059f5db
 generated:
   introduction: 77583c9ff4a2fac8
   group-page: 20c5a2628e5a6112
-  tabs: c48b30fda8e179ef
-  sidebar: ccb4e82a2647b306
+  tabs: b039559c59474b71
+  sidebar: 20a8db3f7c13cfc8
   user-settings: 9f46d9e2dd7c8b7d
   notifications: 45089b5387cbf82a
   what-to-do-next: 213b0f6a819f21c8
-  mobile-navigation: 8a0f1adc70bee297
+  mobile-navigation: f26bb03484273713
+  all-groups: 2e77b8dcb1190073
 title_source: c41a33370cd580dd
 title_generated: 0d9bc00b1374a7b5
 ---
@@ -43,16 +45,27 @@ La page d’accueil de votre groupe décrit le groupe et donne accès à ses act
 
 <!-- translation-section: tabs -->
 
-### Onglets
+### Sections
 
-Les onglets sous la description du groupe affichent les éléments suivants :
+Les cartes de navigation sous la description du groupe affichent les éléments suivants :
 
-- **Discussions** : Les fils de discussion du groupe et l’activité récente.
-- **Sondages** : Les sondages ouverts et clôturés du groupe.
-- **Membres** : Les personnes qui appartiennent au groupe.
+- **Fils** : Les fils de discussion du groupe et l’activité récente ou non lue.
+- **Sondages** : Les sondages ouverts et clôturés du groupe, y compris ceux qui attendent votre vote.
+- **Membres** : Les personnes qui appartiennent au groupe, avec un raccourci pour inviter de nouveaux membres.
 - **Fichiers** : Les fichiers joints aux discussions, aux commentaires, aux propositions et aux sondages dans l’ensemble du groupe, pour vous permettre de retrouver un document sans vous souvenir de l’endroit où il a été partagé.
+- **Tâches** : Les tâches ouvertes et terminées du groupe, avec des filtres par statut, date d’échéance, personne assignée et tags.
+- **Signets** : Les discussions, commentaires, sondages, votes et conclusions que vous avez ajoutés à vos signets dans le groupe.
+- **Paramètres** : L’administration du groupe, les options d’adhésion, les paramètres de notification, les intégrations et l’exportation des données.
 
-Consultez [Trouver du contenu](/en/user_manual/overview/finding-content) pour obtenir de l’aide sur la recherche, les filtres, les tags, les favoris et les discussions non lues.
+Consultez [Trouver du contenu](/en/user_manual/overview/finding-content) pour obtenir de l’aide sur la recherche, les filtres, les tags, les signets et les discussions non lues.
+
+<!-- translation-section: all-groups -->
+
+## Tous les groupes
+
+Sélectionnez **Tous les groupes** dans la barre latérale pour voir votre travail dans tous les groupes auxquels vous appartenez. Cette page utilise les mêmes cartes de navigation qu’une page de groupe, avec **Fils** (y compris les fils non lus et les fils directs), **Sondages**, **Personnes** (un annuaire consultable des personnes avec qui vous partagez des groupes, indiquant qui était récemment en ligne), **Fichiers**, **Tâches** et **Signets**.
+
+![](all_groups.png)
 
 <!-- translation-section: sidebar -->
 
@@ -62,7 +75,7 @@ Ouvrez la barre latérale avec le bouton de menu (**☰**) en haut à gauche sur
 
 ![](sidebar.png)
 
-Utilisez la barre latérale pour accéder à votre tableau de bord, aux sondages en attente de votre vote, aux discussions non lues et directes, aux tâches et aux groupes. Elle contient également des liens vers le manuel d’utilisation et l’assistance.
+Utilisez la barre latérale pour passer de **Tous les groupes** à vos groupes et sous-groupes, et pour créer un groupe ou un sous-groupe. Lorsque la barre latérale est fermée, sélectionnez le nom du groupe (ou **Tous les groupes**) en haut de la page pour changer de groupe ou créer un groupe. La barre latérale contient également des liens vers le manuel d’utilisation et l’assistance.
 
 <!-- translation-section: user-settings -->
 
@@ -88,7 +101,7 @@ Consultez [Notifications](/en/user_manual/users/email_settings) pour en savoir p
 
 ## Navigation mobile
 
-Sur mobile, la barre de navigation inférieure permet d’ouvrir la barre latérale, le tableau de bord et les notifications. Dans une discussion, le menu du fil permet d’accéder à son contenu et aux actions associées.
+Sur mobile, la barre de navigation inférieure permet d’ouvrir la barre latérale, **Tous les groupes** et les notifications. Dans une discussion, le menu du fil permet d’accéder à son contenu et aux actions associées.
 
 <!-- translation-section: what-to-do-next -->
 

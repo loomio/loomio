@@ -42,6 +42,19 @@ ja:
     task_updated_not_done: 未完了としてマークされたタスク
     no_tasks_assigned: あなたに割り当てられたタスクはありません
     task_placeholder: タスクを入力し、{'@'}メンションして割り当てる
+    status_todo: 未完了
+    status_done: 完了
+    due_any: 期日を問わず
+    due_overdue: 期日超過
+    due_next_7_days: 今後7日間
+    due_later: それ以降
+    due_none: 期日なし
+    assigned_anyone: 担当者を問わず
+    assigned_me: 自分が担当
+    search_members: メンバーを検索
+    search_tasks: タスクを検索
+    no_open_tasks: 自分が担当する未完了のタスクはありません。
+    no_matching_tasks: 条件に合うタスクはありません。
   templates:
     template_gallery: テンプレートギャラリー
     title_template: "%{title} テンプレート"
@@ -645,6 +658,7 @@ ja:
     direct_discussions: 直接の議論
     unread_discussions: 未読のディスカッション
     unread_threads_count: 未読スレッド（%{count}）
+    votes_count: 1票 | {count}票
   strand_nav:
     newest: 最新
     oldest: 最古の
@@ -1579,6 +1593,8 @@ ja:
       一緒に話し合い、決定できるよう、%{site_name}に%{groupName}を作りました。このリンクから参加してください：
       %{link}
     trial_shareable_link_note: 招待リンクをコピーし、メールやチャットで送ってグループに招待できます。参加後は、Loomioから直接メールやモバイル通知を送れます。メールで招待を送るには、<a href="%{upgradeUrl}">プランをアップグレード</a>してください。
+    include_intro_message: 紹介メッセージを含める
+    trial_shareable_invitation_message: "%{groupName}の意思決定に役立つか試すため、%{site_name}の7日間の試用を始めました。一緒に試せるよう、このリンクから参加してください: %{link}"
   memberships_page:
     members: メンバー
     name_label: 氏名
@@ -2176,6 +2192,7 @@ ja:
     unlocked: ロック解除済み
     no_threads_found_that_match_your_query_or_filters: 検索条件やフィルターに一致するスレッドは見つかりませんでした。
     no_threads_found_that_match_your_filters: フィルターに一致するスレッドは見つかりませんでした
+    new_thread: 新しいスレッド
   members_panel:
     bot: ボット
     no_results: メンバーが見つかりませんでした
@@ -3271,3 +3288,103 @@ ja:
     bounced: メール不達の報告がありました
     complained: 迷惑メールの報告がありました
     skipped: メールは送信されませんでした
+  group_cards:
+    admins_count: 管理者1人 | 管理者{count}人
+    members_count: メンバー1人 | メンバー{count}人
+    delegates_count: 代表者1人 | 代表者{count}人
+    polls_count: アンケート1件 | アンケート{count}件
+    proposals_count: 提案1件 | 提案{count}件
+    needs_your_vote: 未投票1件 | 未投票{count}件
+    no_open_polls: 受付中のアンケートはありません
+    browse_files: ファイルを見る
+    invite_get_started: ここをクリックして始めます
+    threads: スレッド
+    threads_count: スレッド1件 | スレッド{count}件
+    view_threads: スレッドを見る
+    no_threads: スレッドはありません
+    this_group_only: このグループのみ
+    my_subgroups: 参加中のサブグループ
+    all_subgroups: すべてのサブグループ
+    filter_tags: タグを絞り込む
+    filter_groups: グループを絞り込む
+    filter_subgroups: サブグループを絞り込む
+    filter_qualifier_unread: 未読
+    filter_qualifier_direct: ダイレクト
+    filter_qualifier_locked: ロック済み
+    filter_qualifier_unlocked: ロックなし
+    no_filtered_threads: "{filters}のスレッドはありません"
+    no_filtered_threads_with_tag: タグ「{tag}」に一致する{filters}のスレッドはありません
+    no_threads_with_tag: タグ「{tag}」に一致するスレッドはありません
+    recent_count: 最近{count}件
+    need_vote_count: 未投票1件 | 未投票{count}件
+    open_count: 受付中{count}件
+    files_count: ファイル1件 | ファイル{count}件
+  onboarding_card:
+    verified_badge: 確認済み
+    view_plans: プランを見る
+    upgrade_now: 今すぐアップグレード
+    extend_trial_title: 30日間の延長と無料トレーニング通話を利用可能に
+    trial_verified: グループを確認しました。サポートの準備ができています。メールで招待を送れるようになりました。このまま利用を続けると、試用期間が30日間延長され、Pro機能とチームとの無料トレーニング通話を利用できます。
+    trial_extended_title: 30日間の延長と無料トレーニング通話が利用可能になりました
+    book_training_call: トレーニング通話を予約
+    extend_trial_initial: 他に{count}人がグループに参加すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。
+    extend_trial_remaining: あと1人がグループに参加すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。 | あと{count}人がグループに参加すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。
+    trial_extended_description: 試用期間が30日間延長されました。
+  dashboard_cards:
+    all_groups: すべてのグループ
+    unread_count: 未読{count}件
+    direct: ダイレクト
+    direct_count: ダイレクト{count}件
+    people: ユーザー
+    recently_online: 最近オンライン
+    recently_online_count: 最近オンライン{count}人
+    your_tasks: 自分のタスク
+    tasks_todo_count: 未完了{count}件
+    bookmarks_saved_count: 保存済み{count}件
+    search_people: ユーザーを検索
+    direct_thread: ダイレクトスレッド
+    view_profile: プロフィールを見る
+    no_people_found: ユーザーが見つかりません
+  group_settings_panel:
+    subtitle: グループ設定
+    group_administration: グループ管理
+    your_membership: メンバー登録
+    integrations_and_data: 連携とデータ
+    leave_or_delete: 退会または削除
+    edit_group_description: グループ名、説明、ロゴ、カバー写真、公開範囲、メンバーの権限を更新します。
+    edit_tags_description: スレッドやアンケートを整理するタグを作成、名前変更、統合、色分けします。
+    manage_subscription_description: プラン、請求情報、メンバー数の上限を確認します。
+    change_volume_description: このグループからのメールやプッシュ通知を受け取る頻度を選びます。
+    email_group_description: このアドレスにメールを送信して、グループに新しいスレッドを作成します。
+    group_stats_description: メンバーの活動、スレッドへの反応、投票への参加状況の推移を確認します。
+    become_coordinator_description: このグループの管理者権限を取得します。
+    chatbots_description: Slack、Mattermost、Discordなどのチャットツールと連携して、グループの更新情報を投稿します。
+    api_docs_description: APIアクセスとWebhookを設定して、Loomioを独自のツールと連携します。
+    export_data_description: このグループのスレッド、アンケート、コメント、メンバーのデータをダウンロードします。
+    leave_group_description: このグループを退会し、通知の受信を停止します。
+    destroy_group_description: このグループとその内容の完全削除を予約します。
+  pagination:
+    page_of: "{total}ページ中{page}ページ"
+    previous_page: 前のページ
+    next_page: 次のページ
+    sort_by: 並び順
+    per_page: 1ページの表示件数
+    jump_to_page: ページへ移動
+    sort:
+      recent_activity: 最近の動き
+      newest: 新しい順
+      oldest: 古い順
+      closing_soon: 締切が近い順
+      name: 名前
+      last_seen: 最終アクセス
+    edit_tags_description: スレッドやアンケートの整理に使うタグの作成、名前の変更、統合、色分けができます。
+    manage_subscription_description: プラン、請求情報、メンバー数の上限を確認できます。
+    change_volume_description: このグループからメールやプッシュ通知を受け取る頻度を選べます。
+    email_group_description: このアドレスにメールを送ると、グループに新しいスレッドを作成できます。
+    group_stats_description: メンバーの活動、スレッドでの交流、投票への参加状況の推移を確認できます。
+    become_coordinator_description: このグループのグループ管理者権限を取得します。
+    chatbots_description: Slack、Mattermost、Discordなどのチャットツールを接続して、グループの更新情報を投稿できます。
+    api_docs_description: APIアクセスとWebhookを設定して、Loomioを独自のツールと連携できます。
+    export_data_description: このグループのスレッド、アンケート、コメント、メンバーのデータをダウンロードできます。
+    leave_group_description: このグループから退会し、通知の受信を停止します。
+    destroy_group_description: このグループとその内容を完全に削除するよう予約します。

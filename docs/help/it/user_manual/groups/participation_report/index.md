@@ -1,12 +1,12 @@
 ---
 title: Rapporto sulla partecipazione
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 4fab52ab8db2f1c4
+  introduction: b063461b2e0091c0
   what-s-in-the-report: aca3abcdcc2f7688
   actions-per-month: fbdb9024f0e10fc0
   tag-usage: 5bdc9e48998822c6
@@ -37,9 +37,9 @@ Puoi scegliere quali gruppi includere, impostare una data di inizio e di fine e 
 
 Ogni membro del gruppo può consultare il rapporto, ma ciascuno vede solo i risultati dei gruppi di cui fa parte. Membri diversi possono quindi vedere totali diversi.
 
-Per aprire il rapporto, apri il menu delle azioni del gruppo e seleziona **Rapporto di partecipazione**. In qualsiasi tabella del rapporto, seleziona l'intestazione di una colonna per ordinare i dati in base a quella colonna.
+Per aprire il rapporto, apri **Configurazione** nella pagina del gruppo e seleziona **Rapporto di partecipazione**. In qualsiasi tabella del rapporto, seleziona l'intestazione di una colonna per ordinare i dati in base a quella colonna.
 
-![Voce Rapporto di partecipazione nel menu di Oatmilk Cooperative](group_participation_report.png)
+![Voce Rapporto di partecipazione nella pagina di configurazione di Oatmilk Cooperative](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

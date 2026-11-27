@@ -1,17 +1,17 @@
 ---
 title: Groepsinstellingen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/index.md
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
+source_file: docs/help/en/user_manual/groups/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: b975fe0dc7787563
+  introduction: e22d1f7356e9be93
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: 4082da6a50102f41
+  introduction: 46035513560fad26
   group-profile: c041416159b99aa1
   group-privacy: c84ea89fe5d81f42
   group-permissions: 2c61e7f5273c4e46
@@ -25,7 +25,7 @@ title_generated: a93752d8c7c0fef1
 
 Groepsinstellingen bepalen hoe jouw groep wordt weergegeven, wie de groep kan vinden en er lid van kan worden, en wat leden mogen doen. Alleen groepsbeheerders kunnen deze instellingen bewerken.
 
-Open op de groepspagina het actiemenu en selecteer **Bewerk groepsinstellingen**.
+Open op de groepspagina **Instellingen** en selecteer **Bewerk groepsinstellingen**.
 
 ![Groepsinstellingen bewerken vanaf de groepspagina](group_settings.png)
 

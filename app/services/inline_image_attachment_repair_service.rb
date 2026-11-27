@@ -50,8 +50,7 @@ class InlineImageAttachmentRepairService
     blobs_missing = blobs.reject { |blob| blob_ids_attached.include?(blob.id) }
 
     unless dry_run
-      group_id = group_id_for(record)
-      blobs_missing.each { |blob| create_attachment(record, blob, group_id) }
+      blobs_missing.each { |blob| create_attachment(record, blob) }
     end
 
     {
@@ -67,26 +66,16 @@ class InlineImageAttachmentRepairService
     record_class.where(condition, path: "%/rails/active_storage/%")
   end
 
-  def self.create_attachment(record, blob, group_id)
+  def self.create_attachment(record, blob)
     record.class.no_touching do
       ActiveStorage::Attachment.find_or_create_by!(
         record: record,
         name: "image_files",
         blob: blob
-      ) do |attachment|
-        attachment.group_id = group_id
-      end
+      )
     end
   rescue ActiveRecord::RecordNotUnique
     # Another idempotent repair created the same attachment concurrently.
-  end
-
-  def self.group_id_for(record)
-    return record.id if record.is_a?(Group)
-    return record.group_id if record.respond_to?(:group_id)
-    return record.group.id if record.respond_to?(:group) && record.group
-  rescue ActiveRecord::RecordNotFound, NoMethodError
-    nil
   end
 
   def self.stats_new(dry_run:)
@@ -101,5 +90,5 @@ class InlineImageAttachmentRepairService
     }
   end
 
-  private_class_method :records_with_inline_images, :create_attachment, :group_id_for, :stats_new
+  private_class_method :records_with_inline_images, :create_attachment, :stats_new
 end

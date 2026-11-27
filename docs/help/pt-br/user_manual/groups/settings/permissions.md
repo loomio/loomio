@@ -1,14 +1,14 @@
 ---
 title: Permissões
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: ab40e92cd4d3f270
+  introduction: f30fd54bc2ec8ac8
 title_source: abccc78cc93c0793
 title_generated: e998327fd0a8c94d
 ---
@@ -17,7 +17,7 @@ title_generated: e998327fd0a8c94d
 
 # Permissões do grupo
 
-A aba **Permissões** controla o que os membros podem fazer no grupo e, em grupos que não são secretos, o que pessoas que não são membros podem fazer. Abra **Editar configurações do grupo** no menu de ações do grupo e selecione **Permissões**.
+A aba **Permissões** controla o que os membros podem fazer no grupo e, em grupos que não são secretos, o que pessoas que não são membros podem fazer. Na página do grupo, abra **Configurações**, selecione **Editar configurações do grupo** e escolha **Permissões**.
 
 ![Configurações de permissões do grupo](group_group_settings_permissions.png)
 

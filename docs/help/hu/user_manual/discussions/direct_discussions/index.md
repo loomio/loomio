@@ -1,15 +1,15 @@
 ---
 title: Közvetlen beszélgetések
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: c617bad25b64654f
+  introduction: 1a0632592c683296
   contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: 737249886bf96f39
+  introduction: 96370cc67a84eb2d
   contacting-someone-via-a-direct-discussion: 0b05b5df4f1cef94
 title_source: ccfab058f1f7c146
 title_generated: fc6f5a73d24b3be3
@@ -27,11 +27,11 @@ A közvetlen beszélgetésekben ugyanazok a hozzászólások, szavazások és fo
 
 ![Közvetlen beszélgetés űrlapja kiválasztott csoport nélkül, Samira Patellel a Meghív mezőben](direct-discussion-example.png)
 
-Válaszd ki az oldalsávban a **Közvetlen szálak** menüpontot a közvetlen beszélgetéseid és szavazásaid megtekintéséhez. Innen nyisd meg az **Új** menüt, és válaszd ki az **Új beszélgetés** lehetőséget közvetlen beszélgetés indításához, vagy az **Új szavazás** lehetőséget csoport nélküli szavazás indításához.
+Nyisd meg az **Összes csoport** nézetet, és a **Szálak** részen válaszd ki a **Közvetlen** szűrőt (vagy a **Szálak** kártyán válaszd ki a közvetlen szálak számát) a közvetlen beszélgetéseid megtekintéséhez. Innen válaszd ki az **Új szál** lehetőséget közvetlen beszélgetés indításához. Az **Összes csoport** nézetben az **Emberek** részt is megnyithatod, majd valakinek a neve mellett kiválaszthatod a **Közvetlen szál** lehetőséget.
 
 A közvetlen szavazást csak azok láthatják, akiket meghívsz. A létrehozása után a [Szavazók kezelése](/en/user_manual/polls/manage_voters) lehetőséggel hívhatsz meg embereket vagy e-mail-címeket.
 
-![A Közvetlen szálak menüpont az oldalsávban és a közvetlen beszélgetések listája](direct-discussion-sidebar.png)
+![A Közvetlen szűrő az Összes csoport nézetben, a közvetlen beszélgetések listájával](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 

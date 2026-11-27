@@ -1,10 +1,10 @@
 ---
 title: Ilmoitukset
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 25fc6fe9cb35c981
   two-ways-to-begin: 3b42b0d12bbd2ba0
@@ -13,7 +13,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -26,7 +26,7 @@ generated:
   choose-your-catch-up-schedule: 522a7786c28b4b5d
   mark-a-catch-up-as-read: a0829319e7ac13fc
   group-and-thread-notification-settings: 0f4d9ca71bb2ef4f
-  group-notification-settings: 6b4d151d130e05f7
+  group-notification-settings: b1ea95146ae61220
   thread-notification-settings: d6cef26d2d343392
   email-delivery: fa9a74126c813251
   enable-mobile-notifications-with-web-push: a0fd2ca8d4dea73e
@@ -138,7 +138,7 @@ Muuta uusien ryhmien oletusasetuksia avaamalla käyttäjävalikosta **Ilmoitusas
 Muuta ryhmän ilmoitusasetusta näin:
 
 1. Avaa ryhmän sivu.
-2. Avaa ryhmän ilmoitusasetukset.
+2. Avaa **asetukset** ja valitse **Ilmoitusasetukset**.
 
 ![Ilmoitusasetukset ryhmän sivulla](group_notifications.png)
 

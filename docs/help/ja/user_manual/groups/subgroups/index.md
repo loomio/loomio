@@ -1,34 +1,34 @@
 ---
 title: サブグループ
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: b33392211bf4a21c
-  add-a-subgroup: 4ac42ca0c70539d1
+  add-a-subgroup: 217058850a9a910e
   subgroup-settings: 4d1baea010b1b7e1
   privacy: c632de75090de54e
   permissions: dbb96a53ab720785
-  find-subgroups: f8974142749a5198
+  find-subgroups: 6c82e6ef1f84a1db
   invite-to-a-subgroup: abbc4f521f101b49
   simultaneously-invite-people-to-subgroups-and-parent-group: d169749511c2a527
   administer-a-subgroup: 6a8edb2dd2d2917e
   delete-a-subgroup: 3f17782ee9e2a11f
-  how-people-join: 942ba75aad414873
+  how-people-join: 117a15e3a41c2e83
 title_source: 9f81e728f70cae3e
 title_generated: 70b41aa1386d23c6
 ---
@@ -58,7 +58,7 @@ title_generated: 70b41aa1386d23c6
 
 ![包装作業グループの新しいサブグループ作成フォーム](subgroups_new.png)
 
-サブグループの準備ができたら、[参加する人を招待します](/en/user_manual/groups/inviting_people)。サブグループのページにある操作メニューから、サブグループの[グループ設定](/en/user_manual/groups/settings)を変更できます。
+サブグループの準備ができたら、[参加する人を招待します](/en/user_manual/groups/inviting_people)。サブグループのページにある**設定**から、サブグループの[グループ設定](/en/user_manual/groups/settings)を変更できます。
 
 ![包装作業グループのグループ設定を編集する操作](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ title_generated: 70b41aa1386d23c6
 
 ### 参加方法
 
-サブグループの作成時、または**グループ設定を編集する** > **プライバシー**で、[参加方法](/en/user_manual/groups/settings/privacy#how-people-join)を選択します。
+サブグループの作成時、または**設定** > **グループ設定を編集する** > **プライバシー**で、[参加方法](/en/user_manual/groups/settings/privacy#how-people-join)を選択します。
 
 ![サブグループのプライバシーと参加方法の設定](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ title_generated: 70b41aa1386d23c6
 
 ## サブグループを見つける
 
-サイドバーで親グループの名前を選択すると、そのサブグループが表示されます。
+サイドバーで親グループの名前を選択すると、そのサブグループが表示されます。親グループの**スレッド**、**アンケート**、**メンバー**、**ファイル**、**タスク**、**ブックマーク**の各ページでは、**サブグループ**フィルターを使って、**このグループのみ**、**参加中のサブグループ**、**すべてのサブグループ**を切り替えたり、サブグループに直接移動したりできます。
 
 ![サイドバーに表示されたOatmilk Cooperativeのサブグループ](subgroups_find_subgroups.png)
 

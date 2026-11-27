@@ -1,24 +1,24 @@
 ---
 title: Пачатак працы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: e3306db7c52d1cdf
   how-loomio-works: 308d3e8c4a529ea0
-  groups: '02932d97310e0d4f'
+  groups: 28146fa41868b996
   discussions: 327fa4185352dbfd
-  polls-and-proposals: 5d05966030fb0de6
+  polls-and-proposals: 45d87bff56662a82
   try-it-out: 295f81e037fb70c6
   how-people-use-loomio: cb86093eb5d2e2b7
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ Loomio мае тры асноўныя часткі: групы, абмеркав
 
 ### Групы
 
-Група — гэта месца для супольнай працы арганізацыі, каманды або супольнасці. Яе галоўная старонка тлумачыць прызначэнне групы і змяшчае спасылкі на яе абмеркаванні, апытанні, удзельнікаў і файлы.
+Група — гэта месца для супольнай працы арганізацыі, каманды або супольнасці. Яе галоўная старонка тлумачыць прызначэнне групы і змяшчае спасылкі на яе тэмы, апытанні, удзельнікаў групы, файлы, задачы, закладкі і налады.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ Loomio мае тры асноўныя часткі: групы, абмеркав
 
 ![](orientation_proposal.png)
 
-Апытанні могуць быць часткай абмеркавання або праводзіцца асобна праз укладку **Апытанні** на старонцы групы.
+Апытанні могуць быць часткай абмеркавання або праводзіцца асобна праз **Апытанні** на старонцы групы.
 
 Каб даведацца, дзе гэтыя часткі знаходзяцца ў інтэрфейсе, паглядзіце [Кароткі агляд](/en/user_manual/overview/orientation). Каб пачаць удзельнічаць, прачытайце [Як удзельнічаць](/en/user_manual/overview/how-to-participate).
 

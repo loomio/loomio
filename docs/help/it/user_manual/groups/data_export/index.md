@@ -1,13 +1,13 @@
 ---
 title: Esportazione dei dati
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 988679ffd3d29834
-  export-data: 9c2fb6ec7c75bcb6
+  export-data: '024783a0614721d2'
   export-group-data-as-csv: c0845f09bff828f2
   export-group-data-as-html: 659fd5e14956b00e
   export-group-data-as-json: 4c2131f4518b7469
@@ -15,7 +15,7 @@ sections:
   import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
   introduction: 23c5e8f9a8712d16
-  export-data: 66f1d26f06b05c06
+  export-data: 963ea61a2a368b38
   export-group-data-as-csv: 1a9241da3a055958
   export-group-data-as-html: f4d29239587996fa
   export-group-data-as-json: c750b3b2930d84e9
@@ -45,9 +45,9 @@ Puoi usare questa funzione per passare dal servizio di hosting di Loomio a un [s
 
 ## Esporta i dati
 
-Solo un amministratore del gruppo può esportare i dati del gruppo. Apri il menu delle azioni del gruppo e seleziona **Esporta i dati del gruppo**.
+Solo un amministratore del gruppo può esportare i dati del gruppo. Apri **Configurazione** nella pagina del gruppo e seleziona **Esporta i dati del gruppo**.
 
-![Azione Esporta i dati del gruppo nel menu di Oatmilk Cooperative](group_export_group_data.png)
+![Azione Esporta i dati del gruppo nella pagina di configurazione di Oatmilk Cooperative](group_export_group_data.png)
 
 Loomio prepara l'esportazione in background e ti invia per email un link per scaricarla quando è pronta. Il link resta attivo per una settimana.
 

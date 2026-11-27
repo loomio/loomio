@@ -1,17 +1,17 @@
 ---
 title: Как участвовать
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: 2f8f54b35edb06fc
   get-someone-s-attention: 11e3dbe33683ef4a
   reactions: ee42d4783d26afd3
-  vote: af2145d0c62b84e5
+  vote: 8538d83dbe8bc37b
   state-a-reason: 5c833abbbb97ee8f
   change-your-vote: 0a22f06889b15995
   results: 9f5d983b0c1892ca
@@ -73,7 +73,7 @@ title_generated: 81902e8b5601c694
 
 ## Проголосовать
 
-Откройте опрос из приглашения по электронной почте, уведомления в приложении или на вкладке **Опросы** вашей группы. Прочитайте опрос и все прикреплённые файлы, затем выберите вариант.
+Откройте опрос из приглашения по электронной почте, уведомления в приложении, раздела **Все группы** или раздела **Опросы** вашей группы. Прочитайте опрос и все прикреплённые файлы, затем выберите вариант.
 
 В Loomio есть несколько типов опросов. В примере ниже показано предложение с вариантами **Согласен**, **Воздержаться** и **Не согласен**.
 

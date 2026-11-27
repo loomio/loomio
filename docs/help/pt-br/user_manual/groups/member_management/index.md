@@ -1,16 +1,16 @@
 ---
 title: Gestão de membros
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: bc7d2de9abc2ea86
   administering-your-group: 7ae1b105c20977fc
   managing-subgroups: 2e4bdee3283e8ef8
   removing-members: d70807bdd968d594
-  leaving-group: 268f0c735b8e46d7
+  leaving-group: 69332aeda981c679
   set-title: eb9a52e3d6c21d43
   member-email-addresses: 0e800419a7bdacc6
 generated:
@@ -18,7 +18,7 @@ generated:
   administering-your-group: 1dd3c7b80e9f9a0d
   managing-subgroups: 115711aea17202e9
   removing-members: dcd913321cdfe87b
-  leaving-group: 66470ad479c1dead
+  leaving-group: c4bd989a7b26a293
   set-title: 5a665487a9e8f7d8
   member-email-addresses: 9428295fb6e1655d
 title_source: 23ac3a7fe9ee72a2
@@ -84,11 +84,11 @@ Você pode adicionar os membros removidos novamente mais tarde. Ao retornar ao g
 
 ## Sair do grupo
 
-Para sair de um grupo, abra o menu de ações do grupo e selecione **Sair do grupo**.
+Para sair de um grupo, abra **Configurações** na página do grupo e selecione **Sair do grupo**.
 
 Sair do grupo tem o mesmo efeito sobre o acesso ao grupo e aos subgrupos que a remoção por um admin do grupo.
 
-![Ação Sair do grupo no menu de configurações da Oatmilk Cooperative](member_leave_group.png)
+![Ação Sair do grupo na página de configurações da Oatmilk Cooperative](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 

@@ -1,17 +1,17 @@
 ---
 title: Gruppeneinstellungen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/settings/index.md
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
+source_file: docs/help/en/user_manual/groups/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: b975fe0dc7787563
+  introduction: e22d1f7356e9be93
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: f29bbbdc3c98e48f
+  introduction: add49196c5a49236
   group-profile: 7f7cbb5029549c1a
   group-privacy: 4d7ab8ab32c835c4
   group-permissions: 24a7eaaead77bfc7
@@ -25,7 +25,7 @@ title_generated: b95daceef6a6ca2b
 
 Die Gruppeneinstellungen legen fest, wie deine Gruppe dargestellt wird, wer sie finden und ihr beitreten kann und was Mitglieder tun dürfen. Nur Personen mit Administrationsrechten für die Gruppe können diese Einstellungen bearbeiten.
 
-Öffne auf der Gruppenseite das Aktionsmenü und wähle **Gruppeneinstellungen bearbeiten**.
+Öffne auf der Gruppenseite **Einstellungen** und wähle **Gruppeneinstellungen bearbeiten**.
 
 ![Gruppeneinstellungen auf der Gruppenseite bearbeiten](group_settings.png)
 

@@ -1,14 +1,14 @@
 ---
 title: Дазволы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: a999a28807fa55aa
+  introduction: 4f8f5c241a028d78
 title_source: abccc78cc93c0793
 title_generated: 32aa0df4dbbcc8d1
 ---
@@ -17,7 +17,7 @@ title_generated: 32aa0df4dbbcc8d1
 
 # Дазволы групы
 
-Укладка **Дазволы** вызначае, што ўдзельнікі могуць рабіць у групе, а для несакрэтных груп — таксама што могуць рабіць людзі, якія не ўваходзяць у групу. Адкрыйце **Рэдагаваць налады групы** ў меню дзеянняў групы, затым выберыце **Дазволы**.
+Укладка **Дазволы** вызначае, што ўдзельнікі могуць рабіць у групе, а для несакрэтных груп — таксама што могуць рабіць людзі, якія не ўваходзяць у групу. На старонцы групы адкрыйце **Налады**, выберыце **Рэдагаваць налады групы**, а затым — **Дазволы**.
 
 ![Налады дазволаў групы](group_group_settings_permissions.png)
 

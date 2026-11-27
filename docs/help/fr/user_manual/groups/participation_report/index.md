@@ -1,12 +1,12 @@
 ---
 title: Rapport de participation
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 06afe1fb0d4e488d
+  introduction: d7b263e030a0f138
   what-s-in-the-report: 98eb1e117efe2c86
   actions-per-month: ef6801f6c638eb8d
   tag-usage: 5471a36da124b840
@@ -37,9 +37,9 @@ Vous pouvez choisir les groupes à inclure, définir les dates de début et de f
 
 Chaque membre du groupe peut consulter le rapport, mais ne voit que les résultats des groupes auxquels il appartient. Les totaux peuvent donc varier d’un membre à l’autre.
 
-Pour ouvrir le rapport, ouvrez le menu des actions du groupe et sélectionnez **Rapport de participation**. Dans chaque tableau du rapport, sélectionnez un en-tête de colonne pour trier les données selon cette colonne.
+Pour ouvrir le rapport, ouvrez **Paramètres** sur la page du groupe et sélectionnez **Rapport de participation**. Dans chaque tableau du rapport, sélectionnez un en-tête de colonne pour trier les données selon cette colonne.
 
-![Option Rapport de participation dans le menu de la coopérative Oatmilk](group_participation_report.png)
+![Option Rapport de participation sur la page des paramètres de la coopérative Oatmilk](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

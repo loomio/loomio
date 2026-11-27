@@ -1,10 +1,10 @@
 ---
 title: Notifiche
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 25fc6fe9cb35c981
   two-ways-to-begin: 3b42b0d12bbd2ba0
@@ -13,7 +13,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -26,7 +26,7 @@ generated:
   choose-your-catch-up-schedule: 2a3ba259af0588fa
   mark-a-catch-up-as-read: 3fb62dcd2dfcf410
   group-and-thread-notification-settings: aa00a43a8ebcbee7
-  group-notification-settings: e4df77371cd94f2d
+  group-notification-settings: baa7fdca44272ab9
   thread-notification-settings: 8fe8afe1ba2e6116
   email-delivery: 6e3957e9974014f8
   enable-mobile-notifications-with-web-push: 9103a41eebe8cbb5
@@ -138,7 +138,7 @@ Modifica le impostazioni predefinite per i nuovi gruppi da **Impostazioni notifi
 Per modificare l'impostazione delle notifiche di un gruppo:
 
 1. Apri la pagina del gruppo.
-2. Apri le impostazioni delle notifiche del gruppo.
+2. Apri **Configurazione** e seleziona **Impostazioni notifiche**.
 
 ![Impostazioni delle notifiche nella pagina di un gruppo](group_notifications.png)
 

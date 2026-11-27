@@ -1,15 +1,15 @@
 ---
 title: Прямі обговорення
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: c617bad25b64654f
+  introduction: 1a0632592c683296
   contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: 1639d3426b928bf8
+  introduction: 331eb1f34d1b747d
   contacting-someone-via-a-direct-discussion: e01597f1f16db950
 title_source: ccfab058f1f7c146
 title_generated: 2bae5ae546572b6e
@@ -27,11 +27,11 @@ title_generated: 2bae5ae546572b6e
 
 ![Форма прямого обговорення без вибраної групи та із Самірою Патель у полі «Запросити»](direct-discussion-example.png)
 
-Виберіть **Прямі теми** на бічній панелі, щоб переглянути ваші прямі обговорення та опитування. Звідти відкрийте меню **Новий** і виберіть **Нове обговорення**, щоб розпочати пряме обговорення, або **Нове опитування**, щоб створити опитування без групи.
+Відкрийте **Усі групи** та виберіть **Прямі** в розділі **Теми** (або виберіть кількість прямих тем на картці **Теми**), щоб переглянути ваші прямі обговорення. Звідти виберіть **Нова тема**, щоб розпочати пряме обговорення. Ви також можете відкрити **Люди** в розділі **Усі групи** та вибрати **Пряма тема** поруч з іменем людини.
 
 Пряме опитування видиме лише людям, яких ви запросили. Після його створення скористайтеся пунктом [Керування виборцями](/en/user_manual/polls/manage_voters), щоб запросити людей або додати адреси електронної пошти.
 
-![Пункт «Прямі теми» на бічній панелі та список прямих обговорень](direct-discussion-sidebar.png)
+![Фільтр «Прямі» в розділі «Усі групи», що показує прямі обговорення](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 

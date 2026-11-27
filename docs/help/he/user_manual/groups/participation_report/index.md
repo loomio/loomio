@@ -1,12 +1,12 @@
 ---
 title: דוח השתתפות
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: a7fcb61e32ddc2ab
+  introduction: 8fc23731c6a272b1
   what-s-in-the-report: 2bb309ccdd76e17e
   actions-per-month: fd4823c9f73acb33
   tag-usage: f412e3bb55fb0a5e
@@ -37,9 +37,9 @@ title_generated: b46abf4518a38240
 
 הדוח זמין לכל חברי הקבוצה, אך לכל אדם מוצגות רק תוצאות של קבוצות שיש בהן חברות. לכן חברים שונים עשויים לראות סיכומים שונים.
 
-כדי לפתוח את הדוח, יש לפתוח את תפריט הפעולות של הקבוצה ולבחור ב־**דוח השתתפות**. בכל טבלה בדוח, ניתן לבחור בכותרת עמודה כדי למיין לפי אותה עמודה.
+כדי לפתוח את הדוח, יש לפתוח את **הגדרות** בדף הקבוצה ולבחור ב־**דוח השתתפות**. בכל טבלה בדוח, ניתן לבחור בכותרת עמודה כדי למיין לפי אותה עמודה.
 
-![האפשרות לפתיחת דוח השתתפות בתפריט של קואופרטיב Oatmilk](group_participation_report.png)
+![האפשרות לפתיחת דוח השתתפות בדף ההגדרות של קואופרטיב Oatmilk](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

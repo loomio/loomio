@@ -42,6 +42,19 @@ zh_CN:
     task_updated_done: 任务已完成！
     task_updated_not_done: 任务标记为未完成
     no_tasks_assigned: 您没有被分配任何任务。
+    status_todo: 待办
+    status_done: 已完成
+    due_any: 不限到期日
+    due_overdue: 已逾期
+    due_next_7_days: 未来7天
+    due_later: 更晚
+    due_none: 无到期日
+    assigned_anyone: 任何人
+    assigned_me: 分配给我
+    search_members: 搜索成员
+    search_tasks: 搜索任务
+    no_open_tasks: 您没有待办任务。
+    no_matching_tasks: 没有符合筛选条件的任务。
   tips:
     get_started_here: 只需 4 个简单步骤即可体验 Loomio
     youve_completed_all_the_steps: "\U0001F389 您已完成所有步骤！"
@@ -662,6 +675,7 @@ zh_CN:
     direct_threads: 私人帖子
     unread_threads: 未读帖子
     unread_threads_count: 未读帖子数 (%{count})
+    votes_count: 1 票 | {count} 票
   strand_nav:
     jump_to: 跳转至
     timeline: 时间线
@@ -1660,6 +1674,8 @@ zh_CN:
       我已在 %{site_name} 上创建了 %{groupName}，方便大家一起讨论和做决定。点击此链接加入：
       %{link}
     trial_shareable_link_note: 复制邀请链接，通过邮件或聊天发送，邀请他人加入群组。他们加入后，您就可以直接通过 Loomio 向他们发送邮件和手机通知。<a href="%{upgradeUrl}">升级套餐</a>即可发送邮件邀请。
+    include_intro_message: 附上介绍消息
+    trial_shareable_invitation_message: 我已开启 %{site_name} 的 7 天试用，看看它能否帮助 %{groupName} 做决定。请点击此链接加入，一起试试：%{link}
   memberships_page:
     members: 成员
     name_label: 名字
@@ -2291,6 +2307,7 @@ zh_CN:
     unlocked: 已解锁
     no_threads_found_that_match_your_query_or_filters: 未找到符合您的查询或筛选条件的帖子
     no_threads_found_that_match_your_filters: 未找到符合您筛选条件的帖子
+    new_thread: 新建帖子
   members_panel:
     email_rejected: 邮件被拒
     email_rejected_meaning: 发送到此地址的邮件已被退回或被标记为垃圾邮件。我们将不再向此地址发送邮件。
@@ -3196,3 +3213,103 @@ zh_CN:
     bounced: 收到退信反馈
     complained: 收到垃圾邮件投诉
     skipped: 邮件未发送
+  group_cards:
+    admins_count: 1 位管理员 | {count} 位管理员
+    members_count: 1 位成员 | {count} 位成员
+    delegates_count: 1 位代表 | {count} 位代表
+    polls_count: 1 项投票 | {count} 项投票
+    proposals_count: 1 项提案 | {count} 项提案
+    needs_your_vote: 1 项待您投票 | {count} 项待您投票
+    no_open_polls: 暂无进行中的投票
+    browse_files: 查看文件
+    invite_get_started: 点击此处开始
+    threads: 帖子
+    threads_count: 1 篇帖子 | {count} 篇帖子
+    view_threads: 查看帖子
+    no_threads: 暂无帖子
+    this_group_only: 仅此群组
+    my_subgroups: 我的子群组
+    all_subgroups: 所有子群组
+    filter_tags: 筛选标签
+    filter_groups: 筛选群组
+    filter_subgroups: 筛选子群组
+    filter_qualifier_unread: 未读
+    filter_qualifier_direct: 私人
+    filter_qualifier_locked: 已锁定
+    filter_qualifier_unlocked: 未锁定
+    no_filtered_threads: 暂无{filters}帖子
+    no_filtered_threads_with_tag: 暂无带有标签“{tag}”的{filters}帖子
+    no_threads_with_tag: 暂无带有标签“{tag}”的帖子
+    recent_count: "{count} 项近期活动"
+    need_vote_count: 1 项待投票 | {count} 项待投票
+    open_count: "{count} 项进行中"
+    files_count: 1 个文件 | {count} 个文件
+  onboarding_card:
+    verified_badge: 已验证
+    view_plans: 查看套餐
+    upgrade_now: 立即升级
+    extend_trial_title: 解锁额外 30 天试用和一次免费培训通话
+    trial_verified: 我们已查看您的群组，随时可以提供帮助。现在可以发送邮件邀请了——继续使用，即可解锁额外 30 天试用、Pro 功能和一次与我们团队的免费培训通话。
+    trial_extended_title: 已解锁额外 30 天试用和免费培训通话
+    book_training_call: 预约培训通话
+    extend_trial_initial: 其他 {count} 人加入群组后，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。
+    extend_trial_remaining: 再有 1 人加入群组，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。 | 再有 {count} 人加入群组，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。
+    trial_extended_description: 您的试用期已延长 30 天。
+  dashboard_cards:
+    all_groups: 所有群组
+    unread_count: "{count} 条未读"
+    direct: 私人帖子
+    direct_count: "{count} 篇私人帖子"
+    people: 人员
+    recently_online: 最近在线
+    recently_online_count: "{count} 人最近在线"
+    your_tasks: 您的任务
+    tasks_todo_count: "{count} 项待办"
+    bookmarks_saved_count: "{count} 项已收藏"
+    search_people: 搜索人员
+    direct_thread: 私人帖子
+    view_profile: 查看个人资料
+    no_people_found: 未找到相关人员
+  group_settings_panel:
+    subtitle: 群组选项
+    group_administration: 群组管理
+    your_membership: 您的成员身份
+    integrations_and_data: 集成与数据
+    leave_or_delete: 退出或删除
+    edit_group_description: 更新群组名称、简介、标志、封面图、隐私设置和成员权限。
+    edit_tags_description: 创建、重命名、合并用于整理帖子和投票的标签，并设置标签颜色。
+    manage_subscription_description: 查看套餐、账单详情和成员人数上限。
+    change_volume_description: 选择接收此群组邮件和推送通知的频率。
+    email_group_description: 向此地址发送邮件，在此群组中发起新帖子。
+    group_stats_description: 查看成员活跃度、帖子互动和投票参与情况随时间的变化。
+    become_coordinator_description: 获取此群组的管理员权限。
+    chatbots_description: 连接 Slack、Mattermost、Discord 或其他聊天工具，发布群组动态。
+    api_docs_description: 配置 API 访问和 Webhook，将 Loomio 与您自己的工具集成。
+    export_data_description: 下载此群组的帖子、投票、评论和成员数据副本。
+    leave_group_description: 退出此群组并停止接收通知。
+    destroy_group_description: 安排永久删除此群组及其内容。
+  pagination:
+    page_of: 第 {page} 页，共 {total} 页
+    previous_page: 上一页
+    next_page: 下一页
+    sort_by: 排序方式
+    per_page: 每页条数
+    jump_to_page: 跳转到页
+    sort:
+      recent_activity: 最近动态
+      newest: 最新
+      oldest: 最早
+      closing_soon: 即将截止
+      name: 名称
+      last_seen: 最近访问
+    edit_tags_description: 创建、重命名、合并标签并设置颜色，用于整理帖子和投票。
+    manage_subscription_description: 查看套餐、账单详情和成员人数上限。
+    change_volume_description: 选择接收此群组邮件和推送通知的频率。
+    email_group_description: 向此地址发送邮件，在此群组中发起新帖子。
+    group_stats_description: 查看成员活跃度、帖子互动和投票参与情况随时间的变化。
+    become_coordinator_description: 获取此群组的管理员权限。
+    chatbots_description: 连接 Slack、Mattermost、Discord 等聊天工具，发布群组动态。
+    api_docs_description: 配置 API 访问和 webhook，将 Loomio 与自己的工具集成。
+    export_data_description: 下载此群组的帖子、投票、评论和成员数据副本。
+    leave_group_description: 退出此群组并停止接收通知。
+    destroy_group_description: 安排永久删除此群组及其内容。

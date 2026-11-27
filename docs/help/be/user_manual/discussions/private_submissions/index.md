@@ -1,21 +1,21 @@
 ---
 title: Збіраць прыватныя заяўкі
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: a089aa12907db78a
-  enable-private-submissions: 8e53e65d3559b19b
+  enable-private-submissions: 6bdd8842b01b19df
   set-up-a-private-submission-process: 32865d813c538343
-  make-a-submission: 12e7551076c36525
+  make-a-submission: e7586cc247526213
   review-submissions: 8cb79ce49ef9b69d
 title_source: e82ab76916d594f4
 title_generated: 19a4332452c8182e
@@ -46,7 +46,7 @@ title_generated: 19a4332452c8182e
 Вам патрэбныя правы адміністратара групы або падгрупы, дзе вы хочаце збіраць заяўкі.
 
 1. Адкрыйце групу.
-2. Выберыце **Налады** (або **Больш**, а затым **Рэдагаваць налады групы**).
+2. Адкрыйце **Налады**, затым выберыце **Рэдагаваць налады групы**.
 3. Адкрыйце **Дазволы**.
 4. Уключыце **Неўдзельнікі могуць пачынаць абмеркаванні**.
 5. Захавайце налады групы.
@@ -73,7 +73,7 @@ title_generated: 19a4332452c8182e
 
 ## Падаць заяўку
 
-Каб падаць заяўку, адкрыйце падгрупу і выберыце **Пачаць абмеркаванне**. Loomio пакажа шаблоны абмеркаванняў падгрупы. Выберыце адпаведны шаблон, адкажыце на яго пытанні і пачніце абмеркаванне.
+Каб падаць заяўку, адкрыйце падгрупу і выберыце **Новая тэма**. Loomio пакажа шаблоны абмеркаванняў падгрупы. Выберыце адпаведны шаблон, адкажыце на яго пытанні і пачніце абмеркаванне.
 
 Абмеркаванне належыць падгрупе, а Loomio дае вам гасцявы доступ да гэтай тэмы без далучэння да ўдзельнікаў падгрупы. Вы можаце ўдзельнічаць ва ўласнай тэме разам з камандай па разглядзе заявак, але не бачыце іншых прыватных абмеркаванняў або заявак у падгрупе.
 

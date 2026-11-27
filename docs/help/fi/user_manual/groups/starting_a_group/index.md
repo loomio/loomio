@@ -1,18 +1,18 @@
 ---
 title: Ryhmän perustaminen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 792e23f7fcb36aec
+  introduction: 87ff87d962c1b084
   group-details: 0fcf6c809c12050b
   group-name: 2ba5592281dfcbcb
   group-handle: 64928a4bbab65b9b
   group-description: 48af06ef795dd9a9
 generated:
-  introduction: 6ba8329df564a4fc
+  introduction: 6ad29be87bf34422
   group-details: 5ed7615321323e93
   group-name: 6480bf42ddeac4f4
   group-handle: 1f839e90a8798214
@@ -25,7 +25,7 @@ title_generated: 7a0bfcd9d081713c
 
 # Uuden ryhmän perustaminen
 
-Jos olet uusi Loomion käyttäjä, voit perustaa ryhmän maksuttomalle kokeilujaksolle [Loomion verkkosivustolla](https://www.loomio.com/). Jos käytät jo Loomiota ja haluat perustaa toisen ryhmän, valitse sivupalkista **Uusi ryhmä**.
+Jos olet uusi Loomion käyttäjä, voit perustaa ryhmän maksuttomalle kokeilujaksolle [Loomion verkkosivustolla](https://www.loomio.com/). Maksuttoman kokeilujakson aikana ryhmäsi saa 30 lisäpäivää sekä alaryhmät ja vieraat käyttöön, kun kolme henkilöä äänestää ehdotuksessa tai kyselyssä. Jos käytät jo Loomiota ja haluat perustaa toisen ryhmän, valitse **Uusi ryhmä** sivupalkista tai sivun yläreunan ryhmänvaihtovalikosta, kun sivupalkki on suljettu.
 
 Useimmat organisaatiot tarvitsevat vain yhden pääryhmän, jonka sisälle voi perustaa niin monta [alaryhmää](/en/user_manual/groups/subgroups) kuin tarvitaan.
 

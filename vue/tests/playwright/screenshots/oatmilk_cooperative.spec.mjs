@@ -11,28 +11,34 @@ async function openGroup(page) {
 
 async function openGroupMenu(page) {
   await openGroup(page);
-  await page.locator('.group-page__actions .action-menu--btn').click();
+  await page.locator('.group-cards__settings').click();
+  await expect(page.locator('.group-settings-panel')).toBeVisible();
 }
 
 // Opens the group settings form, on a tab other than the profile when given.
 async function openGroupSettings(page, tab) {
   await openGroupMenu(page);
-  await page.locator('.v-overlay--active .action-dock__button--edit_group').click();
+  await page.locator('.group-settings-panel .action-dock__button--edit_group').click();
   await expect(page.locator('.group-form')).toBeVisible();
   if (tab) { await page.locator(`.group-form__${tab}-tab`).click(); }
 }
 
 test('group_overview', async ({ page, manual: screenshot }) => {
   await openGroup(page);
-  await screenshot.captureElement('groups/group_page', '.group-page');
+  await screenshot.captureRegion('groups/group_page', [
+    '.group-page .v-img',
+    '.group-page__name',
+    '.discussions-panel'
+  ], {width: 1280, height: 1400, padding: 16});
 });
 
 test('group_settings_menu', async ({ page, manual: screenshot }) => {
   await openGroupMenu(page);
-  await expect(page.locator('.v-overlay--active .action-dock__button--edit_group')).toBeVisible();
-  await screenshot.captureElement('groups/settings/group_settings', '.v-main', {
-    height: 757,
-    spotlight: menuSpotlight('.v-overlay .action-dock__button--edit_group')
+  await expect(page.locator('.group-settings-panel .action-dock__button--edit_group')).toBeVisible();
+  await screenshot.captureElement('groups/settings/group_settings', '.group-page', {
+    width: 1280,
+    height: 1600,
+    spotlight: menuSpotlight('.group-settings-panel .action-dock__button--edit_group')
   });
 });
 

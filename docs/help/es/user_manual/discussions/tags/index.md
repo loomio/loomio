@@ -1,25 +1,25 @@
 ---
 title: Etiquetas de categoría
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 49175a381e0d60c2
+  introduction: 82caca64561e029d
   apply-tags: 65a9e0a6bbc4d0c5
   create-tags: 9b54fbf7c9c566ed
-  edit-tags: 2fc2f8f1dcb68b7a
+  edit-tags: 4fa1a3b16514d786
   edit-tag-in-thread-or-poll: 5e73639c22ac84ff
   template-tags: 7d9be3238e7b7aba
   tag-contributions: 97e2d7bf59e9faa0
@@ -37,7 +37,7 @@ Las etiquetas de categoría te ayudan a encontrar discusiones, encuestas, conclu
 
 Las etiquetas pertenecen a toda la organización. Una etiqueta creada en un grupo principal se comparte con sus subgrupos, para que puedas hacer un seguimiento del trabajo relacionado entre grupos. Loomio muestra las etiquetas en orden alfabético con un punto de color junto a cada nombre.
 
-En la página de tu grupo, selecciona **Etiquetas**, encima de la lista de hilos, y elige una etiqueta para mostrar los hilos que contienen al menos un elemento con esa etiqueta. Escribe en el campo de filtro para buscar en una lista larga.
+En **Todos los grupos** o en la página de un grupo, selecciona **Etiquetas**, encima de la lista de hilos, encuestas o tareas, y elige una etiqueta para mostrar los elementos con esa etiqueta. Escribe en el campo de filtro para buscar en una lista larga.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ Cuando alguien inicia una discusión o una encuesta a partir de una plantilla, L
 
 Solo los admins del grupo principal pueden cambiar el nombre o el color de las etiquetas, fusionarlas o eliminarlas. Los cambios se aplican en toda la organización, incluidos todos los subgrupos.
 
-En la página del grupo, abre **Etiquetas** y selecciona **Editar etiquetas**.
+En la página del grupo, abre **Etiquetas** y selecciona **Editar etiquetas**, o abre **Configuración ** y selecciona **Etiquetas por categorías **.
 
 ![editar etiquetas de categoría](tags_edit_new.png)
 

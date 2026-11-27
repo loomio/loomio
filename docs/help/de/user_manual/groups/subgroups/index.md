@@ -1,34 +1,34 @@
 ---
 title: Untergruppen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: acf8b10d6441dd8c
-  add-a-subgroup: 70111e6722e1d8f9
+  add-a-subgroup: 77f21592cf88234a
   subgroup-settings: e79b4c0cb34a6e3c
   privacy: 7152d78e15ca3ebb
   permissions: 1e71998a7fe07864
-  find-subgroups: 99223b1d3c7365e2
+  find-subgroups: 1cfb95de99e5e374
   invite-to-a-subgroup: 65e016d9d874c0b6
   simultaneously-invite-people-to-subgroups-and-parent-group: 76195a9573e283d7
   administer-a-subgroup: c452b596ff58d3a4
   delete-a-subgroup: 13407fd640c565ba
-  how-people-join: 5aed3ad9569b7aba
+  how-people-join: d245d210e6499282
 title_source: 9f81e728f70cae3e
 title_generated: 5ec97dd47e254e8e
 ---
@@ -58,7 +58,7 @@ Um eine Untergruppe zu erstellen, öffne die Seite deiner Hauptgruppe, wähle in
 
 ![Formular für eine neue Untergruppe namens Packaging Working Group](subgroups_new.png)
 
-Wenn die Untergruppe bereit ist, [lade Personen ein](/en/user_manual/groups/inviting_people), ihr beizutreten. Du kannst die [Gruppeneinstellungen](/en/user_manual/groups/settings) der Untergruppe über das Aktionsmenü auf der Seite der Untergruppe ändern.
+Wenn die Untergruppe bereit ist, [lade Personen ein](/en/user_manual/groups/inviting_people), ihr beizutreten. Du kannst die [Gruppeneinstellungen](/en/user_manual/groups/settings) der Untergruppe über **Einstellungen** auf der Seite der Untergruppe ändern.
 
 ![Aktion zum Bearbeiten der Gruppeneinstellungen der Packaging Working Group](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ Wenn die Hauptgruppe privat ist, können Untergruppen nur **Für die übergeordn
 
 ### Wie Personen beitreten
 
-Wähle beim Erstellen der Untergruppe oder unter **Gruppeneinstellungen bearbeiten** > **Sichtbarkeit**, [wie Personen beitreten](/en/user_manual/groups/settings/privacy#how-people-join).
+Wähle beim Erstellen der Untergruppe oder unter **Einstellungen** > **Gruppeneinstellungen bearbeiten** > **Sichtbarkeit**, [wie Personen beitreten](/en/user_manual/groups/settings/privacy#how-people-join).
 
 ![Einstellungen für Privatsphäre und Beitritt einer Untergruppe](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ Aktiviere unter **Berechtigungen** die Einstellung **Mitglieder der Hauptgruppe 
 
 ## Untergruppen finden
 
-Wähle in der Seitenleiste den Namen deiner Hauptgruppe, um ihre Untergruppen zu sehen.
+Wähle in der Seitenleiste den Namen deiner Hauptgruppe, um ihre Untergruppen zu sehen. Verwende auf den Seiten **Threads**, **Abstimmungen**, **Mitglieder**, **Dokumente**, **Aufgaben** und **Lesezeichen** einer Hauptgruppe den Filter **Untergruppen**, um zwischen **Nur diese Gruppe**, **Meine Untergruppen** und **Alle Untergruppen** zu wechseln oder direkt zu einer Untergruppe zu springen.
 
 ![Untergruppen der Oatmilk Cooperative in der Seitenleiste](subgroups_find_subgroups.png)
 

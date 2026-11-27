@@ -1,4 +1,5 @@
 import { test, expect } from '../fixtures.mjs';
+import { groupAction } from '../helpers/groups.mjs';
 import { openPollForm } from '../helpers/polls.mjs';
 
 test('the thread form reports a missing title', async ({ page, flash }) => {
@@ -11,8 +12,7 @@ test('the thread form reports a missing title', async ({ page, flash }) => {
 
 test('the group form reports a missing name', async ({ page, flash }) => {
   await page.goto('/dev/setup_group')
-  await page.locator('.action-menu').click()
-  await page.locator('.action-dock__button--edit_group').click()
+  await groupAction(page, 'edit_group')
   await page.locator('#group-name').fill('')
   await page.locator('.group-form__submit-button').click()
   await expect(flash).toContainText('name')

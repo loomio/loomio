@@ -1,34 +1,34 @@
 ---
 title: Підгрупи
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: c782109e6763c111
-  add-a-subgroup: 436ed28ed34e8c29
+  add-a-subgroup: d13db8a7b5c0609a
   subgroup-settings: 149897399d8e1c0c
   privacy: e6830aa21869489b
   permissions: 4a2937647ce7315d
-  find-subgroups: d5aa7752a1d97c97
+  find-subgroups: ec6467ab21ee385a
   invite-to-a-subgroup: 182325528e54b33a
   simultaneously-invite-people-to-subgroups-and-parent-group: 371e257254798faa
   administer-a-subgroup: 9c284fabd807b3ea
   delete-a-subgroup: 0ad2a80637156bdb
-  how-people-join: 93ef4435dda9d332
+  how-people-join: 2b56882df6be7570
 title_source: 9f81e728f70cae3e
 title_generated: 962484244de07e5d
 ---
@@ -52,13 +52,13 @@ title_generated: 962484244de07e5d
 >[!Note]
 >Хто може додавати підгрупи, визначають [налаштування дозволів](/en/user_manual/groups/settings/permissions) батьківської групи. За замовчуванням лише адміністратори групи можуть створювати підгрупи.
 
-Щоб створити підгрупу, відкрийте сторінку вашої батьківської групи, виберіть **Нова підгрупа** на бічній панелі, введіть назву, виберіть налаштування приватності та натисніть **Створити підгрупу**.
+Щоб створити підгрупу, відкрийте сторінку вашої батьківської групи, виберіть **Нова підгрупа** на бічній панелі, введіть назву, виберіть налаштування конфіденційності та натисніть **Створити підгрупу**.
 
 ![Кнопка «Нова підгрупа» на бічній панелі кооперативу Oatmilk](subgroups-sidebar.png)
 
 ![Форма створення нової підгрупи для робочої групи з пакування](subgroups_new.png)
 
-Коли підгрупа буде готова, [запросіть людей](/en/user_manual/groups/inviting_people) приєднатися до неї. Ви можете змінити [налаштування групи](/en/user_manual/groups/settings) для підгрупи через меню дій на її сторінці.
+Коли підгрупа буде готова, [запросіть людей](/en/user_manual/groups/inviting_people) приєднатися до неї. Ви можете змінити [налаштування групи](/en/user_manual/groups/settings) для підгрупи в розділі **Налаштування** на її сторінці.
 
 ![Дія «Редагувати налаштування групи» для робочої групи з пакування](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ title_generated: 962484244de07e5d
 
 ### Як люди приєднуються
 
-Вибір [способу приєднання](/en/user_manual/groups/settings/privacy#how-people-join) доступний під час створення підгрупи або в розділі **Редагувати налаштування групи** > **Конфіденційність**.
+Вибір [способу приєднання](/en/user_manual/groups/settings/privacy#how-people-join) доступний під час створення підгрупи або в розділі **Налаштування** > **Редагувати налаштування групи** > **Конфіденційність**.
 
 ![Налаштування конфіденційності підгрупи та способу приєднання](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ title_generated: 962484244de07e5d
 
 ## Знайти підгрупи
 
-Виберіть назву вашої батьківської групи на бічній панелі, щоб побачити її підгрупи.
+Виберіть назву вашої батьківської групи на бічній панелі, щоб побачити її підгрупи. На сторінках **Теми**, **Опитування**, **Учасники**, **Файли**, **Завдання** та **Закладки** батьківської групи використовуйте фільтр **Підгрупи**, щоб перемикатися між варіантами **Лише ця група**, **Мої підгрупи** та **Усі підгрупи** або переходити безпосередньо до підгрупи.
 
 ![Підгрупи кооперативу Oatmilk на бічній панелі](subgroups_find_subgroups.png)
 

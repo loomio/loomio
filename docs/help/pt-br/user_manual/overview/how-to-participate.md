@@ -1,17 +1,17 @@
 ---
 title: Como participar
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: 3b8567029eb06284
   get-someone-s-attention: d5de688301e53e47
   reactions: 322ac82be33ff14e
-  vote: de40de9de4a9e71c
+  vote: b70968a1f370f3ab
   state-a-reason: 62c8d2a40c5bb9a5
   change-your-vote: '03931f2ee52821e4'
   results: 7ae023c1cd51b6ac
@@ -73,7 +73,7 @@ Adicione uma reação com emoji para reconhecer um comentário sem escrever uma 
 
 ## Votar
 
-Abra uma enquete a partir de um convite por e-mail, de uma notificação no aplicativo ou da aba **Enquetes** do seu grupo. Leia a enquete e os arquivos anexados e, em seguida, selecione sua opção.
+Abra uma enquete a partir de um convite por e-mail, de uma notificação no aplicativo, de **Todos os grupos** ou da seção **Enquetes** do seu grupo. Leia a enquete e os arquivos anexados e, em seguida, selecione sua opção.
 
 O Loomio tem vários tipos de enquetes. O exemplo abaixo mostra uma proposta com as opções **Concordar**, **Abster-se** e **Discordo**.
 

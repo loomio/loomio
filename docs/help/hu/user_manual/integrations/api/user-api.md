@@ -1,10 +1,10 @@
 ---
 title: Felhasználói API
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 2d91e17b37de30b4
   response-size-and-related-records: 3bdd69fb0fcdd958
@@ -12,7 +12,7 @@ sections:
   groups: 0473f1f7fb78f074
   list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: 3533fbb996deebf6
+  webhooks: 44f627e517bbd9e6
   list-webhooks: 3f5d857fe7f844bd
   create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
@@ -88,7 +88,7 @@ generated:
   groups: 416e445b12c9f929
   list-groups: 378a9636d7354369
   get-a-group: b886986c8f74579e
-  webhooks: d8e2bffc0f7d2805
+  webhooks: fad09013e5771a55
   list-webhooks: 528f576d285259b8
   create-a-webhook: 2bdde5806149d693
   update-a-webhook: dce319154b34d32f
@@ -1111,7 +1111,7 @@ A felhasználói API kérésalapú: az integráció akkor hívja meg a Loomiót,
 A webhookokat csoportonként kell beállítani, és ehhez csoportadminisztrátori jogosultság szükséges. A Loomio felületén így kezelheted őket:
 
 1. Nyisd meg a csoportot.
-2. Nyisd meg a csoport menüjét, és válaszd ki a **Csevegési integrációk** lehetőséget.
+2. Nyisd meg a **Beállítások** menüt, és válaszd ki a **Csevegési integrációk** lehetőséget.
 3. Add hozzá a végpontod által fogadott üzenetformátumnak megfelelő integrációt. Általános célú végponthoz használd a Mattermost/Markdown formátumot.
 4. Adj meg egy nevet és a cél URL-jét.
 5. Válaszd ki azokat az eseményeket, amelyeket a Loomio automatikusan küldjön el.

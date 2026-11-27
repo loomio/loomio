@@ -1,10 +1,10 @@
 ---
 title: API de usuario
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 2d91e17b37de30b4
   response-size-and-related-records: 3bdd69fb0fcdd958
@@ -12,7 +12,7 @@ sections:
   groups: 0473f1f7fb78f074
   list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: 3533fbb996deebf6
+  webhooks: 44f627e517bbd9e6
   list-webhooks: 3f5d857fe7f844bd
   create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
@@ -88,7 +88,7 @@ generated:
   groups: '0778b0182dde2603'
   list-groups: 467f678cde32058b
   get-a-group: db4a774458fa28c4
-  webhooks: cb286bac9df3da35
+  webhooks: 68e25321a7737ab2
   list-webhooks: 2c978830a7ac7860
   create-a-webhook: bee4601e6f6c1062
   update-a-webhook: 7fdb6d8dde4fc1e8
@@ -1111,7 +1111,7 @@ La API de usuario se basa en solicitudes: una integración llama a Loomio cuando
 Los webhooks se configuran por grupo y requieren permisos de administrador del grupo. Puedes gestionarlos desde la interfaz de Loomio:
 
 1. Abre el grupo.
-2. Abre el menú del grupo y selecciona **Integraciones de chat**.
+2. Abre **Configuración ** y selecciona **Integraciones de chat**.
 3. Añade la integración que coincida con el formato de datos que acepta tu endpoint. Para un endpoint de uso general, usa el formato Mattermost/Markdown.
 4. Introduce un nombre y la URL de destino.
 5. Selecciona los eventos que Loomio debe enviar automáticamente.

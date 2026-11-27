@@ -24,7 +24,7 @@ Open the action menu for the item and select **Save bookmark**. The action menu 
 
 ## View your bookmarks
 
-Open the sidebar and select **Bookmarks**. The number beside the link shows how many bookmarks you have saved.
+Open **Bookmarks** on **All groups** to see everything you have saved across your groups, or open **Bookmarks** on a group page to see bookmarks in that group (with a **Subgroups** filter on parent groups).
 
 The Bookmarks page lists your most recently saved items first. Each row shows the kind of item and its author. Select a row to return to the bookmarked item.
 

@@ -1,16 +1,16 @@
 ---
 title: Ihmisten kutsuminen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 607778b67d6757f8
+  introduction: 7da0a741c5cddc58
   send-invitations-via-email: a229af7386197975
   invite-many-at-once: 8effc0524eaeeb0e
   invite-people-to-subgroups: e43708aa23ea7add
-  share-a-link-to-your-group: 12b36ea672b9999f
+  share-a-link-to-your-group: 49835f16464547ff
   request-to-join-group: '096c137ca73825ab'
   review-membership-requests: c33f02bfc6796db4
   managing-invitations: 831ce2c6e45b3646
@@ -37,7 +37,7 @@ title_generated: 0f5c8e72764c2a0a
 
 # Kutsu ihmisiä Loomio-ryhmään
 
-Voit kutsua ihmisiä Loomio-ryhmääsi sähköpostitse, jakaa kutsulinkin tai antaa ihmisten pyytää jäsenyyttä. Aloita avaamalla ryhmäsi sivun **Jäsenet**-välilehti.
+Voit kutsua ihmisiä Loomio-ryhmääsi sähköpostitse, jakaa kutsulinkin tai antaa ihmisten pyytää jäsenyyttä. Aloita valitsemalla **Jäsenet**-kortista **Kutsu** tai avaamalla ryhmäsi sivulta **Jäsenet**.
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ Kun kutsut ihmisiä pääryhmään, voit lisätä heidät samalla yhteen tai use
 
 ## Jaa linkki ryhmääsi
 
-Valitse **Jaa**, niin voit luoda uudelleenkäytettävän kutsulinkin uutiskirjeeseen, chat-kanavalle, sähköpostiin tai verkkosivustolle.
+Valitse **Jaa**, niin voit luoda uudelleenkäytettävän kutsulinkin uutiskirjeeseen, chat-kanavalle, sähköpostiin tai verkkosivustolle. Ota **Lisää esittelyviesti** käyttöön, jos haluat kopioida linkin mukana lyhyen viestin.
 
 ![](group_invite_sharable_link.png)
 
-Jos haluat estää ihmisiä liittymästä nykyisen linkin kautta, valitse **Luo linkki uudelleen**. Vanha linkki lakkaa toimimasta, ja tilalle luodaan uusi linkki.
+Jos haluat estää ihmisiä liittymästä nykyisen linkin kautta, valitse **Palauta linkki**. Vanha linkki lakkaa toimimasta, ja tilalle luodaan uusi linkki.
 
 <!-- translation-section: request-to-join-group -->
 

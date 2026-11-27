@@ -1,16 +1,16 @@
 ---
 title: Запрашэнне людзей
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: e0a100f43fcf1988
+  introduction: 6ccab87ee15732ab
   send-invitations-via-email: 4fb107e5a25db796
   invite-many-at-once: 68b72c1935aca43c
   invite-people-to-subgroups: 3ffe18894b2d4246
-  share-a-link-to-your-group: 2e60019a7af48d07
+  share-a-link-to-your-group: be87ea7490dce0d6
   request-to-join-group: fff979be757c940f
   review-membership-requests: a35f06a3e578e7f3
   managing-invitations: fe3d0719bbaf10bd
@@ -37,7 +37,7 @@ title_generated: 2dac44685c0fc76a
 
 # Запрасіце людзей у групу Loomio
 
-Людзей можна запрасіць у вашу групу Loomio праз электронную пошту, падзяліцца з імі спасылкай запрашэння або дазволіць ім адпраўляць запыты на ўступленне. Каб пачаць, адкрыйце ўкладку **Удзельнікі** на старонцы вашай групы.
+Людзей можна запрасіць у вашу групу Loomio праз электронную пошту, падзяліцца з імі спасылкай запрашэння або дазволіць ім адпраўляць запыты на далучэнне. Каб пачаць, выберыце **Запрасіць** на картцы **Удзельнікі** або адкрыйце **Удзельнікі** на старонцы вашай групы.
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ title_generated: 2dac44685c0fc76a
 
 ## Як падзяліцца спасылкай на вашу групу
 
-Выберыце **Падзяліцца**, каб стварыць шматразовую спасылку запрашэння для рассылкі, канала чата, ліста або сайта.
+Выберыце **Падзяліцца**, каб стварыць шматразовую спасылку запрашэння для рассылкі, канала чата, ліста або сайта. Уключыце **Дадаць уступнае паведамленне**, каб скапіяваць кароткае паведамленне разам са спасылкай.
 
 ![](group_invite_sharable_link.png)
 
-Каб спыніць далучэнне людзей праз наяўную спасылку, выберыце **Скінуць гэтую спасылку**. Старая спасылка перастане працаваць, і будзе створана новая.
+Каб спыніць далучэнне людзей праз наяўную спасылку, выберыце **Скінуць спасылку**. Старая спасылка перастане працаваць, і будзе створана новая.
 
 <!-- translation-section: request-to-join-group -->
 

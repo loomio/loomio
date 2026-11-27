@@ -1,12 +1,12 @@
 ---
 title: 参加状況レポート
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 915cc9650c7c4356
+  introduction: 5d27b7bcc10e6280
   what-s-in-the-report: 7acaa62f387e1eb1
   actions-per-month: 732bbd47ea140abe
   tag-usage: d00ea569013c02a4
@@ -37,9 +37,9 @@ title_generated: 4ebfa1217f39901d
 
 グループのすべてのメンバーがレポートを閲覧できますが、各メンバーに表示されるのは所属するグループの結果のみです。そのため、メンバーによって表示される合計が異なる場合があります。
 
-レポートを開くには、グループのアクションメニューを開き、**参加レポート**を選択します。レポート内のどの表でも、列見出しを選択すると、その列で並べ替えられます。
+レポートを開くには、グループページの**設定**を開き、**参加レポート**を選択します。レポート内のどの表でも、列見出しを選択すると、その列で並べ替えられます。
 
-![Oatmilk Cooperativeのメニューにある参加レポートの項目](group_participation_report.png)
+![Oatmilk Cooperativeの設定ページにある参加レポートの項目](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

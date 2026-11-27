@@ -1,21 +1,21 @@
 ---
 title: 非公開の提出物を集める
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: 19fe9776814221b8
-  enable-private-submissions: 8b08792dd1eb700e
+  enable-private-submissions: fb526ef345eb9eff
   set-up-a-private-submission-process: f0bf9bf6dae4fbe2
-  make-a-submission: acfc584e0f835da1
+  make-a-submission: 977c2b0cc7ad8c50
   review-submissions: b3c31f7fef2f862f
 title_source: e82ab76916d594f4
 title_generated: e77e8ea86bd50b88
@@ -46,7 +46,7 @@ title_generated: e77e8ea86bd50b88
 提出物を集めるグループまたはサブグループのグループ管理者である必要があります。
 
 1. グループを開きます。
-2. **設定**を選択します（または**もっと**から**グループ設定を編集する**を選択します）。
+2. **設定**を開き、**グループ設定を編集する**を選択します。
 3. **権限**を開きます。
 4. **非会員でも議論を開始できます**を有効にします。
 5. グループ設定を保存します。
@@ -73,7 +73,7 @@ title_generated: e77e8ea86bd50b88
 
 ## 提出する
 
-提出者はサブグループを開き、**ディスカッションを始める**を選択します。Loomioに、そのサブグループのディスカッションのテンプレートが表示されます。提出者は適切なテンプレートを選び、質問に回答してディスカッションを始めます。
+提出者はサブグループを開き、**新しいスレッド**を選択します。Loomioに、そのサブグループのディスカッションのテンプレートが表示されます。提出者は適切なテンプレートを選び、質問に回答してディスカッションを始めます。
 
 ディスカッションはサブグループに属し、Loomioは提出者をそのスレッドにゲストとして追加します。提出者はサブグループのメンバーにはなりません。自分のスレッドで審査チームとやり取りできますが、サブグループ内のほかの非公開ディスカッションや提出物を見ることはできません。
 

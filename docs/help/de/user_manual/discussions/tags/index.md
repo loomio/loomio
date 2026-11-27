@@ -1,25 +1,25 @@
 ---
 title: Kategorie-Schlagwörter
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: bddedb70e9814712
+  introduction: 7e74f26c3f19aec9
   apply-tags: 433ab0d633df7822
   create-tags: d711151d47a91ba2
-  edit-tags: d221213fce39c7cd
+  edit-tags: 32e4f2cc2c9e263f
   edit-tag-in-thread-or-poll: 172454a058117368
   template-tags: a8e7353e0af19161
   tag-contributions: d64969a9c6ff26fe
@@ -39,7 +39,7 @@ Kategorie-Schlagwörter helfen dir, Diskussionen, Abstimmungen, Fazits und Komme
 
 Schlagwörter gehören zur gesamten Organisation. Ein Schlagwort, das in einer Hauptgruppe erstellt wird, steht auch ihren Untergruppen zur Verfügung. So kannst du zusammengehörige Arbeit über Gruppengrenzen hinweg verfolgen. Loomio listet Schlagwörter alphabetisch auf und zeigt neben jedem Namen einen farbigen Punkt an.
 
-Wähle auf deiner Gruppenseite oberhalb der Thread-Liste **Schlagwörter** und dann ein Schlagwort aus, um Threads anzuzeigen, die mindestens einen Beitrag mit diesem Schlagwort enthalten. Gib Text in das Filterfeld ein, um eine lange Liste zu durchsuchen.
+Wähle unter **Alle Gruppen** oder auf einer Gruppenseite oberhalb der Liste mit Threads, Abstimmungen oder Aufgaben **Schlagwörter** und dann ein Schlagwort aus, um Einträge mit diesem Schlagwort anzuzeigen. Gib Text in das Filterfeld ein, um eine lange Liste zu durchsuchen.
 
 ![](tags_view.png)
 
@@ -90,7 +90,7 @@ Wenn jemand eine Diskussion oder Abstimmung aus einer Vorlage startet, weist Loo
 
 Nur Admins der Hauptgruppe können Schlagwörter umbenennen, ihre Farbe ändern, sie zusammenführen oder löschen. Änderungen gelten für die gesamte Organisation einschließlich aller Untergruppen.
 
-Öffne auf der Gruppenseite **Schlagwörter** und wähle **Schlagwörter bearbeiten**.
+Öffne auf der Gruppenseite **Schlagwörter** und wähle **Schlagwörter bearbeiten**, oder öffne **Einstellungen** und wähle **Schlagwörter für Kategorien**.
 
 ![Kategorie-Schlagwörter bearbeiten](tags_edit_new.png)
 

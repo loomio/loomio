@@ -1,12 +1,12 @@
 ---
 title: Részvételi jelentés
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 551fbb36b403196e
+  introduction: 7de399249e08ab90
   what-s-in-the-report: 43e198700c1479f0
   actions-per-month: 341dc2423615e35d
   tag-usage: 50173921d1d9ee1a
@@ -37,9 +37,9 @@ Kiválaszthatod, mely csoportok szerepeljenek a jelentésben, megadhatod a kezd�
 
 A jelentést minden csoporttag megtekintheti, de mindenki csak azoknak a csoportoknak az eredményeit látja, amelyeknek tagja. Ezért a különböző tagok eltérő összesített adatokat láthatnak.
 
-A jelentés megnyitásához nyisd meg a csoport műveleti menüjét, és válaszd ki a **Részvételi jelentés** menüpontot. A jelentés bármely táblázatában kattints egy oszlopfejlécre az adott oszlop szerinti rendezéshez.
+A jelentés megnyitásához nyisd meg a csoport oldalán a **Beállítások** menüt, és válaszd ki a **Részvételi jelentés** menüpontot. A jelentés bármely táblázatában kattints egy oszlopfejlécre az adott oszlop szerinti rendezéshez.
 
-![A részvételi jelentés menüpontja az Oatmilk Cooperative menüjében](group_participation_report.png)
+![A részvételi jelentés menüpontja az Oatmilk Cooperative beállítási oldalán](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

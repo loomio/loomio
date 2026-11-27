@@ -1,15 +1,15 @@
 ---
 title: Discussions directes
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: c617bad25b64654f
+  introduction: 1a0632592c683296
   contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: cfbe7749a5827400
+  introduction: ee0a50324e53f089
   contacting-someone-via-a-direct-discussion: e0d853ab28b06435
 title_source: ccfab058f1f7c146
 title_generated: b13de23899586289
@@ -27,11 +27,11 @@ Les discussions directes proposent les mêmes commentaires, sondages et outils d
 
 ![Un formulaire de discussion directe sans groupe sélectionné et avec Samira Patel dans le champ Inviter](direct-discussion-example.png)
 
-Sélectionnez **Discussions directes** dans la barre latérale pour voir vos discussions et sondages directs. Ouvrez ensuite le menu **Nouveau** et choisissez **Nouvelle discussion** pour démarrer une discussion directe, ou **Nouveau sondage** pour démarrer un sondage sans groupe.
+Ouvrez **Tous les groupes** et sélectionnez **Directs** dans **Fils** (ou sélectionnez le nombre de fils directs sur la carte **Fils**) pour voir vos discussions directes. Sélectionnez ensuite **Nouveau fil** pour démarrer une discussion directe. Vous pouvez aussi ouvrir **Personnes** dans **Tous les groupes** et sélectionner **Fil direct** à côté du nom d’une personne.
 
 Un sondage direct est visible uniquement par les personnes que vous invitez. Après l’avoir créé, utilisez [Gérer les électeurs](/en/user_manual/polls/manage_voters) pour inviter des personnes ou des adresses e-mail.
 
-![L’entrée Discussions directes dans la barre latérale et la liste des discussions directes](direct-discussion-sidebar.png)
+![Le filtre Directs dans Tous les groupes affichant les discussions directes](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 

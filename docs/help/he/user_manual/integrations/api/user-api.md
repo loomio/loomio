@@ -1,10 +1,10 @@
 ---
 title: API למשתמש
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 2d91e17b37de30b4
   response-size-and-related-records: 3bdd69fb0fcdd958
@@ -12,7 +12,7 @@ sections:
   groups: 0473f1f7fb78f074
   list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: 3533fbb996deebf6
+  webhooks: 44f627e517bbd9e6
   list-webhooks: 3f5d857fe7f844bd
   create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
@@ -88,7 +88,7 @@ generated:
   groups: 05c42ae402e79755
   list-groups: da25696a4a5993a2
   get-a-group: '05389619e7f35def'
-  webhooks: 14d9495f3dd01876
+  webhooks: f02d06eca9de2d4c
   list-webhooks: 04b6c057c3d4c25e
   create-a-webhook: b3bc9702c9725c17
   update-a-webhook: 00da5e8969bd9f82
@@ -1111,7 +1111,7 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 Webhooks מוגדרים לכל קבוצה בנפרד ודורשים הרשאת ניהול של הקבוצה. ניתן לנהל אותם דרך הממשק של Loomio:
 
 1. יש לפתוח את הקבוצה.
-2. יש לפתוח את תפריט הקבוצה ולבחור **אינטגרציות צ'אט**.
+2. יש לפתוח את **הגדרות** ולבחור **אינטגרציות צ'אט**.
 3. יש להוסיף את האינטגרציה המתאימה לפורמט הנתונים שנקודת הקצה מקבלת. לנקודת קצה לשימוש כללי, יש להשתמש בפורמט Mattermost/Markdown.
 4. יש להזין שם ואת כתובת ה־URL של היעד.
 5. יש לבחור את האירועים ש־Loomio תשלח אוטומטית.

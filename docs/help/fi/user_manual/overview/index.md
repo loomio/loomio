@@ -1,24 +1,24 @@
 ---
 title: Aloittaminen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: eeb1208e54aac296
   how-loomio-works: 276776a0f68d5d5f
-  groups: 5d045439f3cc9ea2
+  groups: e5657fde4e033774
   discussions: a90721a69961c173
-  polls-and-proposals: 961e813e712946b3
+  polls-and-proposals: 9e337005adeb91cd
   try-it-out: 6d9aa09643a54803
   how-people-use-loomio: 0c22d54eeca26da8
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ Loomiossa on kolme pääosaa: ryhmät, keskustelut ja kyselyt.
 
 ### Ryhmät
 
-Ryhmä on paikka, jossa organisaatio, tiimi tai yhteisö voi työskennellä yhdessä. Sen etusivu kertoo ryhmän tarkoituksesta ja sisältää linkit sen keskusteluihin, kyselyihin, jäseniin ja tiedostoihin.
+Ryhmä on paikka, jossa organisaatio, tiimi tai yhteisö voi työskennellä yhdessä. Sen etusivu kertoo ryhmän tarkoituksesta ja sisältää linkit sen ketjuihin, kyselyihin, jäseniin, tiedostoihin, tehtäviin, kirjanmerkkeihin ja asetuksiin.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ Kyselyt auttavat ryhmää selvittämään mieltymyksiä, keräämään neuvoja j
 
 ![](orientation_proposal.png)
 
-Kyselyt voivat olla osa keskustelua, tai niitä voi järjestää erikseen ryhmän sivun **Kyselyt**-välilehdellä.
+Kyselyt voivat olla osa keskustelua, tai niitä voi järjestää erikseen ryhmän sivun **Kyselyt**-osiossa.
 
 Katso [Pikaesittely](/en/user_manual/overview/orientation), niin näet, missä nämä osat sijaitsevat käyttöliittymässä. Aloita osallistuminen tutustumalla ohjeeseen [Miten osallistua](/en/user_manual/overview/how-to-participate).
 

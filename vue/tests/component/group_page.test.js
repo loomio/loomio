@@ -6,15 +6,16 @@ const mocks = vi.hoisted(() => ({
   findOrFetch: vi.fn()
 }));
 
+vi.mock('vue-router', () => ({
+  useRoute: () => ({ params: { key: 'test-group' } })
+}));
 vi.mock('@/shared/services/records', () => ({
   default: {groups: {findOrFetch: mocks.findOrFetch}}
 }));
 vi.mock('@/shared/services/session', () => ({default: {isSignedIn: () => false}}));
 vi.mock('@/shared/services/event_bus', () => ({default: mocks.eventBus}));
-vi.mock('@/shared/abilities/group_ability', () => ({default: {canUpdate: () => false}}));
 vi.mock('@/shared/services/group_service', () => ({default: {actions: () => ({})}}));
-vi.mock('@/mixins/url_for', () => ({default: {methods: {urlFor: () => '/group'}}}));
-vi.mock('@/mixins/format_date', () => ({default: {}}));
+vi.mock('@/shared/services/lmo_url_service', () => ({default: {route: () => '/group'}}));
 
 import GroupPage from '@/components/group/page.vue';
 
@@ -29,9 +30,7 @@ const group = {
 
 function mountPage() {
   return shallowMount(GroupPage, {
-    methods: {titleVisible: () => {}},
     global: {
-      mocks: {$route: {params: {key: group.key}}, $t: key => key},
       directives: {intersect: () => {}, t: () => {}},
       stubs: {
         VContainer: {template: '<div><slot /></div>'},

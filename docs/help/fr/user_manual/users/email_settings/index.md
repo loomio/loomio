@@ -1,10 +1,10 @@
 ---
 title: Notifications
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 25fc6fe9cb35c981
   two-ways-to-begin: 3b42b0d12bbd2ba0
@@ -13,7 +13,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -26,7 +26,7 @@ generated:
   choose-your-catch-up-schedule: 2c7e410c7bd69bd7
   mark-a-catch-up-as-read: 0d503d99a3202fab
   group-and-thread-notification-settings: e5354a7295cb9751
-  group-notification-settings: 303196dd93721316
+  group-notification-settings: 0ebecfb12dde9f8d
   thread-notification-settings: cbd5408e602fd09b
   email-delivery: bed10a800ca9256d
   enable-mobile-notifications-with-web-push: 3e0f8317baa54a0c
@@ -138,7 +138,7 @@ Modifiez vos paramètres par défaut pour les nouveaux groupes depuis **Paramèt
 Pour modifier le paramètre de notification d’un groupe :
 
 1. Ouvrez la page du groupe.
-2. Ouvrez les paramètres de notification du groupe.
+2. Ouvrez **Paramètres** et sélectionnez **Paramètres de notification**.
 
 ![Paramètres de notification sur la page d’un groupe](group_notifications.png)
 

@@ -1,16 +1,16 @@
 ---
 title: Tagok kezelése
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: bc7d2de9abc2ea86
   administering-your-group: 7ae1b105c20977fc
   managing-subgroups: 2e4bdee3283e8ef8
   removing-members: d70807bdd968d594
-  leaving-group: 268f0c735b8e46d7
+  leaving-group: 69332aeda981c679
   set-title: eb9a52e3d6c21d43
   member-email-addresses: 0e800419a7bdacc6
 generated:
@@ -18,7 +18,7 @@ generated:
   administering-your-group: eff14a5360fe1ab7
   managing-subgroups: 9455f934fe49d495
   removing-members: fb5c73526d8c70f6
-  leaving-group: 94524c78c20a08b1
+  leaving-group: 983d248561fc47b0
   set-title: eb16c8c0d3734fd8
   member-email-addresses: '058cf4b3edaf8ca4'
 title_source: 23ac3a7fe9ee72a2
@@ -82,11 +82,11 @@ Később újra hozzáadhatod az eltávolított tagokat. Az újbóli csatlakozás
 
 ## Kilépés a csoportból
 
-Ha ki szeretnél lépni egy csoportból, nyisd meg a csoport műveleti menüjét, és válaszd ki a **Kilépés a csoportból** lehetőséget.
+Ha ki szeretnél lépni egy csoportból, nyisd meg a **Beállítások** lehetőséget a csoport oldalán, és válaszd ki a **Kilépés a csoportból** lehetőséget.
 
 A kilépés ugyanúgy érinti a csoporthoz és az alcsoportokhoz való hozzáférést, mint ha a csoport egyik adminja távolítana el.
 
-![Kilépés a csoportból művelet az Oatmilk Cooperative beállítási menüjében](member_leave_group.png)
+![Kilépés a csoportból művelet az Oatmilk Cooperative beállítási oldalán](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 

@@ -220,6 +220,7 @@ Rails.application.routes.draw do
           post :user_name
           post :join_group
           get :for_user
+          get :people
           get :autocomplete, action: :index
           get :my_memberships
           get :invitables
@@ -594,4 +595,5 @@ Rails.application.routes.draw do
   mount LoomioSubs::Engine, at: "/" if Object.const_defined?('LoomioSubs')
 
   get ":id", to: 'groups#show', as: :group_handle
+  get ":id/:section", to: 'groups#show', constraints: { section: /polls|members|files|tasks|bookmarks|settings/ }
 end

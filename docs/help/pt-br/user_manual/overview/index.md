@@ -1,24 +1,24 @@
 ---
 title: Primeiros passos
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: 5983893968b754a8
   how-loomio-works: 4ad3541dac7638d0
-  groups: 26b8bade0aec8786
+  groups: 9b62e5c8df925ca2
   discussions: 8a8836e203984927
-  polls-and-proposals: 8be2e63d23579fb7
+  polls-and-proposals: fbf5b567d3bf5790
   try-it-out: f2b03c466eaff8d0
   how-people-use-loomio: b0b04722ae885ffc
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ O Loomio tem três partes principais: grupos, discussões e enquetes.
 
 ### Grupos
 
-Um grupo é um espaço para uma organização, equipe ou comunidade trabalhar em conjunto. Sua página inicial explica o propósito do grupo e contém links para suas discussões, enquetes, membros e arquivos.
+Um grupo é um espaço para uma organização, equipe ou comunidade trabalhar em conjunto. Sua página inicial explica o propósito do grupo e contém links para suas conversas, enquetes, membros, arquivos, tarefas, favoritos e configurações.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ As enquetes ajudam um grupo a entender preferências, reunir sugestões e tomar 
 
 ![](orientation_proposal.png)
 
-As enquetes podem fazer parte de uma discussão ou acontecer de forma independente na aba **Enquetes** da página de um grupo.
+As enquetes podem fazer parte de uma discussão ou acontecer de forma independente em **Enquetes** na página de um grupo.
 
 Para saber onde essas partes aparecem na interface, veja a [Visita rápida](/en/user_manual/overview/orientation). Para começar a contribuir, veja [Como participar](/en/user_manual/overview/how-to-participate).
 

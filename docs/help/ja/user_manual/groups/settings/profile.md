@@ -1,17 +1,17 @@
 ---
 title: プロフィール
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/profile.md
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
+source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: 1cdd39e59f1ee30a
+  introduction: 2fe3b83e6aca340b
   name-and-handle: 7e8d8cb52685cd45
   description: 2759efce47194c46
   cover-image-and-logo: d8113deb64b65d09
@@ -23,7 +23,7 @@ title_generated: d9251b856c472b7a
 
 # グループのプロフィール
 
-プロフィールタブでは、グループの名前や紹介内容を設定します。グループページから**グループ設定を編集する**を開き、**プロフィール**を選択します。
+プロフィールタブでは、グループの名前や紹介内容を設定します。グループページで**設定**を開き、**グループ設定を編集する**を選択して、**プロフィール**を選択します。
 
 ![グループのプロフィール設定](group_profile.png)
 

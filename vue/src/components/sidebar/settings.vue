@@ -10,10 +10,6 @@ import { computed } from 'vue'
 import { useTheme } from 'vuetify';
 const theme = useTheme();
 
-const unhideOnboarding = function() {
-  return Records.users.saveExperience('hideOnboarding', false);
-}
-
 const setTheme = function(name) {
   theme.change(name);
   Records.users.saveExperience('theme', name);
@@ -66,7 +62,6 @@ v-list(nav density="comfortable")
       common-icon(name="mdi-weather-night" color="#F5C401")
 
   v-divider
-  v-list-item(v-if="user.experiences.hideOnboarding" @click="unhideOnboarding" :title="$t('tips.hide.unhide_onboarding')")
   v-list-item(href="/docs/en/user_manual/changelog/" target="_blank" rel="noopener noreferrer" :title="$t('user_dropdown.whats_new')")
   v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" lines="two" title="Loomio version" :subtitle="version")
 

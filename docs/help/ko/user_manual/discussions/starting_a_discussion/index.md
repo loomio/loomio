@@ -1,7 +1,7 @@
 ---
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -9,7 +9,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: dad44c745117fe2d
-  new-discussion: 4327e89af72bf05e
+  new-discussion: 150a33a6c80bce6d
   group: 3f42db8f2adf6a09
   invite-and-notify: b225dae30abfaad3
   tags: c09caf6f21cf154f
@@ -18,11 +18,11 @@ generated:
 title: 토론 시작
 title_source: 7373febfac25054c
 title_generated: cb3e738667b3bb46
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -37,11 +37,11 @@ Loomio에서 토론을 시작하는 것은 이메일을 보내는 것과 비슷�
 
 ## 새 토론 시작
 
-그룹 페이지나 하위 그룹 페이지에서 **토론 시작**을 선택하세요.
+그룹 페이지나 하위 그룹 페이지에서 **새 스레드**를 선택하세요.
 
 Loomio에 그룹의 [토론 템플릿](/en/user_manual/discussions/templates/)이 표시됩니다. 템플릿이나 **빈 템플릿**을 선택하면 토론 양식이 열립니다.
 
-![Oatmilk Cooperative 페이지의 토론 시작 버튼](new-discussion-button.png)
+![Oatmilk Cooperative 페이지의 새 스레드 버튼](new-discussion-button.png)
 
 ![반납용 병 시범 운영을 계획하는 토론 시작 양식](new-discussion-example.png)
 

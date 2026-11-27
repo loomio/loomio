@@ -20,7 +20,7 @@ Use an @mention in the task to assign it to a group member. An **Add due date** 
 
 ![](tasklist2.png)
 
-Tasks assigned to you appear on your **Tasks** page. Open **Tasks** from the sidebar to see them grouped by thread or poll.
+Open **Tasks** on **All groups** to see tasks assigned to you across your groups, or open **Tasks** on a group page to view tasks in that group. Tasks are grouped by thread or poll, and you can filter them by status (**To do**, **Done**, or **All**), due date (**Overdue**, **Next 7 days**, **Later**, or **No due date**), assignee (on a group page), subgroup, category tag, or search.
 
 ![](task_list.png)
 

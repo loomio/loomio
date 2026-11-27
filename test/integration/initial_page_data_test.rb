@@ -140,11 +140,11 @@ class InitialPageDataTest < ActionDispatch::IntegrationTest
       discussion.topic.update!(tags: ['Planning'], locked_at: i == 0 ? Time.current : nil)
     end
     [{}, {page: 2}, {t: 'locked'}, {t: 'all'}, {t: 'unread'}, {tag: 'Planning'}].each do |query|
-      get "/g/#{group.key}", params: query.merge(subgroups: 'all', topicable_type: 'Poll', per: 10000), headers: browser_headers
+      get "/g/#{group.key}", params: query.merge(topicable_type: 'Poll', limit: 10000), headers: browser_headers
       assert_response :success
       request = initial_data['requests'].find { |row| row['path'] == '/api/v1/topics' }
       assert_equal group.id, request['params']['group_id']
-      assert_equal 25, request['params']['per']
+      assert_equal 25, request['params']['limit']
       assert_operator request['records']['topics'].size, :<=, 25
       get request['path'], params: request['params'], as: :json
       assert_equal normalize_times(response.parsed_body), normalize_times(request['records'])

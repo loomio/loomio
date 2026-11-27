@@ -1,12 +1,12 @@
 ---
 title: Конфіденційність
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -15,7 +15,7 @@ sections:
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: a8f9a47092706c06
+  introduction: 5a9496530efb5ec4
   open: f8679f8e9f66f3e7
   follow-an-open-group: 59aea5cbbcf4ab8b
   closed: d1c9c0caa11cc72e
@@ -31,7 +31,7 @@ title_generated: dca43e30fc120616
 
 # Конфіденційність групи
 
-Налаштування конфіденційності визначають, хто може знайти групу та читати її вміст. У меню дій групи відкрийте **Редагувати налаштування групи**, а потім виберіть **Конфіденційність**.
+Налаштування конфіденційності визначають, хто може знайти групу та читати її вміст. На сторінці групи відкрийте **Налаштування**, виберіть **Редагувати налаштування групи**, а потім виберіть **Конфіденційність**.
 
 ![Налаштування конфіденційності групи](group_privacy_settings.png#width-90)
 

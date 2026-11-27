@@ -79,7 +79,6 @@ import UserModel from '@/shared/models/user_model';
 import DiscussionModel from '@/shared/models/discussion_model';
 import GroupShareableLinkForm from '@/components/group/shareable_link_form.vue';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete.vue';
-import TipService from '@/shared/services/tip_service';
 
 describe('Trial email invitation flag and shareable link UX', () => {
   let wrapper;
@@ -166,6 +165,9 @@ describe('Trial email invitation flag and shareable link UX', () => {
     expect(wrapper.text()).not.toContain('Anyone with this link can join your group immediately');
     expect(wrapper.text()).not.toContain('To stop people from joining with this link');
     expect(wrapper.find('.shareable-link-modal__members').text()).toBe('2 of 10 members');
+    expect(wrapper.find('.shareable-link-modal__shareable-link input').element.value).toContain('/join/group/abc123');
+    await wrapper.find('.shareable-link-modal__include-message input').setValue(true);
+    await flushPromises();
     expect(wrapper.find('.shareable-link-modal__message textarea').element.value).toContain('Trial Group');
     expect(wrapper.find('.shareable-link-modal__message textarea').element.value).toContain('/join/group/abc123');
 
@@ -196,30 +198,6 @@ describe('Trial email invitation flag and shareable link UX', () => {
     await flushPromises();
     expect(wrapper.text()).not.toContain('Copy the invite link and send it by email or chat to invite people to your group');
     expect(wrapper.text()).toContain('Anyone with this link can join your group immediately');
-  });
-
-  it('opens GroupShareableLinkForm from TipService when email invitations are disabled', () => {
-    const group = insertGroup();
-    const inviteTip = TipService.tips(mocks.user, group, {}).find(t => t.title === 'tips.group.invite_people.title');
-    inviteTip.perform();
-    expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupShareableLinkForm', props: { group } });
-
-    mocks.emit.mockClear();
-    group.subscription.allow_email_invitations = true;
-    inviteTip.perform();
-    expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupInvitationForm', props: { group } });
-
-    mocks.emit.mockClear();
-    group.subscription.allow_email_invitations = false;
-    const paidGroup = insertGroup({
-      id: 200,
-      key: 'paid-key',
-      name: 'Paid Group',
-      subscription: { plan: 'pro', state: 'active', allow_email_invitations: true }
-    });
-    insertMembership({ id: 2, groupId: paidGroup.id });
-    inviteTip.perform();
-    expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupInvitationForm', props: { group } });
   });
 
   it('blocks email address chips in RecipientsAutocomplete when email invitations are disabled', async () => {

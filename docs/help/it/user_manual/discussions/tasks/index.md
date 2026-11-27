@@ -1,20 +1,20 @@
 ---
 title: Compiti
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: 23f022bc69bf3b97
   add-a-task: e497dad20b787caf
-  name-and-assign-the-task-to-a-person: 3f5beebec2a37262
+  name-and-assign-the-task-to-a-person: 5aba08faadd2f927
   set-a-reminder: 11586f86a8a24bab
   mark-it-as-done: 77bb2afd77b27cc1
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ Usa una @menzione nel compito per assegnarlo a un membro del gruppo. Il pulsante
 
 ![](tasklist2.png)
 
-I compiti assegnati a te appaiono nella tua pagina **Compiti**. Apri **Compiti** dalla barra laterale per vederli raggruppati per conversazione o sondaggio.
+Apri **Compiti** in **Tutti i gruppi** per vedere i compiti assegnati a te nei tuoi gruppi, oppure apri **Compiti** nella pagina di un gruppo per vedere i compiti di quel gruppo. I compiti sono raggruppati per conversazione o sondaggio e puoi filtrarli per stato (**Da fare**, **Eseguiti** o **Tutto**), scadenza (**Scaduti**, **Prossimi 7 giorni**, **Più avanti** o **Senza scadenza**), assegnatario (nella pagina di un gruppo), sottogruppo, tag di categoria o ricerca.
 
 ![](task_list.png)
 

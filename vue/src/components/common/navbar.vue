@@ -1,109 +1,94 @@
-<script lang="js">
-import AppConfig           from '@/shared/services/app_config';
-import EventBus            from '@/shared/services/event_bus';
-import AuthModalMixin      from '@/mixins/auth_modal';
-import Session             from '@/shared/services/session';
-import FormatDate from '@/mixins/format_date';
-import SidebarTips from '@/components/sidebar/tips';
-import { mergeProps } from 'vue'
+<script setup lang="js">
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useDisplay } from 'vuetify';
+import AppConfig from '@/shared/services/app_config';
+import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
+import ScrollService from '@/shared/services/scroll_service';
 
-import { last }            from 'lodash-es';
+const { t } = useI18n();
+const display = useDisplay();
 
-export default {
-  components: { SidebarTips },
-  mixins: [ AuthModalMixin, FormatDate ],
-  data() {
-    return {
-      title: AppConfig.theme.site_name,
-      isLoggedIn: Session.isSignedIn(),
-      group: null,
-      breadcrumbs: null,
-      sidebarOpen: false,
-      activeTab: '',
-      showTitle: true,
-      appBarScrolled: false,
-      page: null,
-      highlightTips: true,
-      mergeProps: mergeProps
-    };
-  },
+const title = ref(AppConfig.theme.site_name);
+const isLoggedIn = ref(Session.isSignedIn());
+const group = ref(null);
+const discussion = ref(null);
+const sidebarOpen = ref(false);
+const showTitle = ref(true);
+const appBarScrolled = ref(false);
+const page = ref(null);
 
-  methods: {
-    toggleSidebar() { EventBus.$emit('toggleSidebar'); },
-    toggleTopicNav() { EventBus.$emit('toggleTopicNav'); },
-    signIn() { this.openAuthModal(); },
-    last,
-    openSearchModal() {
-      EventBus.$emit('openModal', {
-        component: 'SearchModal',
-        persistent: false,
-        maxWidth: 900,
-        props: {
-          group: this.group,
-          discussion: this.discussion
-        }
-      }
-      );
+const isMobile = computed(() => display.smAndDown.value);
+const isDesktop = computed(() => display.mdAndUp.value);
+
+function toggleSidebar() { EventBus.$emit('toggleSidebar'); }
+function toggleTopicNav() { EventBus.$emit('toggleTopicNav'); }
+function signIn() { EventBus.$emit('openModal', { component: 'AuthModal', props: { preventClose: false } }); }
+function scrollToContext() { ScrollService.scrollTo('#context'); }
+
+function openSearchModal() {
+  EventBus.$emit('openModal', {
+    component: 'SearchModal',
+    persistent: false,
+    maxWidth: 900,
+    props: {
+      group: group.value,
+      discussion: discussion.value
     }
-  },
+  });
+}
 
-  mounted() {
-    setTimeout(() => {
-      this.highlightTips = false;
-    }, 5000)
-    EventBus.$on('sidebarOpen', val => {
-      this.sidebarOpen = val;
-    });
+function handleSidebarOpen(val) {
+  sidebarOpen.value = val;
+}
 
-    EventBus.$on('signedIn', user => {
-      this.isLoggedIn = true;
-    });
+function handleSignedIn() {
+  isLoggedIn.value = true;
+}
 
-    EventBus.$on('content-title-visible', val => {
-      this.showTitle = !val;
-      this.appBarScrolled = !val;
-    });
+function handleContentTitleVisible(val) {
+  showTitle.value = !val;
+  appBarScrolled.value = !val;
+}
 
-    EventBus.$on('currentComponent', data => {
-      data = Object.assign({focusHeading: true}, data);
-      if (data.title != null) {
-        this.title = data.title;
-      } else if (data.titleKey != null) {
-        this.title = this.$t(data.titleKey);
-      }
+function handleCurrentComponent(rawData) {
+  const sameContext =
+    rawData.page === page.value &&
+    (rawData.group?.id ?? null) === (group.value?.id ?? null) &&
+    (rawData.discussion?.id ?? null) === (discussion.value?.id ?? null);
+  const data = Object.assign({ focusHeading: !sameContext }, rawData);
 
-      this.group = data.group;
-      this.discussion = data.discussion;
-      this.page = data.page;
-
-      if (data.focusHeading) {
-        setTimeout(() => {
-          if (document.querySelector('.v-main h1')) {
-            document.querySelector('.v-main h1').focus();
-          }
-        });
-      }
-    });
-  },
-
-  computed: {
-    user() { return Session.user() },
-    groupName() {
-      if (!this.group) { return; }
-      return this.group.name;
-    },
-    parentName() {
-      if (!this.group) { return; }
-      return this.group.parentOrSelf().name;
-    },
-    logo() {
-      return AppConfig.theme.app_logo_src;
-    },
-    icon() {
-      return AppConfig.theme.icon_src;
-    }
+  if (data.title != null) {
+    title.value = data.title;
+  } else if (data.titleKey != null) {
+    title.value = t(data.titleKey);
   }
-};
+
+  group.value = data.group;
+  discussion.value = data.discussion;
+  page.value = data.page;
+
+  if (data.focusHeading) {
+    setTimeout(() => {
+      document.querySelector('.v-main h1')?.focus();
+    });
+  }
+}
+
+onMounted(() => {
+  EventBus.$on('sidebarOpen', handleSidebarOpen);
+  EventBus.$on('signedIn', handleSignedIn);
+  EventBus.$on('content-title-visible', handleContentTitleVisible);
+  EventBus.$on('currentComponent', handleCurrentComponent);
+});
+
+onBeforeUnmount(() => {
+  EventBus.$off('sidebarOpen', handleSidebarOpen);
+  EventBus.$off('signedIn', handleSignedIn);
+  EventBus.$off('content-title-visible', handleContentTitleVisible);
+  EventBus.$off('currentComponent', handleCurrentComponent);
+});
 </script>
 
 <template lang="pug">
@@ -112,21 +97,24 @@ v-app-bar.lmo-no-print(
   clipped-right
   color="appbar"
   :class="{'navbar--scrolled': appBarScrolled}"
-  :density="$vuetify.display.smAndDown ? 'compact' : 'default'"
+  :density="isMobile ? 'compact' : 'default'"
 )
-  v-app-bar-nav-icon.navbar__sidenav-toggle(v-if='isLoggedIn && $vuetify.display.mdAndUp' @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
+  v-app-bar-nav-icon.navbar__sidenav-toggle(
+    v-if="isLoggedIn && isDesktop"
+    @click="toggleSidebar"
+    :aria-label="t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')"
+  )
     common-icon(name="mdi-menu")
-  v-app-bar-title(@click="scrollTo('#context')")
-    span(v-if="showTitle") {{title}}
-  template(v-if='isLoggedIn')
-    sidebar-tips(v-if="$vuetify.display.mdAndUp && !user.experiences.hideOnboarding")
-    v-btn.navbar__search(v-if="$vuetify.display.mdAndUp" @click="openSearchModal" icon :title="$t('common.action.search')")
+  v-app-bar-title(@click="scrollToContext")
+    span(v-if="showTitle") {{ title }}
+  template(v-if="isLoggedIn")
+    v-btn.navbar__search(v-if="isDesktop" @click="openSearchModal" icon :title="t('common.action.search')")
       common-icon(name="mdi-magnify")
-    notifications(v-if="$vuetify.display.mdAndUp")
+    notifications(v-if="isDesktop")
   template(v-else)
-    v-btn.navbar__sign-in(variant="text" @click='signIn()')
-      span(v-t="'auth_form.sign_in'")
-    v-btn(v-if="page === 'topicPage' && $vuetify.display.smAndDown" icon @click="toggleTopicNav()" :aria-label="$t('navbar.thread_nav')")
+    v-btn.navbar__sign-in(variant="text" @click="signIn")
+      span {{ t('auth_form.sign_in') }}
+    v-btn(v-if="page === 'topicPage' && isMobile" icon @click="toggleTopicNav" :aria-label="t('navbar.thread_nav')")
       common-icon(name="mdi-menu-open")
 </template>
 

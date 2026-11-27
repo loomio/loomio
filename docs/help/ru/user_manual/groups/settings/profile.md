@@ -1,17 +1,17 @@
 ---
 title: Профиль
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/profile.md
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
+source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: e5c92d7d9a333840
+  introduction: 8ced4f5761f5be38
   name-and-handle: ad2571e690c53862
   description: 884a09d9e6f5fb1b
   cover-image-and-logo: 69af8e7adab609b1
@@ -23,7 +23,7 @@ title_generated: 359497aff53e7d5d
 
 # Профиль группы
 
-Вкладка профиля определяет, как ваша группа называется и представляется пользователям. На странице группы откройте **Редактировать настройки группы**, затем выберите **Профиль**.
+Вкладка профиля определяет, как ваша группа называется и представляется пользователям. На странице группы откройте **Настройки**, выберите **Редактировать настройки группы**, затем выберите **Профиль**.
 
 ![Настройки профиля группы](group_profile.png)
 

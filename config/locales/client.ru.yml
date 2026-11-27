@@ -43,6 +43,19 @@ ru:
     task_updated_not_done: Задача помечена как невыполненная
     no_tasks_assigned: Вам не назначено ни одной задачи
     task_placeholder: Введите задачу и {'@'}упомяните кого-нибудь, кто ее назначит
+    status_todo: К выполнению
+    status_done: Выполнено
+    due_any: Любой срок
+    due_overdue: Просрочено
+    due_next_7_days: Ближайшие 7 дней
+    due_later: Позже
+    due_none: Без срока
+    assigned_anyone: Кому угодно
+    assigned_me: Назначено мне
+    search_members: Поиск участников
+    search_tasks: Поиск задач
+    no_open_tasks: У вас нет невыполненных задач.
+    no_matching_tasks: Нет задач по вашим фильтрам.
   templates:
     template_gallery: Галерея шаблонов
     title_template: "%{title} Шаблон"
@@ -646,6 +659,7 @@ ru:
     direct_discussions: Прямые обсуждения
     unread_discussions: Непрочитанные обсуждения
     unread_threads_count: Непрочитанные сообщения (%{count})
+    votes_count: 1 голос | {count} голосов
   strand_nav:
     newest: Новейший
     oldest: Самый старый
@@ -1580,6 +1594,8 @@ ru:
       Группа %{groupName} на %{site_name} готова, чтобы мы могли обсуждать вопросы и принимать решения вместе. Присоединяйтесь по ссылке:
       %{link}
     trial_shareable_link_note: Скопируйте ссылку-приглашение и отправьте её по почте или в чате, чтобы пригласить людей в вашу группу. Когда они присоединятся, вы сможете отправлять им уведомления на почту и телефон прямо из Loomio. <a href="%{upgradeUrl}">Перейдите на платный тариф</a>, чтобы отправлять приглашения по почте.
+    include_intro_message: Добавить вводное сообщение
+    trial_shareable_invitation_message: 'Я подключил пробный доступ к %{site_name} на 7 дней, чтобы мы могли проверить, поможет ли он принимать решения в %{groupName}. Перейдите по ссылке и присоединитесь, чтобы попробовать вместе: %{link}'
   memberships_page:
     members: Участники
     name_label: Имя
@@ -2177,6 +2193,7 @@ ru:
     unlocked: Разблокировано
     no_threads_found_that_match_your_query_or_filters: Не найдено ни одной темы, соответствующей вашему запросу или фильтрам.
     no_threads_found_that_match_your_filters: Соответствующие вашим фильтрам темы не найдены.
+    new_thread: Новая ветка
   members_panel:
     bot: Бот
     no_results: Участники не найдены
@@ -3272,3 +3289,103 @@ ru:
     bounced: Получено сообщение о возврате письма
     complained: Получена жалоба на спам
     skipped: Письмо не отправлено
+  group_cards:
+    admins_count: 1 администратор | {count} администраторов
+    members_count: 1 участник | {count} участников
+    delegates_count: 1 делегат | {count} делегатов
+    polls_count: 1 опрос | {count} опросов
+    proposals_count: 1 предложение | {count} предложений
+    needs_your_vote: 1 ждёт вашего голоса | {count} ждут вашего голоса
+    no_open_polls: Нет открытых опросов
+    browse_files: Просмотреть файлы
+    invite_get_started: Нажмите здесь, чтобы начать
+    threads: Ветки
+    threads_count: 1 ветка | {count} веток
+    view_threads: Просмотреть ветки
+    no_threads: Нет веток
+    this_group_only: Только эта группа
+    my_subgroups: Мои подгруппы
+    all_subgroups: Все подгруппы
+    filter_tags: Фильтр по тегам
+    filter_groups: Фильтр по группам
+    filter_subgroups: Фильтр по подгруппам
+    filter_qualifier_unread: непрочитанные
+    filter_qualifier_direct: личные
+    filter_qualifier_locked: заблокированные
+    filter_qualifier_unlocked: незаблокированные
+    no_filtered_threads: 'Нет веток по фильтрам: {filters}'
+    no_filtered_threads_with_tag: 'Нет веток по фильтрам {filters} с тегом: {tag}'
+    no_threads_with_tag: 'Нет веток с тегом: {tag}'
+    recent_count: "{count} недавних"
+    need_vote_count: 1 ждёт голоса | {count} ждут голоса
+    open_count: "{count} открытых"
+    files_count: 1 файл | {count} файлов
+  onboarding_card:
+    verified_badge: Подтверждено
+    view_plans: Посмотреть тарифы
+    upgrade_now: Перейти на платный тариф
+    extend_trial_title: Получите ещё 30 дней и бесплатное обучение на звонке
+    trial_verified: Мы ознакомились с вашей группой и готовы помочь. Теперь вы можете отправлять приглашения по почте — продолжайте, чтобы получить ещё 30 дней, функции Pro и бесплатное обучение на звонке с нашей командой.
+    trial_extended_title: Ещё 30 дней и бесплатное обучение на звонке доступны
+    book_training_call: Записаться на обучение
+    extend_trial_initial: Получите ещё 30 дней и бесплатное обучение на звонке с сотрудником Loomio, когда к группе присоединятся ещё {count} человек.
+    extend_trial_remaining: Получите ещё 30 дней и бесплатное обучение на звонке с сотрудником Loomio, когда к группе присоединится ещё 1 человек. | Получите ещё 30 дней и бесплатное обучение на звонке с сотрудником Loomio, когда к группе присоединятся ещё {count} человек.
+    trial_extended_description: Ваш пробный период продлён на 30 дней.
+  dashboard_cards:
+    all_groups: Все группы
+    unread_count: "{count} непрочитанных"
+    direct: Личные
+    direct_count: "{count} личных"
+    people: Люди
+    recently_online: Недавно в сети
+    recently_online_count: "{count} недавно в сети"
+    your_tasks: Ваши задачи
+    tasks_todo_count: "{count} к выполнению"
+    bookmarks_saved_count: "{count} сохранено"
+    search_people: Поиск людей
+    direct_thread: Личная ветка
+    view_profile: Посмотреть профиль
+    no_people_found: Никого не найдено
+  group_settings_panel:
+    subtitle: Настройки группы
+    group_administration: Управление группой
+    your_membership: Ваше участие
+    integrations_and_data: Интеграции и данные
+    leave_or_delete: Выйти или удалить
+    edit_group_description: Измените название, описание, логотип, обложку, конфиденциальность и права участников группы.
+    edit_tags_description: Создавайте, переименовывайте, объединяйте и выделяйте цветом теги для веток и опросов.
+    manage_subscription_description: Посмотрите ваш тариф, платёжные данные и лимит участников.
+    change_volume_description: Выберите, как часто получать письма и push-уведомления от этой группы.
+    email_group_description: Начните новую ветку в этой группе, отправив письмо на этот адрес.
+    group_stats_description: Посмотрите, как меняется активность участников в группе, ветках и опросах.
+    become_coordinator_description: Получите права администратора этой группы.
+    chatbots_description: Подключите Slack, Mattermost, Discord или другие чаты для публикации обновлений группы.
+    api_docs_description: Настройте доступ к API и вебхуки для интеграции Loomio с вашими инструментами.
+    export_data_description: Скачайте копию веток, опросов, комментариев и списка участников этой группы.
+    leave_group_description: Выйдите из этой группы и перестаньте получать уведомления.
+    destroy_group_description: Запланируйте безвозвратное удаление этой группы и её содержимого.
+  pagination:
+    page_of: Страница {page} из {total}
+    previous_page: Предыдущая страница
+    next_page: Следующая страница
+    sort_by: Сортировать по
+    per_page: На странице
+    jump_to_page: Перейти к странице
+    sort:
+      recent_activity: Последняя активность
+      newest: Сначала новые
+      oldest: Сначала старые
+      closing_soon: Скоро закроются
+      name: Название
+      last_seen: Последний визит
+    edit_tags_description: Создавайте, переименовывайте, объединяйте и выделяйте цветом теги для веток и опросов.
+    manage_subscription_description: Просмотрите ваш тариф, платёжные данные и лимиты участников.
+    change_volume_description: Выберите, как часто получать письма и push-уведомления от этой группы.
+    email_group_description: Начните новую ветку в этой группе, отправив письмо на этот адрес.
+    group_stats_description: Просмотрите, как меняются активность участников, участие в ветках и голосовании.
+    become_coordinator_description: Получите права администратора этой группы.
+    chatbots_description: Подключите Slack, Mattermost, Discord или другие чаты для публикации новостей группы.
+    api_docs_description: Настройте доступ к API и вебхуки для интеграции Loomio с вашими инструментами.
+    export_data_description: Скачайте копию веток, опросов, комментариев и списка участников этой группы.
+    leave_group_description: Выйдите из этой группы и перестаньте получать уведомления.
+    destroy_group_description: Запланируйте безвозвратное удаление этой группы и её содержимого.

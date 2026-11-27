@@ -1,34 +1,34 @@
 ---
 title: Sottogruppi
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: b0862926bb68762c
-  add-a-subgroup: fdee16bbd2c53d76
+  add-a-subgroup: 8a58755d494ef33a
   subgroup-settings: 2102921a561843bd
   privacy: 96f0cfd0559070e7
   permissions: 60fbbcca015e8f58
-  find-subgroups: 287d66c2eef0f639
+  find-subgroups: 93f105a60eced6f6
   invite-to-a-subgroup: 0c5628926865ed6e
   simultaneously-invite-people-to-subgroups-and-parent-group: d3033ee4756a3164
   administer-a-subgroup: bdb2ae601bf74585
   delete-a-subgroup: 95c1d2971da888cf
-  how-people-join: 2dfe3631261fb547
+  how-people-join: 79cf0d4c8e8ffa4b
 title_source: 9f81e728f70cae3e
 title_generated: 430c19f8b3427f82
 ---
@@ -58,7 +58,7 @@ Per creare un sottogruppo, apri la pagina del tuo gruppo principale, seleziona *
 
 ![Modulo Nuovo sottogruppo per il gruppo di lavoro sugli imballaggi](subgroups_new.png)
 
-Quando il sottogruppo è pronto, [invita persone](/en/user_manual/groups/inviting_people) a farne parte. Puoi modificare le [impostazioni del gruppo](/en/user_manual/groups/settings) del sottogruppo dal menu delle azioni nella pagina del sottogruppo.
+Quando il sottogruppo è pronto, [invita persone](/en/user_manual/groups/inviting_people) a farne parte. Puoi modificare le [impostazioni del gruppo](/en/user_manual/groups/settings) del sottogruppo da **Configurazione** nella pagina del sottogruppo.
 
 ![Azione per modificare le impostazioni del gruppo di lavoro sugli imballaggi](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ Quando il gruppo principale è privato, i sottogruppi possono essere solo **Visi
 
 ### Come ci si iscrive
 
-Scegli [come ci si iscrive](/en/user_manual/groups/settings/privacy#how-people-join) quando crei il sottogruppo, oppure in **Modifica le impostazioni del gruppo** > **Privacy**.
+Scegli [come ci si iscrive](/en/user_manual/groups/settings/privacy#how-people-join) quando crei il sottogruppo, oppure in **Configurazione** > **Modifica le impostazioni del gruppo** > **Privacy**.
 
 ![Impostazioni di privacy e iscrizione del sottogruppo](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ Attiva **I membri del gruppo principale possono vedere le conversazioni private*
 
 ## Trova i sottogruppi
 
-Seleziona il nome del tuo gruppo principale nella barra laterale per vedere i suoi sottogruppi.
+Seleziona il nome del tuo gruppo principale nella barra laterale per vedere i suoi sottogruppi. Nelle pagine **Conversazioni**, **Sondaggi**, **Membri**, **File**, **Compiti** e **Segnalibri** di un gruppo principale, usa il filtro **Sottogruppi** per passare tra **Solo questo gruppo**, **I miei sottogruppi** e **Tutti i sottogruppi**, oppure vai direttamente a un sottogruppo.
 
 ![Sottogruppi di Oatmilk Cooperative elencati nella barra laterale](subgroups_find_subgroups.png)
 

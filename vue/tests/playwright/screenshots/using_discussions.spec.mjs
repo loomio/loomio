@@ -270,8 +270,8 @@ test('comment_restore', async ({ page, manual: screenshot }) => {
 
 test('permissions_delete_comment', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
-  await page.locator('.group-page__actions .action-menu--btn').click()
-  await page.locator('.v-overlay--active .action-dock__button--edit_group').click()
+  await page.locator('.group-cards__settings').click()
+  await page.locator('.group-settings-panel .action-dock__button--edit_group').click()
   await page.locator('.group-form__permissions-tab').click()
   await expect(page.locator('.group-form__members-can-delete-comments')).toBeVisible()
   // Tick it without moving the mouse, so the checkbox shows no hover state.

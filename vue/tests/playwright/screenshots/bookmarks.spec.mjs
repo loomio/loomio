@@ -29,12 +29,13 @@ test('save_bookmark', async ({ page, manual: screenshot }) => {
 
 test('bookmarks_page', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_bookmarks')
+  await page.goto('/dashboard/bookmarks')
   // Translated runs only wait for the labels' elements, so wait for the list.
   await expect(page.locator('.bookmarks-page__bookmark').first()).toBeVisible()
   await expectLabel(page.locator('.bookmarks-page'), 'Returnable bottles for cafe customers')
   await expectLabel(page.locator('.bookmarks-page'), 'Run a six-week returnable bottle trial')
-  await screenshot.captureElement('users/bookmarks/bookmarks_page', '.bookmarks-page', {
-    width: 1100,
+  await screenshot.captureElement('users/bookmarks/bookmarks_page', '.dashboard-page', {
+    width: 1280,
     height: 1800
   });
 });

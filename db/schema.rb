@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_24_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_25_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -43,12 +43,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_000000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", precision: nil, null: false
-    t.integer "group_id"
     t.string "name", null: false
     t.bigint "record_id", null: false
     t.string "record_type", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["group_id"], name: "index_active_storage_attachments_on_group_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
@@ -1153,6 +1151,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_000000) do
     t.string "state", default: "active", null: false
     t.datetime "updated_at", precision: nil
     t.boolean "allow_email_invitations", default: true, null: false
+    t.datetime "trial_extended_at"
     t.index ["billing_service_subscription_id"], name: "index_subscriptions_on_billing_service_id", unique: true, where: "(billing_service_subscription_id IS NOT NULL)"
     t.index ["expires_at", "id"], name: "index_subscriptions_on_trial_expiry_for_relay", where: "(((plan)::text = 'trial'::text) AND (expires_at IS NOT NULL))"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"

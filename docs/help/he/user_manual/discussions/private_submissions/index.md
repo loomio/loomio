@@ -1,21 +1,21 @@
 ---
 title: איסוף הגשות פרטיות
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: '083d63048f9a72f4'
-  enable-private-submissions: e1614499859c53c0
+  enable-private-submissions: fd2f77c029682254
   set-up-a-private-submission-process: 5c4cc18fa22dc025
-  make-a-submission: 6871f3198c134528
+  make-a-submission: 1efcfee347fd4058
   review-submissions: cd54e860bcaf4283
 title_source: e82ab76916d594f4
 title_generated: 76cd9047ba407cb7
@@ -46,7 +46,7 @@ title_generated: 76cd9047ba407cb7
 לצורך איסוף הגשות נדרשות הרשאות מנהל קבוצה בקבוצה או בתת־הקבוצה שבה ייאספו ההגשות.
 
 1. יש לפתוח את הקבוצה.
-2. יש לבחור **הגדרות** (או **עוד**, ולאחר מכן **ערוך הגדרות קבוצה**).
+2. יש לפתוח את **הגדרות**, ולאחר מכן לבחור **ערוך הגדרות קבוצה**.
 3. יש לפתוח את **הרשאות**.
 4. יש להפעיל את **מי שאינם חברים יכולים לפתוח דיונים**.
 5. יש לשמור את הגדרות הקבוצה.
@@ -73,7 +73,7 @@ title_generated: 76cd9047ba407cb7
 
 ## ביצוע הגשה
 
-כדי להגיש, יש לפתוח את תת־הקבוצה ולבחור **התחל דיון**. Loomio מציג את תבניות הדיון של תת־הקבוצה. יש לבחור את התבנית המתאימה, לענות על השאלות שבה ולפתוח את הדיון.
+כדי להגיש, יש לפתוח את תת־הקבוצה ולבחור **שרשור חדש**. Loomio מציג את תבניות הדיון של תת־הקבוצה. יש לבחור את התבנית המתאימה, לענות על השאלות שבה ולפתוח את הדיון.
 
 הדיון שייך לתת־הקבוצה, ו־Loomio מוסיף את החשבון שממנו בוצעה ההגשה כאורח בשרשור, ללא חברות בתת־הקבוצה. ניתן להשתתף בשרשור ההגשה עם צוות הבדיקה, אך אין גישה לדיונים פרטיים אחרים או להגשות אחרות בתת־הקבוצה.
 

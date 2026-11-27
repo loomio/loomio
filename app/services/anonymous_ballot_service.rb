@@ -17,6 +17,7 @@ class AnonymousBallotService
       poll.update_counts!
     end
 
+    EventBus.broadcast("vote_cast", poll.group, poll)
     anonymous_ballot
   end
 end

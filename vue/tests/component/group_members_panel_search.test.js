@@ -4,30 +4,26 @@ vi.mock('@/shared/services/records', () => ({default: {}}));
 vi.mock('@/shared/services/session', () => ({default: {user: vi.fn()}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: vi.fn()}}));
 vi.mock('@/shared/services/record_loader', () => ({default: vi.fn()}));
-vi.mock('@/mixins/url_for', () => ({default: {}}));
 
-import MembersPanel from '@/components/group/members_panel.vue';
-
-const routeChanged = MembersPanel.watch['$route.query'];
+import { syncSearchFromQuery } from '@/components/group/members_panel.vue';
 
 describe('group members search', () => {
   it('keeps newer typing when the URL catches up with an earlier search', () => {
     const state = {
-      $route: {query: {q: 'ab'}}, searchQueryPushed: 'ab', searchQuery: 'abc', searchOpen: true, refresh: vi.fn()
+      searchQueryPushed: 'ab', searchQuery: 'abc', searchOpen: true
     };
 
-    routeChanged.call(state);
+    syncSearchFromQuery(state, 'ab');
 
     expect(state.searchQuery).toBe('abc');
-    expect(state.refresh).toHaveBeenCalled();
   });
 
   it('takes the search from the URL after navigation changes it', () => {
     const state = {
-      $route: {query: {q: 'maria'}}, searchQueryPushed: 'ab', searchQuery: 'ab', searchOpen: false, refresh: vi.fn()
+      searchQueryPushed: 'ab', searchQuery: 'ab', searchOpen: false
     };
 
-    routeChanged.call(state);
+    syncSearchFromQuery(state, 'maria');
 
     expect(state.searchQuery).toBe('maria');
     expect(state.searchOpen).toBe(true);

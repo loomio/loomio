@@ -23,7 +23,7 @@ This workflow is private between submitters, but it is not anonymous. Submitters
 You must be a group admin of the group or subgroup where you want to collect submissions.
 
 1. Open the group.
-2. Select **Settings** (or **More**, then **Edit group settings**).
+2. Open **Settings**, then select **Edit group settings**.
 3. Open **Permissions**.
 4. Enable **Non-members can start discussions**.
 5. Save the group settings.
@@ -50,7 +50,7 @@ Enabling this permission does not make the group's discussions public. A non-mem
 
 ## Make a submission
 
-The submitter opens the subgroup and selects **Start discussion**. Loomio shows the subgroup's discussion templates. The submitter chooses the right template, answers its questions, and starts the discussion.
+The submitter opens the subgroup and selects **New thread**. Loomio shows the subgroup's discussion templates. The submitter chooses the right template, answers its questions, and starts the discussion.
 
 The discussion belongs to the subgroup, and Loomio adds the submitter as a guest on that thread—not as a subgroup member. They can participate in their own thread with the review team, but cannot see other private discussions or submissions in the subgroup.
 

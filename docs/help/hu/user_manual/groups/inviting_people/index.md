@@ -1,16 +1,16 @@
 ---
 title: Emberek meghívása
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 3dcb867e435a48ee
+  introduction: 24b61c958bcab1ff
   send-invitations-via-email: 1d2339fceaeda7f2
   invite-many-at-once: 6e1cfc993932a91b
   invite-people-to-subgroups: ec5cb889f652758c
-  share-a-link-to-your-group: c2854b1f52be7d45
+  share-a-link-to-your-group: bb808c896673e7ee
   request-to-join-group: 5ec523cc74d68a65
   review-membership-requests: d0b2431d651d9850
   managing-invitations: 6e9ad9040c1581a9
@@ -37,7 +37,7 @@ title_generated: cf71499adce945c9
 
 # Emberek meghívása egy Loomio-csoportba
 
-Meghívhatsz embereket a Loomio-csoportodba emailben, megoszthatsz egy meghívólinket, vagy lehetővé teheted, hogy csatlakozási kérelmet küldjenek. A kezdéshez nyisd meg a csoportod oldalán a **Tagok** fület.
+Meghívhatsz embereket a Loomio-csoportodba emailben, megoszthatsz egy meghívólinket, vagy lehetővé teheted, hogy csatlakozási kérelmet küldjenek. A kezdéshez válaszd ki a **Meghív** lehetőséget a **Tagok** kártyán, vagy nyisd meg a **Tagok** fület a csoportod oldalán.
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ Amikor embereket hívsz meg egy szülőcsoportba, egyidejűleg egy vagy több al
 
 ## A csoportod linkjének megosztása
 
-Válaszd a **Megoszt** lehetőséget egy többször használható meghívólink létrehozásához, amelyet hírlevélben, csevegőcsatornán, emailben vagy weboldalon oszthatsz meg.
+Válaszd ki a **Megoszt** lehetőséget egy többször használható meghívólink létrehozásához, amelyet hírlevélben, csevegőcsatornán, emailben vagy weboldalon oszthatsz meg. Kapcsold be a **Bemutatkozó üzenet hozzáadása** lehetőséget, hogy a linkkel együtt egy rövid üzenetet is másolhass.
 
 ![](group_invite_sharable_link.png)
 
-Ha meg szeretnéd akadályozni, hogy egy meglévő linken keresztül csatlakozzanak, válaszd a **Link alaphelyzetbe állítása** lehetőséget. Ez érvényteleníti a régi linket, és létrehoz egy újat.
+Ha meg szeretnéd akadályozni, hogy egy meglévő linken keresztül csatlakozzanak, válaszd ki az **A hivatkozás visszaállítása** lehetőséget. Ez érvényteleníti a régi linket, és létrehoz egy újat.
 
 <!-- translation-section: request-to-join-group -->
 

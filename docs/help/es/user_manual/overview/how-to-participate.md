@@ -1,17 +1,17 @@
 ---
 title: Cómo participar
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: c09cdff2e41191e3
   get-someone-s-attention: f9b4452def327d18
   reactions: 593dc09dd1cb61eb
-  vote: ab33a8dbcb7774a9
+  vote: 87a665aa7b0edf03
   state-a-reason: 9a0723869df9de08
   change-your-vote: 935aef3d28aa40b6
   results: d553d9c6ee67e94b
@@ -73,7 +73,7 @@ Añade una reacción con un emoji para reconocer una aportación sin escribir un
 
 ## Votar
 
-Abre una encuesta desde una invitación por correo electrónico, una notificación en la aplicación o la pestaña **Sondeos** de tu grupo. Lee la encuesta y los archivos adjuntos, y luego selecciona tu opción.
+Abre una encuesta desde una invitación por correo electrónico, una notificación en la aplicación, **Todos los grupos** o la sección **Sondeos** de tu grupo. Lee la encuesta y los archivos adjuntos, y luego selecciona tu opción.
 
 Loomio tiene varios tipos de encuestas. El ejemplo siguiente muestra una propuesta con las opciones **De acuerdo**, **Abstenerse** y **En desacuerdo**.
 

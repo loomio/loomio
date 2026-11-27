@@ -1,17 +1,17 @@
 ---
 title: Perfil
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/settings/profile.md
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
+source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: 2f6d2d7d6c1e63a4
+  introduction: 2f2beed15b5c19d6
   name-and-handle: 0f31019aba8c8a1e
   description: bda8e98075c8011d
   cover-image-and-logo: 53724d41eeaaf105
@@ -23,7 +23,7 @@ title_generated: 00d551e63dd540fc
 
 # Perfil del grupo
 
-La pestaña de perfil controla cómo se identifica y se presenta tu grupo. Abre **Editar la configuración del grupo** desde la página del grupo y selecciona **Perfil**.
+La pestaña de perfil controla cómo se identifica y se presenta tu grupo. En la página del grupo, abre **Configuración **, selecciona **Editar la configuración del grupo** y elige **Perfil**.
 
 ![Configuración del perfil del grupo](group_profile.png)
 

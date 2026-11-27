@@ -43,6 +43,19 @@ hu:
     task_updated_not_done: A feladat nincs elvégezve!
     no_tasks_assigned: Nincs számodra kiosztott feladat!
     task_placeholder: Írj be egy feladatot, és {'@'}említs meg valakit, akit hozzárendelhetsz hozzá
+    status_todo: Teendő
+    status_done: Kész
+    due_any: Bármely határidő
+    due_overdue: Lejárt
+    due_next_7_days: Következő 7 nap
+    due_later: Később
+    due_none: Nincs határidő
+    assigned_anyone: Bárki
+    assigned_me: Nekem kiosztva
+    search_members: Tagok keresése
+    search_tasks: Feladatok keresése
+    no_open_tasks: Nincs nyitott feladatod.
+    no_matching_tasks: Nincs a szűrőknek megfelelő feladat.
   templates:
     template_gallery: Sablongaléria
     title_template: "%{title} Sablon"
@@ -648,6 +661,7 @@ hu:
     direct_discussions: Közvetlen megbeszélések
     unread_discussions: Olvasatlan beszélgetések
     unread_threads_count: Olvasatlan beszélgetések (%{count})
+    votes_count: 1 szavazat | {count} szavazat
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -1586,6 +1600,8 @@ hu:
       Létrehoztam a(z) %{groupName} csoportot a(z) %{site_name} felületén, hogy együtt beszélgessünk és hozzunk döntéseket. Csatlakozz ezen a linken:
       %{link}
     trial_shareable_link_note: Másold ki a meghívó linket, és küldd el e-mailben vagy csevegésben, hogy másokat is meghívj a csoportodba. Ha csatlakoztak, közvetlenül a Loomióból küldhetsz nekik e-mailes és mobilos értesítéseket. <a href="%{upgradeUrl}">Válts nagyobb csomagra</a>, hogy e-mailes meghívókat küldhess.
+    include_intro_message: Bemutatkozó üzenet hozzáadása
+    trial_shareable_invitation_message: 'Elindítottam a %{site_name} 7 napos próbaidőszakát, hogy megnézzük, segíthet-e a döntéshozatalban a %{groupName} csoportban. Kérlek, kattints erre a linkre a csatlakozáshoz, hogy együtt kipróbálhassuk: %{link}'
   memberships_page:
     members: Tagok
     name_label: Név
@@ -2188,6 +2204,7 @@ hu:
     unlocked: Feloldva
     no_threads_found_that_match_your_query_or_filters: Nem található a keresésnek vagy a szűrőknek megfelelő szál
     no_threads_found_that_match_your_filters: Nem található a szűrőknek megfelelő szál
+    new_thread: Új szál
   members_panel:
     bot: Bot
     no_results: Nem találhatók tagok
@@ -3283,3 +3300,103 @@ hu:
     bounced: Visszapattanás jelezve
     complained: Spamként jelentve
     skipped: E-mail nem lett elküldve
+  group_cards:
+    admins_count: 1 admin | {count} admin
+    members_count: 1 tag | {count} tag
+    delegates_count: 1 küldött | {count} küldött
+    polls_count: 1 szavazás | {count} szavazás
+    proposals_count: 1 javaslat | {count} javaslat
+    needs_your_vote: 1 vár a szavazatodra | {count} vár a szavazatodra
+    no_open_polls: Nincs nyitott szavazás
+    browse_files: Fájlok megtekintése
+    invite_get_started: Kattints ide a kezdéshez
+    threads: Szálak
+    threads_count: 1 szál | {count} szál
+    view_threads: Szálak megtekintése
+    no_threads: Nincsenek szálak
+    this_group_only: Csak ez a csoport
+    my_subgroups: Alcsoportjaim
+    all_subgroups: Összes alcsoport
+    filter_tags: Címkék szűrése
+    filter_groups: Csoportok szűrése
+    filter_subgroups: Alcsoportok szűrése
+    filter_qualifier_unread: olvasatlan
+    filter_qualifier_direct: közvetlen
+    filter_qualifier_locked: zárolt
+    filter_qualifier_unlocked: nem zárolt
+    no_filtered_threads: Nincs {filters} szál
+    no_filtered_threads_with_tag: 'Nincs {filters} szál ezzel a címkével: {tag}'
+    no_threads_with_tag: 'Nincs szál ezzel a címkével: {tag}'
+    recent_count: "{count} friss"
+    need_vote_count: 1 vár szavazatra | {count} vár szavazatra
+    open_count: "{count} nyitott"
+    files_count: 1 fájl | {count} fájl
+  onboarding_card:
+    verified_badge: Ellenőrizve
+    view_plans: Csomagok megtekintése
+    upgrade_now: Válts most
+    extend_trial_title: Szerezz 30 extra napot és egy ingyenes betanító hívást
+    trial_verified: Megnéztük a csoportodat, és szívesen segítünk. Már küldhetsz meghívókat e-mailben — folytasd, hogy 30 extra napot, Pro funkciókat és egy ingyenes betanító hívást kapj a csapatunkkal.
+    trial_extended_title: Megkaptad a 30 extra napot és az ingyenes betanító hívást
+    book_training_call: Foglalj betanító hívást
+    extend_trial_initial: Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha {count} másik ember csatlakozik a csoporthoz.
+    extend_trial_remaining: Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha még 1 ember csatlakozik a csoporthoz. | Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha még {count} ember csatlakozik a csoporthoz.
+    trial_extended_description: A próbaidőd 30 nappal meghosszabbodott.
+  dashboard_cards:
+    all_groups: Összes csoport
+    unread_count: "{count} olvasatlan"
+    direct: Közvetlen
+    direct_count: "{count} közvetlen"
+    people: Emberek
+    recently_online: Nemrég aktív
+    recently_online_count: "{count} nemrég aktív"
+    your_tasks: Feladataid
+    tasks_todo_count: "{count} teendő"
+    bookmarks_saved_count: "{count} mentett"
+    search_people: Emberek keresése
+    direct_thread: Közvetlen szál
+    view_profile: Profil megtekintése
+    no_people_found: Nincs találat
+  group_settings_panel:
+    subtitle: Csoportbeállítások
+    group_administration: Csoportkezelés
+    your_membership: Tagságod
+    integrations_and_data: Integrációk és adatok
+    leave_or_delete: Kilépés vagy törlés
+    edit_group_description: Módosítsd a csoport nevét, leírását, logóját, borítóképét, adatvédelmi beállításait és a tagok jogosultságait.
+    edit_tags_description: Hozz létre, nevezz át, vonj össze és színezz címkéket a szálak és szavazások rendezéséhez.
+    manage_subscription_description: Nézd meg a csomagodat, számlázási adataidat és a taglétszám korlátait.
+    change_volume_description: Válaszd ki, milyen gyakran kapsz e-mailes és push értesítéseket ettől a csoporttól.
+    email_group_description: Indíts új szálat ebben a csoportban egy erre a címre küldött e-maillel.
+    group_stats_description: Kövesd a tagok aktivitását, a szálakban és a szavazásokon való részvétel alakulását.
+    become_coordinator_description: Szerezz csoportadmin-jogosultságot ebben a csoportban.
+    chatbots_description: Kapcsold össze a Slack, Mattermost, Discord vagy más csevegőeszközöket a csoport híreinek közzétételéhez.
+    api_docs_description: Állítsd be az API-hozzáférést és a webhookokat, hogy összekapcsold a Loomiót a saját eszközeiddel.
+    export_data_description: Töltsd le a csoport szálainak, szavazásainak, hozzászólásainak és tagjainak másolatát.
+    leave_group_description: Lépj ki a csoportból, és ne kapj több értesítést.
+    destroy_group_description: Ütemezd a csoport és tartalma végleges törlését.
+  pagination:
+    page_of: "{page}. oldal / {total}"
+    previous_page: Előző oldal
+    next_page: Következő oldal
+    sort_by: Rendezés
+    per_page: Oldalanként
+    jump_to_page: Ugrás az oldalra
+    sort:
+      recent_activity: Legutóbbi aktivitás
+      newest: Legújabb
+      oldest: Legrégebbi
+      closing_soon: Hamarosan lezárul
+      name: Név
+      last_seen: Utoljára aktív
+    edit_tags_description: Hozz létre, nevezz át, vonj össze és színezz címkéket a szálak és szavazások rendszerezéséhez.
+    manage_subscription_description: Nézd meg a csomagodat, a számlázási adatokat és a taglétszám korlátait.
+    change_volume_description: Válaszd ki, milyen gyakran kapsz e-mailes és push értesítéseket ettől a csoporttól.
+    email_group_description: Indíts új szálat ebben a csoportban egy erre a címre küldött e-maillel.
+    group_stats_description: Nézd meg, hogyan alakul a tagok aktivitása, a szálakban és a szavazásokon való részvétel.
+    become_coordinator_description: Szerezz csoportadmin-jogosultságot ebben a csoportban.
+    chatbots_description: Kapcsold össze a Slack, Mattermost, Discord vagy más csevegőeszközzel a csoport híreinek közzétételéhez.
+    api_docs_description: Állítsd be az API-hozzáférést és a webhookokat a Loomio és saját eszközeid összekapcsolásához.
+    export_data_description: Töltsd le a csoport szálainak, szavazásainak, hozzászólásainak és tagjainak másolatát.
+    leave_group_description: Lépj ki a csoportból, és ne kapj több értesítést.
+    destroy_group_description: Ütemezd be a csoport és tartalma végleges törlését.

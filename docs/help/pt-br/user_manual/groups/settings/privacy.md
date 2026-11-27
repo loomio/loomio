@@ -1,12 +1,12 @@
 ---
 title: Privacidade
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -15,7 +15,7 @@ sections:
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: fc518c0266db697a
+  introduction: f898f7a9b2342645
   open: 18c55d3c06d8c7ac
   follow-an-open-group: 29e500e17aa067af
   closed: 61913f3a5c76f7c4
@@ -31,7 +31,7 @@ title_generated: 2bb2d8436a5c0668
 
 # Privacidade do grupo
 
-A privacidade controla quem pode encontrar um grupo e quem pode ler seu conteúdo. No menu de ações do grupo, abra **Editar configurações do grupo** e selecione **Privacidade**.
+A privacidade controla quem pode encontrar um grupo e quem pode ler seu conteúdo. Na página do grupo, abra **Configurações**, selecione **Editar configurações do grupo** e escolha **Privacidade**.
 
 ![Configurações de privacidade do grupo](group_privacy_settings.png#width-90)
 

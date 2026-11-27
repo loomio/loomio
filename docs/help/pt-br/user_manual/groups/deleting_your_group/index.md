@@ -1,15 +1,15 @@
 ---
 title: Excluindo seu grupo
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: d7db222bba428604
+  introduction: 9810ac879ea54d82
   group-data-is-permanently-deleted-after-90-days: c5bb0838a89290c0
 title_source: 9a0868f49f1262ea
 title_generated: 41beb9596e9c98bc
@@ -23,9 +23,9 @@ Somente um admin do grupo pode excluir um grupo. Excluir um grupo remove o acess
 
 Antes de excluir um grupo, [exporte os dados do grupo](/en/user_manual/groups/data_export) e baixe os arquivos enviados que você deseja manter.
 
-Para excluir um grupo, abra o menu de ações do grupo e selecione **Deletar grupo**.
+Para excluir um grupo, abra **Configurações** na página do grupo e selecione **Deletar grupo**.
 
-![Ação Deletar grupo no menu da Oatmilk Cooperative](group_delete_group.png)
+![Ação Deletar grupo na página de configurações da Oatmilk Cooperative](group_delete_group.png)
 
 Digite o identificador do grupo para confirmar a exclusão.
 

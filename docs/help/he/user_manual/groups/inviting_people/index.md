@@ -1,16 +1,16 @@
 ---
 title: הזמנת אנשים
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 9789bdd122c46693
+  introduction: 79585500c75b4eb4
   send-invitations-via-email: '058babc9ad26a69f'
   invite-many-at-once: 2fafd45681f889d1
   invite-people-to-subgroups: 17c0bb5ec8fdd3f3
-  share-a-link-to-your-group: 253ae0f787c5d662
+  share-a-link-to-your-group: 116e40128794624d
   request-to-join-group: 19586644281885d3
   review-membership-requests: 340133c4e6b55fbd
   managing-invitations: c35676c1a53ecebe
@@ -37,7 +37,7 @@ title_generated: 1a6369a35ea0bd09
 
 # הזמנת אנשים לקבוצה ב־Loomio
 
-ניתן להזמין אנשים לקבוצה ב־Loomio בדוא״ל, לשתף קישור הזמנה או לאפשר לאנשים לבקש להצטרף. כדי להתחיל, יש לפתוח את הלשונית **חברים** בדף הקבוצה.
+ניתן להזמין אנשים לקבוצה ב־Loomio בדוא״ל, לשתף קישור הזמנה או לאפשר לאנשים לבקש להצטרף. כדי להתחיל, יש לבחור **הזמן** בכרטיס **חברים**, או לפתוח את **חברים** בדף הקבוצה.
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ title_generated: 1a6369a35ea0bd09
 
 ## שיתוף קישור לקבוצה
 
-יש לבחור **שיתוף** כדי ליצור קישור הזמנה לשימוש חוזר בניוזלטר, בערוץ צ׳אט, בדוא״ל או באתר.
+יש לבחור **שיתוף** כדי ליצור קישור הזמנה לשימוש חוזר בניוזלטר, בערוץ צ׳אט, בדוא״ל או באתר. יש להפעיל את **הוספת הודעת היכרות** כדי להעתיק הודעה קצרה יחד עם הקישור.
 
 ![](group_invite_sharable_link.png)
 
-כדי להפסיק לאפשר הצטרפות באמצעות קישור קיים, יש לבחור **איפוס קישור זה**. פעולה זו מבטלת את תוקף הקישור הישן ויוצרת קישור חדש.
+כדי להפסיק לאפשר הצטרפות באמצעות קישור קיים, יש לבחור **אפס את הקישור**. פעולה זו מבטלת את תוקף הקישור הישן ויוצרת קישור חדש.
 
 <!-- translation-section: request-to-join-group -->
 

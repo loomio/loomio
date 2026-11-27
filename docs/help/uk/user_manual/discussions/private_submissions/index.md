@@ -1,21 +1,21 @@
 ---
 title: Збирайте приватні заявки
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: '0845d2aae5e9de91'
-  enable-private-submissions: f6247175b90c0c24
+  enable-private-submissions: 4689d0538a1b5fa3
   set-up-a-private-submission-process: 4a861fc703d9edeb
-  make-a-submission: 8202f45ef4380d76
+  make-a-submission: b63df57efbe7bcbb
   review-submissions: f295639e1dca7dbd
 title_source: e82ab76916d594f4
 title_generated: dfe68b20c11449ae
@@ -43,10 +43,10 @@ title_generated: dfe68b20c11449ae
 
 ## Увімкніть подання приватних заявок
 
-Ви маєте бути адміністратором групи або підгрупи, у якій хочете збирати заявки.
+Щоб збирати заявки, ви маєте бути адміністратором відповідної групи або підгрупи.
 
 1. Відкрийте групу.
-2. Виберіть **Налаштування** (або **Більше**, а потім **Редагувати налаштування групи**).
+2. Відкрийте **Налаштування**, а потім виберіть **Редагувати налаштування групи**.
 3. Відкрийте **Дозволи**.
 4. Увімкніть **Неучасники можуть розпочинати обговорення**.
 5. Збережіть налаштування групи.
@@ -73,7 +73,7 @@ title_generated: dfe68b20c11449ae
 
 ## Подайте заявку
 
-Заявник відкриває підгрупу й вибирає **Розпочати обговорення**. Loomio показує шаблони обговорень підгрупи. Заявник вибирає відповідний шаблон, відповідає на його запитання та розпочинає обговорення.
+Заявник відкриває підгрупу й вибирає **Нова тема**. Loomio показує шаблони обговорень підгрупи. Заявник вибирає відповідний шаблон, відповідає на його запитання та розпочинає обговорення.
 
 Обговорення належить підгрупі, а Loomio додає заявника до цієї теми як гостя, а не як учасника підгрупи. Заявник може брати участь у власній темі разом із командою розгляду заявок, але не може бачити інші приватні обговорення чи заявки в підгрупі.
 

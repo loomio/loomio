@@ -6,11 +6,16 @@ class TaskSerializer < ApplicationSerializer
              :done_at,
              :due_on,
              :record_type,
-             :record_id
+             :record_id,
+             :assignee_ids
 
   has_one :record, polymorphic: true, key: 'record_obj'
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :topic, serializer: TopicSerializer, root: :topics
+
+  def assignee_ids
+    object.tasks_users.map(&:user_id)
+  end
 
   def topic
     object.record.topic

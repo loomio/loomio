@@ -1,15 +1,15 @@
 ---
 title: Прямые обсуждения
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: c617bad25b64654f
+  introduction: 1a0632592c683296
   contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: acc249ee4675bbb1
+  introduction: 158778351e107ebb
   contacting-someone-via-a-direct-discussion: 58cb533124aad496
 title_source: ccfab058f1f7c146
 title_generated: 3b2714e95324aa62
@@ -27,11 +27,11 @@ title_generated: 3b2714e95324aa62
 
 ![Форма личного обсуждения без выбранной группы, с Самирой Патель в поле «Приглашать»](direct-discussion-example.png)
 
-Выберите **Прямые темы** на боковой панели, чтобы увидеть ваши личные обсуждения и опросы. Затем откройте меню **Новый** и выберите **Новое обсуждение**, чтобы начать личное обсуждение, или **Новый опрос**, чтобы создать опрос без группы.
+Откройте **Все группы** и выберите **Личные** в разделе **Ветки** (или нажмите на количество личных веток на карточке **Ветки**), чтобы увидеть ваши личные обсуждения. Затем выберите **Новая ветка**, чтобы начать личное обсуждение. Вы также можете открыть **Люди** в разделе **Все группы** и выбрать **Личная ветка** рядом с именем человека.
 
 Личный опрос виден только тем людям, которых вы приглашаете. После его создания используйте [Управление голосующими](/en/user_manual/polls/manage_voters), чтобы пригласить людей или отправить приглашения по адресам электронной почты.
 
-![Пункт «Прямые темы» на боковой панели и список личных обсуждений](direct-discussion-sidebar.png)
+![Фильтр «Личные» в разделе «Все группы», показывающий личные обсуждения](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 

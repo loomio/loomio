@@ -1,22 +1,22 @@
 ---
 title: Chatintegraties
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 46c095b75ad63f90
   what-it-looks-like-in-chat: f317dcdbffe349dc
   generate-a-webhook-url: ededdedfffbe6bcb
-  set-up-a-chat-integration: d671b54fe6ae3cd1
+  set-up-a-chat-integration: 5a727120f9967d49
   invite-to-poll: ffa06cde4354b243
   automatic-notifications: 21e1f83202af63e1
 generated:
   introduction: '0329f5f6cf39d17c'
   what-it-looks-like-in-chat: 05b45a200d61feff
   generate-a-webhook-url: 7681975ad7a8dd6f
-  set-up-a-chat-integration: 2417ea1f18292a9b
+  set-up-a-chat-integration: 4a1fac952514569d
   invite-to-poll: b36df8483f39f26d
   automatic-notifications: 198fc190253fcfb8
 title_source: 0eca19d30c6d7d3c
@@ -61,7 +61,7 @@ Je kunt ook andere diensten verbinden die inkomende webhooks met HTML- of Markdo
 
 Je moet een groepsadmin zijn om chatintegraties toe te voegen of te bewerken.
 
-1. Open na het instellen van je chatdienst (zie hierboven) het groepsmenu in Loomio en selecteer **Chatintegraties**.
+1. Open na het instellen van je chatdienst (zie hierboven) **Instellingen** op je groepspagina in Loomio en selecteer **Chatintegraties**.
 
    ![](loomio-group-settings.png)
 

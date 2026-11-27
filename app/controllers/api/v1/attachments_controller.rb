@@ -1,8 +1,20 @@
 class Api::V1::AttachmentsController < Api::V1::RestfulController
   def index
-    group = current_user.groups.find_by!(id: params[:group_id])
-    self.collection = AttachmentQuery.find([group.id], params[:q], (params[:per] || 20), (params[:from] || 0), user: current_user)
-    self.collection_count = AttachmentQuery.find([group.id], params[:q], 1000, 0, user: current_user).count
+    group_ids = if params[:group_id].present?
+      group = current_user.groups.find_by!(id: params[:group_id])
+      case params[:subgroups]
+      when 'mine', 'all'
+        [ group.id ] | (current_user.group_ids & group.id_and_subgroup_ids)
+      else
+        [ group.id ]
+      end
+    else
+      current_user.group_ids
+    end
+    limit = params[:limit] || params[:per] || 20
+    offset = params[:offset] || params[:from] || 0
+    self.collection = AttachmentQuery.find(group_ids, params[:q], limit, offset, user: current_user, sort: params[:sort])
+    self.collection_count = AttachmentQuery.count(group_ids, params[:q], user: current_user)
     respond_with_collection
   end
 

@@ -242,6 +242,55 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
     end
   end
 
+  test "group index returns readable group tasks, supports user_id filter, and enforces group authorization" do
+    bystander = User.create!(
+      name: "Group Bystander",
+      email: "task-bystander@example.com",
+      username: "taskbystander",
+      email_verified: true
+    )
+    @group.add_member!(bystander)
+    sign_in bystander
+
+    get :index, params: { group_id: @group.id }
+    assert_response :success
+    tasks = response.parsed_body.fetch('tasks')
+    assert_equal [ 17688090 ], tasks.map { |t| t['uid'] }
+
+    get :index, params: { group_id: @group.id, user_id: @doer.id }
+    assert_response :success
+    assert_equal [ 17688090 ], response.parsed_body.fetch('tasks').map { |t| t['uid'] }
+
+    get :index, params: { group_id: @group.id, user_id: bystander.id }
+    assert_response :success
+    assert_empty response.parsed_body.fetch('tasks')
+
+    sign_in users(:alien)
+    @group.update!(is_visible_to_public: false)
+    get :index, params: { group_id: @group.id }
+    assert_response :forbidden
+  end
+
+  test "group index with subgroups includes readable subgroup tasks and excludes secret subgroups" do
+    visible_sub = Group.create!(name: "Visible Sub", parent: @group, group_privacy: "parent_members", parent_members_can_see_discussions: true)
+    visible_sub.add_admin!(@author)
+    secret_sub = Group.create!(name: "Secret Sub", parent: @group, group_privacy: "secret", is_visible_to_parent_members: false)
+    secret_sub.add_admin!(@author)
+
+    visible_disc = DiscussionService.create(params: { title: "Sub task disc", group_id: visible_sub.id }, actor: @author)
+    visible_disc.update!(description_format: 'html', description: task_list_html(94001, @author))
+    secret_disc = DiscussionService.create(params: { title: "Secret task disc", group_id: secret_sub.id }, actor: @author)
+    secret_disc.update!(description_format: 'html', description: task_list_html(94002, @author))
+
+    sign_in @doer
+    get :index, params: { group_id: @group.id, subgroups: 'all' }
+    assert_response :success
+    uids = response.parsed_body.fetch('tasks').map { |t| t['uid'] }
+    assert_includes uids, 17688090
+    assert_includes uids, 94001
+    refute_includes uids, 94002
+  end
+
   private
 
   def task_list_html(uid, author, assignee: nil)

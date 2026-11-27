@@ -1,24 +1,24 @@
 ---
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
 generated:
   introduction: f3ac9d07359d6e59
-  add-a-subgroup: 8a9d2cd33ae8e16b
+  add-a-subgroup: b4498c695a93716d
   subgroup-settings: e930404d0f6aa343
   privacy: 9153ee64e114947b
-  how-people-join: 8b66c5cf5e565b78
+  how-people-join: 8a5339a63ef8e86a
   permissions: 10d6d8a3be4484c3
-  find-subgroups: ebd96392b2374f67
+  find-subgroups: 01f5974adb0c5b54
   invite-to-a-subgroup: d240688e1e851a46
   simultaneously-invite-people-to-subgroups-and-parent-group: ca07c7b03fed95d7
   administer-a-subgroup: bf3856ac8755d14d
@@ -26,11 +26,11 @@ generated:
 title: 하위 그룹
 title_source: 9f81e728f70cae3e
 title_generated: 34581ed54e06ef7d
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -58,7 +58,7 @@ translated:
 
 ![Packaging Working Group의 새 하위 그룹 양식](subgroups_new.png)
 
-하위 그룹이 준비되면 가입할 [사람들을 초대하세요](/en/user_manual/groups/inviting_people). 하위 그룹 페이지의 작업 메뉴에서 하위 그룹의 [그룹 설정](/en/user_manual/groups/settings)을 변경할 수 있습니다.
+하위 그룹이 준비되면 가입할 [사람들을 초대하세요](/en/user_manual/groups/inviting_people). 하위 그룹 페이지의 **설정**에서 하위 그룹의 [그룹 설정](/en/user_manual/groups/settings)을 변경할 수 있습니다.
 
 ![Packaging Working Group의 그룹 설정 수정 메뉴](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ translated:
 
 ### 가입 방법
 
-하위 그룹을 만들 때 또는 **그룹 설정 수정** > **공개 범위**에서 [가입 방법](/en/user_manual/groups/settings/privacy#how-people-join)을 선택하세요.
+하위 그룹을 만들 때 또는 **설정** > **그룹 설정 수정** > **공개 범위**에서 [가입 방법](/en/user_manual/groups/settings/privacy#how-people-join)을 선택하세요.
 
 ![하위 그룹의 공개 범위 및 가입 설정](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ translated:
 
 ## 하위 그룹 찾기
 
-사이드바에서 상위 그룹 이름을 선택하면 해당 그룹의 하위 그룹을 볼 수 있습니다.
+사이드바에서 상위 그룹 이름을 선택하면 해당 그룹의 하위 그룹을 볼 수 있습니다. 상위 그룹의 **스레드**, **투표**, **멤버**, **파일**, **할 일**, **북마크** 페이지에서 **하위 그룹** 필터를 사용해 **이 그룹만**, **내 하위 그룹**, **모든 하위 그룹** 중에서 표시 범위를 선택하거나 특정 하위 그룹으로 바로 이동하세요.
 
 ![사이드바에 표시된 Oatmilk Cooperative의 하위 그룹 목록](subgroups_find_subgroups.png)
 

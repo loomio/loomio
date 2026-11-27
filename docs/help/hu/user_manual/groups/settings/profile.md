@@ -1,17 +1,17 @@
 ---
 title: Profil
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/profile.md
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
+source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: 122f1a59a2e2723c
+  introduction: 91723773f750df9a
   name-and-handle: fbff8ab5dbd82139
   description: 94299b0add34d1e1
   cover-image-and-logo: 3377183aeca3399c
@@ -23,7 +23,7 @@ title_generated: e267d343821f264e
 
 # Csoportprofil
 
-A Profil lapon állíthatod be, hogyan jelenik meg és mutatkozik be a csoportod. A csoport oldalán nyisd meg **A csoportbeállítások szerkesztése** menüpontot, majd válaszd ki a **Profil** lapot.
+A Profil lapon állíthatod be, hogyan jelenik meg és mutatkozik be a csoportod. A csoport oldalán nyisd meg a **Beállítások** menüt, válaszd ki **A csoportbeállítások szerkesztése** menüpontot, majd a **Profil** lapot.
 
 ![A csoportprofil beállításai](group_profile.png)
 

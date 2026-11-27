@@ -1,22 +1,22 @@
 ---
 title: Csevegési integrációk
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 46c095b75ad63f90
   what-it-looks-like-in-chat: f317dcdbffe349dc
   generate-a-webhook-url: ededdedfffbe6bcb
-  set-up-a-chat-integration: d671b54fe6ae3cd1
+  set-up-a-chat-integration: 5a727120f9967d49
   invite-to-poll: ffa06cde4354b243
   automatic-notifications: 21e1f83202af63e1
 generated:
   introduction: c7925ca006587da4
   what-it-looks-like-in-chat: f5c438705f532761
   generate-a-webhook-url: 9e94fdc4553ea9ee
-  set-up-a-chat-integration: 54eae8709458a7e9
+  set-up-a-chat-integration: '09275597e834d8e2'
   invite-to-poll: 4d146ccc64978afd
   automatic-notifications: 9663bbc5cf9dd1c5
 title_source: 0eca19d30c6d7d3c
@@ -61,7 +61,7 @@ Más, HTML- vagy Markdown-formázású bejövő webhookokat fogadó szolgáltat�
 
 Csevegési integrációk hozzáadásához vagy szerkesztéséhez csoportadminnak kell lenned.
 
-1. A csevegőszolgáltatásod beállítása után (lásd fent) nyisd meg a csoport menüjét a Loomióban, és válaszd ki a **Csevegési integrációk** menüpontot.
+1. A csevegőszolgáltatásod beállítása után (lásd fent) nyisd meg a csoportod oldalán a **Beállítások** menüpontot a Loomióban, és válaszd ki a **Csevegési integrációk** menüpontot.
 
    ![](loomio-group-settings.png)
 

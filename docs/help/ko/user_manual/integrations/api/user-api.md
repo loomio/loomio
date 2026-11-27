@@ -66,7 +66,7 @@ sections:
   example-5: 785a417a6afa1b29
   read-thread: d7b366d09189eeaf
   example-6: db45cd3ab09880f4
-  webhooks: 3533fbb996deebf6
+  webhooks: 44f627e517bbd9e6
   list-webhooks: 3f5d857fe7f844bd
   create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
@@ -142,7 +142,7 @@ generated:
   example-5: f960081b657adfb4
   read-thread: 152c00416f1ae609
   example-6: e4b9b944c9fd6d18
-  webhooks: 25c214f5e0ce47bf
+  webhooks: 00bcb173fe603efc
   list-webhooks: f74a4f9d9fa4cb99
   create-a-webhook: f022f63a4fef3b13
   update-a-webhook: 140cc70dfee9d859
@@ -156,8 +156,8 @@ title_source: c23fb6526b722360
 title_generated: 325fc2482e1f276b
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+  'on': '2026-11-26'
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 needs_review:
   response-size-and-related-records: use "결론" instead of "결과" for "outcome"
@@ -1111,7 +1111,7 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 웹훅은 그룹별로 설정하며 그룹 관리자 권한이 필요합니다. Loomio 화면에서 다음과 같이 관리할 수 있습니다.
 
 1. 그룹을 여세요.
-2. 그룹 메뉴를 열고 **채팅 연동**을 선택하세요.
+2. **설정**을 열고 **채팅 연동**을 선택하세요.
 3. 엔드포인트가 수신할 수 있는 페이로드 형식에 맞는 연동을 추가하세요. 범용 엔드포인트에는 Mattermost/Markdown 형식을 사용하세요.
 4. 이름과 대상 URL을 입력하세요.
 5. Loomio가 자동으로 전송할 이벤트를 선택하세요.

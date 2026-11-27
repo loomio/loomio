@@ -1,34 +1,34 @@
 ---
 title: Подгруппы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: 173a14e01373b060
-  add-a-subgroup: 735cd27fe6a78591
+  add-a-subgroup: 8de74025921b2eee
   subgroup-settings: 1be409cb3865a31e
   privacy: 24c0936556ee1966
   permissions: ad0db7331204bfac
-  find-subgroups: 3a2ad08c26a61e9b
+  find-subgroups: e01c3745951a93ea
   invite-to-a-subgroup: a7a45af4b214054f
   simultaneously-invite-people-to-subgroups-and-parent-group: c0e34a73d9ee047b
   administer-a-subgroup: 5747ce66894d028d
   delete-a-subgroup: 4e2d0cc9678ef0b5
-  how-people-join: '088c60b5f9f6480e'
+  how-people-join: 1a095f1bb42ebbc6
 title_source: 9f81e728f70cae3e
 title_generated: a3ec35ef95a0fb4a
 ---
@@ -58,7 +58,7 @@ title_generated: a3ec35ef95a0fb4a
 
 ![Форма создания подгруппы для рабочей группы по упаковке](subgroups_new.png)
 
-Когда подгруппа будет готова, [пригласите людей](/en/user_manual/groups/inviting_people) вступить в неё. Вы можете изменить [настройки группы](/en/user_manual/groups/settings) для подгруппы через меню действий на её странице.
+Когда подгруппа будет готова, [пригласите людей](/en/user_manual/groups/inviting_people) вступить в неё. Вы можете изменить [настройки группы](/en/user_manual/groups/settings) для подгруппы в разделе **Настройки** на её странице.
 
 ![Действие для изменения настроек рабочей группы по упаковке](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ title_generated: a3ec35ef95a0fb4a
 
 ### Как люди присоединяются
 
-Выберите, [как люди присоединяются](/en/user_manual/groups/settings/privacy#how-people-join), при создании подгруппы или в разделе **Редактировать настройки группы** > **Конфиденциальность**.
+Выберите, [как люди присоединяются](/en/user_manual/groups/settings/privacy#how-people-join), при создании подгруппы или в разделе **Настройки** > **Редактировать настройки группы** > **Конфиденциальность**.
 
 ![Настройки конфиденциальности подгруппы и вступления в неё](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ title_generated: a3ec35ef95a0fb4a
 
 ## Поиск подгрупп
 
-Выберите название вашей родительской группы в боковом меню, чтобы увидеть её подгруппы.
+Выберите название вашей родительской группы в боковом меню, чтобы увидеть её подгруппы. На страницах **Ветки**, **Опросы**, **Участники**, **Файлы**, **Задания** и **Закладки** родительской группы используйте фильтр **Подгруппы**, чтобы переключаться между вариантами **Только эта группа**, **Мои подгруппы** и **Все подгруппы** или переходить непосредственно к нужной подгруппе.
 
 ![Подгруппы кооператива Oatmilk в боковом меню](subgroups_find_subgroups.png)
 

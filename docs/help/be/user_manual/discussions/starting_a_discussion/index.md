@@ -1,13 +1,13 @@
 ---
 title: Пачаць дыскусію
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: fed5259d8a76631e
-  new-discussion: a84512ad0cc8e0e3
+  new-discussion: c4dc9f03a918b84d
   group: 4859d0a4fedefa36
   invite-and-notify: 95972f840baa3668
   tags: 5e3d6244fb562620
@@ -37,11 +37,11 @@ title_generated: d70109704d6673d4
 
 ## Пачаць новае абмеркаванне
 
-Націсніце **Пачаць абмеркаванне** на старонцы вашай групы або любой падгрупы.
+Націсніце **Новая тэма** на старонцы вашай групы або любой падгрупы.
 
 Loomio паказвае [шаблоны абмеркаванняў](/en/user_manual/discussions/templates/) вашай групы. Абярыце шаблон або **Пусты шаблон**, каб адкрыць форму абмеркавання.
 
-![Кнопка «Пачаць абмеркаванне» на старонцы кааператыва Oatmilk](new-discussion-button.png)
+![Кнопка «Новая тэма» на старонцы кааператыва Oatmilk](new-discussion-button.png)
 
 ![Форма пачатку абмеркавання для планавання выпрабавання зваротных бутэлек](new-discussion-example.png)
 

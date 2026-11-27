@@ -41,6 +41,19 @@ ko:
     task_updated_done: 할 일을 완료로 표시했습니다
     task_updated_not_done: 할 일을 미완료로 표시했습니다
     no_tasks_assigned: 배정된 할 일이 없습니다
+    status_todo: 미완료
+    status_done: 완료
+    due_any: 모든 마감일
+    due_overdue: 기한 지남
+    due_next_7_days: 앞으로 7일
+    due_later: 그 이후
+    due_none: 마감일 없음
+    assigned_anyone: 모든 담당자
+    assigned_me: 내게 배정됨
+    search_members: 멤버 검색
+    search_tasks: 할 일 검색
+    no_open_tasks: 미완료 할 일이 없습니다.
+    no_matching_tasks: 필터에 맞는 할 일이 없습니다.
   tips:
     get_started_here: 간단한 4단계로 Loomio를 경험해 보세요
     youve_completed_all_the_steps: "\U0001F389 모든 단계를 완료했습니다"
@@ -664,6 +677,7 @@ ko:
       threads_list: 스레드 작업
       groups_list: 그룹
       user_list: 사용자 작업
+    votes_count: 1표 | {count}표
   strand_nav:
     jump_to: 바로 이동
     timeline: 타임라인
@@ -1763,6 +1777,8 @@ ko:
       함께 토론하고 결정할 수 있도록 %{site_name}에 %{groupName} 그룹을 만들었습니다. 이 링크로 가입하세요:
       %{link}
     trial_shareable_link_note: 초대 링크를 복사해 이메일이나 채팅으로 보내 그룹에 초대하세요. 가입한 멤버에게는 Loomio에서 바로 이메일과 모바일 알림을 보낼 수 있습니다. 이메일로 초대를 보내려면 <a href="%{upgradeUrl}">요금제를 업그레이드하세요</a>.
+    include_intro_message: 소개 메시지 포함
+    trial_shareable_invitation_message: "%{groupName}의 의사 결정에 도움이 될지 알아보려고 %{site_name} 7일 체험을 시작했습니다. 함께 사용해 볼 수 있도록 이 링크를 클릭해 가입하세요: %{link}"
   memberships_page:
     members: 멤버
     name_label: 이름
@@ -2425,6 +2441,7 @@ ko:
     welcome_to_your_new_group: 새 Loomio 그룹에 오신 것을 환영합니다
     lets_start_a_discussion: 토론을 시작해 보세요. 계속하려면 "새 토론"을 클릭하세요.
     new_discussion: 새 토론
+    new_thread: 새 스레드
   members_panel:
     edit_vote_weights: 투표 가중치 편집
     vote_weights_are_defaults: 이 기본 투표 가중치는 새 표에 적용됩니다. 여기서 변경해도 이미 부여된 투표 가중치에는 영향을 주지 않습니다.
@@ -3226,3 +3243,103 @@ ko:
       government: 정부/지방자치단체
       cohousing: 공동생활 및 공동주거
       other: 기타
+  group_cards:
+    admins_count: 그룹 관리자 1명 | 그룹 관리자 {count}명
+    members_count: 멤버 1명 | 멤버 {count}명
+    delegates_count: 대의원 1명 | 대의원 {count}명
+    polls_count: 투표 1개 | 투표 {count}개
+    proposals_count: 제안 1개 | 제안 {count}개
+    needs_your_vote: 투표가 필요한 항목 1개 | 투표가 필요한 항목 {count}개
+    no_open_polls: 진행 중인 투표 없음
+    browse_files: 파일 보기
+    invite_get_started: 여기를 클릭해 시작하세요
+    threads: 스레드
+    threads_count: 스레드 1개 | 스레드 {count}개
+    view_threads: 스레드 보기
+    no_threads: 스레드 없음
+    this_group_only: 이 그룹만
+    my_subgroups: 내 하위 그룹
+    all_subgroups: 모든 하위 그룹
+    filter_tags: 태그 필터
+    filter_groups: 그룹 필터
+    filter_subgroups: 하위 그룹 필터
+    filter_qualifier_unread: 읽지 않음
+    filter_qualifier_direct: 다이렉트
+    filter_qualifier_locked: 잠김
+    filter_qualifier_unlocked: 잠금 해제
+    no_filtered_threads: "{filters} 조건에 맞는 스레드가 없습니다"
+    no_filtered_threads_with_tag: "{filters} 조건과 태그에 맞는 스레드가 없습니다: {tag}"
+    no_threads_with_tag: '태그에 맞는 스레드가 없습니다: {tag}'
+    recent_count: 최근 {count}개
+    need_vote_count: 투표가 필요한 항목 1개 | 투표가 필요한 항목 {count}개
+    open_count: 진행 중 {count}개
+    files_count: 파일 1개 | 파일 {count}개
+  onboarding_card:
+    verified_badge: 확인됨
+    view_plans: 요금제 보기
+    upgrade_now: 지금 업그레이드
+    extend_trial_title: 30일 추가 이용과 무료 교육 통화 받기
+    trial_verified: 그룹을 확인했으며 도움을 드릴 준비가 되었습니다. 이제 이메일 초대를 보낼 수 있습니다 — 계속 진행해 30일 추가 이용, Pro 기능, 팀과의 무료 교육 통화를 받아 보세요.
+    trial_extended_title: 30일 추가 이용과 무료 교육 통화 제공
+    book_training_call: 교육 통화 예약
+    extend_trial_initial: 다른 사람 {count}명이 그룹에 가입하면 30일 추가 이용과 Loomio 팀원과의 무료 교육 통화를 받을 수 있습니다.
+    extend_trial_remaining: 1명이 더 그룹에 가입하면 30일 추가 이용과 Loomio 팀원과의 무료 교육 통화를 받을 수 있습니다. | {count}명이 더 그룹에 가입하면 30일 추가 이용과 Loomio 팀원과의 무료 교육 통화를 받을 수 있습니다.
+    trial_extended_description: 체험 기간이 30일 연장되었습니다.
+  dashboard_cards:
+    all_groups: 모든 그룹
+    unread_count: 읽지 않음 {count}개
+    direct: 다이렉트
+    direct_count: 다이렉트 {count}개
+    people: 사람
+    recently_online: 최근 접속
+    recently_online_count: 최근 접속 {count}명
+    your_tasks: 내 할 일
+    tasks_todo_count: 미완료 {count}개
+    bookmarks_saved_count: 저장됨 {count}개
+    search_people: 사람 검색
+    direct_thread: 다이렉트 스레드
+    view_profile: 프로필 보기
+    no_people_found: 검색된 사람이 없습니다
+  group_settings_panel:
+    subtitle: 그룹 옵션
+    group_administration: 그룹 관리
+    your_membership: 멤버십
+    integrations_and_data: 연동 및 데이터
+    leave_or_delete: 탈퇴 또는 삭제
+    edit_group_description: 그룹 이름, 설명, 로고, 커버 사진, 공개 범위, 멤버 권한을 수정하세요.
+    edit_tags_description: 스레드와 투표를 정리할 태그를 만들고, 이름을 바꾸고, 합치고, 색상을 지정하세요.
+    manage_subscription_description: 요금제, 결제 정보, 멤버 수 한도를 확인하세요.
+    change_volume_description: 이 그룹의 이메일과 푸시 알림을 받을 빈도를 선택하세요.
+    email_group_description: 이 주소로 이메일을 보내 그룹에 새 스레드를 만드세요.
+    group_stats_description: 기간별 멤버 활동, 스레드 참여, 투표 참여를 확인하세요.
+    become_coordinator_description: 이 그룹의 그룹 관리자 권한을 얻으세요.
+    chatbots_description: Slack, Mattermost, Discord 등 채팅 도구를 연결해 그룹 소식을 게시하세요.
+    api_docs_description: API 접근과 웹훅을 설정해 Loomio를 사용 중인 도구와 연동하세요.
+    export_data_description: 이 그룹의 스레드, 투표, 댓글, 멤버 데이터 사본을 다운로드하세요.
+    leave_group_description: 이 그룹에서 탈퇴하고 알림 수신을 중단하세요.
+    destroy_group_description: 이 그룹과 콘텐츠의 영구 삭제를 예약하세요.
+  pagination:
+    page_of: 전체 {total}페이지 중 {page}페이지
+    previous_page: 이전 페이지
+    next_page: 다음 페이지
+    sort_by: 정렬 기준
+    per_page: 페이지당 항목 수
+    jump_to_page: 페이지 이동
+    sort:
+      recent_activity: 최근 활동순
+      newest: 최신순
+      oldest: 오래된순
+      closing_soon: 마감 임박순
+      name: 이름순
+      last_seen: 최근 접속순
+    edit_tags_description: 스레드와 투표를 정리하는 태그를 만들고, 이름을 바꾸고, 합치고, 색상을 지정하세요.
+    manage_subscription_description: 요금제, 결제 정보, 멤버 수 한도를 확인하세요.
+    change_volume_description: 이 그룹의 이메일 및 푸시 알림을 받을 빈도를 선택하세요.
+    email_group_description: 이 주소로 이메일을 보내 이 그룹에 새 스레드를 만드세요.
+    group_stats_description: 시간에 따른 멤버 활동, 스레드 참여, 투표 참여를 확인하세요.
+    become_coordinator_description: 이 그룹의 그룹 관리자 권한을 얻으세요.
+    chatbots_description: Slack, Mattermost, Discord 등 채팅 도구를 연결해 그룹 소식을 게시하세요.
+    api_docs_description: API 접근과 웹훅을 설정해 Loomio를 사용 중인 도구와 연동하세요.
+    export_data_description: 이 그룹의 스레드, 투표, 댓글, 멤버 정보 사본을 다운로드하세요.
+    leave_group_description: 이 그룹에서 탈퇴하고 알림 수신을 중지하세요.
+    destroy_group_description: 이 그룹과 콘텐츠의 영구 삭제를 예약하세요.

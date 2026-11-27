@@ -1,28 +1,30 @@
 ---
 title: Visão geral rápida
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: ecd0fe0598db0af5
   group-page: b351d5f2c21b5300
-  tabs: fa2b8c5dbc1e9e15
-  sidebar: 6fcc6fb14f4584c4
+  tabs: 86954790e9ef59f7
+  sidebar: c6de16f7a7779148
   user-settings: fc19e4048d467aed
   notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 8c209bc2f042ae96
+  mobile-navigation: 2be6c40d260c3dd1
+  all-groups: d71bbbd8a059f5db
 generated:
   introduction: 8fdd3a592eb466dd
   group-page: 3f9560f4f2f09912
-  tabs: 0c3ecc28c0f3abbc
-  sidebar: a2f42a806c04bc49
+  tabs: 39fc0abef1cd2d72
+  sidebar: 4ca0454e676872ca
   user-settings: a692e73ef520c4c2
   notifications: 526b0762dcb93750
   what-to-do-next: 11dce04a938e9ff0
-  mobile-navigation: 5e351c9470830cb5
+  mobile-navigation: dadfacfd81c49317
+  all-groups: 868c2cf98d946c72
 title_source: c41a33370cd580dd
 title_generated: 7332722d7395c1a6
 ---
@@ -43,16 +45,27 @@ A página inicial do seu grupo descreve o grupo e contém links para seu trabalh
 
 <!-- translation-section: tabs -->
 
-### Abas
+### Seções
 
-As abas abaixo da descrição do grupo mostram:
+Os cartões de navegação abaixo da descrição do grupo mostram:
 
-- **Discussões**: As conversas de discussão do grupo e as atividades recentes.
-- **Enquetes**: Enquetes abertas e encerradas no grupo.
-- **Membros**: As pessoas que pertencem ao grupo.
+- **Conversas**: As conversas de discussão do grupo e as atividades recentes ou não lidas.
+- **Enquetes**: Enquetes abertas e encerradas no grupo, incluindo as que aguardam seu voto.
+- **Membros**: As pessoas que pertencem ao grupo, com um atalho para convidar novos membros.
 - **Arquivos**: Arquivos anexados a discussões, comentários, propostas e enquetes em todo o grupo, para que você possa encontrar um documento sem precisar lembrar onde ele foi compartilhado.
+- **Tarefas**: Tarefas abertas e concluídas no grupo, com filtros por status, prazo, responsável e tags.
+- **Favoritos**: Discussões, comentários, enquetes, votos e conclusões que você adicionou aos favoritos no grupo.
+- **Configurações**: Administração do grupo, opções de participação, configurações de notificação, integrações e exportação de dados.
 
 Consulte [Encontrar conteúdo](/en/user_manual/overview/finding-content) para obter ajuda com buscas, filtros, tags, favoritos e discussões não lidas.
+
+<!-- translation-section: all-groups -->
+
+## Todos os grupos
+
+Selecione **Todos os grupos** na barra lateral para ver seu trabalho em todos os grupos dos quais você participa. Essa página usa os mesmos cartões de navegação de uma página de grupo, com **Conversas** (incluindo conversas não lidas e diretas), **Enquetes**, **Pessoas** (um diretório com busca de pessoas que participam dos mesmos grupos que você, mostrando quem esteve online recentemente), **Arquivos**, **Tarefas** e **Favoritos**.
+
+![](all_groups.png)
 
 <!-- translation-section: sidebar -->
 
@@ -62,7 +75,7 @@ Abra a barra lateral usando o botão de menu (**☰**) no canto superior esquerd
 
 ![](sidebar.png)
 
-Use a barra lateral para abrir seu painel, enquetes que aguardam seu voto, discussões não lidas e diretas, tarefas e grupos. Ela também oferece links para o manual do usuário e o suporte.
+Use a barra lateral para alternar entre **Todos os grupos**, seus grupos e subgrupos, e para criar um novo grupo ou subgrupo. Quando a barra lateral estiver fechada, selecione o nome do grupo (ou **Todos os grupos**) na parte superior da página para alternar entre grupos ou criar um novo grupo. A barra lateral também oferece links para o manual do usuário e o suporte.
 
 <!-- translation-section: user-settings -->
 
@@ -88,7 +101,7 @@ Consulte [Notificações](/en/user_manual/users/email_settings) para saber mais 
 
 ## Navegação no celular
 
-No celular, a barra de navegação inferior abre a barra lateral, o painel e as notificações. Dentro de uma discussão, o menu da conversa permite acessar seu conteúdo e suas ações.
+No celular, a barra de navegação inferior abre a barra lateral, **Todos os grupos** e as notificações. Dentro de uma discussão, o menu da conversa permite acessar seu conteúdo e suas ações.
 
 <!-- translation-section: what-to-do-next -->
 

@@ -1,10 +1,10 @@
 ---
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -12,11 +12,11 @@ sections:
   re-send-invitations: 170acb378f6443dd
   cancelling-invitations: f45e19cbeaf8b752
 generated:
-  introduction: fac779d83234a54d
+  introduction: 76cbdbd1908439e7
   send-invitations-via-email: fb47aa3c26861a61
   invite-many-at-once: 74ca45e3a9ad90bb
   invite-people-to-subgroups: 2862f19da9e27c8d
-  share-a-link-to-your-group: c41bd0f324dd143b
+  share-a-link-to-your-group: 2dd866a551340eb6
   request-to-join-group: d7b87ef5d0bd2a0f
   review-membership-requests: 94df7bd1d3567570
   managing-invitations: b40164fc389ba583
@@ -26,18 +26,18 @@ generated:
 title: 초대하기
 title_source: b926eb8921d85971
 title_generated: 607b39315e69f303
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
 
 # Loomio 그룹에 초대하기
 
-이메일로 Loomio 그룹에 초대하거나, 초대 링크를 공유하거나, 가입 요청을 받을 수 있습니다. 그룹 페이지에서 **멤버** 탭을 열어 시작하세요.
+이메일로 Loomio 그룹에 초대하거나, 초대 링크를 공유하거나, 가입 요청을 받을 수 있습니다. **멤버** 카드에서 **초대**를 선택하거나 그룹 페이지에서 **멤버**를 열어 시작하세요.
 
 ![](group_join_group_invite.png)
 
@@ -74,7 +74,7 @@ translated:
 
 ## 그룹 링크 공유하기
 
-**공유**를 선택하면 뉴스레터, 채팅 채널, 이메일 또는 웹사이트에서 사용할 수 있는 재사용 가능한 초대 링크가 생성됩니다.
+**공유**를 선택하면 뉴스레터, 채팅 채널, 이메일 또는 웹사이트에서 사용할 수 있는 재사용 가능한 초대 링크가 생성됩니다. **소개 메시지 포함**을 켜면 링크와 함께 짧은 메시지를 복사할 수 있습니다.
 
 ![](group_invite_sharable_link.png)
 

@@ -16,13 +16,13 @@ function spotlight(selector) {
 async function openGroupSettings(page, scenario) {
   await page.goto(`/dev/${scenario}`)
   await expectLabel(page.locator('.group-page__name'), 'Packaging Working Group')
-  await page.locator('.group-page__actions .action-menu--btn').click()
-  await expect(page.locator('.v-overlay--active .action-dock__button--edit_group')).toBeVisible()
+  await page.locator('.group-cards__settings').click()
+  await expect(page.locator('.group-settings-panel .action-dock__button--edit_group')).toBeVisible()
 }
 
 async function editPrivacy(page) {
   await openGroupSettings(page, 'setup_manual_oatmilk_closed_subgroup_admin');
-  await page.locator('.v-overlay--active .action-dock__button--edit_group').click()
+  await page.locator('.group-settings-panel .action-dock__button--edit_group').click()
   await page.locator('.group-form__privacy-tab').click()
   await page.locator('.group-form__privacy-parent_members input').check()
 }
@@ -53,8 +53,10 @@ test('new_subgroup_form', async ({ page, manual: screenshot }) => {
 
 test('edit_subgroup_settings', async ({ page, manual: screenshot }) => {
   await openGroupSettings(page, 'setup_manual_oatmilk_subgroup_invitations');
-  await screenshot.capture('groups/subgroups/subgroups_edit_group_settings', {
-    spotlight: spotlight('.v-overlay .action-dock__button--edit_group')
+  await screenshot.captureElement('groups/subgroups/subgroups_edit_group_settings', '.group-page', {
+    width: 1280,
+    height: 1600,
+    spotlight: spotlight('.group-settings-panel .action-dock__button--edit_group')
   });
 });
 

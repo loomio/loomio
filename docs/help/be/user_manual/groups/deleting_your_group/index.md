@@ -1,15 +1,15 @@
 ---
 title: Выдаленне вашай групы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: c36b5b260ba0ef5a
+  introduction: ca8a0906a7637cab
   group-data-is-permanently-deleted-after-90-days: e0f84b7b2ff55d52
 title_source: 9a0868f49f1262ea
 title_generated: 2f36fe51d9213825
@@ -23,9 +23,9 @@ title_generated: 2f36fe51d9213825
 
 Перш чым выдаліць групу, [экспартуйце даныя групы](/en/user_manual/groups/data_export) і спампуйце ўсе загружаныя файлы, якія хочаце захаваць.
 
-Каб выдаліць групу, адкрыйце меню дзеянняў групы і выберыце **Выдаліць групу**.
+Каб выдаліць групу, адкрыйце **Налады** на старонцы групы і выберыце **Выдаліць групу**.
 
-![Дзеянне «Выдаліць групу» ў меню Oatmilk Cooperative](group_delete_group.png)
+![Дзеянне «Выдаліць групу» на старонцы налад Oatmilk Cooperative](group_delete_group.png)
 
 Увядзіце ідэнтыфікатар групы, каб пацвердзіць выдаленне.
 

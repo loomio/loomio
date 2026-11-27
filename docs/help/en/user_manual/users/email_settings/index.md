@@ -99,7 +99,7 @@ Change your defaults for new groups from **Notification settings** in your user 
 To change the notification setting for a group:
 
 1. Open the group page.
-2. Open the notification settings for the group.
+2. Open **Settings** and select **Notification settings**.
 
 ![Notification settings on a group page](group_notifications.png)
 

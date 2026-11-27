@@ -43,6 +43,19 @@ da:
     task_updated_not_done: Opgave markeret som ikke udført
     no_tasks_assigned: Der er ingen opgaver tildelt dig
     task_placeholder: Indtast en opgave og {'@'}nævn en person, der skal tildele den
+    status_todo: Skal gøres
+    status_done: Udført
+    due_any: Alle forfaldsdatoer
+    due_overdue: Overskredet
+    due_next_7_days: Næste 7 dage
+    due_later: Senere
+    due_none: Ingen forfaldsdato
+    assigned_anyone: Alle
+    assigned_me: Tildelt mig
+    search_members: Søg efter medlemmer
+    search_tasks: Søg efter opgaver
+    no_open_tasks: Du har ingen åbne opgaver.
+    no_matching_tasks: Ingen opgaver matcher dine filtre.
   templates:
     template_gallery: Skabelongalleri
     title_template: "%{title} skabelon"
@@ -646,6 +659,7 @@ da:
     direct_discussions: Direkte diskussioner
     unread_discussions: Ulæste diskussioner
     unread_threads_count: Ulæste tråde (%{count})
+    votes_count: 1 stemme | {count} stemmer
   strand_nav:
     newest: Nyeste
     oldest: Ældste
@@ -1590,6 +1604,8 @@ da:
       Jeg har oprettet %{groupName} på %{site_name}, så vi kan diskutere og træffe beslutninger sammen. Deltag via dette link:
       %{link}
     trial_shareable_link_note: Kopier invitationslinket, og send det via mail eller chat for at invitere folk til din gruppe. Når de er med, kan du sende dem notifikationer via mail og mobil direkte fra Loomio. <a href="%{upgradeUrl}">Opgrader dit abonnement</a> for at sende invitationer via mail.
+    include_intro_message: Medtag en introduktion
+    trial_shareable_invitation_message: 'Jeg har startet en 7-dages prøveperiode på %{site_name}, så vi kan se, om det kan hjælpe os med at træffe beslutninger i %{groupName}. Klik på linket for at deltage, så vi kan prøve det: %{link}'
   memberships_page:
     members: Medlemmer
     name_label: Navn
@@ -2189,6 +2205,7 @@ da:
     unlocked: Låst op
     no_threads_found_that_match_your_query_or_filters: Der blev ikke fundet nogen tråde, der matcher din forespørgsel eller dine filtre
     no_threads_found_that_match_your_filters: Der blev ikke fundet nogen tråde, der matcher dine filtre
+    new_thread: Ny tråd
   members_panel:
     bot: Bot
     no_results: Ingen medlemmer fundet
@@ -3284,3 +3301,103 @@ da:
     bounced: Returmail meldt
     complained: Spamklage meldt
     skipped: E-mail ikke sendt
+  group_cards:
+    admins_count: 1 admin | {count} admins
+    members_count: 1 medlem | {count} medlemmer
+    delegates_count: 1 delegeret | {count} delegerede
+    polls_count: 1 afstemning | {count} afstemninger
+    proposals_count: 1 forslag | {count} forslag
+    needs_your_vote: 1 mangler din stemme | {count} mangler din stemme
+    no_open_polls: Ingen åbne afstemninger
+    browse_files: Se filer
+    invite_get_started: Klik her for at komme i gang
+    threads: Tråde
+    threads_count: 1 tråd | {count} tråde
+    view_threads: Se tråde
+    no_threads: Ingen tråde
+    this_group_only: Kun denne gruppe
+    my_subgroups: Mine undergrupper
+    all_subgroups: Alle undergrupper
+    filter_tags: Filtrer tags
+    filter_groups: Filtrer grupper
+    filter_subgroups: Filtrer undergrupper
+    filter_qualifier_unread: ulæste
+    filter_qualifier_direct: direkte
+    filter_qualifier_locked: låste
+    filter_qualifier_unlocked: ulåste
+    no_filtered_threads: Der er ingen {filters} tråde
+    no_filtered_threads_with_tag: 'Der er ingen {filters} tråde med tag: {tag}'
+    no_threads_with_tag: 'Der er ingen tråde med tag: {tag}'
+    recent_count: "{count} seneste"
+    need_vote_count: 1 mangler stemmer | {count} mangler stemmer
+    open_count: "{count} åbne"
+    files_count: 1 fil | {count} filer
+  onboarding_card:
+    verified_badge: Bekræftet
+    view_plans: Se abonnementer
+    upgrade_now: Opgrader nu
+    extend_trial_title: Lås op for 30 ekstra dage & et gratis oplæringsmøde
+    trial_verified: Vi har set din gruppe og er klar til at hjælpe. Du kan nu sende invitationer via e-mail — fortsæt for at låse op for 30 ekstra dage, Pro-funktioner og et gratis oplæringsmøde med vores team.
+    trial_extended_title: 30 ekstra dage & gratis oplæringsmøde låst op
+    book_training_call: Book et oplæringsmøde
+    extend_trial_initial: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} andre har meldt sig ind i gruppen.
+    extend_trial_remaining: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når 1 mere har meldt sig ind i gruppen. | Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} flere har meldt sig ind i gruppen.
+    trial_extended_description: Din prøveperiode er forlænget med 30 dage.
+  dashboard_cards:
+    all_groups: Alle grupper
+    unread_count: "{count} ulæste"
+    direct: Direkte
+    direct_count: "{count} direkte"
+    people: Personer
+    recently_online: Online for nylig
+    recently_online_count: "{count} online for nylig"
+    your_tasks: Dine opgaver
+    tasks_todo_count: "{count} skal gøres"
+    bookmarks_saved_count: "{count} gemte"
+    search_people: Søg efter personer
+    direct_thread: Direkte tråd
+    view_profile: Se profil
+    no_people_found: Ingen personer fundet
+  group_settings_panel:
+    subtitle: Gruppeindstillinger
+    group_administration: Gruppeadministration
+    your_membership: Dit medlemskab
+    integrations_and_data: Integrationer & data
+    leave_or_delete: Forlad eller slet
+    edit_group_description: Opdater gruppens navn, beskrivelse, logo, coverbillede, privatliv og medlemsrettigheder.
+    edit_tags_description: Opret, omdøb, flet og farvekod tags til at organisere tråde og afstemninger.
+    manage_subscription_description: Se dit abonnement, dine faktureringsoplysninger og medlemsgrænser.
+    change_volume_description: Vælg, hvor ofte du modtager e-mail og pushnotifikationer fra denne gruppe.
+    email_group_description: Start en ny tråd i denne gruppe ved at sende en e-mail til denne adresse.
+    group_stats_description: Se medlemsaktivitet, engagement i tråde og deltagelse i afstemninger over tid.
+    become_coordinator_description: Giv dig selv rettigheder som gruppeadmin i denne gruppe.
+    chatbots_description: Tilslut Slack, Mattermost, Discord eller andre chatværktøjer for at dele nyt fra gruppen.
+    api_docs_description: Opsæt API-adgang og webhooks for at integrere Loomio med dine egne værktøjer.
+    export_data_description: Download en kopi af denne gruppes tråde, afstemninger, kommentarer og medlemmer.
+    leave_group_description: Meld dig ud af denne gruppe, og stop med at modtage notifikationer.
+    destroy_group_description: Planlæg permanent sletning af denne gruppe og dens indhold.
+  pagination:
+    page_of: Side {page} af {total}
+    previous_page: Forrige side
+    next_page: Næste side
+    sort_by: Sortér efter
+    per_page: Pr. side
+    jump_to_page: Gå til side
+    sort:
+      recent_activity: Seneste aktivitet
+      newest: Nyeste
+      oldest: Ældste
+      closing_soon: Lukker snart
+      name: Navn
+      last_seen: Sidst set
+    edit_tags_description: Opret, omdøb, flet og farvekod tags til at organisere tråde og afstemninger.
+    manage_subscription_description: Se dit abonnement, dine faktureringsoplysninger og medlemsgrænser.
+    change_volume_description: Vælg, hvor ofte du får e-mails og pushnotifikationer fra denne gruppe.
+    email_group_description: Start en ny tråd i denne gruppe ved at sende en e-mail til denne adresse.
+    group_stats_description: Se medlemmers aktivitet, engagement i tråde og deltagelse i afstemninger over tid.
+    become_coordinator_description: Giv dig selv rettigheder som gruppeadmin i denne gruppe.
+    chatbots_description: Tilslut Slack, Mattermost, Discord eller andre chatværktøjer for at dele nyt fra gruppen.
+    api_docs_description: Opsæt API-adgang og webhooks for at forbinde Loomio med dine egne værktøjer.
+    export_data_description: Download en kopi af denne gruppes tråde, afstemninger, kommentarer og medlemmer.
+    leave_group_description: Forlad denne gruppe, og stop med at modtage notifikationer.
+    destroy_group_description: Planlæg permanent sletning af denne gruppe og dens indhold.

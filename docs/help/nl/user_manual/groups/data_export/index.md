@@ -1,13 +1,13 @@
 ---
 title: Data exporteren
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 988679ffd3d29834
-  export-data: 9c2fb6ec7c75bcb6
+  export-data: '024783a0614721d2'
   export-group-data-as-csv: c0845f09bff828f2
   export-group-data-as-html: 659fd5e14956b00e
   export-group-data-as-json: 4c2131f4518b7469
@@ -15,7 +15,7 @@ sections:
   import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
   introduction: bfcf93fc43193170
-  export-data: af5f2998b6f9c710
+  export-data: 93ec9baf95165d82
   export-group-data-as-csv: 07e338a3d413dd14
   export-group-data-as-html: 656b6abe52be3b33
   export-group-data-as-json: 70a59487d4d1c46d
@@ -45,9 +45,9 @@ Je kunt deze functie gebruiken om van de hostingdienst van Loomio over te stappe
 
 ## Data exporteren
 
-Alleen een admin van de groep kan groepsdata exporteren. Open het actiemenu van de groep en selecteer **Groepsdata exporteren**.
+Alleen een admin van de groep kan groepsdata exporteren. Open **Instellingen** op de groepspagina en selecteer **Groepsdata exporteren**.
 
-![Actie Groepsdata exporteren in het menu van Oatmilk Cooperative](group_export_group_data.png)
+![Actie Groepsdata exporteren op de instellingenpagina van Oatmilk Cooperative](group_export_group_data.png)
 
 Loomio bereidt de export op de achtergrond voor en stuurt je een downloadlink per e-mail zodra de export klaar is. De link blijft één week actief.
 

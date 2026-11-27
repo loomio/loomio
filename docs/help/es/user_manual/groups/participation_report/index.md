@@ -1,12 +1,12 @@
 ---
 title: Informe de participación
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 5815cc35f8e7ade7
+  introduction: 2bbe029d563cdd03
   what-s-in-the-report: 26a4b0d0637b227b
   actions-per-month: 0d2ef7b3be1b86fb
   tag-usage: d8584b49fd9a175a
@@ -37,9 +37,9 @@ Puedes elegir qué grupos incluir, establecer una fecha de inicio y otra de fin 
 
 Todos los miembros del grupo pueden consultar el informe, pero cada persona solo ve los resultados de los grupos a los que pertenece. Por eso, distintos miembros pueden ver totales diferentes.
 
-Para abrir el informe, abre el menú de acciones del grupo y selecciona **Informe de participación**. En cualquier tabla del informe, selecciona el encabezado de una columna para ordenar los datos por esa columna.
+Para abrir el informe, abre **Configuración ** en la página del grupo y selecciona **Informe de participación**. En cualquier tabla del informe, selecciona el encabezado de una columna para ordenar los datos por esa columna.
 
-![Opción del informe de participación en el menú de Oatmilk Cooperative](group_participation_report.png)
+![Opción del informe de participación en la página de configuración de Oatmilk Cooperative](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

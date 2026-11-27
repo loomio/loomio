@@ -1,17 +1,17 @@
 ---
 title: 参加方法
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: 6b99f668bd374d73
   get-someone-s-attention: 1eeabe7c3738b9bb
   reactions: f8a45fb583df2670
-  vote: 49bc33a8804ea1c5
+  vote: d5577cfceec9daa8
   state-a-reason: 9bb6882b813f306e
   change-your-vote: f78678c6e2418f41
   results: afeb92211f272914
@@ -73,7 +73,7 @@ Loomioのグループにサインインすると、ディスカッションに�
 
 ## 投票する
 
-メールの招待、アプリ内の通知、またはグループの**アンケート**タブからアンケートを開きます。アンケートと添付ファイルを読んでから、選択肢を選びます。
+メールの招待、アプリ内の通知、**すべてのグループ**、またはグループの**アンケート**セクションからアンケートを開きます。アンケートと添付ファイルを読んでから、選択肢を選びます。
 
 Loomioにはいくつかの種類のアンケートがあります。以下の例は、**賛成**、**棄権**、**反対**を選択肢とする提案です。
 

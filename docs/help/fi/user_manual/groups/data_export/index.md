@@ -1,13 +1,13 @@
 ---
 title: Tietojen vienti
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 988679ffd3d29834
-  export-data: 9c2fb6ec7c75bcb6
+  export-data: '024783a0614721d2'
   export-group-data-as-csv: c0845f09bff828f2
   export-group-data-as-html: 659fd5e14956b00e
   export-group-data-as-json: 4c2131f4518b7469
@@ -15,7 +15,7 @@ sections:
   import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
   introduction: abd57986e9b2be9d
-  export-data: 4e0ab7ac779555a0
+  export-data: e9b4c93060667fed
   export-group-data-as-csv: c9b3afa454491ee1
   export-group-data-as-html: a75b68b4b5117345
   export-group-data-as-json: a0e7a0a58d1314cd
@@ -45,9 +45,9 @@ Voit käyttää tätä toimintoa siirtyäksesi Loomion ylläpitämästä palvelu
 
 ## Vie tiedot
 
-Vain ryhmän ylläpitäjä voi viedä ryhmän tiedot. Avaa ryhmän toimintovalikko ja valitse **Vie ryhmätiedot**.
+Vain ryhmän ylläpitäjä voi viedä ryhmän tiedot. Avaa ryhmän sivulla **asetukset** ja valitse **Vie ryhmätiedot**.
 
-![Vie ryhmätiedot -toiminto Oatmilk Cooperative -ryhmän valikossa](group_export_group_data.png)
+![Vie ryhmätiedot -toiminto Oatmilk Cooperative -ryhmän asetussivulla](group_export_group_data.png)
 
 Loomio valmistelee viennin taustalla ja lähettää sinulle latauslinkin sähköpostitse, kun vienti on valmis. Linkki on käytettävissä viikon ajan.
 

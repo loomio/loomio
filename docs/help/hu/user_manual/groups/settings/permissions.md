@@ -1,14 +1,14 @@
 ---
 title: Engedélyek
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: 16b73b9502d77174
+  introduction: e9fdee28701b7ca1
 title_source: abccc78cc93c0793
 title_generated: a4bfbe799c570f9b
 ---
@@ -17,7 +17,7 @@ title_generated: a4bfbe799c570f9b
 
 # Csoportengedélyek
 
-Az **Engedélyek** lapon állíthatod be, hogy mit tehetnek a tagok a csoportban, illetve a nem titkos csoportokban a csoporton kívüli személyek. A csoport műveleti menüjében nyisd meg **A csoportbeállítások szerkesztése** menüpontot, majd válaszd ki az **Engedélyek** lapot.
+Az **Engedélyek** lapon állíthatod be, hogy mit tehetnek a tagok a csoportban, illetve a nem titkos csoportokban a csoporton kívüli személyek. A csoport oldalán nyisd meg a **Beállítások** menüt, válaszd ki **A csoportbeállítások szerkesztése** menüpontot, majd az **Engedélyek** lapot.
 
 ![A csoport engedélybeállításai](group_group_settings_permissions.png)
 

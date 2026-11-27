@@ -1,24 +1,24 @@
 ---
 title: Per iniziare
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: d770754b76b54744
   how-loomio-works: 533bdb675cc06a38
-  groups: b1d15d8ad9ca44cd
+  groups: c231fc39b54b849a
   discussions: b0e3d9c1b204c33d
-  polls-and-proposals: 56d7d72f6cc1813c
+  polls-and-proposals: 50b3101f79f951bf
   try-it-out: 1231e560d2d91400
   how-people-use-loomio: e2ff1da3519c6938
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ Loomio ha tre parti principali: gruppi, discussioni e sondaggi.
 
 ### Gruppi
 
-Un gruppo è uno spazio in cui un'organizzazione, un team o una comunità possono lavorare insieme. La sua pagina iniziale spiega lo scopo del gruppo e contiene collegamenti alle sue discussioni, ai sondaggi, ai membri e ai file.
+Un gruppo è uno spazio in cui un'organizzazione, un team o una comunità possono lavorare insieme. La sua pagina iniziale spiega lo scopo del gruppo e contiene collegamenti alle sue conversazioni, ai sondaggi, ai membri, ai file, ai compiti, ai segnalibri e alle impostazioni.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ I sondaggi aiutano un gruppo a comprendere le preferenze, raccogliere consigli e
 
 ![](orientation_proposal.png)
 
-I sondaggi possono far parte di una discussione oppure svolgersi in modo indipendente dalla scheda **Sondaggi** nella pagina di un gruppo.
+I sondaggi possono far parte di una discussione oppure svolgersi in modo indipendente da **Sondaggi** nella pagina di un gruppo.
 
 Per scoprire dove si trovano queste parti nell'interfaccia, consulta la [Panoramica rapida](/en/user_manual/overview/orientation). Per iniziare a contribuire, consulta [Come partecipare](/en/user_manual/overview/how-to-participate).
 

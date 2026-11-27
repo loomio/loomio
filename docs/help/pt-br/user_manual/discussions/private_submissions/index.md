@@ -1,21 +1,21 @@
 ---
 title: Receber envios privados
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: '059c8cfb4c8f15ea'
-  enable-private-submissions: 98894661f186bd99
+  enable-private-submissions: fb8f6edadee5b364
   set-up-a-private-submission-process: 1e231cfdaeb7d3df
-  make-a-submission: 6e97e3b1db472abc
+  make-a-submission: d452b97a0f778c5a
   review-submissions: e0dca33100b4c96d
 title_source: e82ab76916d594f4
 title_generated: 88dd08426aa0fb1d
@@ -46,7 +46,7 @@ Neste processo, os envios são privados entre as pessoas que os fazem, mas não 
 Você deve ser admin do grupo ou subgrupo onde deseja receber envios.
 
 1. Abra o grupo.
-2. Selecione **Configurações** (ou **Mais**, depois **Editar configurações do grupo**).
+2. Abra **Configurações** e selecione **Editar configurações do grupo**.
 3. Abra **Permissões**.
 4. Ative **Quem não é membro pode iniciar discussões.**
 5. Salve as configurações do grupo.
@@ -73,7 +73,7 @@ Ativar esta permissão não torna públicas as discussões do grupo. Quem não �
 
 ## Fazer um envio
 
-A pessoa que faz o envio abre o subgrupo e seleciona **Iniciar discussão**. O Loomio mostra os modelos de discussão do subgrupo. A pessoa escolhe o modelo adequado, responde às perguntas e inicia a discussão.
+A pessoa que faz o envio abre o subgrupo e seleciona **Nova conversa**. O Loomio mostra os modelos de discussão do subgrupo. A pessoa escolhe o modelo adequado, responde às perguntas e inicia a discussão.
 
 A discussão pertence ao subgrupo, e o Loomio adiciona a pessoa que fez o envio como convidada nessa conversa, sem torná-la membro do subgrupo. Ela pode participar de sua própria conversa com a equipe de avaliação, mas não pode ver outras discussões privadas ou envios no subgrupo.
 

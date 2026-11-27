@@ -1,10 +1,10 @@
 ---
 title: Meldingen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 25fc6fe9cb35c981
   two-ways-to-begin: 3b42b0d12bbd2ba0
@@ -13,7 +13,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -26,7 +26,7 @@ generated:
   choose-your-catch-up-schedule: afd9f1d98d173dc7
   mark-a-catch-up-as-read: 722aec8213ff8343
   group-and-thread-notification-settings: f28709181253a3f1
-  group-notification-settings: 878e2f81f9548837
+  group-notification-settings: 842763032486eeb8
   thread-notification-settings: d6f5ae132d60f1fa
   email-delivery: 824ecddcb703d344
   enable-mobile-notifications-with-web-push: 0cf73e757e13b3ff
@@ -136,7 +136,7 @@ Wijzig je standaardinstellingen voor nieuwe groepen via **Melding instellingen**
 Zo wijzig je de meldingsinstelling voor een groep:
 
 1. Open de groepspagina.
-2. Open de meldingsinstellingen voor de groep.
+2. Open **Instellingen** en selecteer **Melding instellingen**.
 
 ![Meldingsinstellingen op een groepspagina](group_notifications.png)
 

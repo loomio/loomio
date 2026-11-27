@@ -1,13 +1,13 @@
 ---
 title: Экспарт дадзеных
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 988679ffd3d29834
-  export-data: 9c2fb6ec7c75bcb6
+  export-data: '024783a0614721d2'
   export-group-data-as-csv: c0845f09bff828f2
   export-group-data-as-html: 659fd5e14956b00e
   export-group-data-as-json: 4c2131f4518b7469
@@ -15,7 +15,7 @@ sections:
   import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
   introduction: a75e71f64f8697d1
-  export-data: 6b8771d953b3208d
+  export-data: 466c3e9213cc0886
   export-group-data-as-csv: 537ae03003e3b7bf
   export-group-data-as-html: c6831d2927fbe901
   export-group-data-as-json: 69aecf81a965b49f
@@ -45,9 +45,9 @@ title_generated: 9fc25a543c5b2272
 
 ## Экспарт дадзеных
 
-Экспартаваць дадзеныя групы могуць толькі адміністратары групы. Адкрыйце меню дзеянняў групы і выберыце **Экспартаваць дадзеныя групы**.
+Экспартаваць дадзеныя групы могуць толькі адміністратары групы. Адкрыйце **Налады** на старонцы групы і выберыце **Экспартаваць дадзеныя групы**.
 
-![Дзеянне экспарту дадзеных групы ў меню Oatmilk Cooperative](group_export_group_data.png)
+![Дзеянне экспарту дадзеных групы на старонцы налад Oatmilk Cooperative](group_export_group_data.png)
 
 Loomio рыхтуе экспарт у фонавым рэжыме і дасылае вам па электроннай пошце спасылку для спампоўвання, калі экспарт гатовы. Спасылка дзейнічае на працягу аднаго тыдня.
 

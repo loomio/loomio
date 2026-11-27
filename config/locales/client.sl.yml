@@ -43,6 +43,19 @@ sl:
     task_updated_not_done: Opravilo označeno kot nedokončano
     no_tasks_assigned: Dodeljena vam ni nobena naloga
     task_placeholder: Vnesite opravilo in {'@'}omenite nekoga, ki mu ga želite dodeliti
+    status_todo: Za opraviti
+    status_done: Opravljeno
+    due_any: Kateri koli rok
+    due_overdue: Zamujeno
+    due_next_7_days: Naslednjih 7 dni
+    due_later: Pozneje
+    due_none: Brez roka
+    assigned_anyone: Kdor koli
+    assigned_me: Dodeljeno meni
+    search_members: Poiščite člane
+    search_tasks: Poiščite opravila
+    no_open_tasks: Nimate odprtih opravil.
+    no_matching_tasks: Nobeno opravilo ne ustreza vašim filtrom.
   templates:
     template_gallery: Galerija predlog
     title_template: Predloga %{title}
@@ -646,6 +659,7 @@ sl:
     direct_discussions: Neposredne razprave
     unread_discussions: Neprebrane razprave
     unread_threads_count: Neprebrane niti (%{count})
+    votes_count: 1 glas | {count} glasov
   strand_nav:
     newest: Najnovejša
     oldest: Najstarejši
@@ -1580,6 +1594,8 @@ sl:
       Skupina %{groupName} je zdaj na %{site_name}, da lahko skupaj razpravljamo in sprejemamo odločitve. Pridružite se prek te povezave:
       %{link}
     trial_shareable_link_note: Kopirajte povezavo za povabilo in jo pošljite po e-pošti ali klepetu, da povabite ljudi v svojo skupino. Ko se pridružijo, jim lahko neposredno iz Loomia pošiljate e-poštna in mobilna obvestila. <a href="%{upgradeUrl}">Nadgradite paket</a> za pošiljanje povabil po e-pošti.
+    include_intro_message: Vključite uvodno sporočilo
+    trial_shareable_invitation_message: 'Začeli smo 7-dnevni preizkus aplikacije %{site_name}, da vidimo, ali nam lahko pomaga pri odločanju v skupini %{groupName}. Kliknite to povezavo in se pridružite, da jo skupaj preizkusimo: %{link}'
   memberships_page:
     members: Člani
     name_label: Ime
@@ -2177,6 +2193,7 @@ sl:
     unlocked: Odklenjeno
     no_threads_found_that_match_your_query_or_filters: Ni najdenih niti, ki bi ustrezale vaši poizvedbi ali filtrom
     no_threads_found_that_match_your_filters: Ni najdenih niti, ki bi ustrezale vašim filtrom
+    new_thread: Nova nit
   members_panel:
     bot: Bot
     no_results: Ni članov
@@ -3272,3 +3289,103 @@ sl:
     bounced: Sporočena nedostavljivost
     complained: Prijavljeno kot neželena pošta
     skipped: E-pošta ni bila poslana
+  group_cards:
+    admins_count: 1 skrbnik | {count} skrbnikov
+    members_count: 1 član | {count} članov
+    delegates_count: 1 delegat | {count} delegatov
+    polls_count: 1 anketa | {count} anket
+    proposals_count: 1 predlog | {count} predlogov
+    needs_your_vote: 1 čaka na vaš glas | {count} jih čaka na vaš glas
+    no_open_polls: Ni odprtih anket
+    browse_files: Oglejte si datoteke
+    invite_get_started: Za začetek kliknite tukaj
+    threads: Niti
+    threads_count: 1 nit | {count} niti
+    view_threads: Oglejte si niti
+    no_threads: Ni niti
+    this_group_only: Samo ta skupina
+    my_subgroups: Moje podskupine
+    all_subgroups: Vse podskupine
+    filter_tags: Filtrirajte oznake
+    filter_groups: Filtrirajte skupine
+    filter_subgroups: Filtrirajte podskupine
+    filter_qualifier_unread: neprebranih
+    filter_qualifier_direct: neposrednih
+    filter_qualifier_locked: zaklenjenih
+    filter_qualifier_unlocked: odklenjenih
+    no_filtered_threads: Ni {filters} niti
+    no_filtered_threads_with_tag: 'Ni {filters} niti z oznako: {tag}'
+    no_threads_with_tag: 'Ni niti z oznako: {tag}'
+    recent_count: "{count} nedavnih"
+    need_vote_count: 1 čaka na glas | {count} jih čaka na glas
+    open_count: "{count} odprtih"
+    files_count: 1 datoteka | {count} datotek
+  onboarding_card:
+    verified_badge: Potrjeno
+    view_plans: Oglejte si pakete
+    upgrade_now: Nadgradite zdaj
+    extend_trial_title: Pridobite 30 dodatnih dni & brezplačen uvajalni klic
+    trial_verified: Ogledali smo si vašo skupino in smo vam na voljo za pomoč. Zdaj lahko pošiljate e-poštna povabila — nadaljujte in pridobite 30 dodatnih dni, funkcije Pro in brezplačen uvajalni klic z našo ekipo.
+    trial_extended_title: Pridobili ste 30 dodatnih dni & brezplačen uvajalni klic
+    book_training_call: Rezervirajte uvajalni klic
+    extend_trial_initial: Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko se skupini pridruži {count} drugih oseb.
+    extend_trial_remaining: Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko se skupini pridruži še 1 oseba. | Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko se skupini pridruži še {count} oseb.
+    trial_extended_description: Vaše preizkusno obdobje je podaljšano za 30 dni.
+  dashboard_cards:
+    all_groups: Vse skupine
+    unread_count: 'Neprebrano: {count}'
+    direct: Neposredne
+    direct_count: 'Neposredne: {count}'
+    people: Ljudje
+    recently_online: Nedavno na spletu
+    recently_online_count: 'Nedavno na spletu: {count}'
+    your_tasks: Vaša opravila
+    tasks_todo_count: 'Za opraviti: {count}'
+    bookmarks_saved_count: 'Shranjeno: {count}'
+    search_people: Poiščite ljudi
+    direct_thread: Neposredna nit
+    view_profile: Oglejte si profil
+    no_people_found: Ni najdenih ljudi
+  group_settings_panel:
+    subtitle: Možnosti skupine
+    group_administration: Upravljanje skupine
+    your_membership: Vaše članstvo
+    integrations_and_data: Povezave in podatki
+    leave_or_delete: Zapustite ali izbrišite
+    edit_group_description: Posodobite ime skupine, opis, logotip, naslovno fotografijo, zasebnost in dovoljenja članov.
+    edit_tags_description: Ustvarite, preimenujte, združite in barvno označite oznake za urejanje niti in anket.
+    manage_subscription_description: Oglejte si svoj paket, podatke za obračun in omejitve števila članov.
+    email_group_description: Začnite novo nit v tej skupini s pošiljanjem e-pošte na ta naslov.
+    group_stats_description: Oglejte si dejavnost članov, sodelovanje v nitih in udeležbo pri glasovanju skozi čas.
+    become_coordinator_description: Pridobite dovoljenja skrbnika te skupine.
+    chatbots_description: Povežite Slack, Mattermost, Discord ali druga orodja za klepet za objavljanje novosti skupine.
+    api_docs_description: Nastavite dostop do API-ja in spletne kavlje za povezavo Loomia s svojimi orodji.
+    export_data_description: Prenesite kopijo niti, anket, komentarjev in članov te skupine.
+    leave_group_description: Zapustite to skupino in prenehajte prejemati obvestila.
+    destroy_group_description: Načrtujte trajni izbris te skupine in njene vsebine.
+    change_volume_description: Izbira pogostosti prejemanja e-poštnih in potisnih obvestil iz te skupine.
+  pagination:
+    page_of: Stran {page} od {total}
+    previous_page: Prejšnja stran
+    next_page: Naslednja stran
+    sort_by: Razvrsti po
+    per_page: Na stran
+    jump_to_page: Pojdite na stran
+    sort:
+      recent_activity: Nedavna dejavnost
+      newest: Najnovejše
+      oldest: Najstarejše
+      closing_soon: Kmalu se zaključi
+      name: Ime
+      last_seen: Zadnja prisotnost
+    edit_tags_description: Ustvarite, preimenujte, združite in barvno označite oznake za urejanje niti in anket.
+    manage_subscription_description: Oglejte si svoj paket, podatke za obračun in omejitve števila članov.
+    email_group_description: Začnite novo nit v tej skupini tako, da pošljete e-pošto na ta naslov.
+    group_stats_description: Oglejte si dejavnost članov, sodelovanje v nitih in udeležbo pri glasovanju skozi čas.
+    become_coordinator_description: Prevzemite pravice skrbnika te skupine.
+    chatbots_description: Povežite Slack, Mattermost, Discord ali druga orodja za klepet za objavljanje novosti skupine.
+    api_docs_description: Nastavite dostop do API-ja in spletne kavlje za povezavo Loomia s svojimi orodji.
+    export_data_description: Prenesite kopijo niti, anket, komentarjev in članov te skupine.
+    leave_group_description: Zapustite to skupino in prenehajte prejemati obvestila.
+    destroy_group_description: Načrtujte trajni izbris te skupine in njene vsebine.
+    change_volume_description: Izbira pogostosti prejemanja e-poštnih in potisnih obvestil iz te skupine.

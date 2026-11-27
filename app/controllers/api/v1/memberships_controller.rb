@@ -1,6 +1,6 @@
 class Api::V1::MembershipsController < Api::V1::RestfulController
   load_resource only: [:set_volume]
-  before_action :require_current_user, only: [ :notification_history ]
+  before_action :require_current_user, only: [ :notification_history, :people ]
 
   def index
     model
@@ -11,7 +11,17 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
         params[key.gsub("_xids", "_ids")] = params[key].split('x').map(&:to_i)
         params.delete(key)
       end
-      MembershipQuery.search(chain: collection, params: params).order('memberships.group_id, memberships.admin desc, memberships.created_at desc')
+      filtered = MembershipQuery.search(chain: collection, params: params)
+      case params[:sort]
+      when 'oldest'
+        filtered.order(Arel.sql('COALESCE(memberships.accepted_at, memberships.created_at) ASC, memberships.id ASC'))
+      when 'name'
+        filtered.order(Arel.sql('LOWER(users.name) ASC, memberships.id ASC'))
+      when 'last_seen'
+        filtered.order(Arel.sql('users.last_seen_at DESC NULLS LAST, memberships.id DESC'))
+      else
+        filtered.order(Arel.sql('COALESCE(memberships.accepted_at, memberships.created_at) DESC, memberships.id DESC'))
+      end
     end
     respond_with_collection(scope: index_scope)
   end
@@ -39,6 +49,39 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   def my_memberships
     @memberships = current_user.memberships.includes(:user, :inviter)
     respond_with_collection
+  end
+
+  def people
+    group_ids = current_user.group_ids
+    return render json: { users: [], total: 0, recently_online_count: 0 } if group_ids.empty?
+
+    member_user_ids = Membership.active.accepted.where(group_id: group_ids).select(:user_id)
+    scope = User.active.where(bot: false).where.not(id: current_user.id).where(id: member_user_ids)
+    recently_online_count = scope.where("users.last_seen_at > ?", 24.hours.ago).count
+
+    query = params[:q].to_s.strip
+    if query.present?
+      scope = scope.where(
+        "users.name ILIKE :first OR users.name ILIKE :last OR users.username ILIKE :first",
+        first: "#{query}%",
+        last: "% #{query}%"
+      )
+    end
+
+    total = scope.count
+    offset = [ (params[:offset] || params[:from]).to_i, 0 ].max
+    limit = (params[:limit] || params[:per] || 30).to_i.clamp(1, 50)
+    users = scope.order(Arel.sql("users.last_seen_at DESC NULLS LAST, users.id DESC")).offset(offset).limit(limit)
+
+    render json: {
+      users: ActiveModel::ArraySerializer.new(
+        users,
+        each_serializer: AuthorSerializer,
+        scope: default_scope.merge(include_last_seen_at: true)
+      ).as_json,
+      total: total,
+      recently_online_count: recently_online_count
+    }
   end
 
   def resend

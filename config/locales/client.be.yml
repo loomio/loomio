@@ -41,6 +41,19 @@ be:
     task_updated_done: Задача пазначана як выкананая!
     task_updated_not_done: Задача пазначана як няскончаная
     no_tasks_assigned: Вам не даручана ніякіх задач
+    status_todo: Да выканання
+    status_done: Выканана
+    due_any: Любы тэрмін
+    due_overdue: Пратэрмінаваныя
+    due_next_7_days: Наступныя 7 дзён
+    due_later: Пазней
+    due_none: Без тэрміну
+    assigned_anyone: Каму заўгодна
+    assigned_me: Прызначаныя мне
+    search_members: Пошук удзельнікаў
+    search_tasks: Пошук задач
+    no_open_tasks: У вас няма невыкананых задач.
+    no_matching_tasks: Няма задач паводле вашых фільтраў.
   tips:
     get_started_here: Адчуйце Loomio за 4 простыя крокі
     youve_completed_all_the_steps: "\U0001F389 Вы выканалі ўсе крокі!"
@@ -662,6 +675,7 @@ be:
       threads_list: Дзеянні з ланцужкамі
       groups_list: Групы
       user_list: Дзеянні карыстальніка
+    votes_count: 1 голас | {count} галасоў
   strand_nav:
     jump_to: Перайсці да
     timeline: Храналогія
@@ -1681,6 +1695,8 @@ be:
       Група %{groupName} створана на %{site_name}, каб мы маглі абмяркоўваць і прымаць рашэнні разам. Далучайцеся па спасылцы:
       %{link}
     trial_shareable_link_note: Скапіруйце спасылку-запрашэнне і адпраўце яе па электроннай пошце або ў чаце, каб запрасіць людзей у вашу групу. Пасля іх далучэння вы зможаце адпраўляць ім апавяшчэнні па электроннай пошце і на мабільныя прылады проста з Loomio. <a href="%{upgradeUrl}">Перайдзіце на вышэйшы тарыф</a>, каб адпраўляць запрашэнні па электроннай пошце.
+    include_intro_message: Дадаць уступнае паведамленне
+    trial_shareable_invitation_message: 'У нас пачаўся 7-дзённы пробны перыяд %{site_name}, каб даведацца, ці дапаможа гэты сэрвіс прымаць рашэнні ў %{groupName}. Калі ласка, націсніце на спасылку, каб далучыцца і паспрабаваць разам: %{link}'
   memberships_page:
     members: Удзельнікі
     name_label: Імя
@@ -2311,6 +2327,7 @@ be:
     welcome_to_your_new_group: Вітаем у вашай новай групе Loomio!
     lets_start_a_discussion: Давайце пачнем абмеркаванне. Націсніце «Новае абмеркаванне», каб працягнуць.
     new_discussion: Новая дыскусія
+    new_thread: Новая тэма
   members_panel:
     email_rejected: Электронны ліст адхілены
     email_rejected_meaning: Электронны ліст, адпраўлены на гэты адрас, быў адхілены або пазначаны як спам. Больш электронныя лісты на гэты адрас адпраўляцца не будуць.
@@ -3174,3 +3191,103 @@ be:
     bounced: Паведамлена пра вяртанне ліста
     complained: Паведамлена пра скаргу на спам
     skipped: Ліст не адпраўлены
+  group_cards:
+    admins_count: 1 адміністратар | {count} адміністратараў
+    members_count: 1 удзельнік | {count} удзельнікаў
+    delegates_count: 1 дэлегат | {count} дэлегатаў
+    polls_count: 1 апытанне | {count} апытанняў
+    proposals_count: 1 прапанова | {count} прапаноў
+    needs_your_vote: 1 чакае вашага голасу | {count} чакаюць вашага голасу
+    no_open_polls: Няма адкрытых апытанняў
+    browse_files: Праглядзець файлы
+    invite_get_started: Націсніце тут, каб пачаць
+    threads: Тэмы
+    threads_count: 1 тэма | {count} тэм
+    view_threads: Праглядзець тэмы
+    no_threads: Няма тэм
+    this_group_only: Толькі гэтая група
+    my_subgroups: Мае падгрупы
+    all_subgroups: Усе падгрупы
+    filter_tags: Фільтраваць тэгі
+    filter_groups: Фільтраваць групы
+    filter_subgroups: Фільтраваць падгрупы
+    filter_qualifier_unread: непрачытаных
+    filter_qualifier_direct: прамых
+    filter_qualifier_locked: заблакаваных
+    filter_qualifier_unlocked: разблакаваных
+    no_filtered_threads: Няма {filters} тэм
+    no_filtered_threads_with_tag: 'Няма {filters} тэм з тэгам: {tag}'
+    no_threads_with_tag: 'Няма тэм з тэгам: {tag}'
+    recent_count: "{count} нядаўніх"
+    need_vote_count: 1 чакае голасу | {count} чакаюць голасу
+    open_count: "{count} адкрытых"
+    files_count: 1 файл | {count} файлаў
+  onboarding_card:
+    verified_badge: Праверана
+    view_plans: Паглядзець тарыфы
+    upgrade_now: Перайсці на платны тарыф
+    extend_trial_title: Атрымайце яшчэ 30 дзён і бясплатны навучальны званок
+    trial_verified: Мы ўжо паглядзелі вашу групу і гатовыя дапамагчы. Цяпер вы можаце дасылаць запрашэнні па пошце — працягвайце, каб атрымаць яшчэ 30 дзён, функцыі Pro і бясплатны навучальны званок з нашай камандай.
+    trial_extended_title: Яшчэ 30 дзён і бясплатны навучальны званок даступныя
+    book_training_call: Запісацца на навучальны званок
+    extend_trial_initial: Атрымайце яшчэ 30 дзён і бясплатны навучальны званок з камандай Loomio, калі да групы далучацца яшчэ {count} чалавек.
+    extend_trial_remaining: Атрымайце яшчэ 30 дзён і бясплатны навучальны званок з камандай Loomio, калі да групы далучыцца яшчэ 1 чалавек. | Атрымайце яшчэ 30 дзён і бясплатны навучальны званок з камандай Loomio, калі да групы далучацца яшчэ {count} чалавек.
+    trial_extended_description: Ваш пробны перыяд падоўжаны на 30 дзён.
+  dashboard_cards:
+    all_groups: Усе групы
+    unread_count: "{count} непрачытаных"
+    direct: Прамыя
+    direct_count: "{count} прамых"
+    people: Людзі
+    recently_online: Нядаўна ў сетцы
+    recently_online_count: "{count} нядаўна ў сетцы"
+    your_tasks: Вашы задачы
+    tasks_todo_count: "{count} да выканання"
+    bookmarks_saved_count: "{count} захаваных"
+    search_people: Пошук людзей
+    direct_thread: Прамая тэма
+    view_profile: Праглядзець профіль
+    no_people_found: Нікога не знойдзена
+  group_settings_panel:
+    subtitle: Налады групы
+    group_administration: Кіраванне групай
+    your_membership: Ваш удзел у групе
+    integrations_and_data: Інтэграцыі і даныя
+    leave_or_delete: Выйсці або выдаліць
+    edit_group_description: Абнавіце назву, апісанне, лагатып, фота вокладкі, прыватнасць і правы ўдзельнікаў групы.
+    edit_tags_description: Стварайце, пераназывайце, аб’ядноўвайце і пазначайце колерамі тэгі для ўпарадкавання тэм і апытанняў.
+    manage_subscription_description: Праглядзіце ваш тарыфны план, плацежныя даныя і ліміты ўдзельнікаў.
+    email_group_description: Пачніце новую тэму ў гэтай групе, даслаўшы ліст на гэты адрас.
+    group_stats_description: Паглядзіце, як з часам змяняюцца актыўнасць удзельнікаў, удзел у тэмах і галасаванні.
+    become_coordinator_description: Атрымайце правы адміністратара гэтай групы.
+    chatbots_description: Падключыце Slack, Mattermost, Discord або іншыя чаты, каб публікаваць навіны групы.
+    api_docs_description: Наладзьце доступ да API і вэбхукі, каб злучыць Loomio з вашымі інструментамі.
+    export_data_description: Спампуйце копію тэм, апытанняў, каментарыяў і спіса ўдзельнікаў гэтай групы.
+    leave_group_description: Выйдзіце з гэтай групы і спыніце атрыманне апавяшчэнняў.
+    destroy_group_description: Заплануйце незваротнае выдаленне гэтай групы і яе змесціва.
+    change_volume_description: Выбар частаты атрымання апавяшчэнняў па электроннай пошце і пуш-апавяшчэнняў ад гэтай групы.
+  pagination:
+    page_of: Старонка {page} з {total}
+    previous_page: Папярэдняя старонка
+    next_page: Наступная старонка
+    sort_by: Сартаваць паводле
+    per_page: На старонцы
+    jump_to_page: Перайсці на старонку
+    sort:
+      recent_activity: Апошняя актыўнасць
+      newest: Найнавейшыя
+      oldest: Найстарэйшыя
+      closing_soon: Хутка закрываюцца
+      name: Назва
+      last_seen: Апошняе наведванне
+    edit_tags_description: Стварайце, пераймяноўвайце, аб’ядноўвайце і пазначайце колерам тэгі для ўпарадкавання тэм і апытанняў.
+    manage_subscription_description: Праглядзіце ваш тарыф, плацежныя звесткі і ліміты ўдзельнікаў.
+    email_group_description: Стварыце новую тэму ў гэтай групе, даслаўшы ліст на гэты адрас.
+    group_stats_description: Праглядзіце, як з часам змяняюцца актыўнасць удзельнікаў, удзел у тэмах і галасаваннях.
+    become_coordinator_description: Атрымайце правы адміністратара гэтай групы.
+    chatbots_description: Падключыце Slack, Mattermost, Discord ці іншыя чаты для публікацыі навін групы.
+    api_docs_description: Наладзьце доступ да API і вэбхукі для інтэграцыі Loomio з вашымі інструментамі.
+    export_data_description: Спампуйце копію тэм, апытанняў, каментарыяў і спіса ўдзельнікаў гэтай групы.
+    leave_group_description: Выйдзіце з гэтай групы, каб больш не атрымліваць апавяшчэнні.
+    destroy_group_description: Заплануйце незваротнае выдаленне гэтай групы і яе змесціва.
+    change_volume_description: Выбар частаты атрымання апавяшчэнняў ад гэтай групы па электроннай пошце і праз push.

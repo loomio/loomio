@@ -1,32 +1,30 @@
 ---
 title: Inhalte finden
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 91ceec48c5d29a37
   search: 5de14e45cc9ac6bc
   search-tips: 4d753a07ce09d99f
-  filter-discussions: f5e3ea1d6d34ca5c
-  category-tags: 1a82b7bb393c43a8
-  unread-discussions: 60a3bde974d63806
-  polls-awaiting-your-vote: 3a542d9458392a4c
-  bookmarks: 06b79827757caeeb
+  filter-discussions: d68e5cb2864afa2c
+  category-tags: b5cd24f91b729c3d
+  unread-discussions: 473dd3edf3cc3674
+  polls-awaiting-your-vote: f01b1b3f4219c4a5
+  bookmarks: d733891b082a2941
 generated:
   introduction: 4e633afc9317ad6a
   search: 6f4ce82773855805
   search-tips: d0a40386e89a707f
-  filter-discussions: 24710cc8e54c5b49
-  category-tags: 2a8805fc99a88c8f
-  unread-discussions: fda8ea9348b8996d
-  polls-awaiting-your-vote: 112ff01949d5dd11
-  bookmarks: b4177a1e490d5f98
+  filter-discussions: 240229452f3319ca
+  category-tags: 16c35b05fd9e217e
+  unread-discussions: 063d952d11984c92
+  polls-awaiting-your-vote: 8e1f6f28d2b2eb00
+  bookmarks: a201a11614eaf8a1
 title_source: 11acd4c6010fc176
 title_generated: 7c17d11d2290cb79
-needs_review:
-  bookmarks: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
@@ -63,7 +61,7 @@ Gib ein Wort oder eine Wortgruppe ein und drücke die Eingabetaste. Eine Suche n
 
 ## Diskussionen filtern
 
-Im Tab **Diskussionen** einer Gruppe kannst du Threads nach ihrem offenen oder geschlossenen Status oder nach einem Kategorie-Schlagwort filtern. Kombiniere einen Filter mit dem Suchfeld der Liste, um eine lange Diskussionsliste schnell einzugrenzen.
+Auf der Seite **Threads** einer Gruppe kannst du Threads nach Sperrstatus, ungelesenen Aktivitäten, Kategorie-Schlagwort oder Untergruppe filtern (mit **Nur diese Gruppe**, **Meine Untergruppen** oder **Alle Untergruppen**). Unter **Alle Gruppen** kannst du außerdem nach **Ungelesen**, **Direkt** und Kategorie-Schlagwort filtern oder die Liste mit **Suchen** eingrenzen.
 
 <!-- translation-section: category-tags -->
 
@@ -73,7 +71,7 @@ Schlagwörter bündeln zusammengehörige Diskussionen, Abstimmungen, Fazits und 
 
 ![](tags.png)
 
-Wähle im Tab **Diskussionen** ein Schlagwort aus, um Diskussionen anzuzeigen, die Beiträge mit diesem Schlagwort enthalten. Wähle innerhalb einer Diskussion ein Schlagwort in der Seitenleiste aus, um passende Kommentare, Abstimmungen oder Fazits zusammen mit den Beiträgen anzuzeigen, auf die sie antworten.
+Wähle unter **Threads**, **Abstimmungen** oder **Aufgaben** ein Schlagwort aus, um Beiträge mit diesem Schlagwort anzuzeigen. Wähle innerhalb einer Diskussion ein Schlagwort in der Seitenleiste aus, um passende Kommentare, Abstimmungen oder Fazits zusammen mit den Beiträgen anzuzeigen, auf die sie antworten.
 
 Verfassende können ihren eigenen Beiträgen Schlagwörter zuweisen. Gruppen-Admins, Thread-Admins und alle, die den Diskussionskontext bearbeiten können, können jedem Beitrag Schlagwörter zuweisen. Einzelheiten zur Einrichtung und zu den Berechtigungen findest du unter [Kategorie-Schlagwörter](/en/user_manual/discussions/tags).
 
@@ -81,16 +79,16 @@ Verfassende können ihren eigenen Beiträgen Schlagwörter zuweisen. Gruppen-Adm
 
 ## Ungelesene Diskussionen
 
-Wähle **Ungelesene Diskussionen** in der Seitenleiste, um Threads mit neuen Aktivitäten anzuzeigen. Nutze innerhalb einer Diskussion die Zeitleiste, um zu ungelesenen Beiträgen und wichtigen Ereignissen zu springen.
+Wähle **Ungelesen** unter **Alle Gruppen** oder auf der Seite **Threads** einer Gruppe (oder wähle die Anzahl ungelesener Threads auf der Karte **Threads**), um Threads mit neuen Aktivitäten in den letzten sechs Wochen anzuzeigen. Nutze innerhalb einer Diskussion die Zeitleiste, um zu ungelesenen Beiträgen und wichtigen Ereignissen zu springen.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## Abstimmungen, die auf deine Stimme warten
 
-Wähle **Umfragen zum Abstimmen** in der Seitenleiste, um offene Abstimmungen anzuzeigen, zu denen du eingeladen wurdest und bei denen du noch nicht abgestimmt hast. Du kannst auch den Tab **Abstimmungen** einer Gruppe öffnen, um aktive und beendete Abstimmungen anzuzeigen.
+Öffne **Abstimmungen** unter **Alle Gruppen** (oder wähle die Stimmenanzahl auf der Karte **Abstimmungen**), um offene Abstimmungen anzuzeigen, zu denen du eingeladen wurdest und bei denen du noch nicht abgestimmt hast. Unter **Alle Gruppen** oder auf jeder Gruppenseite kannst du außerdem nach **Stimme ausstehend**, **Offen**, **Geschlossen**, Abstimmungstyp oder Schlagwort filtern.
 
 <!-- translation-section: bookmarks -->
 
 ## Lesezeichen
 
-Setze ein Lesezeichen für eine Diskussion, einen Kommentar, eine Abstimmung, eine Stimme oder ein Fazit, wenn du später darauf zurückkommen möchtest. Öffne **Lesezeichen** in deinem Benutzermenü, um alles zu sehen, was du gespeichert hast. Weitere Informationen findest du unter [Lesezeichen](/en/user_manual/users/bookmarks).
+Setze ein Lesezeichen für eine Diskussion, einen Kommentar, eine Abstimmung, eine Stimme oder ein Fazit, wenn du später darauf zurückkommen möchtest. Öffne **Lesezeichen** unter **Alle Gruppen**, um alles zu sehen, was du gespeichert hast, oder öffne **Lesezeichen** auf einer Gruppenseite, um die Lesezeichen in dieser Gruppe anzuzeigen. Weitere Informationen findest du unter [Lesezeichen](/en/user_manual/users/bookmarks).

@@ -43,6 +43,19 @@ he:
     task_updated_not_done: המשימה סומנה כלא בוצעה
     no_tasks_assigned: לא הוקצו לך משימות
     task_placeholder: הזן משימה ו-{'@'}אזכור מישהו להקצות אותה
+    status_todo: לביצוע
+    status_done: בוצע
+    due_any: כל תאריך יעד
+    due_overdue: באיחור
+    due_next_7_days: ב־7 הימים הקרובים
+    due_later: בהמשך
+    due_none: ללא תאריך יעד
+    assigned_anyone: כולם
+    assigned_me: הוקצו לי
+    search_members: חיפוש חברים
+    search_tasks: חיפוש משימות
+    no_open_tasks: אין לך משימות פתוחות.
+    no_matching_tasks: אין משימות שתואמות למסננים שלך.
   templates:
     template_gallery: גלריית תבניות
     title_template: תבנית %{title}
@@ -646,6 +659,7 @@ he:
     direct_discussions: דיונים ישירים
     unread_discussions: דיונים שלא נקראו
     unread_threads_count: שרשורים שלא נקראו (%{count})
+    votes_count: הצבעה אחת | {count} הצבעות
   strand_nav:
     newest: החדש ביותר
     oldest: הוותיק ביותר
@@ -1592,6 +1606,8 @@ he:
       הקמתי את %{groupName} ב־%{site_name} כדי שנוכל לדון ולקבל החלטות יחד. להצטרפות דרך הקישור:
       %{link}
     trial_shareable_link_note: ניתן להעתיק את קישור ההזמנה ולשלוח אותו במייל או בצ'אט כדי להזמין אנשים לקבוצה. לאחר ההצטרפות, ניתן לשלוח להם התראות במייל ובנייד ישירות מ־Loomio. <a href="%{upgradeUrl}">יש לשדרג את המסלול</a> כדי לשלוח הזמנות במייל.
+    include_intro_message: הוספת הודעת היכרות
+    trial_shareable_invitation_message: 'התחלתי תקופת ניסיון של 7 ימים ב־%{site_name} כדי שנוכל לבדוק אם השירות יכול לעזור בקבלת החלטות בקבוצה %{groupName}. להצטרפות ולהתנסות יחד, יש ללחוץ על הקישור: %{link}'
   memberships_page:
     members: חברים
     name_label: שם
@@ -2196,6 +2212,7 @@ he:
     unlocked: לא נעול
     no_threads_found_that_match_your_query_or_filters: לא נמצאו שרשורים התואמים את השאילתה או המסננים שלך
     no_threads_found_that_match_your_filters: לא נמצאו שרשורים התואמים את המסננים שלך
+    new_thread: שרשור חדש
   members_panel:
     bot: בוט
     no_results: לא נמצאו חברים
@@ -3291,3 +3308,103 @@ he:
     bounced: דווח שהאימייל חזר
     complained: דווח על תלונת ספאם
     skipped: האימייל לא נשלח
+  group_cards:
+    admins_count: מנהל אחד | {count} מנהלים
+    members_count: חבר אחד | {count} חברים
+    delegates_count: נציג אחד | {count} נציגים
+    polls_count: סקר אחד | {count} סקרים
+    proposals_count: הצעה אחת | {count} הצעות
+    needs_your_vote: 1 ממתין להצבעה | {count} ממתינים להצבעה
+    no_open_polls: אין סקרים פתוחים
+    browse_files: הצגת קבצים
+    invite_get_started: להתחלה יש ללחוץ כאן
+    threads: שרשורים
+    threads_count: שרשור אחד | {count} שרשורים
+    view_threads: הצגת שרשורים
+    no_threads: אין שרשורים
+    this_group_only: רק הקבוצה הזו
+    my_subgroups: תת־הקבוצות שלי
+    all_subgroups: כל תת־הקבוצות
+    filter_tags: סינון תגיות
+    filter_groups: סינון קבוצות
+    filter_subgroups: סינון תת־קבוצות
+    filter_qualifier_unread: שלא נקראו
+    filter_qualifier_direct: ישירים
+    filter_qualifier_locked: נעולים
+    filter_qualifier_unlocked: לא נעולים
+    no_filtered_threads: אין שרשורים {filters}
+    no_filtered_threads_with_tag: 'אין שרשורים {filters} עם התגית: {tag}'
+    no_threads_with_tag: 'אין שרשורים עם התגית: {tag}'
+    recent_count: "{count} מהזמן האחרון"
+    need_vote_count: 1 ממתין להצבעה | {count} ממתינים להצבעה
+    open_count: "{count} פתוחים"
+    files_count: קובץ אחד | {count} קבצים
+  onboarding_card:
+    verified_badge: מאומת
+    view_plans: הצגת מסלולים
+    upgrade_now: שדרוג עכשיו
+    extend_trial_title: לקבל 30 ימים נוספים ושיחת הדרכה בחינם
+    trial_verified: ראינו את הקבוצה ואנחנו כאן לעזור. כעת ניתן לשלוח הזמנות בדוא״ל — כדאי להמשיך כדי לקבל 30 ימים נוספים, תכונות Pro ושיחת הדרכה בחינם עם הצוות שלנו.
+    trial_extended_title: נוספו 30 ימים ושיחת הדרכה בחינם
+    book_training_call: קביעת שיחת הדרכה
+    extend_trial_initial: כשיצטרפו לקבוצה עוד {count} אנשים, יתווספו 30 ימים ושיחת הדרכה בחינם עם הצוות של Loomio.
+    extend_trial_remaining: כשיצטרף לקבוצה עוד אדם אחד, יתווספו 30 ימים ושיחת הדרכה בחינם עם הצוות של Loomio. | כשיצטרפו לקבוצה עוד {count} אנשים, יתווספו 30 ימים ושיחת הדרכה בחינם עם הצוות של Loomio.
+    trial_extended_description: תקופת הניסיון הוארכה ב־30 ימים.
+  dashboard_cards:
+    all_groups: כל הקבוצות
+    unread_count: "{count} שלא נקראו"
+    direct: ישירים
+    direct_count: "{count} ישירים"
+    people: אנשים
+    recently_online: התחברו לאחרונה
+    recently_online_count: "{count} התחברו לאחרונה"
+    your_tasks: המשימות שלך
+    tasks_todo_count: "{count} לביצוע"
+    bookmarks_saved_count: "{count} נשמרו"
+    search_people: חיפוש אנשים
+    direct_thread: שרשור ישיר
+    view_profile: הצגת פרופיל
+    no_people_found: לא נמצאו אנשים
+  group_settings_panel:
+    subtitle: אפשרויות הקבוצה
+    group_administration: ניהול הקבוצה
+    your_membership: החברות בקבוצה
+    integrations_and_data: חיבורים ונתונים
+    leave_or_delete: עזיבה או מחיקה
+    edit_group_description: ניתן לעדכן את שם הקבוצה, התיאור, הלוגו, תמונת הנושא, הפרטיות והרשאות החברים.
+    edit_tags_description: ניתן ליצור תגיות, לשנות את שמן, למזג ולסמן אותן בצבעים כדי לארגן שרשורים וסקרים.
+    manage_subscription_description: ניתן לצפות במסלול, בפרטי החיוב ובמגבלות מספר החברים.
+    email_group_description: ניתן לפתוח שרשור חדש בקבוצה הזו בשליחת מייל לכתובת הזו.
+    group_stats_description: ניתן לצפות בפעילות החברים, במעורבות בשרשורים ובהשתתפות בהצבעות לאורך זמן.
+    become_coordinator_description: ניתן לקבל הרשאות מנהל קבוצה בקבוצה הזו.
+    chatbots_description: ניתן לחבר את Slack, Mattermost, Discord או כלי צ'אט אחרים לפרסום עדכוני הקבוצה.
+    api_docs_description: ניתן להגדיר גישת API ו־webhooks כדי לחבר את Loomio לכלים שלך.
+    export_data_description: ניתן להוריד עותק של השרשורים, הסקרים, התגובות והחברים בקבוצה הזו.
+    leave_group_description: ניתן לעזוב את הקבוצה הזו ולהפסיק לקבל התראות.
+    destroy_group_description: ניתן לתזמן מחיקה לצמיתות של הקבוצה הזו והתוכן שלה.
+    change_volume_description: בחירה בתדירות קבלת התראות בדוא״ל והתראות דחיפה מהקבוצה הזו.
+  pagination:
+    page_of: עמוד {page} מתוך {total}
+    previous_page: העמוד הקודם
+    next_page: העמוד הבא
+    sort_by: מיון לפי
+    per_page: בכל עמוד
+    jump_to_page: מעבר לעמוד
+    sort:
+      recent_activity: פעילות אחרונה
+      newest: החדשים ביותר
+      oldest: הישנים ביותר
+      closing_soon: נסגרים בקרוב
+      name: שם
+      last_seen: ביקור אחרון
+    edit_tags_description: יצירה, שינוי שם, מיזוג וצביעה של תגיות לארגון שרשורים וסקרים.
+    manage_subscription_description: צפייה במסלול, בפרטי החיוב ובמגבלות על מספר החברים.
+    change_volume_description: בחירת תדירות קבלת התראות בדוא״ל ובדחיפה מהקבוצה הזו.
+    email_group_description: פתיחת שרשור חדש בקבוצה הזו בשליחת דוא״ל לכתובת הזו.
+    group_stats_description: צפייה בפעילות החברים, במעורבות בשרשורים ובהשתתפות בהצבעות לאורך זמן.
+    become_coordinator_description: קבלת הרשאות מנהל קבוצה בקבוצה הזו.
+    chatbots_description: חיבור Slack, Mattermost, Discord או כלי צ׳אט אחרים לפרסום עדכוני הקבוצה.
+    api_docs_description: הגדרת גישה ל-API ו-webhooks לשילוב Loomio עם הכלים שלכם.
+    export_data_description: הורדת עותק של השרשורים, הסקרים, התגובות והחברים בקבוצה הזו.
+    leave_group_description: עזיבת הקבוצה הזו והפסקת קבלת התראות.
+    destroy_group_description: תזמון מחיקה לצמיתות של הקבוצה הזו והתוכן שלה.

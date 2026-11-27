@@ -1,17 +1,17 @@
 ---
 title: Hoe je kunt deelnemen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: d413b1f02a6d7c41
   get-someone-s-attention: 4bfbd29c5ac98b2e
   reactions: 75995001b52d8e94
-  vote: 27c5b52cc6c4007a
+  vote: c0ea838f9c61d3dd
   state-a-reason: 8d2859bbb242fb20
   change-your-vote: 30c41d10ff78c457
   results: '093f1e28edf70257'
@@ -73,7 +73,7 @@ Voeg een emoji-reactie toe om waardering voor een reactie te tonen zonder een an
 
 ## Stemmen
 
-Open een peiling via een uitnodiging per e-mail, een melding in Loomio of het tabblad **Peilingen** van je groep. Lees de peiling en eventuele bijlagen en selecteer daarna je keuze.
+Open een peiling via een uitnodiging per e-mail, een melding in Loomio, **Alle groepen** of het onderdeel **Peilingen** van je groep. Lees de peiling en eventuele bijlagen en selecteer daarna je keuze.
 
 Loomio heeft verschillende soorten peilingen. Het voorbeeld hieronder toont een voorstel met de opties **Eens**, **Onthouden** en **Oneens**.
 

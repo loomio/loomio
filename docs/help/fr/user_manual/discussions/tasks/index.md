@@ -1,20 +1,20 @@
 ---
 title: Tâches
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: 3bfc729978a62997
   add-a-task: 0fa687b080b5403c
-  name-and-assign-the-task-to-a-person: 8d663375600ea2e8
+  name-and-assign-the-task-to-a-person: 9b43114229e1a72c
   set-a-reminder: 2cf5e1ebde401adb
   mark-it-as-done: ac6ea0c696a48fff
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ Utilisez une @mention dans la tâche pour l’attribuer à un membre du groupe. 
 
 ![](tasklist2.png)
 
-Les tâches qui vous sont attribuées apparaissent sur votre page **Tâches**. Ouvrez **Tâches** depuis la barre latérale pour les voir regroupées par fil ou par sondage.
+Ouvrez **Tâches** dans **Tous les groupes** pour voir les tâches qui vous sont attribuées dans l’ensemble de vos groupes, ou ouvrez **Tâches** sur la page d’un groupe pour voir les tâches de ce groupe. Les tâches sont regroupées par fil ou par sondage, et vous pouvez les filtrer par statut (**À faire**, **Terminées** ou **Tous**), par échéance (**En retard**, **7 prochains jours**, **Plus tard** ou **Sans échéance**), par personne à qui elles sont attribuées (sur la page d’un groupe), par sous-groupe, par tag de catégorie ou à l’aide d’une recherche.
 
 ![](task_list.png)
 

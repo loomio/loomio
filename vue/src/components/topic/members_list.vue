@@ -25,7 +25,7 @@ const readerIds = ref([]);
 const readerTotal = ref(0);
 const page = ref(1);
 const per = 50;
-const loading = ref(false);
+const isLoading = ref(false);
 let fetchSequence = 0;
 const query = ref('');
 const recipients = ref([]);
@@ -110,14 +110,14 @@ function newQuery(q) {
   page.value = 1;
   readerIds.value = [];
   readerTotal.value = 0;
-  loading.value = true;
+  isLoading.value = true;
   fetchReaders();
 }
 
 function changePage(nextPage) {
   page.value = nextPage;
   readerIds.value = [];
-  loading.value = true;
+  isLoading.value = true;
   fetchReaders();
 }
 
@@ -128,7 +128,7 @@ const fetchReaders = debounce(function() {
   const currentQuery = query.value;
   const currentPage = page.value;
   const sequence = ++fetchSequence;
-  loading.value = true;
+  isLoading.value = true;
   Records.topicReaders.fetch({
     params: {
       query: currentQuery,
@@ -156,7 +156,7 @@ const fetchReaders = debounce(function() {
       });
     }
   }).catch(error => Flash.fromServer(error)).finally(() => {
-    if (sequence === fetchSequence && currentQuery === query.value && currentPage === page.value) loading.value = false;
+    if (sequence === fetchSequence && currentQuery === query.value && currentPage === page.value) isLoading.value = false;
   });
 } , 300);
 
@@ -190,7 +190,7 @@ v-card.topic-members-list(:title="t('strand_members_list.manage_thread_members')
     v-alert.mb-2(v-if="group && canAddGuests && !groupInfoDismissed" type="info" variant="tonal" density="compact" closable @click:close="dismissGroupInfo")
       span {{ t('strand_members_list.guest_access_info') }}
     v-alert.mb-2(v-if="hasSpecifiedVotersOnlyPolls && !voterInfoDismissed" type="warning" variant="tonal" density="compact" closable @click:close="dismissVoterInfo")
-      span(v-t="'strand_members_list.specified_voters_only_warning'")
+      span {{ t('strand_members_list.specified_voters_only_warning') }}
 
     recipients-autocomplete(
       :label="t('strand_members_list.find_or_invite_people')"
@@ -230,17 +230,17 @@ v-card.topic-members-list(:title="t('strand_members_list.manage_thread_members')
         span.mr-2 {{reader.user().nameWithTitle(group)}}
         v-chip.mr-1(v-if="isDelegate(reader)" variant="tonal" size="x-small" label :title="$t('members_panel.delegate_popover')")
           | {{ $t('members_panel.delegate') }}
-        v-chip.mr-1(v-if="group && reader.guest" variant="tonal" size="x-small" :title="$t('announcement.inviting_guests_to_discussion')")
-          span(v-t="'members_panel.guest'")
+        v-chip.mr-1(v-if="group && reader.guest" variant="tonal" size="x-small" :title="t('announcement.inviting_guests_to_discussion')")
+          span {{ t('members_panel.guest') }}
         v-chip.mr-1(v-if="reader.admin" variant="tonal" size="x-small")
-          span(v-t="'announcement.members_list.thread_admin'")
+          span {{ t('announcement.members_list.thread_admin') }}
         v-chip.mr-1(v-if="isGroupAdmin(reader)" variant="tonal" size="x-small")
-          span(v-t="'announcement.members_list.group_admin'")
-        v-chip.mr-1(v-if="!reader.user().emailVerified" variant="tonal" size="x-small" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
-          span(v-t="'announcement.members_list.has_not_joined_yet'")
+          span {{ t('announcement.members_list.group_admin') }}
+        v-chip.mr-1(v-if="!reader.user().emailVerified" variant="tonal" size="x-small" :title="t('announcement.members_list.has_not_joined_yet_hint')")
+          span {{ t('announcement.members_list.has_not_joined_yet') }}
       v-list-item-subtitle
-        span(v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }")
-        span(v-else v-t="'announcement.members_list.has_not_read_discussion'")
+        span(v-if="reader.lastReadAt") {{ t('announcement.members_list.last_read_at', { time: approximateDate(reader.lastReadAt) }) }}
+        span(v-else) {{ t('announcement.members_list.has_not_read_discussion') }}
       template(v-slot:append)
         v-menu(
           v-if="performableActions(reader).length > 0"
@@ -252,9 +252,9 @@ v-card.topic-members-list(:title="t('strand_members_list.manage_thread_members')
           v-list
             v-list-item(v-for="action in performableActions(reader)" @click="performReaderAction(action, reader)" :key="action")
               v-list-item-title {{ t(service[action].name) }}
-    v-list-item(v-if="query && readers.length == 0 && !loading")
+    v-list-item(v-if="query && readers.length == 0 && !isLoading")
       v-list-item-title {{ t('discussions_panel.no_results_found', { search: query }) }}
-    .d-flex.justify-center(v-if="loading")
+    .d-flex.justify-center(v-if="isLoading")
       loading
   .d-flex.flex-wrap.align-center.justify-space-between.ga-2.px-4.py-2(v-if="!hasRecipients")
     span.topic-members-list__page-count.text-body-small.text-medium-emphasis {{ t('strand_members_list.member_page_count', {first: pageFirst, last: pageLast, total: readerTotal}) }}
@@ -263,6 +263,6 @@ v-card.topic-members-list(:title="t('strand_members_list.manage_thread_members')
       :model-value="page"
       :length="totalPages"
       :total-visible="7"
-      :disabled="loading"
+      :disabled="isLoading"
       @update:model-value="changePage")
 </template>

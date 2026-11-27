@@ -9,8 +9,8 @@ Read [writing.md](writing.md) before writing documentation. Paths in these instr
 
 ## User manual
 
-- Loomio publishes `docs/help/en/user_manual/` with its own documentation site builder in `docs/help/build.rb`. When developing user-visible features or behaviour changes, consider the user manual's audience and update the relevant pages so the documentation stays in sync with the application. Follow `docs/AGENTS.md` when editing documentation.
-- During feature development, draft and validate the English documentation first. Present the actual English changes to the user and get their approval before translating them. A request to push or open a pull request does not by itself approve unseen English changes. After approval, complete translations and validate the full documentation build before opening the pull request. If the English wording changes after approval, get approval of the revised wording before updating its translations. Defer documentation screenshot generation until the feature is ready for merge, unless explicitly requested earlier.
+- Loomio publishes `docs/help/en/user_manual/` with its own documentation site builder in `docs/help/build.rb`. When developing user-visible features or behaviour changes, proactively notice and suggest relevant updates to the user manual and (when appropriate per the Changelog guidance below) a changelog entry, rather than waiting to be asked. Follow `docs/AGENTS.md` when editing documentation.
+- Draft and validate the English documentation first, and always ask the user to review and approve any English user-manual or changelog changes before translating or merging. A request to push or open a pull request does not by itself approve unseen English changes. Defer translations and documentation screenshot generation until the feature is ready for merge (unless explicitly requested earlier), then complete translations, screenshots, and the full documentation build before merging. If the English wording changes after approval, get approval of the revised wording before updating its translations.
 
 ## Changelog
 
@@ -59,7 +59,7 @@ The source and builder for the public help site live under `docs/help/`. The sta
   DOCS_LOCALES=en bundle exec ruby docs/help/build.rb
   ```
 
-- After the user approves the English changes, complete the affected translations and validate the full site before opening a pull request. Complete affected documentation screenshots when preparing for merge and rerun the full build after screenshot changes:
+- After the user approves the English changes and the feature is ready for merge, complete the affected translations and screenshots, and validate the full site before merging:
 
   ```bash
   bundle exec ruby docs/help/build.rb

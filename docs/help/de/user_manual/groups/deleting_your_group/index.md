@@ -1,15 +1,15 @@
 ---
 title: Deine Gruppe löschen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: 7754b0bfa30a18b3
+  introduction: f5705e80797f8a49
   group-data-is-permanently-deleted-after-90-days: 7476e34828b0129d
 title_source: 9a0868f49f1262ea
 title_generated: f41ff4cf693cbed0
@@ -23,9 +23,9 @@ Nur ein Gruppenadmin kann eine Gruppe löschen. Beim Löschen einer Gruppe wird 
 
 Bevor du eine Gruppe löschst, [exportiere die Gruppendaten](/en/user_manual/groups/data_export) und lade alle hochgeladenen Dateien herunter, die du behalten möchtest.
 
-Öffne zum Löschen einer Gruppe das Aktionsmenü der Gruppe und wähle **Gruppe löschen**.
+Öffne zum Löschen einer Gruppe die **Einstellungen** auf der Gruppenseite und wähle **Gruppe löschen**.
 
-![Aktion „Gruppe löschen“ im Menü der Oatmilk Cooperative](group_delete_group.png)
+![Aktion „Gruppe löschen“ auf der Einstellungsseite der Oatmilk Cooperative](group_delete_group.png)
 
 Gib die Kennung der Gruppe ein, um die Löschung zu bestätigen.
 

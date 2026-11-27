@@ -13,9 +13,12 @@ function spotlight(selector) {
 test('group_email_address', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
   await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative')
-  await expectLabel(page.locator('.action-dock__button--email_group'), 'oatmilk-cooperative@localhost')
-  await screenshot.capture('groups/email/email_email_button', {
-    spotlight: spotlight('.action-dock__button--email_group')
+  await page.locator('.group-cards__settings').click()
+  await expectLabel(page.locator('.group-settings-panel .action-dock__button--email_group'), 'oatmilk-cooperative@localhost')
+  await screenshot.captureElement('groups/email/email_email_button', '.group-page', {
+    width: 1280,
+    height: 1800,
+    spotlight: spotlight('.group-settings-panel .action-dock__button--email_group')
   });
 });
 
