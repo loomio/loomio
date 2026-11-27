@@ -3320,3 +3320,24 @@ zh_CN:
     export_data_description: 下载此群组的帖子、投票、评论和成员数据副本。
     leave_group_description: 退出此群组并停止接收通知。
     destroy_group_description: 安排永久删除此群组及其内容。
+  onboarding_prompt:
+    title: 简单介绍一下您的群组
+    subtitle: 帮助我们在试用期间提供更合适的建议和支持
+    pain_points_label: 目前遇到了哪些困难？
+    pain_points_hint: 最多选择 2 项
+    description_label: 这个群组是做什么的？
+    description_hint: 向您邀请的人展示
+    trial_intent_label: 目前最想讨论什么或做出什么决定？
+    trial_intent_placeholder: 选填
+    skip: 跳过
+    save: 保存
+    saved: 已保存
+    pains:
+      too_many_meetings: 会议超时 / 会议太多
+      confusing_email_or_chat: 邮件往来或聊天内容混乱
+      decisions_get_stuck: 迟迟做不出决定
+      not_everyone_can_participate: 难以让所有人参与
+      poor_decision_records: 决定及其理由记录不清
+      few_voices_dominate: 少数人主导讨论
+      unclear_who_decides: 不清楚由谁做决定
+      voting_without_discussion: 讨论不充分就投票

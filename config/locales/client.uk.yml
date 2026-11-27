@@ -3426,3 +3426,24 @@ uk:
     leave_group_description: Вийдіть із цієї групи та припиніть отримувати сповіщення.
     destroy_group_description: Заплануйте остаточне видалення цієї групи та її вмісту.
     change_volume_description: Вибір частоти отримання електронних листів і push-сповіщень від цієї групи.
+  onboarding_prompt:
+    title: Розкажіть трохи про вашу групу
+    subtitle: Допоможе нам підібрати поради й підтримку на час пробного періоду
+    pain_points_label: Що зараз заважає?
+    description_label: Для чого ця група?
+    description_hint: Бачитимуть ті, кого ви запросите
+    trial_intent_label: Яке обговорення чи рішення зараз для вас найважливіше?
+    trial_intent_placeholder: Необов’язково
+    skip: Пропустити
+    save: Зберегти
+    saved: Збережено
+    pains:
+      too_many_meetings: Зустрічі затягуються / забагато зустрічей
+      confusing_email_or_chat: Плутанина в листуванні чи чаті
+      decisions_get_stuck: Рішення застрягають
+      not_everyone_can_participate: Не всім легко долучитися
+      poor_decision_records: Рішення та їхні обґрунтування нечітко записані
+      few_voices_dominate: Кілька людей домінують
+      unclear_who_decides: Незрозуміло, хто вирішує
+      voting_without_discussion: Голосування без достатнього обговорення
+    pain_points_hint: Вибір до 2

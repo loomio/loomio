@@ -3397,3 +3397,24 @@ hr:
     leave_group_description: Napustite ovu grupu i prestanite primati obavijesti.
     destroy_group_description: Zakažite trajno brisanje ove grupe i njezina sadržaja.
     change_volume_description: Odabir učestalosti primanja e-pošte i push obavijesti iz ove grupe.
+  onboarding_prompt:
+    title: Recite nam nešto o svojoj grupi
+    subtitle: Pomaže nam prilagoditi savjete i podršku tijekom probnog razdoblja
+    pain_points_label: Što vam trenutačno otežava rad?
+    description_label: Čemu služi ova grupa?
+    description_hint: Vidljivo osobama koje pozovete
+    trial_intent_label: Koja vam je rasprava ili odluka trenutačno najvažnija?
+    trial_intent_placeholder: Neobavezno
+    skip: Preskočite
+    save: Spremite
+    saved: Spremljeno
+    pains:
+      too_many_meetings: Sastanci traju predugo / previše sastanaka
+      confusing_email_or_chat: Nepregledne niti e-pošte ili razgovori u chatu
+      decisions_get_stuck: Odlučivanje zapinje
+      not_everyone_can_participate: Teško je svima sudjelovati
+      poor_decision_records: Odluke i obrazloženja nisu jasno zabilježeni
+      few_voices_dominate: Nekoliko ljudi vodi glavnu riječ
+      unclear_who_decides: Nije jasno tko odlučuje
+      voting_without_discussion: Glasanje bez dovoljno rasprave
+    pain_points_hint: Odabir do 2

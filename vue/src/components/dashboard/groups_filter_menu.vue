@@ -90,12 +90,13 @@ v-menu(v-if="interactive" v-model="open" :close-on-content-click="false")
         variant="outlined"
       )
     v-list(density="compact" max-height="60vh")
-      v-list-item.groups-filter-menu__all(slim :to="dashboardRoute" :active="!currentGroup" @click="open = false")
-        template(v-slot:prepend)
-          v-avatar(:size="22" color="transparent")
-            common-icon(name="mdi-account-group" :size="18")
-        v-list-item-title {{ t('dashboard_cards.all_groups') }}
-      v-divider.my-1
+      template(v-if="groups.length !== 1")
+        v-list-item.groups-filter-menu__all(slim :to="dashboardRoute" :active="!currentGroup" @click="open = false")
+          template(v-slot:prepend)
+            v-avatar(:size="22" color="transparent")
+              common-icon(name="mdi-account-group" :size="18")
+          v-list-item-title {{ t('dashboard_cards.all_groups') }}
+        v-divider.my-1
       v-list-item.groups-filter-menu__group(
         v-for="group in filteredGroups"
         :key="group.id"

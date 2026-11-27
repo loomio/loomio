@@ -3424,3 +3424,24 @@ zh_TW:
     export_data_description: 下載此群組的對話串、投票、評論和成員資料副本。
     leave_group_description: 退出此群組並停止接收通知。
     destroy_group_description: 排定永久刪除此群組及其內容。
+  onboarding_prompt:
+    title: 簡單介紹一下您的群組
+    subtitle: 幫助我們在試用期間提供適合的建議與支援
+    pain_points_label: 目前遇到哪些困難？
+    pain_points_hint: 最多選擇 2 項
+    description_label: 這個群組的用途是什麼？
+    description_hint: 受邀的人會看到這段說明
+    trial_intent_label: 目前最想討論或決定什麼？
+    trial_intent_placeholder: 選填
+    skip: 略過
+    save: 儲存
+    saved: 已儲存
+    pains:
+      too_many_meetings: 會議超時 / 會議太多
+      confusing_email_or_chat: 電子郵件對話串或聊天內容雜亂
+      decisions_get_stuck: 遲遲無法做出決定
+      not_everyone_can_participate: 難以讓每個人都參與
+      poor_decision_records: 決定與理由未清楚記錄
+      few_voices_dominate: 少數人主導討論
+      unclear_who_decides: 不清楚由誰決定
+      voting_without_discussion: 討論不夠充分就投票

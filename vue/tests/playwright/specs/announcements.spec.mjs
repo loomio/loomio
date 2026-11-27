@@ -57,9 +57,7 @@ test.describe('notifying people about a new thread', () => {
 
   test('a direct thread suggests email addresses without a group', async ({ page }) => {
     await page.goto('/dev/setup_discussion');
-    await ensureSidebar(page);
-    await page.locator('.sidebar__list-item-button--recent').click();
-    await page.locator('.discussions-panel__direct-toggle').click();
+    await page.goto('/dashboard?direct=1');
     await page.locator('.discussions-panel__new-topic-button').click();
     await page.locator('.discussion-templates--direct-discussion').click();
     await recipientsInput(page).fill('test@example.com');

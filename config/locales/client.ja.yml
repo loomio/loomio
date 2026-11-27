@@ -3395,3 +3395,24 @@ ja:
     export_data_description: このグループのスレッド、アンケート、コメント、メンバーのデータをダウンロードできます。
     leave_group_description: このグループから退会し、通知の受信を停止します。
     destroy_group_description: このグループとその内容を完全に削除するよう予約します。
+  onboarding_prompt:
+    title: グループについて少し教えてください
+    subtitle: 試用中のヒントやサポートをグループに合わせてお届けします
+    pain_points_label: 今、何に困っていますか？
+    pain_points_hint: 2つまで選んでください
+    description_label: 何のためのグループですか？
+    description_hint: 招待した人に表示されます
+    trial_intent_label: 今、話し合いたいことや決めたいことは何ですか？
+    trial_intent_placeholder: 任意
+    skip: スキップ
+    save: 保存
+    saved: 保存しました
+    pains:
+      too_many_meetings: 会議が長引きます / 多すぎます
+      confusing_email_or_chat: メールのスレッドやチャットが混乱しています
+      decisions_get_stuck: 決定が滞ります
+      not_everyone_can_participate: 全員が参加するのが難しいです
+      poor_decision_records: 決定や理由が明確に記録されていません
+      few_voices_dominate: 一部の人の意見に偏ります
+      unclear_who_decides: 誰が決めるのか不明確です
+      voting_without_discussion: 十分に話し合わずに投票しています

@@ -3423,3 +3423,24 @@ ca:
     export_data_description: Descarrega una còpia dels fils, les enquestes, els comentaris i els membres d'aquest grup.
     leave_group_description: Surt d'aquest grup i deixa de rebre'n notificacions.
     destroy_group_description: Programa l'eliminació permanent d'aquest grup i del seu contingut.
+  onboarding_prompt:
+    title: Explica'ns una mica com és el teu grup
+    subtitle: Ens ajuda a adaptar els consells i el suport durant la prova
+    pain_points_label: Què us dificulta avançar ara mateix?
+    pain_points_hint: Tria'n fins a 2
+    description_label: Quina finalitat té aquest grup?
+    description_hint: Ho veuran les persones que convidis
+    trial_intent_label: Quina discussió o decisió tens més present ara mateix?
+    trial_intent_placeholder: Opcional
+    skip: Omet
+    save: Desa
+    saved: Desat
+    pains:
+      too_many_meetings: Reunions que s'allarguen / massa reunions
+      confusing_email_or_chat: Fils de correu o xats desordenats
+      decisions_get_stuck: Decisions encallades
+      not_everyone_can_participate: Costa que tothom hi participi
+      poor_decision_records: Les decisions i els motius no queden ben recollits
+      few_voices_dominate: Unes poques veus dominen
+      unclear_who_decides: No queda clar qui decideix
+      voting_without_discussion: Votacions sense prou discussió

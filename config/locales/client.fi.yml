@@ -3396,3 +3396,24 @@ fi:
     export_data_description: Lataa kopio ryhmän ketjuista, kyselyistä, kommenteista ja jäsenistä.
     leave_group_description: Poistu ryhmästä ja lopeta sen ilmoitusten vastaanottaminen.
     destroy_group_description: Ajasta ryhmän ja sen sisällön pysyvä poisto.
+  onboarding_prompt:
+    title: Kerro vähän ryhmästäsi
+    subtitle: Auttaa meitä sovittamaan vinkit ja tuen kokeiluusi
+    pain_points_label: Mikä hankaloittaa toimintaa juuri nyt?
+    pain_points_hint: Valitse enintään 2
+    description_label: Mikä on ryhmän tarkoitus?
+    description_hint: Näkyy kutsumillesi ihmisille
+    trial_intent_label: Mikä keskustelu tai päätös on juuri nyt mielessäsi?
+    trial_intent_placeholder: Valinnainen
+    skip: Ohita
+    save: Tallenna
+    saved: Tallennettu
+    pains:
+      too_many_meetings: Kokoukset venyvät / kokouksia on liikaa
+      confusing_email_or_chat: Sekavat sähköpostiketjut tai chat
+      decisions_get_stuck: Päätökset jumittuvat
+      not_everyone_can_participate: Kaikkien on vaikea osallistua
+      poor_decision_records: Päätöksiä ja perusteluja ei kirjata selkeästi
+      few_voices_dominate: Muutaman ääni hallitsee
+      unclear_who_decides: Epäselvää, kuka päättää
+      voting_without_discussion: Äänestetään ilman riittävää keskustelua

@@ -3423,3 +3423,24 @@ nl_NL:
     export_data_description: Download een kopie van de threads, peilingen, reacties en leden van deze groep.
     leave_group_description: Verlaat deze groep en ontvang geen meldingen meer.
     destroy_group_description: Plan de definitieve verwijdering van deze groep en de inhoud.
+  onboarding_prompt:
+    title: Vertel ons iets over jouw groep
+    subtitle: Helpt ons tips en ondersteuning af te stemmen tijdens je proefperiode
+    pain_points_label: Wat zit er nu in de weg?
+    pain_points_hint: Kies er maximaal 2
+    description_label: Waarvoor is deze groep?
+    description_hint: Zichtbaar voor mensen die je uitnodigt
+    trial_intent_label: Welke discussie of welk besluit houdt je nu bezig?
+    trial_intent_placeholder: Optioneel
+    skip: Overslaan
+    save: Opslaan
+    saved: Opgeslagen
+    pains:
+      too_many_meetings: Vergaderingen lopen uit / te veel vergaderingen
+      confusing_email_or_chat: Onoverzichtelijke e-mailthreads of chat
+      decisions_get_stuck: Besluiten blijven hangen
+      not_everyone_can_participate: Lastig voor iedereen om mee te doen
+      poor_decision_records: Besluiten en redenen zijn niet duidelijk vastgelegd
+      few_voices_dominate: Een paar stemmen overheersen
+      unclear_who_decides: Onduidelijk wie beslist
+      voting_without_discussion: Stemmen zonder genoeg discussie

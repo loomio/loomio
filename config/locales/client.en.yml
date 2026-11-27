@@ -1586,6 +1586,27 @@ en:
     trial_extended_title: 30 extra days & free training call unlocked
     trial_extended_description: Your trial has been extended by 30 days.
     book_training_call: Book a training call
+  onboarding_prompt:
+    title: Tell us a little about your group
+    subtitle: Helps us tailor tips and support during your trial
+    pain_points_label: What's getting in the way right now?
+    pain_points_hint: Choose up to 2
+    description_label: What is this group for?
+    description_hint: Shown to people you invite
+    trial_intent_label: What discussion or decision is top of mind right now?
+    trial_intent_placeholder: Optional
+    skip: Skip
+    save: Save
+    saved: Saved
+    pains:
+      too_many_meetings: Meetings going over time / too many meetings
+      confusing_email_or_chat: Messy email threads or chat
+      decisions_get_stuck: Decisions getting stuck
+      not_everyone_can_participate: Hard for everyone to participate
+      poor_decision_records: Decisions and reasoning aren't clearly recorded
+      few_voices_dominate: A few voices dominate
+      unclear_who_decides: Unclear who decides
+      voting_without_discussion: Voting without enough discussion
   group_page:
     stats: Group stats
     participation_report: Participation report

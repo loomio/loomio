@@ -419,4 +419,52 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert group.reload.kept?
   end
 
+  test "group admin can save trial onboarding answers and preserves existing info" do
+    @group.update!(info: { "how_did_you_hear_about_loomio" => "Word of mouth" })
+    @group.add_admin!(@user)
+    sign_in @user
+
+    post :onboarding, params: {
+      id: @group.id,
+      pain_points: %w[too_many_meetings poor_decision_records unknown_pain decisions_get_stuck],
+      description: "Board decisions between monthly meetings",
+      trial_intent: "Approve the Q3 budget"
+    }
+
+    assert_response :success
+    @group.reload
+    assert_equal %w[too_many_meetings poor_decision_records], @group.info["pain_points"]
+    assert_equal "Approve the Q3 budget", @group.info["trial_intent"]
+    assert_equal "Word of mouth", @group.info["how_did_you_hear_about_loomio"]
+    assert @group.info["onboarding_completed_at"].present?
+    assert_equal "Board decisions between monthly meetings", @group.description
+    assert_equal "md", @group.description_format
+
+    json = JSON.parse(response.body)
+    assert_equal true, json["groups"][0]["onboarding_completed"]
+  end
+
+  test "group admin can skip onboarding without overwriting existing description" do
+    @group.update!(description: "Existing description")
+    @group.add_admin!(@user)
+    sign_in @user
+
+    post :onboarding, params: { id: @group.id }
+
+    assert_response :success
+    @group.reload
+    assert_equal "Existing description", @group.description
+    assert @group.info["onboarding_completed_at"].present?
+  end
+
+  test "non-admin member cannot submit group onboarding" do
+    @group.add_member!(@user)
+    sign_in @user
+
+    post :onboarding, params: { id: @group.id, trial_intent: "Unauthorized" }
+
+    assert_response :forbidden
+    assert_nil @group.reload.info["onboarding_completed_at"]
+  end
+
 end

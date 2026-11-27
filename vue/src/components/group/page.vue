@@ -8,6 +8,7 @@ import EventBus from '@/shared/services/event_bus';
 import GroupService from '@/shared/services/group_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import GroupCards from '@/components/group/cards.vue';
+import GroupOnboardingPrompt from '@/components/group/onboarding_prompt.vue';
 import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
 
 const route = useRoute();
@@ -87,6 +88,7 @@ v-main
     group-follow-button(:group="group")
     attachment-list(:attachments="group.attachments")
     plan-banner(:group="group")
+    group-onboarding-prompt(:group="group")
     group-cards(:group="group")
     .group-page__panel
       router-view

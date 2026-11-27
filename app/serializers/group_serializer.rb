@@ -52,7 +52,8 @@ class GroupSerializer < ApplicationSerializer
              :categorize_poll_templates,
              :category,
              :request_to_join_prompt,
-             :current_user_followed
+             :current_user_followed,
+             :onboarding_completed
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
@@ -75,6 +76,10 @@ class GroupSerializer < ApplicationSerializer
 
   def current_user_followed
     followed_group_ids.include?(object.id)
+  end
+
+  def onboarding_completed
+    object.info&.dig("onboarding_completed_at").present?
   end
 
   # Shared payloads omit follow state rather than send false, which would

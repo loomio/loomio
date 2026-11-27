@@ -203,6 +203,7 @@ Rails.application.routes.draw do
           post :export
           post :export_csv
           post :export_html
+          post :onboarding
           post 'upload_photo/:kind', action: :upload_photo
           delete 'remove_photo/:kind', action: :remove_photo
         end

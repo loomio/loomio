@@ -3407,3 +3407,24 @@ hu:
     export_data_description: Töltsd le a csoport szálainak, szavazásainak, hozzászólásainak és tagjainak másolatát.
     leave_group_description: Lépj ki a csoportból, és ne kapj több értesítést.
     destroy_group_description: Ütemezd be a csoport és tartalma végleges törlését.
+  onboarding_prompt:
+    title: Mesélj kicsit a csoportodról
+    subtitle: Segít a próbaidő alatt hozzátok igazítani a tippeket és a támogatást
+    pain_points_label: Mi okoz most nehézséget?
+    pain_points_hint: Válassz ki legfeljebb 2-t
+    description_label: Mi a csoport célja?
+    description_hint: A meghívottak látni fogják
+    trial_intent_label: Melyik beszélgetés vagy döntés foglalkoztat most leginkább?
+    trial_intent_placeholder: Nem kötelező
+    skip: Kihagyás
+    save: Mentés
+    saved: Mentve
+    pains:
+      too_many_meetings: Elhúzódó megbeszélések / túl sok megbeszélés
+      confusing_email_or_chat: Kusza e-mail-szálak vagy csevegés
+      decisions_get_stuck: Elakadnak a döntések
+      not_everyone_can_participate: Nehéz mindenkinek részt vennie
+      poor_decision_records: A döntések és indoklások nincsenek egyértelműen rögzítve
+      few_voices_dominate: Néhányan uralják a beszélgetést
+      unclear_who_decides: Nem világos, ki dönt
+      voting_without_discussion: Szavazás elegendő beszélgetés nélkül

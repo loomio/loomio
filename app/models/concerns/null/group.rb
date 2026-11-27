@@ -158,6 +158,10 @@ module Null::Group
     nil
   end
 
+  def info
+    {}
+  end
+
   def categorize_poll_templates
     true
   end

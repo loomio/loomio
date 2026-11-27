@@ -1,4 +1,15 @@
 class Api::V1::GroupsController < Api::V1::RestfulController
+  ONBOARDING_PAIN_POINTS = %w[
+    too_many_meetings
+    confusing_email_or_chat
+    decisions_get_stuck
+    not_everyone_can_participate
+    poor_decision_records
+    few_voices_dominate
+    unclear_who_decides
+    voting_without_discussion
+  ].freeze
+
   before_action :require_signed_in_user_for_explore, only: [:index, :count_explore_results]
   before_action :require_current_user, :enforce_trial_group_limit, only: [:create]
 
@@ -85,6 +96,27 @@ class Api::V1::GroupsController < Api::V1::RestfulController
     group = load_and_authorize(:group, :export)
     GroupExportHtmlWorker.perform_later(group.id, current_user.id)
     render json: { success: :ok }
+  end
+
+  def onboarding
+    self.resource = load_and_authorize(:group, :update)
+    info = (resource.info || {}).dup
+    pain_points = Array(params[:pain_points]).map(&:to_s).select { |p| ONBOARDING_PAIN_POINTS.include?(p) }.uniq.first(2)
+    info["pain_points"] = pain_points if pain_points.any?
+    trial_intent = params[:trial_intent].to_s.strip.truncate(500)
+    info["trial_intent"] = trial_intent if trial_intent.present?
+    info["onboarding_completed_at"] = Time.current.iso8601
+
+    attrs = { info: info }
+    description = params[:description].to_s.strip
+    if description.present?
+      attrs[:description] = description
+      attrs[:description_format] = "md"
+    end
+
+    resource.update!(attrs)
+    EventBus.broadcast("group_onboarding_completed", resource, current_user)
+    respond_with_resource
   end
 
   private

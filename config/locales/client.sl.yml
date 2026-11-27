@@ -3396,3 +3396,24 @@ sl:
     leave_group_description: Zapustite to skupino in prenehajte prejemati obvestila.
     destroy_group_description: Načrtujte trajni izbris te skupine in njene vsebine.
     change_volume_description: Izbira pogostosti prejemanja e-poštnih in potisnih obvestil iz te skupine.
+  onboarding_prompt:
+    title: Povejte nam nekaj o svoji skupini
+    subtitle: Da vam med preizkusom prilagodimo nasvete in podporo
+    pain_points_label: Kaj vas trenutno ovira?
+    description_label: Čemu je namenjena ta skupina?
+    description_hint: Vidno ljudem, ki jih povabite
+    trial_intent_label: Katera razprava ali odločitev vas trenutno najbolj zaposluje?
+    trial_intent_placeholder: Neobvezno
+    skip: Preskočite
+    save: Shranite
+    saved: Shranjeno
+    pains:
+      too_many_meetings: Predolgi sestanki / preveč sestankov
+      confusing_email_or_chat: Nepregledne e-poštne niti ali klepet
+      decisions_get_stuck: Odločanje zastaja
+      not_everyone_can_participate: Težko je vsem sodelovati
+      poor_decision_records: Odločitve in razlogi niso jasno zapisani
+      few_voices_dominate: Nekaj ljudi prevladuje
+      unclear_who_decides: Ni jasno, kdo odloča
+      voting_without_discussion: Glasovanje brez dovolj razprave
+    pain_points_hint: Izbira največ 2

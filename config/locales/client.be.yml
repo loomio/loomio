@@ -3298,3 +3298,24 @@ be:
     leave_group_description: Выйдзіце з гэтай групы, каб больш не атрымліваць апавяшчэнні.
     destroy_group_description: Заплануйце незваротнае выдаленне гэтай групы і яе змесціва.
     change_volume_description: Выбар частаты атрымання апавяшчэнняў ад гэтай групы па электроннай пошце і праз push.
+  onboarding_prompt:
+    title: Раскажыце крыху пра вашу групу
+    subtitle: Дапаможа нам падабраць парады і падтрымку на пробны перыяд
+    pain_points_label: Што зараз перашкаджае?
+    description_label: Для чаго гэтая група?
+    description_hint: Бачна людзям, якіх вы запрашаеце
+    trial_intent_label: Якое абмеркаванне ці рашэнне зараз для вас галоўнае?
+    trial_intent_placeholder: Неабавязкова
+    skip: Прапусціць
+    save: Захаваць
+    saved: Захавана
+    pains:
+      too_many_meetings: Сустрэчы зацягваюцца / іх занадта шмат
+      confusing_email_or_chat: Блытаніна ў тэмах электроннай пошты ці чаце
+      decisions_get_stuck: Рашэнні захрасаюць
+      not_everyone_can_participate: Не ўсім лёгка ўдзельнічаць
+      poor_decision_records: Рашэнні і іх абгрунтаванні запісваюцца невыразна
+      few_voices_dominate: Некалькі галасоў заглушаюць астатнія
+      unclear_who_decides: Незразумела, хто прымае рашэнні
+      voting_without_discussion: Галасаванне без дастатковага абмеркавання
+    pain_points_hint: Выбар да 2

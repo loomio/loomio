@@ -60,6 +60,7 @@ const showTemplateGallery = computed(() => AppConfig.features.app.template_galle
 const user = computed(() => Session.user());
 const isSignedIn = computed(() => Session.isSignedIn());
 const canStartGroups = computed(() => GroupAbility.canCreate());
+const showAllGroups = computed(() => Session.user().groups().length !== 1);
 
 const organizations = computed(() => {
   const orphanOrganizations = Session.user().orphanSubgroups().map(subgroup => {
@@ -240,6 +241,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
     v-divider
     v-list.sidebar__groups(nav density="compact" :lines="false")
       v-list-item.sidebar__list-item-button--recent(
+        v-if="showAllGroups"
         slim
         :to="dashboardLink"
         :active="isDashboardRoute"

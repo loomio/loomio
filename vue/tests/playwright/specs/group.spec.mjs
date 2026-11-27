@@ -154,7 +154,7 @@ test.describe('visiting a group', () => {
 
     expect((await page.request.get('/dev/revoke_secret_group_access')).ok()).toBe(true);
 
-    await page.locator('.sidebar__list-item-button--recent').click();
+    await page.goto('/dashboard');
     await expect(page.locator('.dashboard-page')).toBeVisible();
     await ensureSidebar(page);
     await sidebarGroup(page, 'Secret Dirty Dancing Shoes').click();

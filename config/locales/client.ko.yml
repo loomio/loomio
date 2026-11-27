@@ -3350,3 +3350,24 @@ ko:
     export_data_description: 이 그룹의 스레드, 투표, 댓글, 멤버 정보 사본을 다운로드하세요.
     leave_group_description: 이 그룹에서 탈퇴하고 알림 수신을 중지하세요.
     destroy_group_description: 이 그룹과 콘텐츠의 영구 삭제를 예약하세요.
+  onboarding_prompt:
+    title: 그룹에 대해 간단히 알려 주세요
+    subtitle: 체험 기간에 맞춤 도움말과 지원을 제공하는 데 도움이 됩니다
+    pain_points_label: 지금 어떤 어려움이 있나요?
+    pain_points_hint: 최대 2개 선택
+    description_label: 어떤 목적의 그룹인가요?
+    description_hint: 초대한 사람들에게 표시됩니다
+    trial_intent_label: 지금 가장 고민하는 토론 주제나 결정은 무엇인가요?
+    trial_intent_placeholder: 선택 사항
+    skip: 건너뛰기
+    save: 저장
+    saved: 저장됨
+    pains:
+      too_many_meetings: 회의가 길어지거나 너무 많음
+      confusing_email_or_chat: 이메일 스레드나 채팅이 뒤죽박죽임
+      decisions_get_stuck: 결정이 진전되지 않음
+      not_everyone_can_participate: 모두가 참여하기 어려움
+      poor_decision_records: 결정과 그 이유가 명확히 기록되지 않음
+      few_voices_dominate: 소수의 의견이 지배함
+      unclear_who_decides: 누가 결정하는지 불분명함
+      voting_without_discussion: 충분한 토론 없이 투표함

@@ -3396,3 +3396,24 @@ ru:
     export_data_description: Скачайте копию веток, опросов, комментариев и списка участников этой группы.
     leave_group_description: Выйдите из этой группы и перестаньте получать уведомления.
     destroy_group_description: Запланируйте безвозвратное удаление этой группы и её содержимого.
+  onboarding_prompt:
+    title: Расскажите немного о вашей группе
+    subtitle: Поможет нам подобрать советы и поддержку на пробный период
+    pain_points_label: Что сейчас мешает?
+    pain_points_hint: Выберите до 2
+    description_label: Для чего создана эта группа?
+    description_hint: Видно тем, кого вы приглашаете
+    trial_intent_label: Какое обсуждение или решение сейчас важнее всего?
+    trial_intent_placeholder: Необязательно
+    skip: Пропустить
+    save: Сохранить
+    saved: Сохранено
+    pains:
+      too_many_meetings: Встречи затягиваются / слишком много встреч
+      confusing_email_or_chat: Путаница в ветках писем или чате
+      decisions_get_stuck: Решения застревают
+      not_everyone_can_participate: Не всем удаётся участвовать
+      poor_decision_records: Решения и их обоснования записаны нечётко
+      few_voices_dominate: Несколько человек подавляют остальных
+      unclear_who_decides: Непонятно, кто решает
+      voting_without_discussion: Голосование без достаточного обсуждения

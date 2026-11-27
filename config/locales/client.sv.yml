@@ -3404,3 +3404,24 @@ sv:
     export_data_description: Ladda ner en kopia av gruppens trådar, omröstningar, kommentarer och medlemmar.
     leave_group_description: Lämna den här gruppen och sluta få notiser.
     destroy_group_description: Schemalägg permanent radering av den här gruppen och dess innehåll.
+  onboarding_prompt:
+    title: Berätta lite om din grupp
+    subtitle: Hjälper oss anpassa tips och stöd under din provperiod
+    pain_points_label: Vad står i vägen just nu?
+    pain_points_hint: Välj högst 2
+    description_label: Vad är gruppen till för?
+    description_hint: Visas för dem du bjuder in
+    trial_intent_label: Vilken diskussion eller vilket beslut är mest aktuellt just nu?
+    trial_intent_placeholder: Valfritt
+    skip: Hoppa över
+    save: Spara
+    saved: Sparat
+    pains:
+      too_many_meetings: Möten drar över tiden / för många möten
+      confusing_email_or_chat: Röriga mejltrådar eller chattar
+      decisions_get_stuck: Beslut fastnar
+      not_everyone_can_participate: Svårt för alla att delta
+      poor_decision_records: Beslut och resonemang dokumenteras otydligt
+      few_voices_dominate: Några få röster dominerar
+      unclear_who_decides: Oklart vem som bestämmer
+      voting_without_discussion: Omröstning utan tillräcklig diskussion

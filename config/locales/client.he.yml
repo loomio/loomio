@@ -3415,3 +3415,24 @@ he:
     export_data_description: הורדת עותק של השרשורים, הסקרים, התגובות והחברים בקבוצה הזו.
     leave_group_description: עזיבת הקבוצה הזו והפסקת קבלת התראות.
     destroy_group_description: תזמון מחיקה לצמיתות של הקבוצה הזו והתוכן שלה.
+  onboarding_prompt:
+    title: כמה מילים על הקבוצה
+    subtitle: עוזר לנו להתאים עצות ותמיכה בתקופת הניסיון
+    pain_points_label: מה מקשה כרגע?
+    description_label: מה מטרת הקבוצה?
+    description_hint: מוצג למי שהוזמנו
+    trial_intent_label: איזה דיון או החלטה מעסיקים את הקבוצה כרגע?
+    trial_intent_placeholder: לא חובה
+    skip: דילוג
+    save: שמירה
+    saved: נשמר
+    pains:
+      too_many_meetings: פגישות שמתארכות / יותר מדי פגישות
+      confusing_email_or_chat: שרשורי דוא״ל או צ׳אט מבולגנים
+      decisions_get_stuck: החלטות נתקעות
+      not_everyone_can_participate: קשה לאפשר לכולם להשתתף
+      poor_decision_records: החלטות ונימוקים לא מתועדים בבירור
+      few_voices_dominate: מעט קולות משתלטים
+      unclear_who_decides: לא ברור מי מחליט
+      voting_without_discussion: הצבעה בלי מספיק דיון
+    pain_points_hint: בחירה של עד 2

@@ -3393,3 +3393,24 @@ tr:
     export_data_description: Bu grubun ileti dizilerinin, anketlerinin, yorumlarının ve üyelerinin bir kopyasını indirin.
     leave_group_description: Bu gruptan ayrılın ve bildirim almayı durdurun.
     destroy_group_description: Bu grubun ve içeriğinin kalıcı olarak silinmesini planlayın.
+  onboarding_prompt:
+    title: Bize grubunuzdan biraz bahsedin
+    subtitle: Deneme sürenizde öneri ve desteği size göre uyarlamamıza yardımcı olur
+    pain_points_label: Şu an önünüzdeki engeller neler?
+    pain_points_hint: En fazla 2 tane seçin
+    description_label: Bu grubun amacı ne?
+    description_hint: Davet ettiğiniz kişilere gösterilir
+    trial_intent_label: Şu an aklınızdaki en önemli tartışma veya karar ne?
+    trial_intent_placeholder: İsteğe bağlı
+    skip: Atla
+    save: Kaydet
+    saved: Kaydedildi
+    pains:
+      too_many_meetings: Toplantılar uzuyor / çok fazla toplantı var
+      confusing_email_or_chat: Karışık e-posta ileti dizileri veya sohbetler
+      decisions_get_stuck: Kararlar tıkanıyor
+      not_everyone_can_participate: Herkesin katılması zor
+      poor_decision_records: Kararlar ve gerekçeler açıkça kaydedilmiyor
+      few_voices_dominate: Birkaç kişinin sözü baskın çıkıyor
+      unclear_who_decides: Kimin karar verdiği belirsiz
+      voting_without_discussion: Yeterince tartışmadan oy veriliyor

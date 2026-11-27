@@ -3441,3 +3441,24 @@ pt_BR:
     export_data_description: Baixe uma cópia das conversas, enquetes, comentários e membros deste grupo.
     leave_group_description: Saia deste grupo e pare de receber notificações.
     destroy_group_description: Agende a exclusão permanente deste grupo e de seu conteúdo.
+  onboarding_prompt:
+    title: Conte um pouco sobre seu grupo
+    subtitle: Ajuda a adaptar dicas e suporte durante seu período de teste
+    pain_points_label: O que está atrapalhando agora?
+    pain_points_hint: Escolha até 2
+    description_label: Para que serve este grupo?
+    description_hint: Visível para quem você convidar
+    trial_intent_label: Qual discussão ou decisão é prioridade agora?
+    trial_intent_placeholder: Opcional
+    skip: Pular
+    save: Salvar
+    saved: Salvo
+    pains:
+      too_many_meetings: Reuniões longas demais / reuniões demais
+      confusing_email_or_chat: Conversas confusas por e-mail ou chat
+      decisions_get_stuck: Decisões travadas
+      not_everyone_can_participate: É difícil todos participarem
+      poor_decision_records: Decisões e motivos sem registro claro
+      few_voices_dominate: Poucas vozes dominam
+      unclear_who_decides: Não está claro quem decide
+      voting_without_discussion: Votação sem discussão suficiente

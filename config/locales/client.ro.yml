@@ -3396,3 +3396,24 @@ ro:
     export_data_description: Descarcă o copie a firelor, sondajelor, comentariilor și membrilor acestui grup.
     leave_group_description: Părăsește acest grup și nu mai primi notificări.
     destroy_group_description: Programează ștergerea definitivă a acestui grup și a conținutului său.
+  onboarding_prompt:
+    title: Spune-ne câte ceva despre grupul tău
+    subtitle: Ne ajută să adaptăm sfaturile și sprijinul în perioada de probă
+    pain_points_label: Ce vă încurcă acum?
+    pain_points_hint: Alege cel mult 2
+    description_label: Care e scopul acestui grup?
+    description_hint: Se afișează celor pe care îi inviți
+    trial_intent_label: Ce discuție sau decizie te preocupă acum?
+    trial_intent_placeholder: Opțional
+    skip: Sari peste
+    save: Salvează
+    saved: Salvat
+    pains:
+      too_many_meetings: Ședințe prea lungi / prea multe ședințe
+      confusing_email_or_chat: Fire de e-mail sau conversații pe chat dezordonate
+      decisions_get_stuck: Decizii blocate
+      not_everyone_can_participate: E greu să participe toată lumea
+      poor_decision_records: Deciziile și motivele nu sunt consemnate clar
+      few_voices_dominate: Câteva voci domină
+      unclear_who_decides: Nu e clar cine decide
+      voting_without_discussion: Vot fără suficientă discuție

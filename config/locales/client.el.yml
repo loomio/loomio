@@ -3396,3 +3396,24 @@ el:
     export_data_description: Κατεβάστε αντίγραφο των νημάτων, δημοσκοπήσεων, σχολίων και μελών αυτής της ομάδας.
     leave_group_description: Αποχωρήστε από αυτή την ομάδα και σταματήστε να λαμβάνετε ειδοποιήσεις.
     destroy_group_description: Προγραμματίστε την οριστική διαγραφή αυτής της ομάδας και του περιεχομένου της.
+  onboarding_prompt:
+    title: Πείτε μας λίγα για την ομάδα σας
+    subtitle: Μας βοηθά να προσαρμόσουμε τις συμβουλές και την υποστήριξη στη δοκιμή σας
+    pain_points_label: Τι σας δυσκολεύει αυτή την περίοδο;
+    pain_points_hint: Επιλέξτε έως 2
+    description_label: Ποιος είναι ο σκοπός αυτής της ομάδας;
+    description_hint: Εμφανίζεται σε όσους προσκαλείτε
+    trial_intent_label: Ποια συζήτηση ή απόφαση σας απασχολεί περισσότερο τώρα;
+    trial_intent_placeholder: Προαιρετικό
+    skip: Παραλείψτε
+    save: Αποθηκεύστε
+    saved: Αποθηκεύτηκε
+    pains:
+      too_many_meetings: Συναντήσεις που παρατείνονται / πάρα πολλές συναντήσεις
+      confusing_email_or_chat: Μπερδεμένα νήματα email ή συνομιλίες
+      decisions_get_stuck: Οι αποφάσεις κολλάνε
+      not_everyone_can_participate: Δυσκολία συμμετοχής όλων
+      poor_decision_records: Οι αποφάσεις και οι λόγοι τους δεν καταγράφονται ξεκάθαρα
+      few_voices_dominate: Λίγες φωνές κυριαρχούν
+      unclear_who_decides: Δεν είναι σαφές ποιος αποφασίζει
+      voting_without_discussion: Ψηφοφορία χωρίς αρκετή συζήτηση

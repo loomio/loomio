@@ -3423,3 +3423,24 @@ pl:
     export_data_description: Pobierz kopię wątków, ankiet, komentarzy i członków tej grupy.
     leave_group_description: Opuść tę grupę i przestań otrzymywać powiadomienia.
     destroy_group_description: Zaplanuj trwałe usunięcie tej grupy i jej treści.
+  onboarding_prompt:
+    title: Opowiedz nam trochę o swojej grupie
+    subtitle: Pomoże nam dopasować wskazówki i wsparcie w okresie próbnym
+    pain_points_label: Co wam teraz przeszkadza?
+    pain_points_hint: Wybierz maksymalnie 2
+    description_label: Po co jest ta grupa?
+    description_hint: Widoczne dla osób, które zaprosisz
+    trial_intent_label: Jaka dyskusja lub decyzja jest teraz dla ciebie najważniejsza?
+    trial_intent_placeholder: Opcjonalnie
+    skip: Pomiń
+    save: Zapisz
+    saved: Zapisano
+    pains:
+      too_many_meetings: Spotkania się przedłużają / jest ich za dużo
+      confusing_email_or_chat: Chaos w wątkach e-mail lub na czacie
+      decisions_get_stuck: Decyzje stoją w miejscu
+      not_everyone_can_participate: Trudno wszystkim wziąć udział
+      poor_decision_records: Decyzje i ich powody nie są jasno zapisane
+      few_voices_dominate: Kilka osób dominuje
+      unclear_who_decides: Nie wiadomo, kto decyduje
+      voting_without_discussion: Głosowanie bez wystarczającej dyskusji
