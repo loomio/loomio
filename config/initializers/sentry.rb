@@ -8,3 +8,14 @@ Sentry.init do |config|
   config.rails.structured_logging.enabled = ENV["SENTRY_ENABLE_LOGS"].present?
   config.before_send_log = ->(log) { ENV["SENTRY_ENABLE_LOGS"].present? && %i[warn error fatal].include?(log.level) ? log : nil }
 end
+
+# Rails 8.2 (rails/rails#50979) calls handle_open and handle_close publicly from
+# ActionCable::Server::Socket, but sentry-rails prepends them as private methods.
+# Remove once getsentry/sentry-ruby#2972 is released.
+ActiveSupport.on_load(:action_cable_connection) do
+  if defined?(Sentry::Rails::ActionCableExtensions::Connection)
+    Sentry::Rails::ActionCableExtensions::Connection.module_eval do
+      public :handle_open, :handle_close
+    end
+  end
+end
