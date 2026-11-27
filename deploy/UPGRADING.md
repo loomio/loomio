@@ -19,6 +19,14 @@ You can also run [`update.sh`](update.sh) from the deployment directory to clean
 
 ## Unreleased
 
+### Sandboxed media processing with Hot Cell (recommended, optional)
+
+Loomio now supports isolating image, PDF, and video processing (`libvips`, `ffmpeg`, `poppler-utils`) into an unprivileged, network-less sidecar container (`hotcell`) running from the same Loomio image via `TASK=hotcell` with zero application credentials.
+
+- **New installations** get this out of the box in [`docker-compose.yml`](docker-compose.yml).
+- **Existing installations** can keep upgrading with `./update.sh` with no changes required — when `HOTCELL_ROOT` is unset, Loomio continues processing media in-process as before.
+- **Recommended upgrade:** To enable the isolated sidecar on an existing site, update your `docker-compose.yml` to the [current version](docker-compose.yml) (or copy the `hotcell` service, `hotcell-sockets` volume, `group_add: ["10001"]`, and `HOTCELL_ROOT=/run/hotcell` / `HOTCELL_GROUP=10001` settings onto `app` and `worker`), then run `./update.sh`. Do **not** attach `env_file: ./.env` to the `hotcell` service — the container intentionally refuses to start if app secrets are present in its environment.
+
 ### Permanent deletion of discarded content
 
 Automatic permanent deletion of discarded groups, subgroups, threads, and inactive orphan user accounts is now controlled by explicit day-count environment variables. Legacy `CLEANUP_ENABLED`, `LOOMIO_GROUP_CLEANUP_ENABLED`, and `GROUP_DELETION_DELAY_DAYS` settings are no longer read.
