@@ -48,11 +48,14 @@ end
 module ActiveStorageRepresentationLegacyRescue
   private
 
-  LEGACY_ERRORS = [
-    TypeError,
-    defined?(Vips::Error) ? Vips::Error : nil,
-    defined?(LoomioHotCell::UnprocessableUpload) ? LoomioHotCell::UnprocessableUpload : nil
-  ].compact.freeze
+  def legacy_errors
+    @legacy_errors ||= [
+      TypeError,
+      defined?(Vips::Error) ? Vips::Error : nil,
+      defined?(LoomioHotCell::UnprocessableUpload) ? LoomioHotCell::UnprocessableUpload : nil,
+      defined?(LoomioHotCell::ConversionTemporarilyUnavailable) ? LoomioHotCell::ConversionTemporarilyUnavailable : nil
+    ].compact
+  end
 
   def set_representation
     super
@@ -62,7 +65,7 @@ module ActiveStorageRepresentationLegacyRescue
     # turning one bad file into a repeated application exception.
     Rails.logger.warn("Active Storage preview unavailable for blob #{params[:signed_blob_id]}: #{error.message}")
     head :unprocessable_entity
-  rescue *LEGACY_ERRORS => error
+  rescue *legacy_errors => error
     raise error if params[:variation_key].blank?
 
     original = ActiveStorage::Variation.decode(params[:variation_key]).transformations
@@ -73,7 +76,7 @@ module ActiveStorageRepresentationLegacyRescue
 
     begin
       @representation = @blob.representation(translated).processed
-    rescue *LEGACY_ERRORS => retry_error
+    rescue *legacy_errors => retry_error
       Rails.logger.warn("Legacy variation retry failed: #{retry_error.class}: #{retry_error.message}")
       head :not_acceptable
     end
