@@ -1,15 +1,13 @@
 <script setup lang="js">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { differenceInDays, parseISO } from 'date-fns';
 import AppConfig from '@/shared/services/app_config';
-import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import SubscriptionService from '@/shared/services/subscription_service';
 
 const { group } = defineProps({ group: Object });
 const { t } = useI18n();
-const dismissed = ref(false);
 
 const REQUIRED_MEMBERS = 3;
 
@@ -31,8 +29,7 @@ const isDisabled = computed(() => (
 ));
 const trialExtended = computed(() => Boolean(subscription.value?.trial_extended_at));
 const showExtendedBanner = computed(() => (
-  isTrial.value && !isDisabled.value && trialExtended.value &&
-  !dismissed.value && !Session.user().hasExperienced('hideOnboarding')
+  isTrial.value && !isDisabled.value && trialExtended.value
 ));
 const daysRemaining = computed(() => (
   subscription.value?.expires_at ? Math.max(0, differenceInDays(parseISO(subscription.value.expires_at), new Date()) + 1) : null
@@ -66,11 +63,6 @@ const alertColor = computed(() => {
 const visible = computed(() => (
   Boolean(subscription.value) && isLoggedIn.value && isMember.value && (isDisabled.value || (isTrial.value && isAdmin.value))
 ));
-
-function dismiss() {
-  dismissed.value = true;
-  Records.users.saveExperience('hideOnboarding', true);
-}
 </script>
 
 <template lang="pug">
@@ -117,12 +109,6 @@ v-alert.plan-banner.my-4(
       )
         common-icon.mr-1(name="mdi-rocket" color="currentColor")
         span {{ upgradeLabel }}
-      v-btn.plan-banner__dismiss(
-        v-if="showExtendedBanner"
-        variant="text"
-        size="small"
-        @click="dismiss"
-      ) {{ t('common.action.close') }}
 
   template(v-if="isTrial && !isDisabled")
     p.text-body-medium.mt-2.mb-0(v-if="showExtendedBanner") {{ t('onboarding_card.trial_extended_description') }}

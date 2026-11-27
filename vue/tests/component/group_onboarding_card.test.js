@@ -7,8 +7,6 @@ import Database from '@/shared/record_store/db';
 const mocks = vi.hoisted(() => ({
   subscriptions: true,
   emit: vi.fn(),
-  saveExperience: vi.fn(() => Promise.resolve()),
-  remoteGet: vi.fn(() => Promise.resolve({ participants_count: 1 })),
   groups: null,
   memberships: null,
   users: null,
@@ -40,12 +38,6 @@ vi.mock('@/shared/services/records', () => ({
     },
     memberships: {
       find: query => mocks.memberships.find(query)
-    },
-    users: {
-      saveExperience: mocks.saveExperience
-    },
-    remote: {
-      get: mocks.remoteGet
     }
   }
 }));
@@ -108,7 +100,6 @@ describe('GroupCards and PlanBanner', () => {
       pollsCount: 5,
       activePollsCount: 2,
       currentUserVotesNeededCount: 1,
-      trialParticipantsCount: 1,
       subscription: {
         plan: 'trial',
         state: 'active',
@@ -185,7 +176,7 @@ describe('GroupCards and PlanBanner', () => {
     expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupInvitationForm', props: { group } });
   });
 
-  it('shows unlocked state when trial_extended_at is set and allows dismissing', async () => {
+  it('shows unlocked state when trial_extended_at is set without a dismiss button', async () => {
     const group = setupGroup({
       subscription: {
         plan: 'trial',
@@ -201,14 +192,11 @@ describe('GroupCards and PlanBanner', () => {
 
     expect(wrapper.find('.plan-banner').text()).toContain('30 extra days & free training call unlocked');
     expect(wrapper.find('.plan-banner__training-call').attributes('href')).toBe('https://cal.example/training');
-    await wrapper.find('.plan-banner__dismiss').trigger('click');
-    await flushPromises();
-    expect(mocks.saveExperience).toHaveBeenCalledWith('hideOnboarding', true);
     expect(wrapper.find('.plan-banner__dismiss').exists()).toBe(false);
   });
 
   it('hides the active trial banner from non-admin members', async () => {
-    const group = setupGroup({ trialParticipantsCount: 1 });
+    const group = setupGroup();
     mocks.memberships.findOne({ id: 1 }).admin = false;
     wrapper = mountCards(group);
     await flushPromises();
