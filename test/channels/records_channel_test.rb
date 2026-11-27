@@ -24,13 +24,13 @@ class RecordsChannelTest < ActionCable::Channel::TestCase
 
   test "ordinary user updates are forwarded without changing group access" do
     subscribe
-    streams_before = subscription.streams.dup
+    streams_before = subscription.stream_names.dup
     payload = { 'records' => { 'users' => [{ 'id' => @member.id, 'name' => 'Updated name' }] } }
 
     subscription.send(:receive_user_payload, payload)
 
     assert_equal payload, transmissions.last
-    assert_equal streams_before, subscription.streams
+    assert_equal streams_before, subscription.stream_names
   end
 
   test "repeated restore messages do not duplicate group streams before revocation" do
@@ -41,7 +41,7 @@ class RecordsChannelTest < ActionCable::Channel::TestCase
 
     # Duplicate registrations can leave an older callback outside the stream
     # registry that a later membership revocation uses to unsubscribe.
-    assert_equal 1, subscription.streams.count("group_#{@group.id}")
+    assert_equal 1, subscription.stream_names.count("group_#{@group.id}")
 
     @group.membership_for(@member).update!(revoked_at: Time.current)
     subscription.send(:receive_user_payload, { 'membership_access' => { 'group_ids' => [@group.id], 'revoked' => true } })

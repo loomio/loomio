@@ -28,9 +28,9 @@ class StanceUserReferenceIntegrityCleanupTest < ActiveSupport::TestCase
           inviter_id: missing_user_id, revoker_id: missing_user_id, redactor_id: missing_user_id
         )
       ]).rows.flatten
-    end
 
-    StanceUserReferenceIntegrityCleanup.run!(ActiveRecord::Base.connection)
+      StanceUserReferenceIntegrityCleanup.run!(ActiveRecord::Base.connection)
+    end
 
     assert_not Stance.exists?(orphan_id)
     kept_stance = Stance.find(kept_id)

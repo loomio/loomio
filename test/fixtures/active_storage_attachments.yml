@@ -1,3 +1,6 @@
+_fixture:
+  model_class: ActiveStorage::Attachment
+
 cleanup_group_attachment:
   name: logo
   record_type: Group

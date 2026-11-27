@@ -14,7 +14,8 @@ class TagReferenceIntegrityCleanupTest < ActiveSupport::TestCase
       updated_at: now
     }]).rows.first.first
 
-    orphan_tag_id, orphan_tagging_id = ActiveRecord::Base.connection.disable_referential_integrity do
+    orphan_tag_id = orphan_tagging_id = result = nil
+    ActiveRecord::Base.connection.disable_referential_integrity do
       orphan_tag_id = Tag.insert_all!([{
         group_id: Group.maximum(:id) + 1,
         name: "orphan tag",
@@ -28,10 +29,9 @@ class TagReferenceIntegrityCleanupTest < ActiveSupport::TestCase
         created_at: now,
         updated_at: now
       }]).rows.first.first
-      [ orphan_tag_id, orphan_tagging_id ]
-    end
 
-    result = TagReferenceIntegrityCleanup.run!(ActiveRecord::Base.connection)
+      result = TagReferenceIntegrityCleanup.run!(ActiveRecord::Base.connection)
+    end
 
     assert_equal({ taggings: 1, tags: 1 }, result)
     assert_not Tag.exists?(orphan_tag_id)
