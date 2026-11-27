@@ -8,7 +8,6 @@ zh_CN:
   hello: 您好！
   start_trial:
     title: 开始 Loomio 的免费试用
-    intro: 感谢您对 Loomio 的关注。我们很高兴为您提供 %{day} 天的免费试用期，以便您了解 Loomio 是否适合您的组织。
     lets_get_started: 我们开始吧！
     your_name: 您的名字
     your_email: 您的电子邮件
@@ -25,6 +24,7 @@ zh_CN:
     please_complete_this_field: 请填写此字段
     please_enter_a_valid_email_address: 请输入有效的电子邮件地址
     please_accept_the_terms: 请接受条款
+    intro: 这一步很简单 — 填写此表即可开始免费试用
   tasks:
     tasks: 任务
     your_tasks: 您的任务

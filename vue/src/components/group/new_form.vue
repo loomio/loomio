@@ -200,11 +200,11 @@ v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading
       v-text-field.group-form__handle#group-handle(:loading="loadingHandle" v-model='group.handle' :hint="$t('group_form.group_handle_hint_new', {host: hostname, handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
       validation-errors(:subject="group", field="handle")
 
-    v-select.group-form__category-select(v-if='!group.parentId' v-model="group.category" :items="categoryItems" :item-props="item => ({class: 'group-form__category--' + item.value})" :label="$t('group_survey.describe_other')")
+    v-select.group-form__category-select(v-if='!group.parentId' v-model="group.category" :items="categoryItems" :item-props="item => ({class: 'group-form__category--' + item.value, lines: item.subtitle ? 'two' : 'one'})" :label="$t('group_survey.describe_other')")
       template(#item="{ props, item }")
-        v-list-item(v-bind="props" :lines="item.raw.subtitle ? 'two' : 'one'")
-          template(#subtitle v-if="item.raw.subtitle")
-            span.text-wrap {{ item.raw.subtitle }}
+        v-list-item(v-bind="props" :title="(item.raw || item).title")
+          template(#subtitle v-if="(item.raw || item).subtitle")
+            span.text-wrap {{ (item.raw || item).subtitle }}
 
     lmo-textarea.group-form__group-description(
       :model='group'

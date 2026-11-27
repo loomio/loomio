@@ -7,7 +7,6 @@ nl_NL:
     ios_install_description: Open in Safari Delen en selecteer Zet op beginscherm
   start_trial:
     title: Start een gratis proefperiode van Loomio
-    intro: Bedankt voor uw interesse in Loomio. We bieden u graag een gratis proefperiode van %{day} dagen aan, zodat u kunt zien of Loomio goed bij uw organisatie past.
     lets_get_started: Laten we beginnen!
     your_name: Uw naam
     your_email: Jouw email
@@ -26,6 +25,7 @@ nl_NL:
     please_accept_the_terms: Accepteer alstublieft de voorwaarden
     how_did_you_hear_about_loomio: Hoe heb je over Loomio gehoord?
     newsletter_intro: Wilt u op de hoogte blijven van nieuwe functies, klantinterviews, casestudies en aankondigingen van het Loomio-team?
+    intro: Dit is eenvoudig — vul dit formulier in om je gratis proefperiode te starten
   tasks:
     tasks: Taken
     your_tasks: Jouw taken

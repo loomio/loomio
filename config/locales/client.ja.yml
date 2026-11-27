@@ -8,7 +8,6 @@ ja:
   start_trial:
     your_name: あなたの名前
     title: Loomioの無料トライアルを始める
-    intro: Loomio にご興味をお持ちいただきありがとうございます。Loomio が貴社に適しているかどうかご確認いただけるよう、%{day} 日間の無料トライアルをご提供いたします。
     lets_get_started: 始めましょう！
     your_email: あなたのメールアドレス
     how_do_you_intend_to_use_loomio: Loomioをどのように活用する予定ですか?
@@ -25,6 +24,7 @@ ja:
     please_enter_a_valid_email_address: 有効なメールアドレスを入力してください
     please_accept_the_terms: 利用規約に同意してください
     newsletter_intro: Loomio チームからの新機能、顧客インタビュー、ケーススタディ、お知らせなどを聞きたいですか?
+    intro: 簡単なフォームに入力して、無料トライアルを始めましょう
   tasks:
     tasks: タスク
     your_tasks: あなたのタスク

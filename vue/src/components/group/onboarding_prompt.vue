@@ -34,6 +34,9 @@ const isDisabled = computed(() => (
 const isAdmin = computed(() => (
   typeof group?.adminsInclude === 'function' ? group.adminsInclude(Session.user()) : false
 ));
+const acceptedMembersCount = computed(() => (
+  group?.acceptedMembershipsCount ?? group?.membershipsCount ?? 0
+));
 const visible = computed(() => (
   Session.isSignedIn() &&
   isParentTrial.value &&
@@ -41,7 +44,7 @@ const visible = computed(() => (
   isAdmin.value &&
   !group.onboardingCompleted &&
   !completedLocally.value &&
-  (group.discussionsCount || 0) === 0
+  acceptedMembersCount.value < 3
 ));
 
 const painOptions = computed(() => (

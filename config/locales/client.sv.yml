@@ -7,7 +7,6 @@ sv:
     ios_install_description: Öppna Dela i Safari och välj Lägg till på hemskärmen
   start_trial:
     title: Starta en gratis provperiod av Loomio
-    intro: Tack för ditt intresse för Loomio. Vi är glada över att kunna erbjuda dig en %{day}-dagars kostnadsfri provperiod så att du kan se om Loomio passar din organisation.
     lets_get_started: Låt oss börja!
     your_name: Ditt namn
     your_email: Din email
@@ -26,6 +25,7 @@ sv:
     please_accept_the_terms: Vänligen acceptera villkoren
     how_did_you_hear_about_loomio: Hur hörde du talas om Loomio?
     newsletter_intro: Vill du höra om nya funktioner, kundintervjuer, fallstudier och tillkännagivanden från Loomio-teamet?
+    intro: Det här är enkelt — fyll i formuläret för att starta din gratis provperiod
   tasks:
     tasks: Uppgifter
     your_tasks: Dina uppgifter

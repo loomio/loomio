@@ -8,7 +8,6 @@ zh_TW:
   hello: 您好
   start_trial:
     title: 開始免費試用 Loomio
-    intro: 感謝您對 Loomio 的興趣。我們很高興為您提供 %{day} 天的免費試用，以便您了解 Loomio 是否適合您的組織。
     lets_get_started: 讓我們開始吧！
     your_name: 你的名字
     your_email: 你的郵件
@@ -27,6 +26,7 @@ zh_TW:
     please_accept_the_terms: 請接受條款
     how_did_you_hear_about_loomio: 您是如何得知 Loomio 的？
     newsletter_intro: 您想了解 Loomio 團隊的新功能、客戶訪談、案例研究和公告嗎？
+    intro: 很簡單，填妥此表單即可開始免費試用
   tasks:
     tasks: 工作
     your_tasks: 您的工作

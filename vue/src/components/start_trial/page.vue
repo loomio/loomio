@@ -26,7 +26,6 @@ const submitBlockedByCaptcha = computed(() => !isSignedIn && Boolean(turnstileSi
 
 const form = useTemplateRef('form');
 
-const trialDays = AppConfig.features.app.trial_days;
 const categoryItems = computed(() => groupCategoryItems(t));
 const signInHref = computed(() => {
   const params = new URLSearchParams({
@@ -83,19 +82,19 @@ v-main
           v-spacer
       v-card.start-trial-form(v-else :title="t('start_trial.title')")
         v-card-text
-          p.text-body-large.pb-6.text-medium-emphasis {{ t('start_trial.intro', { day: trialDays }) }}
+          p.text-body-large.pb-6.text-medium-emphasis {{ t('start_trial.intro') }}
           v-text-field.start-trial-form__group-name(v-model="groupName" :label="t('group_form.organization_name')" :rules="validate('group_name')")
           v-select.start-trial-form__category(
             v-model="groupCategory"
             :items="categoryItems"
-            :item-props="item => ({ class: 'start-trial-form__category--' + item.value })"
+            :item-props="item => ({ class: 'start-trial-form__category--' + item.value, lines: item.subtitle ? 'two' : 'one' })"
             :label="t('group_survey.describe_other')"
             :rules="validate('group_category')"
           )
             template(#item="{ props, item }")
-              v-list-item(v-bind="props" :lines="item.raw.subtitle ? 'two' : 'one'")
-                template(#subtitle v-if="item.raw.subtitle")
-                  span.text-wrap {{ item.raw.subtitle }}
+              v-list-item(v-bind="props" :title="(item.raw || item).title")
+                template(#subtitle v-if="(item.raw || item).subtitle")
+                  span.text-wrap {{ (item.raw || item).subtitle }}
           v-text-field.start-trial-form__name(v-if="!isSignedIn" v-model="userName" :label="t('start_trial.your_name')" :rules="validate('user_name')")
           v-text-field.start-trial-form__email(v-if="!isSignedIn" v-model="userEmail" :label="t('start_trial.your_email')" type="email" :rules="validate('user_email')")
           turnstile-widget(v-if="!isSignedIn" v-model="turnstileToken")

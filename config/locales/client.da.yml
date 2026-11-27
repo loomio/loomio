@@ -7,7 +7,6 @@ da:
     ios_install_description: Åbn Del i Safari, og vælg Føj til hjemmeskærm
   start_trial:
     title: Start en gratis prøveversion af Loomio
-    intro: Tak for din interesse i Loomio. Vi er glade for at kunne tilbyde dig en %{day}-dages gratis prøveperiode, så du kan se, om Loomio passer godt til din organisation.
     lets_get_started: Lad os komme igang!
     your_name: Dit navn
     your_email: Din email
@@ -26,6 +25,7 @@ da:
     please_accept_the_terms: Accepter venligst vilkårene
     how_did_you_hear_about_loomio: Hvordan hørte du om Loomio?
     newsletter_intro: Vil du gerne høre om nye funktioner, kundeinterviews, casestudier og annonceringer fra Loomio-teamet?
+    intro: Det er nemt — udfyld formularen for at starte din gratis prøveperiode
   tasks:
     tasks: Opgaver
     your_tasks: Dine opgaver

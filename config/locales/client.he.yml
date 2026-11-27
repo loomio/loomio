@@ -7,7 +7,6 @@ he:
     ios_install_description: ב-Safari, יש לפתוח את השיתוף ולבחור באפשרות הוספה למסך הבית
   start_trial:
     title: התחל ניסיון חינם של Loomio
-    intro: תודה על התעניינותך ב-Loomio. אנו שמחים להציע לך ניסיון חינם של %{day} ימים כדי שתוכל לראות אם Loomio מתאים לארגון שלך.
     lets_get_started: בואו נתחיל!
     your_name: השם שלך
     your_email: האימייל שלך
@@ -26,6 +25,7 @@ he:
     please_accept_the_terms: אנא קבל את התנאים
     how_did_you_hear_about_loomio: איך שמעת על לומיו?
     newsletter_intro: האם תרצו לשמוע על תכונות חדשות, ראיונות עם לקוחות, מקרי בוחן והכרזות מצוות Loomio?
+    intro: זה החלק הקל — יש למלא את הטופס כדי להתחיל ניסיון חינם
   tasks:
     tasks: משימות
     your_tasks: המשימות שלך

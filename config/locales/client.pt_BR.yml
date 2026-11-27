@@ -7,7 +7,6 @@ pt_BR:
     ios_install_description: No Safari, abra Compartilhar e selecione Adicionar à Tela de Início
   start_trial:
     title: Comece uma avaliação gratuita do Loomio
-    intro: Obrigado pelo seu interesse no Loomio. Temos o prazer de oferecer a você um teste gratuito de %{day} dias para que você possa ver se o Loomio é adequado para sua organização.
     lets_get_started: Vamos começar!
     your_name: Seu nome
     your_email: Seu email
@@ -26,6 +25,7 @@ pt_BR:
     please_accept_the_terms: Aceite os termos
     how_did_you_hear_about_loomio: Como você ouviu falar do Loomio?
     newsletter_intro: Gostaria de saber sobre novos recursos, entrevistas com clientes, estudos de caso e anúncios da equipe da Loomio?
+    intro: Esta parte é fácil — preencha este formulário para começar sua avaliação gratuita
   tasks:
     tasks: Tarefas
     your_tasks: Suas tarefas

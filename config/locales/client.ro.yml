@@ -7,7 +7,6 @@ ro:
     ios_install_description: În Safari, deschide meniul de partajare și selectează Adăugați la ecranul principal
   start_trial:
     title: Începeți o încercare gratuită a Loomio
-    intro: Vă mulțumim pentru interesul manifestat față de Loomio. Suntem încântați să vă oferim o perioadă de încercare gratuită de %{day} zile, astfel încât să puteți vedea dacă Loomio este potrivit pentru organizația dvs.
     lets_get_started: Să începem!
     your_name: Numele dumneavoastră
     your_email: Email-ul tau
@@ -26,6 +25,7 @@ ro:
     please_accept_the_terms: Vă rugăm să acceptați termenii
     how_did_you_hear_about_loomio: Cum ai auzit de Loomio?
     newsletter_intro: Ai vrea să afli despre noile funcții, interviuri cu clienții, studii de caz și anunțuri de la echipa Loomio?
+    intro: Partea asta e simplă — completează formularul pentru a începe perioada de probă gratuită
   tasks:
     tasks: Sarcini
     your_tasks: Sarcinile tale

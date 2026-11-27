@@ -7,7 +7,6 @@ de:
     ios_install_description: Öffne in Safari „Teilen“ und wähle „Zum Home-Bildschirm“
   start_trial:
     title: Starte eine kostenlose Testversion von Loomio
-    intro: Vielen Dank für dein Interesse an Loomio. Wir freuen uns, dir eine %{day}-tägige kostenlose Testversion anbieten zu können, damit du sehen kannst, ob Loomio für deine Organisation geeignet ist.
     lets_get_started: Lass uns anfangen!
     your_name: Dein Name
     your_email: Deine E-Mail
@@ -26,6 +25,7 @@ de:
     please_accept_the_terms: Bitte akzeptiere die Bedingungen
     how_did_you_hear_about_loomio: Wie hast du von Loomio erfahren?
     newsletter_intro: Möchtest du über neue Funktionen, Kundeninterviews, Fallstudien und Ankündigungen des Loomio-Teams informiert werden?
+    intro: Das geht ganz einfach — fülle dieses Formular aus, um deine kostenlose Testversion zu starten
   tasks:
     tasks: Aufgaben
     your_tasks: Deine Aufgaben

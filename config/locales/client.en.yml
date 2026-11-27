@@ -7,7 +7,7 @@ en:
     ios_install_description: In Safari, open Share and select Add to Home Screen
   start_trial:
     title: Start a free trial of Loomio
-    intro: Thank you for your interest in Loomio. We're delighted to offer you a %{day}-day free trial so you can see if Loomio is a good fit for you organization.
+    intro: This bit is easy — complete this form to start your free trial
     lets_get_started: Let's get started!
     your_name: Your name
     your_email: Your email

@@ -7,7 +7,6 @@ tr:
     ios_install_description: Safari'de Paylaş'ı açın ve Ana Ekrana Ekle'yi seçin
   start_trial:
     title: Loomio'nun ücretsiz deneme sürümünü başlatın
-    intro: Loomio'ya gösterdiğiniz ilgi için teşekkür ederiz. Loomio'nun kuruluşunuza uygun olup olmadığını görebilmeniz için size %{day} günlük ücretsiz deneme olanağı sunmaktan mutluluk duyuyoruz.
     lets_get_started: Başlayalım!
     your_name: Adınız
     your_email: E-posta adresiniz
@@ -26,6 +25,7 @@ tr:
     please_accept_the_terms: Lütfen şartları kabul edin
     how_did_you_hear_about_loomio: Loomio'yu nasıl duydunuz?
     newsletter_intro: Loomio ekibinin yeni özellikleri, müşteri röportajları, vaka çalışmaları ve duyuruları hakkında bilgi edinmek ister misiniz?
+    intro: Bu kısım kolay — ücretsiz denemenizi başlatmak için bu formu doldurun
   tasks:
     tasks: Görevler
     your_tasks: Görevleriniz

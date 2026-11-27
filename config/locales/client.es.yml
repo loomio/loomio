@@ -7,7 +7,6 @@ es:
     ios_install_description: En Safari, abre Compartir y selecciona Añadir a pantalla de inicio
   start_trial:
     title: Iniciar una prueba gratuita de Loomio
-    intro: Gracias por tu interés en Loomio. Estamos encantados de ofrecerte una prueba gratuita de %{day} días para que puedas ver si Loomio es una buena opción para tu organización.
     lets_get_started: "¡Empecemos!"
     your_name: Tu nombre
     your_email: Tu correo electrónico
@@ -26,6 +25,7 @@ es:
     please_accept_the_terms: Acepta los términos
     how_did_you_hear_about_loomio: "¿Cómo te enteraste de Loomio?"
     newsletter_intro: "¿Quieres saber sobre nuevas funciones, entrevistas con clientes, estudios de casos y anuncios del equipo de Loomio?"
+    intro: 'Esta parte es fácil: completa este formulario para iniciar tu prueba gratuita'
   tasks:
     tasks: Tareas
     your_tasks: Tus tareas

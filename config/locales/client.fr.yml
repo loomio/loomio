@@ -7,7 +7,6 @@ fr:
     ios_install_description: Dans Safari, ouvrez Partager et sélectionnez Ajouter à l’écran d’accueil
   start_trial:
     title: Commencer un essai gratuit de Loomio
-    intro: Merci de votre intérêt pour Loomio. Nous sommes ravis de vous offrir un essai gratuit de %{day} jours afin que vous puissiez voir si Loomio convient bien à votre organisation.
     lets_get_started: Commençons!
     your_name: Votre nom
     your_email: Votre email
@@ -26,6 +25,7 @@ fr:
     please_accept_the_terms: Acceptez les conditions
     how_did_you_hear_about_loomio: Comment avez-vous entendu parler de Loomio ?
     newsletter_intro: Souhaitez-vous être informé des nouvelles fonctionnalités, des entretiens avec les clients, des études de cas et des annonces de l'équipe Loomio ?
+    intro: C’est simple — remplissez ce formulaire pour commencer votre essai gratuit
   tasks:
     tasks: Tâches
     your_tasks: Vos tâches

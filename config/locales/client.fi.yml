@@ -7,7 +7,6 @@ fi:
     ios_install_description: Avaa Safarissa Jaa ja valitse Lisää Koti-valikkoon
   start_trial:
     title: Aloita ilmainen Loomio-kokeilu
-    intro: Kiitos mielenkiinnostasi Loomiota kohtaan. Meillä on ilo tarjota sinulle %{day} päivän ilmainen kokeilu, jotta voit nähdä, sopiiko Loomio organisaatiollesi.
     lets_get_started: Aloitetaan!
     your_name: Sinun nimesi
     your_email: Sähköpostisi
@@ -26,6 +25,7 @@ fi:
     please_accept_the_terms: Hyväksy ehdot
     how_did_you_hear_about_loomio: Mistä kuulit Loomiosta?
     newsletter_intro: Haluatko kuulla Loomio-tiimin uusista ominaisuuksista, asiakashaastatteluista, tapaustutkimuksista ja tiedotteista?
+    intro: Tämä on helppoa — täytä lomake ja aloita ilmainen kokeilu
   tasks:
     tasks: Tehtävät
     your_tasks: Sinun tehtäväsi

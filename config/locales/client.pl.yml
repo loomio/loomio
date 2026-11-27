@@ -7,7 +7,6 @@ pl:
     ios_install_description: W Safari otwórz menu Udostępnij i wybierz Dodaj do ekranu początkowego
   start_trial:
     title: Rozpocznij bezpłatny okres próbny Loomio
-    intro: Dziękujemy za zainteresowanie Loomio. Z przyjemnością oferujemy Ci %{day}-dniowy bezpłatny okres próbny, dzięki któremu możesz sprawdzić, czy Loomio jest dobrym rozwiązaniem dla Twojej organizacji.
     lets_get_started: Zacznijmy!
     your_name: Twoje imię
     your_email: Twój email
@@ -26,6 +25,7 @@ pl:
     please_accept_the_terms: Proszę zaakceptować warunki
     how_did_you_hear_about_loomio: Jak dowiedziałeś się o Loomio?
     newsletter_intro: Chcesz usłyszeć o nowych funkcjach, wywiadach z klientami, studiach przypadków i ogłoszeniach zespołu Loomio?
+    intro: To proste — wypełnij formularz, aby rozpocząć bezpłatny okres próbny
   tasks:
     tasks: Zadania
     your_tasks: Twoje zadania

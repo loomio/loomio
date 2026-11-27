@@ -7,7 +7,6 @@ sl:
     ios_install_description: V Safariju odpri Deljenje in izberi Dodaj na začetni zaslon
   start_trial:
     title: Začnite brezplačno preskusno različico Loomio
-    intro: Hvala za vaše zanimanje za Loomio. Z veseljem vam ponujamo %{day}-dnevno brezplačno preskusno različico, da boste lahko videli, ali je Loomio primeren za vašo organizacijo.
     lets_get_started: Začnimo!
     your_name: Tvoje ime
     your_email: Vaš e-poštni naslov
@@ -26,6 +25,7 @@ sl:
     please_accept_the_terms: Sprejmite pogoje
     how_did_you_hear_about_loomio: Kako ste izvedeli za Loomio?
     newsletter_intro: Bi radi slišali o novih funkcijah, intervjujih s strankami, študijah primerov in napovedih ekipe Loomio?
+    intro: Ta korak je preprost — izpolnite obrazec in začnite brezplačno preskusno obdobje
   tasks:
     tasks: Naloge
     your_tasks: Vaše naloge

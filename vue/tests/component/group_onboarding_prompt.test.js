@@ -74,7 +74,8 @@ describe('GroupOnboardingPrompt', () => {
       id: 100,
       key: 'trial-key',
       name: 'Trial Group',
-      discussionsCount: 0,
+      acceptedMembershipsCount: 1,
+      membershipsCount: 1,
       onboardingCompleted: false,
       subscription: { plan: 'trial', state: 'active' },
       ...overrides
@@ -131,9 +132,9 @@ describe('GroupOnboardingPrompt', () => {
     expect(wrapper.find('.onboarding-prompt').exists()).toBe(false);
   });
 
-  it('hides when already completed, non-admin, or group already has discussions', () => {
+  it('hides when already completed, non-admin, or group has 3 or more members', () => {
     expect(mountPrompt(setupGroup({ id: 101, onboardingCompleted: true })).find('.onboarding-prompt').exists()).toBe(false);
-    expect(mountPrompt(setupGroup({ id: 102, discussionsCount: 1 })).find('.onboarding-prompt').exists()).toBe(false);
+    expect(mountPrompt(setupGroup({ id: 102, acceptedMembershipsCount: 3, membershipsCount: 3 })).find('.onboarding-prompt').exists()).toBe(false);
     expect(mountPrompt(setupGroup({ id: 103 }, false)).find('.onboarding-prompt').exists()).toBe(false);
   });
 });

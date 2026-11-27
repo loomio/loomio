@@ -127,4 +127,16 @@ describe('trial signup request failures', () => {
       user_email: 'alex@example.com'
     }));
   });
+
+  it('renders all 5 two-line category options when the dropdown opens', async () => {
+    await mountForm();
+    wrapper.findComponent({name: 'VSelect'}).vm.menu = true;
+    await flushPromises();
+
+    const items = document.querySelectorAll('.v-overlay .v-list-item');
+    expect(items.length).toBe(5);
+    expect(document.body.textContent).toContain('group_survey.categories.board');
+    expect(document.body.textContent).toContain('group_survey.category_descriptions.board');
+    expect(document.body.textContent).toContain('group_survey.categories.other');
+  });
 });

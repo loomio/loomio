@@ -7,7 +7,6 @@ hr:
     ios_install_description: U pregledniku Safari otvori Dijeli i odaberi Dodaj na početni zaslon
   start_trial:
     title: Započnite besplatnu probnu verziju Loomija
-    intro: Hvala vam na interesu za Loomio. Drago nam je što vam možemo ponuditi %{day}-dnevno besplatno probno razdoblje kako biste mogli vidjeti odgovara li Loomio vašoj organizaciji.
     lets_get_started: Započnimo!
     your_name: Tvoje ime
     your_email: Tvoj email
@@ -26,6 +25,7 @@ hr:
     please_accept_the_terms: Molimo prihvatite uvjete
     how_did_you_hear_about_loomio: Kako ste čuli za Loomio?
     newsletter_intro: Želite li čuti o novim značajkama, intervjuima s kupcima, studijama slučaja i najavama Loomio tima?
+    intro: Ovaj je dio jednostavan — ispunite obrazac i započnite besplatno probno razdoblje
   tasks:
     tasks: Zadaci
     your_tasks: Vaši zadaci
