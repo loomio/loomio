@@ -3420,17 +3420,6 @@ de:
       closing_soon: Endet bald
       name: Name
       last_seen: Zuletzt gesehen
-    edit_tags_description: Erstelle, benenne, verbinde und färbe Schlagwörter zum Ordnen von Threads und Abstimmungen.
-    manage_subscription_description: Sieh dir deinen Tarif, Rechnungsdaten und Mitgliedergrenzen an.
-    change_volume_description: Wähle, wie oft du E-Mail- und Push-Benachrichtigungen aus dieser Gruppe erhältst.
-    email_group_description: Starte einen neuen Thread in dieser Gruppe per E-Mail an diese Adresse.
-    group_stats_description: Sieh dir die Mitgliederaktivität und die Beteiligung an Threads und Abstimmungen im Zeitverlauf an.
-    become_coordinator_description: Übernimm die Rechte als Gruppenadmin für diese Gruppe.
-    chatbots_description: Verbinde Slack, Mattermost, Discord oder andere Chat-Tools, um Neuigkeiten aus der Gruppe zu posten.
-    api_docs_description: Richte API-Zugriff und Webhooks ein, um Loomio mit deinen eigenen Tools zu verbinden.
-    export_data_description: Lade eine Kopie der Threads, Abstimmungen, Kommentare und Mitglieder dieser Gruppe herunter.
-    leave_group_description: Verlasse diese Gruppe und erhalte keine Benachrichtigungen mehr.
-    destroy_group_description: Plane die endgültige Löschung dieser Gruppe und ihrer Inhalte.
   onboarding_prompt:
     title: Erzähl uns etwas über deine Gruppe
     subtitle: Hilft uns, Tipps und Unterstützung in deiner Testphase anzupassen

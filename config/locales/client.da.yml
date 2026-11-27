@@ -3397,17 +3397,6 @@ da:
       closing_soon: Lukker snart
       name: Navn
       last_seen: Sidst set
-    edit_tags_description: Opret, omdøb, flet og farvekod tags til at organisere tråde og afstemninger.
-    manage_subscription_description: Se dit abonnement, dine faktureringsoplysninger og medlemsgrænser.
-    change_volume_description: Vælg, hvor ofte du får e-mails og pushnotifikationer fra denne gruppe.
-    email_group_description: Start en ny tråd i denne gruppe ved at sende en e-mail til denne adresse.
-    group_stats_description: Se medlemmers aktivitet, engagement i tråde og deltagelse i afstemninger over tid.
-    become_coordinator_description: Giv dig selv rettigheder som gruppeadmin i denne gruppe.
-    chatbots_description: Tilslut Slack, Mattermost, Discord eller andre chatværktøjer for at dele nyt fra gruppen.
-    api_docs_description: Opsæt API-adgang og webhooks for at forbinde Loomio med dine egne værktøjer.
-    export_data_description: Download en kopi af denne gruppes tråde, afstemninger, kommentarer og medlemmer.
-    leave_group_description: Forlad denne gruppe, og stop med at modtage notifikationer.
-    destroy_group_description: Planlæg permanent sletning af denne gruppe og dens indhold.
   onboarding_prompt:
     title: Fortæl os lidt om din gruppe
     subtitle: Hjælper os med at tilpasse tips og støtte i din prøveperiode

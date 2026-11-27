@@ -3386,17 +3386,6 @@ hr:
       closing_soon: Uskoro se zatvara
       name: Naziv
       last_seen: Zadnji posjet
-    edit_tags_description: Stvarajte, preimenujte, spajajte i bojite oznake za organiziranje niti i anketa.
-    manage_subscription_description: Pregledajte svoj plan, podatke za naplatu i ograničenja broja članova.
-    email_group_description: Pokrenite novu nit u ovoj grupi slanjem e-pošte na ovu adresu.
-    group_stats_description: Pratite aktivnost članova, sudjelovanje u nitima i glasanju kroz vrijeme.
-    become_coordinator_description: Preuzmite ovlasti admina ove grupe.
-    chatbots_description: Povežite Slack, Mattermost, Discord ili druge alate za razgovor za objavu novosti iz grupe.
-    api_docs_description: Postavite API pristup i webhookove za povezivanje Loomija sa svojim alatima.
-    export_data_description: Preuzmite kopiju niti, anketa, komentara i članova ove grupe.
-    leave_group_description: Napustite ovu grupu i prestanite primati obavijesti.
-    destroy_group_description: Zakažite trajno brisanje ove grupe i njezina sadržaja.
-    change_volume_description: Odabir učestalosti primanja e-pošte i push obavijesti iz ove grupe.
   onboarding_prompt:
     title: Recite nam nešto o svojoj grupi
     subtitle: Pomaže nam prilagoditi savjete i podršku tijekom probnog razdoblja

@@ -3384,17 +3384,6 @@ ja:
       closing_soon: 締切が近い順
       name: 名前
       last_seen: 最終アクセス
-    edit_tags_description: スレッドやアンケートの整理に使うタグの作成、名前の変更、統合、色分けができます。
-    manage_subscription_description: プラン、請求情報、メンバー数の上限を確認できます。
-    change_volume_description: このグループからメールやプッシュ通知を受け取る頻度を選べます。
-    email_group_description: このアドレスにメールを送ると、グループに新しいスレッドを作成できます。
-    group_stats_description: メンバーの活動、スレッドでの交流、投票への参加状況の推移を確認できます。
-    become_coordinator_description: このグループのグループ管理者権限を取得します。
-    chatbots_description: Slack、Mattermost、Discordなどのチャットツールを接続して、グループの更新情報を投稿できます。
-    api_docs_description: APIアクセスとWebhookを設定して、Loomioを独自のツールと連携できます。
-    export_data_description: このグループのスレッド、アンケート、コメント、メンバーのデータをダウンロードできます。
-    leave_group_description: このグループから退会し、通知の受信を停止します。
-    destroy_group_description: このグループとその内容を完全に削除するよう予約します。
   onboarding_prompt:
     title: グループについて少し教えてください
     subtitle: 試用中のヒントやサポートをグループに合わせてお届けします

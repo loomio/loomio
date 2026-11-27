@@ -3385,17 +3385,6 @@ ro:
       closing_soon: Se închid curând
       name: Nume
       last_seen: Ultima prezență
-    edit_tags_description: Creează, redenumește, îmbină și colorează etichetele folosite pentru organizarea firelor și sondajelor.
-    manage_subscription_description: Vezi planul tău, detaliile de facturare și limitele de membri.
-    change_volume_description: Alege cât de des primești notificări prin email și push de la acest grup.
-    email_group_description: Începe un fir nou în acest grup trimițând un email la această adresă.
-    group_stats_description: Vezi activitatea membrilor, implicarea în fire și participarea la vot de-a lungul timpului.
-    become_coordinator_description: Preia permisiunile de admin al acestui grup.
-    chatbots_description: Conectează Slack, Mattermost, Discord sau alte aplicații de chat pentru a publica noutăți din grup.
-    api_docs_description: Configurează accesul API și webhookurile pentru a integra Loomio cu instrumentele tale.
-    export_data_description: Descarcă o copie a firelor, sondajelor, comentariilor și membrilor acestui grup.
-    leave_group_description: Părăsește acest grup și nu mai primi notificări.
-    destroy_group_description: Programează ștergerea definitivă a acestui grup și a conținutului său.
   onboarding_prompt:
     title: Spune-ne câte ceva despre grupul tău
     subtitle: Ne ajută să adaptăm sfaturile și sprijinul în perioada de probă

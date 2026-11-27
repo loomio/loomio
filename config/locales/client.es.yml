@@ -3421,17 +3421,6 @@ es:
       closing_soon: Cierran pronto
       name: Nombre
       last_seen: Última conexión
-    edit_tags_description: Crea, renombra, combina y asigna colores a las etiquetas usadas para organizar hilos y encuestas.
-    manage_subscription_description: Consulta tu plan, los datos de facturación y los límites de miembros.
-    change_volume_description: Elige con qué frecuencia recibes notificaciones por correo y push de este grupo.
-    email_group_description: Inicia un nuevo hilo en este grupo enviando un correo a esta dirección.
-    group_stats_description: Consulta la actividad de los miembros y la participación en hilos y votaciones a lo largo del tiempo.
-    become_coordinator_description: Obtén permisos de admin del grupo.
-    chatbots_description: Conecta Slack, Mattermost, Discord u otras herramientas de chat para publicar novedades del grupo.
-    api_docs_description: Configura el acceso a la API y los webhooks para integrar Loomio con tus propias herramientas.
-    export_data_description: Descarga una copia de los hilos, encuestas, comentarios y miembros de este grupo.
-    leave_group_description: Sal de este grupo y deja de recibir notificaciones.
-    destroy_group_description: Programa la eliminación permanente de este grupo y su contenido.
   onboarding_prompt:
     title: Cuéntanos un poco sobre tu grupo
     subtitle: Nos ayuda a adaptar los consejos y el apoyo durante tu prueba

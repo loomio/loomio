@@ -3413,17 +3413,6 @@ zh_TW:
       closing_soon: 即將截止
       name: 名稱
       last_seen: 上次上線
-    edit_tags_description: 建立、重新命名、合併用來整理對話串和投票的標籤，並設定標籤顏色。
-    manage_subscription_description: 查看方案、帳單資料和成員人數上限。
-    change_volume_description: 選擇接收此群組電子郵件和推播通知的頻率。
-    email_group_description: 寄送電子郵件至此地址，即可在此群組建立新對話串。
-    group_stats_description: 查看成員活動、對話串互動和投票參與情況隨時間的變化。
-    become_coordinator_description: 取得此群組的群組管理員權限。
-    chatbots_description: 連接 Slack、Mattermost、Discord 或其他聊天工具，發布群組動態。
-    api_docs_description: 設定 API 存取權和 webhook，將 Loomio 與您自己的工具整合。
-    export_data_description: 下載此群組的對話串、投票、評論和成員資料副本。
-    leave_group_description: 退出此群組並停止接收通知。
-    destroy_group_description: 排定永久刪除此群組及其內容。
   onboarding_prompt:
     title: 簡單介紹一下您的群組
     subtitle: 幫助我們在試用期間提供適合的建議與支援

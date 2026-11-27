@@ -3382,17 +3382,6 @@ tr:
       closing_soon: Yakında kapanacak
       name: Ad
       last_seen: Son görülme
-    edit_tags_description: İleti dizilerini ve anketleri düzenlemek için etiket oluşturun, adlarını değiştirin, birleştirin ve renklendirin.
-    manage_subscription_description: Planınızı, fatura bilgilerinizi ve üye sınırlarınızı görün.
-    change_volume_description: Bu gruptan ne sıklıkla e-posta ve anlık bildirim alacağınızı seçin.
-    email_group_description: Bu adrese e-posta göndererek grupta yeni bir ileti dizisi başlatın.
-    group_stats_description: Üye etkinliğini, ileti dizilerindeki etkileşimi ve oylamalara katılımı zaman içinde izleyin.
-    become_coordinator_description: Bu grubun yöneticisi olmak için yetkileri alın.
-    chatbots_description: Grup güncellemelerini paylaşmak için Slack, Mattermost, Discord veya diğer sohbet araçlarını bağlayın.
-    api_docs_description: Loomio'yu kendi araçlarınızla entegre etmek için API erişimini ve web kancalarını yapılandırın.
-    export_data_description: Bu grubun ileti dizilerinin, anketlerinin, yorumlarının ve üyelerinin bir kopyasını indirin.
-    leave_group_description: Bu gruptan ayrılın ve bildirim almayı durdurun.
-    destroy_group_description: Bu grubun ve içeriğinin kalıcı olarak silinmesini planlayın.
   onboarding_prompt:
     title: Bize grubunuzdan biraz bahsedin
     subtitle: Deneme sürenizde öneri ve desteği size göre uyarlamamıza yardımcı olur

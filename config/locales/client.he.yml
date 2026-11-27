@@ -3404,17 +3404,6 @@ he:
       closing_soon: נסגרים בקרוב
       name: שם
       last_seen: ביקור אחרון
-    edit_tags_description: יצירה, שינוי שם, מיזוג וצביעה של תגיות לארגון שרשורים וסקרים.
-    manage_subscription_description: צפייה במסלול, בפרטי החיוב ובמגבלות על מספר החברים.
-    change_volume_description: בחירת תדירות קבלת התראות בדוא״ל ובדחיפה מהקבוצה הזו.
-    email_group_description: פתיחת שרשור חדש בקבוצה הזו בשליחת דוא״ל לכתובת הזו.
-    group_stats_description: צפייה בפעילות החברים, במעורבות בשרשורים ובהשתתפות בהצבעות לאורך זמן.
-    become_coordinator_description: קבלת הרשאות מנהל קבוצה בקבוצה הזו.
-    chatbots_description: חיבור Slack, Mattermost, Discord או כלי צ׳אט אחרים לפרסום עדכוני הקבוצה.
-    api_docs_description: הגדרת גישה ל-API ו-webhooks לשילוב Loomio עם הכלים שלכם.
-    export_data_description: הורדת עותק של השרשורים, הסקרים, התגובות והחברים בקבוצה הזו.
-    leave_group_description: עזיבת הקבוצה הזו והפסקת קבלת התראות.
-    destroy_group_description: תזמון מחיקה לצמיתות של הקבוצה הזו והתוכן שלה.
   onboarding_prompt:
     title: כמה מילים על הקבוצה
     subtitle: עוזר לנו להתאים עצות ותמיכה בתקופת הניסיון

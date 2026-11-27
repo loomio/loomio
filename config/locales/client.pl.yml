@@ -3412,17 +3412,6 @@ pl:
       closing_soon: Wkrótce się kończą
       name: Nazwa
       last_seen: Ostatnia wizyta
-    edit_tags_description: Twórz, zmieniaj nazwy, łącz i koloruj tagi do porządkowania wątków i ankiet.
-    manage_subscription_description: Sprawdź swój plan, dane rozliczeniowe i limity członków.
-    change_volume_description: Wybierz, jak często otrzymujesz powiadomienia e-mail i push z tej grupy.
-    email_group_description: Rozpocznij nowy wątek w tej grupie, wysyłając e-mail na ten adres.
-    group_stats_description: Sprawdź aktywność członków, zaangażowanie w wątki i udział w głosowaniu na przestrzeni czasu.
-    become_coordinator_description: Uzyskaj uprawnienia administratora tej grupy.
-    chatbots_description: Połącz Slack, Mattermost, Discord lub inne czaty, by publikować aktualności grupy.
-    api_docs_description: Skonfiguruj dostęp do API i webhooki, by połączyć Loomio ze swoimi narzędziami.
-    export_data_description: Pobierz kopię wątków, ankiet, komentarzy i członków tej grupy.
-    leave_group_description: Opuść tę grupę i przestań otrzymywać powiadomienia.
-    destroy_group_description: Zaplanuj trwałe usunięcie tej grupy i jej treści.
   onboarding_prompt:
     title: Opowiedz nam trochę o swojej grupie
     subtitle: Pomoże nam dopasować wskazówki i wsparcie w okresie próbnym

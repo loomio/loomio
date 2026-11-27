@@ -3396,17 +3396,6 @@ hu:
       closing_soon: Hamarosan lezárul
       name: Név
       last_seen: Utoljára aktív
-    edit_tags_description: Hozz létre, nevezz át, vonj össze és színezz címkéket a szálak és szavazások rendszerezéséhez.
-    manage_subscription_description: Nézd meg a csomagodat, a számlázási adatokat és a taglétszám korlátait.
-    change_volume_description: Válaszd ki, milyen gyakran kapsz e-mailes és push értesítéseket ettől a csoporttól.
-    email_group_description: Indíts új szálat ebben a csoportban egy erre a címre küldött e-maillel.
-    group_stats_description: Nézd meg, hogyan alakul a tagok aktivitása, a szálakban és a szavazásokon való részvétel.
-    become_coordinator_description: Szerezz csoportadmin-jogosultságot ebben a csoportban.
-    chatbots_description: Kapcsold össze a Slack, Mattermost, Discord vagy más csevegőeszközzel a csoport híreinek közzétételéhez.
-    api_docs_description: Állítsd be az API-hozzáférést és a webhookokat a Loomio és saját eszközeid összekapcsolásához.
-    export_data_description: Töltsd le a csoport szálainak, szavazásainak, hozzászólásainak és tagjainak másolatát.
-    leave_group_description: Lépj ki a csoportból, és ne kapj több értesítést.
-    destroy_group_description: Ütemezd be a csoport és tartalma végleges törlését.
   onboarding_prompt:
     title: Mesélj kicsit a csoportodról
     subtitle: Segít a próbaidő alatt hozzátok igazítani a tippeket és a támogatást
