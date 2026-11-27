@@ -40,6 +40,8 @@ services:
     container_name: loomio-app
     image: ${LOOMIO_CONTAINER_IMAGE}:${LOOMIO_CONTAINER_TAG}
     restart: unless-stopped
+    group_add:
+      - "10001"
     healthcheck:
       test: ['CMD-SHELL', 'curl --fail http://localhost:3000/ || exit 1']
     expose:
@@ -48,6 +50,8 @@ services:
     environment:
       - VIRTUAL_HOST=${CANONICAL_HOST},${REPLY_HOSTNAME}
       - ACME_HOST=${CANONICAL_HOST},${REPLY_HOSTNAME}
+      - HOTCELL_ROOT=/run/hotcell
+      - HOTCELL_GROUP=10001
     volumes:
       - ./uploads:/loomio/public/system
       - ./storage:/loomio/storage
@@ -56,30 +60,57 @@ services:
       - ./import:/import
       - ./tmp:/loomio/tmp
       - client3:/loomio/public/client3
+      - hotcell-sockets:/run/hotcell/active_storage
     networks:
       - main
     depends_on:
       - db
       - redis
+      - hotcell
 
   worker:
     container_name: loomio-worker
     image: ${LOOMIO_CONTAINER_IMAGE}:${LOOMIO_CONTAINER_TAG}
     restart: always
+    group_add:
+      - "10001"
     networks:
       - main
     env_file: ./.env
     environment:
       - TASK=worker
+      - HOTCELL_ROOT=/run/hotcell
+      - HOTCELL_GROUP=10001
     depends_on:
       app:
         condition: service_healthy
+      hotcell:
+        condition: service_started
     volumes:
       - ./uploads:/loomio/public/system
       - ./storage:/loomio/storage
       - ./files:/loomio/public/files
       - ./plugins:/loomio/plugins/docker
       - ./tmp:/loomio/tmp
+      - hotcell-sockets:/run/hotcell/active_storage
+
+  hotcell:
+    container_name: loomio-hotcell
+    image: ${LOOMIO_CONTAINER_IMAGE}:${LOOMIO_CONTAINER_TAG}
+    restart: unless-stopped
+    network_mode: "none"
+    user: "10001:10001"
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,noexec,nosuid,nodev
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - TASK=hotcell
+    volumes:
+      - hotcell-sockets:/run/hotcell/cell
 
   db:
     container_name: loomio-db
@@ -145,3 +176,4 @@ volumes:
   html:
   acme:
   client3:
+  hotcell-sockets:
