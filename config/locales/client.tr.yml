@@ -3322,12 +3322,12 @@ tr:
     view_plans: Planları gör
     upgrade_now: Şimdi yükselt
     extend_trial_title: 30 ek gün & ücretsiz eğitim görüşmesi kazanın
-    extend_trial_initial: "{count} kişi bir teklif veya ankette oy verdiğinde 30 ek gün ve Loomio ekibinden biriyle ücretsiz eğitim görüşmesi kazanın."
-    extend_trial_remaining: 1 kişi daha bir teklif veya ankette oy verdiğinde 30 ek gün ve Loomio ekibinden biriyle ücretsiz eğitim görüşmesi kazanın. | {count} kişi daha bir teklif veya ankette oy verdiğinde 30 ek gün ve Loomio ekibinden biriyle ücretsiz eğitim görüşmesi kazanın.
     trial_verified: Grubunuzu gördük ve yardım için buradayız. Artık e-postayla davet gönderebilirsiniz — 30 ek gün, Pro özellikleri ve ekibimizle ücretsiz eğitim görüşmesi kazanmak için devam edin.
     trial_extended_title: 30 ek gün & ücretsiz eğitim görüşmesi kazanıldı
-    trial_extended_description: Deneme süreniz 30 gün uzatıldı; alt gruplar ve misafirler etkinleştirildi. Ayrıca Loomio ekibinden biriyle ücretsiz eğitim görüşmesi kazandınız.
     book_training_call: Eğitim görüşmesi ayarlayın
+    extend_trial_initial: Gruba {count} kişi daha katıldığında 30 ek gün ve bir Loomio ekip üyesiyle ücretsiz eğitim görüşmesi kazanın.
+    extend_trial_remaining: Gruba 1 kişi daha katıldığında 30 ek gün ve bir Loomio ekip üyesiyle ücretsiz eğitim görüşmesi kazanın. | Gruba {count} kişi daha katıldığında 30 ek gün ve bir Loomio ekip üyesiyle ücretsiz eğitim görüşmesi kazanın.
+    trial_extended_description: Deneme süreniz 30 gün uzatıldı.
   dashboard_cards:
     all_groups: Tüm gruplar
     unread_count: "{count} okunmamış"

@@ -3370,12 +3370,12 @@ pt_BR:
     view_plans: Ver planos
     upgrade_now: Mude de plano agora
     extend_trial_title: Libere mais 30 dias & uma chamada de treinamento grátis
-    extend_trial_initial: Libere mais 30 dias e uma chamada de treinamento grátis com alguém da equipe Loomio quando {count} pessoas votarem em uma proposta ou enquete.
-    extend_trial_remaining: Libere mais 30 dias e uma chamada de treinamento grátis com alguém da equipe Loomio quando mais 1 pessoa votar em uma proposta ou enquete. | Libere mais 30 dias e uma chamada de treinamento grátis com alguém da equipe Loomio quando mais {count} pessoas votarem em uma proposta ou enquete.
     trial_verified: Já conhecemos seu grupo e estamos aqui para ajudar. Você já pode enviar convites por e-mail — continue para liberar mais 30 dias, recursos Pro e uma chamada de treinamento grátis com nossa equipe.
     trial_extended_title: Mais 30 dias & chamada de treinamento grátis liberados
-    trial_extended_description: Seu período de teste foi estendido por 30 dias com subgrupos e convidados habilitados, além de uma chamada de treinamento grátis com alguém da equipe Loomio.
     book_training_call: Agende uma chamada de treinamento
+    extend_trial_initial: Libere mais 30 dias e uma chamada de treinamento grátis com um membro da equipe Loomio quando outras {count} pessoas entrarem no grupo.
+    extend_trial_remaining: Libere mais 30 dias e uma chamada de treinamento grátis com um membro da equipe Loomio quando mais 1 pessoa entrar no grupo. | Libere mais 30 dias e uma chamada de treinamento grátis com um membro da equipe Loomio quando mais {count} pessoas entrarem no grupo.
+    trial_extended_description: Seu período de teste foi estendido por mais 30 dias.
   dashboard_cards:
     all_groups: Todos os grupos
     unread_count: "{count} não lidas"

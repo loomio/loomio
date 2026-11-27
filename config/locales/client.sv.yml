@@ -3333,12 +3333,12 @@ sv:
     view_plans: Se abonnemang
     upgrade_now: Uppgradera nu
     extend_trial_title: Lås upp 30 extra dagar & ett gratis utbildningssamtal
-    extend_trial_initial: Lås upp 30 extra dagar och ett gratis utbildningssamtal med en person i Loomio-teamet när {count} personer röstar i ett förslag eller en omröstning.
-    extend_trial_remaining: Lås upp 30 extra dagar och ett gratis utbildningssamtal med en person i Loomio-teamet när 1 person till röstar i ett förslag eller en omröstning. | Lås upp 30 extra dagar och ett gratis utbildningssamtal med en person i Loomio-teamet när {count} personer till röstar i ett förslag eller en omröstning.
     trial_verified: Vi har tittat på din grupp och finns här för att hjälpa dig. Du kan nu skicka inbjudningar via e-post — fortsätt för att låsa upp 30 extra dagar, Pro-funktioner och ett gratis utbildningssamtal med vårt team.
     trial_extended_title: 30 extra dagar & ett gratis utbildningssamtal upplåsta
-    trial_extended_description: Din provperiod har förlängts med 30 dagar med undergrupper och gäster aktiverade, plus ett gratis utbildningssamtal med en person i Loomio-teamet.
     book_training_call: Boka ett utbildningssamtal
+    extend_trial_initial: Lås upp 30 extra dagar och ett gratis utbildningssamtal med en medlem i Loomios team när {count} andra personer går med i gruppen.
+    extend_trial_remaining: Lås upp 30 extra dagar och ett gratis utbildningssamtal med en medlem i Loomios team när 1 person till går med i gruppen. | Lås upp 30 extra dagar och ett gratis utbildningssamtal med en medlem i Loomios team när {count} personer till går med i gruppen.
+    trial_extended_description: Din provperiod har förlängts med 30 dagar.
   dashboard_cards:
     all_groups: Alla grupper
     unread_count: "{count} olästa"

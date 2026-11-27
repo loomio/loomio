@@ -3337,12 +3337,12 @@ da:
     view_plans: Se abonnementer
     upgrade_now: Opgrader nu
     extend_trial_title: Lås op for 30 ekstra dage & et gratis oplæringsmøde
-    extend_trial_initial: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} personer stemmer om et forslag eller i en afstemning.
-    extend_trial_remaining: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når 1 person mere stemmer om et forslag eller i en afstemning. | Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} personer mere stemmer om et forslag eller i en afstemning.
     trial_verified: Vi har set din gruppe og er klar til at hjælpe. Du kan nu sende invitationer via e-mail — fortsæt for at låse op for 30 ekstra dage, Pro-funktioner og et gratis oplæringsmøde med vores team.
     trial_extended_title: 30 ekstra dage & gratis oplæringsmøde låst op
-    trial_extended_description: Din prøveperiode er forlænget med 30 dage med adgang til undergrupper og gæster samt et gratis oplæringsmøde med en fra Loomio-teamet.
     book_training_call: Book et oplæringsmøde
+    extend_trial_initial: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} andre har meldt sig ind i gruppen.
+    extend_trial_remaining: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når 1 mere har meldt sig ind i gruppen. | Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} flere har meldt sig ind i gruppen.
+    trial_extended_description: Din prøveperiode er forlænget med 30 dage.
   dashboard_cards:
     all_groups: Alle grupper
     unread_count: "{count} ulæste"

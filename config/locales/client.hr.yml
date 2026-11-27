@@ -3326,12 +3326,12 @@ hr:
     view_plans: Pogledajte pakete
     upgrade_now: Nadogradite sada
     extend_trial_title: Osigurajte 30 dodatnih dana & besplatan poziv za obuku
-    extend_trial_initial: Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom tima Loomio kad {count} osoba glasa o prijedlogu ili u anketi.
-    extend_trial_remaining: Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom tima Loomio kad još 1 osoba glasa o prijedlogu ili u anketi. | Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom tima Loomio kad još {count} osoba glasa o prijedlogu ili u anketi.
     trial_verified: Pregledali smo vašu grupu i tu smo da pomognemo. Sada možete slati pozivnice e-poštom — nastavite kako biste osigurali 30 dodatnih dana, Pro značajke i besplatan poziv za obuku s našim timom.
     trial_extended_title: Osigurano 30 dodatnih dana & besplatan poziv za obuku
-    trial_extended_description: Vaše probno razdoblje produljeno je za 30 dana uz omogućene podgrupe i goste te besplatan poziv za obuku s članom tima Loomio.
     book_training_call: Rezervirajte poziv za obuku
+    extend_trial_initial: Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom Loomio tima kada se grupi pridruži {count} drugih osoba.
+    extend_trial_remaining: Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom Loomio tima kada se grupi pridruži još 1 osoba. | Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom Loomio tima kada se grupi pridruži još {count} osoba.
+    trial_extended_description: Vaše probno razdoblje produljeno je za 30 dana.
   dashboard_cards:
     all_groups: Sve grupe
     unread_count: "{count} nepročitanih"

@@ -3325,12 +3325,12 @@ ro:
     view_plans: Vezi planurile
     upgrade_now: Treci acum la un plan superior
     extend_trial_title: Deblochează încă 30 de zile și o sesiune gratuită de instruire
-    extend_trial_initial: Deblochează încă 30 de zile și o sesiune gratuită de instruire cu un membru al echipei Loomio când {count} persoane votează într-o propunere sau într-un sondaj.
-    extend_trial_remaining: Deblochează încă 30 de zile și o sesiune gratuită de instruire cu un membru al echipei Loomio când încă o persoană votează într-o propunere sau într-un sondaj. | Deblochează încă 30 de zile și o sesiune gratuită de instruire cu un membru al echipei Loomio când încă {count} persoane votează într-o propunere sau într-un sondaj.
     trial_verified: Am văzut grupul tău și suntem aici să te ajutăm. Acum poți trimite invitații prin e-mail — continuă pentru a debloca încă 30 de zile, funcții Pro și o sesiune gratuită de instruire cu echipa noastră.
     trial_extended_title: Ai deblocat încă 30 de zile și o sesiune gratuită de instruire
-    trial_extended_description: Perioada ta de probă a fost prelungită cu 30 de zile, cu subgrupuri și invitați activați, plus o sesiune gratuită de instruire cu un membru al echipei Loomio.
     book_training_call: Programează o sesiune de instruire
+    extend_trial_initial: Deblochează încă 30 de zile și o sesiune gratuită de instruire cu un membru al echipei Loomio când alte {count} persoane se alătură grupului.
+    extend_trial_remaining: Deblochează încă 30 de zile și o sesiune gratuită de instruire cu un membru al echipei Loomio când încă o persoană se alătură grupului. | Deblochează încă 30 de zile și o sesiune gratuită de instruire cu un membru al echipei Loomio când încă {count} persoane se alătură grupului.
+    trial_extended_description: Perioada ta de probă a fost prelungită cu 30 de zile.
   dashboard_cards:
     all_groups: Toate grupurile
     unread_count: "{count} necitite"

@@ -3324,12 +3324,12 @@ ja:
     view_plans: プランを見る
     upgrade_now: 今すぐアップグレード
     extend_trial_title: 30日間の延長と無料トレーニング通話を利用可能に
-    extend_trial_initial: "{count}人が提案やアンケートに投票すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。"
-    extend_trial_remaining: あと1人が提案やアンケートに投票すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。 | あと{count}人が提案やアンケートに投票すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。
     trial_verified: グループを確認しました。サポートの準備ができています。メールで招待を送れるようになりました。このまま利用を続けると、試用期間が30日間延長され、Pro機能とチームとの無料トレーニング通話を利用できます。
     trial_extended_title: 30日間の延長と無料トレーニング通話が利用可能になりました
-    trial_extended_description: 試用期間が30日間延長され、サブグループとゲスト機能に加え、Loomioチームのメンバーとの無料トレーニング通話を利用できるようになりました。
     book_training_call: トレーニング通話を予約
+    extend_trial_initial: 他に{count}人がグループに参加すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。
+    extend_trial_remaining: あと1人がグループに参加すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。 | あと{count}人がグループに参加すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。
+    trial_extended_description: 試用期間が30日間延長されました。
   dashboard_cards:
     all_groups: すべてのグループ
     unread_count: 未読{count}件

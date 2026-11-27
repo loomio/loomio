@@ -20,7 +20,7 @@ vi.mock('@/shared/services/app_config', () => ({
     defaultLocale: 'en',
     baseUrl: 'https://loomio.example/',
     get features() {
-      return { app: { subscriptions: mocks.subscriptions, loomio_subscriptions: false } };
+      return { app: { subscriptions: mocks.subscriptions, loomio_subscriptions: false, training_call_url: 'https://cal.example/training' } };
     },
     theme: { brand_colors: { yellow425: '#ffee55', blue400: '#3366aa', blue50: '#eeeeff', grey100: '#eeeeee' } }
   }
@@ -145,12 +145,12 @@ describe('GroupCards and PlanBanner', () => {
     });
   }
 
-  it('shows remaining participants countdown, view plans button, and group summary cards', async () => {
-    const group = setupGroup({ trialParticipantsCount: 1 });
+  it('shows remaining members countdown, view plans button, and group summary cards', async () => {
+    const group = setupGroup({ membershipsCount: 2, pendingMembershipsCount: 0, acceptedMembershipsCount: 2 });
     wrapper = mountCards(group);
     await flushPromises();
 
-    expect(wrapper.find('.plan-banner').text()).toContain('Unlock 30 extra days and a free training call with a Loomio team member when 2 more people vote in a proposal or poll.');
+    expect(wrapper.find('.plan-banner').text()).toContain('Unlock 30 extra days and a free training call with a Loomio team member when 1 more person joins the group.');
     expect(wrapper.find('.plan-banner__upgrade').attributes('href')).toContain('/upgrade/100');
     expect(wrapper.find('.plan-banner__upgrade').text()).toContain('View plans');
     expect(wrapper.find('.plan-banner__verified-badge').exists()).toBe(false);
@@ -200,7 +200,7 @@ describe('GroupCards and PlanBanner', () => {
     await flushPromises();
 
     expect(wrapper.find('.plan-banner').text()).toContain('30 extra days & free training call unlocked');
-    expect(wrapper.find('.plan-banner__training-call').exists()).toBe(true);
+    expect(wrapper.find('.plan-banner__training-call').attributes('href')).toBe('https://cal.example/training');
     await wrapper.find('.plan-banner__dismiss').trigger('click');
     await flushPromises();
     expect(mocks.saveExperience).toHaveBeenCalledWith('hideOnboarding', true);

@@ -1,7 +1,8 @@
 <script setup lang="js">
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { differenceInDays, parseISO } from 'date-fns';
+import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import SubscriptionService from '@/shared/services/subscription_service';
@@ -9,9 +10,8 @@ import SubscriptionService from '@/shared/services/subscription_service';
 const { group } = defineProps({ group: Object });
 const { t } = useI18n();
 const dismissed = ref(false);
-const fetchedParticipantsCount = ref(0);
 
-const REQUIRED_PARTICIPANTS = 3;
+const REQUIRED_MEMBERS = 3;
 
 const parentGroup = computed(() => (
   typeof group.parentOrSelf === 'function' ? (group.parentOrSelf() || group) : group
@@ -39,20 +39,24 @@ const daysRemaining = computed(() => (
 ));
 const isNearingExpiry = computed(() => isDisabled.value || (daysRemaining.value !== null && daysRemaining.value <= 3));
 const upgradeUrl = computed(() => SubscriptionService.upgradeUrl(parentGroup.value));
+const trainingCallUrl = computed(() => AppConfig.features?.app?.training_call_url);
 const upgradeLabel = computed(() => (
   isNearingExpiry.value ? t('onboarding_card.upgrade_now') : t('onboarding_card.view_plans')
 ));
 const emailInvitationsAllowed = computed(() => (
   Session.user().emailInvitationsAllowed() || parentGroup.value.emailInvitationsAllowed()
 ));
-const participantsCount = computed(() => (
-  trialExtended.value ? REQUIRED_PARTICIPANTS : Math.min(REQUIRED_PARTICIPANTS, fetchedParticipantsCount.value)
-));
-const participantsRemaining = computed(() => Math.max(0, REQUIRED_PARTICIPANTS - participantsCount.value));
+const acceptedMembersCount = computed(() => {
+  if (trialExtended.value) { return REQUIRED_MEMBERS; }
+  const count = parentGroup.value.acceptedMembershipsCount ??
+    Math.max(0, (parentGroup.value.membershipsCount || 0) - (parentGroup.value.pendingMembershipsCount || 0));
+  return Math.min(REQUIRED_MEMBERS, count);
+});
+const membersRemaining = computed(() => Math.max(0, REQUIRED_MEMBERS - acceptedMembersCount.value));
 const extendTrialText = computed(() => (
-  participantsCount.value === 0
-    ? t('onboarding_card.extend_trial_initial', { count: participantsRemaining.value })
-    : t('onboarding_card.extend_trial_remaining', { count: participantsRemaining.value }, participantsRemaining.value)
+  acceptedMembersCount.value <= 1
+    ? t('onboarding_card.extend_trial_initial', { count: membersRemaining.value })
+    : t('onboarding_card.extend_trial_remaining', { count: membersRemaining.value }, membersRemaining.value)
 ));
 const alertColor = computed(() => {
   if (isDisabled.value) { return 'warning'; }
@@ -62,21 +66,6 @@ const alertColor = computed(() => {
 const visible = computed(() => (
   Boolean(subscription.value) && isLoggedIn.value && isMember.value && (isDisabled.value || (isTrial.value && isAdmin.value))
 ));
-
-watch(
-  () => (visible.value && isTrial.value && !isDisabled.value && !trialExtended.value ? parentGroup.value?.id : null),
-  groupId => {
-    if (!groupId || !Records.remote?.get) { return; }
-    Records.remote.get('subscriptions/trial_status', { group_id: groupId })
-      .then(data => {
-        if (typeof data?.participants_count === 'number') {
-          fetchedParticipantsCount.value = data.participants_count;
-        }
-      })
-      .catch(() => {});
-  },
-  { immediate: true }
-);
 
 function dismiss() {
   dismissed.value = true;
@@ -110,10 +99,12 @@ v-alert.plan-banner.my-4(
       span(v-else v-html="t('current_plan_button.subscription_ended')")
     .d-flex.align-center.ga-2
       v-btn.plan-banner__training-call(
-        v-if="showExtendedBanner"
+        v-if="showExtendedBanner && trainingCallUrl"
         color="success"
         variant="elevated"
-        to="/contact"
+        :href="trainingCallUrl"
+        target="_blank"
+        rel="noopener"
       )
         common-icon.mr-1(name="mdi-calendar-clock" color="currentColor")
         span {{ t('onboarding_card.book_training_call') }}

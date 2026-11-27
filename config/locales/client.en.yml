@@ -1579,12 +1579,12 @@ en:
     view_plans: View plans
     upgrade_now: Upgrade now
     extend_trial_title: Unlock 30 extra days & a free training call
-    extend_trial_initial: "Unlock 30 extra days and a free training call with a Loomio team member when {count} people vote in a proposal or poll."
-    extend_trial_remaining: "Unlock 30 extra days and a free training call with a Loomio team member when 1 more person votes in a proposal or poll. | Unlock 30 extra days and a free training call with a Loomio team member when {count} more people vote in a proposal or poll."
+    extend_trial_initial: "Unlock 30 extra days and a free training call with a Loomio team member when {count} other people join the group."
+    extend_trial_remaining: "Unlock 30 extra days and a free training call with a Loomio team member when 1 more person joins the group. | Unlock 30 extra days and a free training call with a Loomio team member when {count} more people join the group."
     verified_badge: Verified
     trial_verified: We've seen your group and we're here to help. You can now send email invitations — keep going to unlock 30 extra days, Pro features, and a free training call with our team.
     trial_extended_title: 30 extra days & free training call unlocked
-    trial_extended_description: Your trial has been extended by 30 days with subgroups and guests enabled, plus a free training call with a Loomio team member.
+    trial_extended_description: Your trial has been extended by 30 days.
     book_training_call: Book a training call
   group_page:
     stats: Group stats

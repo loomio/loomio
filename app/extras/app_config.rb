@@ -233,6 +233,7 @@ class AppConfig
       demos: demo_groups_enabled?,
       trials: ENV.fetch('FEATURES_TRIALS', false),
       trial_days: ENV.fetch('TRIAL_DAYS', nil),
+      training_call_url: ENV['LOOMIO_TRAINING_CALL_URL'].presence,
       gray_sidebar_logo_in_dark_mode: ENV.fetch('FEATURES_GRAY_SIDEBAR_LOGO_IN_DARK_MODE', false),
       new_thread_button: !!ENV.fetch('FEATURES_NEW_THREAD_BUTTON', false),
       local_login: local_login_enabled?,

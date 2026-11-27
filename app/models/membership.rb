@@ -49,6 +49,7 @@ class Membership < ApplicationRecord
 
   before_create :set_volume
   after_save :remove_group_follow, if: :active_membership_saved?
+  after_commit :broadcast_member_joined, on: %i[create update], if: :became_accepted_member?
 
   def title_model
     group
@@ -122,5 +123,17 @@ class Membership < ApplicationRecord
     if before&.values_at('group_id', 'user_id') != after&.values_at('group_id', 'user_id')
       Group.update_org_members_count_for_group_ids([before&.fetch('group_id'), after&.fetch('group_id')])
     end
+  end
+
+  def became_accepted_member?
+    revoked_at.nil? && accepted_at.present? && (
+      previously_new_record? ||
+      previous_changes.key?('accepted_at') ||
+      previous_changes.key?('revoked_at')
+    )
+  end
+
+  def broadcast_member_joined
+    EventBus.broadcast("member_joined", group, self)
   end
 end

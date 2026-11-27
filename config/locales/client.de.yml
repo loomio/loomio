@@ -3360,12 +3360,12 @@ de:
     view_plans: Tarife ansehen
     upgrade_now: Jetzt upgraden
     extend_trial_title: Schalte 30 weitere Tage & ein kostenloses Schulungsgespräch frei
-    extend_trial_initial: Schalte 30 weitere Tage und ein kostenloses Schulungsgespräch mit jemandem aus dem Loomio-Team frei, wenn {count} Personen über einen Vorschlag oder in einer Abstimmung abstimmen.
-    extend_trial_remaining: Schalte 30 weitere Tage und ein kostenloses Schulungsgespräch mit jemandem aus dem Loomio-Team frei, wenn 1 weitere Person über einen Vorschlag oder in einer Abstimmung abstimmt. | Schalte 30 weitere Tage und ein kostenloses Schulungsgespräch mit jemandem aus dem Loomio-Team frei, wenn {count} weitere Personen über einen Vorschlag oder in einer Abstimmung abstimmen.
     trial_verified: Wir haben uns deine Gruppe angesehen und helfen dir gerne. Du kannst jetzt Einladungen per E-Mail senden — mach weiter, um 30 weitere Tage, Pro-Funktionen und ein kostenloses Schulungsgespräch mit unserem Team freizuschalten.
     trial_extended_title: 30 weitere Tage & kostenloses Schulungsgespräch freigeschaltet
-    trial_extended_description: Deine Testphase wurde um 30 Tage verlängert, Untergruppen und Gäste sind jetzt aktiviert. Dazu erhältst du ein kostenloses Schulungsgespräch mit jemandem aus dem Loomio-Team.
     book_training_call: Schulungsgespräch buchen
+    extend_trial_initial: Schalte 30 weitere Tage und ein kostenloses Schulungsgespräch mit einem Mitglied des Loomio-Teams frei, sobald {count} weitere Personen der Gruppe beitreten.
+    extend_trial_remaining: Schalte 30 weitere Tage und ein kostenloses Schulungsgespräch mit einem Mitglied des Loomio-Teams frei, sobald 1 weitere Person der Gruppe beitritt. | Schalte 30 weitere Tage und ein kostenloses Schulungsgespräch mit einem Mitglied des Loomio-Teams frei, sobald {count} weitere Personen der Gruppe beitreten.
+    trial_extended_description: Deine Testphase wurde um 30 Tage verlängert.
   dashboard_cards:
     all_groups: Alle Gruppen
     unread_count: "{count} ungelesen"

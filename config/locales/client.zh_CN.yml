@@ -3249,12 +3249,12 @@ zh_CN:
     view_plans: 查看套餐
     upgrade_now: 立即升级
     extend_trial_title: 解锁额外 30 天试用和一次免费培训通话
-    extend_trial_initial: "{count} 人在提案或投票中投票后，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。"
-    extend_trial_remaining: 再有 1 人在提案或投票中投票，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。 | 再有 {count} 人在提案或投票中投票，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。
     trial_verified: 我们已查看您的群组，随时可以提供帮助。现在可以发送邮件邀请了——继续使用，即可解锁额外 30 天试用、Pro 功能和一次与我们团队的免费培训通话。
     trial_extended_title: 已解锁额外 30 天试用和免费培训通话
-    trial_extended_description: 您的试用期已延长 30 天，已启用子群组和访客功能，并可享受一次与 Loomio 团队成员的免费培训通话。
     book_training_call: 预约培训通话
+    extend_trial_initial: 其他 {count} 人加入群组后，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。
+    extend_trial_remaining: 再有 1 人加入群组，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。 | 再有 {count} 人加入群组，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。
+    trial_extended_description: 您的试用期已延长 30 天。
   dashboard_cards:
     all_groups: 所有群组
     unread_count: "{count} 条未读"

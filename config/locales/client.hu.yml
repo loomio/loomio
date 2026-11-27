@@ -3336,12 +3336,12 @@ hu:
     view_plans: Csomagok megtekintése
     upgrade_now: Válts most
     extend_trial_title: Szerezz 30 extra napot és egy ingyenes betanító hívást
-    extend_trial_initial: Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha {count} ember szavaz egy javaslatról vagy egy szavazáson.
-    extend_trial_remaining: Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha még 1 ember szavaz egy javaslatról vagy egy szavazáson. | Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha még {count} ember szavaz egy javaslatról vagy egy szavazáson.
     trial_verified: Megnéztük a csoportodat, és szívesen segítünk. Már küldhetsz meghívókat e-mailben — folytasd, hogy 30 extra napot, Pro funkciókat és egy ingyenes betanító hívást kapj a csapatunkkal.
     trial_extended_title: Megkaptad a 30 extra napot és az ingyenes betanító hívást
-    trial_extended_description: A próbaidőd 30 nappal meghosszabbodott, használhatsz alcsoportokat, hívhatsz vendégeket, és jár egy ingyenes betanító hívás a Loomio csapatának egyik tagjával.
     book_training_call: Foglalj betanító hívást
+    extend_trial_initial: Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha {count} másik ember csatlakozik a csoporthoz.
+    extend_trial_remaining: Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha még 1 ember csatlakozik a csoporthoz. | Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha még {count} ember csatlakozik a csoporthoz.
+    trial_extended_description: A próbaidőd 30 nappal meghosszabbodott.
   dashboard_cards:
     all_groups: Összes csoport
     unread_count: "{count} olvasatlan"

@@ -3325,12 +3325,12 @@ fi:
     view_plans: Katso tilausvaihtoehdot
     upgrade_now: Päivitä nyt
     extend_trial_title: Hanki 30 lisäpäivää & maksuton koulutuspuhelu
-    extend_trial_initial: Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
-    extend_trial_remaining: Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun vielä 1 ihminen äänestää ehdotuksessa tai kyselyssä. | Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun vielä {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
     trial_verified: Olemme tutustuneet ryhmääsi ja autamme mielellämme. Voit nyt lähettää sähköpostikutsuja — jatka, niin saat 30 lisäpäivää, Pro-ominaisuudet ja maksuttoman koulutuspuhelun tiimimme kanssa.
     trial_extended_title: Sait 30 lisäpäivää & maksuttoman koulutuspuhelun
-    trial_extended_description: Kokeiluaikaasi on jatkettu 30 päivällä. Saat käyttöösi alaryhmät ja vieraat sekä maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa.
     book_training_call: Varaa koulutuspuhelu
+    extend_trial_initial: Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun {count} muuta henkilöä liittyy ryhmään.
+    extend_trial_remaining: Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun vielä 1 henkilö liittyy ryhmään. | Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun vielä {count} henkilöä liittyy ryhmään.
+    trial_extended_description: Kokeiluaikaasi on jatkettu 30 päivällä.
   dashboard_cards:
     all_groups: Kaikki ryhmät
     unread_count: "{count} lukematonta"

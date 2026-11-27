@@ -3370,12 +3370,12 @@ fr:
     view_plans: Voir les offres
     upgrade_now: Passer à une offre payante
     extend_trial_title: Débloquez 30 jours de plus & un appel de formation gratuit
-    extend_trial_initial: Débloquez 30 jours de plus et un appel de formation gratuit avec un membre de l’équipe Loomio lorsque {count} personnes votent à une proposition ou à un sondage.
-    extend_trial_remaining: Débloquez 30 jours de plus et un appel de formation gratuit avec un membre de l’équipe Loomio lorsqu’une personne de plus vote à une proposition ou à un sondage. | Débloquez 30 jours de plus et un appel de formation gratuit avec un membre de l’équipe Loomio lorsque {count} personnes de plus votent à une proposition ou à un sondage.
     trial_verified: Nous avons pris connaissance de votre groupe et sommes là pour vous aider. Vous pouvez maintenant envoyer des invitations par e-mail — continuez pour débloquer 30 jours de plus, les fonctionnalités Pro et un appel de formation gratuit avec notre équipe.
     trial_extended_title: 30 jours de plus & un appel de formation gratuit débloqués
-    trial_extended_description: Votre essai est prolongé de 30 jours avec les sous-groupes et les invités activés, ainsi qu’un appel de formation gratuit avec un membre de l’équipe Loomio.
     book_training_call: Réserver un appel de formation
+    extend_trial_initial: Débloquez 30 jours de plus et un appel de formation gratuit avec un membre de l’équipe Loomio quand {count} autres personnes rejoignent le groupe.
+    extend_trial_remaining: Débloquez 30 jours de plus et un appel de formation gratuit avec un membre de l’équipe Loomio quand 1 personne de plus rejoint le groupe. | Débloquez 30 jours de plus et un appel de formation gratuit avec un membre de l’équipe Loomio quand {count} personnes de plus rejoignent le groupe.
+    trial_extended_description: Votre essai a été prolongé de 30 jours.
   dashboard_cards:
     all_groups: Tous les groupes
     unread_count: "{count} non lus"

@@ -3352,12 +3352,12 @@ ca:
     view_plans: Veure els plans
     upgrade_now: Millora el pla ara
     extend_trial_title: Desbloqueja 30 dies extra i una trucada de formació gratuïta
-    extend_trial_initial: Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan {count} persones votin en una proposta o enquesta.
-    extend_trial_remaining: Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan 1 persona més voti en una proposta o enquesta. | Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan {count} persones més votin en una proposta o enquesta.
     trial_verified: Hem vist el teu grup i som aquí per ajudar-te. Ja pots enviar invitacions per correu — continua per desbloquejar 30 dies extra, funcions Pro i una trucada de formació gratuïta amb el nostre equip.
     trial_extended_title: 30 dies extra i una trucada de formació gratuïta desbloquejats
-    trial_extended_description: El teu període de prova s'ha ampliat 30 dies amb subgrups i convidats activats, més una trucada de formació gratuïta amb un membre de l'equip de Loomio.
     book_training_call: Reserva una trucada de formació
+    extend_trial_initial: Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan {count} persones més s'uneixin al grup.
+    extend_trial_remaining: Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan 1 persona més s'uneixi al grup. | Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan {count} persones més s'uneixin al grup.
+    trial_extended_description: El teu període de prova s'ha ampliat 30 dies.
   dashboard_cards:
     all_groups: Tots els grups
     unread_count: "{count} no llegits"

@@ -3325,12 +3325,12 @@ sl:
     view_plans: Oglejte si pakete
     upgrade_now: Nadgradite zdaj
     extend_trial_title: Pridobite 30 dodatnih dni & brezplačen uvajalni klic
-    extend_trial_initial: Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko pri predlogu ali anketi glasuje {count} oseb.
-    extend_trial_remaining: Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko pri predlogu ali anketi glasuje še 1 oseba. | Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko pri predlogu ali anketi glasuje še {count} oseb.
     trial_verified: Ogledali smo si vašo skupino in smo vam na voljo za pomoč. Zdaj lahko pošiljate e-poštna povabila — nadaljujte in pridobite 30 dodatnih dni, funkcije Pro in brezplačen uvajalni klic z našo ekipo.
     trial_extended_title: Pridobili ste 30 dodatnih dni & brezplačen uvajalni klic
-    trial_extended_description: Preizkusno obdobje smo vam podaljšali za 30 dni ter omogočili podskupine, goste in brezplačen uvajalni klic s članom ekipe Loomio.
     book_training_call: Rezervirajte uvajalni klic
+    extend_trial_initial: Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko se skupini pridruži {count} drugih oseb.
+    extend_trial_remaining: Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko se skupini pridruži še 1 oseba. | Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko se skupini pridruži še {count} oseb.
+    trial_extended_description: Vaše preizkusno obdobje je podaljšano za 30 dni.
   dashboard_cards:
     all_groups: Vse skupine
     unread_count: 'Neprebrano: {count}'
