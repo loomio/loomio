@@ -109,7 +109,7 @@ function mySubgroups(org) {
 }
 
 function isOrgExpanded(org) {
-  return organization.value?.id === org.id;
+  return organizations.value.length === 1 || organization.value?.id === org.id;
 }
 
 function orgUnreadCount(org) {

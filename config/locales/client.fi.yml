@@ -3321,15 +3321,16 @@ fi:
     open_count: "{count} avointa"
     files_count: 1 tiedosto | {count} tiedostoa
   onboarding_card:
-    extend_trial_title: Saa 30 lisäpäivää
-    extend_trial_initial: Saat 30 lisäpäivää, kun {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
-    extend_trial_remaining: Saat 30 lisäpäivää, kun vielä 1 ihminen äänestää ehdotuksessa tai kyselyssä. | Saat 30 lisäpäivää, kun vielä {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
     verified_badge: Vahvistettu
-    trial_verified: Olemme tutustuneet ryhmääsi ja autamme mielellämme. Voit nyt lähettää sähköpostikutsuja — jatka, niin saat 30 lisäpäivää ja Pro-ominaisuudet käyttöön.
-    trial_extended_title: Sait 30 lisäpäivää
-    trial_extended_description: Kokeiluasi on jatkettu 30 päivällä, ja alaryhmät ja vieraat ovat nyt käytössä.
     view_plans: Katso tilausvaihtoehdot
     upgrade_now: Päivitä nyt
+    extend_trial_title: Hanki 30 lisäpäivää & maksuton koulutuspuhelu
+    extend_trial_initial: Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
+    extend_trial_remaining: Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun vielä 1 ihminen äänestää ehdotuksessa tai kyselyssä. | Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun vielä {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
+    trial_verified: Olemme tutustuneet ryhmääsi ja autamme mielellämme. Voit nyt lähettää sähköpostikutsuja — jatka, niin saat 30 lisäpäivää, Pro-ominaisuudet ja maksuttoman koulutuspuhelun tiimimme kanssa.
+    trial_extended_title: Sait 30 lisäpäivää & maksuttoman koulutuspuhelun
+    trial_extended_description: Kokeiluaikaasi on jatkettu 30 päivällä. Saat käyttöösi alaryhmät ja vieraat sekä maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa.
+    book_training_call: Varaa koulutuspuhelu
   dashboard_cards:
     all_groups: Kaikki ryhmät
     unread_count: "{count} lukematonta"

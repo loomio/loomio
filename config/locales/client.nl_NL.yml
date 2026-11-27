@@ -3348,15 +3348,16 @@ nl_NL:
     open_count: "{count} open"
     files_count: 1 bestand | {count} bestanden
   onboarding_card:
-    extend_trial_title: Ontgrendel 30 extra dagen
-    extend_trial_initial: Ontgrendel 30 extra dagen zodra {count} mensen stemmen in een voorstel of peiling.
-    extend_trial_remaining: Ontgrendel 30 extra dagen zodra nog 1 persoon stemt in een voorstel of peiling. | Ontgrendel 30 extra dagen zodra nog {count} mensen stemmen in een voorstel of peiling.
     verified_badge: Geverifieerd
-    trial_verified: We hebben je groep bekeken en helpen je graag. Je kunt nu uitnodigingen per e-mail versturen — ga door om 30 extra dagen en Pro-functies te ontgrendelen.
-    trial_extended_title: 30 extra dagen ontgrendeld
-    trial_extended_description: Je proefperiode is met 30 dagen verlengd en subgroepen en gasten zijn ingeschakeld.
     view_plans: Bekijk abonnementen
     upgrade_now: Upgrade nu
+    extend_trial_title: Ontgrendel 30 extra dagen & een gratis trainingsgesprek
+    extend_trial_initial: Ontgrendel 30 extra dagen en een gratis trainingsgesprek met iemand van het Loomio-team zodra {count} mensen stemmen in een voorstel of peiling.
+    extend_trial_remaining: Ontgrendel 30 extra dagen en een gratis trainingsgesprek met iemand van het Loomio-team zodra nog 1 persoon stemt in een voorstel of peiling. | Ontgrendel 30 extra dagen en een gratis trainingsgesprek met iemand van het Loomio-team zodra nog {count} mensen stemmen in een voorstel of peiling.
+    trial_verified: We hebben je groep bekeken en helpen je graag. Je kunt nu uitnodigingen per e-mail sturen — ga door om 30 extra dagen, Pro-functies en een gratis trainingsgesprek met ons team te ontgrendelen.
+    trial_extended_title: 30 extra dagen & gratis trainingsgesprek ontgrendeld
+    trial_extended_description: Je proefperiode is met 30 dagen verlengd, met subgroepen en gasten ingeschakeld, plus een gratis trainingsgesprek met iemand van het Loomio-team.
+    book_training_call: Boek een trainingsgesprek
   dashboard_cards:
     all_groups: Alle groepen
     unread_count: "{count} ongelezen"

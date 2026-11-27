@@ -3329,15 +3329,16 @@ sv:
     open_count: "{count} öppna"
     files_count: 1 fil | {count} filer
   onboarding_card:
-    extend_trial_title: Lås upp 30 extra dagar
-    extend_trial_initial: Lås upp 30 extra dagar när {count} personer röstar på ett förslag eller i en omröstning.
-    extend_trial_remaining: Lås upp 30 extra dagar när 1 person till röstar på ett förslag eller i en omröstning. | Lås upp 30 extra dagar när {count} personer till röstar på ett förslag eller i en omröstning.
     verified_badge: Verifierad
-    trial_verified: Vi har sett din grupp och finns här för att hjälpa till. Du kan nu skicka inbjudningar via mejl — fortsätt för att låsa upp 30 extra dagar och Pro-funktioner.
-    trial_extended_title: 30 extra dagar upplåsta
-    trial_extended_description: Din provperiod har förlängts med 30 dagar med tillgång till undergrupper och gäster.
     view_plans: Se abonnemang
     upgrade_now: Uppgradera nu
+    extend_trial_title: Lås upp 30 extra dagar & ett gratis utbildningssamtal
+    extend_trial_initial: Lås upp 30 extra dagar och ett gratis utbildningssamtal med en person i Loomio-teamet när {count} personer röstar i ett förslag eller en omröstning.
+    extend_trial_remaining: Lås upp 30 extra dagar och ett gratis utbildningssamtal med en person i Loomio-teamet när 1 person till röstar i ett förslag eller en omröstning. | Lås upp 30 extra dagar och ett gratis utbildningssamtal med en person i Loomio-teamet när {count} personer till röstar i ett förslag eller en omröstning.
+    trial_verified: Vi har tittat på din grupp och finns här för att hjälpa dig. Du kan nu skicka inbjudningar via e-post — fortsätt för att låsa upp 30 extra dagar, Pro-funktioner och ett gratis utbildningssamtal med vårt team.
+    trial_extended_title: 30 extra dagar & ett gratis utbildningssamtal upplåsta
+    trial_extended_description: Din provperiod har förlängts med 30 dagar med undergrupper och gäster aktiverade, plus ett gratis utbildningssamtal med en person i Loomio-teamet.
+    book_training_call: Boka ett utbildningssamtal
   dashboard_cards:
     all_groups: Alla grupper
     unread_count: "{count} olästa"

@@ -3318,15 +3318,16 @@ tr:
     open_count: "{count} açık"
     files_count: 1 dosya | {count} dosya
   onboarding_card:
-    extend_trial_title: 30 gün daha kazanın
-    extend_trial_initial: "{count} kişi bir teklif veya ankette oy verdiğinde 30 gün daha kazanın."
-    extend_trial_remaining: 1 kişi daha bir teklif veya ankette oy verdiğinde 30 gün daha kazanın. | {count} kişi daha bir teklif veya ankette oy verdiğinde 30 gün daha kazanın.
     verified_badge: Doğrulandı
-    trial_verified: Grubunuzu gördük ve yardım için buradayız. Artık e-postayla davet gönderebilirsiniz — 30 gün daha kazanmak ve Pro özelliklerini açmak için devam edin.
-    trial_extended_title: 30 gün daha kazandınız
-    trial_extended_description: Deneme süreniz 30 gün uzatıldı, alt gruplar ve misafirler etkinleştirildi.
     view_plans: Planları gör
     upgrade_now: Şimdi yükselt
+    extend_trial_title: 30 ek gün & ücretsiz eğitim görüşmesi kazanın
+    extend_trial_initial: "{count} kişi bir teklif veya ankette oy verdiğinde 30 ek gün ve Loomio ekibinden biriyle ücretsiz eğitim görüşmesi kazanın."
+    extend_trial_remaining: 1 kişi daha bir teklif veya ankette oy verdiğinde 30 ek gün ve Loomio ekibinden biriyle ücretsiz eğitim görüşmesi kazanın. | {count} kişi daha bir teklif veya ankette oy verdiğinde 30 ek gün ve Loomio ekibinden biriyle ücretsiz eğitim görüşmesi kazanın.
+    trial_verified: Grubunuzu gördük ve yardım için buradayız. Artık e-postayla davet gönderebilirsiniz — 30 ek gün, Pro özellikleri ve ekibimizle ücretsiz eğitim görüşmesi kazanmak için devam edin.
+    trial_extended_title: 30 ek gün & ücretsiz eğitim görüşmesi kazanıldı
+    trial_extended_description: Deneme süreniz 30 gün uzatıldı; alt gruplar ve misafirler etkinleştirildi. Ayrıca Loomio ekibinden biriyle ücretsiz eğitim görüşmesi kazandınız.
+    book_training_call: Eğitim görüşmesi ayarlayın
   dashboard_cards:
     all_groups: Tüm gruplar
     unread_count: "{count} okunmamış"

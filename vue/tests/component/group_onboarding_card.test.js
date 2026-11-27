@@ -150,7 +150,7 @@ describe('GroupCards and PlanBanner', () => {
     wrapper = mountCards(group);
     await flushPromises();
 
-    expect(wrapper.find('.plan-banner').text()).toContain('Unlock 30 extra days when 2 more people vote in a proposal or poll.');
+    expect(wrapper.find('.plan-banner').text()).toContain('Unlock 30 extra days and a free training call with a Loomio team member when 2 more people vote in a proposal or poll.');
     expect(wrapper.find('.plan-banner__upgrade').attributes('href')).toContain('/upgrade/100');
     expect(wrapper.find('.plan-banner__upgrade').text()).toContain('View plans');
     expect(wrapper.find('.plan-banner__verified-badge').exists()).toBe(false);
@@ -199,7 +199,8 @@ describe('GroupCards and PlanBanner', () => {
     wrapper = mountCards(group);
     await flushPromises();
 
-    expect(wrapper.find('.plan-banner').text()).toContain('30 extra days unlocked');
+    expect(wrapper.find('.plan-banner').text()).toContain('30 extra days & free training call unlocked');
+    expect(wrapper.find('.plan-banner__training-call').exists()).toBe(true);
     await wrapper.find('.plan-banner__dismiss').trigger('click');
     await flushPromises();
     expect(mocks.saveExperience).toHaveBeenCalledWith('hideOnboarding', true);

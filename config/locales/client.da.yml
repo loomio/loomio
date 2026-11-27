@@ -3333,15 +3333,16 @@ da:
     open_count: "{count} åbne"
     files_count: 1 fil | {count} filer
   onboarding_card:
-    extend_trial_title: Lås op for 30 ekstra dage
-    extend_trial_initial: Lås op for 30 ekstra dage, når {count} personer stemmer om et forslag eller i en afstemning.
-    extend_trial_remaining: Lås op for 30 ekstra dage, når 1 person mere stemmer om et forslag eller i en afstemning. | Lås op for 30 ekstra dage, når {count} personer mere stemmer om et forslag eller i en afstemning.
     verified_badge: Bekræftet
-    trial_verified: Vi har set din gruppe og er her for at hjælpe. Du kan nu sende invitationer via e-mail — fortsæt for at låse op for 30 ekstra dage og Pro-funktioner.
-    trial_extended_title: 30 ekstra dage låst op
-    trial_extended_description: Din prøveperiode er forlænget med 30 dage med adgang til undergrupper og gæster.
     view_plans: Se abonnementer
     upgrade_now: Opgrader nu
+    extend_trial_title: Lås op for 30 ekstra dage & et gratis oplæringsmøde
+    extend_trial_initial: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} personer stemmer om et forslag eller i en afstemning.
+    extend_trial_remaining: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når 1 person mere stemmer om et forslag eller i en afstemning. | Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} personer mere stemmer om et forslag eller i en afstemning.
+    trial_verified: Vi har set din gruppe og er klar til at hjælpe. Du kan nu sende invitationer via e-mail — fortsæt for at låse op for 30 ekstra dage, Pro-funktioner og et gratis oplæringsmøde med vores team.
+    trial_extended_title: 30 ekstra dage & gratis oplæringsmøde låst op
+    trial_extended_description: Din prøveperiode er forlænget med 30 dage med adgang til undergrupper og gæster samt et gratis oplæringsmøde med en fra Loomio-teamet.
+    book_training_call: Book et oplæringsmøde
   dashboard_cards:
     all_groups: Alle grupper
     unread_count: "{count} ulæste"

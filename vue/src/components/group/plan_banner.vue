@@ -109,6 +109,14 @@ v-alert.plan-banner.my-4(
       span(v-else-if="isFree" v-html="t('current_plan_button.was_gift_expired_or_mistake')")
       span(v-else v-html="t('current_plan_button.subscription_ended')")
     .d-flex.align-center.ga-2
+      v-btn.plan-banner__training-call(
+        v-if="showExtendedBanner"
+        color="success"
+        variant="elevated"
+        to="/contact"
+      )
+        common-icon.mr-1(name="mdi-calendar-clock" color="currentColor")
+        span {{ t('onboarding_card.book_training_call') }}
       v-btn.plan-banner__upgrade(
         :color="alertColor"
         :variant="isNearingExpiry ? 'elevated' : 'outlined'"

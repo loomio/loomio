@@ -3348,15 +3348,16 @@ pl:
     open_count: "{count} otwartych"
     files_count: 1 plik | {count} plików
   onboarding_card:
-    extend_trial_title: Odblokuj 30 dodatkowych dni
-    extend_trial_initial: Odblokuj 30 dodatkowych dni, gdy {count} osób odda głos w propozycji lub ankiecie.
-    extend_trial_remaining: Odblokuj 30 dodatkowych dni, gdy jeszcze 1 osoba odda głos w propozycji lub ankiecie. | Odblokuj 30 dodatkowych dni, gdy jeszcze {count} osób odda głos w propozycji lub ankiecie.
     verified_badge: Zweryfikowano
-    trial_verified: Znamy już twoją grupę i chętnie pomożemy. Możesz już wysyłać zaproszenia e-mailem — działaj dalej, by odblokować 30 dodatkowych dni i funkcje Pro.
-    trial_extended_title: Odblokowano 30 dodatkowych dni
-    trial_extended_description: Okres próbny przedłużono o 30 dni z włączonymi podgrupami i gośćmi.
     view_plans: Zobacz plany
     upgrade_now: Przejdź na wyższy plan
+    extend_trial_title: Zyskaj 30 dodatkowych dni & bezpłatną rozmowę szkoleniową
+    extend_trial_initial: Zyskaj 30 dodatkowych dni i bezpłatną rozmowę szkoleniową z osobą z zespołu Loomio, gdy {count} osób odda głos w propozycji lub ankiecie.
+    extend_trial_remaining: Zyskaj 30 dodatkowych dni i bezpłatną rozmowę szkoleniową z osobą z zespołu Loomio, gdy jeszcze 1 osoba odda głos w propozycji lub ankiecie. | Zyskaj 30 dodatkowych dni i bezpłatną rozmowę szkoleniową z osobą z zespołu Loomio, gdy jeszcze {count} osób odda głos w propozycji lub ankiecie.
+    trial_verified: Znamy już twoją grupę i chętnie pomożemy. Możesz już wysyłać zaproszenia e-mailem — działaj dalej, by zyskać 30 dodatkowych dni, funkcje Pro i bezpłatną rozmowę szkoleniową z naszym zespołem.
+    trial_extended_title: Masz już 30 dodatkowych dni & bezpłatną rozmowę szkoleniową
+    trial_extended_description: Twój okres próbny wydłużył się o 30 dni z dostępem do podgrup i gości oraz bezpłatną rozmową szkoleniową z osobą z zespołu Loomio.
+    book_training_call: Umów rozmowę szkoleniową
   dashboard_cards:
     all_groups: Wszystkie grupy
     unread_count: "{count} nieprzeczytanych"

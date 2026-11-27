@@ -3357,15 +3357,16 @@ es:
     open_count: "{count} abiertas"
     files_count: 1 archivo | {count} archivos
   onboarding_card:
-    extend_trial_title: Desbloquea 30 días más
-    extend_trial_initial: Desbloquea 30 días más cuando {count} personas voten en una propuesta o encuesta.
-    extend_trial_remaining: Desbloquea 30 días más cuando vote 1 persona más en una propuesta o encuesta. | Desbloquea 30 días más cuando voten {count} personas más en una propuesta o encuesta.
     verified_badge: Verificado
-    trial_verified: Hemos revisado tu grupo y estamos aquí para ayudar. Ya puedes enviar invitaciones por correo — sigue para desbloquear 30 días más y funciones Pro.
-    trial_extended_title: 30 días más desbloqueados
-    trial_extended_description: Tu prueba se ha ampliado 30 días con subgrupos e invitados habilitados.
     view_plans: Ver planes
     upgrade_now: Mejora tu plan ahora
+    extend_trial_title: Desbloquea 30 días extra y una llamada de formación gratis
+    extend_trial_initial: Desbloquea 30 días extra y una llamada de formación gratis con alguien del equipo de Loomio cuando {count} personas voten en una propuesta o encuesta.
+    extend_trial_remaining: Desbloquea 30 días extra y una llamada de formación gratis con alguien del equipo de Loomio cuando 1 persona más vote en una propuesta o encuesta. | Desbloquea 30 días extra y una llamada de formación gratis con alguien del equipo de Loomio cuando {count} personas más voten en una propuesta o encuesta.
+    trial_verified: Hemos revisado tu grupo y estamos aquí para ayudar. Ya puedes enviar invitaciones por correo — sigue adelante para desbloquear 30 días extra, funciones Pro y una llamada de formación gratis con nuestro equipo.
+    trial_extended_title: 30 días extra y una llamada de formación gratis desbloqueados
+    trial_extended_description: Tu prueba se ha ampliado 30 días con subgrupos e invitados habilitados, además de una llamada de formación gratis con alguien del equipo de Loomio.
+    book_training_call: Reserva una llamada de formación
   dashboard_cards:
     all_groups: Todos los grupos
     unread_count: "{count} sin leer"

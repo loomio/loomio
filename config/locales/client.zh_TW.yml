@@ -3349,15 +3349,16 @@ zh_TW:
     open_count: "{count} 項進行中"
     files_count: 1 個檔案 | {count} 個檔案
   onboarding_card:
-    extend_trial_title: 解鎖額外 30 天試用期
-    extend_trial_initial: "{count} 人參與提案或投票後，即可解鎖額外 30 天試用期。"
-    extend_trial_remaining: 再有 1 人參與提案或投票，即可解鎖額外 30 天試用期。 | 再有 {count} 人參與提案或投票，即可解鎖額外 30 天試用期。
     verified_badge: 已驗證
-    trial_verified: 我們已查看您的群組，隨時可以提供協助。現在可以寄送電子郵件邀請 — 繼續使用即可解鎖額外 30 天試用期和 Pro 功能。
-    trial_extended_title: 已解鎖額外 30 天試用期
-    trial_extended_description: 試用期已延長 30 天，並已啟用子群組和訪客功能。
     view_plans: 查看方案
     upgrade_now: 立即升級
+    extend_trial_title: 解鎖額外 30 天試用與免費教學通話
+    extend_trial_initial: 只要有 {count} 人在提案或投票中投票，即可解鎖額外 30 天試用，以及與 Loomio 團隊成員的免費教學通話。
+    extend_trial_remaining: 只要再有 1 人在提案或投票中投票，即可解鎖額外 30 天試用，以及與 Loomio 團隊成員的免費教學通話。 | 只要再有 {count} 人在提案或投票中投票，即可解鎖額外 30 天試用，以及與 Loomio 團隊成員的免費教學通話。
+    trial_verified: 我們已查看您的群組，隨時可以提供協助。現在可以傳送電子郵件邀請了 — 繼續參與，即可解鎖額外 30 天試用、Pro 功能，以及與我們團隊的免費教學通話。
+    trial_extended_title: 已解鎖額外 30 天試用與免費教學通話
+    trial_extended_description: 您的試用期已延長 30 天，並已啟用子群組與訪客功能，還可免費與 Loomio 團隊成員進行教學通話。
+    book_training_call: 預約教學通話
   dashboard_cards:
     all_groups: 所有群組
     unread_count: "{count} 個未讀"

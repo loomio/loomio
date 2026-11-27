@@ -3322,15 +3322,16 @@ hr:
     open_count: "{count} otvorenih"
     files_count: 1 datoteka | {count} datoteka
   onboarding_card:
-    extend_trial_title: Otključajte dodatnih 30 dana
-    extend_trial_initial: Otključajte dodatnih 30 dana kad {count} osoba glasa o prijedlogu ili u anketi.
-    extend_trial_remaining: Otključajte dodatnih 30 dana kad još 1 osoba glasa o prijedlogu ili u anketi. | Otključajte dodatnih 30 dana kad još {count} osoba glasa o prijedlogu ili u anketi.
     verified_badge: Potvrđeno
-    trial_verified: Primijetili smo vašu grupu i tu smo da pomognemo. Sada možete slati pozivnice e-poštom — nastavite kako biste otključali dodatnih 30 dana i Pro značajke.
-    trial_extended_title: Otključano dodatnih 30 dana
-    trial_extended_description: Vaše probno razdoblje produljeno je za 30 dana uz omogućene podgrupe i goste.
     view_plans: Pogledajte pakete
     upgrade_now: Nadogradite sada
+    extend_trial_title: Osigurajte 30 dodatnih dana & besplatan poziv za obuku
+    extend_trial_initial: Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom tima Loomio kad {count} osoba glasa o prijedlogu ili u anketi.
+    extend_trial_remaining: Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom tima Loomio kad još 1 osoba glasa o prijedlogu ili u anketi. | Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom tima Loomio kad još {count} osoba glasa o prijedlogu ili u anketi.
+    trial_verified: Pregledali smo vašu grupu i tu smo da pomognemo. Sada možete slati pozivnice e-poštom — nastavite kako biste osigurali 30 dodatnih dana, Pro značajke i besplatan poziv za obuku s našim timom.
+    trial_extended_title: Osigurano 30 dodatnih dana & besplatan poziv za obuku
+    trial_extended_description: Vaše probno razdoblje produljeno je za 30 dana uz omogućene podgrupe i goste te besplatan poziv za obuku s članom tima Loomio.
+    book_training_call: Rezervirajte poziv za obuku
   dashboard_cards:
     all_groups: Sve grupe
     unread_count: "{count} nepročitanih"

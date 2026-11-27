@@ -3275,15 +3275,16 @@ ko:
     open_count: 진행 중 {count}개
     files_count: 파일 1개 | 파일 {count}개
   onboarding_card:
-    extend_trial_title: 체험 기간 30일 추가
-    extend_trial_initial: "{count}명이 제안이나 투표에 참여하면 체험 기간이 30일 늘어납니다."
-    extend_trial_remaining: 1명이 더 제안이나 투표에 참여하면 체험 기간이 30일 늘어납니다. | {count}명이 더 제안이나 투표에 참여하면 체험 기간이 30일 늘어납니다.
     verified_badge: 확인됨
-    trial_verified: 그룹을 확인했습니다. 도움이 필요하면 말씀하세요. 이제 이메일 초대를 보낼 수 있습니다. 계속 진행해 체험 기간 30일과 Pro 기능을 추가로 이용하세요.
-    trial_extended_title: 체험 기간 30일 추가됨
-    trial_extended_description: 체험 기간이 30일 연장되었으며 하위 그룹과 게스트 기능이 활성화되었습니다.
     view_plans: 요금제 보기
     upgrade_now: 지금 업그레이드
+    extend_trial_title: 30일 추가 이용과 무료 교육 통화 받기
+    extend_trial_initial: "{count}명이 제안이나 투표에 참여하면 30일 추가 이용과 Loomio 팀원과의 무료 교육 통화를 받을 수 있습니다."
+    extend_trial_remaining: 1명이 더 제안이나 투표에 참여하면 30일 추가 이용과 Loomio 팀원과의 무료 교육 통화를 받을 수 있습니다. | {count}명이 더 제안이나 투표에 참여하면 30일 추가 이용과 Loomio 팀원과의 무료 교육 통화를 받을 수 있습니다.
+    trial_verified: 그룹을 확인했으며 도움을 드릴 준비가 되었습니다. 이제 이메일 초대를 보낼 수 있습니다 — 계속 진행해 30일 추가 이용, Pro 기능, 팀과의 무료 교육 통화를 받아 보세요.
+    trial_extended_title: 30일 추가 이용과 무료 교육 통화 제공
+    trial_extended_description: 체험 기간이 30일 연장되었으며 하위 그룹과 게스트 기능, Loomio 팀원과의 무료 교육 통화도 제공됩니다.
+    book_training_call: 교육 통화 예약
   dashboard_cards:
     all_groups: 모든 그룹
     unread_count: 읽지 않음 {count}개
