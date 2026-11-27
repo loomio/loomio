@@ -78,7 +78,8 @@ COPY hotcell/Gemfile hotcell/Gemfile.lock ./hotcell/
 RUN BUNDLE_GEMFILE=/loomio/hotcell/Gemfile \
     BUNDLE_PATH=/loomio/hotcell/bundle \
     BUNDLE_WITHOUT=development \
-    bundle install --frozen
+    BUNDLE_FROZEN=true \
+    bundle install
 
 # Copy entire app source
 COPY . .
