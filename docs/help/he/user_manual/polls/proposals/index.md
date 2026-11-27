@@ -1,24 +1,23 @@
 ---
 title: הצעות
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: 72e0968bddc6e4ea
+  introduction: 8fa4df2d32db8fc3
   choose-a-proposal-template: 2dd5cb6e623e8c52
   other-proposal-templates: 85358a7332b9e4f1
   proposal-records: ddc5d25803ab0225
 title_source: 834cfc1ee23734e1
 title_generated: 627113bd3adb7ae9
 needs_review:
-  introduction: use "החלטה" instead of "דיון" for "decision"; use "בחירה" instead of "לבחור" for "Choose"
   choose-a-proposal-template: use "בחירה" instead of "לבחור" for "Choose"; use "קונצנזוס" instead of "הסכמה" for "consensus"
 ---
 
@@ -28,7 +27,7 @@ needs_review:
 
 הצעה מבקשת מאנשים להגיב להצהרה או לדרך פעולה. במסגרת ההשתתפות ניתן לבחור תגובה מתוך אפשרויות מוגדרות ולהסביר את ההצבעה. ניתן להשתמש בהצעה כדי לאסוף משוב, לבקש עצות, לזהות התנגדויות או לבדוק אם יש הסכמה.
 
-סעיף זה מסייע בבחירה ובהפעלה של תבניות ההצעה המוגדרות כברירת מחדל ב-Loomio. לתהליך מלא הכולל דיון, הצעות, תיקונים ומסקנה, ניתן להיעזר ב[מדריכים לקבלת החלטות](/en/guides/making_decisions/). לשינוי התבניות הזמינות לקבוצה, יש לעיין ב[תבניות סקרים](../poll_templates/).
+סעיף זה מסייע בבחירה ובהפעלה של תבניות ההצעה המוגדרות כברירת מחדל ב-Loomio. לתהליך מלא הכולל דיון, הצעות, תיקונים ומסקנה, ניתן להיעזר ב[מדריכים לקבלת החלטות](/guides/making-decisions/). לשינוי התבניות הזמינות לקבוצה, יש לעיין ב[תבניות סקרים](../poll_templates/).
 
 <!-- translation-section: choose-a-proposal-template -->
 

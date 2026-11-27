@@ -1,12 +1,12 @@
 ---
 title: Consiglio
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 386aa723642f1027
+  introduction: f4cee58fec8c688d
   when-to-use-advice: 0bf88be279a0fd56
   example-choose-a-washing-supplier: b7a57023895c283e
   set-up-the-proposal: ee314bff90652a00
@@ -31,7 +31,7 @@ title_generated: d2547f0269d84532
 
 Una proposta di tipo Consiglio raccoglie contributi per una decisione che spetta a una persona o a un team. I partecipanti possono offrire consigli o indicare che non hanno consigli da aggiungere.
 
-Questa pagina spiega il modulo della proposta di tipo Consiglio, come votare e i risultati. Consulta il [Processo di consultazione](/en/guides/making_decisions/advice_process) per il percorso completo, dalla definizione della decisione alla pubblicazione di una conclusione.
+Questa pagina spiega il modulo della proposta di tipo Consiglio, come votare e i risultati. Consulta il [Processo di consultazione](/guides/making-decisions/advice-process/) per il percorso completo, dalla definizione della decisione alla pubblicazione di una conclusione.
 
 <!-- translation-section: when-to-use-advice -->
 

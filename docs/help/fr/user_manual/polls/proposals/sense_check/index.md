@@ -1,12 +1,12 @@
 ---
 title: Vérification de l’idée
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 3dd0c96abc999148
+  introduction: d8d2b1ef4ff747ad
   when-to-use-sense-check: b4cb706d5e3fc41a
   example-check-a-trial-plan: c807eef3b422a1fc
   set-up-the-proposal: 2433c203ce223381
@@ -31,7 +31,7 @@ title_generated: e589c23349974d71
 
 La prise de température recueille les réactions pendant qu’une idée est encore en cours d’élaboration. Ses options — **Ça a l'air bien**, **Pourrait être mieux** et **Il faut le repenser** — indiquent si le groupe est prêt à poursuivre ou s’il doit d’abord revoir l’idée.
 
-Cette page explique comment organiser une prise de température. Consultez le [Processus de décision simple](/en/guides/making_decisions/simple_decision_process), le [Processus de consentement](/en/guides/making_decisions/consent_process) ou le [Processus de consensus](/en/guides/making_decisions/consensus_process) pour découvrir des exemples où la prise de température constitue une étape d’un processus plus large.
+Cette page explique comment organiser une prise de température. Consultez le [Processus de décision simple](/guides/making-decisions/simple-decision-process/), le [Processus de consentement](/guides/making-decisions/consent-process/) ou le [Processus de consensus](/guides/making-decisions/consensus-process/) pour découvrir des exemples où la prise de température constitue une étape d’un processus plus large.
 
 <!-- translation-section: when-to-use-sense-check -->
 

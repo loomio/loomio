@@ -1,6 +1,6 @@
 ---
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -8,7 +8,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 8ef223b2137c4925
+  introduction: 5bcb15f7c93c874e
   when-to-use-advice: 26cb39cad6cae6e8
   example-choose-a-washing-supplier: 60c1bd39f1b2962f
   set-up-the-proposal: f90309b52aa4eba5
@@ -18,11 +18,11 @@ generated:
 title: 조언
 title_source: 305f5e5463e18d7f
 title_generated: 29d4db0b8261554b
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-28'
 ---
 
 <!-- translation-section: introduction -->
@@ -31,7 +31,7 @@ translated:
 
 조언 제안은 개인이나 팀이 책임지고 내릴 결정에 필요한 의견을 모읍니다. 참여자는 조언을 제공하거나 덧붙일 조언이 없다고 표시할 수 있습니다.
 
-이 페이지에서는 조언 제안의 양식, 투표 방법, 결과를 설명합니다. 결정할 내용을 정하는 단계부터 결론을 게시하는 단계까지의 전체 절차는 [조언 절차](/en/guides/making_decisions/advice_process)를 참고하세요.
+이 페이지에서는 조언 제안의 양식, 투표 방법, 결과를 설명합니다. 결정할 내용을 정하는 단계부터 결론을 게시하는 단계까지의 전체 절차는 [조언 절차](/guides/making-decisions/advice-process/)를 참고하세요.
 
 <!-- translation-section: when-to-use-advice -->
 

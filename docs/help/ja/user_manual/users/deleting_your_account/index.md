@@ -1,17 +1,17 @@
 ---
 title: アカウントの削除
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: e2e57ac3e4e81c5c
-  what-does-delete-account-mean: 8551e650883071c8
+  what-does-delete-account-mean: fc67aa26b9460668
   to-delete-your-account-entirely: 639dc427b77435c6
 title_source: 26a117d6f45e95e8
 title_generated: 2200a9480b562480
@@ -34,9 +34,9 @@ title_generated: 2200a9480b562480
 
 活動内容のコピーが、すでにグループのメンバーにメールで送信されている場合があります。Loomioでは、送信済みのメールを削除できません。
 
-アカウントを削除しても、有料サブスクリプションは解約されません。支払いを停止する方法は、[サブスクリプション](/en/policy/subscriptions/management#cancel-your-plan)をご覧ください。
+アカウントを削除しても、有料サブスクリプションは解約されません。支払いを停止する方法は、[サブスクリプション](/policy/subscriptions/management/#cancel-your-plan)をご覧ください。
 
-Loomioでのデータの取り扱いについて詳しくは、[プライバシーポリシー](/en/policy/privacy)をご覧いただくか、[お問い合わせください](/contact)。削除する前にグループの記録のコピーが必要な場合は、グループ管理者が[グループのデータをエクスポート](/en/user_manual/groups/data_export)できます。
+Loomioでのデータの取り扱いについて詳しくは、[プライバシーポリシー](/policy/privacy/)をご覧いただくか、[お問い合わせください](/contact)。削除する前にグループの記録のコピーが必要な場合は、グループ管理者が[グループのデータをエクスポート](/en/user_manual/groups/data_export)できます。
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

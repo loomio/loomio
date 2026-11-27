@@ -1,12 +1,12 @@
 ---
 title: Modèles de sondage
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
-  introduction: 227665c7b66356be
+  introduction: 6faf3959a24d633a
   who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
@@ -20,7 +20,7 @@ sections:
   configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: b965f3cb88d065f9
+  introduction: 93ee82f7bbc205e2
   who-can-manage-templates: 8415575d22a226aa
   create-a-poll-template: 1334d2e3d3d73853
   template-title-subtitle-and-help: 344248e8b3992859
@@ -43,7 +43,7 @@ title_generated: cd672e826498e8c7
 
 Les modèles de sondage sont des points de départ réutilisables qui s’affichent lorsqu’une personne sélectionne **Lancer un vote** ou **Nouveau sondage**. Un modèle associe une méthode de vote à des consignes, des options de réponse et des paramètres prédéfinis.
 
-Utilisez cette page pour configurer les modèles disponibles dans un groupe ou en créer un pour votre propre processus. Pour choisir un modèle pour un vote particulier, consultez [Propositions](../proposals/) ou [Sondages](../proposal_types/). Pour faciliter un processus de décision complet, consultez [Prendre des décisions](/en/guides/making_decisions/).
+Utilisez cette page pour configurer les modèles disponibles dans un groupe ou en créer un pour votre propre processus. Pour choisir un modèle pour un vote particulier, consultez [Propositions](../proposals/) ou [Sondages](../proposal_types/). Pour faciliter un processus de décision complet, consultez [Prendre des décisions](/guides/making-decisions/).
 
 Lorsque vous lancez un vote, sélectionnez l’onglet **Proposition** ou **Sondage** et choisissez un modèle disponible dans le groupe.
 

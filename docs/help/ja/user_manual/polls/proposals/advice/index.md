@@ -1,12 +1,12 @@
 ---
 title: アドバイス
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 0017400c5bb267d2
+  introduction: 4f085360e884b646
   when-to-use-advice: 8bce736e8f48da5b
   example-choose-a-washing-supplier: 96a239f969af38cf
   set-up-the-proposal: 43ea148c509c72e9
@@ -23,8 +23,6 @@ generated:
   share-an-outcome: c3cae4b0e21997b5
 title_source: 305f5e5463e18d7f
 title_generated: a3dcdd1bb13c176a
-needs_review:
-  introduction: use "結論" instead of "結果" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -33,7 +31,7 @@ needs_review:
 
 アドバイス提案は、個人やチームが責任を持って行う決定について意見を集めます。参加者はアドバイスを提供するか、追加するアドバイスがないことを示せます。
 
-このページでは、アドバイス提案のフォーム、投票、結果について説明します。決定すべきことを明確にするところから結論を公開するまでの一連の流れについては、[アドバイスのプロセス](/en/guides/making_decisions/advice_process)を参照してください。
+このページでは、アドバイス提案のフォーム、投票、結果について説明します。決定すべきことを明確にするところから結論を公開するまでの一連の流れについては、[アドバイスのプロセス](/guides/making-decisions/advice-process/)を参照してください。
 
 <!-- translation-section: when-to-use-advice -->
 

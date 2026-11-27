@@ -1,17 +1,17 @@
 ---
 title: Tilin poistaminen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: 1c0abdd06e055de7
-  what-does-delete-account-mean: 5332736d87e9aec3
+  what-does-delete-account-mean: 5321419f5e6e57ec
   to-delete-your-account-entirely: df708b406154ca62
 title_source: 26a117d6f45e95e8
 title_generated: 936702072992216a
@@ -34,9 +34,9 @@ Tilin poistaminen on pysyvää, eikä sitä voi perua. Kun poistat tilisi:
 
 Kopioita toiminnastasi on saatettu jo lähettää sähköpostitse ryhmän jäsenille. Loomio ei voi poistaa jo lähetettyjä sähköposteja.
 
-Tilisi poistaminen ei peruuta maksullista tilausta. Ohjeet maksujen lopettamiseen löydät kohdasta [Tilaukset](/en/policy/subscriptions/management#cancel-your-plan).
+Tilisi poistaminen ei peruuta maksullista tilausta. Ohjeet maksujen lopettamiseen löydät kohdasta [Tilaukset](/policy/subscriptions/management/#cancel-your-plan).
 
-Lisätietoja siitä, miten Loomio käsittelee tietojasi, löydät [tietosuojakäytännöstämme](/en/policy/privacy), tai voit [ottaa meihin yhteyttä](/contact). Jos tarvitset ensin kopion ryhmän tiedoista, ryhmän ylläpitäjä voi [viedä ryhmän tiedot](/en/user_manual/groups/data_export).
+Lisätietoja siitä, miten Loomio käsittelee tietojasi, löydät [tietosuojakäytännöstämme](/policy/privacy/), tai voit [ottaa meihin yhteyttä](/contact). Jos tarvitset ensin kopion ryhmän tiedoista, ryhmän ylläpitäjä voi [viedä ryhmän tiedot](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

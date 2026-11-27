@@ -1,12 +1,12 @@
 ---
 title: Umfragevorlagen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
-  introduction: 227665c7b66356be
+  introduction: 6faf3959a24d633a
   who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
@@ -20,7 +20,7 @@ sections:
   configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: f9cbc039bbbaeff1
+  introduction: 8a761f08e8962989
   who-can-manage-templates: de8db62bde2438d5
   create-a-poll-template: 9b5594433fc6e4d9
   template-title-subtitle-and-help: a4ab5501c937d468
@@ -45,7 +45,7 @@ needs_review:
 
 Abstimmungsvorlagen sind wiederverwendbare Ausgangspunkte, die angezeigt werden, wenn jemand **Jetzt abstimmen** oder **Neue Abstimmung** auswählt. Eine Vorlage kombiniert eine Abstimmungsart mit voreingestellten Hinweisen, Antwortoptionen und Einstellungen.
 
-Auf dieser Seite erfährst du, wie du festlegst, welche Vorlagen einer Gruppe zur Verfügung stehen, oder eine Vorlage für deinen eigenen Prozess erstellst. Wie du eine Vorlage für eine bestimmte Abstimmung auswählst, erfährst du unter [Vorschläge](../proposals/) oder [Abstimmungen](../proposal_types/). Hinweise zur Begleitung eines vollständigen Entscheidungsprozesses findest du unter [Entscheidungen treffen](/en/guides/making_decisions/).
+Auf dieser Seite erfährst du, wie du festlegst, welche Vorlagen einer Gruppe zur Verfügung stehen, oder eine Vorlage für deinen eigenen Prozess erstellst. Wie du eine Vorlage für eine bestimmte Abstimmung auswählst, erfährst du unter [Vorschläge](../proposals/) oder [Abstimmungen](../proposal_types/). Hinweise zur Begleitung eines vollständigen Entscheidungsprozesses findest du unter [Entscheidungen treffen](/guides/making-decisions/).
 
 Wähle beim Starten einer Abstimmung den Reiter **Vorschlag** oder **Abstimmung** und dann eine Vorlage, die der Gruppe zur Verfügung steht.
 

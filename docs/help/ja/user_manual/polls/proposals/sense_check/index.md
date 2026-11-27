@@ -1,12 +1,12 @@
 ---
 title: 意見の確認
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 7559186e7bf07c00
+  introduction: 6cd3d068a7735064
   when-to-use-sense-check: 6b8bd9eb188f24e5
   example-check-a-trial-plan: f906fdfe1f356adc
   set-up-the-proposal: 8e482e395f362427
@@ -31,7 +31,7 @@ title_generated: acb654bf1e4c719e
 
 意向確認は、アイデアを検討している段階でリアクションを集めるためのものです。選択肢の**良さそうだ**、**もっと良くなるかもしれない**、**再考が必要**によって、グループが次に進める状態にあるか、まずアイデアを修正する必要があるかを確認できます。
 
-このページでは、意向確認を1回実施する方法を説明します。より大きなプロセスの一段階として意向確認を使う例については、[シンプルな意思決定プロセス](/en/guides/making_decisions/simple_decision_process)、[同意プロセス](/en/guides/making_decisions/consent_process)、[コンセンサスプロセス](/en/guides/making_decisions/consensus_process)を参照してください。
+このページでは、意向確認を1回実施する方法を説明します。より大きなプロセスの一段階として意向確認を使う例については、[シンプルな意思決定プロセス](/guides/making-decisions/simple-decision-process/)、[同意プロセス](/guides/making-decisions/consent-process/)、[コンセンサスプロセス](/guides/making-decisions/consensus-process/)を参照してください。
 
 <!-- translation-section: when-to-use-sense-check -->
 

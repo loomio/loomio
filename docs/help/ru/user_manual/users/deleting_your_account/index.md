@@ -1,17 +1,17 @@
 ---
 title: Удаление аккаунта
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: c4251bbe37c8e5c3
-  what-does-delete-account-mean: e4947290bd98b01a
+  what-does-delete-account-mean: 402f378168cfa4e0
   to-delete-your-account-entirely: e51e1b2da7495dc8
 title_source: 26a117d6f45e95e8
 title_generated: 10d87746ac09410f
@@ -34,9 +34,9 @@ title_generated: 10d87746ac09410f
 
 Копии ваших действий в Loomio уже могли быть отправлены участникам группы по электронной почте. Loomio не может удалить уже отправленные письма.
 
-Удаление аккаунта не отменяет платную подписку. Чтобы прекратить платежи, см. раздел [Подписки](/en/policy/subscriptions/management#cancel-your-plan).
+Удаление аккаунта не отменяет платную подписку. Чтобы прекратить платежи, см. раздел [Подписки](/policy/subscriptions/management/#cancel-your-plan).
 
-Подробнее о том, как Loomio обрабатывает ваши данные, читайте в нашей [политике конфиденциальности](/en/policy/privacy) или [свяжитесь с нами](/contact). Если перед удалением вам нужна копия записей группы, администратор группы может [экспортировать данные группы](/en/user_manual/groups/data_export).
+Подробнее о том, как Loomio обрабатывает ваши данные, читайте в нашей [политике конфиденциальности](/policy/privacy/) или [свяжитесь с нами](/contact). Если перед удалением вам нужна копия записей группы, администратор группы может [экспортировать данные группы](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

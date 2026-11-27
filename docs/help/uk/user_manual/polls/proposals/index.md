@@ -1,17 +1,17 @@
 ---
 title: Пропозиції
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: 18ccc921b07aa6d9
+  introduction: 9d1ff44c6b730a37
   choose-a-proposal-template: 94d98d303ba3c693
   other-proposal-templates: e8f89285207d6ea8
   proposal-records: '0873568827cbac99'
@@ -28,7 +28,7 @@ needs_review:
 
 Пропозиція просить людей відреагувати на твердження або план дій. Учасники вибирають одну з визначених відповідей і можуть пояснити свій голос. Використовуйте пропозицію, щоб зібрати відгуки, отримати поради, виявити заперечення або перевірити, чи є згода.
 
-Цей розділ допоможе вам вибрати й використовувати стандартні шаблони пропозицій Loomio. Щоб пройти повну послідовність обговорення, пропозицій, поправок і висновку, скористайтеся [посібниками з ухвалення рішень](/en/guides/making_decisions/). Щоб змінити шаблони, доступні вашій групі, перегляньте [Шаблони опитувань](../poll_templates/).
+Цей розділ допоможе вам вибрати й використовувати стандартні шаблони пропозицій Loomio. Щоб пройти повну послідовність обговорення, пропозицій, поправок і висновку, скористайтеся [посібниками з ухвалення рішень](/guides/making-decisions/). Щоб змінити шаблони, доступні вашій групі, перегляньте [Шаблони опитувань](../poll_templates/).
 
 <!-- translation-section: choose-a-proposal-template -->
 

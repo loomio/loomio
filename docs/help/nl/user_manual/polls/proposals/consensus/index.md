@@ -1,12 +1,12 @@
 ---
 title: Consensus
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: e0ce65a27be05dcb
+  introduction: 45d577b82abc6321
   when-to-use-consensus: 77c70e4e03c611e7
   example-adopt-a-bottle-return-standard: 32eec1dfd9b5fe10
   set-up-the-proposal: bb0e2fe6e1024f96
@@ -31,7 +31,7 @@ title_generated: 8abe09bf65aefdb8
 
 Een consensusvoorstel zoekt overeenstemming tussen alle betrokkenen. Met de standaardantwoorden kunnen deelnemers aangeven dat ze het eens zijn, zich onthouden, het oneens zijn of een veto uitspreken.
 
-Deze pagina legt uit hoe je één consensusvoorstel gebruikt. Bekijk het [Consensusproces](/en/guides/making_decisions/consensus_process) voor het volledige proces, van discussie en gevoelscheck tot aanpassing en conclusie.
+Deze pagina legt uit hoe je één consensusvoorstel gebruikt. Bekijk het [Consensusproces](/guides/making-decisions/consensus-process/) voor het volledige proces, van discussie en gevoelscheck tot aanpassing en conclusie.
 
 <!-- translation-section: when-to-use-consensus -->
 

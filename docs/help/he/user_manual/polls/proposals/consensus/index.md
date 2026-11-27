@@ -1,12 +1,12 @@
 ---
 title: קוֹנסֶנזוּס
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: 3877da1d2c3d2d1f
+  introduction: 4dce840ea2148bfb
   when-to-use-consensus: 879a595e767d5745
   example-adopt-a-bottle-return-standard: a171fd27ce7e590d
   set-up-the-proposal: 3cbc627902ddbe5f
@@ -33,7 +33,7 @@ needs_review:
 
 הצעת קונצנזוס נועדה להגיע להסכמה משותפת של כל המעורבים. אפשרויות התגובה המוגדרות כברירת מחדל הן מסכים/ה, נמנע/ת, לא מסכים/ה או וטו.
 
-עמוד זה מסביר כיצד לנהל הצעת קונצנזוס אחת. לתהליך העבודה המלא, מדיון ובדיקת כיוון ועד תיקונים ומסקנה, ניתן לעיין ב[תהליך הקונצנזוס](/en/guides/making_decisions/consensus_process).
+עמוד זה מסביר כיצד לנהל הצעת קונצנזוס אחת. לתהליך העבודה המלא, מדיון ובדיקת כיוון ועד תיקונים ומסקנה, ניתן לעיין ב[תהליך הקונצנזוס](/guides/making-decisions/consensus-process/).
 
 <!-- translation-section: when-to-use-consensus -->
 

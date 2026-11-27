@@ -1,12 +1,12 @@
 ---
 title: Consentir
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: b38146f81ca00225
+  introduction: 80d5d3df675962cf
   when-to-use-consent: b829ec140ff9bd85
   example-start-a-bottle-trial: c915f99f904f7cb2
   set-up-the-proposal: 2865ad0526dabc08
@@ -31,7 +31,7 @@ title_generated: 5df2c7d72db8a39e
 
 Una propuesta de consentimiento pregunta si es seguro poner a prueba una línea de acción. Los participantes dan su consentimiento o plantean una objeción. Una objeción identifica un riesgo o daño concreto que la propuesta debe abordar.
 
-Esta página explica cómo llevar a cabo una propuesta de consentimiento. Consulta el [Proceso de consentimiento](/en/guides/making_decisions/consent_process) para conocer el proceso completo, incluidas las preguntas, la toma de pulso, las modificaciones, las objeciones y la conclusión.
+Esta página explica cómo llevar a cabo una propuesta de consentimiento. Consulta el [Proceso de consentimiento](/guides/making-decisions/consent-process/) para conocer el proceso completo, incluidas las preguntas, la toma de pulso, las modificaciones, las objeciones y la conclusión.
 
 <!-- translation-section: when-to-use-consent -->
 

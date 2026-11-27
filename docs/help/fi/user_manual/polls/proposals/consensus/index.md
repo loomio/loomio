@@ -1,12 +1,12 @@
 ---
 title: Konsensus
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: 6dced5b475f7a9ee
+  introduction: 9aa548d1ebde43d1
   when-to-use-consensus: 4051c3c7b650dfa9
   example-adopt-a-bottle-return-standard: 8c018b45ced5a997
   set-up-the-proposal: 4f2aec973f590aa9
@@ -31,7 +31,7 @@ title_generated: '09e6a5abb4573a2d'
 
 Konsensusehdotuksella tavoitellaan kaikkien osallistujien yhteistä hyväksyntää. Oletusvaihtoehdot ovat Samaa mieltä, Pidättäydyn, Eri mieltä ja Veto.
 
-Tällä sivulla kerrotaan, miten toteutat yhden konsensusehdotuksen. Katso [Konsensusprosessi](/en/guides/making_decisions/consensus_process), jossa kuvataan koko työnkulku keskustelusta ja tunnustelusta ehdotuksen muokkaamiseen ja johtopäätökseen.
+Tällä sivulla kerrotaan, miten toteutat yhden konsensusehdotuksen. Katso [Konsensusprosessi](/guides/making-decisions/consensus-process/), jossa kuvataan koko työnkulku keskustelusta ja tunnustelusta ehdotuksen muokkaamiseen ja johtopäätökseen.
 
 <!-- translation-section: when-to-use-consensus -->
 

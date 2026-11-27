@@ -1,12 +1,12 @@
 ---
 title: 同意
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 8adecd1b91be2de1
+  introduction: 383ff74a8085f29d
   when-to-use-consent: 6b8e61a43a989d98
   example-start-a-bottle-trial: e14127c6eaca93f3
   set-up-the-proposal: 243343273e4ce02d
@@ -31,7 +31,7 @@ title_generated: 905819e2e3a059a0
 
 同意の提案では、ある行動を安全に試せるかどうかを確認します。参加者は同意するか、異議を申し立てます。異議では、提案で対処すべき具体的なリスクや害を示します。
 
-このページでは、同意の提案を実施する方法を説明します。質問、意向確認、修正、異議、結論を含む一連の進め方については、[同意のプロセス](/en/guides/making_decisions/consent_process)を参照してください。
+このページでは、同意の提案を実施する方法を説明します。質問、意向確認、修正、異議、結論を含む一連の進め方については、[同意のプロセス](/guides/making-decisions/consent-process/)を参照してください。
 
 <!-- translation-section: when-to-use-consent -->
 

@@ -1,16 +1,16 @@
 ---
 title: グループ
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 898c4f0b7d3b8a80
-  administration-facilitation-and-moderation-code-of-conduct: b3b4184adad941aa
+  administration-facilitation-and-moderation-code-of-conduct: 37704795790a0fab
 generated:
   introduction: e3a7ad0baba6431e
-  administration-facilitation-and-moderation-code-of-conduct: 934dd5f0da2ab649
+  administration-facilitation-and-moderation-code-of-conduct: 63131ab2da0316fd
 title_source: 39bbb719fa2b9d22
 title_generated: 22e44df705a2e22a
 ---
@@ -33,4 +33,4 @@ Loomioのグループは、メンバーがディスカッションを行い、�
 
 ## 行動規範
 
-行動規範は、メンバーが参加の仕方や、不適切な行動にグループがどのように対応するかを理解する助けになります。期待される行動を定める方法については、[ファシリテーターガイド](/en/guides/facilitators_guide/commencing#culture-protocol-expectations)を参照してください。
+行動規範は、メンバーが参加の仕方や、不適切な行動にグループがどのように対応するかを理解する助けになります。期待される行動を定める方法については、[ファシリテーターガイド](/guides/facilitators-guide/commencing/#culture-protocol-expectations)を参照してください。

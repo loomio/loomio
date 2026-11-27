@@ -1,12 +1,12 @@
 ---
 title: Tanács
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: ea0cc3345df861d7
+  introduction: b42a4fe5087b0ab2
   when-to-use-advice: 7982b07514a555ab
   example-choose-a-washing-supplier: d28608bf59660c9e
   set-up-the-proposal: 04c38d65dbbf282d
@@ -31,7 +31,7 @@ title_generated: df602162bbbf058d
 
 A Tanács típusú javaslat véleményeket gyűjt egy olyan döntéshez, amelynek meghozataláért egy személy vagy csapat felelős. A résztvevők tanácsot adhatnak, vagy jelezhetik, hogy nincs hozzáfűznivalójuk.
 
-Ez az oldal bemutatja a Tanács típusú javaslat űrlapját, a szavazatok leadását és az eredményeket. A döntés megfogalmazásától a következtetés közzétételéig tartó teljes folyamatot a [Tanácsadási folyamat](/en/guides/making_decisions/advice_process) oldalon találod.
+Ez az oldal bemutatja a Tanács típusú javaslat űrlapját, a szavazatok leadását és az eredményeket. A döntés megfogalmazásától a következtetés közzétételéig tartó teljes folyamatot a [Tanácsadási folyamat](/guides/making-decisions/advice-process/) oldalon találod.
 
 <!-- translation-section: when-to-use-advice -->
 

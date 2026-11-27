@@ -1,13 +1,13 @@
 ---
 title: Propostas e enquetes
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 0e19c4496e3b162d
-  find-the-right-help: 10a47566b7c37fda
+  find-the-right-help: 7b9561a97afbe650
   proposals: d5aa93cc7c794ec1
   polls: 532ae5aefbe19c11
   start-a-proposal-or-poll: 6249174107e14824
@@ -56,7 +56,7 @@ Estas partes do manual respondem a diferentes perguntas:
 | Escolher o que os participantes devem expressar | [Propostas](../proposals/) ou [Enquetes](../proposal_types/) |
 | Usar um modelo específico de proposta | [Verificação de opinião](../proposals/sense_check/), [Aconselhamento](../proposals/advice/), [Consentimento](../proposals/consent/) ou [Consenso](../proposals/consensus/) |
 | Configurar os modelos disponíveis para um grupo | [Modelos de enquete](../poll_templates/) |
-| Facilitar uma decisão desde a discussão até a conclusão | [Tomar decisões](/en/guides/making_decisions/) |
+| Facilitar uma decisão desde a discussão até a conclusão | [Tomar decisões](/guides/making-decisions/) |
 
 Um **método de votação** define como as pessoas respondem e como os resultados são calculados. Um **modelo de enquete** é uma configuração reutilizável baseada em um método de votação, com instruções, opções e configurações predefinidas. Um **processo de decisão** pode usar uma discussão e vários modelos antes de o grupo chegar a uma conclusão.
 

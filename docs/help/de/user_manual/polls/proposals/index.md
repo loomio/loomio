@@ -1,17 +1,17 @@
 ---
 title: Vorschläge
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: edb72244155959ce
+  introduction: a880d649a5a743cb
   choose-a-proposal-template: dba811d1fb0c84f4
   other-proposal-templates: 3a51538765b0dab4
   proposal-records: dad69725bfbf4615
@@ -25,7 +25,7 @@ title_generated: 4238ec18355e579f
 
 Ein Vorschlag bittet Menschen, auf eine Aussage oder eine geplante Vorgehensweise zu reagieren. Teilnehmende wählen eine der vorgegebenen Antworten und können ihre Stimme begründen. Nutze einen Vorschlag, um Rückmeldungen zu sammeln, Rat einzuholen, Einwände zu erkennen oder Zustimmung zu prüfen.
 
-Dieser Abschnitt hilft dir, Loomios Standardvorlagen für Vorschläge auszuwählen und zu nutzen. Für einen vollständigen Ablauf mit Diskussion, Vorschlägen, Änderungen und Fazit nutze die [Leitfäden zur Entscheidungsfindung](/en/guides/making_decisions/). Wie du die für deine Gruppe verfügbaren Vorlagen änderst, erfährst du unter [Abstimmungsvorlagen](../poll_templates/).
+Dieser Abschnitt hilft dir, Loomios Standardvorlagen für Vorschläge auszuwählen und zu nutzen. Für einen vollständigen Ablauf mit Diskussion, Vorschlägen, Änderungen und Fazit nutze die [Leitfäden zur Entscheidungsfindung](/guides/making-decisions/). Wie du die für deine Gruppe verfügbaren Vorlagen änderst, erfährst du unter [Abstimmungsvorlagen](../poll_templates/).
 
 <!-- translation-section: choose-a-proposal-template -->
 

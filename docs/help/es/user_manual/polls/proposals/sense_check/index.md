@@ -1,12 +1,12 @@
 ---
 title: Comprobar la opinión del grupo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: bb64bbfa69ad3ebb
+  introduction: 5428201bbd17093c
   when-to-use-sense-check: 9c81c544bf22ea48
   example-check-a-trial-plan: 9f54118b01026feb
   set-up-the-proposal: ec06eca05ad45ffe
@@ -31,7 +31,7 @@ title_generated: 88c68622228b5ce6
 
 La toma de pulso recoge reacciones mientras una idea aún está en desarrollo. Sus opciones —**Se ve bien**, **Podría ser mejor** y **Necesita un replanteamiento**— muestran si el grupo está listo para avanzar o si debe revisar primero la idea.
 
-Esta página explica cómo realizar una toma de pulso. Consulta el [Proceso de decisión sencillo](/en/guides/making_decisions/simple_decision_process), el [Proceso de consentimiento](/en/guides/making_decisions/consent_process) o el [Proceso de consenso](/en/guides/making_decisions/consensus_process) para ver ejemplos de cómo usar la toma de pulso como una etapa de un proceso más amplio.
+Esta página explica cómo realizar una toma de pulso. Consulta el [Proceso de decisión sencillo](/guides/making-decisions/simple-decision-process/), el [Proceso de consentimiento](/guides/making-decisions/consent-process/) o el [Proceso de consenso](/guides/making-decisions/consensus-process/) para ver ejemplos de cómo usar la toma de pulso como una etapa de un proceso más amplio.
 
 <!-- translation-section: when-to-use-sense-check -->
 

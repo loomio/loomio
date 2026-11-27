@@ -1,17 +1,17 @@
 ---
 title: Видалення облікового запису
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: 18ecf22783997360
-  what-does-delete-account-mean: 81f4c02a8c7257d3
+  what-does-delete-account-mean: 8ddf57b8b88de2b1
   to-delete-your-account-entirely: d0935d5ab83d3c23
 title_source: 26a117d6f45e95e8
 title_generated: eea2e977715f25ad
@@ -34,9 +34,9 @@ title_generated: eea2e977715f25ad
 
 Копії ваших дій у Loomio вже могли бути надіслані електронною поштою учасникам групи. Loomio не може видалити вже надіслані листи.
 
-Видалення облікового запису не скасовує платну підписку. Щоб припинити платежі, перегляньте розділ [Підписки](/en/policy/subscriptions/management#cancel-your-plan).
+Видалення облікового запису не скасовує платну підписку. Щоб припинити платежі, перегляньте розділ [Підписки](/policy/subscriptions/management/#cancel-your-plan).
 
-Докладніше про те, як Loomio обробляє ваші дані, читайте в нашій [політиці конфіденційності](/en/policy/privacy) або [зв’яжіться з нами](/contact). Якщо перед видаленням вам потрібна копія записів групи, адміністратор групи може [експортувати дані групи](/en/user_manual/groups/data_export).
+Докладніше про те, як Loomio обробляє ваші дані, читайте в нашій [політиці конфіденційності](/policy/privacy/) або [зв’яжіться з нами](/contact). Якщо перед видаленням вам потрібна копія записів групи, адміністратор групи може [експортувати дані групи](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

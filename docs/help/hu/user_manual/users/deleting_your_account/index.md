@@ -1,17 +1,17 @@
 ---
 title: Fiókod törlése
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: 671808733c57b184
-  what-does-delete-account-mean: 8e1435a868fd5b7c
+  what-does-delete-account-mean: b2d488b520b7da55
   to-delete-your-account-entirely: bdc551d6bd71bca9
 title_source: 26a117d6f45e95e8
 title_generated: 640d77789fe19f71
@@ -34,9 +34,9 @@ Fiókod törlése végleges, és nem vonható vissza. Amikor törlöd a fiókoda
 
 Előfordulhat, hogy a tevékenységed másolatait már elküldtük e-mailben a csoport tagjainak. A Loomio nem tudja törölni a már elküldött e-maileket.
 
-Fiókod törlése nem mondja le a fizetős előfizetésedet. A fizetések leállításához olvasd el az [Előfizetések](/en/policy/subscriptions/management#cancel-your-plan) oldalt.
+Fiókod törlése nem mondja le a fizetős előfizetésedet. A fizetések leállításához olvasd el az [Előfizetések](/policy/subscriptions/management/#cancel-your-plan) oldalt.
 
-Ha többet szeretnél tudni arról, hogyan kezeli a Loomio az adataidat, olvasd el az [adatvédelmi szabályzatunkat](/en/policy/privacy), vagy [lépj kapcsolatba velünk](/contact). Ha előbb szükséged van egy csoport adatainak másolatára, egy csoportadmin [exportálhatja a csoport adatait](/en/user_manual/groups/data_export).
+Ha többet szeretnél tudni arról, hogyan kezeli a Loomio az adataidat, olvasd el az [adatvédelmi szabályzatunkat](/policy/privacy/), vagy [lépj kapcsolatba velünk](/contact). Ha előbb szükséged van egy csoport adatainak másolatára, egy csoportadmin [exportálhatja a csoport adatait](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

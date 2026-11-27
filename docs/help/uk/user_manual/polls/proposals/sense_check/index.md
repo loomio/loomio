@@ -1,12 +1,12 @@
 ---
 title: Перевірка сенсу
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 34f483e20417948e
+  introduction: 6a4c077fdeca293e
   when-to-use-sense-check: 96c617d88a60bab6
   example-check-a-trial-plan: 9aaf96afdd98a0bd
   set-up-the-proposal: 981790c9c59f18b2
@@ -33,7 +33,7 @@ needs_review:
 
 Перевірка думок збирає реакції, поки ідея ще розробляється. Її варіанти — **Виглядає добре**, **Могло б бути краще** та **Потребує переосмислення** — показують, чи готова група рухатися далі, чи спочатку слід доопрацювати ідею.
 
-На цій сторінці пояснено, як провести одну перевірку думок. Приклади використання перевірки думок як одного з етапів ширшого процесу наведено на сторінках [Простий процес ухвалення рішень](/en/guides/making_decisions/simple_decision_process), [Процес згоди](/en/guides/making_decisions/consent_process) та [Процес консенсусу](/en/guides/making_decisions/consensus_process).
+На цій сторінці пояснено, як провести одну перевірку думок. Приклади використання перевірки думок як одного з етапів ширшого процесу наведено на сторінках [Простий процес ухвалення рішень](/guides/making-decisions/simple-decision-process/), [Процес згоди](/guides/making-decisions/consent-process/) та [Процес консенсусу](/guides/making-decisions/consensus-process/).
 
 <!-- translation-section: when-to-use-sense-check -->
 

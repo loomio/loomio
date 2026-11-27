@@ -1,16 +1,16 @@
 ---
 title: Groepen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 898c4f0b7d3b8a80
-  administration-facilitation-and-moderation-code-of-conduct: b3b4184adad941aa
+  administration-facilitation-and-moderation-code-of-conduct: 37704795790a0fab
 generated:
   introduction: 82e4999048c1beda
-  administration-facilitation-and-moderation-code-of-conduct: 59d140dc7dd179ab
+  administration-facilitation-and-moderation-code-of-conduct: 5883cf55667a7ae1
 title_source: 39bbb719fa2b9d22
 title_generated: 954618df1bbc3db1
 ---
@@ -33,4 +33,4 @@ Als je een nieuwe groep voorbereidt, vind je in [Loomio introduceren in jouw gro
 
 ## Gedragscode
 
-Een gedragscode helpt leden te begrijpen hoe ze kunnen deelnemen en hoe de groep reageert op ongepast gedrag. Raadpleeg de [Handleiding voor procesbegeleiders](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) voor advies over het vastleggen van verwachtingen.
+Een gedragscode helpt leden te begrijpen hoe ze kunnen deelnemen en hoe de groep reageert op ongepast gedrag. Raadpleeg de [Handleiding voor procesbegeleiders](/guides/facilitators-guide/commencing/#culture-protocol-expectations) voor advies over het vastleggen van verwachtingen.

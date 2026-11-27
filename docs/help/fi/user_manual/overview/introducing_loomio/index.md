@@ -1,10 +1,10 @@
 ---
 title: Loomion käyttöönotto ryhmässäsi
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: 53346829ceb98e29
   choose-one-useful-starting-point: 78362575e115f189
@@ -24,15 +24,13 @@ generated:
   decide-where-work-belongs: ca27dab34cac7c0b
   decide-how-your-group-decides: da895018c2cb624c
   if-your-process-is-already-established: da2f442b5fdd8188
-  if-your-group-is-still-deciding: 59578204dfd3bead
+  if-your-group-is-still-deciding: ae9747cb66603e1d
   invite-people: 6541885f0999eea7
   help-everyone-participate-once: d7c27b2685ae03a7
   use-notifications-deliberately: a621866d64cb1994
-  complete-the-first-process: 76177c8ecc4357b0
+  complete-the-first-process: 98efd9549dd07abd
 title_source: 4f1540fbaadc657b
 title_generated: 4848a10c5af41e7a
-needs_review:
-  if-your-group-is-still-deciding: use "johtopäätös" instead of "tulokset" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -123,7 +121,7 @@ Aloita keskustelu siitä, miten päätöksiä pitäisi tehdä. Sen sijaan, että
 - Miten käsittelemme vastaväitteet, tasatulokset tai liian vähäisen osallistumisen?
 - Miten tiedotamme päätöksestä, kirjaamme sen, arvioimme sitä ja muutamme sitä?
 
-Vastaukset voivat olla erilaisia, kun kyseessä on toimintaan liittyvä päätös, toimintaperiaate, vaali tai sääntömuutos. Voit vertailla useita kokonaisia päätöksentekoprosesseja oppaassa [Päätösten tekeminen](/en/guides/making_decisions).
+Vastaukset voivat olla erilaisia, kun kyseessä on toimintaan liittyvä päätös, toimintaperiaate, vaali tai sääntömuutos. Voit vertailla useita kokonaisia päätöksentekoprosesseja oppaassa [Päätösten tekeminen](/guides/making-decisions/).
 
 Jos ryhmä ei ole valmis sopimaan kaikista säännöistä, sovi väliaikaisesta menettelystä yhtä vähäriskistä päätöstä varten. Kerro, mitä tulokset merkitsevät, ennen kuin pyydät ihmisiä osallistumaan. Julkaise johtopäätös ja arvioi sitten, miten prosessi toimi. Kirjaa ryhmän oppimat asiat sen kuvaukseen, hallintoa koskeviin asiakirjoihin tai uudelleenkäytettäviin malleihin.
 
@@ -181,4 +179,4 @@ Ensimmäisen prosessin pitäisi näyttää koko toimintatapa:
 
 Johtopäätös vie prosessin loppuun ja luo kirjauksen, johon jäsenet voivat palata myöhemmin. Kysy sen jälkeen, mikä toimi, muokkaa prosessia ja valitse seuraava toistuva tehtävä toteutettavaksi Loomiossa.
 
-Katso ohjatusti keskustelusta päätökseen etenevä prosessi oppaasta [Päätösten tekeminen](/en/guides/making_decisions). Hallituksen käytäntöjä käsitellään oppaassa [Loomion käyttöönotto hallituksessasi](/en/guides/board_processes/introduce).
+Katso ohjatusti keskustelusta päätökseen etenevä prosessi oppaasta [Päätösten tekeminen](/guides/making-decisions/). Kokousten ja muodollisten äänestysten työnkulkuja käsitellään oppaissa [Paremmat kokoukset](/guides/better-meetings/) ja [Vuosikokoukset ja muodolliset päätökset](/guides/agms-and-resolutions/).

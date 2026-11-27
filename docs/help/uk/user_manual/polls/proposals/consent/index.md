@@ -1,12 +1,12 @@
 ---
 title: Згода
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 5e76f69bb67cf653
+  introduction: 81f647864bbc08ec
   when-to-use-consent: 9ad3f0dcde3f368c
   example-start-a-bottle-trial: 823c8ea7733ba151
   set-up-the-proposal: f5e0463c64400c69
@@ -33,7 +33,7 @@ needs_review:
 
 Пропозиція типу «Згода» запитує, чи безпечно спробувати запропоновані дії. Учасники або дають згоду, або висловлюють заперечення. Заперечення вказує на конкретний ризик або шкоду, які слід врахувати в пропозиції.
 
-На цій сторінці пояснено, як провести одну пропозицію типу «Згода». Повний процес, зокрема запитання, перевірку думок, зміни, заперечення та висновок, описано на сторінці [Процес ухвалення рішень за згодою](/en/guides/making_decisions/consent_process).
+На цій сторінці пояснено, як провести одну пропозицію типу «Згода». Повний процес, зокрема запитання, перевірку думок, зміни, заперечення та висновок, описано на сторінці [Процес ухвалення рішень за згодою](/guides/making-decisions/consent-process/).
 
 <!-- translation-section: when-to-use-consent -->
 

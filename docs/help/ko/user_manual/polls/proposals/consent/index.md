@@ -1,6 +1,6 @@
 ---
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -8,7 +8,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 5591edea1bdbb636
+  introduction: f454d6f1ab25a710
   when-to-use-consent: 482534e10680f249
   example-start-a-bottle-trial: 31dda66197dbbbbc
   set-up-the-proposal: d132e46bd6f25ed9
@@ -18,11 +18,11 @@ generated:
 title: 이의 없음
 title_source: d37e0cd00f18a366
 title_generated: e39d62da386f15df
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-28'
 ---
 
 <!-- translation-section: introduction -->
@@ -31,7 +31,7 @@ translated:
 
 이의 없음 제안은 제안한 행동을 안전하게 시도할 수 있는지 묻습니다. 참여자는 이의 없음을 표시하거나 이의를 제기합니다. 이의는 제안에서 해결해야 할 구체적인 위험이나 피해를 지적합니다.
 
-이 페이지에서는 이의 없음 제안 하나를 진행하는 방법을 설명합니다. 질문, 의견 확인, 수정, 이의, 결론을 포함한 전체 절차는 [이의 없는 의사결정 절차](/en/guides/making_decisions/consent_process)를 참고하세요.
+이 페이지에서는 이의 없음 제안 하나를 진행하는 방법을 설명합니다. 질문, 의견 확인, 수정, 이의, 결론을 포함한 전체 절차는 [이의 없는 의사결정 절차](/guides/making-decisions/consent-process/)를 참고하세요.
 
 <!-- translation-section: when-to-use-consent -->
 

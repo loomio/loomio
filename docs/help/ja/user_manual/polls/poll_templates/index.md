@@ -1,12 +1,12 @@
 ---
 title: 投票テンプレート
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
-  introduction: 227665c7b66356be
+  introduction: 6faf3959a24d633a
   who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
@@ -20,7 +20,7 @@ sections:
   configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: c5ea6d7b9c459d97
+  introduction: 340ca0b3853cd75d
   who-can-manage-templates: ca9ce236b6e42ea8
   create-a-poll-template: 4231b06a60e5dd40
   template-title-subtitle-and-help: 54d6c9a919de49b7
@@ -43,7 +43,7 @@ title_generated: 9112f2db22c72b79
 
 アンケートテンプレートは、**投票を開始する**または**新しい投票**を選択したときに表示される、再利用可能なひな形です。投票方法に、あらかじめ用意した説明、回答の選択肢、設定を組み合わせたものです。
 
-このページでは、グループで利用できるテンプレートを設定する方法や、独自の進め方に合わせてテンプレートを作成する方法を説明します。個別の投票に使うテンプレートを選ぶには、[提案](../proposals/)または[アンケート](../proposal_types/)を参照してください。意思決定のプロセス全体を進めるには、[決定を行う](/en/guides/making_decisions/)を参照してください。
+このページでは、グループで利用できるテンプレートを設定する方法や、独自の進め方に合わせてテンプレートを作成する方法を説明します。個別の投票に使うテンプレートを選ぶには、[提案](../proposals/)または[アンケート](../proposal_types/)を参照してください。意思決定のプロセス全体を進めるには、[決定を行う](/guides/making-decisions/)を参照してください。
 
 投票を開始するときは、**提案**または**アンケート**タブを選択し、グループで利用できるテンプレートを選びます。
 

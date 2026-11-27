@@ -1,12 +1,12 @@
 ---
 title: Порада
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 3e286d87289a94e4
+  introduction: 5dbc71bfdf56157b
   when-to-use-advice: 6eb3d6f913f14288
   example-choose-a-washing-supplier: eb93d07c9e187af4
   set-up-the-proposal: dbf5a1fe0b2c8d54
@@ -24,7 +24,6 @@ generated:
 title_source: 305f5e5463e18d7f
 title_generated: 89982578a3bb5e98
 needs_review:
-  introduction: use "висновок" instead of "рішення" for "outcome"
   share-an-outcome: use "висновок" instead of "рішення" for "outcome"
 ---
 
@@ -34,7 +33,7 @@ needs_review:
 
 Пропозиція «Порада» збирає думки для рішення, за ухвалення якого відповідає певна людина або команда. Учасники можуть надати пораду або вказати, що не мають порад, які могли б додати.
 
-Ця сторінка пояснює форму пропозиції «Порада», голосування та результати. Повний процес від формулювання рішення до публікації висновку описано на сторінці [Процес надання порад](/en/guides/making_decisions/advice_process).
+Ця сторінка пояснює форму пропозиції «Порада», голосування та результати. Повний процес від формулювання рішення до публікації висновку описано на сторінці [Процес надання порад](/guides/making-decisions/advice-process/).
 
 <!-- translation-section: when-to-use-advice -->
 

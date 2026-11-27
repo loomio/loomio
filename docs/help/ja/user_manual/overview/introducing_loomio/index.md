@@ -1,10 +1,10 @@
 ---
 title: グループにLoomioを導入する
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: 1745e7ca1c53efbf
   choose-one-useful-starting-point: cbe6ea952f91c0cf
@@ -24,15 +24,13 @@ generated:
   decide-where-work-belongs: f0d7dd366b0d5ce1
   decide-how-your-group-decides: 749d01579290336b
   if-your-process-is-already-established: 3e43b2874880e431
-  if-your-group-is-still-deciding: 06b5e3d7ac2e5870
+  if-your-group-is-still-deciding: 1cfadf98d841ddc8
   invite-people: 60f4eab62e048a82
   help-everyone-participate-once: cadbfaebf692d83b
   use-notifications-deliberately: efbd197d2b0373af
-  complete-the-first-process: e594a6f3a9972e44
+  complete-the-first-process: 41babc6861ea0bd1
 title_source: 4f1540fbaadc657b
 title_generated: 567392fdc8eed545
-needs_review:
-  if-your-group-is-still-deciding: use "結論" instead of "結果" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -123,7 +121,7 @@ Loomioでは、すべてのグループや決定に同じ手順を使う必要�
 - 異議、同票の結果、参加不足にはどのように対応しますか？
 - 決定をどのように伝え、記録し、見直し、変更しますか？
 
-日常業務に関する決定、方針、選挙、規約の変更では、答えが異なる場合があります。一連の意思決定の手順を比較するには、[決定を行う](/en/guides/making_decisions)を参照してください。
+日常業務に関する決定、方針、選挙、規約の変更では、答えが異なる場合があります。一連の意思決定の手順を比較するには、[決定を行う](/guides/making-decisions/)を参照してください。
 
 すべてのルールを決める準備が整っていない場合は、リスクの低い決定を一つ選び、暫定的な手順について合意します。参加を求める前に結果が何を意味するかを明示し、結論を公開してから、手順がどのように機能したかを振り返ります。グループで学んだことを、グループの説明、運営に関する文書、または再利用できるテンプレートに記録します。
 
@@ -181,4 +179,4 @@ Loomioでは、すべてのグループや決定に同じ手順を使う必要�
 
 結論を示すことで一連の手順が完了し、メンバーが後から確認できる記録が残ります。その後、うまくいった点を尋ね、手順を調整して、次にLoomioで行う定期的な取り組みを選びます。
 
-ディスカッションから決定までの進行方法については、[意思決定](/en/guides/making_decisions)を参照してください。理事会での実践方法については、[理事会にLoomioを導入する](/en/guides/board_processes/introduce)を参照してください。
+ディスカッションから決定までの進行方法については、[意思決定](/guides/making-decisions/)を参照してください。会議や正式な投票の手順については、[よりよい会議](/guides/better-meetings/)と[年次総会と正式な決議](/guides/agms-and-resolutions/)を参照してください。

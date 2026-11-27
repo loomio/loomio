@@ -1,12 +1,12 @@
 ---
 title: Consenso
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 39c9e8259eccdad5
+  introduction: 0ed0c8c901a38cd0
   when-to-use-consent: 27c86e6e94f51e7d
   example-start-a-bottle-trial: a9494069ee1ac8d9
   set-up-the-proposal: 5fdb2feab9c65abc
@@ -31,7 +31,7 @@ title_generated: a633645d078dc2da
 
 Una proposta di Consenso chiede se sia sicuro provare una linea d'azione. I partecipanti esprimono il consenso oppure sollevano un'obiezione. Un'obiezione identifica un rischio o un danno concreto che la proposta dovrebbe affrontare.
 
-Questa pagina spiega come gestire una singola proposta di Consenso. Consulta il [Processo di consenso](/en/guides/making_decisions/consent_process) per il percorso completo, che comprende domande, verifica delle opinioni, modifiche, obiezioni e conclusione.
+Questa pagina spiega come gestire una singola proposta di Consenso. Consulta il [Processo di consenso](/guides/making-decisions/consent-process/) per il percorso completo, che comprende domande, verifica delle opinioni, modifiche, obiezioni e conclusione.
 
 <!-- translation-section: when-to-use-consent -->
 

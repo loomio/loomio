@@ -6,11 +6,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: 1e3b479194839d81
   choose-one-useful-starting-point: ac5cb0fde04133c1
@@ -18,19 +18,19 @@ generated:
   decide-where-work-belongs: c5788962551460a9
   decide-how-your-group-decides: bf2808922e67a706
   if-your-process-is-already-established: 8e00d8039ba10eec
-  if-your-group-is-still-deciding: b044e056d8c901e2
+  if-your-group-is-still-deciding: e45e953b7d9dca62
   invite-people: d6f9f3eb0a4ad7b1
   help-everyone-participate-once: cb672fdb7d9675e0
   use-notifications-deliberately: 92dbf70a8fef2c36
-  complete-the-first-process: 8dd5305d07b119d3
+  complete-the-first-process: a5e229d174391fc9
 title: 그룹에 Loomio 도입하기
 title_source: 4f1540fbaadc657b
 title_generated: c40c226ab60c6a96
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-28'
 ---
 
 <!-- translation-section: introduction -->
@@ -121,7 +121,7 @@ Loomio에서는 모든 그룹이나 모든 결정에 같은 과정을 적용할 
 - 이의, 동률인 결과 또는 참여 부족에 어떻게 대응할 것인가요?
 - 결정을 어떻게 알리고, 기록하고, 검토하고, 변경할 것인가요?
 
-운영 사안, 정책, 선거, 헌장 변경에 따라 답이 다를 수 있습니다. 여러 의사결정 과정의 전체 흐름을 비교하려면 [의사결정하기](/en/guides/making_decisions)를 참고하세요.
+운영 사안, 정책, 선거, 헌장 변경에 따라 답이 다를 수 있습니다. 여러 의사결정 과정의 전체 흐름을 비교하려면 [의사결정하기](/guides/making-decisions/)를 참고하세요.
 
 그룹이 모든 규칙을 확정할 준비가 되지 않았다면 위험이 낮은 결정 하나에 적용할 임시 과정에 합의하세요. 참여를 요청하기 전에 결과가 무엇을 의미하는지 밝히고, 결론을 게시한 뒤, 과정이 어떻게 진행되었는지 검토하세요. 그룹이 배운 점은 그룹 설명, 운영 규정 문서 또는 재사용할 수 있는 템플릿에 기록하세요.
 
@@ -179,4 +179,4 @@ Loomio에서는 모든 그룹이나 모든 결정에 같은 과정을 적용할 
 
 결론은 과정을 마무리하고 멤버들이 나중에 다시 확인할 수 있는 기록을 남깁니다. 이후에는 무엇이 잘되었는지 묻고, 과정을 조정한 뒤, Loomio에서 다음으로 진행할 반복 업무를 선택하세요.
 
-토론부터 결정까지 진행을 돕는 단계별 과정은 [의사결정하기](/en/guides/making_decisions)를 참고하세요. 이사회에 맞는 활용 방법은 [이사회에 Loomio 도입하기](/en/guides/board_processes/introduce)를 참고하세요.
+토론부터 결정까지 진행을 돕는 단계별 과정은 [의사결정하기](/guides/making-decisions/)를 참고하세요. 회의와 공식 투표의 진행 절차는 [더 나은 회의](/guides/better-meetings/)와 [정기 총회와 공식 결의](/guides/agms-and-resolutions/)를 참고하세요.

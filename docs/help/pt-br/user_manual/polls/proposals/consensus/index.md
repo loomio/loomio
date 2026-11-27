@@ -1,12 +1,12 @@
 ---
 title: Consenso
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: 7a15e7499d00b378
+  introduction: c3e13240229ee061
   when-to-use-consensus: e3291485b172f027
   example-adopt-a-bottle-return-standard: 1a46eff136a0342a
   set-up-the-proposal: 1a0a00fc4af0697b
@@ -31,7 +31,7 @@ title_generated: a633645d078dc2da
 
 Uma proposta de Consenso busca o acordo coletivo de todas as pessoas envolvidas. As respostas padrão permitem que os participantes concordem, se abstenham, discordem ou bloqueiem.
 
-Esta página explica como conduzir uma proposta de Consenso. Veja o [Processo de consenso](/en/guides/making_decisions/consensus_process) para conhecer o fluxo completo, desde a discussão e a verificação de opinião até as alterações e a conclusão.
+Esta página explica como conduzir uma proposta de Consenso. Veja o [Processo de consenso](/guides/making-decisions/consensus-process/) para conhecer o fluxo completo, desde a discussão e a verificação de opinião até as alterações e a conclusão.
 
 <!-- translation-section: when-to-use-consensus -->
 

@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: 563104141b97d2bc
+  introduction: 58641d9799083233
   choose-a-proposal-template: f8c50dfed89b72bf
   other-proposal-templates: 95fd69aa042f5df7
   proposal-records: 221e1f1e75c7d262
 title: 제안
 title_source: 834cfc1ee23734e1
 title_generated: 46ec31ac83038c42
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-28'
 ---
 
 <!-- translation-section: introduction -->
@@ -25,7 +25,7 @@ translated:
 
 제안은 사람들이 어떤 진술이나 행동 방안에 응답하도록 요청합니다. 참여자는 정해진 응답 중 하나를 선택하고 투표한 이유를 설명할 수 있습니다. 피드백을 모으거나, 조언을 구하거나, 이의를 파악하거나, 동의 여부를 확인할 때 제안을 사용하세요.
 
-이 섹션은 Loomio의 기본 제안 템플릿을 선택하고 사용하는 데 도움이 됩니다. 토론, 제안, 수정안, 결론으로 이어지는 전체 절차는 [의사결정 가이드](/en/guides/making_decisions/)를 참고하세요. 그룹에서 사용할 수 있는 템플릿을 변경하려면 [투표 템플릿](../poll_templates/)을 참고하세요.
+이 섹션은 Loomio의 기본 제안 템플릿을 선택하고 사용하는 데 도움이 됩니다. 토론, 제안, 수정안, 결론으로 이어지는 전체 절차는 [의사결정 가이드](/guides/making-decisions/)를 참고하세요. 그룹에서 사용할 수 있는 템플릿을 변경하려면 [투표 템플릿](../poll_templates/)을 참고하세요.
 
 <!-- translation-section: choose-a-proposal-template -->
 

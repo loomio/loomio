@@ -1,12 +1,12 @@
 ---
 title: Парада
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: c24d7361e5663b31
+  introduction: f756a22807978a46
   when-to-use-advice: 4b54047e5a52e30a
   example-choose-a-washing-supplier: bf911343d4ac73ea
   set-up-the-proposal: 20e32ae2632c5d83
@@ -31,7 +31,7 @@ title_generated: 2804767b69915fd7
 
 Прапанова «Парада» збірае меркаванні для рашэння, за прыняцце якога адказвае асобны чалавек або каманда. Удзельнікі могуць даць параду або пазначыць, што не маюць парад.
 
-На гэтай старонцы апісаны форма прапановы «Парада», галасаванне і вынікі. Поўны працэс ад фармулявання рашэння да публікацыі высновы апісаны на старонцы [Працэс збору парад](/en/guides/making_decisions/advice_process).
+На гэтай старонцы апісаны форма прапановы «Парада», галасаванне і вынікі. Поўны працэс ад фармулявання рашэння да публікацыі высновы апісаны на старонцы [Працэс збору парад](/guides/making-decisions/advice-process/).
 
 <!-- translation-section: when-to-use-advice -->
 

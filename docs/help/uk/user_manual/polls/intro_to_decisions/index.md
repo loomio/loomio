@@ -1,13 +1,13 @@
 ---
 title: Пропозиції та опитування
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: e7c11a62ea4bf46f
-  find-the-right-help: 6d85f02ce87dde6f
+  find-the-right-help: dceb1d170938b56b
   proposals: 2986d6241ae3bde0
   polls: 6365d39a6748e840
   start-a-proposal-or-poll: 5c453319416b5ddd
@@ -37,8 +37,6 @@ generated:
   5-share-an-outcome: e0559b71fc9b8cd6
 title_source: d45b4ba3cb7a27cb
 title_generated: 8ea097b7cb3d6a03
-needs_review:
-  find-the-right-help: use "висновок" instead of "рішення" for "outcome"; use "результати" instead of "висновок" for "results"
 ---
 
 <!-- translation-section: introduction -->
@@ -58,7 +56,7 @@ needs_review:
 | Визначити, що мають висловити учасники | [Пропозиції](../proposals/) або [Опитування](../proposal_types/) |
 | Використати певний шаблон пропозиції | [Перевірка думок](../proposals/sense_check/), [Порада](../proposals/advice/), [Згода](../proposals/consent/) або [Консенсус](../proposals/consensus/) |
 | Налаштувати шаблони, доступні групі | [Шаблони опитувань](../poll_templates/) |
-| Сприяти ухваленню рішення від обговорення до висновку | [Ухвалення рішень](/en/guides/making_decisions/) |
+| Сприяти ухваленню рішення від обговорення до висновку | [Ухвалення рішень](/guides/making-decisions/) |
 
 **Метод голосування** визначає, як люди відповідають і як обчислюються результати. **Шаблон опитування** — це набір налаштувань для багаторазового використання, побудований на методі голосування, із заздалегідь заданими інструкціями, варіантами та параметрами. **Процес ухвалення рішення** може включати обговорення та кілька шаблонів, перш ніж група сформулює висновок.
 

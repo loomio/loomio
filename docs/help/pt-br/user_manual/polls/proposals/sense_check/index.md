@@ -1,12 +1,12 @@
 ---
 title: Verificação de opinião
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 8917bbbf50f3fe61
+  introduction: 83a654e2910e1680
   when-to-use-sense-check: be6b8cdfe8fe2992
   example-check-a-trial-plan: bf8a191afc423189
   set-up-the-proposal: 46b75273c0584e84
@@ -31,7 +31,7 @@ title_generated: 806ca3b793a88a0d
 
 A verificação de opinião reúne reações enquanto uma ideia ainda está sendo desenvolvida. Suas opções — **Parece bom**, **Poderia ser melhor** e **Precisa ser repensado.** — mostram se o grupo está pronto para prosseguir ou se deve revisar a ideia primeiro.
 
-Esta página explica como realizar uma verificação de opinião. Consulte o [Processo simples de decisão](/en/guides/making_decisions/simple_decision_process), o [Processo de consentimento](/en/guides/making_decisions/consent_process) ou o [Processo de consenso](/en/guides/making_decisions/consensus_process) para ver exemplos de como usar a verificação de opinião como uma etapa de um processo maior.
+Esta página explica como realizar uma verificação de opinião. Consulte o [Processo simples de decisão](/guides/making-decisions/simple-decision-process/), o [Processo de consentimento](/guides/making-decisions/consent-process/) ou o [Processo de consenso](/guides/making-decisions/consensus-process/) para ver exemplos de como usar a verificação de opinião como uma etapa de um processo maior.
 
 <!-- translation-section: when-to-use-sense-check -->
 

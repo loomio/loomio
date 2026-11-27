@@ -1,12 +1,12 @@
 ---
 title: Zustimmung
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 641dd209fad1f01d
+  introduction: 756d047b6bcf0450
   when-to-use-consent: 796db1807ca6e5ac
   example-start-a-bottle-trial: 27393e3898b951c2
   set-up-the-proposal: dd239559f29d9e44
@@ -31,7 +31,7 @@ title_generated: c6aedb5180fd8789
 
 Ein Konsentvorschlag fragt danach, ob eine Vorgehensweise sicher genug ist, um sie auszuprobieren. Teilnehmende geben entweder ihren Konsent oder erheben einen Einwand. Ein Einwand benennt ein konkretes Risiko oder einen Schaden, den der Vorschlag berücksichtigen sollte.
 
-Diese Seite erklärt, wie du einen einzelnen Konsentvorschlag durchführst. Den vollständigen Ablauf mit Fragen, Stimmungsbild, Änderungen, Einwänden und Fazit findest du unter [Konsentverfahren](/en/guides/making_decisions/consent_process).
+Diese Seite erklärt, wie du einen einzelnen Konsentvorschlag durchführst. Den vollständigen Ablauf mit Fragen, Stimmungsbild, Änderungen, Einwänden und Fazit findest du unter [Konsentverfahren](/guides/making-decisions/consent-process/).
 
 <!-- translation-section: when-to-use-consent -->
 

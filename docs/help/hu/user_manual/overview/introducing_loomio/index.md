@@ -1,10 +1,10 @@
 ---
 title: A Loomio bevezetése a csoportodban
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: a020b08640de561d
   choose-one-useful-starting-point: fa6aefc5f2051424
@@ -24,16 +24,15 @@ generated:
   decide-where-work-belongs: a74e4da830516d7c
   decide-how-your-group-decides: 5d7fa31d6b8fa0a0
   if-your-process-is-already-established: 0b67da3e9dc679e5
-  if-your-group-is-still-deciding: 6f217a85524f45b0
+  if-your-group-is-still-deciding: 8ccbceb5fd1db834
   invite-people: 0276fa95e7bcc643
   help-everyone-participate-once: d366a2dd81b62f8d
   use-notifications-deliberately: '05481b67ccc14d22'
-  complete-the-first-process: 9ef71c3d055db9d0
+  complete-the-first-process: 6f1db5f66c68f37a
 title_source: 4f1540fbaadc657b
 title_generated: 8e16c5f5effeed28
 needs_review:
   if-your-process-is-already-established: use "Beleegyezés" instead of "egyetértés" for "consent"
-  if-your-group-is-still-deciding: use "következtetés" instead of "eredmény" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -124,7 +123,7 @@ Indíts beszélgetést arról, hogyan hozzatok döntéseket. Ahelyett, hogy egy 
 - Hogyan kezeljük a kifogásokat, a szavazategyenlőséget vagy az elégtelen részvételt?
 - Hogyan közöljük, rögzítjük, vizsgáljuk felül és módosítjuk a döntést?
 
-A válaszok eltérhetnek egy működési kérdésben hozott döntés, egy szabályzat, egy választás és az alapító okirat módosítása esetén. Több teljes folyamat összehasonlításához nézd meg a [Döntéshozatal](/en/guides/making_decisions) útmutatót.
+A válaszok eltérhetnek egy működési kérdésben hozott döntés, egy szabályzat, egy választás és az alapító okirat módosítása esetén. Több teljes folyamat összehasonlításához nézd meg a [Döntéshozatal](/guides/making-decisions/) útmutatót.
 
 Ha a csoport még nem áll készen minden szabály meghatározására, állapodjatok meg egy ideiglenes folyamatban egy kis kockázatú döntéshez. Mielőtt részvételre kéred az embereket, mondd el, mit jelent majd az eredmény, tedd közzé a következtetést, majd tekintsétek át, hogyan működött a folyamat. Rögzítsd a csoport tanulságait a leírásában, az irányítási dokumentumaiban vagy az újra felhasználható sablonjaiban.
 
@@ -182,4 +181,4 @@ Az első folyamat mutassa be az összes lépést:
 
 A következtetés lezárja a folyamatot, és olyan írásos nyomot hagy, amelyhez a tagok később visszatérhetnek. Ezután kérdezd meg, mi működött jól, igazíts a folyamaton, és válaszd ki a következő ismétlődő feladatot, amelyet a Loomióban végeztek el.
 
-A beszélgetéstől a döntésig vezető, facilitált folyamathoz nézd meg a [Döntéshozatal](/en/guides/making_decisions) útmutatót. A vezetőségi munkához kapcsolódó gyakorlatokért nézd meg az [A Loomio bevezetése a vezetőségedben](/en/guides/board_processes/introduce) útmutatót.
+A beszélgetéstől a döntésig vezető, facilitált folyamathoz nézd meg a [Döntéshozatal](/guides/making-decisions/) útmutatót. A megbeszélések és a hivatalos szavazások folyamataihoz nézd meg a [Jobb megbeszélések](/guides/better-meetings/) és az [Éves közgyűlések és hivatalos határozatok](/guides/agms-and-resolutions/) útmutatót.

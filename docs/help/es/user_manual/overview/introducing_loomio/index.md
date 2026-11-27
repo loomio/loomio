@@ -1,10 +1,10 @@
 ---
 title: Presenta Loomio a tu grupo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: 77812c4e484c73c6
   choose-one-useful-starting-point: 9dd528ab6bef418d
@@ -24,11 +24,11 @@ generated:
   decide-where-work-belongs: 075d2009a25f23bf
   decide-how-your-group-decides: 0c74b7a501b9288f
   if-your-process-is-already-established: 8128c344857bbc10
-  if-your-group-is-still-deciding: ab19c74af75e1de5
+  if-your-group-is-still-deciding: 9a7dad556e787760
   invite-people: 59c64f98d74dbec1
   help-everyone-participate-once: 5d2ac9a39762c7ca
   use-notifications-deliberately: a0178f53a801cc35
-  complete-the-first-process: e1e90bc2a4782d7a
+  complete-the-first-process: 2726da724925356e
 title_source: 4f1540fbaadc657b
 title_generated: 774e4f929f88aded
 ---
@@ -121,7 +121,7 @@ Inicia una discusión sobre cómo se deben tomar las decisiones. En lugar de emp
 - ¿Cómo responderemos a las objeciones, los empates en los resultados o una participación insuficiente?
 - ¿Cómo comunicaremos, registraremos, revisaremos y cambiaremos una decisión?
 
-Las respuestas pueden ser distintas para una decisión operativa, una política, una elección y un cambio constitucional. Consulta [Tomar decisiones](/en/guides/making_decisions) para comparar varios procesos completos.
+Las respuestas pueden ser distintas para una decisión operativa, una política, una elección y un cambio constitucional. Consulta [Tomar decisiones](/guides/making-decisions/) para comparar varios procesos completos.
 
 Si el grupo aún no está preparado para definir todas las reglas, acuerda un proceso provisional para una decisión de bajo riesgo. Explica qué significarán los resultados antes de pedir a las personas que participen, publica una conclusión y después revisa cómo funcionó el proceso. Registra lo que aprenda el grupo en la descripción del grupo, en los documentos de gobernanza o en plantillas reutilizables.
 
@@ -179,4 +179,4 @@ El primer proceso debe mostrar todos los pasos:
 
 La conclusión completa el proceso y crea un registro que los miembros pueden consultar más adelante. Después, pregunta qué funcionó, ajusta el proceso y elige la siguiente tarea recurrente que realizaréis en Loomio.
 
-Para ver una secuencia guiada desde la discusión hasta la decisión, consulta [Tomar decisiones](/en/guides/making_decisions). Para conocer prácticas específicas para juntas directivas, consulta [Presenta Loomio a tu junta directiva](/en/guides/board_processes/introduce).
+Para ver una secuencia guiada desde la discusión hasta la decisión, consulta [Tomar decisiones](/guides/making-decisions/). Para conocer los procesos de reuniones y votaciones formales, consulta [Mejores reuniones](/guides/better-meetings/) y [Asambleas generales anuales y resoluciones formales](/guides/agms-and-resolutions/).

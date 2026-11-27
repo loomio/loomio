@@ -1,13 +1,13 @@
 ---
 title: 提案と投票
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 9e423a22b4cace2e
-  find-the-right-help: bd160de214fbbe37
+  find-the-right-help: 8a752c002e450a8f
   proposals: 16eeeaa75652f77e
   polls: a2c28fa2bcf2cecc
   start-a-proposal-or-poll: 2aaa4ed0e64eff8d
@@ -37,8 +37,6 @@ generated:
   5-share-an-outcome: 9c5b2200dc4e3758
 title_source: d45b4ba3cb7a27cb
 title_generated: be4107aa6d3ae949
-needs_review:
-  find-the-right-help: use "結論" instead of "結果" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -58,7 +56,7 @@ needs_review:
 | 参加者に何を表明してもらうかを選ぶ | [提案](../proposals/)または[アンケート](../proposal_types/) |
 | 特定の提案テンプレートを使う | [意向確認](../proposals/sense_check/)、[助言](../proposals/advice/)、[同意](../proposals/consent/)、または[コンセンサス](../proposals/consensus/) |
 | グループで利用できるテンプレートを設定する | [アンケートのテンプレート](../poll_templates/) |
-| ディスカッションから結論まで意思決定を進める | [意思決定]( /en/guides/making_decisions/) |
+| ディスカッションから結論まで意思決定を進める | [意思決定](/guides/making-decisions/) |
 
 **投票方法**は、回答の方法と結果の計算方法を定めます。**アンケートのテンプレート**は、投票方法を基に、説明、選択肢、設定をあらかじめ用意した、再利用可能な構成です。**意思決定のプロセス**では、グループが結論に至るまでに、ディスカッションや複数のテンプレートを使うことがあります。
 

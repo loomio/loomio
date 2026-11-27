@@ -1,13 +1,13 @@
 ---
 title: Vorschläge und Umfragen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 0c37c35bf6ee9ca8
-  find-the-right-help: 37e7190cb10dc5cf
+  find-the-right-help: 513e91eade2811b1
   proposals: '6083800300439521'
   polls: 854ea55dcc25d285
   start-a-proposal-or-poll: 37ba841d9df62ed8
@@ -38,7 +38,6 @@ generated:
 title_source: d45b4ba3cb7a27cb
 title_generated: 06a783699efefdc4
 needs_review:
-  find-the-right-help: use "Fazit" instead of "Ergebnis" for "outcome"; use "Ergebnis" instead of "Fazit" for "results"
   1-create-it: use "Stimme" instead of "Abstimmung" for "vote"
   3-people-vote: use "Stimme" instead of "Abstimmung" for "vote"
 ---
@@ -60,7 +59,7 @@ Diese Teile des Handbuchs beantworten unterschiedliche Fragen:
 | auswählen, was Teilnehmende ausdrücken sollen | [Vorschläge](../proposals/) oder [Abstimmungen](../proposal_types/) |
 | eine bestimmte Vorschlagsvorlage verwenden | [Stimmungsbild](../proposals/sense_check/), [Beratung](../proposals/advice/), [Konsent](../proposals/consent/) oder [Konsens](../proposals/consensus/) |
 | die für eine Gruppe verfügbaren Vorlagen konfigurieren | [Abstimmungsvorlagen](../poll_templates/) |
-| eine Entscheidung von der Diskussion bis zum Fazit begleiten | [Entscheidungen treffen](/en/guides/making_decisions/) |
+| eine Entscheidung von der Diskussion bis zum Fazit begleiten | [Entscheidungen treffen](/guides/making-decisions/) |
 
 Eine **Abstimmungsart** legt fest, wie Menschen antworten und wie das Ergebnis berechnet wird. Eine **Abstimmungsvorlage** ist eine wiederverwendbare Konfiguration auf Grundlage einer Abstimmungsart mit voreingestellten Anweisungen, Optionen und Einstellungen. Ein **Entscheidungsprozess** kann eine Diskussion und mehrere Vorlagen umfassen, bevor die Gruppe zu einem Fazit kommt.
 

@@ -1,12 +1,12 @@
 ---
 title: Véleményfelmérés
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 669f7008dd3299eb
+  introduction: f4d2605b5bb9ade9
   when-to-use-sense-check: 411b9adbaf8b3870
   example-check-a-trial-plan: 82a87ec43e359943
   set-up-the-proposal: 7daabd68c97b5d43
@@ -31,7 +31,7 @@ title_generated: 49e3acb955529d9e
 
 A hangulatfelmérés reakciókat gyűjt, miközben az ötlet még formálódik. A lehetőségei — **Jól néz ki**, **Lehetne jobb is** és **Újragondolásra van szükség** — megmutatják, hogy a csoport készen áll-e a továbblépésre, vagy előbb módosítani kell az ötletet.
 
-Ez az oldal bemutatja, hogyan végezz hangulatfelmérést. Az [Egyszerű döntési folyamat](/en/guides/making_decisions/simple_decision_process), a [Beleegyezési folyamat](/en/guides/making_decisions/consent_process) és a [Konszenzusos folyamat](/en/guides/making_decisions/consensus_process) oldalain példákat találsz arra, hogyan használhatod a hangulatfelmérést egy nagyobb folyamat egyik szakaszaként.
+Ez az oldal bemutatja, hogyan végezz hangulatfelmérést. Az [Egyszerű döntési folyamat](/guides/making-decisions/simple-decision-process/), a [Beleegyezési folyamat](/guides/making-decisions/consent-process/) és a [Konszenzusos folyamat](/guides/making-decisions/consensus-process/) oldalain példákat találsz arra, hogyan használhatod a hangulatfelmérést egy nagyobb folyamat egyik szakaszaként.
 
 <!-- translation-section: when-to-use-sense-check -->
 

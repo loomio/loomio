@@ -1,12 +1,12 @@
 ---
 title: Plantillas de sondeo
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
-  introduction: 227665c7b66356be
+  introduction: 6faf3959a24d633a
   who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
@@ -20,7 +20,7 @@ sections:
   configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: 899759ddaf4cb48b
+  introduction: e94909e2eabd19f5
   who-can-manage-templates: 03b8ad97797ecd2b
   create-a-poll-template: dbea0ec62c363542
   template-title-subtitle-and-help: fcbd55cf1d5f0295
@@ -43,7 +43,7 @@ title_generated: ab9dd5c48dbfb316
 
 Las plantillas de encuesta son puntos de partida reutilizables que aparecen cuando alguien selecciona **Iniciar una votación** o **Nuevo sondeo**. Una plantilla combina un método de votación con instrucciones, opciones de respuesta y ajustes predefinidos.
 
-Usa esta página para configurar qué plantillas están disponibles para un grupo o crear una para tu propio proceso. Para elegir una plantilla para una votación concreta, consulta [Propuestas](../proposals/) o [Encuestas](../proposal_types/). Para facilitar un proceso de decisión completo, consulta [Tomar decisiones](/en/guides/making_decisions/).
+Usa esta página para configurar qué plantillas están disponibles para un grupo o crear una para tu propio proceso. Para elegir una plantilla para una votación concreta, consulta [Propuestas](../proposals/) o [Encuestas](../proposal_types/). Para facilitar un proceso de decisión completo, consulta [Tomar decisiones](/guides/making-decisions/).
 
 Al iniciar una votación, selecciona la pestaña **Propuesta** o **Encuesta** y elige una plantilla disponible para el grupo.
 

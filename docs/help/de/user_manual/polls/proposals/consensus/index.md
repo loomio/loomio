@@ -1,12 +1,12 @@
 ---
 title: Konsens
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: 52a2feac7c98b9bd
+  introduction: c8c5b65832332b87
   when-to-use-consensus: 7db29c2cc06b8580
   example-adopt-a-bottle-return-standard: ff81bd6d577e8d34
   set-up-the-proposal: cb8052b549757ee4
@@ -31,7 +31,7 @@ title_generated: f120acdf5f752fdb
 
 Ein Konsensvorschlag zielt auf die gemeinsame Zustimmung aller Beteiligten ab. Mit den standardmäßigen Antwortoptionen können Teilnehmende zustimmen, sich enthalten, widersprechen oder ein Veto einlegen.
 
-Diese Seite erklärt, wie du einen einzelnen Konsensvorschlag durchführst. Den vollständigen Ablauf von der Diskussion und dem Stimmungsbild über die Überarbeitung bis zum Fazit findest du unter [Konsensprozess](/en/guides/making_decisions/consensus_process).
+Diese Seite erklärt, wie du einen einzelnen Konsensvorschlag durchführst. Den vollständigen Ablauf von der Diskussion und dem Stimmungsbild über die Überarbeitung bis zum Fazit findest du unter [Konsensprozess](/guides/making-decisions/consensus-process/).
 
 <!-- translation-section: when-to-use-consensus -->
 

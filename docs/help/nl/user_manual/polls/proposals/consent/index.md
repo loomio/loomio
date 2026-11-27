@@ -1,12 +1,12 @@
 ---
 title: Toestemming
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 683f72e06ad9b153
+  introduction: 7da0286e887cee75
   when-to-use-consent: fa8c1f0ff13ed6e6
   example-start-a-bottle-trial: 6c1ec2001cf6cde5
   set-up-the-proposal: c23a929bdbfce8c8
@@ -31,7 +31,7 @@ title_generated: 56e6d8448fa58951
 
 Een consentvoorstel vraagt of een voorgestelde aanpak veilig genoeg is om uit te proberen. Deelnemers geven consent of maken bezwaar. Een bezwaar benoemt een concreet risico of concrete schade die het voorstel moet ondervangen.
 
-Deze pagina legt uit hoe je een consentvoorstel gebruikt. Zie het [Consentproces](/en/guides/making_decisions/consent_process) voor het volledige proces, inclusief vragen, gevoelscheck, aanpassingen, bezwaren en conclusie.
+Deze pagina legt uit hoe je een consentvoorstel gebruikt. Zie het [Consentproces](/guides/making-decisions/consent-process/) voor het volledige proces, inclusief vragen, gevoelscheck, aanpassingen, bezwaren en conclusie.
 
 <!-- translation-section: when-to-use-consent -->
 

@@ -1,17 +1,17 @@
 ---
 title: Deinen Account löschen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: fb4cb276e6b463bd
-  what-does-delete-account-mean: ccb313f85d455c0a
+  what-does-delete-account-mean: 7904f96a5e3bef4c
   to-delete-your-account-entirely: 9092a364d9c6b45c
 title_source: 26a117d6f45e95e8
 title_generated: 1aaddfa36c75e038
@@ -34,9 +34,9 @@ Das Löschen deines Accounts ist dauerhaft und kann nicht rückgängig gemacht w
 
 Kopien deiner Aktivitäten wurden möglicherweise bereits per E-Mail an Gruppenmitglieder gesendet. Loomio kann bereits versendete E-Mails nicht löschen.
 
-Wenn du deinen Account löschst, wird ein kostenpflichtiges Abonnement nicht gekündigt. Wie du deine Zahlungen beendest, erfährst du unter [Abonnements](/en/policy/subscriptions/management#cancel-your-plan).
+Wenn du deinen Account löschst, wird ein kostenpflichtiges Abonnement nicht gekündigt. Wie du deine Zahlungen beendest, erfährst du unter [Abonnements](/policy/subscriptions/management/#cancel-your-plan).
 
-Einzelheiten dazu, wie Loomio mit deinen Daten umgeht, findest du in unserer [Datenschutzerklärung](/en/policy/privacy), oder [kontaktiere uns](/contact). Wenn du vorher eine Kopie der Aufzeichnungen einer Gruppe benötigst, kann ein Gruppenadmin [die Daten der Gruppe exportieren](/en/user_manual/groups/data_export).
+Einzelheiten dazu, wie Loomio mit deinen Daten umgeht, findest du in unserer [Datenschutzerklärung](/policy/privacy/), oder [kontaktiere uns](/contact). Wenn du vorher eine Kopie der Aufzeichnungen einer Gruppe benötigst, kann ein Gruppenadmin [die Daten der Gruppe exportieren](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

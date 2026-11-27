@@ -1,13 +1,13 @@
 ---
 title: Propuestas y sondeos
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 9cab586e878ed071
-  find-the-right-help: 8a1938e9ef7c506e
+  find-the-right-help: c95e79227dbc5d01
   proposals: a4393d874d146d89
   polls: 9739208cf5c628e4
   start-a-proposal-or-poll: d771346fa476332a
@@ -56,7 +56,7 @@ Estas partes del manual responden a distintas preguntas:
 | Elegir qué deben expresar los participantes | [Propuestas](../proposals/) o [Encuestas](../proposal_types/) |
 | Usar una plantilla de propuesta concreta | [Toma de pulso](../proposals/sense_check/), [Asesoramiento](../proposals/advice/), [Consentimiento](../proposals/consent/) o [Consenso](../proposals/consensus/) |
 | Configurar las plantillas disponibles para un grupo | [Plantillas de encuestas](../poll_templates/) |
-| Facilitar una decisión desde la discusión hasta la conclusión | [Tomar decisiones](/en/guides/making_decisions/) |
+| Facilitar una decisión desde la discusión hasta la conclusión | [Tomar decisiones](/guides/making-decisions/) |
 
 Un **método de votación** define cómo responden las personas y cómo se calculan los resultados. Una **plantilla de encuesta** es una configuración reutilizable basada en un método de votación, con instrucciones, opciones y ajustes predefinidos. Un **proceso de decisión** puede incluir una discusión y varias plantillas antes de que el grupo llegue a una conclusión.
 

@@ -1,12 +1,12 @@
 ---
 title: עֵצָה
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 29ae0ef84f04148c
+  introduction: dea89ff16d395fa9
   when-to-use-advice: 86265337c42343b3
   example-choose-a-washing-supplier: f233b4f283e6ba1c
   set-up-the-proposal: f4a74c36612cdd41
@@ -31,7 +31,7 @@ title_generated: df94c0d56ed03c7e
 
 הצעת עֵצָה אוספת מידע והמלצות לקראת החלטה שבאחריות אדם או צוות. ניתן להציע עצות או לציין שאין עצות נוספות להוסיף.
 
-עמוד זה מסביר את טופס הצעת העֵצָה, את ההצבעה ואת התוצאות. לתהליך המלא, מהגדרת ההחלטה ועד לפרסום מסקנה, ניתן לעיין ב[תהליך העֵצָה](/en/guides/making_decisions/advice_process).
+עמוד זה מסביר את טופס הצעת העֵצָה, את ההצבעה ואת התוצאות. לתהליך המלא, מהגדרת ההחלטה ועד לפרסום מסקנה, ניתן לעיין ב[תהליך העֵצָה](/guides/making-decisions/advice-process/).
 
 <!-- translation-section: when-to-use-advice -->
 

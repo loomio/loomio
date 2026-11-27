@@ -1,12 +1,12 @@
 ---
 title: Consentement
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 8a5cf485acff9e8f
+  introduction: 72eb95442f537fbc
   when-to-use-consent: 53abac6c30f92ce4
   example-start-a-bottle-trial: 3e5bcb22f6f0cb23
   set-up-the-proposal: 888544a7d850fdfd
@@ -31,7 +31,7 @@ title_generated: 64a281ac3a69713f
 
 Une proposition de consentement demande si une action peut être essayée sans risque inacceptable. Les participants donnent leur consentement ou soulèvent une objection. Une objection identifie un risque concret ou un préjudice auquel la proposition doit répondre.
 
-Cette page explique comment mener une proposition de consentement. Consultez le [Processus de consentement](/en/guides/making_decisions/consent_process) pour connaître le déroulement complet, y compris les questions, la prise de température, les amendements, les objections et la conclusion.
+Cette page explique comment mener une proposition de consentement. Consultez le [Processus de consentement](/guides/making-decisions/consent-process/) pour connaître le déroulement complet, y compris les questions, la prise de température, les amendements, les objections et la conclusion.
 
 <!-- translation-section: when-to-use-consent -->
 

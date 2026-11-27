@@ -1,12 +1,12 @@
 ---
 title: Совет
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 8a4bba31a7e1b791
+  introduction: 202e674631bce46d
   when-to-use-advice: dbd4222f1c025684
   example-choose-a-washing-supplier: 55f52eef4bd25c09
   set-up-the-proposal: 33eac450f46b43ba
@@ -31,7 +31,7 @@ title_generated: 92da565684465956
 
 Предложение типа «Совет» помогает собрать мнения для решения, за принятие которого отвечает человек или команда. Участники могут дать совет или указать, что им нечего добавить.
 
-На этой странице описаны форма предложения типа «Совет», голосование и результаты. Полный процесс — от формулировки решения до публикации вывода — описан на странице [Процесс принятия решений с учётом советов](/en/guides/making_decisions/advice_process).
+На этой странице описаны форма предложения типа «Совет», голосование и результаты. Полный процесс — от формулировки решения до публикации вывода — описан на странице [Процесс принятия решений с учётом советов](/guides/making-decisions/advice-process/).
 
 <!-- translation-section: when-to-use-advice -->
 

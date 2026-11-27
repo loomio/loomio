@@ -1,17 +1,17 @@
 ---
 title: Javaslatok
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: 5017838a898b1a9a
+  introduction: 473040427f30e681
   choose-a-proposal-template: 14bd1d71a0e89c66
   other-proposal-templates: fd3913f76e61bc18
   proposal-records: 11649a2b552ef9c4
@@ -25,7 +25,7 @@ title_generated: 3d36a893fa8c5f0b
 
 A javaslat arra kéri az embereket, hogy reagáljanak egy állításra vagy tervezett lépésre. A résztvevők előre meghatározott válaszok közül választanak, és megindokolhatják a szavazatukat. Használj javaslatot visszajelzések gyűjtésére, tanácskérésre, kifogások feltárására vagy az egyetértés felmérésére.
 
-Ez a rész segít kiválasztani és használni a Loomio alapértelmezett javaslatsablonjait. A beszélgetéstől a javaslatokon és módosításokon át a következtetésig tartó teljes folyamathoz használd a [döntéshozatali útmutatókat](/en/guides/making_decisions/). A csoportod számára elérhető sablonok módosításához nézd meg a [Szavazási sablonok](../poll_templates/) oldalt.
+Ez a rész segít kiválasztani és használni a Loomio alapértelmezett javaslatsablonjait. A beszélgetéstől a javaslatokon és módosításokon át a következtetésig tartó teljes folyamathoz használd a [döntéshozatali útmutatókat](/guides/making-decisions/). A csoportod számára elérhető sablonok módosításához nézd meg a [Szavazási sablonok](../poll_templates/) oldalt.
 
 <!-- translation-section: choose-a-proposal-template -->
 

@@ -1,17 +1,17 @@
 ---
 title: Eliminar tu cuenta
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: a8049b6ee32bbb82
-  what-does-delete-account-mean: 97c02c453d54322b
+  what-does-delete-account-mean: 2a923718a8077685
   to-delete-your-account-entirely: cffae3fea31c5098
 title_source: 26a117d6f45e95e8
 title_generated: 2a6b5d491f9f9f05
@@ -34,9 +34,9 @@ Eliminar tu cuenta es permanente y no se puede deshacer. Cuando eliminas tu cuen
 
 Es posible que ya se hayan enviado copias de tu actividad por correo electrónico a los miembros del grupo. Loomio no puede eliminar los correos electrónicos que ya se han enviado.
 
-Eliminar tu cuenta no cancela una suscripción de pago. Para dejar de pagar, consulta [Suscripciones](/en/policy/subscriptions/management#cancel-your-plan).
+Eliminar tu cuenta no cancela una suscripción de pago. Para dejar de pagar, consulta [Suscripciones](/policy/subscriptions/management/#cancel-your-plan).
 
-Para obtener detalles sobre cómo Loomio trata tus datos, consulta nuestra [política de privacidad](/en/policy/privacy) o [contacta con nosotros](/contact). Si primero necesitas una copia de los registros de un grupo, un admin del grupo puede [exportar los datos del grupo](/en/user_manual/groups/data_export).
+Para obtener detalles sobre cómo Loomio trata tus datos, consulta nuestra [política de privacidad](/policy/privacy/) o [contacta con nosotros](/contact). Si primero necesitas una copia de los registros de un grupo, un admin del grupo puede [exportar los datos del grupo](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

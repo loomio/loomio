@@ -1,13 +1,13 @@
 ---
 title: Voorstellen en peilingen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 9bb60268cce6ac50
-  find-the-right-help: 5dfa3d499cca1678
+  find-the-right-help: 7a05568733abc13d
   proposals: 2e0b0ea75772625a
   polls: 37d2e5ee24516fd9
   start-a-proposal-or-poll: f4f95d92b1d2fd2f
@@ -37,8 +37,6 @@ generated:
   5-share-an-outcome: b0e6115cca7ebd97
 title_source: d45b4ba3cb7a27cb
 title_generated: 95457704989e4140
-needs_review:
-  find-the-right-help: use "conclusie" instead of "resultaat" for "outcome"; use "resultaat" instead of "conclusie" for "results"
 ---
 
 <!-- translation-section: introduction -->
@@ -58,7 +56,7 @@ Deze onderdelen van de handleiding beantwoorden verschillende vragen:
 | Kiezen wat deelnemers moeten aangeven | [Voorstellen](../proposals/) of [Peilingen](../proposal_types/) |
 | Een specifiek voorstelsjabloon gebruiken | [Gevoelscheck](../proposals/sense_check/), [Advies](../proposals/advice/), [Consent](../proposals/consent/) of [Consensus](../proposals/consensus/) |
 | Instellen welke sjablonen beschikbaar zijn voor een groep | [Peilingssjablonen](../poll_templates/) |
-| Een besluit begeleiden van discussie tot conclusie | [Besluiten nemen](/en/guides/making_decisions/) |
+| Een besluit begeleiden van discussie tot conclusie | [Besluiten nemen](/guides/making-decisions/) |
 
 Een **stemmethode** bepaalt hoe mensen reageren en hoe het resultaat wordt berekend. Een **peilingssjabloon** is een herbruikbare configuratie op basis van een stemmethode, met vooraf ingestelde instructies, opties en instellingen. Een **besluitvormingsproces** kan een discussie en meerdere sjablonen gebruiken voordat de groep tot een conclusie komt.
 

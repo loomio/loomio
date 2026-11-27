@@ -1,12 +1,12 @@
 ---
 title: コンセンサス
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: 02b2c15438e03d15
+  introduction: 2a288f4df2627fe6
   when-to-use-consensus: d52e4fa352b4b39f
   example-adopt-a-bottle-return-standard: c82060bb9a080a27
   set-up-the-proposal: 56bb83ba22288163
@@ -31,7 +31,7 @@ title_generated: 68459d5f02d9cc17
 
 コンセンサスの提案は、関係する全員が支持できる合意を目指します。既定の回答では、参加者は賛成、棄権、反対、ブロックを選択できます。
 
-このページでは、コンセンサスの提案を実施する方法を説明します。ディスカッションと意向確認から修正、結論までの一連の流れについては、[コンセンサスのプロセス](/en/guides/making_decisions/consensus_process)を参照してください。
+このページでは、コンセンサスの提案を実施する方法を説明します。ディスカッションと意向確認から修正、結論までの一連の流れについては、[コンセンサスのプロセス](/guides/making-decisions/consensus-process/)を参照してください。
 
 <!-- translation-section: when-to-use-consensus -->
 

@@ -1,10 +1,10 @@
 ---
 title: Loomio in deiner Gruppe einführen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: 1fcf736398927e75
   choose-one-useful-starting-point: 848e42f932530e0b
@@ -24,18 +24,16 @@ generated:
   decide-where-work-belongs: 96494ff016af40b1
   decide-how-your-group-decides: 67afb4110d8ed910
   if-your-process-is-already-established: 19b0370629ba73e6
-  if-your-group-is-still-deciding: 7addf18502b5c57a
+  if-your-group-is-still-deciding: 1d3257c834ee4943
   invite-people: 6882b9ba0b3dce7b
   help-everyone-participate-once: d908535d4e3d9bf0
   use-notifications-deliberately: c196af615961ca10
-  complete-the-first-process: 2c78945d5cb42e8b
+  complete-the-first-process: f3f1ce6ac98dc9ec
 title_source: 4f1540fbaadc657b
 title_generated: 57bbd8a2cabe6f1e
 needs_review:
   if-your-process-is-already-established: use "Konsent" instead of "Zustimmung" for "consent"
-  if-your-group-is-still-deciding: use "Fazit" instead of "Ergebnis" for "outcome"; use "Ergebnis" instead of "Fazit" for "results"
   use-notifications-deliberately: use "Stimme" instead of "Abstimmung" for "vote"
-  complete-the-first-process: use "Entscheidung" instead of "Abstimmung" for "decision"
 ---
 
 <!-- translation-section: introduction -->
@@ -126,7 +124,7 @@ Starte eine Diskussion darüber, wie Entscheidungen getroffen werden sollen. Beg
 - Wie gehen wir mit Einwänden, Stimmengleichheit im Ergebnis oder unzureichender Beteiligung um?
 - Wie werden wir eine Entscheidung kommunizieren, dokumentieren, überprüfen und ändern?
 
-Die Antworten können für eine operative Entscheidung, eine Richtlinie, eine Wahl und eine Satzungsänderung unterschiedlich ausfallen. Unter [Entscheidungen treffen](/en/guides/making_decisions) kannst du mehrere vollständige Verfahren vergleichen.
+Die Antworten können für eine operative Entscheidung, eine Richtlinie, eine Wahl und eine Satzungsänderung unterschiedlich ausfallen. Unter [Entscheidungen treffen](/guides/making-decisions/) kannst du mehrere vollständige Verfahren vergleichen.
 
 Wenn die Gruppe noch nicht bereit ist, alle Regeln festzulegen, vereinbare ein vorläufiges Verfahren für eine Entscheidung mit geringem Risiko. Erkläre, was das Ergebnis bedeuten wird, bevor du Menschen zur Teilnahme aufforderst. Veröffentliche ein Fazit und überprüfe anschließend, wie das Verfahren funktioniert hat. Halte fest, was die Gruppe gelernt hat, etwa in ihrer Beschreibung, in Dokumenten zu ihren Entscheidungsregeln oder in wiederverwendbaren Vorlagen.
 
@@ -184,4 +182,4 @@ Ein erster Prozess sollte den vollständigen Ablauf zeigen:
 
 Das Fazit schließt den Prozess ab und dokumentiert die Entscheidung, sodass Mitglieder später darauf zurückgreifen können. Frage anschließend, was funktioniert hat, passe das Verfahren an und wähle die nächste wiederkehrende Aufgabe, die du in Loomio bearbeiten möchtest.
 
-Einen moderierten Ablauf von der Diskussion bis zur Entscheidung findest du unter [Entscheidungen treffen](/en/guides/making_decisions). Vorgehensweisen für Vorstände findest du unter [Loomio in deinem Vorstand einführen](/en/guides/board_processes/introduce).
+Einen moderierten Ablauf von der Diskussion bis zur Entscheidung findest du unter [Entscheidungen treffen](/guides/making-decisions/). Abläufe für Treffen und formelle Abstimmungen findest du unter [Bessere Treffen](/guides/better-meetings/) und [Jahreshauptversammlungen und formelle Beschlüsse](/guides/agms-and-resolutions/).

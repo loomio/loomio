@@ -1,12 +1,12 @@
 ---
 title: Консенсус
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: a4b19adfdced5366
+  introduction: ee64ce81fb043ff9
   when-to-use-consensus: 7cc15f7a9077155f
   example-adopt-a-bottle-return-standard: 23915d0503f1df88
   set-up-the-proposal: 722428ceb89e0218
@@ -31,7 +31,7 @@ title_generated: 04ab62fbb8467490
 
 Пропозиція типу «Консенсус» має на меті досягти спільної згоди всіх залучених людей. Стандартні варіанти відповіді дають учасникам змогу обрати «Погоджуюся», «Утримуюся», «Не погоджуюся» або «Блокую».
 
-На цій сторінці пояснено, як провести одну пропозицію типу «Консенсус». Повний процес від обговорення та перевірки думок до внесення змін і висновку описано на сторінці [Процес досягнення консенсусу](/en/guides/making_decisions/consensus_process).
+На цій сторінці пояснено, як провести одну пропозицію типу «Консенсус». Повний процес від обговорення та перевірки думок до внесення змін і висновку описано на сторінці [Процес досягнення консенсусу](/guides/making-decisions/consensus-process/).
 
 <!-- translation-section: when-to-use-consensus -->
 

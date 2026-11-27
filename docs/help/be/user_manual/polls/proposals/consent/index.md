@@ -1,12 +1,12 @@
 ---
 title: Згода
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: f82d121b36563f1d
+  introduction: 70d29dbca02ffbc6
   when-to-use-consent: 4bdd2f4b22d84ece
   example-start-a-bottle-trial: 6e1925d66cf5da3c
   set-up-the-proposal: 6042b2741cbae6d4
@@ -31,7 +31,7 @@ title_generated: 7cf278790f9c9792
 
 Прапанова тыпу «Згода» ставіць пытанне, ці бяспечна паспрабаваць прапанаваныя дзеянні. Удзельнікі або даюць згоду, або выказваюць пярэчанне. Пярэчанне ўказвае на канкрэтную рызыку або шкоду, якую трэба ўлічыць у прапанове.
 
-На гэтай старонцы тлумачыцца, як правесці адну прапанову тыпу «Згода». Поўны парадак працы, у тым ліку пытанні, праверку меркаванняў, папраўкі, пярэчанні і выснову, глядзіце на старонцы [Працэс згоды](/en/guides/making_decisions/consent_process).
+На гэтай старонцы тлумачыцца, як правесці адну прапанову тыпу «Згода». Поўны парадак працы, у тым ліку пытанні, праверку меркаванняў, папраўкі, пярэчанні і выснову, глядзіце на старонцы [Працэс згоды](/guides/making-decisions/consent-process/).
 
 <!-- translation-section: when-to-use-consent -->
 

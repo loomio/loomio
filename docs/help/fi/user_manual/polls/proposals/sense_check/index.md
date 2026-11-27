@@ -1,12 +1,12 @@
 ---
 title: Sense check
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 6c867126d55d7f8d
+  introduction: 533bf18d357746ee
   when-to-use-sense-check: 322c9caae40ba932
   example-check-a-trial-plan: b4a0ec34916b1eb5
   set-up-the-proposal: 6533aa943612db90
@@ -31,7 +31,7 @@ title_generated: e9ac5b767e01ae7b
 
 Tunnustelu kerää reaktioita, kun ideaa vielä kehitetään. Sen vaihtoehdot — **Näyttää hyvältä**, **Voisi olla parempi** ja **Tarvitsee uudelleenarviointia** — osoittavat, onko ryhmä valmis etenemään vai pitäisikö ideaa ensin muokata.
 
-Tällä sivulla kerrotaan, miten järjestät yhden tunnustelun. Katso esimerkkejä tunnustelun käyttämisestä osana laajempaa prosessia sivuilta [Yksinkertainen päätösprosessi](/en/guides/making_decisions/simple_decision_process), [Suostumusprosessi](/en/guides/making_decisions/consent_process) ja [Konsensusprosessi](/en/guides/making_decisions/consensus_process).
+Tällä sivulla kerrotaan, miten järjestät yhden tunnustelun. Katso esimerkkejä tunnustelun käyttämisestä osana laajempaa prosessia sivuilta [Yksinkertainen päätösprosessi](/guides/making-decisions/simple-decision-process/), [Suostumusprosessi](/guides/making-decisions/consent-process/) ja [Konsensusprosessi](/guides/making-decisions/consensus-process/).
 
 <!-- translation-section: when-to-use-sense-check -->
 

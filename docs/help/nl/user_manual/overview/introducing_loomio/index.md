@@ -1,10 +1,10 @@
 ---
 title: Loomio introduceren in je groep
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: 75e3b59af43a807c
   choose-one-useful-starting-point: 03f2801f8dee0f23
@@ -24,15 +24,13 @@ generated:
   decide-where-work-belongs: ab970d84acc22e45
   decide-how-your-group-decides: f0d7e05f1c0f33b5
   if-your-process-is-already-established: 2f2abb4ef4160f1a
-  if-your-group-is-still-deciding: b968012ee1646294
+  if-your-group-is-still-deciding: 748399ab4df3ca46
   invite-people: 9155b22f2b4eaccf
   help-everyone-participate-once: f9521fdead6b18e2
   use-notifications-deliberately: b82b746e85ad689c
-  complete-the-first-process: b4e5e658acd3e262
+  complete-the-first-process: 54b1c05c12b500bf
 title_source: 4f1540fbaadc657b
 title_generated: 300099ed6c52365d
-needs_review:
-  if-your-group-is-still-deciding: use "conclusie" instead of "resultaat" for "outcome"; use "resultaat" instead of "conclusie" for "results"
 ---
 
 <!-- translation-section: introduction -->
@@ -123,7 +121,7 @@ Start een discussie over hoe besluiten genomen moeten worden. Vraag de groep om 
 - Hoe gaan we om met bezwaren, een gelijk resultaat of onvoldoende deelname?
 - Hoe communiceren, documenteren, evalueren en wijzigen we een besluit?
 
-De antwoorden kunnen verschillen voor een operationeel besluit, beleid, een verkiezing en een statutenwijziging. Bekijk [Besluiten nemen](/en/guides/making_decisions) om verschillende volledige processen te vergelijken.
+De antwoorden kunnen verschillen voor een operationeel besluit, beleid, een verkiezing en een statutenwijziging. Bekijk [Besluiten nemen](/guides/making-decisions/) om verschillende volledige processen te vergelijken.
 
 Als de groep nog niet klaar is om alle regels vast te leggen, spreek dan een voorlopig proces af voor één besluit met weinig risico. Leg uit wat het resultaat zal betekenen voordat je mensen vraagt deel te nemen, publiceer een conclusie en evalueer daarna hoe het proces is verlopen. Leg vast wat de groep leert in de groepsbeschrijving, bestuursdocumenten of herbruikbare sjablonen.
 
@@ -181,4 +179,4 @@ Een eerste proces moet de volledige werkwijze laten zien:
 
 De conclusie rondt het proces af en legt het besluit vast, zodat leden het later kunnen terugvinden. Vraag daarna wat goed werkte, pas het proces aan en kies de volgende terugkerende activiteit om in Loomio uit te voeren.
 
-Bekijk [Besluiten nemen](/en/guides/making_decisions) voor een begeleid proces van discussie tot besluit. Bekijk [Loomio introduceren in je bestuur](/en/guides/board_processes/introduce) voor werkwijzen die specifiek voor besturen zijn.
+Bekijk [Besluiten nemen](/guides/making-decisions/) voor een begeleid proces van discussie tot besluit. Bekijk [Betere vergaderingen](/guides/better-meetings/) en [Algemene ledenvergaderingen en formele besluiten](/guides/agms-and-resolutions/) voor werkwijzen voor vergaderingen en formele stemprocedures.

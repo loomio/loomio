@@ -1,12 +1,12 @@
 ---
 title: הַסכָּמָה
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: c9c4a2bfc79cd1a2
+  introduction: ecc2fcbd95fb617f
   when-to-use-consent: f3192d71fc02986c
   example-start-a-bottle-trial: e0667182313b4c29
   set-up-the-proposal: 779c6a7456fc2139
@@ -31,7 +31,7 @@ title_generated: 210959582691b501
 
 הצעת הסכמה בודקת אם בטוח לנסות דרך פעולה מסוימת. ניתן להביע הסכמה או להעלות התנגדות. התנגדות מצביעה על סיכון או נזק ממשיים שיש לתת להם מענה בהצעה.
 
-עמוד זה מסביר כיצד לנהל הצעת הסכמה אחת. לתהליך המלא, הכולל שאלות, בדיקת כיוון, תיקונים, התנגדויות ומסקנה, יש לעיין ב[תהליך ההסכמה](/en/guides/making_decisions/consent_process).
+עמוד זה מסביר כיצד לנהל הצעת הסכמה אחת. לתהליך המלא, הכולל שאלות, בדיקת כיוון, תיקונים, התנגדויות ומסקנה, יש לעיין ב[תהליך ההסכמה](/guides/making-decisions/consent-process/).
 
 <!-- translation-section: when-to-use-consent -->
 

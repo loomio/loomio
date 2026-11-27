@@ -1,17 +1,17 @@
 ---
 title: Eliminare il tuo account
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: 5afec518e53a924b
-  what-does-delete-account-mean: d1c1e3e5da7bd986
+  what-does-delete-account-mean: 165027f8443299e4
   to-delete-your-account-entirely: e0d9e4c861a65506
 title_source: 26a117d6f45e95e8
 title_generated: e561657876a45252
@@ -34,9 +34,9 @@ L'eliminazione del tuo account è permanente e non può essere annullata. Quando
 
 Copie della tua attività potrebbero essere già state inviate via email ai membri del gruppo. Loomio non può eliminare le email già inviate.
 
-Eliminare il tuo account non annulla un abbonamento a pagamento. Per interrompere i pagamenti, consulta [Abbonamenti](/en/policy/subscriptions/management#cancel-your-plan).
+Eliminare il tuo account non annulla un abbonamento a pagamento. Per interrompere i pagamenti, consulta [Abbonamenti](/policy/subscriptions/management/#cancel-your-plan).
 
-Per informazioni su come Loomio gestisce i tuoi dati, consulta la nostra [informativa sulla privacy](/en/policy/privacy) o [contattaci](/contact). Se prima ti serve una copia dei dati di un gruppo, un amministratore del gruppo può [esportare i dati del gruppo](/en/user_manual/groups/data_export).
+Per informazioni su come Loomio gestisce i tuoi dati, consulta la nostra [informativa sulla privacy](/policy/privacy/) o [contattaci](/contact). Se prima ti serve una copia dei dati di un gruppo, un amministratore del gruppo può [esportare i dati del gruppo](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

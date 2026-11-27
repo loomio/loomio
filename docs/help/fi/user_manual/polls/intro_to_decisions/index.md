@@ -1,13 +1,13 @@
 ---
 title: Ehdotukset ja kyselyt
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: b1e2bd5810f17a2e
-  find-the-right-help: 3f38797ded5c2293
+  find-the-right-help: 7f5d052770a78dbe
   proposals: acdd32847dc30b10
   polls: ea855636ce50eae6
   start-a-proposal-or-poll: bf672d3d4112087e
@@ -38,8 +38,8 @@ generated:
 title_source: d45b4ba3cb7a27cb
 title_generated: a66d8804d0433ec4
 needs_review:
-  find-the-right-help: use "vaihtoehto" instead of "asetukset" for "option"
   1-create-it: use "vaihtoehto" instead of "asetukset" for "option"
+  find-the-right-help: use "vaihtoehto" instead of "asetukset" for "option"
 ---
 
 <!-- translation-section: introduction -->
@@ -59,7 +59,7 @@ Nämä käyttöoppaan osat vastaavat eri kysymyksiin:
 | Valita, mitä osallistujien tulisi ilmaista | [Ehdotukset](../proposals/) tai [Kyselyt](../proposal_types/) |
 | Käyttää tiettyä ehdotusmallia | [Tunnustelu](../proposals/sense_check/), [Neuvot](../proposals/advice/), [Suostumus](../proposals/consent/) tai [Konsensus](../proposals/consensus/) |
 | Määrittää ryhmän käytettävissä olevat mallit | [Kyselymallit](../poll_templates/) |
-| Ohjata päätöksentekoa keskustelusta johtopäätökseen | [Päätösten tekeminen](/en/guides/making_decisions/) |
+| Ohjata päätöksentekoa keskustelusta johtopäätökseen | [Päätösten tekeminen](/guides/making-decisions/) |
 
 **Äänestystapa** määrittää, miten ihmiset vastaavat ja miten tulokset lasketaan. **Kyselymalli** on äänestystapaan perustuva uudelleenkäytettävä kokonaisuus, jossa on valmiit ohjeet, vaihtoehdot ja asetukset. **Päätöksentekoprosessissa** voidaan käyttää keskustelua ja useita malleja ennen kuin ryhmä päätyy johtopäätökseen.
 

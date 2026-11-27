@@ -1,13 +1,13 @@
 ---
 title: Прапановы і апытанні
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: ce0381c70872b423
-  find-the-right-help: 301cbef6f0157684
+  find-the-right-help: 8dea7f9b653ad09d
   proposals: 39cc3c7107d85ecc
   polls: 79d594e4a95bb7a8
   start-a-proposal-or-poll: 54a005feac135df4
@@ -56,7 +56,7 @@ title_generated: a4b8b420de74cdb5
 | Выбраць, што павінны выказаць удзельнікі | [Прапановы](../proposals/) або [Апытанні](../proposal_types/) |
 | Выкарыстаць пэўны шаблон прапановы | [Праверка меркаванняў](../proposals/sense_check/), [Парада](../proposals/advice/), [Згода](../proposals/consent/) або [Кансенсус](../proposals/consensus/) |
 | Наладзіць шаблоны, даступныя групе | [Шаблоны апытанняў](../poll_templates/) |
-| Дапамагчы групе прыняць рашэнне: ад абмеркавання да высновы | [Прыняцце рашэнняў](/en/guides/making_decisions/) |
+| Дапамагчы групе прыняць рашэнне: ад абмеркавання да высновы | [Прыняцце рашэнняў](/guides/making-decisions/) |
 
 **Спосаб галасавання** вызначае, як людзі адказваюць і як падлічваюцца вынікі. **Шаблон апытання** — гэта набор налад для паўторнага выкарыстання, заснаваны на спосабе галасавання, з загадзя зададзенымі інструкцыямі, варыянтамі і наладамі. **Працэс прыняцця рашэння** можа ўключаць абмеркаванне і некалькі шаблонаў, перш чым група сфармулюе выснову.
 

@@ -1,13 +1,13 @@
 ---
 title: Propositions et sondages
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 3c677d3d3da46165
-  find-the-right-help: 9f099b7827f0f5cb
+  find-the-right-help: 469b6689dacb0ef9
   proposals: 9a9e3027c52cd7f5
   polls: aaa4daa92aa85724
   start-a-proposal-or-poll: 18e0fc338b53cb3a
@@ -56,7 +56,7 @@ Ces parties du manuel répondent à différentes questions :
 | Choisir ce que les participants doivent exprimer | [Propositions](../proposals/) ou [Sondages](../proposal_types/) |
 | Utiliser un modèle de proposition précis | [Prise de température](../proposals/sense_check/), [Conseil](../proposals/advice/), [Consentement](../proposals/consent/) ou [Consensus](../proposals/consensus/) |
 | Configurer les modèles disponibles pour un groupe | [Modèles de sondage](../poll_templates/) |
-| Faciliter une décision, de la discussion à la conclusion | [Prendre des décisions](/en/guides/making_decisions/) |
+| Faciliter une décision, de la discussion à la conclusion | [Prendre des décisions](/guides/making-decisions/) |
 
 Une **méthode de vote** définit comment les personnes répondent et comment les résultats sont calculés. Un **modèle de sondage** est une configuration réutilisable fondée sur une méthode de vote, avec des instructions, des options et des paramètres prédéfinis. Un **processus de décision** peut faire appel à une discussion et à plusieurs modèles avant que le groupe parvienne à une conclusion.
 

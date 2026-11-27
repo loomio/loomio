@@ -1,12 +1,12 @@
 ---
 title: Beratung
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 96222848e0a699d7
+  introduction: a9b0d1c7e7ea4852
   when-to-use-advice: a615710ce70538ff
   example-choose-a-washing-supplier: 0fe51c67426a9fc7
   set-up-the-proposal: af0c3ea130251900
@@ -31,7 +31,7 @@ title_generated: f92b7f5d5139aca3
 
 Ein Vorschlag vom Typ Beratung sammelt Beiträge zu einer Entscheidung, für die eine Person oder ein Team verantwortlich ist. Teilnehmende können Rat geben oder angeben, dass sie keinen Rat beizutragen haben.
 
-Diese Seite erklärt das Formular für Beratungsvorschläge, die Stimmabgabe und die Ergebnisse. Den vollständigen Ablauf von der Beschreibung der Entscheidung bis zur Veröffentlichung eines Fazits findest du unter [Beratungsprozess](/en/guides/making_decisions/advice_process).
+Diese Seite erklärt das Formular für Beratungsvorschläge, die Stimmabgabe und die Ergebnisse. Den vollständigen Ablauf von der Beschreibung der Entscheidung bis zur Veröffentlichung eines Fazits findest du unter [Beratungsprozess](/guides/making-decisions/advice-process/).
 
 <!-- translation-section: when-to-use-advice -->
 

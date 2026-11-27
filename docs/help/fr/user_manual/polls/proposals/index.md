@@ -1,17 +1,17 @@
 ---
 title: Propositions
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: feddaf124e2b4c0d
+  introduction: 7d357ef6964ef241
   choose-a-proposal-template: 5771b6ace491b166
   other-proposal-templates: f6856f6dcfed7485
   proposal-records: 8d44d0067047039f
@@ -25,7 +25,7 @@ title_generated: 26014b6e06736f94
 
 Une proposition invite les personnes à se prononcer sur un énoncé ou une action envisagée. Les participants choisissent une réponse parmi les options définies et peuvent expliquer leur vote. Utilisez une proposition pour recueillir des retours, demander des conseils, identifier des objections ou évaluer le degré d’accord.
 
-Cette section vous aide à choisir et à utiliser les modèles de proposition par défaut de Loomio. Pour suivre un processus complet comprenant une discussion, des propositions, des amendements et une conclusion, consultez les [guides de prise de décision](/en/guides/making_decisions/). Pour modifier les modèles disponibles dans votre groupe, consultez [Modèles de sondage](../poll_templates/).
+Cette section vous aide à choisir et à utiliser les modèles de proposition par défaut de Loomio. Pour suivre un processus complet comprenant une discussion, des propositions, des amendements et une conclusion, consultez les [guides de prise de décision](/guides/making-decisions/). Pour modifier les modèles disponibles dans votre groupe, consultez [Modèles de sondage](../poll_templates/).
 
 <!-- translation-section: choose-a-proposal-template -->
 

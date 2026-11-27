@@ -1,12 +1,12 @@
 ---
 title: Suostumus
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: 014e6b6a17024adc
+  introduction: 9f77b1b1fecb05c3
   when-to-use-consent: '0779d7db8559653b'
   example-start-a-bottle-trial: 22435f181c967df2
   set-up-the-proposal: edc102661d548db7
@@ -31,7 +31,7 @@ title_generated: af1f0573cc38933f
 
 Suostumusehdotuksessa kysytään, onko toimintatapaa turvallista kokeilla. Osallistujat joko antavat suostumuksensa tai esittävät vastaväitteen. Vastaväite tuo esiin konkreettisen riskin tai haitan, joka ehdotuksessa pitäisi ottaa huomioon.
 
-Tällä sivulla kerrotaan, miten toteutat yhden suostumusehdotuksen. Katso koko työnkulku [Suostumusprosessista](/en/guides/making_decisions/consent_process). Se sisältää kysymykset, tunnustelun, muutokset, vastaväitteet ja johtopäätöksen.
+Tällä sivulla kerrotaan, miten toteutat yhden suostumusehdotuksen. Katso koko työnkulku [Suostumusprosessista](/guides/making-decisions/consent-process/). Se sisältää kysymykset, tunnustelun, muutokset, vastaväitteet ja johtopäätöksen.
 
 <!-- translation-section: when-to-use-consent -->
 

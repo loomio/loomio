@@ -1,10 +1,10 @@
 ---
 title: Знакомство вашей группы с Loomio
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: 14d61f49bc1aa4bb
   choose-one-useful-starting-point: 90740bfd23c1c3bd
@@ -24,15 +24,15 @@ generated:
   decide-where-work-belongs: 472c887de4d45bc9
   decide-how-your-group-decides: b1fd09772ba8e2bc
   if-your-process-is-already-established: 0501ed7674a55d65
-  if-your-group-is-still-deciding: 014cdb57323c7bdd
+  if-your-group-is-still-deciding: 2452570c5cc30ee3
   invite-people: cbaa3674711e57c1
   help-everyone-participate-once: ec526e1609b3a9e7
   use-notifications-deliberately: 2801a07699b639c6
-  complete-the-first-process: 694e32e16024d323
+  complete-the-first-process: f064e2d6e89fd93c
 title_source: 4f1540fbaadc657b
 title_generated: ff2110b00829954e
 needs_review:
-  if-your-group-is-still-deciding: use "вывод" instead of "результат" for "outcome"; use "Согласен" instead of "За" for "agree"
+  if-your-group-is-still-deciding: use "Согласен" instead of "За" for "agree"
 ---
 
 <!-- translation-section: introduction -->
@@ -123,7 +123,7 @@ Loomio не требует, чтобы все группы или все реш�
 - Как мы будем реагировать на возражения, равенство голосов или недостаточное участие?
 - Как мы будем сообщать о решении, фиксировать, пересматривать и изменять его?
 
-Ответы могут различаться для оперативных решений, внутренних правил, выборов и изменений устава. Чтобы сравнить несколько полных процессов, прочитайте раздел [Принятие решений](/en/guides/making_decisions).
+Ответы могут различаться для оперативных решений, внутренних правил, выборов и изменений устава. Чтобы сравнить несколько полных процессов, прочитайте раздел [Принятие решений](/guides/making-decisions/).
 
 Если группа пока не готова определить все правила, договоритесь о временном порядке принятия одного решения с небольшим риском. Прежде чем приглашать людей к участию, объясните, что будет означать результат, опубликуйте вывод, а затем оцените, как прошёл процесс. Зафиксируйте то, чему научилась группа, в её описании, документах об управлении или шаблонах для повторного использования.
 
@@ -181,4 +181,4 @@ Loomio не требует, чтобы все группы или все реш�
 
 Вывод завершает процесс и сохраняет запись, к которой участники группы смогут вернуться позже. После этого спросите, что сработало, скорректируйте процесс и выберите следующую регулярную задачу для выполнения в Loomio.
 
-Последовательность от обсуждения до решения с сопровождением ведущего описана в разделе [Принятие решений](/en/guides/making_decisions). Практики для советов директоров описаны в разделе [Знакомство вашего совета директоров с Loomio](/en/guides/board_processes/introduce).
+Последовательность от обсуждения до решения с сопровождением ведущего описана в разделе [Принятие решений](/guides/making-decisions/). Процессы проведения собраний и формального голосования описаны в разделах [Как проводить собрания эффективнее](/guides/better-meetings/) и [Ежегодные общие собрания и официальные решения](/guides/agms-and-resolutions/).

@@ -1,10 +1,10 @@
 ---
 title: Знайомство вашої групи з Loomio
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: c7de5a4dd2a5cbe1
   choose-one-useful-starting-point: 2cd0892aa285f440
@@ -24,17 +24,15 @@ generated:
   decide-where-work-belongs: 5a30c1f9346caecc
   decide-how-your-group-decides: bf3c916b6ada181f
   if-your-process-is-already-established: 69363b3ac501b3bb
-  if-your-group-is-still-deciding: 7e8924e57f2c14e1
+  if-your-group-is-still-deciding: 1f9e3767f801597d
   invite-people: 3d5dd972a90fabe9
   help-everyone-participate-once: 8ae24e601ee81053
   use-notifications-deliberately: dd2b398de95727a5
-  complete-the-first-process: 756a3a12bc77f90c
+  complete-the-first-process: 3dca837abc723c30
 title_source: 4f1540fbaadc657b
 title_generated: 398c6dbc8569456a
 needs_review:
   if-your-process-is-already-established: use "висновок" instead of "рішення" for "outcome"; use "Погоджуюся" instead of "Згода" for "agree"
-  if-your-group-is-still-deciding: use "висновок" instead of "результат" for "outcome"; use "результати" instead of "висновок" for "results"; use "Погоджуюся" instead of "Згода" for "agree"
-  complete-the-first-process: use "висновок" instead of "рішення" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -122,10 +120,10 @@ Loomio не вимагає, щоб усі групи або всі рішенн�
 - Кого вони стосуються, з ким слід порадитися й хто відповідає за ухвалення рішення?
 - Для яких рішень потрібні поради, згода, консенсус, голосування або делеговані повноваження?
 - Який рівень участі чи підтримки робить рішення чинним?
-- Як ми реагуватимемо на заперечення, рівні результати або недостатню участь?
+- Як ми реагуватимемо на заперечення, рівну кількість голосів або недостатню участь?
 - Як ми повідомлятимемо про рішення, записуватимемо, переглядатимемо й змінюватимемо його?
 
-Відповіді можуть бути різними для робочого рішення, внутрішніх правил, виборів і зміни конституції. Перегляньте [Ухвалення рішень](/en/guides/making_decisions), щоб порівняти кілька повних процесів.
+Відповіді можуть бути різними для робочого рішення, внутрішніх правил, виборів і зміни конституції. Перегляньте [Ухвалення рішень](/guides/making-decisions/), щоб порівняти кілька повних процесів.
 
 Якщо група ще не готова визначити всі правила, домовтеся про тимчасовий процес для одного рішення з невеликим ризиком. Перш ніж запрошувати людей до участі, поясніть, що означатиме результат, опублікуйте висновок, а потім оцініть, як пройшов процес. Запишіть те, чого навчилася група, в її описі, документах щодо управління або багаторазових шаблонах.
 
@@ -183,4 +181,4 @@ Loomio не вимагає, щоб усі групи або всі рішенн�
 
 Висновок завершує процес і створює запис, до якого учасники групи зможуть повернутися згодом. Після цього запитайте, що спрацювало, скоригуйте процес і визначте наступне повторюване завдання для виконання в Loomio.
 
-Щоб ознайомитися з послідовністю від обговорення до рішення за участю фасилітатора, перегляньте [Ухвалення рішень](/en/guides/making_decisions). Практики для правління описано в розділі [Знайомство вашого правління з Loomio](/en/guides/board_processes/introduce).
+Щоб ознайомитися з послідовністю від обговорення до рішення за участю фасилітатора, перегляньте [Ухвалення рішень](/guides/making-decisions/). Про процеси проведення зустрічей і формальних голосувань читайте в розділах [Ефективніші зустрічі](/guides/better-meetings/) та [Річні загальні збори й формальні рішення](/guides/agms-and-resolutions/).

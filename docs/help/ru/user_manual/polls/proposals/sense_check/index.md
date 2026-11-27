@@ -1,12 +1,12 @@
 ---
 title: Проверка мнений
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 6a8b8927ba9a89e3
+  introduction: e3d27232e49e9160
   when-to-use-sense-check: 97e8ee57113308ef
   example-check-a-trial-plan: 169422098d049afe
   set-up-the-proposal: 3f487b5124001311
@@ -31,7 +31,7 @@ title_generated: 5610eacf77406a8b
 
 Проверка мнений собирает реакции, пока идея ещё разрабатывается. Её варианты — **Выглядит хорошо.**, **Можно было бы лучше.** и **Требуется переосмысление** — показывают, готова ли группа двигаться дальше или сначала следует доработать идею.
 
-На этой странице описано, как провести одну проверку мнений. Примеры использования проверки мнений как этапа более широкого процесса приведены в разделах [Простой процесс принятия решений](/en/guides/making_decisions/simple_decision_process), [Процесс согласия](/en/guides/making_decisions/consent_process) и [Процесс консенсуса](/en/guides/making_decisions/consensus_process).
+На этой странице описано, как провести одну проверку мнений. Примеры использования проверки мнений как этапа более широкого процесса приведены в разделах [Простой процесс принятия решений](/guides/making-decisions/simple-decision-process/), [Процесс согласия](/guides/making-decisions/consent-process/) и [Процесс консенсуса](/guides/making-decisions/consensus-process/).
 
 <!-- translation-section: when-to-use-sense-check -->
 

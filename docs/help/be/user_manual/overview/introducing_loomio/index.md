@@ -1,10 +1,10 @@
 ---
 title: Як прадставіць Loomio вашай групе
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: 1ce55027fda46034
   choose-one-useful-starting-point: b213a903dbbe7c40
@@ -24,16 +24,16 @@ generated:
   decide-where-work-belongs: 4b60b2932eb956bd
   decide-how-your-group-decides: 8ba85bced0a53b38
   if-your-process-is-already-established: f1798883b64fe1c3
-  if-your-group-is-still-deciding: 5fb623e8db7231a3
+  if-your-group-is-still-deciding: ba2f4555d151218e
   invite-people: d59b249ec2c219f0
   help-everyone-participate-once: 0430da57c7ddcb02
   use-notifications-deliberately: 0f4cff5a0170d691
-  complete-the-first-process: '09991b5098c27266'
+  complete-the-first-process: 670ffd035875626f
 title_source: 4f1540fbaadc657b
 title_generated: 95ee6cb667cd9395
 needs_review:
   if-your-process-is-already-established: use "Пагаджаюся" instead of "Згода" for "agree"
-  if-your-group-is-still-deciding: use "Пагаджаюся" instead of "Згода" for "agree"
+  if-your-group-is-still-deciding: use "Пагаджаюся" instead of "За" for "agree"
 ---
 
 <!-- translation-section: introduction -->
@@ -124,7 +124,7 @@ Loomio не патрабуе ад усіх груп выкарыстоўваць
 - Як мы будзем рэагаваць на пярэчанні, роўную колькасць галасоў або недастатковы ўдзел?
 - Як мы будзем паведамляць пра рашэнне, фіксаваць, пераглядаць і змяняць яго?
 
-Адказы могуць адрознівацца для працоўнага рашэння, правілаў, выбараў і змены канстытуцыі. Каб параўнаць некалькі поўных працэсаў, глядзіце [Прыняцце рашэнняў](/en/guides/making_decisions).
+Адказы могуць адрознівацца для працоўнага рашэння, правілаў, выбараў і змены канстытуцыі. Каб параўнаць некалькі поўных працэсаў, глядзіце [Прыняцце рашэнняў](/guides/making-decisions/).
 
 Калі група яшчэ не гатовая вызначыць усе правілы, дамоўцеся пра часовы працэс для аднаго рашэння з нізкай рызыкай. Перш чым запрашаць людзей да ўдзелу, растлумачце, што будуць азначаць вынікі, апублікуйце выснову, а затым разгледзьце, як прайшоў працэс. Зафіксуйце атрыманы досвед у апісанні групы, дакументах аб кіраванні або шаблонах для паўторнага выкарыстання.
 
@@ -182,4 +182,4 @@ Loomio не патрабуе ад усіх груп выкарыстоўваць
 
 Выснова завяршае працэс і стварае запіс, да якога ўдзельнікі групы могуць вярнуцца пазней. Пасля гэтага спытайце, што спрацавала, скарэктуйце працэс і вызначце наступную рэгулярную задачу для працы ў Loomio.
 
-Каб даведацца пра паслядоўнасць крокаў ад абмеркавання да рашэння з дапамогай фасілітацыі, глядзіце [Прыняцце рашэнняў](/en/guides/making_decisions). Пра практыкі для праўлення глядзіце [Як прадставіць Loomio вашаму праўленню](/en/guides/board_processes/introduce).
+Каб даведацца пра паслядоўнасць крокаў ад абмеркавання да рашэння з дапамогай фасілітацыі, глядзіце [Прыняцце рашэнняў](/guides/making-decisions/). Пра працэсы правядзення сустрэч і фармальнага галасавання глядзіце [Лепшыя сустрэчы](/guides/better-meetings/) і [Штогадовыя агульныя сходы і фармальныя рашэнні](/guides/agms-and-resolutions/).

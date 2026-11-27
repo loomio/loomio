@@ -1,12 +1,12 @@
 ---
 title: Advies
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: f7dc50f77462f5ee
+  introduction: 475699634da3a7d7
   when-to-use-advice: 3c3f0e912605de9a
   example-choose-a-washing-supplier: 3bc3eda88ec8ced3
   set-up-the-proposal: 73f4b346bd6efbfa
@@ -23,8 +23,6 @@ generated:
   share-an-outcome: 3e36762059e8cdba
 title_source: 305f5e5463e18d7f
 title_generated: 8293868712c4fcbc
-needs_review:
-  introduction: use "conclusie" instead of "resultaat" for "outcome"; use "resultaat" instead of "conclusie" for "results"
 ---
 
 <!-- translation-section: introduction -->
@@ -33,7 +31,7 @@ needs_review:
 
 Een adviesvoorstel verzamelt input voor een besluit waarvoor een persoon of team verantwoordelijk is. Deelnemers kunnen advies geven of aangeven dat ze geen advies toe te voegen hebben.
 
-Deze pagina legt het formulier voor een adviesvoorstel, het stemmen en het resultaat uit. Bekijk het [adviesproces](/en/guides/making_decisions/advice_process) voor de volledige werkwijze, van het formuleren van het besluit tot het publiceren van een conclusie.
+Deze pagina legt het formulier voor een adviesvoorstel, het stemmen en het resultaat uit. Bekijk het [adviesproces](/guides/making-decisions/advice-process/) voor de volledige werkwijze, van het formuleren van het besluit tot het publiceren van een conclusie.
 
 <!-- translation-section: when-to-use-advice -->
 

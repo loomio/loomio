@@ -1,12 +1,12 @@
 ---
 title: Beleegyezés
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: df146c428125d103
+  introduction: fac5dc11b697b184
   when-to-use-consent: ad32ed198322ffee
   example-start-a-bottle-trial: c5dfa1e9535c955b
   set-up-the-proposal: 81d3414b64d6abca
@@ -31,7 +31,7 @@ title_generated: be644c8e955e17da
 
 A beleegyezéses javaslat azt kérdezi, hogy biztonságos-e kipróbálni egy tervezett lépést. A résztvevők vagy beleegyeznek, vagy kifogást emelnek. A kifogás olyan konkrét kockázatot vagy kárt nevez meg, amelyet a javaslatnak kezelnie kell.
 
-Ez az oldal egy beleegyezéses javaslat lebonyolítását mutatja be. A teljes folyamatot, beleértve a kérdéseket, a hangulatfelmérést, a módosításokat, a kifogásokat és a következtetést, a [Beleegyezési folyamat](/en/guides/making_decisions/consent_process) oldalon találod.
+Ez az oldal egy beleegyezéses javaslat lebonyolítását mutatja be. A teljes folyamatot, beleértve a kérdéseket, a hangulatfelmérést, a módosításokat, a kifogásokat és a következtetést, a [Beleegyezési folyamat](/guides/making-decisions/consent-process/) oldalon találod.
 
 <!-- translation-section: when-to-use-consent -->
 

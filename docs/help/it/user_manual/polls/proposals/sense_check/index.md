@@ -1,12 +1,12 @@
 ---
 title: Verifica delle opinioni
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 5700f6f600e17023
+  introduction: 27f9ef2eff43194e
   when-to-use-sense-check: 5717bd36692dd2f6
   example-check-a-trial-plan: 4f2a6da6415632ec
   set-up-the-proposal: 7748b8f0de58d79a
@@ -31,7 +31,7 @@ title_generated: 37e9f206796d001d
 
 La verifica delle opinioni raccoglie reazioni mentre un'idea è ancora in fase di sviluppo. Le sue opzioni—**Sembra buono**, **Potrebbe essere migliore** e **Ha bisogno di essere ripensato**—mostrano se il gruppo è pronto a procedere o se dovrebbe prima rivedere l'idea.
 
-Questa pagina spiega come svolgere una verifica delle opinioni. Consulta il [Processo decisionale semplice](/en/guides/making_decisions/simple_decision_process), il [Processo di consenso](/en/guides/making_decisions/consent_process) o il [Processo di consenso unanime](/en/guides/making_decisions/consensus_process) per esempi di utilizzo della verifica delle opinioni come fase di un processo più ampio.
+Questa pagina spiega come svolgere una verifica delle opinioni. Consulta il [Processo decisionale semplice](/guides/making-decisions/simple-decision-process/), il [Processo di consenso](/guides/making-decisions/consent-process/) o il [Processo di consenso unanime](/guides/making-decisions/consensus-process/) per esempi di utilizzo della verifica delle opinioni come fase di un processo più ampio.
 
 <!-- translation-section: when-to-use-sense-check -->
 

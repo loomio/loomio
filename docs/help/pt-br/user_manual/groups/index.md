@@ -1,16 +1,16 @@
 ---
 title: Grupos
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 898c4f0b7d3b8a80
-  administration-facilitation-and-moderation-code-of-conduct: b3b4184adad941aa
+  administration-facilitation-and-moderation-code-of-conduct: 37704795790a0fab
 generated:
   introduction: a7e3dd7c69a0ec67
-  administration-facilitation-and-moderation-code-of-conduct: 06b23b3b2f817734
+  administration-facilitation-and-moderation-code-of-conduct: ad06647bcc99711c
 title_source: 39bbb719fa2b9d22
 title_generated: 053f0755eeb3d882
 ---
@@ -33,4 +33,4 @@ Se você está preparando um novo grupo, consulte [Apresentando o Loomio ao seu 
 
 ## Código de conduta
 
-Um código de conduta ajuda os membros a entender como participar e como o grupo responde a comportamentos inadequados. Consulte o [Guia de facilitação](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) para obter orientações sobre como estabelecer expectativas.
+Um código de conduta ajuda os membros a entender como participar e como o grupo responde a comportamentos inadequados. Consulte o [Guia de facilitação](/guides/facilitators-guide/commencing/#culture-protocol-expectations) para obter orientações sobre como estabelecer expectativas.

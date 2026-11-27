@@ -1,6 +1,6 @@
 ---
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -8,7 +8,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 5b7dc27538a51a15
+  introduction: f3baf70966bf3769
   when-to-use-sense-check: d06bf1e75978c3ab
   example-check-a-trial-plan: 13e6cf53171f2133
   set-up-the-proposal: ee77a6cba90c608e
@@ -18,11 +18,11 @@ generated:
 title: 의견 확인
 title_source: e9ac5b767e01ae7b
 title_generated: 452dec4c145fe7ac
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-28'
 ---
 
 <!-- translation-section: introduction -->
@@ -31,7 +31,7 @@ translated:
 
 의견 확인은 아이디어를 구체화하는 동안 반응을 모으는 투표입니다. **좋아 보임**, **개선 필요**, **재검토 필요** 선택지를 통해 그룹이 다음 단계로 진행할 준비가 되었는지, 먼저 아이디어를 수정해야 하는지 확인할 수 있습니다.
 
-이 페이지에서는 의견 확인 투표를 진행하는 방법을 설명합니다. 더 큰 의사결정 과정의 한 단계로 의견 확인을 사용하는 예시는 [간단한 의사결정 과정](/en/guides/making_decisions/simple_decision_process), [이의 없는 의사결정 과정](/en/guides/making_decisions/consent_process), [합의 과정](/en/guides/making_decisions/consensus_process)을 참고하세요.
+이 페이지에서는 의견 확인 투표를 진행하는 방법을 설명합니다. 더 큰 의사결정 과정의 한 단계로 의견 확인을 사용하는 예시는 [간단한 의사결정 과정](/guides/making-decisions/simple-decision-process/), [이의 없는 의사결정 과정](/guides/making-decisions/consent-process/), [합의 과정](/guides/making-decisions/consensus-process/)을 참고하세요.
 
 <!-- translation-section: when-to-use-sense-check -->
 

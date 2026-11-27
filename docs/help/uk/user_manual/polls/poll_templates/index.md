@@ -1,12 +1,12 @@
 ---
 title: Шаблони опитувань
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
-  introduction: 227665c7b66356be
+  introduction: 6faf3959a24d633a
   who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
@@ -20,7 +20,7 @@ sections:
   configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: d6ef12817ebcd64d
+  introduction: 7416268e1272bd17
   who-can-manage-templates: 56be50b0e1a31b9c
   create-a-poll-template: addd797277703d90
   template-title-subtitle-and-help: 17901218bc45d421
@@ -43,7 +43,7 @@ title_generated: 63dfb2c360af57d6
 
 Шаблони опитувань — це заготовки для багаторазового використання, які відображаються, коли хтось вибирає **Розпочати голосування** або **Нове опитування**. Шаблон поєднує метод голосування із заздалегідь заданими вказівками, варіантами відповіді та налаштуваннями.
 
-На цій сторінці ви можете налаштувати, які шаблони доступні групі, або створити шаблон для власного процесу. Щоб вибрати шаблон для конкретного голосування, перегляньте [Пропозиції](../proposals/) або [Опитування](../proposal_types/). Щоб організувати повний процес ухвалення рішення, перегляньте [Ухвалення рішень](/en/guides/making_decisions/).
+На цій сторінці ви можете налаштувати, які шаблони доступні групі, або створити шаблон для власного процесу. Щоб вибрати шаблон для конкретного голосування, перегляньте [Пропозиції](../proposals/) або [Опитування](../proposal_types/). Щоб організувати повний процес ухвалення рішення, перегляньте [Ухвалення рішень](/guides/making-decisions/).
 
 Розпочинаючи голосування, виберіть вкладку **Пропозиція** або **Опитування** та шаблон, доступний групі.
 

@@ -1,12 +1,12 @@
 ---
 title: Peilingsjablonen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
-  introduction: 227665c7b66356be
+  introduction: 6faf3959a24d633a
   who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
@@ -20,7 +20,7 @@ sections:
   configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: 4c94b2606ccaa953
+  introduction: 271b02d506ef55a9
   who-can-manage-templates: '09e75aff055081ac'
   create-a-poll-template: 3dffa179fb78dc1a
   template-title-subtitle-and-help: c0a0f874a019a625
@@ -43,7 +43,7 @@ title_generated: '0990c400c548d976'
 
 Peilingsjablonen zijn herbruikbare uitgangspunten die verschijnen wanneer iemand **Start een stemming** of **Nieuwe peiling** selecteert. Een sjabloon combineert een stemmethode met vooraf ingestelde instructies, antwoordopties en instellingen.
 
-Gebruik deze pagina om in te stellen welke sjablonen beschikbaar zijn voor een groep of om een sjabloon voor jouw eigen proces te maken. Om een sjabloon voor een specifieke stemming te kiezen, zie [Voorstellen](../proposals/) of [Peilingen](../proposal_types/). Om een volledig besluitvormingsproces te begeleiden, zie [Besluiten nemen](/en/guides/making_decisions/).
+Gebruik deze pagina om in te stellen welke sjablonen beschikbaar zijn voor een groep of om een sjabloon voor jouw eigen proces te maken. Om een sjabloon voor een specifieke stemming te kiezen, zie [Voorstellen](../proposals/) of [Peilingen](../proposal_types/). Om een volledig besluitvormingsproces te begeleiden, zie [Besluiten nemen](/guides/making-decisions/).
 
 Selecteer bij het starten van een stemming het tabblad **Voorstel** of **Peiling** en kies een sjabloon dat beschikbaar is voor de groep.
 

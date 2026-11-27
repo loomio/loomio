@@ -1,12 +1,12 @@
 ---
 title: Consenso
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: c452e71c79d888ee
+  introduction: ce1a98a0726c43ee
   when-to-use-consensus: 63c95fecaf4cccca
   example-adopt-a-bottle-return-standard: 8deadb9f5e532499
   set-up-the-proposal: 8458384ff02f2ee8
@@ -31,7 +31,7 @@ title_generated: a633645d078dc2da
 
 Una proposta di consenso unanime cerca l'accordo collettivo di tutte le persone coinvolte. Le risposte predefinite consentono ai partecipanti di esprimere accordo, astensione, disaccordo o blocco.
 
-Questa pagina spiega come gestire una singola proposta di consenso unanime. Consulta il [Processo di consenso unanime](/en/guides/making_decisions/consensus_process) per il percorso completo, dalla discussione e dalla verifica delle opinioni fino alle modifiche e alla conclusione.
+Questa pagina spiega come gestire una singola proposta di consenso unanime. Consulta il [Processo di consenso unanime](/guides/making-decisions/consensus-process/) per il percorso completo, dalla discussione e dalla verifica delle opinioni fino alle modifiche e alla conclusione.
 
 <!-- translation-section: when-to-use-consensus -->
 

@@ -1,7 +1,7 @@
 ---
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -16,7 +16,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 73042dbdee0df1b2
-  find-the-right-help: 52dba4a8e1a88820
+  find-the-right-help: f0038364ce4faa03
   proposals: 27b3068b4da557bc
   polls: bdbb6bc59af00378
   start-a-proposal-or-poll: b941a6a583bb91c8
@@ -34,8 +34,8 @@ title_source: d45b4ba3cb7a27cb
 title_generated: '085703a43c5772ed'
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+  'on': '2026-11-28'
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 ---
 
@@ -56,7 +56,7 @@ source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 | 참여자가 무엇을 표현할지 선택하기 | [제안](../proposals/) 또는 [투표](../proposal_types/) |
 | 특정 제안 템플릿 사용하기 | [의견 확인](../proposals/sense_check/), [조언](../proposals/advice/), [이의 없음](../proposals/consent/) 또는 [합의](../proposals/consensus/) |
 | 그룹에서 사용할 수 있는 템플릿 설정하기 | [투표 템플릿](../poll_templates/) |
-| 토론부터 결론까지 의사결정 진행하기 | [의사결정하기](/en/guides/making_decisions/) |
+| 토론부터 결론까지 의사결정 진행하기 | [의사결정하기](/guides/making-decisions/) |
 
 **투표 방식**은 사람들이 응답하는 방법과 결과를 계산하는 방법을 정합니다. **투표 템플릿**은 투표 방식을 기반으로 안내, 선택지, 설정을 미리 지정하여 재사용할 수 있도록 구성한 것입니다. **의사결정 과정**에서는 그룹이 결론에 이르기까지 토론과 여러 템플릿을 사용할 수 있습니다.
 

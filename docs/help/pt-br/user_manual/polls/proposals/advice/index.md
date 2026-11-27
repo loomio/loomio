@@ -1,12 +1,12 @@
 ---
 title: Conselho
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: d39b869b3734d15e
+  introduction: 9136f216768e26a8
   when-to-use-advice: 4a2b83571ac5a13b
   example-choose-a-washing-supplier: 279ae6635a297046
   set-up-the-proposal: e2e71483ee843f67
@@ -31,7 +31,7 @@ title_generated: 3a4695d1683e37b4
 
 Uma proposta de Conselho reúne contribuições para uma decisão que uma pessoa ou equipe é responsável por tomar. Os participantes podem oferecer conselhos ou indicar que não têm conselhos a acrescentar.
 
-Esta página explica o formulário da proposta de Conselho, a votação e os resultados. Consulte o [Processo de aconselhamento](/en/guides/making_decisions/advice_process) para conhecer o fluxo completo, desde a definição da decisão até a publicação de uma conclusão.
+Esta página explica o formulário da proposta de Conselho, a votação e os resultados. Consulte o [Processo de aconselhamento](/guides/making-decisions/advice-process/) para conhecer o fluxo completo, desde a definição da decisão até a publicação de uma conclusão.
 
 <!-- translation-section: when-to-use-advice -->
 

@@ -1,16 +1,16 @@
 ---
 title: Групы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 898c4f0b7d3b8a80
-  administration-facilitation-and-moderation-code-of-conduct: b3b4184adad941aa
+  administration-facilitation-and-moderation-code-of-conduct: 37704795790a0fab
 generated:
   introduction: 672accb835f75c35
-  administration-facilitation-and-moderation-code-of-conduct: f34d1422e392234a
+  administration-facilitation-and-moderation-code-of-conduct: b61eccf7b3e0f8d2
 title_source: 39bbb719fa2b9d22
 title_generated: '0393103017c0e11c'
 ---
@@ -33,4 +33,4 @@ title_generated: '0393103017c0e11c'
 
 ## Кодэкс паводзін
 
-Кодэкс паводзін дапамагае ўдзельнікам зразумець, як удзельнічаць у працы групы і як група рэагуе на неналежныя паводзіны. Рэкамендацыі па вызначэнні чаканняў глядзіце ў [Дапаможніку па фасілітацыі](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).
+Кодэкс паводзін дапамагае ўдзельнікам зразумець, як удзельнічаць у працы групы і як група рэагуе на неналежныя паводзіны. Рэкамендацыі па вызначэнні чаканняў глядзіце ў [Дапаможніку па фасілітацыі](/guides/facilitators-guide/commencing/#culture-protocol-expectations).

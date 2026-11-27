@@ -1,12 +1,12 @@
 ---
 title: Conseil
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 63d7013fd2d9c6ec
+  introduction: 06fafa2e4f087ec0
   when-to-use-advice: 14a4155b78aece9b
   example-choose-a-washing-supplier: b0c24700cd2be426
   set-up-the-proposal: 3d2d7bc0aa05a991
@@ -31,7 +31,7 @@ title_generated: 67021d713f09c345
 
 Une proposition de type Conseil recueille des avis pour une décision qu’une personne ou une équipe est chargée de prendre. Les participants peuvent donner des conseils ou indiquer qu’ils n’ont aucun conseil à ajouter.
 
-Cette page explique le formulaire d’une proposition de type Conseil, le vote et les résultats. Consultez le [processus de conseil](/en/guides/making_decisions/advice_process) pour connaître l’ensemble du processus, du cadrage de la décision à la publication d’une conclusion.
+Cette page explique le formulaire d’une proposition de type Conseil, le vote et les résultats. Consultez le [processus de conseil](/guides/making-decisions/advice-process/) pour connaître l’ensemble du processus, du cadrage de la décision à la publication d’une conclusion.
 
 <!-- translation-section: when-to-use-advice -->
 

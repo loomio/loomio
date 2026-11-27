@@ -1,12 +1,12 @@
 ---
 title: Праверка сэнсу
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 9f5fa78556711938
+  introduction: 690ff1f657cf0de4
   when-to-use-sense-check: 6c6a11fab39e76ff
   example-check-a-trial-plan: 159658cb39bffbe8
   set-up-the-proposal: e6493e6b6a4cc522
@@ -31,7 +31,7 @@ title_generated: a8e62df994c554c6
 
 Праверка меркаванняў збірае рэакцыі, пакуль ідэя яшчэ распрацоўваецца. Яе варыянты — **Выглядае добра**, **Магло б быць і лепш** і **Патрабуе пераасэнсавання** — паказваюць, ці гатовая група рухацца далей, ці спачатку варта дапрацаваць ідэю.
 
-На гэтай старонцы апісана, як правесці адну праверку меркаванняў. Прыклады выкарыстання праверкі меркаванняў як аднаго з этапаў больш шырокага працэсу глядзіце ў раздзелах [Просты працэс прыняцця рашэнняў](/en/guides/making_decisions/simple_decision_process), [Працэс згоды](/en/guides/making_decisions/consent_process) або [Працэс кансенсусу](/en/guides/making_decisions/consensus_process).
+На гэтай старонцы апісана, як правесці адну праверку меркаванняў. Прыклады выкарыстання праверкі меркаванняў як аднаго з этапаў больш шырокага працэсу глядзіце ў раздзелах [Просты працэс прыняцця рашэнняў](/guides/making-decisions/simple-decision-process/), [Працэс згоды](/guides/making-decisions/consent-process/) або [Працэс кансенсусу](/guides/making-decisions/consensus-process/).
 
 <!-- translation-section: when-to-use-sense-check -->
 

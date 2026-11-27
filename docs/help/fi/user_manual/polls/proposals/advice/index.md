@@ -1,12 +1,12 @@
 ---
 title: Neuvoja
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-28'
 sections:
-  introduction: 3b517bcf7f8d31d2
+  introduction: 8dc34b3e25e4b55f
   when-to-use-advice: d98ed1affd9abbd3
   example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
@@ -14,7 +14,7 @@ sections:
   read-the-results: 937eff4c74abcc79
   share-an-outcome: 1f762148d1f18b1d
 generated:
-  introduction: 4859d0da5b4b8f2a
+  introduction: 4e3005d38250878a
   when-to-use-advice: f1ac3ee180b7bb28
   example-choose-a-washing-supplier: 2918462be33378cd
   set-up-the-proposal: '082fe51100eb450c'
@@ -23,8 +23,6 @@ generated:
   share-an-outcome: 7d1f5dcc1c6791f0
 title_source: 305f5e5463e18d7f
 title_generated: 99221c07d0a16699
-needs_review:
-  introduction: use "johtopäätös" instead of "tulokset" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -33,7 +31,7 @@ needs_review:
 
 Neuvoja-ehdotuksella kerätään näkemyksiä päätökseen, jonka tekemisestä vastaa henkilö tai tiimi. Osallistujat voivat antaa neuvoja tai ilmoittaa, ettei heillä ole lisättävää.
 
-Tällä sivulla esitellään Neuvoja-ehdotuksen lomake, äänestäminen ja tulokset. Katso [Neuvontaprosessi](/en/guides/making_decisions/advice_process), jossa kuvataan koko työnkulku päätöksen määrittelystä johtopäätöksen julkaisemiseen.
+Tällä sivulla esitellään Neuvoja-ehdotuksen lomake, äänestäminen ja tulokset. Katso [Neuvontaprosessi](/guides/making-decisions/advice-process/), jossa kuvataan koko työnkulku päätöksen määrittelystä johtopäätöksen julkaisemiseen.
 
 <!-- translation-section: when-to-use-advice -->
 

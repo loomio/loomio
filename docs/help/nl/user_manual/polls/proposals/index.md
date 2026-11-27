@@ -1,17 +1,17 @@
 ---
 title: Voorstellen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: 7cea5b382ca8de83
+  introduction: 887a7f504b2f2b2e
   choose-a-proposal-template: ab09e454c765506b
   other-proposal-templates: d02ab29738d5f3d5
   proposal-records: 563f68f54fa39d2f
@@ -25,7 +25,7 @@ title_generated: '09bd5ffc593138d4'
 
 Een voorstel vraagt mensen te reageren op een stelling of een voorgenomen aanpak. Deelnemers kiezen uit vaste antwoorden en kunnen hun stem toelichten. Gebruik een voorstel om feedback te verzamelen, advies te vragen, bezwaren te achterhalen of te toetsen of mensen het ermee eens zijn.
 
-Dit onderdeel helpt je de standaardsjablonen voor voorstellen in Loomio te kiezen en te gebruiken. Gebruik de [gidsen voor besluitvorming](/en/guides/making_decisions/) voor een volledig proces met discussie, voorstellen, wijzigingen en een conclusie. Zie [Peilingssjablonen](../poll_templates/) om de beschikbare sjablonen voor jouw groep te wijzigen.
+Dit onderdeel helpt je de standaardsjablonen voor voorstellen in Loomio te kiezen en te gebruiken. Gebruik de [gidsen voor besluitvorming](/guides/making-decisions/) voor een volledig proces met discussie, voorstellen, wijzigingen en een conclusie. Zie [Peilingssjablonen](../poll_templates/) om de beschikbare sjablonen voor jouw groep te wijzigen.
 
 <!-- translation-section: choose-a-proposal-template -->
 

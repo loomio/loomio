@@ -1,12 +1,12 @@
 ---
 title: Согласие
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: ec8d6069ca0aacee
+  introduction: 8a479d4b5d3061ad
   when-to-use-consent: 4069d9315dd7a5f0
   example-start-a-bottle-trial: f3ad7e71042a7e72
   set-up-the-proposal: d531c4f768db6f2f
@@ -31,7 +31,7 @@ title_generated: 205f97be66e6a1df
 
 Предложение типа «Согласие» позволяет выяснить, безопасно ли попробовать предложенный план действий. Участники либо дают согласие, либо высказывают возражение. Возражение указывает на конкретный риск или вред, который необходимо учесть в предложении.
 
-На этой странице описано, как провести один опрос по предложению типа «Согласие». Полный порядок действий, включая вопросы, проверку мнений, поправки, возражения и вывод, описан на странице [Процесс принятия решения по согласию](/en/guides/making_decisions/consent_process).
+На этой странице описано, как провести один опрос по предложению типа «Согласие». Полный порядок действий, включая вопросы, проверку мнений, поправки, возражения и вывод, описан на странице [Процесс принятия решения по согласию](/guides/making-decisions/consent-process/).
 
 <!-- translation-section: when-to-use-consent -->
 

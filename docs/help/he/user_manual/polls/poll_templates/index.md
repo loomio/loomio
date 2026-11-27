@@ -1,12 +1,12 @@
 ---
 title: תבניות סקר
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
-  introduction: 227665c7b66356be
+  introduction: 6faf3959a24d633a
   who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
@@ -20,7 +20,7 @@ sections:
   configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: 7d27821e41004968
+  introduction: '095709ff555ee445'
   who-can-manage-templates: bbbcabd18f41454d
   create-a-poll-template: 93377a41bc54bac4
   template-title-subtitle-and-help: 24119aba5f92c5a0
@@ -46,7 +46,7 @@ needs_review:
 
 תבניות סקר הן נקודות התחלה לשימוש חוזר, המוצגות בעת בחירה ב־**התחל הצבעה** או ב־**סקר חדש**. תבנית משלבת שיטת הצבעה עם הנחיות, אפשרויות תגובה והגדרות שנקבעו מראש.
 
-ניתן להשתמש בעמוד זה כדי להגדיר אילו תבניות זמינות לקבוצה או ליצור תבנית לתהליך הרצוי. לבחירת תבנית להצבעה מסוימת, ניתן לעיין בעמוד [הצעות](../proposals/) או [סקרים](../proposal_types/). להנחיית תהליך החלטה שלם, ניתן לעיין בעמוד [קבלת החלטות](/en/guides/making_decisions/).
+ניתן להשתמש בעמוד זה כדי להגדיר אילו תבניות זמינות לקבוצה או ליצור תבנית לתהליך הרצוי. לבחירת תבנית להצבעה מסוימת, ניתן לעיין בעמוד [הצעות](../proposals/) או [סקרים](../proposal_types/). להנחיית תהליך החלטה שלם, ניתן לעיין בעמוד [קבלת החלטות](/guides/making-decisions/).
 
 בעת פתיחת הצבעה, יש לבחור בלשונית **הצעה** או **סקר** ולבחור תבנית הזמינה לקבוצה.
 

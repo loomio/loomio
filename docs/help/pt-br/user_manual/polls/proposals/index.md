@@ -1,17 +1,17 @@
 ---
 title: Propostas
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: d9e40c51c7f580c1
+  introduction: 1cd17d07cea9fdf2
   choose-a-proposal-template: 9590f4a7c5859317
   other-proposal-templates: 9c58374960551adb
   proposal-records: 94b8b03bcfd3a48b
@@ -25,7 +25,7 @@ title_generated: b3f75868e6acaf81
 
 Uma proposta pede que as pessoas respondam a uma afirmação ou a um curso de ação. Os participantes escolhem uma resposta predefinida e podem explicar seu voto. Use uma proposta para coletar comentários, buscar conselhos, identificar objeções ou verificar se há concordância.
 
-Esta seção ajuda você a escolher e usar os modelos padrão de proposta do Loomio. Para uma sequência completa de discussão, propostas, emendas e conclusão, use os [guias de tomada de decisão](/en/guides/making_decisions/). Para alterar os modelos disponíveis para seu grupo, consulte [Modelos de enquete](../poll_templates/).
+Esta seção ajuda você a escolher e usar os modelos padrão de proposta do Loomio. Para uma sequência completa de discussão, propostas, emendas e conclusão, use os [guias de tomada de decisão](/guides/making-decisions/). Para alterar os modelos disponíveis para seu grupo, consulte [Modelos de enquete](../poll_templates/).
 
 <!-- translation-section: choose-a-proposal-template -->
 

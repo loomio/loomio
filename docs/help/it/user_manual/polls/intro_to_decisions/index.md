@@ -1,13 +1,13 @@
 ---
 title: Proposte e votazioni
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 899d1f51d9c170a2
-  find-the-right-help: 2f097107c2307e3e
+  find-the-right-help: 23d4d4c7b65e980e
   proposals: caec5d61bd5f2da9
   polls: bb7e1518a10fe043
   start-a-proposal-or-poll: e40991256f7ef875
@@ -56,7 +56,7 @@ Queste parti del manuale rispondono a domande diverse:
 | Scegliere cosa devono esprimere i partecipanti | [Proposte](../proposals/) o [Sondaggi](../proposal_types/) |
 | Usare un modello di proposta specifico | [Verifica delle opinioni](../proposals/sense_check/), [Consiglio](../proposals/advice/), [Consenso](../proposals/consent/) o [Consenso unanime](../proposals/consensus/) |
 | Configurare i modelli disponibili per un gruppo | [Modelli di sondaggio](../poll_templates/) |
-| Facilitare una decisione dalla discussione alla conclusione | [Prendere decisioni](/en/guides/making_decisions/) |
+| Facilitare una decisione dalla discussione alla conclusione | [Prendere decisioni](/guides/making-decisions/) |
 
 Un **metodo di voto** definisce come rispondono le persone e come vengono calcolati i risultati. Un **modello di sondaggio** è una configurazione riutilizzabile basata su un metodo di voto, con istruzioni, opzioni e impostazioni predefinite. Un **processo decisionale** può prevedere una discussione e diversi modelli prima che il gruppo arrivi a una conclusione.
 

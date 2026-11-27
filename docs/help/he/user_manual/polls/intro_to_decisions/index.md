@@ -1,13 +1,13 @@
 ---
 title: הצעות וסקרים
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: b302816fe97258ad
-  find-the-right-help: 2010e5cea3fd32ef
+  find-the-right-help: eb70d02b90d39734
   proposals: fd377ff15e44f5a4
   polls: 7b9bb76028c45e33
   start-a-proposal-or-poll: 900753a7ab87d9b6
@@ -38,7 +38,6 @@ generated:
 title_source: d45b4ba3cb7a27cb
 title_generated: ae9ae909d9ac36c6
 needs_review:
-  find-the-right-help: use "החלטה" instead of "דיון" for "decision"; use "קונצנזוס" instead of "הסכמה" for "consensus"
   proposals: use "קונצנזוס" instead of "הסכמה" for "consensus"
 ---
 
@@ -59,7 +58,7 @@ needs_review:
 | להגדיר מה המשתתפים יתבקשו להביע | [הצעות](../proposals/) או [סקרים](../proposal_types/) |
 | להשתמש בתבנית הצעה מסוימת | [בדיקת כיוון](../proposals/sense_check/), [ייעוץ](../proposals/advice/), [הסכמה](../proposals/consent/) או [קונצנזוס](../proposals/consensus/) |
 | להגדיר את התבניות הזמינות לקבוצה | [תבניות סקרים](../poll_templates/) |
-| להנחות תהליך קבלת החלטה מדיון ועד למסקנה | [קבלת החלטות](/en/guides/making_decisions/) |
+| להנחות תהליך קבלת החלטה מדיון ועד למסקנה | [קבלת החלטות](/guides/making-decisions/) |
 
 **שיטת הצבעה** מגדירה כיצד אנשים משיבים וכיצד מחושבות התוצאות. **תבנית סקר** היא תצורה לשימוש חוזר המבוססת על שיטת הצבעה, עם הוראות, אפשרויות והגדרות שנקבעו מראש. **תהליך קבלת החלטה** עשוי לכלול דיון וכמה תבניות לפני שהקבוצה מגיעה למסקנה.
 

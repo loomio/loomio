@@ -1,12 +1,12 @@
 ---
 title: Кансенсус
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: af103d5e047facb4
+  introduction: 6a54b08204419275
   when-to-use-consensus: 0fb1edaad3e2fc3d
   example-adopt-a-bottle-return-standard: 9633142375c3c984
   set-up-the-proposal: e434c98677759508
@@ -31,7 +31,7 @@ title_generated: d4cc0911c6b0e078
 
 Прапанова тыпу «Кансенсус» мае на мэце дасягнуць агульнай згоды ўсіх удзельнікаў. Стандартныя варыянты адказу: «Пагаджаюся», «Устрымліваюся», «Не пагаджаюся» і «Блакую».
 
-На гэтай старонцы апісана, як правесці адну прапанову тыпу «Кансенсус». Поўны працэс ад абмеркавання і праверкі меркаванняў да ўнясення паправак і высновы апісаны на старонцы [Працэс дасягнення кансенсусу](/en/guides/making_decisions/consensus_process).
+На гэтай старонцы апісана, як правесці адну прапанову тыпу «Кансенсус». Поўны працэс ад абмеркавання і праверкі меркаванняў да ўнясення паправак і высновы апісаны на старонцы [Працэс дасягнення кансенсусу](/guides/making-decisions/consensus-process/).
 
 <!-- translation-section: when-to-use-consensus -->
 

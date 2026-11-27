@@ -1,10 +1,10 @@
 ---
 title: Presentare Loomio al tuo gruppo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: e96340d254f3bcaa
   choose-one-useful-starting-point: 6e5c8dddff69c68e
@@ -24,15 +24,13 @@ generated:
   decide-where-work-belongs: 5a89213a781c0b00
   decide-how-your-group-decides: cbfb152b9d3098c7
   if-your-process-is-already-established: 2b36f60115d7e115
-  if-your-group-is-still-deciding: 4d7e8555caadaefe
+  if-your-group-is-still-deciding: 0d77a8a1785d6e2f
   invite-people: 7130fe83ad9cd405
   help-everyone-participate-once: 29916f5f7a2d9ca3
   use-notifications-deliberately: aa2fe927a3a026d6
-  complete-the-first-process: d782897ed8955452
+  complete-the-first-process: 7d0ef83a175ba5fd
 title_source: 4f1540fbaadc657b
 title_generated: 388c8e01b11eb9f3
-needs_review:
-  if-your-group-is-still-deciding: use "conclusione" instead of "risultato" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -123,7 +121,7 @@ Avvia una discussione su come prendere le decisioni. Invece di partire da uno st
 - Come risponderemo alle obiezioni, ai risultati in parità o a una partecipazione insufficiente?
 - Come comunicheremo, registreremo, riesamineremo e modificheremo una decisione?
 
-Le risposte possono essere diverse per una decisione operativa, una politica, un'elezione e una modifica dello statuto. Consulta [Prendere decisioni](/en/guides/making_decisions) per confrontare diversi processi completi.
+Le risposte possono essere diverse per una decisione operativa, una politica, un'elezione e una modifica dello statuto. Consulta [Prendere decisioni](/guides/making-decisions/) per confrontare diversi processi completi.
 
 Se il gruppo non è pronto a definire tutte le regole, concorda un processo provvisorio per una decisione a basso rischio. Spiega quale significato avrà il risultato prima di chiedere alle persone di partecipare, pubblica una conclusione, poi valuta come ha funzionato il processo. Registra ciò che il gruppo impara nella sua descrizione, nei documenti di governance o nei modelli riutilizzabili.
 
@@ -181,4 +179,4 @@ Il primo processo dovrebbe mostrare tutte le fasi:
 
 La conclusione completa il processo e crea una registrazione che i membri possono consultare in seguito. Poi chiedi che cosa ha funzionato, modifica il processo e scegli la prossima attività ricorrente da svolgere in Loomio.
 
-Per un percorso facilitato dalla discussione alla decisione, consulta [Prendere decisioni](/en/guides/making_decisions). Per le pratiche specifiche dei consigli direttivi, consulta [Presentare Loomio al tuo consiglio direttivo](/en/guides/board_processes/introduce).
+Per un percorso facilitato dalla discussione alla decisione, consulta [Prendere decisioni](/guides/making-decisions/). Per i processi relativi alle riunioni e alle votazioni formali, consulta [Riunioni migliori](/guides/better-meetings/) e [Assemblee generali annuali e delibere formali](/guides/agms-and-resolutions/).

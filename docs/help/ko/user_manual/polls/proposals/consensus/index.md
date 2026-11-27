@@ -1,6 +1,6 @@
 ---
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -8,7 +8,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: '0938d96dd20eb615'
+  introduction: 5e6dfcf6f41fad2e
   when-to-use-consensus: f5bc869dc04fa0e8
   example-adopt-a-bottle-return-standard: 683bb838617e5e42
   set-up-the-proposal: 8cc0c571f2fdcd13
@@ -18,11 +18,11 @@ generated:
 title: 합의
 title_source: 8abe09bf65aefdb8
 title_generated: cf567a25ffbe55ad
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-28'
 ---
 
 <!-- translation-section: introduction -->
@@ -31,7 +31,7 @@ translated:
 
 합의 제안은 관련된 모든 사람이 함께 동의할 수 있는 결정을 구합니다. 기본 응답 선택지는 동의, 기권, 반대, 거부입니다.
 
-이 페이지에서는 합의 제안 하나를 진행하는 방법을 설명합니다. 토론과 의견 확인부터 수정과 결론까지 전체 진행 과정은 [합의 절차](/en/guides/making_decisions/consensus_process)를 참고하세요.
+이 페이지에서는 합의 제안 하나를 진행하는 방법을 설명합니다. 토론과 의견 확인부터 수정과 결론까지 전체 진행 과정은 [합의 절차](/guides/making-decisions/consensus-process/)를 참고하세요.
 
 <!-- translation-section: when-to-use-consensus -->
 

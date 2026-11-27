@@ -1,17 +1,17 @@
 ---
 title: 提案
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: 5c9dee8029498fcc
+  introduction: 4c35f6b1446ca971
   choose-a-proposal-template: d95ad3f567060adc
   other-proposal-templates: 63f2c1db927b8334
   proposal-records: 4601760863cf185d
@@ -25,7 +25,7 @@ title_generated: 46adc4971354814e
 
 提案では、文や行動方針について回答を求めます。参加者はあらかじめ定められた回答から選び、投票の理由を説明できます。フィードバックを集める、助言を求める、異議を把握する、賛同を確認するといった目的で提案を使います。
 
-このセクションでは、Loomioの標準の提案テンプレートを選び、使う方法を説明します。ディスカッション、提案、修正案、結論という一連の流れについては、[意思決定ガイド](/en/guides/making_decisions/)を参照してください。グループで使えるテンプレートを変更するには、[アンケートテンプレート](../poll_templates/)を参照してください。
+このセクションでは、Loomioの標準の提案テンプレートを選び、使う方法を説明します。ディスカッション、提案、修正案、結論という一連の流れについては、[意思決定ガイド](/guides/making-decisions/)を参照してください。グループで使えるテンプレートを変更するには、[アンケートテンプレート](../poll_templates/)を参照してください。
 
 <!-- translation-section: choose-a-proposal-template -->
 

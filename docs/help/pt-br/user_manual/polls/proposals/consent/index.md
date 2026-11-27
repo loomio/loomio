@@ -1,12 +1,12 @@
 ---
 title: Consentimento
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 7c6301775b6655f2
+  introduction: 4e4e6223d15fa74f
   when-to-use-consent: 32ea681182001a9a
   example-start-a-bottle-trial: abc3b93cccfe2471
   set-up-the-proposal: 99fe028ed43b44c2
@@ -14,7 +14,7 @@ sections:
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
 generated:
-  introduction: e5605d7385765578
+  introduction: 7b94920ad7b6e940
   when-to-use-consent: 47d557a38cbb520c
   example-start-a-bottle-trial: 93422858dd60c305
   set-up-the-proposal: 65a802edf13ca526
@@ -31,7 +31,7 @@ title_generated: 801371f12b73f7bd
 
 Uma proposta de Consentimento pergunta se é seguro experimentar uma ação. Os participantes consentem ou apresentam uma objeção. Uma objeção identifica um risco ou dano concreto que a proposta deve tratar.
 
-Esta página explica como conduzir uma proposta de Consentimento. Consulte o [Processo de consentimento](/en/guides/making_decisions/consent_process) para conhecer o fluxo completo, incluindo perguntas, verificação de opinião, alterações, objeções e conclusão.
+Esta página explica como conduzir uma proposta de Consentimento. Consulte o [Processo de consentimento](/guides/making-decisions/consent-process/) para conhecer o fluxo completo, incluindo perguntas, verificação de opinião, alterações, objeções e conclusão.
 
 <!-- translation-section: when-to-use-consent -->
 

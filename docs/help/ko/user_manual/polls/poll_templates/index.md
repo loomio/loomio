@@ -1,6 +1,6 @@
 ---
 sections:
-  introduction: 227665c7b66356be
+  introduction: 6faf3959a24d633a
   create-a-poll-template: 0fafc6275b6c9153
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
@@ -14,7 +14,7 @@ sections:
   manage-the-template-list: a58617ec50baf468
   who-can-manage-templates: 2f0ab3bdaf9d093a
 generated:
-  introduction: fa47000efb17bacf
+  introduction: a8d281b9b4640afb
   create-a-poll-template: 6626ce903142565d
   save-a-poll-as-a-template: 2c055778a88a8ac3
   start-a-new-template: 53c741e3eeb94601
@@ -32,8 +32,8 @@ title_source: 114cca246e357304
 title_generated: 3b99639c25a115b0
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+  'on': '2026-11-28'
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 ---
 
@@ -43,7 +43,7 @@ source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 
 투표 템플릿은 **투표 시작** 또는 **새 투표**를 선택할 때 표시되는 재사용 가능한 기본 틀입니다. 템플릿은 투표 방식에 미리 정해 둔 안내, 응답 선택지, 설정을 결합한 것입니다.
 
-이 페이지에서는 그룹에서 사용할 수 있는 템플릿을 설정하거나 그룹의 의사결정 절차에 맞는 템플릿을 만드는 방법을 안내합니다. 특정 투표에 사용할 템플릿을 선택하려면 [제안](../proposals/) 또는 [투표](../proposal_types/)를 참고하세요. 전체 의사결정 절차를 진행하려면 [의사결정하기](/en/guides/making_decisions/)를 참고하세요.
+이 페이지에서는 그룹에서 사용할 수 있는 템플릿을 설정하거나 그룹의 의사결정 절차에 맞는 템플릿을 만드는 방법을 안내합니다. 특정 투표에 사용할 템플릿을 선택하려면 [제안](../proposals/) 또는 [투표](../proposal_types/)를 참고하세요. 전체 의사결정 절차를 진행하려면 [의사결정하기](/guides/making-decisions/)를 참고하세요.
 
 투표를 시작할 때 **제안** 또는 **투표** 탭을 선택하고 그룹에서 사용할 수 있는 템플릿을 선택하세요.
 

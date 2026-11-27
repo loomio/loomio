@@ -1,12 +1,12 @@
 ---
 title: בדיקת כיוון
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/sense_check/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/sense_check/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: 2336356b9efbde30
+  introduction: f4e966c7f8b138c9
   when-to-use-sense-check: c70985229c659d2f
   example-check-a-trial-plan: 8055cad3418b4bb7
   set-up-the-proposal: 8106c7ab17a225e6
@@ -14,7 +14,7 @@ sections:
   read-the-results: 9cac8b6f7c7de36f
   share-an-outcome: b05f9f889a838d47
 generated:
-  introduction: 1ae20f596aa81922
+  introduction: b1cffe08de384df6
   when-to-use-sense-check: b8e94ddd92f990c0
   example-check-a-trial-plan: b8ec63d5a72a6614
   set-up-the-proposal: 642ba3d3c00c5c54
@@ -24,7 +24,6 @@ generated:
 title_source: e9ac5b767e01ae7b
 title_generated: 32ea207f483f4596
 needs_review:
-  introduction: use "קונצנזוס" instead of "הסכמה" for "consensus"
   when-to-use-sense-check: use "החלטה" instead of "דיון" for "decision"; use "קונצנזוס" instead of "הסכמה" for "consensus"
 ---
 
@@ -32,9 +31,9 @@ needs_review:
 
 # בדיקת כיוון
 
-בדיקת כיוון אוספת תגובות בזמן שרעיון עדיין נמצא בפיתוח. האפשרויות שלה — **נראה טוב**, **יכול להיות טוב יותר** ו־**צריך חשיבה מחודשת** — מראות אם הקבוצה מוכנה להתקדם או שיש לשנות את הרעיון תחילה.
+בדיקת כיוון אוספת תגובות אימוג׳י בזמן שרעיון עדיין נמצא בפיתוח. האפשרויות שלה — **נראה טוב**, **יכול להיות טוב יותר** ו־**צריך חשיבה מחודשת** — מראות אם הקבוצה מוכנה להתקדם או שיש לשנות את הרעיון תחילה.
 
-עמוד זה מסביר כיצד לערוך בדיקת כיוון אחת. ניתן לעיין ב[תהליך החלטה פשוט](/en/guides/making_decisions/simple_decision_process), ב[תהליך הסכמה](/en/guides/making_decisions/consent_process) או ב[תהליך קונצנזוס](/en/guides/making_decisions/consensus_process) לדוגמאות לשימוש בבדיקת כיוון כשלב בתהליך רחב יותר.
+עמוד זה מסביר כיצד לערוך בדיקת כיוון אחת. ניתן לעיין ב[תהליך החלטה פשוט](/guides/making-decisions/simple-decision-process/), ב[תהליך הסכמה](/guides/making-decisions/consent-process/) או ב[תהליך קונצנזוס](/guides/making-decisions/consensus-process/) לדוגמאות לשימוש בבדיקת כיוון כשלב בתהליך רחב יותר.
 
 <!-- translation-section: when-to-use-sense-check -->
 

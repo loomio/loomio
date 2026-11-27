@@ -1,13 +1,13 @@
 ---
 title: Javaslatok és szavazások
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 7e98ee48f235ca26
-  find-the-right-help: eab9fd9db254f8d2
+  find-the-right-help: 90c2f6fb19e96ada
   proposals: c8a187c463c5f544
   polls: 98039b00e7e9bd34
   start-a-proposal-or-poll: '0968465bb756317c'
@@ -56,7 +56,7 @@ A kézikönyv következő részei különböző kérdésekre adnak választ:
 | Kiválasztani, mit fejezzenek ki a résztvevők | [Javaslatok](../proposals/) vagy [Szavazások](../proposal_types/) |
 | Egy adott javaslatsablont használni | [Hangulatfelmérés](../proposals/sense_check/), [Tanács](../proposals/advice/), [Beleegyezés](../proposals/consent/) vagy [Konszenzus](../proposals/consensus/) |
 | Beállítani a csoport számára elérhető sablonokat | [Szavazási sablonok](../poll_templates/) |
-| Segíteni a döntéshozatalt a beszélgetéstől a következtetésig | [Döntéshozatal](/en/guides/making_decisions/) |
+| Segíteni a döntéshozatalt a beszélgetéstől a következtetésig | [Döntéshozatal](/guides/making-decisions/) |
 
 A **szavazási mód** meghatározza, hogyan válaszolnak az emberek, és hogyan számítja ki a rendszer az eredményeket. A **szavazási sablon** egy szavazási módra épülő, újra felhasználható beállításkészlet, előre megadott utasításokkal, lehetőségekkel és beállításokkal. A **döntési folyamat** során a csoport beszélgetést és több sablont is használhat, mielőtt következtetésre jut.
 

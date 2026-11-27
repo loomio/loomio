@@ -1,17 +1,17 @@
 ---
 title: Выдаленне ўліковага запісу
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: 3cbe148b4ac1c657
-  what-does-delete-account-mean: 0bc02f66f711a8c9
+  what-does-delete-account-mean: 9aca06f1da0fcc85
   to-delete-your-account-entirely: 6ced3cfee105d9ae
 title_source: 26a117d6f45e95e8
 title_generated: c6e2d1f9c808bf69
@@ -34,9 +34,9 @@ title_generated: c6e2d1f9c808bf69
 
 Копіі вашай дзейнасці ўжо маглі быць адпраўлены ўдзельнікам групы па электроннай пошце. Loomio не можа выдаліць ужо адпраўленыя лісты.
 
-Выдаленне ўліковага запісу не скасоўвае платную падпіску. Каб спыніць плацяжы, глядзіце [Падпіскі](/en/policy/subscriptions/management#cancel-your-plan).
+Выдаленне ўліковага запісу не скасоўвае платную падпіску. Каб спыніць плацяжы, глядзіце [Падпіскі](/policy/subscriptions/management/#cancel-your-plan).
 
-Каб даведацца, як Loomio апрацоўвае вашы даныя, прачытайце нашу [палітыку прыватнасці](/en/policy/privacy) або [звяжыцеся з намі](/contact). Калі спачатку вам патрэбна копія запісаў групы, адміністратары групы могуць [экспартаваць даныя групы](/en/user_manual/groups/data_export).
+Каб даведацца, як Loomio апрацоўвае вашы даныя, прачытайце нашу [палітыку прыватнасці](/policy/privacy/) або [звяжыцеся з намі](/contact). Калі спачатку вам патрэбна копія запісаў групы, адміністратары групы могуць [экспартаваць даныя групы](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

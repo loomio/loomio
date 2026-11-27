@@ -1,17 +1,17 @@
 ---
 title: מחיקת החשבון
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: b4903b29472cb632
+  what-does-delete-account-mean: d1dbd909dcf29442
   to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: b1681f7ae7e57c62
-  what-does-delete-account-mean: 2c5fe3a06787baf8
+  what-does-delete-account-mean: 735d9e217815626b
   to-delete-your-account-entirely: f629c339ca34b9dc
 title_source: 26a117d6f45e95e8
 title_generated: d55614d774b47429
@@ -34,9 +34,9 @@ title_generated: d55614d774b47429
 
 ייתכן שעותקים של הפעילות כבר נשלחו בדוא״ל לחברי הקבוצות. Loomio אינה יכולה למחוק הודעות דוא״ל שכבר נשלחו.
 
-מחיקת החשבון אינה מבטלת מינוי בתשלום. להפסקת התשלומים, יש לעיין ב[מינויים](/en/policy/subscriptions/management#cancel-your-plan).
+מחיקת החשבון אינה מבטלת מינוי בתשלום. להפסקת התשלומים, יש לעיין ב[מינויים](/policy/subscriptions/management/#cancel-your-plan).
 
-לפרטים על אופן הטיפול של Loomio בנתונים, ניתן לעיין ב[מדיניות הפרטיות](/en/policy/privacy) שלנו או [ליצור איתנו קשר](/contact). אם נדרש תחילה עותק של רשומות קבוצה, מנהל קבוצה יכול [לייצא את נתוני הקבוצה](/en/user_manual/groups/data_export).
+לפרטים על אופן הטיפול של Loomio בנתונים, ניתן לעיין ב[מדיניות הפרטיות](/policy/privacy/) שלנו או [ליצור איתנו קשר](/contact). אם נדרש תחילה עותק של רשומות קבוצה, מנהל קבוצה יכול [לייצא את נתוני הקבוצה](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

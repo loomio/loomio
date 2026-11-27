@@ -1,10 +1,10 @@
 ---
 title: היכרות הקבוצה עם Loomio
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/introducing_loomio/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/overview/introducing_loomio/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
   introduction: 3937e28d4932fd6d
   choose-one-useful-starting-point: 990ae1af5bf58d27
@@ -12,11 +12,11 @@ sections:
   decide-where-work-belongs: 3f7844efa61effa5
   decide-how-your-group-decides: e9502cf41fdf7344
   if-your-process-is-already-established: 3816a00451ea9f46
-  if-your-group-is-still-deciding: 289561a55b6e79a6
+  if-your-group-is-still-deciding: fcdaa306f3f0fd2f
   invite-people: 40058431249a070e
   help-everyone-participate-once: 94babb6a295b7f66
   use-notifications-deliberately: a532d30c36993c6a
-  complete-the-first-process: fd49ec812c1265e7
+  complete-the-first-process: 349675b94f9bbab0
 generated:
   introduction: 4f5ef742e2207ac7
   choose-one-useful-starting-point: b5ee8972e560079e
@@ -24,17 +24,15 @@ generated:
   decide-where-work-belongs: 3724e5be41d91030
   decide-how-your-group-decides: 11987e06136fcee0
   if-your-process-is-already-established: 6282e0fdd8f6cdc8
-  if-your-group-is-still-deciding: e83e15bb2b5f98d0
+  if-your-group-is-still-deciding: 02e230e504508dad
   invite-people: b38eb428d93db79d
   help-everyone-participate-once: 89543d6e02856d92
   use-notifications-deliberately: 474ef60865a97aa1
-  complete-the-first-process: '09d530226ce24e0c'
+  complete-the-first-process: 4f5ef63f3737c452
 title_source: 4f1540fbaadc657b
 title_generated: 2b344b77854b30b3
 needs_review:
   decide-where-work-belongs: use "החלטה" instead of "דיון" for "decision"
-  if-your-group-is-still-deciding: use "החלטה" instead of "דיון" for "decision"; use "קונצנזוס" instead of "הסכמה" for "consensus"
-  complete-the-first-process: use "החלטה" instead of "דיון" for "decision"
 ---
 
 <!-- translation-section: introduction -->
@@ -125,7 +123,7 @@ Loomio אינו מחייב את כל הקבוצות, או את כל ההחלטו
 - כיצד יש להגיב להתנגדויות, לתוצאות תיקו או להשתתפות שאינה מספקת?
 - כיצד יש למסור את ההחלטה, לתעד אותה, לבחון אותה ולשנות אותה?
 
-התשובות עשויות להיות שונות עבור החלטה תפעולית, מדיניות, בחירות ושינוי בחוקה. ניתן לעיין ב[קבלת החלטות](/en/guides/making_decisions) כדי להשוות בין כמה תהליכים שלמים.
+התשובות עשויות להיות שונות עבור החלטה תפעולית, מדיניות, בחירות ושינוי בחוקה. ניתן לעיין ב[קבלת החלטות](/guides/making-decisions/) כדי להשוות בין כמה תהליכים שלמים.
 
 אם הקבוצה עדיין אינה מוכנה לקבוע את כל הכללים, יש לקבוע יחד תהליך זמני להחלטה אחת בסיכון נמוך. יש להבהיר מה תהיה משמעות התוצאה לפני שמבקשים מאנשים להשתתף, לפרסם מסקנה ולאחר מכן לבחון כיצד פעל התהליך. יש לתעד את מה שהקבוצה לומדת בתיאור שלה, במסמכי הממשל שלה או בתבניות לשימוש חוזר.
 
@@ -183,4 +181,4 @@ Loomio אינו מחייב את כל הקבוצות, או את כל ההחלטו
 
 המסקנה משלימה את התהליך ויוצרת תיעוד שחברי הקבוצה יכולים לחזור אליו בהמשך. לאחר מכן, יש לברר מה עבד, להתאים את התהליך ולבחור את המשימה המחזורית הבאה שתתבצע ב-Loomio.
 
-לתהליך מונחה מדיון ועד החלטה, ניתן לעיין ב[קבלת החלטות](/en/guides/making_decisions). לשיטות עבודה המיועדות לוועד מנהל, ניתן לעיין ב[היכרות הוועד המנהל עם Loomio](/en/guides/board_processes/introduce).
+לתהליך מונחה מדיון ועד החלטה, ניתן לעיין ב[קבלת החלטות](/guides/making-decisions/). לתהליכי עבודה של פגישות והצבעות רשמיות, ניתן לעיין ב[פגישות טובות יותר](/guides/better-meetings/) וב[אספות כלליות שנתיות והחלטות רשמיות](/guides/agms-and-resolutions/).

@@ -1,12 +1,12 @@
 ---
 title: Consenso
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: af2e2a50e8c0b440
+  introduction: b0f7994cb303023c
   when-to-use-consensus: fc7f6180345f73a3
   example-adopt-a-bottle-return-standard: 9b0915ee6f41fa54
   set-up-the-proposal: b35a641ec031a40b
@@ -14,7 +14,7 @@ sections:
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
 generated:
-  introduction: d5c465c0b39b8248
+  introduction: e638243e173cf21a
   when-to-use-consensus: 81b881b55c789ee3
   example-adopt-a-bottle-return-standard: a2d2287805a5f21d
   set-up-the-proposal: 49517837160a4b33
@@ -31,7 +31,7 @@ title_generated: a633645d078dc2da
 
 Una propuesta de Consenso busca el acuerdo colectivo de todas las personas involucradas. Las respuestas predeterminadas permiten a los participantes estar de acuerdo, abstenerse, estar en desacuerdo o bloquear.
 
-Esta página explica cómo llevar a cabo una propuesta de Consenso. Consulta el [Proceso de consenso](/en/guides/making_decisions/consensus_process) para conocer el proceso completo, desde la discusión y la toma de pulso hasta las modificaciones y la conclusión.
+Esta página explica cómo llevar a cabo una propuesta de Consenso. Consulta el [Proceso de consenso](/guides/making-decisions/consensus-process/) para conocer el proceso completo, desde la discusión y la toma de pulso hasta las modificaciones y la conclusión.
 
 <!-- translation-section: when-to-use-consensus -->
 

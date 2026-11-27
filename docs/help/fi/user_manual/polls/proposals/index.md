@@ -1,17 +1,17 @@
 ---
 title: Ehdotukset
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/index.md
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
+source_file: docs/help/en/user_manual/polls/proposals/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-28'
 sections:
-  introduction: dd4cb01f80b669fa
+  introduction: 297e20744e537220
   choose-a-proposal-template: af87fd10a478699d
   other-proposal-templates: 21ac5a295b8832ab
   proposal-records: ef0d886d3db7a5d1
 generated:
-  introduction: 254857cd681a0819
+  introduction: 7550c2ee45344399
   choose-a-proposal-template: 0a189836514cbc87
   other-proposal-templates: 0a6fa061a2455b7b
   proposal-records: 434138d15486a949
@@ -25,7 +25,7 @@ title_generated: b4570fda2785d575
 
 Ehdotus pyytää ihmisiä ottamaan kantaa väitteeseen tai toimintatapaan. Osallistujat valitsevat ennalta määritellyn vastausvaihtoehdon ja voivat perustella äänensä. Käytä ehdotusta palautteen keräämiseen, neuvojen pyytämiseen, vastaväitteiden tunnistamiseen tai kannatuksen selvittämiseen.
 
-Tämä osio auttaa sinua valitsemaan ja käyttämään Loomion oletusarvoisia ehdotusmalleja. Kun haluat käydä läpi koko prosessin keskustelusta ehdotuksiin, muutosehdotuksiin ja johtopäätökseen, käytä [päätöksenteko-oppaita](/en/guides/making_decisions/). Jos haluat muuttaa ryhmäsi käytettävissä olevia malleja, katso [Kyselymallit](../poll_templates/).
+Tämä osio auttaa sinua valitsemaan ja käyttämään Loomion oletusarvoisia ehdotusmalleja. Kun haluat käydä läpi koko prosessin keskustelusta ehdotuksiin, muutosehdotuksiin ja johtopäätökseen, käytä [päätöksenteko-oppaita](/guides/making-decisions/). Jos haluat muuttaa ryhmäsi käytettävissä olevia malleja, katso [Kyselymallit](../poll_templates/).
 
 <!-- translation-section: choose-a-proposal-template -->
 

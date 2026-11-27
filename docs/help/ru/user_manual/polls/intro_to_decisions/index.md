@@ -1,13 +1,13 @@
 ---
 title: Предложения и опросы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 3f3249b79d74c9f47d03ba2e119fd499ef49aef7
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-28'
 sections:
   introduction: 640ab07f1e7726c6
-  find-the-right-help: 4bb04c002cbbde42
+  find-the-right-help: bd9296ff081edb45
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
@@ -22,7 +22,7 @@ sections:
   5-share-an-outcome: db206b84a8dcaf2c
 generated:
   introduction: 79d4e6a9c1ed305b
-  find-the-right-help: 937b0d39483edc74
+  find-the-right-help: e717895bacfa4bf1
   proposals: 00fea80a77756428
   polls: 0201a17df6acf848
   start-a-proposal-or-poll: c4b7325afac45bf8
@@ -56,7 +56,7 @@ title_generated: b80340baf18daea4
 | Выбрать, что должны выразить участники | [Предложения](../proposals/) или [Опросы](../proposal_types/) |
 | Использовать определённый шаблон предложения | [Проверка мнений](../proposals/sense_check/), [Совет](../proposals/advice/), [Согласие](../proposals/consent/) или [Консенсус](../proposals/consensus/) |
 | Настроить шаблоны, доступные группе | [Шаблоны опросов](../poll_templates/) |
-| Организовать процесс принятия решения от обсуждения до вывода | [Принятие решений](/en/guides/making_decisions/) |
+| Организовать процесс принятия решения от обсуждения до вывода | [Принятие решений](/guides/making-decisions/) |
 
 **Способ голосования** определяет, как люди отвечают и как рассчитываются результаты. **Шаблон опроса** — это набор заранее заданных инструкций, вариантов и настроек на основе способа голосования, который можно использовать повторно. **Процесс принятия решения** может включать обсуждение и несколько шаблонов, прежде чем группа сформулирует вывод.
 
