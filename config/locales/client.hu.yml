@@ -2747,15 +2747,20 @@ hu:
       party: Párt
       coop: Szövetkezet
       union: Szakszervezet
-      board: Testület vagy Tanács
       nonprofit: Nonprofit vagy nem kormányzati szerv
-      membership: Tagsági szervezet
       professional: Professzionális szolgáltató cég
-      self_managing: Öngazdálkodó szervezet
       community: Közösségi csoport
       government: Önkormányzat / Helyi önkormányzat
       other: Egyéb
-      cohousing: Együttélés és közös lakhatás
+      board: Testületek és bizottságok
+      membership: Tagsági szervezetek
+      self_managing: Önirányító csapatok és szövetkezetek
+      cohousing: Lakóközösségek
+    category_descriptions:
+      board: Nonprofit, vállalati vagy közösségi testületek, tanácsok és munkacsoportok
+      membership: Egyesületek, klubok, szakszervezetek, politikai pártok és mozgalmak
+      self_managing: Dolgozói szövetkezetek, kollektívák és tanácskéréssel, beleegyezéssel vagy szavazatokkal döntő csapatok
+      cohousing: Közösségi lakhatás, ökofalvak, lakásszövetkezetek, társasházak és lakástulajdonosi egyesületek
   report:
     start_on: Kezdje el
     end_on: Vége tovább

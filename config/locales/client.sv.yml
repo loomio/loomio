@@ -2744,15 +2744,20 @@ sv:
       party: Politiskt parti
       coop: Kooperativ
       union: Union
-      board: Styrelse & styrelser
       nonprofit: Ideell organisation
-      membership: Medlemsorganisation
       professional: Professionellt serviceföretag
-      self_managing: Självförvaltande organisation
       community: Gemenskap grupp
       government: Regering/Lokalförvaltning
       other: Andra
-      cohousing: Samboende och gemensamt boende
+      board: Styrelser och kommittéer
+      membership: Medlemsorganisationer
+      self_managing: Självstyrande team och kooperativ
+      cohousing: Boendegemenskaper
+    category_descriptions:
+      board: Styrelser, råd och arbetsgrupper i föreningar, företag och lokalsamhällen
+      membership: Föreningar, klubbar, fackförbund, politiska partier och rörelser
+      self_managing: Arbetskooperativ, kollektiv och team som fattar beslut genom råd, samtycke eller röstning
+      cohousing: Kollektivhus, ekobyar, bostadskooperativ, bostadsrätts- och villaägarföreningar
   report:
     start_on: Börja på
     end_on: Sluta på

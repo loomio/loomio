@@ -2763,15 +2763,20 @@ pl:
       party: Partia polityczna
       coop: Spółdzielnia
       union: Unia
-      board: Rada lub komisja
       nonprofit: Organizacja non-profit lub organizacja pozarządowa
-      membership: Organizacja członkowska
       professional: Profesjonalna firma usługowa
-      self_managing: Samorządna organizacja
       community: Grupa społecznościowa
       government: Rząd/Samorząd lokalny
       other: Inne
-      cohousing: Wspólne mieszkanie i wspólne mieszkanie
+      board: Zarządy i komisje
+      membership: Organizacje członkowskie
+      self_managing: Samorządne zespoły i spółdzielnie
+      cohousing: Społeczności mieszkaniowe
+    category_descriptions:
+      board: Zarządy, rady i grupy robocze organizacji non-profit, firm i społeczności
+      membership: Stowarzyszenia, kluby, związki zawodowe, partie polityczne i ruchy społeczne
+      self_managing: Spółdzielnie pracy, kolektywy i zespoły decydujące przez konsultacje, zgodę lub oddawanie głosów
+      cohousing: Cohousing, ekowioski, spółdzielnie i wspólnoty mieszkaniowe oraz stowarzyszenia właścicieli domów
   report:
     start_on: Zaczynaj na
     end_on: Podłużnie

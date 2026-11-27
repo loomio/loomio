@@ -3234,15 +3234,20 @@ ko:
       party: 정당
       coop: 협동조합
       union: 노동조합
-      board: 운영 기구 및 이사회
       nonprofit: 비영리 단체
-      membership: 회원제 단체
       professional: 전문 서비스 기업
-      self_managing: 자율 운영 조직
       community: 지역사회 그룹
       government: 정부/지방자치단체
-      cohousing: 공동생활 및 공동주거
       other: 기타
+      board: 이사회 및 위원회
+      membership: 멤버 기반 단체
+      self_managing: 자율 운영 팀 및 협동조합
+      cohousing: 주거 공동체
+    category_descriptions:
+      board: 비영리 단체·기업·지역사회의 이사회, 협의회 및 실무 그룹
+      membership: 협회, 동호회, 노동조합, 정당 및 사회운동 단체
+      self_managing: 조언, 이의 없는 의사결정 또는 투표로 결정하는 노동자 협동조합, 공동체 및 팀
+      cohousing: 공동체 주택, 생태마을, 주택 협동조합, 집합주택 관리단 및 주택 소유자 협회
   group_cards:
     admins_count: 그룹 관리자 1명 | 그룹 관리자 {count}명
     members_count: 멤버 1명 | 멤버 {count}명

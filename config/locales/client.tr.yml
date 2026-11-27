@@ -2736,15 +2736,20 @@ tr:
       party: Siyasi parti
       coop: Kooperatif
       union: Birlik
-      board: Yönetim ve kurullar
       nonprofit: Kâr amacı gütmeyen
-      membership: Üyelik organizasyonu
       professional: Profesyonel hizmet şirketi
-      self_managing: Kendi kendini yöneten organizasyon
       community: Topluluk grubu
       government: Hükümet/Yerel Yönetim
       other: Diğer
-      cohousing: Ortak yaşam ve ortak konut
+      board: Kurullar ve komiteler
+      membership: Üyelik temelli kuruluşlar
+      self_managing: Öz yönetimli ekipler ve kooperatifler
+      cohousing: Konut toplulukları
+    category_descriptions:
+      board: Kâr amacı gütmeyen kuruluş, şirket veya topluluk kurulları, konseyler ve çalışma grupları
+      membership: Dernekler, kulüpler, sendikalar, siyasi partiler ve hareketler
+      self_managing: İşçi kooperatifleri, kolektifler ve danışarak, onay süreciyle veya oy vererek karar alan ekipler
+      cohousing: Ortak yaşam toplulukları, ekoköyler, konut kooperatifleri, kat malikleri ve ev sahipleri birlikleri
   report:
     start_on: Başla
     end_on: Bitiş tarihi

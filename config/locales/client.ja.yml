@@ -2734,16 +2734,21 @@ ja:
       party: 政治団体
       coop: 協同組合
       union: 連合
-      board: ガバナンスと取締役会
       nonprofit: 非営利
-      membership: 会員組織
       professional: 専門サービス会社
-      self_managing: 自主管理組織
       community: コミュニティグループ
       government: 政府・地方自治体
       other: その他
-      cohousing: 共同生活と共同住宅
+      board: 理事会・委員会
+      membership: メンバー制の団体
+      self_managing: 自主管理チーム・協同組合
+      cohousing: 住まいのコミュニティ
     describe_other: あなたの組織に最も当てはまるカテゴリーはどれですか
+    category_descriptions:
+      board: 非営利団体・企業・地域の理事会、評議会、作業部会
+      membership: 協会、クラブ、労働組合、政党、社会運動
+      self_managing: 助言、同意、投票で意思決定する労働者協同組合、共同体、チーム
+      cohousing: コハウジング、エコビレッジ、住宅協同組合、マンション管理組合、住宅所有者組合
   report:
     start_on: 開始する
     end_on: 終了

@@ -3038,15 +3038,20 @@ zh_CN:
       party: 政党
       coop: 合作社
       union: 联盟
-      board: 治理与董事会
       nonprofit: 非营利组织
-      membership: 会员组织
       professional: 专业服务公司
-      self_managing: 自我管理组织
       community: 社区群
       government: 政府/地方政府
       other: 其他
-      cohousing: 共享居住与共享住房
+      board: 理事会与委员会
+      membership: 成员制组织
+      self_managing: 自主管理的团队与合作社
+      cohousing: 居住社区
+    category_descriptions:
+      board: 非营利组织、公司或社区的董事会、理事会、议事会和工作组
+      membership: 协会、俱乐部、工会、政党和社会运动
+      self_managing: 通过征询意见、同意或投票做决定的员工合作社、集体和团队
+      cohousing: 共居社区、生态村、住房合作社、分层产权社区和业主协会
   auth:
     oauth_cancelled: 登录已取消
     switching_accounts: 正在切换账户。请使用新账户信息登录。

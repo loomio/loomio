@@ -2736,15 +2736,20 @@ fi:
       party: Poliittinen puolue
       coop: osuuskunta
       union: liitto
-      board: Hallinto ja hallitukset
       nonprofit: Voittoa tavoittelematon
-      membership: Jäsenjärjestö
       professional: Ammattitaitoinen palveluyritys
-      self_managing: Itseään hoitava organisaatio
       community: yhteisön ryhmä
       government: Hallitus/paikallinen hallinto
       other: Muut
-      cohousing: Yhteisasuminen ja yhteisasuminen
+      board: Hallitukset ja toimikunnat
+      membership: Jäsenpohjaiset järjestöt
+      self_managing: Itseohjautuvat tiimit ja osuuskunnat
+      cohousing: Asuinyhteisöt
+    category_descriptions:
+      board: Järjestöjen, yritysten ja yhteisöjen hallitukset, neuvostot ja työryhmät
+      membership: Yhdistykset, kerhot, liitot, puolueet ja liikkeet
+      self_managing: Työosuuskunnat, kollektiivit ja tiimit, jotka päättävät neuvoja kysymällä, suostumuksella tai äänestämällä
+      cohousing: Yhteisöasuminen, ekokylät, asunto-osuuskunnat, taloyhtiöt ja asunnonomistajien yhdistykset
   report:
     start_on: Aloittaa
     end_on: Lopeta

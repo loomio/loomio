@@ -15,9 +15,9 @@ vi.mock('@/shared/services/session', () => ({default: {isSignedIn: () => false}}
 vi.mock('@/shared/services/flash', () => ({default: {error: mocks.error, success: mocks.success}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: vi.fn()}}));
 vi.mock('@/i18n', () => ({I18n: {global: {t: key => key}}}));
+vi.mock('vue-i18n', () => ({useI18n: () => ({t: key => key})}));
 vi.mock('vue-router', () => ({useRouter: () => ({push: mocks.push})}));
 vi.mock('@/components/auth/turnstile_widget.vue', () => ({default: {template: '<div />'}}));
-vi.mock('@/components/lmo_textarea/lmo_textarea.vue', () => ({default: {template: '<div />'}}));
 
 import StartTrialPage from '@/components/start_trial/page.vue';
 
@@ -104,5 +104,27 @@ describe('trial signup request failures', () => {
     expect(wrapper.find('.trial-started__sign-in').attributes('href')).toBe(
       '/dashboard?user_email=rguthrie%2Bloomio%40gmail.com&auth_form=emailCode'
     );
+  });
+
+  it('shows only organization name, category, name, and email fields and submits group_category', async () => {
+    mocks.post.mockResolvedValueOnce({group_path: '/g/council'});
+    await mountForm();
+    expect(wrapper.find('.start-trial-form__group-name').exists()).toBe(true);
+    expect(wrapper.find('.start-trial-form__category').exists()).toBe(true);
+    expect(wrapper.find('.start-trial-form__name').exists()).toBe(true);
+    expect(wrapper.find('.start-trial-form__email').exists()).toBe(true);
+    expect(wrapper.find('.group-form__group-description').exists()).toBe(false);
+    expect(wrapper.find('textarea').exists()).toBe(false);
+
+    wrapper.findComponent({name: 'VSelect'}).vm.$emit('update:modelValue', 'board');
+    await flushPromises();
+    await submit();
+
+    expect(mocks.post).toHaveBeenLastCalledWith('trials', expect.objectContaining({
+      group_name: 'Council',
+      group_category: 'board',
+      user_name: 'Alex',
+      user_email: 'alex@example.com'
+    }));
   });
 });

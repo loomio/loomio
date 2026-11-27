@@ -2771,15 +2771,20 @@ de:
       party: Politische Partei
       coop: Genossenschaft
       union: Gewerkschaft
-      board: Vorstand oder Ausschuss
       nonprofit: Nonprofit oder NGO
-      membership: Mitgliederorganisation
       professional: Professionelles Dienstleistungsunternehmen
-      self_managing: Selbstverwaltende Organisation
       community: Community-Gruppe
       government: Regierung/Örtliche Regierung
       other: Andere
-      cohousing: Wohngemeinschaften und gemeinschaftliches Wohnen
+      board: Vorstände & Ausschüsse
+      membership: Mitgliederorganisationen
+      self_managing: Selbstverwaltete Teams & Genossenschaften
+      cohousing: Wohngemeinschaften
+    category_descriptions:
+      board: Vorstände, Räte und Arbeitsgruppen in Nonprofits, Unternehmen oder Gemeinschaften
+      membership: Verbände, Vereine, Gewerkschaften, politische Parteien und Bewegungen
+      self_managing: Betriebsgenossenschaften, Kollektive und Teams, die durch Beratung, Konsent oder Stimmabgabe entscheiden
+      cohousing: Gemeinschaftliche Wohnprojekte, Ökodörfer, Wohnungsgenossenschaften, Wohnungs- und Hauseigentümergemeinschaften
   report:
     start_on: Beginnen am
     end_on: Endet am

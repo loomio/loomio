@@ -2763,15 +2763,20 @@ nl_NL:
       party: Politieke partij
       coop: Coöperatie
       union: Vakbond
-      board: Bestuur of commissie
       nonprofit: Zonder winstoogmerk of NGO
-      membership: Lidmaatschap organisatie
       professional: Professioneel dienstenbedrijf
-      self_managing: Zelfsturende organisatie
       community: Community groep
       government: Overheid/lokale overheid
       other: Andere
-      cohousing: Samenwonen en co-housing
+      board: Besturen & commissies
+      membership: Ledenorganisaties
+      self_managing: Zelfsturende teams & coöperaties
+      cohousing: Woongemeenschappen
+    category_descriptions:
+      board: Besturen, raden en werkgroepen van non-profits, bedrijven of gemeenschappen
+      membership: Verenigingen, clubs, vakbonden, politieke partijen en bewegingen
+      self_managing: Werknemerscoöperaties, collectieven en teams die besluiten via advies, consent of stemmen
+      cohousing: Gemeenschappelijk wonen, ecodorpen, wooncoöperaties, VvE's en huiseigenarenverenigingen
   report:
     start_on: Begin op
     end_on: Eindigt op

@@ -12,6 +12,7 @@ import openModal from '@/shared/helpers/open_modal';
 import { I18n } from '@/i18n';
 import UrlFor from '@/mixins/url_for';
 import { useI18n } from 'vue-i18n';
+import { groupCategoryItems } from '@/shared/helpers/group_categories';
 
 export default
 {
@@ -120,11 +121,7 @@ export default
     },
 
     categoryItems() {
-      // ['board', 'community', 'coop', 'membership', 'nonprofit', 'party', 'professional', 'self_managing', 'union', 'other'].map (category) ->
-      return ['board', 'membership', 'self_managing', 'cohousing', 'other'].map(category => ({
-        title: I18n.global.t('group_survey.categories.'+category),
-        value: category
-      }));
+      return groupCategoryItems(this.t);
     },
     actionName() {
       if (this.group.isNew()) { return 'created'; } else { return 'updated'; }
@@ -204,6 +201,10 @@ v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading
       validation-errors(:subject="group", field="handle")
 
     v-select.group-form__category-select(v-if='!group.parentId' v-model="group.category" :items="categoryItems" :item-props="item => ({class: 'group-form__category--' + item.value})" :label="$t('group_survey.describe_other')")
+      template(#item="{ props, item }")
+        v-list-item(v-bind="props" :lines="item.raw.subtitle ? 'two' : 'one'")
+          template(#subtitle v-if="item.raw.subtitle")
+            span.text-wrap {{ item.raw.subtitle }}
 
     lmo-textarea.group-form__group-description(
       :model='group'

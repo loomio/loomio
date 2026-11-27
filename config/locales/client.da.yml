@@ -2748,15 +2748,20 @@ da:
       party: Politisk parti
       coop: Samarbejdsvillig
       union: Union
-      board: Ledelse og bestyrelser
       nonprofit: Nonprofit
-      membership: Medlemsorganisation
       professional: Professionel servicevirksomhed
-      self_managing: Selvstyrende organisation
       community: Lokalgruppe
       government: Regering/Lokalforvaltning
       other: Andre
-      cohousing: Bofællesskab og bofællesskab
+      board: Bestyrelser & udvalg
+      membership: Medlemsorganisationer
+      self_managing: Selvstyrende teams & kooperativer
+      cohousing: Boligfællesskaber
+    category_descriptions:
+      board: Bestyrelser, råd og arbejdsgrupper i nonprofitorganisationer, virksomheder eller lokalsamfund
+      membership: Foreninger, klubber, fagforeninger, politiske partier og bevægelser
+      self_managing: Medarbejderkooperativer, kollektiver og teams, der beslutter ud fra råd, samtykke eller afstemning
+      cohousing: Bofællesskaber, økolandsbyer, andelsboligforeninger, ejerforeninger og grundejerforeninger
   report:
     start_on: Start på
     end_on: Slut på

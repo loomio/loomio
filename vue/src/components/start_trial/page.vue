@@ -1,23 +1,22 @@
 <script setup>
-import AppConfig      from '@/shared/services/app_config';
-import Records  from '@/shared/services/records';
-import Session  from '@/shared/services/session';
-import Flash   from '@/shared/services/flash';
-import { I18n } from '@/i18n';
-import EventBus   from '@/shared/services/event_bus';
+import AppConfig from '@/shared/services/app_config';
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import Flash from '@/shared/services/flash';
 import { ref, useTemplateRef, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
+import { groupCategoryItems } from '@/shared/helpers/group_categories';
 import TurnstileWidget from '@/components/auth/turnstile_widget.vue';
+
+const { t } = useI18n();
 const router = useRouter();
 
 const userName = ref(null);
 const userEmail = ref(null);
-const group = Records.groups.build({ description: I18n.global.t('group_form.new_description_html') });
 const groupName = ref(null);
-const howDidYouHearAboutLoomio = ref(null);
-const emailNewsletter = ref(false);
-const legalAccepted = ref(false);
-const loading = ref(false);
+const groupCategory = ref(null);
+const isLoading = ref(false);
 const trialStarted = ref(false);
 const errors = ref({});
 const isSignedIn = Session.isSignedIn();
@@ -25,11 +24,10 @@ const turnstileSiteKey = AppConfig.turnstileSiteKey;
 const turnstileToken = ref('');
 const submitBlockedByCaptcha = computed(() => !isSignedIn && Boolean(turnstileSiteKey) && !turnstileToken.value);
 
-const form = useTemplateRef('form')
+const form = useTemplateRef('form');
 
 const trialDays = AppConfig.features.app.trial_days;
-const termsUrl = AppConfig.theme.terms_url;
-const privacyUrl = AppConfig.theme.privacy_url;
+const categoryItems = computed(() => groupCategoryItems(t));
 const signInHref = computed(() => {
   const params = new URLSearchParams({
     user_email: userEmail.value || '',
@@ -39,25 +37,19 @@ const signInHref = computed(() => {
 });
 
 const validate = (field) => {
-  return [ () => errors.value[field] === undefined || errors.value[field][0] ]
-}
-
+  return [ () => errors.value[field] === undefined || errors.value[field][0] ];
+};
 
 const submit = () => {
-  if (loading.value || submitBlockedByCaptcha.value) { return; }
+  if (isLoading.value || submitBlockedByCaptcha.value) { return; }
   errors.value = {};
   form.value.resetValidation();
-  group.beforeSaves.forEach(f => f());
-  EventBus.$emit('resetDraft', 'group', null, 'description', I18n.global.t('group_form.new_description_html'));
-  loading.value = true
+  isLoading.value = true;
   Records.remote.post('trials', {
     user_name: userName.value,
     user_email: userEmail.value,
-    user_email_newsletter: emailNewsletter.value,
-    user_legal_accepted: legalAccepted.value,
     group_name: groupName.value,
-    group_description: group.description,
-    group_how_did_you_hear_about_loomio: howDidYouHearAboutLoomio.value,
+    group_category: groupCategory.value,
     turnstile_token: turnstileToken.value,
   }).then((data) => {
     if (isSignedIn) {
@@ -65,52 +57,50 @@ const submit = () => {
       return router.push(data.group_path);
     } else {
       trialStarted.value = true;
-      loading.value = false;
+      isLoading.value = false;
     }
   }).catch((data) => {
     errors.value = data.errors || {};
     form.value.validate();
     Flash.error(data.errors ? 'common.check_for_errors_and_try_again' : 'common.please_try_again');
-    loading.value = false;
+    isLoading.value = false;
   });
-}
+};
 </script>
 
 <template lang="pug">
 v-main
   v-container.group-page.max-width-800
     v-form(ref="form" @submit.prevent="submit")
-      v-card.trial-started(v-if="trialStarted" :title="$t('start_trial.success')")
+      v-card.trial-started(v-if="trialStarted" :title="t('start_trial.success')")
         v-card-text
-          p.text-body-large(v-t="{path: 'start_trial.account_created_for_you', args: {email: userEmail}}")
-          p.text-body-large(v-t="'start_trial.please_sign_in_to_continue'")
+          p.text-body-large {{ t('start_trial.account_created_for_you', { email: userEmail }) }}
+          p.text-body-large {{ t('start_trial.please_sign_in_to_continue') }}
         v-card-actions
           v-spacer
           v-btn.trial-started__sign-in(color="primary" :href="signInHref" variant="elevated")
-            span(v-t="'auth_form.sign_in'")
+            span {{ t('auth_form.sign_in') }}
           v-spacer
-      v-card.start-trial-form(v-else :title="$t('start_trial.title')")
+      v-card.start-trial-form(v-else :title="t('start_trial.title')")
         v-card-text
-          p.text-body-large.pb-6.text-medium-emphasis(v-t="{path: 'start_trial.intro', args: {day: trialDays}}")
-          v-text-field.start-trial-form__name(v-if="!isSignedIn" v-model='userName' :label="$t('start_trial.your_name')" :rules="validate('user_name')")
-          v-text-field.start-trial-form__email(v-if="!isSignedIn" v-model='userEmail' :label="$t('start_trial.your_email')" type="email" :rules="validate('user_email')")
-          v-text-field.start-trial-form__group-name(v-model='groupName' :label="$t('group_form.organization_name')" :rules="validate('group_name')")
-          lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
-          template(v-if="!isSignedIn")
-            v-textarea(v-model='howDidYouHearAboutLoomio' :label="$t('start_trial.how_did_you_hear_about_loomio')")
-            //v-divider.pb-4
-            //.text-body-large.text-medium-emphasis(v-t="'start_trial.newsletter_intro'")
-            //v-checkbox(v-model='emailNewsletter' :label="$t('start_trial.subscribe_to_newsletter')")
-            //v-checkbox.auth-signup-form__legal-accepted(v-model='legalAccepted' :rules="validate('user_legal_accepted')")
-            //  template(v-slot:label)
-            //    i18n-t(keypath="auth_form.i_accept_all" tag="span")
-            //      template(v-slot:termsLink)
-            //        a(:href='termsUrl' target='_blank' @click.stop v-t="'powered_by.terms_of_service'")
-            //      template(v-slot:privacyLink)
-            //        a(:href='privacyUrl' target='_blank' @click.stop v-t="'powered_by.privacy_policy'")
-          turnstile-widget(v-if="!isSignedIn" v-model='turnstileToken')
+          p.text-body-large.pb-6.text-medium-emphasis {{ t('start_trial.intro', { day: trialDays }) }}
+          v-text-field.start-trial-form__group-name(v-model="groupName" :label="t('group_form.organization_name')" :rules="validate('group_name')")
+          v-select.start-trial-form__category(
+            v-model="groupCategory"
+            :items="categoryItems"
+            :item-props="item => ({ class: 'start-trial-form__category--' + item.value })"
+            :label="t('group_survey.describe_other')"
+            :rules="validate('group_category')"
+          )
+            template(#item="{ props, item }")
+              v-list-item(v-bind="props" :lines="item.raw.subtitle ? 'two' : 'one'")
+                template(#subtitle v-if="item.raw.subtitle")
+                  span.text-wrap {{ item.raw.subtitle }}
+          v-text-field.start-trial-form__name(v-if="!isSignedIn" v-model="userName" :label="t('start_trial.your_name')" :rules="validate('user_name')")
+          v-text-field.start-trial-form__email(v-if="!isSignedIn" v-model="userEmail" :label="t('start_trial.your_email')" type="email" :rules="validate('user_email')")
+          turnstile-widget(v-if="!isSignedIn" v-model="turnstileToken")
         v-card-actions
           v-spacer
-          v-btn.start-trial-form__submit(variant="elevated" :loading="loading" color="primary" type="submit" :disabled="submitBlockedByCaptcha")
-            span(v-t="'templates.start_free_trial'")
+          v-btn.start-trial-form__submit(variant="elevated" :loading="isLoading" color="primary" type="submit" :disabled="submitBlockedByCaptcha")
+            span {{ t('templates.start_free_trial') }}
 </template>

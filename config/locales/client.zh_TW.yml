@@ -2764,15 +2764,20 @@ zh_TW:
       party: 政黨
       coop: 合作社
       union: 聯盟
-      board: 董事會或委員會
       nonprofit: 非營利組織或非政府組織
-      membership: 會員組織
       professional: 專業服務公司
-      self_managing: 自我管理組織
       community: 社群團體
       government: 政府／地方政府
       other: 其他
-      cohousing: 共享居住與共享住房
+      board: 董事會與委員會
+      membership: 成員制組織
+      self_managing: 自主管理團隊與合作社
+      cohousing: 居住社群
+    category_descriptions:
+      board: 非營利組織、公司或社群的董理事會、議事會與工作小組
+      membership: 協會、社團、工會、政黨與社會運動
+      self_managing: 勞動合作社、集體組織，以及透過徵詢建議、同意或投票做決定的團隊
+      cohousing: 共居社區、生態村、住宅合作社、公寓大廈管委會與屋主協會
   report:
     start_on: 開始
     end_on: 結束於

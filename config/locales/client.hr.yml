@@ -2740,15 +2740,20 @@ hr:
       party: Politička stranka
       coop: Zadruga
       union: Unija
-      board: Upravljanje i odbori
       nonprofit: neprofitna
-      membership: Organizacija članstva
       professional: Tvrtka za profesionalne usluge
-      self_managing: Samoupravna organizacija
       community: Grupa zajednice
       government: Vlada/Lokalna uprava
       other: ostalo
-      cohousing: Zajednički život i zajedničko stanovanje
+      board: Odbori i povjerenstva
+      membership: Članske organizacije
+      self_managing: Samoupravni timovi i zadruge
+      cohousing: Stambene zajednice
+    category_descriptions:
+      board: Odbori, vijeća i radne grupe neprofitnih organizacija, tvrtki ili zajednica
+      membership: Udruge, klubovi, sindikati, političke stranke i pokreti
+      self_managing: Radničke zadruge, kolektivi i timovi koji odlučuju savjetovanjem, pristankom ili glasanjem
+      cohousing: Zajedničko stanovanje, ekosela, stambene zadruge, zajednice suvlasnika i udruge vlasnika nekretnina
   report:
     start_on: Počnite dalje
     end_on: Kraj na

@@ -3344,12 +3344,17 @@ en:
       party: Political party
       coop: Cooperative
       union: Union
-      board: Governance & boards
+      board: Boards & committees
       nonprofit: Nonprofit
-      membership: Membership organization
+      membership: Member organizations
       professional: Professional service company
-      self_managing: Self-managing organization
+      self_managing: Self-managing teams & co-ops
       community: Community group
       government: Government/Local Government
-      cohousing: Co-living & co-housing
+      cohousing: Housing communities
       other: Other
+    category_descriptions:
+      board: Nonprofit, company or community boards, councils and working groups
+      membership: Associations, clubs, unions, political parties and movements
+      self_managing: Worker co-ops, collectives, and teams deciding by advice, consent or vote
+      cohousing: Cohousing, ecovillages, housing co-ops, strata and homeowner associations

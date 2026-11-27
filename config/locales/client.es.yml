@@ -2772,15 +2772,20 @@ es:
       party: Partido político
       coop: Cooperativa
       union: Unión
-      board: Junta o comité
       nonprofit: Sin fines de lucro o ONG
-      membership: organización de membresía
       professional: Empresa de servicios profesionales
-      self_managing: Organización autogestionaria
       community: Comunidad
       government: Gobierno/Gobierno local
       other: Otro
-      cohousing: Co-living y co-vivienda
+      board: Juntas y comités
+      membership: Organizaciones de miembros
+      self_managing: Equipos y cooperativas autogestionados
+      cohousing: Comunidades de vivienda
+    category_descriptions:
+      board: Juntas, consejos y grupos de trabajo de entidades sin fines de lucro, empresas o comunidades
+      membership: Asociaciones, clubes, sindicatos, partidos políticos y movimientos
+      self_managing: Cooperativas de trabajo, colectivos y equipos que deciden por consulta, consentimiento o voto
+      cohousing: Viviendas colaborativas, ecoaldeas, cooperativas de vivienda, condominios y asociaciones de propietarios
   report:
     start_on: Comienza en
     end_on: Finalizará el

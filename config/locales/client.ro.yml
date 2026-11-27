@@ -2736,15 +2736,20 @@ ro:
       party: Partid politic
       coop: De cooperare
       union: Uniune
-      board: Guvernare și consilii
       nonprofit: Nonprofit
-      membership: Organizație de membru
       professional: Firma de servicii profesionale
-      self_managing: Organizație autogestionată
       community: Comunitate
       government: Guvern/Administrație locală
       other: Altele
-      cohousing: Co-living și co-housing
+      board: Consilii și comitete
+      membership: Organizații de membri
+      self_managing: Echipe și cooperative autogestionate
+      cohousing: Comunități de locuire
+    category_descriptions:
+      board: Consilii de conducere, consilii și grupuri de lucru din organizații nonprofit, firme sau comunități
+      membership: Asociații, cluburi, sindicate, partide politice și mișcări
+      self_managing: Cooperative de lucrători, colective și echipe care decid prin consultare, consimțământ sau vot
+      cohousing: Locuire în comun, ecosate, cooperative de locuințe, condominii și asociații de proprietari
   report:
     start_on: Începe
     end_on: Termină la

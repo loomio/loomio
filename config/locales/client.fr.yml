@@ -2780,15 +2780,20 @@ fr:
       party: Parti politique
       coop: Cooperative
       union: Syndicat
-      board: Conseil d’administration ou comité
       nonprofit: Organisme à but non lucratif ou ONG
-      membership: Organisation des membres
       professional: Entreprise de services professionnels
-      self_managing: Organisation autogérée
       community: Groupe communautaire
       government: Gouvernement ou collectivités locales
       other: Autre
-      cohousing: Colocation et habitat partagé
+      board: Conseils et comités
+      membership: Organisations de membres
+      self_managing: Équipes et coopératives autogérées
+      cohousing: Communautés d’habitat
+    category_descriptions:
+      board: Conseils d’administration, conseils et groupes de travail d’associations, d’entreprises ou de communautés
+      membership: Associations, clubs, syndicats, partis politiques et mouvements
+      self_managing: Coopératives de travail, collectifs et équipes décidant par consultation, consentement ou vote
+      cohousing: Habitats participatifs, écovillages, coopératives d’habitation, copropriétés et associations de propriétaires
   report:
     start_on: Démarrer
     end_on: Terminer le

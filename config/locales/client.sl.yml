@@ -2736,15 +2736,20 @@ sl:
       party: Politična stranka
       coop: Zadruga
       union: zveza
-      board: Upravljanje in odbori
       nonprofit: Neprofitna
-      membership: Članska organizacija
       professional: Podjetje za profesionalne storitve
-      self_managing: Samoupravna organizacija
       community: Skupina za skupnost
       government: Vlada/lokalna uprava
       other: Drugo
-      cohousing: Sobivanje in skupno bivanje
+      board: Odbori in komisije
+      membership: Članske organizacije
+      self_managing: Samoupravne ekipe in zadruge
+      cohousing: Stanovanjske skupnosti
+    category_descriptions:
+      board: Odbori, sveti in delovne skupine neprofitnih organizacij, podjetij ali skupnosti
+      membership: Društva, klubi, sindikati, politične stranke in gibanja
+      self_managing: Delavske zadruge, kolektivi in ekipe, ki odločajo s posvetovanjem, privolitvijo ali glasovanjem
+      cohousing: Sobivanjske skupnosti, ekovasi, stanovanjske zadruge, skupnosti etažnih lastnikov in združenja lastnikov stanovanj
   report:
     start_on: Začni naprej
     end_on: Konec na

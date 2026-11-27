@@ -2763,15 +2763,20 @@ ca:
       party: Partit polític
       coop: Cooperativa
       union: Unió
-      board: Govern i juntes
       nonprofit: Sense ànim de lucre
-      membership: Organització de membres
       professional: Empresa de serveis professionals
-      self_managing: Organització autogestionada
       community: Comunitat
       government: Govern/Govern local
       other: Altres
-      cohousing: Co-vivència i cohabitatge
+      board: Juntes i comitès
+      membership: Organitzacions de membres
+      self_managing: Equips i cooperatives autogestionats
+      cohousing: Comunitats d'habitatge
+    category_descriptions:
+      board: Juntes, consells i grups de treball d'entitats sense ànim de lucre, empreses o comunitats
+      membership: Associacions, clubs, sindicats, partits polítics i moviments
+      self_managing: Cooperatives de treball, col·lectius i equips que decideixen per consell, consentiment o vot
+      cohousing: Cohabitatge, ecoviles, cooperatives d'habitatge, comunitats i associacions de propietaris
   report:
     start_on: Comença
     end_on: Acaba
