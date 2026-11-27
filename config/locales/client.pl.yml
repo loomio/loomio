@@ -3358,6 +3358,8 @@ pl:
     extend_trial_initial: Zyskaj 30 dodatkowych dni i bezpłatną rozmowę szkoleniową z osobą z zespołu Loomio po dołączeniu do grupy {count} innych osób.
     extend_trial_remaining: Zyskaj 30 dodatkowych dni i bezpłatną rozmowę szkoleniową z osobą z zespołu Loomio po dołączeniu do grupy jeszcze jednej osoby. | Zyskaj 30 dodatkowych dni i bezpłatną rozmowę szkoleniową z osobą z zespołu Loomio po dołączeniu do grupy kolejnych {count} osób.
     trial_extended_description: Twój okres próbny został przedłużony o 30 dni.
+    trial_approved: 'Okres próbny zatwierdzony: możesz już {link}'
+    invite_people_via_email: zapraszać osoby e-mailem
   dashboard_cards:
     all_groups: Wszystkie grupy
     unread_count: "{count} nieprzeczytanych"

@@ -3285,6 +3285,8 @@ ko:
     extend_trial_initial: 다른 사람 {count}명이 그룹에 가입하면 30일 추가 이용과 Loomio 팀원과의 무료 교육 통화를 받을 수 있습니다.
     extend_trial_remaining: 1명이 더 그룹에 가입하면 30일 추가 이용과 Loomio 팀원과의 무료 교육 통화를 받을 수 있습니다. | {count}명이 더 그룹에 가입하면 30일 추가 이용과 Loomio 팀원과의 무료 교육 통화를 받을 수 있습니다.
     trial_extended_description: 체험 기간이 30일 연장되었습니다.
+    trial_approved: '체험 승인: 이제 {link}할 수 있습니다'
+    invite_people_via_email: 이메일로 사람 초대
   dashboard_cards:
     all_groups: 모든 그룹
     unread_count: 읽지 않음 {count}개

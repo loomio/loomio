@@ -3330,6 +3330,8 @@ ja:
     extend_trial_initial: 他に{count}人がグループに参加すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。
     extend_trial_remaining: あと1人がグループに参加すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。 | あと{count}人がグループに参加すると、試用期間が30日間延長され、Loomioチームのメンバーとの無料トレーニング通話を利用できます。
     trial_extended_description: 試用期間が30日間延長されました。
+    trial_approved: 試用が承認されました。{link}できるようになりました
+    invite_people_via_email: メールでメンバーを招待
   dashboard_cards:
     all_groups: すべてのグループ
     unread_count: 未読{count}件

@@ -3331,6 +3331,8 @@ sl:
     extend_trial_initial: Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko se skupini pridruži {count} drugih oseb.
     extend_trial_remaining: Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko se skupini pridruži še 1 oseba. | Pridobite 30 dodatnih dni in brezplačen uvajalni klic s članom ekipe Loomio, ko se skupini pridruži še {count} oseb.
     trial_extended_description: Vaše preizkusno obdobje je podaljšano za 30 dni.
+    trial_approved: 'Preizkusno obdobje odobreno: zdaj lahko {link}'
+    invite_people_via_email: povabite ljudi po e-pošti
   dashboard_cards:
     all_groups: Vse skupine
     unread_count: 'Neprebrano: {count}'

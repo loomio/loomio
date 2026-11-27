@@ -3331,6 +3331,8 @@ ro:
     extend_trial_initial: Deblochează încă 30 de zile și o sesiune gratuită de instruire cu un membru al echipei Loomio când alte {count} persoane se alătură grupului.
     extend_trial_remaining: Deblochează încă 30 de zile și o sesiune gratuită de instruire cu un membru al echipei Loomio când încă o persoană se alătură grupului. | Deblochează încă 30 de zile și o sesiune gratuită de instruire cu un membru al echipei Loomio când încă {count} persoane se alătură grupului.
     trial_extended_description: Perioada ta de probă a fost prelungită cu 30 de zile.
+    trial_approved: 'Perioadă de probă aprobată: acum poți {link}'
+    invite_people_via_email: invita persoane prin e-mail
   dashboard_cards:
     all_groups: Toate grupurile
     unread_count: "{count} necitite"

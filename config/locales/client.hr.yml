@@ -3332,6 +3332,8 @@ hr:
     extend_trial_initial: Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom Loomio tima kada se grupi pridruži {count} drugih osoba.
     extend_trial_remaining: Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom Loomio tima kada se grupi pridruži još 1 osoba. | Osigurajte 30 dodatnih dana i besplatan poziv za obuku s članom Loomio tima kada se grupi pridruži još {count} osoba.
     trial_extended_description: Vaše probno razdoblje produljeno je za 30 dana.
+    trial_approved: 'Probno razdoblje odobreno: sada možete {link}'
+    invite_people_via_email: pozivati osobe e-poštom
   dashboard_cards:
     all_groups: Sve grupe
     unread_count: "{count} nepročitanih"

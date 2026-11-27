@@ -3358,6 +3358,8 @@ ca:
     extend_trial_initial: Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan {count} persones més s'uneixin al grup.
     extend_trial_remaining: Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan 1 persona més s'uneixi al grup. | Desbloqueja 30 dies extra i una trucada de formació gratuïta amb un membre de l'equip de Loomio quan {count} persones més s'uneixin al grup.
     trial_extended_description: El teu període de prova s'ha ampliat 30 dies.
+    trial_approved: 'Prova aprovada: ja pots {link}'
+    invite_people_via_email: convidar persones per correu
   dashboard_cards:
     all_groups: Tots els grups
     unread_count: "{count} no llegits"

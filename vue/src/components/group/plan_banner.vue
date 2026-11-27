@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { differenceInDays, parseISO } from 'date-fns';
 import AppConfig from '@/shared/services/app_config';
+import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import SubscriptionService from '@/shared/services/subscription_service';
 
@@ -63,6 +64,10 @@ const alertColor = computed(() => {
 const visible = computed(() => (
   Boolean(subscription.value) && isLoggedIn.value && isMember.value && (isDisabled.value || (isTrial.value && isAdmin.value))
 ));
+
+function inviteByEmail() {
+  EventBus.$emit('openModal', { component: 'GroupInvitationForm', props: { group } });
+}
 </script>
 
 <template lang="pug">
@@ -78,14 +83,6 @@ v-alert.plan-banner.my-4(
         .text-title-medium(v-if="showExtendedBanner") {{ t('onboarding_card.trial_extended_title') }}
         .text-title-medium(v-else-if="daysRemaining !== null") {{ t('current_plan_button.free_trial', { days: daysRemaining }) }}
         .text-title-medium(v-else) {{ t('onboarding_card.extend_trial_title') }}
-        v-chip.plan-banner__verified-badge(
-          v-if="emailInvitationsAllowed"
-          size="small"
-          variant="flat"
-          color="success"
-        )
-          common-icon.mr-1(name="mdi-check-circle" size="small")
-          span {{ t('onboarding_card.verified_badge') }}
       span(v-else-if="isTrial && isDisabled") {{ t('current_plan_button.trial_expired') }}
       span(v-else-if="isFree" v-html="t('current_plan_button.was_gift_expired_or_mistake')")
       span(v-else v-html="t('current_plan_button.subscription_ended')")
@@ -113,8 +110,9 @@ v-alert.plan-banner.my-4(
   template(v-if="isTrial && !isDisabled")
     p.text-body-medium.mt-2.mb-0(v-if="showExtendedBanner") {{ t('onboarding_card.trial_extended_description') }}
     template(v-else-if="!trialExtended")
-      p.text-body-medium.mt-2(:class="emailInvitationsAllowed ? 'mb-2' : 'mb-0'") {{ extendTrialText }}
-      .plan-banner__verification.d-flex.align-start.ga-2.text-body-small(v-if="emailInvitationsAllowed")
-        common-icon.flex-shrink-0(name="mdi-checkbox-marked-circle-outline" size="small")
-        span {{ t('onboarding_card.trial_verified') }}
+      p.text-body-medium.mt-2(:class="emailInvitationsAllowed ? 'mb-1' : 'mb-0'") {{ extendTrialText }}
+      p.plan-banner__verification.text-body-small.mb-0(v-if="emailInvitationsAllowed")
+        i18n-t(keypath="onboarding_card.trial_approved" tag="span")
+          template(#link)
+            a.plan-banner__invite-link.text-decoration-underline(href="#" @click.prevent="inviteByEmail") {{ t('onboarding_card.invite_people_via_email') }}
 </template>

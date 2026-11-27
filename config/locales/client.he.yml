@@ -3350,6 +3350,8 @@ he:
     extend_trial_initial: כשיצטרפו לקבוצה עוד {count} אנשים, יתווספו 30 ימים ושיחת הדרכה בחינם עם הצוות של Loomio.
     extend_trial_remaining: כשיצטרף לקבוצה עוד אדם אחד, יתווספו 30 ימים ושיחת הדרכה בחינם עם הצוות של Loomio. | כשיצטרפו לקבוצה עוד {count} אנשים, יתווספו 30 ימים ושיחת הדרכה בחינם עם הצוות של Loomio.
     trial_extended_description: תקופת הניסיון הוארכה ב־30 ימים.
+    trial_approved: 'תקופת הניסיון אושרה: כעת ניתן {link}'
+    invite_people_via_email: להזמין אנשים בדוא״ל
   dashboard_cards:
     all_groups: כל הקבוצות
     unread_count: "{count} שלא נקראו"

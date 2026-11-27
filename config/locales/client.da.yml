@@ -3343,6 +3343,8 @@ da:
     extend_trial_initial: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} andre har meldt sig ind i gruppen.
     extend_trial_remaining: Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når 1 mere har meldt sig ind i gruppen. | Lås op for 30 ekstra dage og et gratis oplæringsmøde med en fra Loomio-teamet, når {count} flere har meldt sig ind i gruppen.
     trial_extended_description: Din prøveperiode er forlænget med 30 dage.
+    trial_approved: 'Prøveperiode godkendt: du kan nu {link}'
+    invite_people_via_email: invitere folk via e-mail
   dashboard_cards:
     all_groups: Alle grupper
     unread_count: "{count} ulæste"

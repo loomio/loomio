@@ -3255,6 +3255,8 @@ zh_CN:
     extend_trial_initial: 其他 {count} 人加入群组后，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。
     extend_trial_remaining: 再有 1 人加入群组，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。 | 再有 {count} 人加入群组，即可解锁额外 30 天试用和一次与 Loomio 团队成员的免费培训通话。
     trial_extended_description: 您的试用期已延长 30 天。
+    trial_approved: 试用已获批准：现在可以{link}
+    invite_people_via_email: 发送邮件邀请
   dashboard_cards:
     all_groups: 所有群组
     unread_count: "{count} 条未读"

@@ -158,7 +158,7 @@ describe('GroupCards and PlanBanner', () => {
     expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupShareableLinkForm', props: { group } });
   });
 
-  it('shows verified message and opens email invitation form once approved', async () => {
+  it('shows approved link and opens email invitation form once approved', async () => {
     const group = setupGroup({
       subscription: {
         plan: 'trial',
@@ -170,8 +170,12 @@ describe('GroupCards and PlanBanner', () => {
     wrapper = mountCards(group);
     await flushPromises();
 
-    expect(wrapper.find('.plan-banner__verified-badge').text()).toContain('Verified');
-    expect(wrapper.find('.plan-banner__verification').text()).toContain("We've seen your group and we're here to help");
+    expect(wrapper.find('.plan-banner__verified-badge').exists()).toBe(false);
+    expect(wrapper.find('.plan-banner__verification').text()).toBe('Trial approved: you can now invite people via email');
+    await wrapper.find('.plan-banner__invite-link').trigger('click');
+    expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupInvitationForm', props: { group } });
+
+    mocks.emit.mockClear();
     await wrapper.find('.group-cards__invite').trigger('click');
     expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupInvitationForm', props: { group } });
   });

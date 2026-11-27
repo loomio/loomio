@@ -3328,6 +3328,8 @@ tr:
     extend_trial_initial: Gruba {count} kişi daha katıldığında 30 ek gün ve bir Loomio ekip üyesiyle ücretsiz eğitim görüşmesi kazanın.
     extend_trial_remaining: Gruba 1 kişi daha katıldığında 30 ek gün ve bir Loomio ekip üyesiyle ücretsiz eğitim görüşmesi kazanın. | Gruba {count} kişi daha katıldığında 30 ek gün ve bir Loomio ekip üyesiyle ücretsiz eğitim görüşmesi kazanın.
     trial_extended_description: Deneme süreniz 30 gün uzatıldı.
+    trial_approved: 'Denemeniz onaylandı: artık {link}'
+    invite_people_via_email: e-postayla kişi davet edebilirsiniz
   dashboard_cards:
     all_groups: Tüm gruplar
     unread_count: "{count} okunmamış"

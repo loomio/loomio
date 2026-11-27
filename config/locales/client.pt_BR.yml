@@ -3376,6 +3376,8 @@ pt_BR:
     extend_trial_initial: Libere mais 30 dias e uma chamada de treinamento grátis com um membro da equipe Loomio quando outras {count} pessoas entrarem no grupo.
     extend_trial_remaining: Libere mais 30 dias e uma chamada de treinamento grátis com um membro da equipe Loomio quando mais 1 pessoa entrar no grupo. | Libere mais 30 dias e uma chamada de treinamento grátis com um membro da equipe Loomio quando mais {count} pessoas entrarem no grupo.
     trial_extended_description: Seu período de teste foi estendido por mais 30 dias.
+    trial_approved: 'Teste aprovado: você já pode {link}'
+    invite_people_via_email: convidar pessoas por e-mail
   dashboard_cards:
     all_groups: Todos os grupos
     unread_count: "{count} não lidas"

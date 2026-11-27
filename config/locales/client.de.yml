@@ -3366,6 +3366,8 @@ de:
     extend_trial_initial: Schalte 30 weitere Tage und ein kostenloses Schulungsgespräch mit einem Mitglied des Loomio-Teams frei, sobald {count} weitere Personen der Gruppe beitreten.
     extend_trial_remaining: Schalte 30 weitere Tage und ein kostenloses Schulungsgespräch mit einem Mitglied des Loomio-Teams frei, sobald 1 weitere Person der Gruppe beitritt. | Schalte 30 weitere Tage und ein kostenloses Schulungsgespräch mit einem Mitglied des Loomio-Teams frei, sobald {count} weitere Personen der Gruppe beitreten.
     trial_extended_description: Deine Testphase wurde um 30 Tage verlängert.
+    trial_approved: 'Testphase genehmigt: Du kannst jetzt {link}'
+    invite_people_via_email: Personen per E-Mail einladen
   dashboard_cards:
     all_groups: Alle Gruppen
     unread_count: "{count} ungelesen"

@@ -3331,6 +3331,8 @@ fi:
     extend_trial_initial: Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun {count} muuta henkilöä liittyy ryhmään.
     extend_trial_remaining: Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun vielä 1 henkilö liittyy ryhmään. | Saat 30 lisäpäivää ja maksuttoman koulutuspuhelun Loomion tiimin jäsenen kanssa, kun vielä {count} henkilöä liittyy ryhmään.
     trial_extended_description: Kokeiluaikaasi on jatkettu 30 päivällä.
+    trial_approved: 'Kokeilu hyväksytty: voit nyt {link}'
+    invite_people_via_email: kutsua ihmisiä sähköpostitse
   dashboard_cards:
     all_groups: Kaikki ryhmät
     unread_count: "{count} lukematonta"

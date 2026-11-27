@@ -3339,6 +3339,8 @@ sv:
     extend_trial_initial: Lås upp 30 extra dagar och ett gratis utbildningssamtal med en medlem i Loomios team när {count} andra personer går med i gruppen.
     extend_trial_remaining: Lås upp 30 extra dagar och ett gratis utbildningssamtal med en medlem i Loomios team när 1 person till går med i gruppen. | Lås upp 30 extra dagar och ett gratis utbildningssamtal med en medlem i Loomios team när {count} personer till går med i gruppen.
     trial_extended_description: Din provperiod har förlängts med 30 dagar.
+    trial_approved: 'Provperiod godkänd: du kan nu {link}'
+    invite_people_via_email: bjuda in personer via e-post
   dashboard_cards:
     all_groups: Alla grupper
     unread_count: "{count} olästa"

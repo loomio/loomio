@@ -3367,6 +3367,8 @@ es:
     extend_trial_initial: Desbloquea 30 días extra y una llamada de formación gratis con alguien del equipo de Loomio cuando {count} personas más se unan al grupo.
     extend_trial_remaining: Desbloquea 30 días extra y una llamada de formación gratis con alguien del equipo de Loomio cuando 1 persona más se una al grupo. | Desbloquea 30 días extra y una llamada de formación gratis con alguien del equipo de Loomio cuando {count} personas más se unan al grupo.
     trial_extended_description: Tu periodo de prueba se ha ampliado 30 días.
+    trial_approved: 'Prueba aprobada: ya puedes {link}'
+    invite_people_via_email: invitar a personas por correo
   dashboard_cards:
     all_groups: Todos los grupos
     unread_count: "{count} sin leer"

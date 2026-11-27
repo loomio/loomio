@@ -3342,6 +3342,8 @@ hu:
     extend_trial_initial: Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha {count} másik ember csatlakozik a csoporthoz.
     extend_trial_remaining: Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha még 1 ember csatlakozik a csoporthoz. | Szerezz 30 extra napot és egy ingyenes betanító hívást a Loomio csapatának egyik tagjával, ha még {count} ember csatlakozik a csoporthoz.
     trial_extended_description: A próbaidőd 30 nappal meghosszabbodott.
+    trial_approved: 'Próbaidő jóváhagyva: most már {link}'
+    invite_people_via_email: küldhetsz meghívókat e-mailben
   dashboard_cards:
     all_groups: Összes csoport
     unread_count: "{count} olvasatlan"
