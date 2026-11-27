@@ -49,9 +49,7 @@ class AttachmentQuery
 
     sql = union_sql(group_ids, query, user: user)
     ApplicationRecord.connection.select_value(
-      ActiveRecord::Base.sanitize_sql_array([
-        "SELECT COUNT(*) FROM (#{sql}) matching_attachments"
-      ])
+      Arel.sql("SELECT COUNT(*) FROM (#{sql}) matching_attachments")
     ).to_i
   end
 
