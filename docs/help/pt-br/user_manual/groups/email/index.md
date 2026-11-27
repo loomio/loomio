@@ -1,15 +1,15 @@
 ---
 title: Endereço de e-mail
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: c37071c6599055f1
+  introduction: 6b587aa3247ed665
   preventing-unauthorized-emails: 2f345f4404d7abeb
 title_source: f2488fd4ef4adbc6
 title_generated: 32c13b636f1f855f
@@ -21,9 +21,9 @@ title_generated: 32c13b636f1f855f
 
 Cada grupo no Loomio tem seu próprio endereço de e-mail. Você pode enviar ou encaminhar um e-mail para esse endereço para iniciar uma nova conversa no grupo.
 
-Você pode encontrar o endereço de e-mail do grupo na página do grupo:
+Você pode encontrar o endereço de e-mail do grupo em **Configurações** na página do grupo:
 
-![Localização do endereço de e-mail na página do grupo](email_email_button.png)
+![Localização do endereço de e-mail em Configurações na página do grupo](email_email_button.png)
 
 Quando você envia um e-mail para esse endereço, o Loomio cria uma nova conversa. O assunto do e-mail se torna o título da conversa, o corpo se torna a descrição da conversa e todos os arquivos anexados são adicionados à conversa.
 

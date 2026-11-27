@@ -1,25 +1,25 @@
 ---
 title: Kategóriacímkék
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 65a9c7779ba357e3
+  introduction: 83c85f332b82e9b8
   apply-tags: 2bc1624d08755db4
   create-tags: 50b9a48f083398a8
-  edit-tags: 33189d4ec7a19274
+  edit-tags: 9bd6c3a8b084157d
   edit-tag-in-thread-or-poll: 4538a24aebd30e7a
   template-tags: 03b8ded4e583745a
   tag-contributions: f3c0a669102cf670
@@ -37,7 +37,7 @@ A kategóriacímkékkel megtalálhatod az adott témához vagy munkaterülethez 
 
 A címkék az egész szervezethez tartoznak. A szülőcsoportban létrehozott címke az alcsoportjaiban is elérhető, így több csoportban is nyomon követheted az összetartozó munkát. A Loomio ábécérendben sorolja fel a címkéket, minden név mellett egy színes ponttal.
 
-A csoportod oldalán válaszd ki a szálak listája feletti **Címkék** lehetőséget, majd válassz ki egy címkét az olyan szálak megjelenítéséhez, amelyek legalább egy, ezzel a címkével ellátott tartalmat tartalmaznak. Hosszú listában a szűrőmezőbe gépelve kereshetsz.
+Az **Összes csoport** oldalon vagy egy csoport oldalán válaszd ki a szálak, szavazások vagy feladatok listája feletti **Címkék** lehetőséget, majd válassz ki egy címkét az ezzel a címkével ellátott tartalmak megjelenítéséhez. Hosszú listában a szűrőmezőbe gépelve kereshetsz.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ Amikor valaki sablonból indít beszélgetést vagy szavazást, a Loomio hozzáa
 
 Csak a szülőcsoport adminjai nevezhetik át, színezhetik át, vonhatják össze vagy törölhetik a címkéket. A változtatások az egész szervezetre érvényesek, beleértve az összes alcsoportot is.
 
-A csoport oldalán nyisd meg a **Címkék** menüt, és válaszd ki a **Címkék szerkesztése** lehetőséget.
+A csoport oldalán nyisd meg a **Címkék** menüt, és válaszd ki a **Címkék szerkesztése** lehetőséget, vagy nyisd meg a **Beállítások** menüt, és válaszd ki a **Kategóriacímkék** lehetőséget.
 
 ![Kategóriacímkék szerkesztése](tags_edit_new.png)
 

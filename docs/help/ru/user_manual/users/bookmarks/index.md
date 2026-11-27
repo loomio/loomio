@@ -1,19 +1,19 @@
 ---
 title: Закладки
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/users/bookmarks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4526320029ca0268
   save-a-bookmark: 3855beff6126a218
-  view-your-bookmarks: 0512e42564819ba7
+  view-your-bookmarks: 36d441a4ada6425f
   remove-a-bookmark: 5e66cedf4b86c3fa
 generated:
   introduction: 9fe4907640e0a507
   save-a-bookmark: f3f8f065a669efd2
-  view-your-bookmarks: d5234475764bca5f
+  view-your-bookmarks: 4d7313ac37ee89c8
   remove-a-bookmark: 3effb5b92f5bbecb
 title_source: 96316f0f6404dbe1
 title_generated: 32aa6efe1bf74a9e
@@ -45,7 +45,7 @@ title_generated: 32aa6efe1bf74a9e
 
 ## Просмотр ваших закладок
 
-Откройте боковую панель и выберите **Закладки**. Число рядом со ссылкой показывает, сколько закладок вы сохранили.
+Откройте **Закладки** на странице **Все группы**, чтобы увидеть всё, что вы сохранили во всех ваших группах, или откройте **Закладки** на странице группы, чтобы увидеть закладки в этой группе (в родительских группах доступен фильтр **Подгруппы**).
 
 На странице «Закладки» сначала отображаются элементы, сохранённые последними. В каждой строке указаны тип элемента и его автор. Выберите строку, чтобы вернуться к элементу, сохранённому в закладках.
 

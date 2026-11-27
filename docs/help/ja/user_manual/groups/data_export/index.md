@@ -1,13 +1,13 @@
 ---
 title: データのエクスポート
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 988679ffd3d29834
-  export-data: 9c2fb6ec7c75bcb6
+  export-data: '024783a0614721d2'
   export-group-data-as-csv: c0845f09bff828f2
   export-group-data-as-html: 659fd5e14956b00e
   export-group-data-as-json: 4c2131f4518b7469
@@ -15,7 +15,7 @@ sections:
   import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
   introduction: 0b4a90e663b3aaf8
-  export-data: 04e307135fa06744
+  export-data: '0915b36f4b4ebcf7'
   export-group-data-as-csv: c0ced6f60fcff34f
   export-group-data-as-html: ca4b1e5171118727
   export-group-data-as-json: da0f561d2a329858
@@ -45,9 +45,9 @@ loomio.comから地域別サービス（ヨーロッパ向けのloomio.eu、ま�
 
 ## データのエクスポート
 
-グループデータをエクスポートできるのは、グループ管理者のみです。グループの操作メニューを開き、**グループデータのエクスポート**を選択します。
+グループデータをエクスポートできるのは、グループ管理者のみです。グループページで**設定**を開き、**グループデータのエクスポート**を選択します。
 
-![Oatmilk Cooperativeのメニューにあるグループデータのエクスポート操作](group_export_group_data.png)
+![Oatmilk Cooperativeの設定ページにあるグループデータのエクスポート操作](group_export_group_data.png)
 
 Loomioはバックグラウンドでエクスポートの準備を進め、準備ができるとダウンロードリンクをメールで送信します。リンクは1週間利用できます。
 

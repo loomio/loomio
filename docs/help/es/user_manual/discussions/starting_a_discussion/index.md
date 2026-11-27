@@ -1,13 +1,13 @@
 ---
 title: Iniciar una discusión
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: 03c7279aa3bb4c8b
-  new-discussion: d632a27e5cadd1a6
+  new-discussion: 7666266901cf5b98
   group: d32bd12581e698e4
   invite-and-notify: fc3cf4333c28b485
   tags: e7f5653e5d6d794c
@@ -37,11 +37,11 @@ Puedes hacer una pregunta sencilla o compartir una descripción detallada con en
 
 ## Iniciar una nueva discusión
 
-Selecciona **Iniciar discusión** en la página de tu grupo o de cualquier subgrupo.
+Selecciona **Nuevo hilo** en la página de tu grupo o de cualquier subgrupo.
 
 Loomio muestra las [plantillas de discusión](/en/user_manual/discussions/templates/) de tu grupo. Elige una plantilla o **Plantilla en blanco** para abrir el formulario de discusión.
 
-![Botón Iniciar discusión en la página de Oatmilk Cooperative](new-discussion-button.png)
+![Botón Nuevo hilo en la página de Oatmilk Cooperative](new-discussion-button.png)
 
 ![Formulario para iniciar una discusión sobre la planificación de la prueba de botellas retornables](new-discussion-example.png)
 

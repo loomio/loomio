@@ -1,20 +1,20 @@
 ---
 title: Задания
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: 995d6f94bdcf6145
   add-a-task: ff4a9eaa646ddb8e
-  name-and-assign-the-task-to-a-person: f1809b67040f1fb1
+  name-and-assign-the-task-to-a-person: d6ab6de906afe282
   set-a-reminder: ad689f106a55d371
   mark-it-as-done: 14ca3d09a1c4d626
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ title_generated: 4b4b60a305829a89
 
 ![](tasklist2.png)
 
-Назначенные вам задачи отображаются на странице **Задания**. Откройте **Задания** в боковой панели, чтобы увидеть их сгруппированными по веткам или опросам.
+Откройте **Задания** на странице **Все группы**, чтобы увидеть задачи, назначенные вам во всех ваших группах, или откройте **Задания** на странице группы, чтобы просмотреть задачи этой группы. Задачи сгруппированы по веткам или опросам. Вы можете фильтровать их по статусу (**К выполнению**, **Выполнено** или **Все**), сроку выполнения (**Просрочено**, **Ближайшие 7 дней**, **Позже** или **Без срока**), исполнителю (на странице группы), подгруппе, тегу категории или с помощью поиска.
 
 ![](task_list.png)
 

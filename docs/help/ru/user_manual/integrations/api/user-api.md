@@ -1,10 +1,10 @@
 ---
 title: Пользовательский API
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 2d91e17b37de30b4
   response-size-and-related-records: 3bdd69fb0fcdd958
@@ -12,7 +12,7 @@ sections:
   groups: 0473f1f7fb78f074
   list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: 3533fbb996deebf6
+  webhooks: 44f627e517bbd9e6
   list-webhooks: 3f5d857fe7f844bd
   create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
@@ -88,7 +88,7 @@ generated:
   groups: 6437a4d2d344fc84
   list-groups: 155328efa6f50291
   get-a-group: 8241c07d9ebb4850
-  webhooks: 1097a8dab740d326
+  webhooks: 95b2cdb81243e5cf
   list-webhooks: 5119c2e4f2f3e08f
   create-a-webhook: 12ec5f11eb648281
   update-a-webhook: bb8652910e99e88c
@@ -1111,7 +1111,7 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 Вебхуки настраиваются отдельно для каждой группы и требуют прав администратора группы. Ими можно управлять через интерфейс Loomio:
 
 1. Откройте группу.
-2. Откройте меню группы и выберите **Интеграция чата**.
+2. Откройте **Настройки** и выберите **Интеграция чата**.
 3. Добавьте интеграцию, соответствующую формату данных, который принимает ваша конечная точка. Для конечной точки общего назначения используйте формат Mattermost/Markdown.
 4. Введите название и URL назначения.
 5. Выберите события, которые Loomio должен отправлять автоматически.

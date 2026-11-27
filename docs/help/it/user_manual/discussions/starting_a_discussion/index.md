@@ -1,13 +1,13 @@
 ---
 title: Avvia una discussione
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: 679c5efb3455813a
-  new-discussion: fd4c45cbc112b55a
+  new-discussion: 72fe131f1970da8a
   group: 5fa9aeb537312d9f
   invite-and-notify: d69220e59370fbe7
   tags: d232020f0192ccff
@@ -39,11 +39,11 @@ Puoi fare una semplice domanda o condividere una descrizione dettagliata con lin
 
 ## Avvia una nuova discussione
 
-Seleziona **Inizia la discussione** nella pagina del tuo gruppo o di qualsiasi sottogruppo.
+Seleziona **Nuova conversazione** nella pagina del tuo gruppo o di qualsiasi sottogruppo.
 
 Loomio mostra i [modelli di discussione](/en/user_manual/discussions/templates/) del tuo gruppo. Scegli un modello, oppure **Modello vuoto**, per aprire il modulo della discussione.
 
-![Pulsante Inizia la discussione nella pagina di Oatmilk Cooperative](new-discussion-button.png)
+![Pulsante Nuova conversazione nella pagina di Oatmilk Cooperative](new-discussion-button.png)
 
 ![Modulo per avviare una discussione sulla pianificazione della sperimentazione delle bottiglie a rendere](new-discussion-example.png)
 

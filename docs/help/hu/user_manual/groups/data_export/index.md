@@ -1,13 +1,13 @@
 ---
 title: Adatok exportálása
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 988679ffd3d29834
-  export-data: 9c2fb6ec7c75bcb6
+  export-data: '024783a0614721d2'
   export-group-data-as-csv: c0845f09bff828f2
   export-group-data-as-html: 659fd5e14956b00e
   export-group-data-as-json: 4c2131f4518b7469
@@ -15,7 +15,7 @@ sections:
   import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
   introduction: 0ef47ce6fec748b5
-  export-data: 267dce67cd8ce4a8
+  export-data: 5d8d83c6c45b3d1c
   export-group-data-as-csv: 22b142a5e977fb3f
   export-group-data-as-html: 6f960159abc4ffdf
   export-group-data-as-json: 8580585467a34b22
@@ -45,9 +45,9 @@ Ezzel a funkcióval a Loomio tárhelyszolgáltatásáról [saját üzemeltetés�
 
 ## Adatok exportálása
 
-Csak a csoport adminja exportálhatja a csoport adatait. Nyisd meg a csoport műveleti menüjét, és válaszd ki a **Csoport adatok letöltése** lehetőséget.
+Csak a csoport adminja exportálhatja a csoport adatait. Nyisd meg a **Beállítások** oldalt a csoport oldalán, és válaszd ki a **Csoport adatok letöltése** lehetőséget.
 
-![Csoport adatok letöltése művelet az Oatmilk Cooperative menüjében](group_export_group_data.png)
+![Csoport adatok letöltése művelet az Oatmilk Cooperative beállítási oldalán](group_export_group_data.png)
 
 A Loomio a háttérben elkészíti az exportot, és amikor elkészült, e-mailben elküldi neked a letöltési linket. A link egy hétig érhető el.
 

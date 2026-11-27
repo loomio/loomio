@@ -1,16 +1,16 @@
 ---
 title: Запрошення людей
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 9a5c0fb0a2ea8249
+  introduction: 4e41dc2952692d1c
   send-invitations-via-email: 064e4b8dd79e4bc1
   invite-many-at-once: 3723ead8c247b5b5
   invite-people-to-subgroups: fb94d54edb7861ea
-  share-a-link-to-your-group: c56133436818ce56
+  share-a-link-to-your-group: 7902bce62da7ad82
   request-to-join-group: 8f150c218ef97644
   review-membership-requests: dba8e482be7ff6cc
   managing-invitations: 699d216717b2f936
@@ -37,7 +37,7 @@ title_generated: 596ec23ae41c2feb
 
 # Запросіть людей до групи Loomio
 
-Ви можете запросити людей до вашої групи Loomio електронною поштою, поширити посилання із запрошенням або дозволити людям подавати запити на приєднання. Щоб почати, відкрийте вкладку **Учасники** на сторінці вашої групи.
+ви можете запросити людей до вашої групи Loomio електронною поштою, поширити посилання із запрошенням або дозволити людям подавати запити на приєднання. Щоб почати, виберіть **Запросити** на картці **Учасники** або відкрийте **Учасники** на сторінці вашої групи.
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ title_generated: 596ec23ae41c2feb
 
 ## Поширення посилання на вашу групу
 
-Виберіть **Поширити**, щоб створити багаторазове посилання із запрошенням для розсилки, каналу чату, електронного листа або вебсайту.
+Виберіть **Поширити**, щоб створити багаторазове посилання із запрошенням для розсилки, каналу чату, електронного листа або вебсайту. Увімкніть **Додати вступне повідомлення**, щоб скопіювати коротке повідомлення разом із посиланням.
 
 ![](group_invite_sharable_link.png)
 
-Щоб припинити приєднання людей за наявним посиланням, виберіть **Скинути це посилання**. Старе посилання перестане діяти, і буде створено нове.
+Щоб припинити приєднання людей за наявним посиланням, виберіть **Скинути посилання**. Старе посилання перестане діяти, і буде створено нове.
 
 <!-- translation-section: request-to-join-group -->
 

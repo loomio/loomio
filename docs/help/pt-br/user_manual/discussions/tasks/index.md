@@ -1,20 +1,20 @@
 ---
 title: Tarefas
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: 9fde5245fc23fddb
   add-a-task: a4695dc97adbaf99
-  name-and-assign-the-task-to-a-person: 8709f51f6dd848cd
+  name-and-assign-the-task-to-a-person: '09f31d8924444f6a'
   set-a-reminder: 0cd2e03dff4aae67
   mark-it-as-done: b05c4a495c192aec
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ Use uma @menção na tarefa para atribuí-la a um membro do grupo. O botão **Ad
 
 ![](tasklist2.png)
 
-As tarefas atribuídas a você aparecem na sua página **Tarefas**. Abra **Tarefas** na barra lateral para vê-las agrupadas por conversa ou enquete.
+Abra **Tarefas** em **Todos os grupos** para ver as tarefas atribuídas a você em todos os seus grupos, ou abra **Tarefas** na página de um grupo para ver as tarefas desse grupo. As tarefas são agrupadas por conversa ou enquete, e você pode filtrá-las por status (**A fazer**, **Concluídas** ou **Todas**), data de vencimento (**Atrasadas**, **Próximos 7 dias**, **Mais tarde** ou **Sem data de vencimento**), pessoa responsável (na página de um grupo), subgrupo, tag de categoria ou busca.
 
 ![](task_list.png)
 

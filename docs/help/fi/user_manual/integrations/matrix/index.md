@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 114ab8c916ca5fba
+  introduction: 31651f229b065ec2
 generated:
-  introduction: e96df5b9f72b5829
+  introduction: 97bba1ba8be583a4
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -27,7 +27,7 @@ Tässä ohjeessa käytetään Element-sovellusta.
 
 1. Luo Loomiolle Matrix-käyttäjätili, kirjaudu sillä sisään Elementiin ja kutsu tili Matrix-huoneeseen, johon haluat ilmoitukset. Pidä tämä istunto kirjautuneena sisään — uloskirjautuminen mitätöi käyttöoikeustunnuksen.
 
-2. Avaa Loomio-ryhmäsi valikko, valitse **Chat-integraatiot** ja lisää **Matriisi**-chat-integraatio.
+2. Avaa Loomio-ryhmäsi **asetukset**, valitse **Chat-integraatiot** ja lisää **Matriisi**-chat-integraatio.
 
    ![Loomion Matrix-botin valikko](loomio-add-matrix-bot.png)
 

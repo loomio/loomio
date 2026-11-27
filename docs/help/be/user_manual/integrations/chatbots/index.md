@@ -1,22 +1,22 @@
 ---
 title: Інтэграцыі з чатам
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 46c095b75ad63f90
   what-it-looks-like-in-chat: f317dcdbffe349dc
   generate-a-webhook-url: ededdedfffbe6bcb
-  set-up-a-chat-integration: d671b54fe6ae3cd1
+  set-up-a-chat-integration: 5a727120f9967d49
   invite-to-poll: ffa06cde4354b243
   automatic-notifications: 21e1f83202af63e1
 generated:
   introduction: 5c2dc445f79f988a
   what-it-looks-like-in-chat: 58c5a5979eac3a80
   generate-a-webhook-url: ce62eee0b74afe27
-  set-up-a-chat-integration: 07b204206287cd3f
+  set-up-a-chat-integration: caea438f5b73e4b2
   invite-to-poll: 4e0d75f4268388d2
   automatic-notifications: ced1ccb2a4d807ce
 title_source: 0eca19d30c6d7d3c
@@ -61,7 +61,7 @@ Loomio падтрымлівае Slack, Discord, Microsoft Teams, Matrix і Matte
 
 Каб дадаваць або рэдагаваць інтэграцыі з чатам, патрэбныя правы адміністратара групы.
 
-1. Пасля наладжвання вашага сэрвісу чата (гл. вышэй) адкрыйце меню групы ў Loomio і выберыце **Інтэграцыі з чатам**.
+1. Пасля наладжвання вашага сэрвісу чата (гл. вышэй) адкрыйце **Налады** на старонцы вашай групы ў Loomio і выберыце **Інтэграцыі з чатам**.
 
    ![](loomio-group-settings.png)
 

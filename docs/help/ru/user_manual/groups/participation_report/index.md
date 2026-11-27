@@ -1,12 +1,12 @@
 ---
 title: Отчёт об участии
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 8e60c0f74fbb43de
+  introduction: 24bc7ba2e92b5583
   what-s-in-the-report: 7283520d596e0800
   actions-per-month: 158be06d6f9a09cb
   tag-usage: b055b8197932495a
@@ -33,13 +33,13 @@ title_generated: 14ada13bcf510dd0
 
 Отчёт об участии показывает активность в вашей группе Loomio и её подгруппах.
 
-Вы можете выбрать группы для включения в отчёт, задать даты начала и окончания периода и сгруппировать результаты по годам, месяцам, неделям или дням.
+Можно выбрать группы для включения в отчёт, задать даты начала и окончания периода и сгруппировать результаты по годам, месяцам, неделям или дням.
 
 Каждый участник группы может просматривать отчёт, но видит результаты только тех групп, в которых состоит. Поэтому итоговые показатели у разных участников могут различаться.
 
-Чтобы открыть отчёт, откройте меню действий группы и выберите **Отчет об участии**. В любой таблице отчёта выберите заголовок столбца, чтобы отсортировать данные по этому столбцу.
+Чтобы открыть отчёт, откройте **Настройки** на странице группы и выберите **Отчет об участии**. В любой таблице отчёта выберите заголовок столбца, чтобы отсортировать данные по этому столбцу.
 
-![Пункт «Отчет об участии» в меню группы Oatmilk Cooperative](group_participation_report.png)
+![Пункт «Отчет об участии» на странице настроек группы Oatmilk Cooperative](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

@@ -1,34 +1,34 @@
 ---
 title: Alcsoportok
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: 4bb8687343ab3cc4
-  add-a-subgroup: d8f67d7eafedcdd8
+  add-a-subgroup: bf5d55e15ff8a305
   subgroup-settings: 16d3adb394b9f23e
   privacy: a1fc74869109bc25
   permissions: 76698e8be0416225
-  find-subgroups: ca6ad642f0e36e40
+  find-subgroups: ae34809edcf0937b
   invite-to-a-subgroup: ec9a1adcd878e697
   simultaneously-invite-people-to-subgroups-and-parent-group: 0c8a1c0aeb7bc140
   administer-a-subgroup: fedb7e6901066a4e
   delete-a-subgroup: 1324bdab8fa5319f
-  how-people-join: '08fac77917c727f7'
+  how-people-join: 8bd71e845fc91b42
 title_source: 9f81e728f70cae3e
 title_generated: a74a4851d37bc4f2
 ---
@@ -58,7 +58,7 @@ Alcsoport létrehozásához nyisd meg a szülőcsoportod oldalát, válaszd ki a
 
 ![Új alcsoport létrehozására szolgáló űrlap a csomagolási munkacsoporthoz](subgroups_new.png)
 
-Ha elkészült az alcsoport, [hívj meg embereket](/en/user_manual/groups/inviting_people), hogy csatlakozzanak hozzá. Az alcsoport [csoportbeállításait](/en/user_manual/groups/settings) az alcsoport oldalán található műveleti menüből módosíthatod.
+Ha elkészült az alcsoport, [hívj meg embereket](/en/user_manual/groups/inviting_people), hogy csatlakozzanak hozzá. Az alcsoport [csoportbeállításait](/en/user_manual/groups/settings) az alcsoport oldalán található **Beállítások** menüpontban módosíthatod.
 
 ![Csoportbeállítások szerkesztése művelet a csomagolási munkacsoportban](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ Ha a szülőcsoport privát, az alcsoportoknál csak a **Látható a szülőcsop
 
 ### Hogyan csatlakoznak az emberek?
 
-Válaszd ki, [hogyan csatlakoznak az emberek](/en/user_manual/groups/settings/privacy#how-people-join) az alcsoport létrehozásakor vagy az **A csoportbeállítások szerkesztése** > **Adatvédelem** résznél.
+Válaszd ki, [hogyan csatlakoznak az emberek](/en/user_manual/groups/settings/privacy#how-people-join) az alcsoport létrehozásakor vagy a **Beállítások** > **A csoportbeállítások szerkesztése** > **Adatvédelem** résznél.
 
 ![Az alcsoport adatvédelmi és csatlakozási beállításai](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ Kapcsold be **A szülőcsoport tagjai láthatják a privát szálakat** beállí
 
 ## Alcsoportok keresése
 
-Válaszd ki a szülőcsoportod nevét az oldalsávban az alcsoportjainak megtekintéséhez.
+Válaszd ki a szülőcsoportod nevét az oldalsávban az alcsoportjainak megtekintéséhez. A szülőcsoport **Szálak**, **Szavazások**, **Tagok**, **Fájlok**, **Feladatok** és **Könyvjelzők** oldalain az **Alcsoportok** szűrővel válthatsz a **Csak ez a csoport**, **Alcsoportjaim** és **Összes alcsoport** lehetőségek között, vagy közvetlenül egy alcsoporthoz ugorhatsz.
 
 ![Az Oatmilk Cooperative alcsoportjai az oldalsávban](subgroups_find_subgroups.png)
 

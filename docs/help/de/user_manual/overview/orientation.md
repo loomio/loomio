@@ -1,28 +1,30 @@
 ---
 title: Kurzer Rundgang
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: ecd0fe0598db0af5
   group-page: b351d5f2c21b5300
-  tabs: fa2b8c5dbc1e9e15
-  sidebar: 6fcc6fb14f4584c4
+  tabs: 86954790e9ef59f7
+  sidebar: c6de16f7a7779148
   user-settings: fc19e4048d467aed
   notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 8c209bc2f042ae96
+  mobile-navigation: 2be6c40d260c3dd1
+  all-groups: d71bbbd8a059f5db
 generated:
   introduction: b7289601c5ba4dc7
   group-page: a28445e2be052c68
-  tabs: 7f5b150cc35b7834
-  sidebar: b15ccbf976f95735
+  tabs: 6765a52f8f27db98
+  sidebar: 66e08fc21fd1ef68
   user-settings: addc968c99d05dfe
   notifications: d9b2b36d8caf5b89
   what-to-do-next: 75df598e43c0f218
-  mobile-navigation: 4d1281fee194e126
+  mobile-navigation: a2c78f2a8e913e3e
+  all-groups: 037f22e3de88f26a
 title_source: c41a33370cd580dd
 title_generated: 60a9792e09ce832a
 ---
@@ -43,16 +45,27 @@ Die Startseite deiner Gruppe beschreibt die Gruppe und verlinkt auf ihre Arbeit.
 
 <!-- translation-section: tabs -->
 
-### Tabs
+### Bereiche
 
-Die Tabs unter der Gruppenbeschreibung zeigen:
+Die Navigationskarten unter der Gruppenbeschreibung zeigen:
 
-- **Diskussionen**: Die Diskussions-Threads der Gruppe und die neuesten Aktivitäten.
-- **Abstimmungen**: Offene und beendete Abstimmungen in der Gruppe.
-- **Mitglieder**: Die Personen, die zur Gruppe gehören.
+- **Threads**: Die Diskussions-Threads der Gruppe und die neuesten oder ungelesenen Aktivitäten.
+- **Abstimmungen**: Offene und beendete Abstimmungen in der Gruppe, einschließlich derer, bei denen deine Stimme noch aussteht.
+- **Mitglieder**: Die Personen, die zur Gruppe gehören, mit einer Verknüpfung zum Einladen neuer Mitglieder.
 - **Dokumente**: Dateien, die in Diskussionen, Kommentaren, Vorschlägen und Abstimmungen innerhalb der Gruppe angehängt wurden. So kannst du ein Dokument finden, ohne dich daran erinnern zu müssen, wo es geteilt wurde.
+- **Aufgaben**: Offene und erledigte Aufgaben in der Gruppe, mit Filtern für Status, Fälligkeitsdatum, zugewiesene Person und Schlagwörter.
+- **Lesezeichen**: Diskussionen, Kommentare, Abstimmungen, Stimmen und Fazits, die du in der Gruppe mit einem Lesezeichen versehen hast.
+- **Einstellungen**: Gruppenverwaltung, Mitgliedschaftsoptionen, Benachrichtigungseinstellungen, Integrationen und Datenexport.
 
 Unter [Inhalte finden](/en/user_manual/overview/finding-content) findest du Hilfe zu Suche, Filtern, Schlagwörtern, Lesezeichen und ungelesenen Diskussionen.
+
+<!-- translation-section: all-groups -->
+
+## Alle Gruppen
+
+Wähle **Alle Gruppen** in der Seitenleiste, um deine Arbeit in allen Gruppen zu sehen, denen du angehörst. Dort findest du dieselben Navigationskarten wie auf einer Gruppenseite: **Threads** (einschließlich ungelesener und direkter Threads), **Abstimmungen**, **Personen** (ein durchsuchbares Verzeichnis der Personen, mit denen du Gruppen teilst und das zeigt, wer kürzlich online war), **Dokumente**, **Aufgaben** und **Lesezeichen**.
+
+![](all_groups.png)
 
 <!-- translation-section: sidebar -->
 
@@ -62,7 +75,7 @@ Unter [Inhalte finden](/en/user_manual/overview/finding-content) findest du Hilf
 
 ![](sidebar.png)
 
-Über die Seitenleiste kannst du deine Übersicht, Abstimmungen, bei denen deine Stimme noch aussteht, ungelesene und direkte Diskussionen, Aufgaben und Gruppen öffnen. Dort findest du auch Links zum Benutzerhandbuch und zum Support.
+Über die Seitenleiste kannst du zwischen **Alle Gruppen**, deinen Gruppen und Untergruppen wechseln und eine neue Gruppe oder Untergruppe starten. Wenn die Seitenleiste geschlossen ist, wähle den Gruppennamen (oder **Alle Gruppen**) oben auf der Seite, um die Gruppe zu wechseln oder eine neue Gruppe zu starten. In der Seitenleiste findest du auch Links zum Benutzerhandbuch und zum Support.
 
 <!-- translation-section: user-settings -->
 
@@ -88,7 +101,7 @@ Unter [Benachrichtigungen](/en/user_manual/users/email_settings) erfährst du me
 
 ## Mobile Navigation
 
-Auf Mobilgeräten öffnest du über die untere Navigationsleiste die Seitenleiste, die Übersicht und die Benachrichtigungen. Innerhalb einer Diskussion öffnet das Thread-Menü die Inhalte und Aktionen des Threads.
+Auf Mobilgeräten öffnest du über die untere Navigationsleiste die Seitenleiste, **Alle Gruppen** und die Benachrichtigungen. Innerhalb einer Diskussion öffnet das Thread-Menü die Inhalte und Aktionen des Threads.
 
 <!-- translation-section: what-to-do-next -->
 

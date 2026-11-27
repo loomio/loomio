@@ -1,21 +1,21 @@
 ---
 title: Kerää yksityisiä hakemuksia
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: 12a3c0fb6b0b7139
-  enable-private-submissions: 539a107fa31def31
+  enable-private-submissions: 71a16eb3747c3640
   set-up-a-private-submission-process: e5f2676af0aacdac
-  make-a-submission: 7d0600884fc76ffb
+  make-a-submission: 21a0b49f31cf693d
   review-submissions: 4d14d9186d359729
 title_source: e82ab76916d594f4
 title_generated: 3c920e77f6b74870
@@ -48,7 +48,7 @@ Tässä toimintatavassa lähettäjät eivät näe toistensa tietoja, mutta toimi
 Sinun on oltava sen ryhmän tai alaryhmän ylläpitäjä, jossa haluat kerätä hakemuksia.
 
 1. Avaa ryhmä.
-2. Valitse **asetukset** (tai **Lisää** ja sitten **Muokkaa ryhmän asetuksia**).
+2. Avaa **asetukset** ja valitse sitten **Muokkaa ryhmän asetuksia**.
 3. Avaa **Käyttöoikeudet**.
 4. Ota käyttöön **Muutkin kuin jäsenet voivat aloittaa keskusteluja**.
 5. Tallenna ryhmän asetukset.
@@ -75,7 +75,7 @@ Tämän käyttöoikeuden käyttöönotto ei tee ryhmän keskusteluista julkisia.
 
 ## Lähetä hakemus
 
-Lähettäjä avaa alaryhmän ja valitsee **Aloita keskustelu**. Loomio näyttää alaryhmän keskustelumallit. Lähettäjä valitsee sopivan mallin, vastaa sen kysymyksiin ja aloittaa keskustelun.
+Lähettäjä avaa alaryhmän ja valitsee **Uusi ketju**. Loomio näyttää alaryhmän keskustelumallit. Lähettäjä valitsee sopivan mallin, vastaa sen kysymyksiin ja aloittaa keskustelun.
 
 Keskustelu kuuluu alaryhmään, ja Loomio lisää lähettäjän kyseiseen ketjuun vieraaksi, ei alaryhmän jäseneksi. Hän voi osallistua omaan ketjuunsa arviointitiimin kanssa, mutta ei näe alaryhmän muita yksityisiä keskusteluja tai hakemuksia.
 

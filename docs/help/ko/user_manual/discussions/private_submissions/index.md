@@ -1,24 +1,24 @@
 ---
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: 3028dd46e85f5131
-  enable-private-submissions: 982b75e5a2ef4d39
+  enable-private-submissions: 83d0056e4d0b728b
   set-up-a-private-submission-process: 24ab2b326bdb9e6e
-  make-a-submission: 3a97d2166e19e072
+  make-a-submission: 57289dbad6bfb92e
   review-submissions: '2710355074345198'
 title: 비공개 제출물 수집
 title_source: e82ab76916d594f4
 title_generated: 7cae944a7fa4e827
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -46,7 +46,7 @@ translated:
 제출물을 수집할 그룹이나 하위 그룹의 그룹 관리자여야 합니다.
 
 1. 그룹을 여세요.
-2. **설정**을 선택하세요(또는 **더보기**를 선택한 다음 **그룹 설정 수정**을 선택하세요).
+2. **설정**을 연 다음 **그룹 설정 수정**을 선택하세요.
 3. **권한**을 여세요.
 4. **멤버가 아닌 사람도 토론을 시작할 수 있습니다**를 활성화하세요.
 5. 그룹 설정을 저장하세요.
@@ -73,7 +73,7 @@ translated:
 
 ## 제출하기
 
-제출자는 하위 그룹을 열고 **토론 시작**을 선택합니다. Loomio가 해당 하위 그룹의 토론 템플릿을 표시합니다. 제출자는 알맞은 템플릿을 선택하고 질문에 답한 다음 토론을 시작합니다.
+제출자는 하위 그룹을 열고 **새 스레드**를 선택합니다. Loomio가 해당 하위 그룹의 토론 템플릿을 표시합니다. 제출자는 알맞은 템플릿을 선택하고 질문에 답한 다음 토론을 시작합니다.
 
 토론은 하위 그룹에 속하며, Loomio는 제출자를 하위 그룹 멤버가 아닌 해당 스레드의 게스트로 추가합니다. 제출자는 자신의 스레드에서 검토팀과 함께 참여할 수 있지만, 하위 그룹의 다른 비공개 토론이나 제출물은 볼 수 없습니다.
 

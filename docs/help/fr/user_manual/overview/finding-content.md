@@ -1,28 +1,28 @@
 ---
 title: Trouver du contenu
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 91ceec48c5d29a37
   search: 5de14e45cc9ac6bc
   search-tips: 4d753a07ce09d99f
-  filter-discussions: f5e3ea1d6d34ca5c
-  category-tags: 1a82b7bb393c43a8
-  unread-discussions: 60a3bde974d63806
-  polls-awaiting-your-vote: 3a542d9458392a4c
-  bookmarks: 06b79827757caeeb
+  filter-discussions: d68e5cb2864afa2c
+  category-tags: b5cd24f91b729c3d
+  unread-discussions: 473dd3edf3cc3674
+  polls-awaiting-your-vote: f01b1b3f4219c4a5
+  bookmarks: d733891b082a2941
 generated:
   introduction: 24018a02e26e9ec5
   search: d3db64eedf410f70
   search-tips: fbe4d011427fd4ed
-  filter-discussions: 326faba330fe2e00
-  category-tags: 5a0e3949d6d665c5
-  unread-discussions: 7bfdbaf73b74516c
-  polls-awaiting-your-vote: 2a44ebb9030e2ff2
-  bookmarks: b3717d0fcb8a0dbf
+  filter-discussions: '057408ad9c4ef328'
+  category-tags: 9d80886e8699a9fa
+  unread-discussions: 4d269ce9b82bf879
+  polls-awaiting-your-vote: 82fda456b50e7c47
+  bookmarks: 8f6bd2b1722e16f6
 title_source: 11acd4c6010fc176
 title_generated: 68444ca1b6e4b665
 ---
@@ -61,7 +61,7 @@ Saisissez un mot ou une expression, puis appuyez sur Entrée. Par exemple, une r
 
 ## Filtrer les discussions
 
-Dans l’onglet **Discussions** d’un groupe, vous pouvez filtrer les fils selon leur statut ouvert ou fermé, ou selon leur tag de catégorie. Combinez un filtre avec le champ de recherche de la liste pour réduire rapidement une longue liste de discussions.
+Sur la page **Fils** d’un groupe, vous pouvez filtrer les fils selon leur état de verrouillage, leur activité non lue, leur tag de catégorie ou leur sous-groupe (en choisissant **Ce groupe uniquement**, **Mes sous-groupes** ou **Tous les sous-groupes**). Sur **Tous les groupes**, vous pouvez aussi filtrer par **Non lu**, **Directs** et tag de catégorie, ou utiliser **Rechercher** pour affiner la liste.
 
 <!-- translation-section: category-tags -->
 
@@ -71,7 +71,7 @@ Les tags regroupent les discussions, les sondages, les conclusions et les commen
 
 ![](tags.png)
 
-Sélectionnez un tag dans l’onglet **Discussions** pour afficher les discussions contenant des éléments portant ce tag. Dans une discussion, sélectionnez un tag dans la barre latérale pour voir les commentaires, les sondages ou les conclusions correspondants, ainsi que les éléments auxquels ils répondent.
+Sélectionnez un tag sur **Fils**, **Sondages** ou **Tâches** pour afficher les éléments portant ce tag. Dans une discussion, sélectionnez un tag dans la barre latérale pour voir les commentaires, les sondages ou les conclusions correspondants, ainsi que les éléments auxquels ils répondent.
 
 Les auteurs peuvent attribuer des tags à leurs propres contributions. Les administrateurs du groupe, les administrateurs du fil et toute personne autorisée à modifier le contexte de la discussion peuvent attribuer des tags à n’importe quel élément. Consultez [Tags de catégorie](/en/user_manual/discussions/tags) pour en savoir plus sur la configuration et les permissions.
 
@@ -79,16 +79,16 @@ Les auteurs peuvent attribuer des tags à leurs propres contributions. Les admin
 
 ## Discussions non lues
 
-Sélectionnez **Discussions non lues** dans la barre latérale pour voir les fils présentant une nouvelle activité. Dans une discussion, utilisez la chronologie pour accéder aux éléments non lus et aux événements importants.
+Sélectionnez **Non lu** sur **Tous les groupes** ou sur la page **Fils** d’un groupe (ou sélectionnez le nombre d’éléments non lus sur la carte **Fils**) pour voir les fils présentant une nouvelle activité au cours des six dernières semaines. Dans une discussion, utilisez la chronologie pour accéder aux éléments non lus et aux événements importants.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## Sondages en attente de votre vote
 
-Sélectionnez **Sondages sur les votes** dans la barre latérale pour voir les sondages ouverts auxquels vous avez été invité à participer et pour lesquels vous n’avez pas encore voté. Vous pouvez aussi ouvrir l’onglet **Sondages** d’un groupe pour voir ses sondages actifs et clôturés.
+Ouvrez **Sondages** sur **Tous les groupes** (ou sélectionnez le nombre de votes sur la carte **Sondages**) pour voir les sondages ouverts auxquels vous avez été invité à participer et pour lesquels vous n’avez pas encore voté. Vous pouvez aussi filtrer par **Besoin d’un vote**, **Ouvert**, **Clôturée**, type de sondage ou tag sur **Tous les groupes** ou sur la page de n’importe quel groupe.
 
 <!-- translation-section: bookmarks -->
 
 ## Signets
 
-Ajoutez un signet à une discussion, un commentaire, un sondage, un vote ou une conclusion lorsque vous souhaitez y revenir. Ouvrez **Signets** depuis votre menu utilisateur pour voir tout ce que vous avez enregistré. Consultez [Signets](/en/user_manual/users/bookmarks) pour en savoir plus.
+Ajoutez un signet à une discussion, un commentaire, un sondage, un vote ou une conclusion lorsque vous souhaitez y revenir. Ouvrez **Signets** sur **Tous les groupes** pour voir tout ce que vous avez enregistré, ou ouvrez **Signets** sur la page d’un groupe pour voir les signets de ce groupe. Consultez [Signets](/en/user_manual/users/bookmarks) pour en savoir plus.

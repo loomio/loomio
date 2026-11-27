@@ -1,29 +1,29 @@
 ---
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: 5b388c41f4612d55
+  introduction: e3ee54b7a4ea612a
   name-and-handle: 7dfb7ed2af2328b2
   description: 114d58e4fd63726e
   cover-image-and-logo: dc790f13111ad737
 title: 프로필
 title_source: d696a35bdd1883da
 title_generated: 4a7849864c3b8d40
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
 
 # 그룹 프로필
 
-프로필 탭에서는 그룹을 식별하고 소개하는 정보를 설정합니다. 그룹 페이지에서 **그룹 설정 수정**을 연 다음 **프로필**을 선택하세요.
+프로필 탭에서는 그룹을 식별하고 소개하는 정보를 설정합니다. 그룹 페이지에서 **설정**을 열고 **그룹 설정 수정**을 선택한 다음 **프로필**을 선택하세요.
 
 ![그룹 프로필 설정](group_profile.png)
 

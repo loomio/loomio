@@ -1,20 +1,20 @@
 ---
 title: Задачы
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: 1da36da227ad0450
   add-a-task: 288bb99a82894693
-  name-and-assign-the-task-to-a-person: 01c9fed41d7bb15d
+  name-and-assign-the-task-to-a-person: 6488d8e780e2a2e7
   set-a-reminder: a4b1e5feb3d77cce
   mark-it-as-done: 0017ace1112063bc
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ title_generated: 8534be17f9a29d43
 
 ![](tasklist2.png)
 
-Задачы, прызначаныя вам, з’яўляюцца на вашай старонцы **Задачы**. Адкрыйце **Задачы** з бакавой панэлі, каб убачыць іх згрупаванымі паводле тэмы або апытання.
+Адкрыйце **Задачы** на старонцы **Усе групы**, каб убачыць задачы, прызначаныя вам ва ўсіх вашых групах, або адкрыйце **Задачы** на старонцы групы, каб убачыць задачы ў гэтай групе. Задачы згрупаваны паводле тэмы або апытання. Вы можаце фільтраваць іх паводле статусу (**Да выканання**, **Выканана** або **Усе**), тэрміну выканання (**Пратэрмінаваныя**, **Наступныя 7 дзён**, **Пазней** або **Без тэрміну**), таго, каму прызначана задача (на старонцы групы), падгрупы, тэга катэгорыі або з дапамогай пошуку.
 
 ![](task_list.png)
 

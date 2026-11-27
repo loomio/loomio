@@ -1,28 +1,28 @@
 ---
 title: Tartalom keresése
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 91ceec48c5d29a37
   search: 5de14e45cc9ac6bc
   search-tips: 4d753a07ce09d99f
-  filter-discussions: f5e3ea1d6d34ca5c
-  category-tags: 1a82b7bb393c43a8
-  unread-discussions: 60a3bde974d63806
-  polls-awaiting-your-vote: 3a542d9458392a4c
-  bookmarks: 06b79827757caeeb
+  filter-discussions: d68e5cb2864afa2c
+  category-tags: b5cd24f91b729c3d
+  unread-discussions: 473dd3edf3cc3674
+  polls-awaiting-your-vote: f01b1b3f4219c4a5
+  bookmarks: d733891b082a2941
 generated:
   introduction: 61f73c522a97cf27
   search: 5388bccbbb7e449b
   search-tips: 5c8c4d6a72fc7ff3
-  filter-discussions: 40aebfdbedc648cd
-  category-tags: 7f19a11b799d71ad
-  unread-discussions: d7213734b482dba5
-  polls-awaiting-your-vote: 3a5d3e95de62085b
-  bookmarks: 21fc7353bd66d2ff
+  filter-discussions: ccc3671d4b2e44cf
+  category-tags: bb3d437b8c93a380
+  unread-discussions: e7b0d5ba64438c16
+  polls-awaiting-your-vote: f15e64049994c4ee
+  bookmarks: 0b74200f51acae1a
 title_source: 11acd4c6010fc176
 title_generated: 6a3673d6a62bc6c5
 ---
@@ -61,7 +61,7 @@ A keresés minden olyan csoportra és közvetlen beszélgetésre kiterjed, amely
 
 ## Beszélgetések szűrése
 
-Egy csoport **Beszélgetések** lapján nyitott vagy lezárt állapot, illetve kategóriacímke szerint szűrheted a szálakat. Használd együtt a szűrőt és a lista keresőmezőjét, hogy gyorsan leszűkítsd a beszélgetések hosszú listáját.
+Egy csoport **Szálak** oldalán zárolási állapot, olvasatlan tevékenység, kategóriacímke vagy alcsoport szerint szűrheted a szálakat (a **Csak ez a csoport**, **Az alcsoportjaim** vagy **Összes alcsoport** lehetőséget választva). Az **Összes csoport** oldalon az **Olvasatlan**, a **Közvetlen** és a kategóriacímke szerinti szűrést is használhatod, vagy a **Keresés** segítségével szűkítheted a listát.
 
 <!-- translation-section: category-tags -->
 
@@ -71,7 +71,7 @@ A címkék a csoportod által választott nevek alatt rendezik az összetartozó
 
 ![](tags.png)
 
-Válassz ki egy címkét a **Beszélgetések** lapon, hogy megjelenjenek a címkézett elemeket tartalmazó beszélgetések. Egy beszélgetésen belül válassz ki egy címkét az oldalsávban, hogy lásd a megfelelő hozzászólásokat, szavazásokat vagy következtetéseket azokkal az elemekkel együtt, amelyekre válaszolnak.
+Válassz ki egy címkét a **Szálak**, **Szavazások** vagy **Feladatok** oldalon, hogy megjelenjenek az adott címkével ellátott elemek. Egy beszélgetésen belül válassz ki egy címkét az oldalsávban, hogy lásd a megfelelő hozzászólásokat, szavazásokat vagy következtetéseket azokkal az elemekkel együtt, amelyekre válaszolnak.
 
 A szerzők címkézhetik a saját bejegyzéseiket. A csoportadminok, a száladminok és a beszélgetés leírásának szerkesztésére jogosult személyek bármelyik elemet címkézhetik. A beállításokról és a jogosultságokról a [Kategóriacímkék](/en/user_manual/discussions/tags) oldalon olvashatsz.
 
@@ -79,16 +79,16 @@ A szerzők címkézhetik a saját bejegyzéseiket. A csoportadminok, a száladmi
 
 ## Olvasatlan beszélgetések
 
-Válaszd ki az **Olvasatlan beszélgetések** lehetőséget az oldalsávban, hogy lásd azokat a szálakat, amelyekben új tevékenység történt. A beszélgetésen belül használd az idővonalat, hogy az olvasatlan elemekhez és a fontos eseményekhez ugorj.
+Válaszd ki az **Olvasatlan** lehetőséget az **Összes csoport** oldalon vagy egy csoport **Szálak** oldalán (vagy válaszd ki az olvasatlan elemek számát a **Szálak** kártyán), hogy lásd azokat a szálakat, amelyekben az elmúlt hat hétben új tevékenység történt. A beszélgetésen belül használd az idővonalat, hogy az olvasatlan elemekhez és a fontos eseményekhez ugorj.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## A szavazatodra váró szavazások
 
-Válaszd ki a **Szavazások, amelyekre szavazni kell** lehetőséget az oldalsávban, hogy lásd azokat a nyitott szavazásokat, amelyekre meghívtak, de még nem szavaztál. Egy csoport **Szavazások** lapját is megnyithatod, hogy lásd az aktív és lezárt szavazásait.
+Nyisd meg a **Szavazások** lehetőséget az **Összes csoport** oldalon (vagy válaszd ki a szavazatok számát a **Szavazások** kártyán), hogy lásd azokat a nyitott szavazásokat, amelyekre meghívtak, de még nem szavaztál. Az **Összes csoport** oldalon vagy bármelyik csoport oldalán a **Szavazásra van szükség**, **Nyitott**, **Zárt**, szavazástípus vagy címke szerinti szűrést is használhatod.
 
 <!-- translation-section: bookmarks -->
 
 ## Könyvjelzők
 
-Adj könyvjelzőt egy beszélgetéshez, hozzászóláshoz, szavazáshoz, szavazathoz vagy következtetéshez, ha később vissza szeretnél térni hozzá. Nyisd meg a **Könyvjelzők** lehetőséget a felhasználói menüdből, hogy lásd az összes mentett tartalmadat. A részletekről a [Könyvjelzők](/en/user_manual/users/bookmarks) oldalon olvashatsz.
+Adj könyvjelzőt egy beszélgetéshez, hozzászóláshoz, szavazáshoz, szavazathoz vagy következtetéshez, ha később vissza szeretnél térni hozzá. Nyisd meg a **Könyvjelzők** lehetőséget az **Összes csoport** oldalon, hogy lásd az összes mentett tartalmadat, vagy egy csoport oldalán, hogy az adott csoport könyvjelzőit lásd. A részletekről a [Könyvjelzők](/en/user_manual/users/bookmarks) oldalon olvashatsz.

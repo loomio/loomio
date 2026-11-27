@@ -1,13 +1,13 @@
 ---
 title: 議論を始める
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: b0894de4cb3a9ec7
-  new-discussion: d23adf3751853ce1
+  new-discussion: 8b68fff63fcf2b3d
   group: 5f06a00e1480596a
   invite-and-notify: 1ec0d63a4231440c
   tags: 73ccbe5ef9c45b43
@@ -39,11 +39,11 @@ Loomioでディスカッションを始める手順は、メールを送る手�
 
 ## 新しいディスカッションを始める
 
-グループページまたはサブグループページで、**ディスカッションを始める**を選択します。
+グループページまたはサブグループページで、**新しいスレッド**を選択します。
 
 グループの[ディスカッションのテンプレート](/en/user_manual/discussions/templates/)が表示されます。テンプレートまたは**空のテンプレート**を選択すると、ディスカッションの入力フォームが開きます。
 
-![Oatmilk Cooperativeのページにある「ディスカッションを始める」ボタン](new-discussion-button.png)
+![Oatmilk Cooperativeのページにある「新しいスレッド」ボタン](new-discussion-button.png)
 
 ![リターナブル瓶の試験導入を計画するディスカッションの開始フォーム](new-discussion-example.png)
 

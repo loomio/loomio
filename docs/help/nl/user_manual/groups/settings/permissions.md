@@ -1,14 +1,14 @@
 ---
 title: Toestemmingen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: e67659d9a6c9efa9
+  introduction: a4384b04868b4433
 title_source: abccc78cc93c0793
 title_generated: 4cfe641dfd4cbdbe
 ---
@@ -17,7 +17,7 @@ title_generated: 4cfe641dfd4cbdbe
 
 # Groepstoestemmingen
 
-Het tabblad **Toestemmingen** bepaalt wat leden in de groep kunnen doen en, bij groepen die niet geheim zijn, wat niet-leden kunnen doen. Open **Bewerk groepsinstellingen** via het actiemenu van de groep en selecteer vervolgens **Toestemmingen**.
+Het tabblad **Toestemmingen** bepaalt wat leden in de groep kunnen doen en, bij groepen die niet geheim zijn, wat niet-leden kunnen doen. Open op de groepspagina **Instellingen**, selecteer **Bewerk groepsinstellingen** en kies **Toestemmingen**.
 
 ![Instellingen voor groepstoestemmingen](group_group_settings_permissions.png)
 

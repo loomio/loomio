@@ -1,16 +1,16 @@
 ---
 title: Приглашение людей
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 0ffa6b0c79a4ed3c
+  introduction: 10bed7eba31a32cc
   send-invitations-via-email: 4546382d7b8e6cc5
   invite-many-at-once: 9597794490023b46
   invite-people-to-subgroups: a6fe96feab8f6048
-  share-a-link-to-your-group: f54a7fc801f1923d
+  share-a-link-to-your-group: 6f82d50c1e621be3
   request-to-join-group: 9195b010f7df109d
   review-membership-requests: 85f36da73cee397d
   managing-invitations: bea41eb31362d75c
@@ -37,7 +37,7 @@ title_generated: 74f19aba73e43553
 
 # Пригласите людей в группу Loomio
 
-Вы можете пригласить людей в вашу группу Loomio по электронной почте, поделиться ссылкой-приглашением или разрешить людям подавать заявки на вступление. Для начала откройте вкладку **Участники** на странице вашей группы.
+Можно пригласить людей в вашу группу Loomio по электронной почте, поделиться ссылкой-приглашением или разрешить людям подавать заявки на вступление. Для начала выберите **Приглашать** на карточке **Участники** или откройте **Участники** на странице вашей группы.
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ title_generated: 74f19aba73e43553
 
 ## Как поделиться ссылкой на вашу группу
 
-Выберите **Поделиться**, чтобы создать многоразовую ссылку-приглашение для рассылки, канала чата, письма или сайта.
+Выберите **Поделиться**, чтобы создать многоразовую ссылку-приглашение для рассылки, канала чата, письма или сайта. Включите **Добавить вводное сообщение**, чтобы скопировать короткое сообщение вместе со ссылкой.
 
 ![](group_invite_sharable_link.png)
 
-Чтобы запретить вступление по существующей ссылке, выберите **Сбросить эту ссылку**. Старая ссылка перестанет работать, и будет создана новая.
+Чтобы запретить вступление по существующей ссылке, выберите **Сбросить ссылку**. Старая ссылка перестанет работать, и будет создана новая.
 
 <!-- translation-section: request-to-join-group -->
 

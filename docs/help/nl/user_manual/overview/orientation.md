@@ -1,28 +1,30 @@
 ---
 title: Snel overzicht
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: ecd0fe0598db0af5
   group-page: b351d5f2c21b5300
-  tabs: fa2b8c5dbc1e9e15
-  sidebar: 6fcc6fb14f4584c4
+  tabs: 86954790e9ef59f7
+  sidebar: c6de16f7a7779148
   user-settings: fc19e4048d467aed
   notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 8c209bc2f042ae96
+  mobile-navigation: 2be6c40d260c3dd1
+  all-groups: d71bbbd8a059f5db
 generated:
   introduction: 2bb02e1206d5ce89
   group-page: f34d828735c41825
-  tabs: 4f302cc1a3d755a2
-  sidebar: ee8ea13c62886f4f
+  tabs: 6f63a42d3cea9735
+  sidebar: 1dab8cd2a3440b1a
   user-settings: 89708aa6f7e85a88
   notifications: 2a4d6b34c90778a7
   what-to-do-next: 9ad93f652345617a
-  mobile-navigation: 95e226c9aeb33ea9
+  mobile-navigation: 273ebdde5ee76ed6
+  all-groups: fae3023b49c056aa
 title_source: c41a33370cd580dd
 title_generated: '057569e85df4c620'
 ---
@@ -43,16 +45,27 @@ De startpagina van jouw groep beschrijft de groep en bevat links naar het werk v
 
 <!-- translation-section: tabs -->
 
-### Tabbladen
+### Onderdelen
 
-De tabbladen onder de groepsbeschrijving tonen:
+De navigatiekaarten onder de groepsbeschrijving tonen:
 
-- **Discussies**: De discussiethreads van de groep en recente activiteit.
-- **Peilingen**: Open en gesloten peilingen in de groep.
-- **Leden**: De mensen die tot de groep behoren.
+- **Threads**: De discussiethreads van de groep en recente of ongelezen activiteit.
+- **Peilingen**: Open en gesloten peilingen in de groep, waaronder peilingen die op jouw stem wachten.
+- **Leden**: De mensen die tot de groep behoren, met een snelkoppeling om nieuwe leden uit te nodigen.
 - **Bestanden**: Bestanden die op verschillende plekken in de groep zijn toegevoegd aan discussies, reacties, voorstellen en peilingen, zodat je een document kunt vinden zonder te hoeven onthouden waar het is gedeeld.
+- **Taken**: Open en voltooide taken in de groep, met filters voor status, vervaldatum, toegewezen persoon en labels.
+- **Bladwijzers**: Discussies, reacties, peilingen, stemmen en conclusies waarvoor je in de groep een bladwijzer hebt gemaakt.
+- **Instellingen**: Groepsbeheer, lidmaatschapsopties, meldingsinstellingen, integraties en gegevensexport.
 
 Zie [Inhoud vinden](/en/user_manual/overview/finding-content) voor hulp bij zoeken, filters, labels, bladwijzers en ongelezen discussies.
+
+<!-- translation-section: all-groups -->
+
+## Alle groepen
+
+Selecteer **Alle groepen** in de zijbalk om je werk te zien in alle groepen waartoe je behoort. Deze pagina gebruikt dezelfde navigatiekaarten als een groepspagina, met **Threads** (waaronder ongelezen en directe threads), **Peilingen**, **Mensen** (een doorzoekbaar overzicht van mensen met wie je groepen deelt, waarin je ziet wie onlangs online was), **Bestanden**, **Taken** en **Bladwijzers**.
+
+![](all_groups.png)
 
 <!-- translation-section: sidebar -->
 
@@ -62,7 +75,7 @@ Open de zijbalk met de menuknop (**☰**) linksboven op een computer, of in de o
 
 ![](sidebar.png)
 
-Gebruik de zijbalk om je dashboard, peilingen die op jouw stem wachten, ongelezen en directe discussies, taken en groepen te openen. De zijbalk bevat ook links naar de gebruikershandleiding en ondersteuning.
+Gebruik de zijbalk om te wisselen tussen **Alle groepen**, je groepen en subgroepen, en om een nieuwe groep of subgroep te starten. Als de zijbalk gesloten is, selecteer je de groepsnaam (of **Alle groepen**) bovenaan de pagina om van groep te wisselen of een nieuwe groep te starten. De zijbalk bevat ook links naar de gebruikershandleiding en ondersteuning.
 
 <!-- translation-section: user-settings -->
 
@@ -88,7 +101,7 @@ Zie [Meldingen](/en/user_manual/users/email_settings) voor informatie over meldi
 
 ## Mobiele navigatie
 
-Op een mobiel apparaat opent de onderste navigatiebalk de zijbalk, het dashboard en de meldingen. Binnen een discussie opent het threadmenu de inhoudsopgave en acties voor de thread.
+Op een mobiel apparaat opent de onderste navigatiebalk de zijbalk, **Alle groepen** en de meldingen. Binnen een discussie opent het threadmenu de inhoudsopgave en acties voor de thread.
 
 <!-- translation-section: what-to-do-next -->
 

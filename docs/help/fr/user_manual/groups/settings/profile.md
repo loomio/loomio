@@ -1,17 +1,17 @@
 ---
 title: Profil
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/settings/profile.md
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
+source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: f3ef3bc22a685498
+  introduction: f1c11fc1cfc9780e
   name-and-handle: 516f57da289c7f47
   description: 0a785e49b76f850d
   cover-image-and-logo: 25d48f2063a0b456
@@ -23,7 +23,7 @@ title_generated: e267d343821f264e
 
 # Profil du groupe
 
-L’onglet Profil permet de définir comment votre groupe est identifié et présenté. Ouvrez **Modifier les paramètres du groupe** depuis la page du groupe, puis sélectionnez **Profil**.
+L’onglet Profil permet de définir comment votre groupe est identifié et présenté. Sur la page du groupe, ouvrez **Paramètres**, sélectionnez **Modifier les paramètres du groupe**, puis choisissez **Profil**.
 
 ![Paramètres du profil du groupe](group_profile.png)
 

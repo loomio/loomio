@@ -1,34 +1,34 @@
 ---
 title: תת־קבוצות
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: '080d5b7724660438'
-  add-a-subgroup: db7780cc700b55e5
+  add-a-subgroup: d0cbce2e31113720
   subgroup-settings: 635934af0becacdc
   privacy: '086897a3d975644c'
   permissions: c9b7bb43cb581f68
-  find-subgroups: 693771ff837da8b0
+  find-subgroups: 8d747f31273e9495
   invite-to-a-subgroup: 111e8bacd0064528
   simultaneously-invite-people-to-subgroups-and-parent-group: 77aa39d141b0d851
   administer-a-subgroup: 05db85ca3db2e296
   delete-a-subgroup: d3cd55023b81181b
-  how-people-join: 388b6695391f4d9b
+  how-people-join: '09f9a1f46cebb2a3'
 title_source: 9f81e728f70cae3e
 title_generated: 1a4886ce36d6939b
 ---
@@ -58,7 +58,7 @@ title_generated: 1a4886ce36d6939b
 
 ![טופס תת־קבוצה חדשה עבור קבוצת העבודה בנושא אריזות](subgroups_new.png)
 
-כשתת־הקבוצה מוכנה, ניתן [להזמין אנשים](/en/user_manual/groups/inviting_people) להצטרף אליה. ניתן לשנות את [הגדרות הקבוצה](/en/user_manual/groups/settings) של תת־הקבוצה דרך תפריט הפעולות בעמוד תת־הקבוצה.
+כשתת־הקבוצה מוכנה, ניתן [להזמין אנשים](/en/user_manual/groups/inviting_people) להצטרף אליה. ניתן לשנות את [הגדרות הקבוצה](/en/user_manual/groups/settings) של תת־הקבוצה דרך **הגדרות** בעמוד תת־הקבוצה.
 
 ![פעולת עריכת הגדרות הקבוצה בקבוצת העבודה בנושא אריזות](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ title_generated: 1a4886ce36d6939b
 
 ### איך אנשים מצטרפים
 
-בחירה ב[אופן ההצטרפות](/en/user_manual/groups/settings/privacy#how-people-join) נעשית בעת יצירת תת־הקבוצה, או דרך **ערוך הגדרות קבוצה** > **פרטיות**.
+בחירה ב[אופן ההצטרפות](/en/user_manual/groups/settings/privacy#how-people-join) נעשית בעת יצירת תת־הקבוצה, או דרך **הגדרות** > **ערוך הגדרות קבוצה** > **פרטיות**.
 
 ![הגדרות פרטיות והצטרפות של תת־קבוצה](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ title_generated: 1a4886ce36d6939b
 
 ## מציאת תת־קבוצות
 
-יש לבחור את שם קבוצת האם בסרגל הצד כדי לראות את תת־הקבוצות שלה.
+יש לבחור את שם קבוצת האם בסרגל הצד כדי לראות את תת־הקבוצות שלה. בעמודי **שרשורים**, **סקרים**, **חברים**, **קבצים**, **משימות** ו**סימניות** של קבוצת האם, ניתן להשתמש במסנן **תת־קבוצות** כדי לעבור בין **רק הקבוצה הזו**, **תת־הקבוצות שלי** ו**כל תת־הקבוצות**, או לעבור ישירות לתת־קבוצה.
 
 ![תת־הקבוצות של קואופרטיב חלב שיבולת השועל בסרגל הצד](subgroups_find_subgroups.png)
 

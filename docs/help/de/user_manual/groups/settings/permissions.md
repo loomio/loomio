@@ -1,14 +1,14 @@
 ---
 title: Berechtigungen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: 4b64318c8ff85a98
+  introduction: '08f3b41e45f8d7d1'
 title_source: abccc78cc93c0793
 title_generated: 036b749f611832b5
 ---
@@ -17,7 +17,7 @@ title_generated: 036b749f611832b5
 
 # Gruppenberechtigungen
 
-Der Tab **Berechtigungen** steuert, was Mitglieder in der Gruppe tun können und bei nicht geheimen Gruppen auch, was Nichtmitglieder tun können. Öffne **Gruppeneinstellungen bearbeiten** im Aktionsmenü der Gruppe und wähle dann **Berechtigungen**.
+Der Tab **Berechtigungen** steuert, was Mitglieder in der Gruppe tun können und bei nicht geheimen Gruppen auch, was Nichtmitglieder tun können. Öffne auf der Gruppenseite **Einstellungen**, wähle **Gruppeneinstellungen bearbeiten** und dann **Berechtigungen**.
 
 ![Einstellungen für Gruppenberechtigungen](group_group_settings_permissions.png)
 

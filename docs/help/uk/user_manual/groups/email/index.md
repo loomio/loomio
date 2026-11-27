@@ -1,15 +1,15 @@
 ---
 title: Адреса електронної пошти
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: 69def42596eb23a9
+  introduction: ee91c14d97992365
   preventing-unauthorized-emails: cd17e5a96a9081cf
 title_source: f2488fd4ef4adbc6
 title_generated: ef603565033e32ac
@@ -19,11 +19,11 @@ title_generated: ef603565033e32ac
 
 # Надішліть електронний лист, щоб створити тему у вашій групі
 
-Кожна група в Loomio має власну адресу електронної пошти. Ви можете надіслати або переслати лист на цю адресу, щоб створити нову тему в групі.
+Кожна група в Loomio має власну адресу електронної пошти. ви можете надіслати або переслати лист на цю адресу, щоб створити нову тему в групі.
 
-Адресу електронної пошти групи можна знайти на сторінці групи:
+Адресу електронної пошти групи можна знайти в розділі **Налаштування** на сторінці групи:
 
-![Розташування адреси електронної пошти на сторінці групи](email_email_button.png)
+![Розташування адреси електронної пошти в розділі Налаштування на сторінці групи](email_email_button.png)
 
 Коли ви надсилаєте лист на цю адресу, Loomio створює нову тему. Тема листа стає назвою теми в Loomio, текст листа — її описом, а всі вкладені файли додаються до теми.
 

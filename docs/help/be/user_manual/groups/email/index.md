@@ -1,15 +1,15 @@
 ---
 title: Адрас электроннай пошты
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: c093f573eb97eeb6
+  introduction: a82ebd57d77be391
   preventing-unauthorized-emails: 840bf1127071d096
 title_source: f2488fd4ef4adbc6
 title_generated: 46e2f084ded96ec7
@@ -19,11 +19,11 @@ title_generated: 46e2f084ded96ec7
 
 # Адпраўце электронны ліст, каб пачаць тэму ў вашай групе
 
-Кожная група ў Loomio мае свой адрас электроннай пошты. Вы можаце адправіць або пераслаць ліст на гэты адрас, каб пачаць новую тэму ў групе.
+Кожная група ў Loomio мае свой адрас электроннай пошты. вы можаце адправіць або пераслаць ліст на гэты адрас, каб пачаць новую тэму ў групе.
 
-Адрас электроннай пошты групы можна знайсці на старонцы групы:
+Адрас электроннай пошты групы можна знайсці ў раздзеле **Налады** на старонцы групы:
 
-![Размяшчэнне адраса электроннай пошты на старонцы групы](email_email_button.png)
+![Размяшчэнне адраса электроннай пошты ў раздзеле «Налады» на старонцы групы](email_email_button.png)
 
 Калі вы адпраўляеце ліст на гэты адрас, Loomio стварае новую тэму. Тэма ліста становіцца назвай тэмы ў Loomio, тэкст ліста — яе апісаннем, а ўсе далучаныя файлы дадаюцца да тэмы.
 

@@ -1,13 +1,13 @@
 ---
 title: Начать обсуждение
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: 8e6870217555ce7e
-  new-discussion: 506e3a53eed260fc
+  new-discussion: 914aa393bc759d87
   group: 3534c974aef424fc
   invite-and-notify: 8cdce16772cfb79d
   tags: 3ba77e8baee46173
@@ -37,11 +37,11 @@ title_generated: 7092f54c95df33cb
 
 ## Начать новое обсуждение
 
-Выберите **Начать обсуждение** на странице вашей группы или любой подгруппы.
+Выберите **Новая ветка** на странице вашей группы или любой подгруппы.
 
 Loomio покажет [шаблоны обсуждений](/en/user_manual/discussions/templates/) вашей группы. Выберите шаблон или **Пустой шаблон**, чтобы открыть форму обсуждения.
 
-![Кнопка «Начать обсуждение» на странице Oatmilk Cooperative](new-discussion-button.png)
+![Кнопка «Новая ветка» на странице Oatmilk Cooperative](new-discussion-button.png)
 
 ![Форма начала обсуждения для планирования пробного использования возвратных бутылок](new-discussion-example.png)
 

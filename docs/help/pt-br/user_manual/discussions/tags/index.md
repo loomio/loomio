@@ -1,25 +1,25 @@
 ---
 title: Tags de categoria
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 87640baa1fd12d5a
+  introduction: 0b467964702ed2e8
   apply-tags: 1e78c439f57bfcb0
   create-tags: fa79bd5cb647d506
-  edit-tags: d269ec99c46240cf
+  edit-tags: f72245cad3e240cb
   edit-tag-in-thread-or-poll: 4893f3b614fe93a9
   template-tags: ee496375e1c3a263
   tag-contributions: bdfd4a5853fb37cb
@@ -39,7 +39,7 @@ As tags de categoria ajudam você a encontrar discussões, enquetes, conclusões
 
 As tags pertencem a toda a organização. Uma tag criada em um grupo principal é compartilhada com seus subgrupos, para que você possa acompanhar trabalhos relacionados entre os grupos. O Loomio lista as tags em ordem alfabética, com um ponto colorido ao lado de cada nome.
 
-Na página do seu grupo, selecione **Tags** acima da lista de conversas e escolha uma tag para mostrar conversas que contenham pelo menos um item com essa tag. Digite no campo de filtro para pesquisar em uma lista longa.
+Em **Todos os grupos** ou na página de um grupo, selecione **Tags** acima da lista de conversas, enquetes ou tarefas e escolha uma tag para mostrar itens com essa tag. Digite no campo de filtro para pesquisar em uma lista longa.
 
 ![](tags_view.png)
 
@@ -90,7 +90,7 @@ Quando alguém inicia uma discussão ou enquete a partir de um modelo, o Loomio 
 
 Somente admins do grupo principal podem renomear, alterar as cores, mesclar ou deletar tags. As alterações se aplicam a toda a organização, incluindo todos os subgrupos.
 
-Na página do grupo, abra **Tags** e selecione **Editar tags**.
+Na página do grupo, abra **Tags** e selecione **Editar tags**, ou abra **Configurações** e selecione **Categorização por tags**.
 
 ![editar tags de categoria](tags_edit_new.png)
 

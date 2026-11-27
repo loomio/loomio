@@ -1,16 +1,16 @@
 ---
 title: Gestione dei membri
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: bc7d2de9abc2ea86
   administering-your-group: 7ae1b105c20977fc
   managing-subgroups: 2e4bdee3283e8ef8
   removing-members: d70807bdd968d594
-  leaving-group: 268f0c735b8e46d7
+  leaving-group: 69332aeda981c679
   set-title: eb9a52e3d6c21d43
   member-email-addresses: 0e800419a7bdacc6
 generated:
@@ -18,7 +18,7 @@ generated:
   administering-your-group: d8e4342d8f2a13d2
   managing-subgroups: 0c8fd869fb32a2cc
   removing-members: 27b56db8aee805aa
-  leaving-group: a2761f05ea943afc
+  leaving-group: 111ae2f67f9a379d
   set-title: a95b964553997113
   member-email-addresses: 1dfd13726221e7ea
 title_source: 23ac3a7fe9ee72a2
@@ -82,11 +82,11 @@ Puoi aggiungere nuovamente i membri rimossi in un secondo momento. Rientrare nel
 
 ## Lasciare un gruppo
 
-Per lasciare un gruppo, apri il menu delle azioni del gruppo e seleziona **Lascia il gruppo**.
+Per lasciare un gruppo, apri **Configurazione** nella pagina del gruppo e seleziona **Lascia il gruppo**.
 
 Lasciare il gruppo ha gli stessi effetti sull'accesso al gruppo e ai sottogruppi della rimozione da parte di un amministratore del gruppo.
 
-![Azione Lascia il gruppo nel menu delle impostazioni di Oatmilk Cooperative](member_leave_group.png)
+![Azione Lascia il gruppo nella pagina di configurazione di Oatmilk Cooperative](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 

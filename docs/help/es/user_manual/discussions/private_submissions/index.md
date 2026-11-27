@@ -1,26 +1,24 @@
 ---
 title: Recopilar aportaciones privadas
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: 5b7041cb79df535a
-  enable-private-submissions: 18f5a5061a086cb3
+  enable-private-submissions: 353f35d5cbaede74
   set-up-a-private-submission-process: d29b79748326c05f
-  make-a-submission: 6805c776bc39fa39
+  make-a-submission: 3bdd0fbad5d03a32
   review-submissions: cdce4add6e3589b3
 title_source: e82ab76916d594f4
 title_generated: f8f5c4c7e4c2a96e
-needs_review:
-  enable-private-submissions: check the interface label "**Configuración **" for "**Settings**"
 ---
 
 <!-- translation-section: introduction -->
@@ -48,7 +46,7 @@ Este proceso mantiene las aportaciones privadas entre quienes las envían, pero 
 Debes ser admin del grupo o subgrupo donde quieras recopilar aportaciones.
 
 1. Abre el grupo.
-2. Selecciona **Configuración** (o **Más**, luego **Editar la configuración del grupo**).
+2. Abre **Configuración ** y selecciona **Editar la configuración del grupo**.
 3. Abre **Permisos**.
 4. Activa **Los no miembros pueden iniciar debates**.
 5. Guarda la configuración del grupo.
@@ -75,7 +73,7 @@ Activar este permiso no hace públicas las discusiones del grupo. Una persona qu
 
 ## Enviar una aportación
 
-La persona que envía la aportación abre el subgrupo y selecciona **Iniciar discusión**. Loomio muestra las plantillas de discusión del subgrupo. La persona elige la plantilla adecuada, responde a las preguntas e inicia la discusión.
+La persona que envía la aportación abre el subgrupo y selecciona **Nuevo hilo**. Loomio muestra las plantillas de discusión del subgrupo. La persona elige la plantilla adecuada, responde a las preguntas e inicia la discusión.
 
 La discusión pertenece al subgrupo, y Loomio añade a la persona que envía la aportación como invitada a ese hilo, sin convertirla en miembro del subgrupo. Puede participar en su propio hilo con el equipo de revisión, pero no puede ver otras discusiones privadas ni otras aportaciones del subgrupo.
 

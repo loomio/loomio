@@ -1,15 +1,15 @@
 ---
 title: Je groep verwijderen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: 464388166218cb92
+  introduction: 78d2663a00486abe
   group-data-is-permanently-deleted-after-90-days: a60d0e469538a1e6
 title_source: 9a0868f49f1262ea
 title_generated: 6fbf0a1fc406600d
@@ -23,9 +23,9 @@ Alleen een groepsadmin kan een groep verwijderen. Als je een groep verwijdert, v
 
 Voordat je een groep verwijdert, [exporteer je de groepsgegevens](/en/user_manual/groups/data_export) en download je alle geüploade bestanden die je wilt bewaren.
 
-Om een groep te verwijderen, open je het actiemenu van de groep en selecteer je **Groep verwijderen**.
+Om een groep te verwijderen, open je **Instellingen** op de groepspagina en selecteer je **Groep verwijderen**.
 
-![Actie Groep verwijderen in het menu van Oatmilk Cooperative](group_delete_group.png)
+![Actie Groep verwijderen op de instellingenpagina van Oatmilk Cooperative](group_delete_group.png)
 
 Voer de groepshandle in om de verwijdering te bevestigen.
 

@@ -1,16 +1,16 @@
 ---
 title: Leute einladen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 254862dc93471c8f
+  introduction: 0ca55c64aea2ebcd
   send-invitations-via-email: 58346e72fa9e2ea0
   invite-many-at-once: 81da8de1d949d1e1
   invite-people-to-subgroups: d9c940d2d30d89a3
-  share-a-link-to-your-group: 40b6f30a39e2ba7b
+  share-a-link-to-your-group: 5dfa96f840409978
   request-to-join-group: 449790b117e478a9
   review-membership-requests: d12570415c260651
   managing-invitations: a01756a78023a2e2
@@ -37,7 +37,7 @@ title_generated: 3e0831d8f76bf916
 
 # Leute in eine Loomio-Gruppe einladen
 
-Du kannst Personen per E-Mail in deine Loomio-Gruppe einladen, einen Einladungslink teilen oder Beitrittsanfragen ermöglichen. Öffne dazu den Tab **Mitglieder** auf deiner Gruppenseite.
+Du kannst Personen per E-Mail in deine Loomio-Gruppe einladen, einen Einladungslink teilen oder Beitrittsanfragen ermöglichen. Wähle dazu **Einladen** auf der Karte **Mitglieder** oder öffne **Mitglieder** auf deiner Gruppenseite.
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ Wenn du Personen in eine Hauptgruppe einlädst, kannst du sie gleichzeitig zu ei
 
 ## Einen Link zu deiner Gruppe teilen
 
-Wähle **Teilen**, um einen mehrfach verwendbaren Einladungslink für einen Newsletter, Chatkanal, eine E-Mail oder eine Website zu erstellen.
+Wähle **Teilen**, um einen mehrfach verwendbaren Einladungslink für einen Newsletter, Chatkanal, eine E-Mail oder eine Website zu erstellen. Aktiviere **Einleitende Nachricht hinzufügen**, um zusammen mit dem Link eine kurze Nachricht zu kopieren.
 
 ![](group_invite_sharable_link.png)
 
-Wähle **Diesen Link zurücksetzen**, um zu verhindern, dass Personen über einen bestehenden Link beitreten. Dadurch wird der alte Link ungültig und ein neuer erstellt.
+Wähle **Link zurücksetzen**, um zu verhindern, dass Personen über einen bestehenden Link beitreten. Dadurch wird der alte Link ungültig und ein neuer erstellt.
 
 <!-- translation-section: request-to-join-group -->
 

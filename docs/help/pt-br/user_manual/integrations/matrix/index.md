@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 114ab8c916ca5fba
+  introduction: 31651f229b065ec2
 generated:
-  introduction: 7f464dcf3dc335f2
+  introduction: e3b7c4642d0d93a7
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -27,7 +27,7 @@ Neste guia, usamos o Element.
 
 1. Crie uma conta de usuário no Matrix para o Loomio, entre com essa conta no Element e convide essa conta para a sala do Matrix onde você quer receber notificações. Mantenha essa sessão conectada — sair da conta invalida o token de acesso.
 
-2. No seu grupo do Loomio, abra o menu do grupo, selecione **Integrações de bate-papo** e adicione uma integração de bate-papo com o **Matrix**.
+2. No seu grupo do Loomio, abra **Configurações**, selecione **Integrações de bate-papo** e adicione uma integração de bate-papo com o **Matrix**.
 
    ![menu do bot do Matrix no Loomio](loomio-add-matrix-bot.png)
 

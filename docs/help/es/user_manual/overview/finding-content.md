@@ -1,28 +1,28 @@
 ---
 title: Encontrar contenido
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 91ceec48c5d29a37
   search: 5de14e45cc9ac6bc
   search-tips: 4d753a07ce09d99f
-  filter-discussions: f5e3ea1d6d34ca5c
-  category-tags: 1a82b7bb393c43a8
-  unread-discussions: 60a3bde974d63806
-  polls-awaiting-your-vote: 3a542d9458392a4c
-  bookmarks: 06b79827757caeeb
+  filter-discussions: d68e5cb2864afa2c
+  category-tags: b5cd24f91b729c3d
+  unread-discussions: 473dd3edf3cc3674
+  polls-awaiting-your-vote: f01b1b3f4219c4a5
+  bookmarks: d733891b082a2941
 generated:
   introduction: 84dd3270fff74602
   search: b6f4cdf6b7b538f4
   search-tips: 2c6a88cdd6fb4ee1
-  filter-discussions: dfaed643b19353d8
-  category-tags: 98f6046fe24ae202
-  unread-discussions: ad65c39017a07f51
-  polls-awaiting-your-vote: 9b7fdb11b2cc1fb8
-  bookmarks: 95cdaf56f0b43029
+  filter-discussions: c049b63f2857db68
+  category-tags: 420b8e2686c8d43d
+  unread-discussions: 4c2673ed8bb8eba2
+  polls-awaiting-your-vote: 7b2d6b20a9be8388
+  bookmarks: 5d5c721704df3abc
 title_source: 11acd4c6010fc176
 title_generated: eb1d9071daf168d1
 ---
@@ -61,7 +61,7 @@ Introduce una palabra o frase y pulsa Intro. Por ejemplo, buscar **bottle** encu
 
 ## Filtrar discusiones
 
-En la pestaña **Discusiones** de un grupo, puedes filtrar los hilos por estado abierto o cerrado o por etiqueta de categoría. Combina un filtro con el cuadro de búsqueda de la lista para reducir rápidamente una lista larga de discusiones.
+En la página **Hilos** de un grupo, puedes filtrar los hilos por estado de bloqueo, actividad no leída, etiqueta de categoría o subgrupo (eligiendo **Solo este grupo**, **Mis subgrupos** o **Todos los subgrupos**). En **Todos los grupos**, también puedes filtrar por **No leído**, **Directos** y etiqueta de categoría, o usar **Buscar** para reducir la lista.
 
 <!-- translation-section: category-tags -->
 
@@ -71,7 +71,7 @@ Las etiquetas agrupan discusiones, encuestas, conclusiones y comentarios relacio
 
 ![](tags.png)
 
-Selecciona una etiqueta en la pestaña **Discusiones** para mostrar discusiones que contengan elementos con esa etiqueta. Dentro de una discusión, selecciona una etiqueta en la barra lateral para ver los comentarios, encuestas o conclusiones coincidentes junto con los elementos a los que responden.
+Selecciona una etiqueta en **Hilos**, **Sondeos** o **Tareas** para mostrar los elementos con esa etiqueta. Dentro de una discusión, selecciona una etiqueta en la barra lateral para ver los comentarios, encuestas o conclusiones coincidentes junto con los elementos a los que responden.
 
 Los autores pueden etiquetar sus propias publicaciones. Los admins del grupo, los admins del hilo y cualquier persona que pueda editar el contexto de la discusión pueden etiquetar cualquier elemento. Consulta [Etiquetas de categoría](/en/user_manual/discussions/tags) para conocer la configuración y los permisos.
 
@@ -79,16 +79,16 @@ Los autores pueden etiquetar sus propias publicaciones. Los admins del grupo, lo
 
 ## Discusiones no leídas
 
-Selecciona **Discusiones no leídas** en la barra lateral para ver hilos con actividad nueva. Dentro de una discusión, usa la cronología para ir a los elementos no leídos y a los eventos importantes.
+Selecciona **No leído** en **Todos los grupos** o en la página **Hilos** de un grupo (o selecciona el número de elementos no leídos en la tarjeta **Hilos**) para ver los hilos con actividad nueva en las últimas seis semanas. Dentro de una discusión, usa la cronología para ir a los elementos no leídos y a los eventos importantes.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## Encuestas pendientes de tu voto
 
-Selecciona **Sondeos para votar** en la barra lateral para ver las encuestas abiertas a las que te han invitado y en las que aún no has votado. También puedes abrir la pestaña **Sondeos** de un grupo para ver sus encuestas activas y cerradas.
+Abre **Sondeos** en **Todos los grupos** (o selecciona el número de votos en la tarjeta **Sondeos**) para ver las encuestas abiertas a las que te han invitado y en las que aún no has votado. También puedes filtrar por **Se necesita votar**, **Abierto**, **Cerrado**, tipo de encuesta o etiqueta en **Todos los grupos** o en la página de cualquier grupo.
 
 <!-- translation-section: bookmarks -->
 
 ## Marcadores
 
-Añade a tus marcadores una discusión, un comentario, una encuesta, un voto o una conclusión cuando quieras volver a consultarlos. Abre **Marcadores** desde tu menú de usuario para ver todo lo que has guardado. Consulta [Marcadores](/en/user_manual/users/bookmarks) para obtener más información.
+Añade a tus marcadores una discusión, un comentario, una encuesta, un voto o una conclusión cuando quieras volver a consultarlos. Abre **Marcadores** en **Todos los grupos** para ver todo lo que has guardado, o abre **Marcadores** en la página de un grupo para ver los marcadores de ese grupo. Consulta [Marcadores](/en/user_manual/users/bookmarks) para obtener más información.

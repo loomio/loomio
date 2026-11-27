@@ -1,17 +1,17 @@
 ---
 title: グループ設定
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/index.md
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
+source_file: docs/help/en/user_manual/groups/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: b975fe0dc7787563
+  introduction: e22d1f7356e9be93
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: 92858b79ebf90ba7
+  introduction: 8b25fcb8d72c89f9
   group-profile: 8c3981e8ae37bb1e
   group-privacy: 8a711f04481e81fb
   group-permissions: 17863db44e637d32
@@ -25,7 +25,7 @@ title_generated: 77320c8f36395ec2
 
 グループ設定では、グループの表示内容、グループを見つけて参加できる人、メンバーが行える操作を設定します。これらの設定を編集できるのは、グループ管理者のみです。
 
-グループページで操作メニューを開き、**グループ設定を編集する**を選択します。
+グループページで**設定**を開き、**グループ設定を編集する**を選択します。
 
 ![グループページからグループ設定を編集する](group_settings.png)
 

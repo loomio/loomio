@@ -1,15 +1,15 @@
 ---
 title: Прамыя дыскусіі
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: c617bad25b64654f
+  introduction: 1a0632592c683296
   contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: 48b188345302e6d2
+  introduction: 5d7c77c98106f84e
   contacting-someone-via-a-direct-discussion: 0a1537552aaac160
 title_source: ccfab058f1f7c146
 title_generated: 5be7bc94dfa08ff2
@@ -27,11 +27,11 @@ title_generated: 5be7bc94dfa08ff2
 
 ![Форма прамога абмеркавання без выбранай групы і з Самірай Патэл у полі «Запрасіць»](direct-discussion-example.png)
 
-Выберыце **Прамыя тэмы** на бакавой панэлі, каб убачыць свае прамыя абмеркаванні і апытанні. Адтуль адкрыйце меню **Новы** і выберыце **Новая дыскусія**, каб пачаць прамое абмеркаванне, або **Новае апытанне**, каб пачаць апытанне без групы.
+Адкрыйце **Усе групы** і выберыце **Прамыя** ў раздзеле **Тэмы** (або націсніце на колькасць прамых тэм на картцы **Тэмы**), каб убачыць свае прамыя абмеркаванні. Адтуль выберыце **Новая тэма**, каб пачаць прамое абмеркаванне. Вы таксама можаце адкрыць раздзел **Людзі** ва **Усіх групах** і выбраць **Прамая тэма** побач з імем патрэбнага чалавека.
 
 Прамое апытанне бачнае толькі людзям, якіх вы запрашаеце. Пасля стварэння апытання скарыстайцеся пунктам [Кіраванне выбаршчыкамі](/en/user_manual/polls/manage_voters), каб запрасіць людзей або дадаць адрасы электроннай пошты.
 
-![Пункт «Прамыя тэмы» на бакавой панэлі і спіс прамых абмеркаванняў](direct-discussion-sidebar.png)
+![Фільтр «Прамыя» ва «Усіх групах», які паказвае прамыя абмеркаванні](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 

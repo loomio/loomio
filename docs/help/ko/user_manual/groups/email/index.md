@@ -1,18 +1,18 @@
 ---
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: 723a804547d4b207
+  introduction: 48371821bfdb0c55
   preventing-unauthorized-emails: 59b5ef35d4cfa0d1
 title: 이메일 주소
 title_source: f2488fd4ef4adbc6
 title_generated: e9abda44c42a3a28
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -21,9 +21,9 @@ translated:
 
 각 Loomio 그룹에는 고유한 이메일 주소가 있습니다. 이 주소로 이메일을 보내거나 전달하면 그룹에서 새 스레드를 시작할 수 있습니다.
 
-그룹 페이지에서 그룹의 이메일 주소를 확인할 수 있습니다:
+그룹 페이지의 **설정**에서 그룹의 이메일 주소를 확인할 수 있습니다:
 
-![그룹 페이지에서 이메일 주소가 표시되는 위치](email_email_button.png)
+![그룹 페이지의 설정에서 이메일 주소가 표시되는 위치](email_email_button.png)
 
 이 주소로 이메일을 보내면 Loomio가 새 스레드를 생성합니다. 이메일 제목은 스레드 제목이 되고, 본문은 스레드 설명이 되며, 첨부 파일은 스레드에 추가됩니다.
 

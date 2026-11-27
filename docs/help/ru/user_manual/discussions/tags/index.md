@@ -1,25 +1,25 @@
 ---
 title: Теги категорий
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 21256e291b4ed928
+  introduction: 93eb9187dbc750eb
   apply-tags: de60b2811ab7f106
   create-tags: bf4877203511d902
-  edit-tags: e003d563cab58395
+  edit-tags: 780eff816421d37c
   edit-tag-in-thread-or-poll: 2b19b13743442182
   template-tags: 20209abdbe00c576
   tag-contributions: 9a19db43532cf2d7
@@ -37,7 +37,7 @@ title_generated: 59be6d8cb05ffb28
 
 Теги принадлежат всей организации. Тег, созданный в родительской группе, доступен и в её подгруппах, поэтому вы можете отслеживать связанную работу в разных группах. Loomio отображает теги в алфавитном порядке с цветной точкой рядом с каждым названием.
 
-На странице вашей группы выберите **Теги** над списком веток, затем выберите тег, чтобы показать ветки, в которых хотя бы один материал имеет этот тег. Введите текст в поле фильтра для поиска в длинном списке.
+На странице **Все группы** или на странице группы выберите **Теги** над списком веток, опросов или задач, затем выберите тег, чтобы показать материалы с этим тегом. Введите текст в поле фильтра для поиска в длинном списке.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ title_generated: 59be6d8cb05ffb28
 
 Только администраторы родительской группы могут переименовывать теги, менять их цвета, объединять или удалять их. Изменения применяются во всей организации, включая все подгруппы.
 
-На странице группы откройте **Теги** и выберите **Редактировать метки**.
+На странице группы откройте **Теги** и выберите **Редактировать метки** или откройте **Настройки** и выберите **Теги категорий**.
 
 ![Редактирование тегов категорий](tags_edit_new.png)
 

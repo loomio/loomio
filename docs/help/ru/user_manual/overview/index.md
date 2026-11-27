@@ -1,24 +1,24 @@
 ---
 title: Начало работы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: 4252682d3dd3f4fe
   how-loomio-works: 024160c76b130fa9
-  groups: 84aa365d9ee9a1bd
+  groups: 2c928b8c7f01ecb3
   discussions: c7715abe26ec8215
-  polls-and-proposals: 11e2c053f5f2fba5
+  polls-and-proposals: 0feb218c37a9ab65
   try-it-out: f49d817c348576ca
   how-people-use-loomio: 8e5f16e516113eec
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ Loomio — инструмент для обсуждений и принятия 
 
 ### Группы
 
-Группа — это пространство для совместной работы организации, команды или сообщества. На её главной странице описана цель группы и размещены ссылки на её обсуждения, опросы, участников и файлы.
+Группа — это пространство для совместной работы организации, команды или сообщества. На её главной странице описана цель группы и размещены ссылки на её ветки, опросы, участников, файлы, задачи, закладки и настройки.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ Loomio — инструмент для обсуждений и принятия 
 
 ![](orientation_proposal.png)
 
-Опросы могут быть частью обсуждения или проводиться отдельно на вкладке **Опросы** на странице группы.
+Опросы могут быть частью обсуждения или проводиться отдельно в разделе **Опросы** на странице группы.
 
 Чтобы узнать, где эти части находятся в интерфейсе, прочитайте [Краткий обзор](/en/user_manual/overview/orientation). Чтобы начать участвовать, прочитайте [Как участвовать](/en/user_manual/overview/how-to-participate).
 

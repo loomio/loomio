@@ -1,21 +1,21 @@
 ---
 title: Verzamel privé-inzendingen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: c3f87391ebea88c1
-  enable-private-submissions: 05523e09b32fac1d
+  enable-private-submissions: d2cac67dda3fd5c7
   set-up-a-private-submission-process: 5c537ea395f75844
-  make-a-submission: 164b0de51d9cd575
+  make-a-submission: 7a8327e37be0d0e8
   review-submissions: 7ac1a007a8d8c085
 title_source: e82ab76916d594f4
 title_generated: a6e79e4c3991b0fe
@@ -46,7 +46,7 @@ Bij deze werkwijze kunnen indieners elkaars inzendingen niet zien, maar de inzen
 Je moet groepsadmin zijn van de groep of subgroep waarin je inzendingen wilt verzamelen.
 
 1. Open de groep.
-2. Selecteer **Instellingen** (of **Meer** en vervolgens **Bewerk groepsinstellingen**).
+2. Open **Instellingen** en selecteer vervolgens **Bewerk groepsinstellingen**.
 3. Open **Toestemmingen**.
 4. Schakel **Niet-leden kunnen discussies starten** in.
 5. Sla de groepsinstellingen op.
@@ -73,7 +73,7 @@ Als je deze toestemming inschakelt, worden de discussies van de groep niet openb
 
 ## Doe een inzending
 
-De indiener opent de subgroep en selecteert **Start discussie**. Loomio toont de discussiesjablonen van de subgroep. De indiener kiest het juiste sjabloon, beantwoordt de vragen en start de discussie.
+De indiener opent de subgroep en selecteert **Nieuwe thread**. Loomio toont de discussiesjablonen van de subgroep. De indiener kiest het juiste sjabloon, beantwoordt de vragen en start de discussie.
 
 De discussie hoort bij de subgroep en Loomio voegt de indiener toe als gast aan die thread, niet als lid van de subgroep. De indiener kan in de eigen thread deelnemen met het beoordelingsteam, maar kan andere privédiscussies of inzendingen in de subgroep niet zien.
 

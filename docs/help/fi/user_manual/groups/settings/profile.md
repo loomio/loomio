@@ -1,17 +1,17 @@
 ---
 title: Profiili
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/profile.md
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
+source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: 598253440586690c
+  introduction: 5dbdbe59cb35a289
   name-and-handle: 406451d0f6a61b1e
   description: bd26dd3c009ed533
   cover-image-and-logo: b600d23eecf4853d
@@ -23,7 +23,7 @@ title_generated: 71ddb66de5786cc6
 
 # Ryhmän profiili
 
-Profiili-välilehdellä määrität, miten ryhmäsi tunnistetaan ja esitellään. Avaa ryhmän sivulta **Muokkaa ryhmän asetuksia** ja valitse sitten **Profiili**.
+Profiili-välilehdellä määrität, miten ryhmäsi tunnistetaan ja esitellään. Avaa ryhmän sivulla **asetukset**, valitse **Muokkaa ryhmän asetuksia** ja valitse sitten **Profiili**.
 
 ![Ryhmän profiiliasetukset](group_profile.png)
 

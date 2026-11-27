@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 114ab8c916ca5fba
+  introduction: 31651f229b065ec2
 generated:
-  introduction: e7e7c1d36deade49
+  introduction: 1a3a328ede321c09
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -27,7 +27,7 @@ Loomioでは、新しいディスカッション、アンケート、コメン�
 
 1. Loomio用のMatrixユーザーアカウントを作成し、Elementでそのアカウントにサインインして、通知を表示するMatrixのルームに招待します。このセッションはサインインしたままにしておきます。サインアウトするとアクセストークンが無効になります。
 
-2. Loomioのグループでグループメニューを開き、**チャット連携**を選択して、**マトリックス**のチャット連携を追加します。
+2. Loomioのグループで**設定**を開き、**チャット連携**を選択して、**マトリックス**のチャット連携を追加します。
 
    ![LoomioのMatrixボットメニュー](loomio-add-matrix-bot.png)
 

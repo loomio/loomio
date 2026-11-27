@@ -1,15 +1,15 @@
 ---
 title: Ryhmän poistaminen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: e811b127a678d5e3
+  introduction: 4b1f2591fa0273ec
   group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: bb275145078f4bec
+  introduction: 180c06000a62d3a9
   group-data-is-permanently-deleted-after-90-days: 92f0e4e59d5cf0ce
 title_source: 9a0868f49f1262ea
 title_generated: cb896766b9865ab0
@@ -23,9 +23,9 @@ Vain ryhmän ylläpitäjä voi poistaa ryhmän. Ryhmän poistaminen estää pä�
 
 Ennen kuin poistat ryhmän, [vie ryhmän tiedot](/en/user_manual/groups/data_export) ja lataa kaikki palveluun ladatut tiedostot, jotka haluat säilyttää.
 
-Poista ryhmä avaamalla ryhmän toimintovalikko ja valitsemalla **Poista ryhmä**.
+Poista ryhmä avaamalla ryhmän sivulla **asetukset** ja valitsemalla **Poista ryhmä**.
 
-![Poista ryhmä -toiminto Oatmilk Cooperativen valikossa](group_delete_group.png)
+![Poista ryhmä -toiminto Oatmilk Cooperativen asetussivulla](group_delete_group.png)
 
 Vahvista poistaminen kirjoittamalla ryhmän tunnus.
 

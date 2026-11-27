@@ -25,7 +25,11 @@ async function openGroupSettings(page, tab) {
 
 test('group_overview', async ({ page, manual: screenshot }) => {
   await openGroup(page);
-  await screenshot.captureElement('groups/group_page', '.group-page');
+  await screenshot.captureRegion('groups/group_page', [
+    '.group-page .v-img',
+    '.group-page__name',
+    '.discussions-panel'
+  ], {width: 1280, height: 1400, padding: 16});
 });
 
 test('group_settings_menu', async ({ page, manual: screenshot }) => {

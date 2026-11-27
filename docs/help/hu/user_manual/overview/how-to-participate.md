@@ -1,17 +1,17 @@
 ---
 title: Hogyan vehetsz részt
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: f7693db139bd1330
   get-someone-s-attention: 1afc42f691ef5bb9
   reactions: 966d89e2c92ca080
-  vote: f4fdf9eb0d56935d
+  vote: 84402bd8f6cb9a98
   state-a-reason: 6a531d0075946e20
   change-your-vote: c3dbf9dc80cd0672
   results: 506d4aef1404f9a7
@@ -73,7 +73,7 @@ Adj emoji-reakciót egy hozzászólásra, ha válasz írása vagy e-mailes érte
 
 ## Szavazz
 
-Nyiss meg egy szavazást egy e-mailes meghívóból, egy alkalmazáson belüli értesítésből vagy a csoportod **Szavazások** lapjáról. Olvasd el a szavazást és a csatolt fájlokat, majd válaszd ki a számodra megfelelő lehetőséget.
+Nyiss meg egy szavazást egy e-mailes meghívóból, egy alkalmazáson belüli értesítésből, az **Összes csoport** nézetből vagy a csoportod **Szavazások** részéből. Olvasd el a szavazást és a csatolt fájlokat, majd válaszd ki a számodra megfelelő lehetőséget.
 
 A Loomióban többféle szavazás létezik. Az alábbi példa egy javaslatot mutat be az **Egyetért**, **Tartózkodik** és **Nem ért egyet** lehetőségekkel.
 

@@ -1,14 +1,14 @@
 ---
 title: Käyttöoikeudet
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: 96dea964ecccb096
+  introduction: 129e05529958967b
 title_source: abccc78cc93c0793
 title_generated: 1d72200ffa693445
 ---
@@ -17,7 +17,7 @@ title_generated: 1d72200ffa693445
 
 # Ryhmän käyttöoikeudet
 
-**Käyttöoikeudet**-välilehti määrittää, mitä jäsenet voivat tehdä ryhmässä ja mitä muut kuin jäsenet voivat tehdä ryhmissä, jotka eivät ole salaisia. Avaa ryhmän toimintovalikosta **Muokkaa ryhmän asetuksia** ja valitse sitten **Käyttöoikeudet**.
+**Käyttöoikeudet**-välilehti määrittää, mitä jäsenet voivat tehdä ryhmässä ja mitä muut kuin jäsenet voivat tehdä ryhmissä, jotka eivät ole salaisia. Avaa ryhmän sivulla **asetukset**, valitse **Muokkaa ryhmän asetuksia** ja valitse sitten **Käyttöoikeudet**.
 
 ![Ryhmän käyttöoikeusasetukset](group_group_settings_permissions.png)
 

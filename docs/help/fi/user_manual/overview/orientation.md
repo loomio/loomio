@@ -1,30 +1,34 @@
 ---
 title: Pikakierros
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: ecd0fe0598db0af5
   group-page: b351d5f2c21b5300
-  tabs: fa2b8c5dbc1e9e15
-  sidebar: 6fcc6fb14f4584c4
+  tabs: 86954790e9ef59f7
+  sidebar: c6de16f7a7779148
   user-settings: fc19e4048d467aed
   notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 8c209bc2f042ae96
+  mobile-navigation: 2be6c40d260c3dd1
+  all-groups: d71bbbd8a059f5db
 generated:
   introduction: 358f6ecdaa26bd11
   group-page: af71cff080730232
-  tabs: cbd96069328c9296
-  sidebar: ac7221e7a8412f61
+  tabs: f149baa2b301d43a
+  sidebar: 6243c78d9bf94c5f
   user-settings: 132b8383493f285c
   notifications: 7f6ffc5cad3341cf
   what-to-do-next: '0652697dff629d8d'
-  mobile-navigation: 1fc39d0934760b18
+  mobile-navigation: 57256992eca6b576
+  all-groups: abc5d0efefce3c31
 title_source: c41a33370cd580dd
 title_generated: fa2ae81ceb5a86cf
+needs_review:
+  tabs: use "vaihtoehto" instead of "asetukset" for "option"
 ---
 
 <!-- translation-section: introduction -->
@@ -43,16 +47,27 @@ Ryhmäsi etusivu kuvaa ryhmää ja sisältää linkit sen toimintaan.
 
 <!-- translation-section: tabs -->
 
-### Välilehdet
+### Osiot
 
-Ryhmän kuvauksen alla olevista välilehdistä löydät:
+Ryhmän kuvauksen alla olevista navigointikorteista löydät:
 
-- **Keskustelut**: Ryhmän keskusteluketjut ja viimeaikaisen toiminnan.
-- **Kyselyt**: Ryhmän avoimet ja suljetut kyselyt.
-- **Jäsenet**: Ryhmään kuuluvat ihmiset.
+- **Ketjut**: Ryhmän keskusteluketjut sekä viimeaikaisen tai lukemattoman toiminnan.
+- **Kyselyt**: Ryhmän avoimet ja suljetut kyselyt, myös ääntäsi odottavat kyselyt.
+- **Jäsenet**: Ryhmään kuuluvat ihmiset sekä pikavalinnan uusien jäsenten kutsumiseen.
 - **Tiedostot**: Ryhmän keskusteluihin, kommentteihin, ehdotuksiin ja kyselyihin liitetyt tiedostot, joten löydät asiakirjan muistamatta, missä se jaettiin.
+- **Tehtävät**: Ryhmän avoimet ja valmiit tehtävät sekä suodattimet tilan, määräpäivän, vastuuhenkilön ja tunnisteiden mukaan.
+- **Kirjanmerkit**: Ryhmän keskustelut, kommentit, kyselyt, äänet ja johtopäätökset, jotka olet lisännyt kirjanmerkkeihin.
+- **asetukset**: Ryhmän hallinnan, jäsenyyden vaihtoehdot, ilmoitusasetukset, integraatiot ja tietojen viennin.
 
 Katso [Sisällön löytäminen](/en/user_manual/overview/finding-content), jos tarvitset apua haun, suodattimien, tunnisteiden, kirjanmerkkien ja lukemattomien keskustelujen kanssa.
+
+<!-- translation-section: all-groups -->
+
+## Kaikki ryhmät
+
+Valitse sivupalkista **Kaikki ryhmät**, niin näet työsi kaikissa ryhmissä, joihin kuulut. Näkymässä on samat navigointikortit kuin ryhmän sivulla: **Ketjut** (myös lukemattomat ja suorat ketjut), **Kyselyt**, **Ihmiset** (hakemisto ihmisistä, joiden kanssa kuulut samoihin ryhmiin; voit hakea ihmisiä ja nähdä, ketkä olivat äskettäin paikalla), **Tiedostot**, **Tehtävät** ja **Kirjanmerkit**.
+
+![](all_groups.png)
 
 <!-- translation-section: sidebar -->
 
@@ -62,7 +77,7 @@ Avaa sivupalkki valikkopainikkeella (**☰**), joka on tietokoneella vasemmassa 
 
 ![](sidebar.png)
 
-Sivupalkista voit avata yleiskatsauksesi, ääntäsi odottavat kyselyt, lukemattomat ja suorat keskustelut, tehtävät ja ryhmät. Siellä on myös linkit käyttöoppaaseen ja tukeen.
+Sivupalkista voit siirtyä **Kaikki ryhmät** -näkymän, ryhmiesi ja alaryhmiesi välillä sekä luoda uuden ryhmän tai alaryhmän. Kun sivupalkki on suljettu, valitse sivun yläreunasta ryhmän nimi tai **Kaikki ryhmät**, niin voit vaihtaa ryhmää tai luoda uuden ryhmän. Sivupalkissa on myös linkit käyttöoppaaseen ja tukeen.
 
 <!-- translation-section: user-settings -->
 
@@ -88,7 +103,7 @@ Lue [Ilmoitukset](/en/user_manual/users/email_settings), niin saat tietoa sovell
 
 ## Mobiilinavigointi
 
-Mobiililaitteella alareunan navigointipalkista voit avata sivupalkin, yleiskatsauksen ja ilmoitukset. Keskustelussa ketjun valikosta voit avata ketjun sisällön ja toiminnot.
+Mobiililaitteella alareunan navigointipalkista voit avata sivupalkin, **Kaikki ryhmät** -näkymän ja ilmoitukset. Keskustelussa ketjun valikosta voit avata ketjun sisällön ja toiminnot.
 
 <!-- translation-section: what-to-do-next -->
 

@@ -1,25 +1,25 @@
 ---
 title: Mots-clés de catégorie
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 0ef09f04911a4118
+  introduction: a83b00ac01956690
   apply-tags: 2eccd45b026f9f16
   create-tags: 56406dc5b6815707
-  edit-tags: c8bf481c42d0f359
+  edit-tags: 6937f09b966f7f34
   edit-tag-in-thread-or-poll: 6df195c747275c2b
   template-tags: 0b29a008a67c8285
   tag-contributions: 42d4126042de8392
@@ -37,7 +37,7 @@ Les tags de catégorie vous aident à retrouver les discussions, les sondages, l
 
 Les tags appartiennent à l’ensemble de l’organisation. Un tag créé dans un groupe parent est partagé avec ses sous-groupes, ce qui vous permet de suivre les travaux liés entre eux dans plusieurs groupes. Loomio affiche les tags par ordre alphabétique avec un point de couleur à côté de chaque nom.
 
-Sur la page de votre groupe, sélectionnez **Mots-clés** au-dessus de la liste des fils et choisissez un tag pour afficher les fils contenant au moins un élément portant ce tag. Saisissez du texte dans le champ de filtrage pour rechercher dans une longue liste.
+Sur **Tous les groupes** ou sur la page d’un groupe, sélectionnez **Mots-clés** au-dessus de la liste des fils, des sondages ou des tâches et choisissez un tag pour afficher les éléments portant ce tag. Saisissez du texte dans le champ de filtrage pour rechercher dans une longue liste.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ Lorsqu’une personne crée une discussion ou un sondage à partir d’un modèl
 
 Seuls les administrateurs du groupe parent peuvent renommer les tags, changer leur couleur, les fusionner ou les supprimer. Les modifications s’appliquent à l’ensemble de l’organisation, y compris à tous les sous-groupes.
 
-Sur la page du groupe, ouvrez **Mots-clés** et sélectionnez **Modifier les mots-clés**.
+Sur la page du groupe, ouvrez **Mots-clés** et sélectionnez **Modifier les mots-clés**, ou ouvrez **Paramètres** et sélectionnez **Classement par tags**.
 
 ![Modifier les tags de catégorie](tags_edit_new.png)
 

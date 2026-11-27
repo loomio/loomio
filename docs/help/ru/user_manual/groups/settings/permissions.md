@@ -1,14 +1,14 @@
 ---
 title: Разрешения
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: 5107056ae1f8efcf
+  introduction: b48623fb6ee2acb7
 title_source: abccc78cc93c0793
 title_generated: fb3794590855dd1c
 ---
@@ -17,7 +17,7 @@ title_generated: fb3794590855dd1c
 
 # Разрешения группы
 
-Вкладка **Разрешения** определяет, что могут делать участники в группе, а в группах, которые не являются секретными, — также люди, не состоящие в группе. Откройте **Редактировать настройки группы** в меню действий группы, затем выберите **Разрешения**.
+Вкладка **Разрешения** определяет, что могут делать участники в группе, а в группах, которые не являются секретными, — также люди, не состоящие в группе. На странице группы откройте **Настройки**, выберите **Редактировать настройки группы**, затем **Разрешения**.
 
 ![Настройки разрешений группы](group_group_settings_permissions.png)
 

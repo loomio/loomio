@@ -1,17 +1,17 @@
 ---
 title: Профіль
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/profile.md
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
+source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: b12650f9211fc280
+  introduction: af76f706d2b67fc3
   name-and-handle: 814b789b27483901
   description: 6ada777ded0b164e
   cover-image-and-logo: 4c9eb67691f86207
@@ -23,7 +23,7 @@ title_generated: 3b305c4c2405f224
 
 # Профіль групы
 
-Укладка профілю вызначае, як ваша група называецца і прадстаўляецца. На старонцы групы адкрыйце **Рэдагаваць налады групы**, затым выберыце **Профіль**.
+Укладка профілю вызначае, як ваша група называецца і прадстаўляецца. На старонцы групы адкрыйце **Налады**, выберыце **Рэдагаваць налады групы**, затым выберыце **Профіль**.
 
 ![Налады профілю групы](group_profile.png)
 

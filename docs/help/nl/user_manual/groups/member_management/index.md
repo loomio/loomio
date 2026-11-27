@@ -1,16 +1,16 @@
 ---
 title: Ledenbeheer
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: bc7d2de9abc2ea86
   administering-your-group: 7ae1b105c20977fc
   managing-subgroups: 2e4bdee3283e8ef8
   removing-members: d70807bdd968d594
-  leaving-group: 268f0c735b8e46d7
+  leaving-group: 69332aeda981c679
   set-title: eb9a52e3d6c21d43
   member-email-addresses: 0e800419a7bdacc6
 generated:
@@ -18,7 +18,7 @@ generated:
   administering-your-group: ef5255a06591361c
   managing-subgroups: 6a61939fd2c88f1f
   removing-members: f7cb53773dba6d4a
-  leaving-group: c2ee78b8d405d145
+  leaving-group: 66ecad30dfd740c0
   set-title: e991082ac315798c
   member-email-addresses: e3c4cc1175f9cf84
 title_source: 23ac3a7fe9ee72a2
@@ -82,11 +82,11 @@ Je kunt verwijderde leden later weer toevoegen. Wanneer ze opnieuw lid worden, k
 
 ## Groep verlaten
 
-Om een groep te verlaten, open je het actiemenu van de groep en selecteer je **Groep verlaten**.
+Om een groep te verlaten, open je **Instellingen** op de groepspagina en selecteer je **Groep verlaten**.
 
 Een groep verlaten heeft dezelfde gevolgen voor de toegang tot de groep en subgroepen als verwijdering door een groepsadmin.
 
-![Actie Groep verlaten in het instellingenmenu van Oatmilk Cooperative](member_leave_group.png)
+![Actie Groep verlaten op de instellingenpagina van Oatmilk Cooperative](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 

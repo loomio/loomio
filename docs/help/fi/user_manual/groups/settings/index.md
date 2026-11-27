@@ -1,17 +1,17 @@
 ---
 title: Ryhmän asetukset
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/groups/settings/index.md
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
+source_file: docs/help/en/user_manual/groups/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-11-26'
 sections:
-  introduction: b975fe0dc7787563
+  introduction: e22d1f7356e9be93
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: 877dcae1248127bd
+  introduction: b18709cbfdc074a8
   group-profile: 7efb321884d0b83e
   group-privacy: 73c4812e6fdfd400
   group-permissions: ab8cfca689bd3baa
@@ -25,7 +25,7 @@ title_generated: 51477542bf8e7ed2
 
 Ryhmän asetukset määrittävät, miten ryhmäsi esitetään, ketkä voivat löytää sen ja liittyä siihen sekä mitä jäsenet voivat tehdä. Vain ryhmän ylläpitäjät voivat muokata näitä asetuksia.
 
-Avaa ryhmän sivulla toimintovalikko ja valitse **Muokkaa ryhmän asetuksia**.
+Avaa ryhmän sivulla **asetukset** ja valitse **Muokkaa ryhmän asetuksia**.
 
 ![Muokkaa ryhmän asetuksia ryhmän sivulla](group_settings.png)
 

@@ -1,13 +1,13 @@
 ---
 title: Beszélgetés indítása
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: a63d97ce0769d612
-  new-discussion: c5a9cd216a52511d
+  new-discussion: 66befc01eb6b2d3a
   group: 661132c76015862d
   invite-and-notify: 335218d7274cef33
   tags: 9effa3e99d4e1969
@@ -37,11 +37,11 @@ Feltehetsz egy egyszerű kérdést, vagy megoszthatsz egy részletes ismertetőt
 
 ## Új beszélgetés indítása
 
-Válaszd ki a **Beszélgetés indítása** lehetőséget a csoportod vagy bármelyik alcsoport oldalán.
+Válaszd ki az **Új szál** lehetőséget a csoportod vagy bármelyik alcsoport oldalán.
 
 A Loomio megjeleníti a csoportod [beszélgetéssablonjait](/en/user_manual/discussions/templates/). Válassz egy sablont vagy az **Üres sablon** lehetőséget a beszélgetés űrlapjának megnyitásához.
 
-![A Beszélgetés indítása gomb az Oatmilk Cooperative oldalán](new-discussion-button.png)
+![Az Új szál gomb az Oatmilk Cooperative oldalán](new-discussion-button.png)
 
 ![Beszélgetésindító űrlap a visszaváltható palackok próbaidőszakának megtervezéséhez](new-discussion-example.png)
 

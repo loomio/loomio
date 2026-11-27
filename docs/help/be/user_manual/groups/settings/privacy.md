@@ -1,12 +1,12 @@
 ---
 title: Канфідэнцыяльнасць
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -15,7 +15,7 @@ sections:
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 3f3883abfc00b92f
+  introduction: ecbc5754f5013d2b
   open: 06e71be52b8a546a
   follow-an-open-group: f2a0fe6e8351f64d
   closed: 8173c12f9b365610
@@ -31,7 +31,7 @@ title_generated: 1ae6e1d40fc80813
 
 # Канфідэнцыяльнасць групы
 
-Налады канфідэнцыяльнасці вызначаюць, хто можа знайсці групу і хто можа чытаць яе змесціва. У меню дзеянняў групы адкрыйце **Рэдагаваць налады групы**, затым выберыце **Канфідэнцыяльнасць**.
+Налады канфідэнцыяльнасці вызначаюць, хто можа знайсці групу і хто можа чытаць яе змесціва. На старонцы групы адкрыйце **Налады**, выберыце **Рэдагаваць налады групы**, затым выберыце **Канфідэнцыяльнасць**.
 
 ![Налады канфідэнцыяльнасці групы](group_privacy_settings.png#width-90)
 

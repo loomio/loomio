@@ -1,34 +1,34 @@
 ---
 title: Sous-groupes
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: 86015749b55ace4b
-  add-a-subgroup: 722b027324431aba
+  add-a-subgroup: 833fbe2041d45dc9
   subgroup-settings: bdd0548ab28d965d
   privacy: 3bc3e46f581bb434
   permissions: 2ae23cefd9ceb983
-  find-subgroups: 2766a57828324657
+  find-subgroups: 377b5312aa3e433c
   invite-to-a-subgroup: b1cb8570af2f3e16
   simultaneously-invite-people-to-subgroups-and-parent-group: 24fb87538b90aa32
   administer-a-subgroup: e84b10e04adf0820
   delete-a-subgroup: 57f1009f9c0fd293
-  how-people-join: b10854b5dba66ebe
+  how-people-join: daf6ff849d68e1e9
 title_source: 9f81e728f70cae3e
 title_generated: 93b587493dbb8010
 ---
@@ -58,7 +58,7 @@ Pour créer un sous-groupe, ouvrez la page de votre groupe parent, sélectionnez
 
 ![Formulaire de création d’un sous-groupe pour le groupe de travail sur les emballages](subgroups_new.png)
 
-Lorsque le sous-groupe est prêt, [invitez des personnes](/en/user_manual/groups/inviting_people) à le rejoindre. Vous pouvez modifier les [paramètres du groupe](/en/user_manual/groups/settings) du sous-groupe depuis le menu d’actions sur sa page.
+Lorsque le sous-groupe est prêt, [invitez des personnes](/en/user_manual/groups/inviting_people) à le rejoindre. Vous pouvez modifier les [paramètres du groupe](/en/user_manual/groups/settings) du sous-groupe depuis **Paramètres** sur la page du sous-groupe.
 
 ![Action permettant de modifier les paramètres du groupe de travail sur les emballages](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ Lorsque le groupe parent est privé, les sous-groupes peuvent uniquement être *
 
 ### Comment les personnes rejoignent le groupe
 
-Choisissez [comment les personnes rejoignent le groupe](/en/user_manual/groups/settings/privacy#how-people-join) lors de la création du sous-groupe, ou dans **Modifier les paramètres du groupe** > **Confidentialité**.
+Choisissez [comment les personnes rejoignent le groupe](/en/user_manual/groups/settings/privacy#how-people-join) lors de la création du sous-groupe, ou dans **Paramètres** > **Modifier les paramètres du groupe** > **Confidentialité**.
 
 ![Paramètres de confidentialité et d’adhésion du sous-groupe](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ Activez **Les membres du groupe parent peuvent voir les fils privés** dans **Pe
 
 ## Trouver des sous-groupes
 
-Sélectionnez le nom de votre groupe parent dans la barre latérale pour voir ses sous-groupes.
+Sélectionnez le nom de votre groupe parent dans la barre latérale pour voir ses sous-groupes. Sur les pages **Fils**, **Sondages**, **Membres**, **Fichiers**, **Tâches** et **Signets** d’un groupe parent, utilisez le filtre **Sous-groupes** pour passer de **Ce groupe uniquement** à **Mes sous-groupes** ou à **Tous les sous-groupes**, ou pour accéder directement à un sous-groupe.
 
 ![Sous-groupes de la coopérative Oatmilk affichés dans la barre latérale](subgroups_find_subgroups.png)
 

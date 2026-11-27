@@ -1,16 +1,16 @@
 ---
 title: Mitglieder verwalten
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: bc7d2de9abc2ea86
   administering-your-group: 7ae1b105c20977fc
   managing-subgroups: 2e4bdee3283e8ef8
   removing-members: d70807bdd968d594
-  leaving-group: 268f0c735b8e46d7
+  leaving-group: 69332aeda981c679
   set-title: eb9a52e3d6c21d43
   member-email-addresses: 0e800419a7bdacc6
 generated:
@@ -18,7 +18,7 @@ generated:
   administering-your-group: 709f8405da353488
   managing-subgroups: a85f7d9f9a32bcfd
   removing-members: 52ca082da674a83a
-  leaving-group: d3ce1fe69d6caf7a
+  leaving-group: 3a5e6f1543290db0
   set-title: 3ffc8f442a04c75d
   member-email-addresses: 10e30dea503a52ae
 title_source: 23ac3a7fe9ee72a2
@@ -82,11 +82,11 @@ Du kannst entfernte Mitglieder später wieder hinzufügen. Wenn sie der Gruppe w
 
 ## Gruppe verlassen
 
-Um eine Gruppe zu verlassen, öffne das Aktionsmenü der Gruppe und wähle **Gruppe verlassen**.
+Um eine Gruppe zu verlassen, öffne **Einstellungen** auf der Gruppenseite und wähle **Gruppe verlassen**.
 
 Wenn du die Gruppe verlässt, hat das dieselben Auswirkungen auf deinen Zugriff auf die Gruppe und ihre Untergruppen wie das Entfernen durch einen Gruppenadmin.
 
-![Aktion „Gruppe verlassen“ im Einstellungsmenü der Oatmilk Cooperative](member_leave_group.png)
+![Aktion „Gruppe verlassen“ auf der Einstellungsseite der Oatmilk Cooperative](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 

@@ -1,10 +1,10 @@
 ---
 title: 通知
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 25fc6fe9cb35c981
   two-ways-to-begin: 3b42b0d12bbd2ba0
@@ -13,7 +13,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -26,7 +26,7 @@ generated:
   choose-your-catch-up-schedule: '09593aeb6b388f8f'
   mark-a-catch-up-as-read: ef14b56bd3152114
   group-and-thread-notification-settings: 4b94156f9fce1cd1
-  group-notification-settings: f7e5a75f0baf6f5d
+  group-notification-settings: 9f6026460139b658
   thread-notification-settings: 8210fcb4c08aaa7f
   email-delivery: cb3f117c10aad947
   enable-mobile-notifications-with-web-push: bc2d16643421f88d
@@ -136,7 +136,7 @@ Loomioは、プロフィールに設定されたタイムゾーンに合わせ�
 グループの通知設定を変更するには、次の手順で操作します。
 
 1. グループのページを開きます。
-2. グループの通知設定を開きます。
+2. **設定**を開き、**通知設定**を選択します。
 
 ![グループのページにある通知設定](group_notifications.png)
 

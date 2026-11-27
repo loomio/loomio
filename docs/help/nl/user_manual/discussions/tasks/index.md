@@ -1,20 +1,20 @@
 ---
 title: Taken
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: f109aa700cb2c20f
   add-a-task: f928c214dba1ff86
-  name-and-assign-the-task-to-a-person: 380ea75485b9339a
+  name-and-assign-the-task-to-a-person: 789a677a2688963d
   set-a-reminder: 8f3e89b4ecc82e79
   mark-it-as-done: 30dd80cb6b37ebcb
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ Gebruik een @vermelding in de taak om deze aan een lid van de groep toe te wijze
 
 ![](tasklist2.png)
 
-Taken die aan je zijn toegewezen, verschijnen op jouw pagina **Taken**. Open **Taken** via de zijbalk om ze gegroepeerd per thread of peiling te bekijken.
+Open **Taken** bij **Alle groepen** om taken te bekijken die in jouw groepen aan je zijn toegewezen, of open **Taken** op een groepspagina om taken in die groep te bekijken. Taken zijn gegroepeerd per thread of peiling. Je kunt ze filteren op status (**Te doen**, **Voltooid** of **Alle**), vervaldatum (**Te laat**, **Komende 7 dagen**, **Later** of **Geen deadline**), toegewezen persoon (op een groepspagina), subgroep of categorielabel, of zoeken.
 
 ![](task_list.png)
 

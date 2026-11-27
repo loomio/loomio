@@ -1,15 +1,15 @@
 ---
 title: Discussões diretas
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: c617bad25b64654f
+  introduction: 1a0632592c683296
   contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: 2f5cf84e35e02c16
+  introduction: 06fedbf00b01d26a
   contacting-someone-via-a-direct-discussion: f00b5aaa7440685c
 title_source: ccfab058f1f7c146
 title_generated: feca797a47aa59c6
@@ -27,11 +27,11 @@ As discussões diretas oferecem os mesmos comentários, enquetes e ferramentas d
 
 ![Um formulário de discussão direta sem nenhum grupo selecionado e com Samira Patel no campo Convidar](direct-discussion-example.png)
 
-Selecione **Tópicos diretos** na barra lateral para ver suas discussões diretas e enquetes. Ali, abra **Novo** e escolha **Nova discussão** para iniciar uma discussão direta ou **Nova enquete** para iniciar uma enquete sem um grupo.
+Abra **Todos os grupos** e selecione **Diretas** em **Conversas** (ou selecione a contagem de conversas diretas no cartão **Conversas**) para ver suas discussões diretas. Ali, selecione **Nova conversa** para iniciar uma discussão direta. Você também pode abrir **Pessoas** em **Todos os grupos** e selecionar **Conversa direta** ao lado do nome de alguém.
 
 Uma enquete direta fica visível apenas para as pessoas que você convida. Depois de criá-la, use [Gerenciar eleitores](/en/user_manual/polls/manage_voters) para convidar pessoas ou endereços de e-mail.
 
-![O item Tópicos diretos na barra lateral e a lista de discussões diretas](direct-discussion-sidebar.png)
+![O filtro Diretas em Todos os grupos mostrando discussões diretas](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 

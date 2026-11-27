@@ -1,24 +1,24 @@
 ---
 title: Початок роботи
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: b0c0afe9353dcc90
   how-loomio-works: 892f451d861cba11
-  groups: ad08cf3fe860fa06
+  groups: 818be40dd366663d
   discussions: 5a454cc8726c18c6
-  polls-and-proposals: f030e3264f0c79aa
+  polls-and-proposals: 7644eaa90caa664d
   try-it-out: 85f12fb9118a0567
   how-people-use-loomio: 2131504d1c24c3c4
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ Loomio має три основні складові: групи, обговор
 
 ### Групи
 
-Група — це місце для спільної роботи організації, команди або спільноти. Її головна сторінка пояснює мету групи та містить посилання на її обговорення, опитування, учасників і файли.
+Група — це місце для спільної роботи організації, команди або спільноти. Її головна сторінка пояснює мету групи та містить посилання на її теми, опитування, учасників, файли, завдання, закладки та налаштування.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ Loomio має три основні складові: групи, обговор
 
 ![](orientation_proposal.png)
 
-Опитування можуть бути частиною обговорення або проводитися окремо на вкладці **Опитування** на сторінці групи.
+Опитування можуть бути частиною обговорення або проводитися окремо в розділі **Опитування** на сторінці групи.
 
 Щоб дізнатися, де ці складові розташовані в інтерфейсі, перегляньте [Короткий огляд](/en/user_manual/overview/orientation). Щоб почати долучатися, перегляньте [Як брати участь](/en/user_manual/overview/how-to-participate).
 

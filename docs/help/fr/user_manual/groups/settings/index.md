@@ -1,17 +1,17 @@
 ---
 title: Paramètres du groupe
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/settings/index.md
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
+source_file: docs/help/en/user_manual/groups/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: b975fe0dc7787563
+  introduction: e22d1f7356e9be93
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: 2f4027ae1ed6a536
+  introduction: e95d1f0d2bf6602b
   group-profile: 2eaa81e2b171684d
   group-privacy: da46cb5336a18db3
   group-permissions: a202003bd3cc7a2f
@@ -25,7 +25,7 @@ title_generated: 1e687cf13fc53296
 
 Les paramètres du groupe déterminent la manière dont votre groupe est présenté, qui peut le trouver et le rejoindre, et ce que les membres sont autorisés à faire. Seuls les administrateurs du groupe peuvent modifier ces paramètres.
 
-Sur la page du groupe, ouvrez le menu des actions et sélectionnez **Modifier les paramètres du groupe**.
+Sur la page du groupe, ouvrez **Paramètres** et sélectionnez **Modifier les paramètres du groupe**.
 
 ![Modifier les paramètres du groupe depuis la page du groupe](group_settings.png)
 

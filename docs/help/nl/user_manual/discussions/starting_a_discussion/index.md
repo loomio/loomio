@@ -1,13 +1,13 @@
 ---
 title: Start een discussie
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: 39072aa3c5344be6
-  new-discussion: 97d53e517fc045ab
+  new-discussion: 3788ee2c75b6ba61
   group: c88d445bf2ed45cb
   invite-and-notify: 813a813be906b581
   tags: 8929fdb5e1cde9fd
@@ -37,11 +37,11 @@ Je kunt een eenvoudige vraag stellen of een uitgebreide toelichting delen met li
 
 ## Start een nieuwe discussie
 
-Selecteer **Start discussie** op jouw groepspagina of op een subgroepspagina.
+Selecteer **Nieuwe thread** op jouw groepspagina of op een subgroepspagina.
 
 Loomio toont de [discussiesjablonen](/en/user_manual/discussions/templates/) van jouw groep. Kies een sjabloon of **Lege sjabloon** om het discussieformulier te openen.
 
-![Knop Start discussie op de pagina van Oatmilk Cooperative](new-discussion-button.png)
+![Knop Nieuwe thread op de pagina van Oatmilk Cooperative](new-discussion-button.png)
 
 ![Formulier om een discussie te starten over het plannen van een proef met statiegeldflessen](new-discussion-example.png)
 

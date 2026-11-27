@@ -1,12 +1,12 @@
 ---
 title: プライバシー
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -15,7 +15,7 @@ sections:
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 1a101a9145ecba32
+  introduction: fe63bdbda3e52adc
   open: 4c1f3b7e0ff7428f
   follow-an-open-group: '018c5de4f0355ca7'
   closed: 3f452c3ffa61487e
@@ -31,7 +31,7 @@ title_generated: fd55785d80315153
 
 # グループのプライバシー
 
-プライバシー設定では、グループを見つけられる人と、その内容を閲覧できる人を管理します。グループのアクションメニューから**グループ設定を編集する**を開き、**プライバシー**を選択します。
+プライバシー設定では、グループを見つけられる人と、その内容を閲覧できる人を管理します。グループページで**設定**を開き、**グループ設定を編集する**を選択して、**プライバシー**を選択します。
 
 ![グループのプライバシー設定](group_privacy_settings.png#width-90)
 

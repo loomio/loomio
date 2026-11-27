@@ -1,25 +1,25 @@
 ---
 title: Тэгі катэгорый
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 1bf16c4591566d70
+  introduction: 93feb112dcb9daaa
   apply-tags: 70625b9a84bbb0f9
   create-tags: a5be286b8fdba7a4
-  edit-tags: a809ed02a0d26deb
+  edit-tags: ac8c426cbc76f8d8
   edit-tag-in-thread-or-poll: fd657b6369b72451
   template-tags: 7b4c6883addcdd04
   tag-contributions: 15bf3286093bd7e6
@@ -37,7 +37,7 @@ title_generated: 20912f9ae8e14d23
 
 Тэгі належаць усёй арганізацыі. Тэг, створаны ў бацькоўскай групе, даступны і ў яе падгрупах, таму вы можаце адсочваць звязаную працу ў розных групах. Loomio паказвае тэгі ў алфавітным парадку з каляровай кропкай побач з кожнай назвай.
 
-На старонцы вашай групы выберыце **Тэгі** над спісам тэм і выберыце тэг, каб паказаць тэмы, у якіх хаця б адзін допіс мае гэты тэг. Уводзьце тэкст у поле фільтра для пошуку ў доўгім спісе.
+На старонцы **Усе групы** або на старонцы групы выберыце **Тэгі** над спісам тэм, апытанняў або задач і выберыце тэг, каб паказаць допісы з гэтым тэгам. Уводзьце тэкст у поле фільтра для пошуку ў доўгім спісе.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ title_generated: 20912f9ae8e14d23
 
 Толькі адміністратары бацькоўскай групы могуць перайменаваць тэгі, змяніць іх колер, аб’яднаць або выдаліць іх. Змены распаўсюджваюцца на ўсю арганізацыю, уключаючы ўсе падгрупы.
 
-На старонцы групы адкрыйце **Тэгі** і выберыце **Рэдагаваць тэгі**.
+На старонцы групы адкрыйце **Тэгі** і выберыце **Рэдагаваць тэгі** або адкрыйце **Налады** і выберыце **Тэгі катэгорый**.
 
 ![рэдагаванне тэгаў катэгорый](tags_edit_new.png)
 

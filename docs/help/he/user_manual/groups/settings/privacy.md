@@ -1,12 +1,12 @@
 ---
 title: פרטיות
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -15,7 +15,7 @@ sections:
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 9f8926073fcf75b3
+  introduction: 5f975ea7c50f2756
   open: 9bb8317adb49c905
   follow-an-open-group: 97e5d4adc05304d7
   closed: e91ec6a8464d9ecc
@@ -31,7 +31,7 @@ title_generated: 7934094d24f8b2e6
 
 # פרטיות הקבוצה
 
-הגדרות הפרטיות קובעות מי יכול למצוא קבוצה ומי יכול לקרוא את התוכן שלה. יש לפתוח את **ערוך הגדרות קבוצה** מתפריט הפעולות של הקבוצה, ואז לבחור באפשרות **פרטיות**.
+הגדרות הפרטיות קובעות מי יכול למצוא קבוצה ומי יכול לקרוא את התוכן שלה. בעמוד הקבוצה, יש לפתוח את **הגדרות**, לבחור באפשרות **ערוך הגדרות קבוצה**, ואז לבחור באפשרות **פרטיות**.
 
 ![הגדרות פרטיות הקבוצה](group_privacy_settings.png#width-90)
 

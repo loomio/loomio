@@ -1,13 +1,13 @@
 ---
 title: Iniciar uma discussão
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: c2a73b2d9a8aca71
-  new-discussion: 7b940691a775f0fa
+  new-discussion: a0d0a9f6669aa9f9
   group: 6e8e0870ff579791
   invite-and-notify: 530f411ad74c89b2
   tags: f5775e8b1ee1af57
@@ -37,11 +37,11 @@ Você pode fazer uma pergunta simples ou compartilhar uma apresentação detalha
 
 ## Iniciar uma nova discussão
 
-Selecione **Iniciar discussão** na página do seu grupo ou de qualquer subgrupo.
+Selecione **Nova conversa** na página do seu grupo ou de qualquer subgrupo.
 
 O Loomio mostra os [modelos de discussão](/en/user_manual/discussions/templates/) do seu grupo. Escolha um modelo ou **Modelo em branco** para abrir o formulário de discussão.
 
-![Botão Iniciar discussão na página da Oatmilk Cooperative](new-discussion-button.png)
+![Botão Nova conversa na página da Oatmilk Cooperative](new-discussion-button.png)
 
 ![Formulário para iniciar uma discussão sobre o planejamento do teste de garrafas retornáveis](new-discussion-example.png)
 

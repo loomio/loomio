@@ -1,21 +1,21 @@
 ---
 title: Bizalmas beadványok gyűjtése
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: b5bb957d11421ede
-  enable-private-submissions: dd71d680cf0a76a4
+  enable-private-submissions: bfe2fd24209f23a2
   set-up-a-private-submission-process: bdaf0af50338ba9f
-  make-a-submission: b9a6f4c680de986e
+  make-a-submission: 3b5d60e33ad20b63
   review-submissions: a1bc122eb31f06a0
 title_source: e82ab76916d594f4
 title_generated: c40961866422e032
@@ -46,7 +46,7 @@ Ebben a folyamatban a beküldők nem látják egymás beadványait, de a beküld
 Csoportadminnak kell lenned abban a csoportban vagy alcsoportban, ahol a beadványokat gyűjteni szeretnéd.
 
 1. Nyisd meg a csoportot.
-2. Válaszd ki a **Beállítások** menüpontot (vagy a **Több**, majd **A csoportbeállítások szerkesztése** menüpontot).
+2. Nyisd meg a **Beállítások** menüpontot, majd válaszd ki **A csoportbeállítások szerkesztése** menüpontot.
 3. Nyisd meg az **Engedélyek** lapot.
 4. Kapcsold be a **Nem tagok is indíthatnak beszélgetéseket** beállítást.
 5. Mentsd el a csoportbeállításokat.
@@ -73,7 +73,7 @@ Ennek az engedélynek a bekapcsolása nem teszi nyilvánossá a csoport beszélg
 
 ## Beadvány beküldése
 
-A beküldő megnyitja az alcsoportot, és kiválasztja a **Beszélgetés indítása** lehetőséget. A Loomio megjeleníti az alcsoport beszélgetéssablonjait. A beküldő kiválasztja a megfelelő sablont, megválaszolja a kérdéseit, és elindítja a beszélgetést.
+A beküldő megnyitja az alcsoportot, és kiválasztja az **Új szál** lehetőséget. A Loomio megjeleníti az alcsoport beszélgetéssablonjait. A beküldő kiválasztja a megfelelő sablont, megválaszolja a kérdéseit, és elindítja a beszélgetést.
 
 A beszélgetés az alcsoporthoz tartozik, és a Loomio vendégként adja hozzá a beküldőt az adott szálhoz, nem az alcsoport tagjaként. A beküldő részt vehet a saját szálában az elbíráló csapattal együtt, de az alcsoport többi bizalmas beszélgetését vagy beadványát nem láthatja.
 

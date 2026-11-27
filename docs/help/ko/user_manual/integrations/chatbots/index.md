@@ -3,24 +3,24 @@ sections:
   introduction: 46c095b75ad63f90
   what-it-looks-like-in-chat: f317dcdbffe349dc
   generate-a-webhook-url: ededdedfffbe6bcb
-  set-up-a-chat-integration: d671b54fe6ae3cd1
+  set-up-a-chat-integration: 5a727120f9967d49
   invite-to-poll: ffa06cde4354b243
   automatic-notifications: 21e1f83202af63e1
 generated:
   introduction: ca42843940ba72b2
   what-it-looks-like-in-chat: 3627363de5fd8225
   generate-a-webhook-url: 4a06b427e5652b20
-  set-up-a-chat-integration: ccb359ca867b5b8e
+  set-up-a-chat-integration: 33ca4e3de4949c4a
   invite-to-poll: b3101799bfa11ecd
   automatic-notifications: c8e83f2ef431591f
 title: 채팅 연동
 title_source: 0eca19d30c6d7d3c
 title_generated: 58e74bbd88fea4d5
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -61,7 +61,7 @@ Zapier나 Rocket.Chat처럼 HTML 또는 Markdown 형식의 수신 웹훅을 지�
 
 채팅 연동을 추가하거나 수정하려면 그룹 관리자여야 합니다.
 
-1. 채팅 서비스 설정을 마친 뒤(위 내용 참조), Loomio에서 그룹 메뉴를 열고 **채팅 연동**을 선택하세요.
+1. 채팅 서비스 설정을 마친 뒤(위 내용 참조), Loomio의 그룹 페이지에서 **설정**을 열고 **채팅 연동**을 선택하세요.
 
    ![](loomio-group-settings.png)
 

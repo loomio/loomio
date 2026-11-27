@@ -1,12 +1,12 @@
 ---
 title: Confidentialité
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -15,7 +15,7 @@ sections:
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 51c4deb77aa6b9ac
+  introduction: 0475b246dbbba635
   open: 91495c3dc68c31e9
   follow-an-open-group: 1033bd50a5b416b7
   closed: 1dd308772f2889c7
@@ -33,7 +33,7 @@ needs_review:
 
 # Confidentialité du groupe
 
-La confidentialité détermine qui peut trouver un groupe et qui peut lire son contenu. Dans le menu d’actions du groupe, ouvrez **Modifier les paramètres du groupe**, puis sélectionnez **Confidentialité**.
+La confidentialité détermine qui peut trouver un groupe et qui peut lire son contenu. Sur la page du groupe, ouvrez **Paramètres**, sélectionnez **Modifier les paramètres du groupe**, puis choisissez **Confidentialité**.
 
 ![Paramètres de confidentialité du groupe](group_privacy_settings.png#width-90)
 

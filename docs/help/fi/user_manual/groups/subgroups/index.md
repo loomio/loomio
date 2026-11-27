@@ -1,34 +1,34 @@
 ---
 title: Alaryhmät
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c656e4398a0d0fef
-  add-a-subgroup: 9787884284f190c8
+  add-a-subgroup: d59b74cbe0493d41
   subgroup-settings: 737225cc4bebe7e8
   privacy: d66210a7ca87eb23
   permissions: b6dfa2fbf71913f7
-  find-subgroups: 285d9e270f55c434
+  find-subgroups: 92ec11a817df2b5a
   invite-to-a-subgroup: 9c672e9470b07ca1
   simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
   administer-a-subgroup: 20d279d47f1f0b49
   delete-a-subgroup: 4cc93cd908d342b9
-  how-people-join: a73630ab35e67aee
+  how-people-join: 4ea34789d1a261fd
 generated:
   introduction: d7a2ec344f84bc3b
-  add-a-subgroup: cfaa5417a3398e9e
+  add-a-subgroup: 2b67d21e8fdb61d0
   subgroup-settings: eb275d9b7dad3776
   privacy: b87fae4f876b2f34
   permissions: 68d8f01c0878f27e
-  find-subgroups: 8085cfc9308dbbd3
+  find-subgroups: 917800f9af6ba1a1
   invite-to-a-subgroup: 6ef4f5bff18dd6e2
   simultaneously-invite-people-to-subgroups-and-parent-group: 3a286c3256f87f73
   administer-a-subgroup: b0f5e93fbb4cf6a1
   delete-a-subgroup: cc21cf892cbb1f16
-  how-people-join: eb4a3b04159a54b6
+  how-people-join: 4b72bc403d5bb04a
 title_source: 9f81e728f70cae3e
 title_generated: 1df663e60675db34
 ---
@@ -58,7 +58,7 @@ Luo alaryhmä avaamalla pääryhmäsi sivu, valitsemalla sivupalkista **Uusi ala
 
 ![Packaging Working Group -alaryhmän luomislomake](subgroups_new.png)
 
-Kun alaryhmä on valmis, [kutsu ihmisiä](/en/user_manual/groups/inviting_people) liittymään siihen. Voit muuttaa alaryhmän [ryhmäasetuksia](/en/user_manual/groups/settings) alaryhmän sivun toimintovalikosta.
+Kun alaryhmä on valmis, [kutsu ihmisiä](/en/user_manual/groups/inviting_people) liittymään siihen. Voit muuttaa alaryhmän [ryhmäasetuksia](/en/user_manual/groups/settings) alaryhmän sivun kohdassa **asetukset**.
 
 ![Muokkaa ryhmän asetuksia -toiminto Packaging Working Group -alaryhmässä](subgroups_edit_group_settings.png)
 
@@ -87,7 +87,7 @@ Kun pääryhmä on yksityinen, alaryhmän yksityisyysasetus voi olla vain **Näk
 
 ### Miten ihmiset liittyvät
 
-Valitse, [miten ihmiset liittyvät](/en/user_manual/groups/settings/privacy#how-people-join), alaryhmää luodessasi tai kohdassa **Muokkaa ryhmän asetuksia** > **Yksityisyys**.
+Valitse, [miten ihmiset liittyvät](/en/user_manual/groups/settings/privacy#how-people-join), alaryhmää luodessasi tai kohdassa **asetukset** > **Muokkaa ryhmän asetuksia** > **Yksityisyys**.
 
 ![Alaryhmän yksityisyys- ja liittymisasetukset](subgroups_privacy_settings.png)
 
@@ -103,7 +103,7 @@ Ota käyttöön **Pääryhmän jäsenet näkevät yksityiset ketjut** kohdassa *
 
 ## Etsi alaryhmiä
 
-Valitse pääryhmäsi nimi sivupalkista nähdäksesi sen alaryhmät.
+Valitse pääryhmäsi nimi sivupalkista nähdäksesi sen alaryhmät. Pääryhmän **Ketjut**-, **Kyselyt**-, **Jäsenet**-, **Tiedostot**-, **Tehtävät**- ja **Kirjanmerkit**-sivuilla voit valita **Alaryhmät**-suodattimesta **Vain tämä ryhmä**, **Omat alaryhmäni** tai **Kaikki alaryhmät** tai siirtyä suoraan alaryhmään.
 
 ![Oatmilk Cooperative -ryhmän alaryhmät sivupalkissa](subgroups_find_subgroups.png)
 

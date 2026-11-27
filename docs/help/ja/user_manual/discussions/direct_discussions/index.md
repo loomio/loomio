@@ -1,15 +1,15 @@
 ---
 title: ダイレクトディスカッション
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: c617bad25b64654f
+  introduction: 1a0632592c683296
   contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: '018c813f33011c24'
+  introduction: d4ab46f7eabff6fe
   contacting-someone-via-a-direct-discussion: 0ea1f2ac4d7eae1c
 title_source: ccfab058f1f7c146
 title_generated: 7965ee1c404fae4a
@@ -27,11 +27,11 @@ title_generated: 7965ee1c404fae4a
 
 ![グループが選択されておらず、招待する欄にSamira Patelが追加されているダイレクトディスカッションのフォーム](direct-discussion-example.png)
 
-サイドバーで**ダイレクトスレッド**を選択すると、ダイレクトディスカッションとアンケートが表示されます。そこから**新しい**メニューを開き、**新しい議論**を選択するとダイレクトディスカッションを開始でき、**新しい投票**を選択するとグループに属さないアンケートを開始できます。
+**すべてのグループ**を開き、**スレッド**で**ダイレクト**を選択すると、ダイレクトディスカッションが表示されます（**スレッド**カードでダイレクトの件数を選択しても表示できます）。そこから**新しいスレッド**を選択すると、ダイレクトディスカッションを開始できます。また、**すべてのグループ**で**ユーザー**を開き、名前の横にある**ダイレクトスレッド**を選択することもできます。
 
 ダイレクトアンケートは、招待した人だけが閲覧できます。作成後、[投票者の管理](/en/user_manual/polls/manage_voters)から人やメールアドレスを指定して招待します。
 
-![サイドバーのダイレクトスレッド項目とダイレクトディスカッションの一覧](direct-discussion-sidebar.png)
+![すべてのグループでダイレクトフィルターを選択し、ダイレクトディスカッションを表示している画面](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 

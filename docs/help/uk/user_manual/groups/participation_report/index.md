@@ -1,12 +1,12 @@
 ---
 title: Звіт про участь
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: f5759e9db8130be6
+  introduction: 27a5a12bab3babf8
   what-s-in-the-report: a857f9d955851358
   actions-per-month: 4b2aebb7a8d1ecae
   tag-usage: c05217a052bc0da0
@@ -15,7 +15,7 @@ sections:
   users-per-country: 03111e1b5f9a6697
   actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: c6bba779df10e9b3
+  introduction: 5ac2bf91d0a5563b
   what-s-in-the-report: 657ab66289abd2cd
   actions-per-month: 1f5a06381bf3436b
   tag-usage: bdc2dcafc5579585
@@ -33,13 +33,13 @@ title_generated: 3e07e7686a9c28d3
 
 Звіт про участь показує активність у вашій групі Loomio та її підгрупах.
 
-Ви можете вибрати, які групи включити, встановити початкову й кінцеву дати та згрупувати результати за роками, місяцями, тижнями або днями.
+ви можете вибрати, які групи включити, встановити початкову й кінцеву дати та згрупувати результати за роками, місяцями, тижнями або днями.
 
 Кожен учасник групи може переглядати звіт, але бачить результати лише для груп, до яких належить. Тому різні учасники можуть бачити різні підсумки.
 
-Щоб відкрити звіт, відкрийте меню дій групи та виберіть **Звіт про участь**. У будь-якій таблиці звіту виберіть заголовок стовпця, щоб відсортувати таблицю за цим стовпцем.
+Щоб відкрити звіт, відкрийте **Налаштування** на сторінці групи та виберіть **Звіт про участь**. У будь-якій таблиці звіту виберіть заголовок стовпця, щоб відсортувати таблицю за цим стовпцем.
 
-![Пункт звіту про участь у меню Oatmilk Cooperative](group_participation_report.png)
+![Пункт звіту про участь на сторінці налаштувань Oatmilk Cooperative](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 

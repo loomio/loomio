@@ -1,14 +1,14 @@
 ---
 title: Permessi
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: f26c0d701b3937d9
+  introduction: 48227c7f72311f11
 title_source: abccc78cc93c0793
 title_generated: d365c63ccd088393
 ---
@@ -17,7 +17,7 @@ title_generated: d365c63ccd088393
 
 # Permessi del gruppo
 
-La scheda **Permessi** controlla cosa possono fare i membri nel gruppo e, per i gruppi non segreti, cosa possono fare le persone che non sono membri. Apri **Modifica le impostazioni del gruppo** dal menu delle azioni del gruppo, quindi seleziona **Permessi**.
+La scheda **Permessi** controlla cosa possono fare i membri nel gruppo e, per i gruppi non segreti, cosa possono fare le persone che non sono membri. Nella pagina del gruppo, apri **Configurazione**, seleziona **Modifica le impostazioni del gruppo** e scegli **Permessi**.
 
 ![Impostazioni dei permessi del gruppo](group_group_settings_permissions.png)
 

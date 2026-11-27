@@ -1,16 +1,16 @@
 ---
 title: メンバーを招待する
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: b55ab2aa78f05f0a
+  introduction: bec6f08e15d7e873
   send-invitations-via-email: bc689b4a3d69d435
   invite-many-at-once: 680aca86e95da6c6
   invite-people-to-subgroups: 0b0bc3c6e63c22d0
-  share-a-link-to-your-group: ed83815d7f94a3bd
+  share-a-link-to-your-group: d9c833f3a5912b7c
   request-to-join-group: 225594c988ec4b6d
   review-membership-requests: e06da4fef711a04a
   managing-invitations: 2a25775256980537
@@ -37,7 +37,7 @@ title_generated: 8443acb671cc4a96
 
 # Loomioのグループにメンバーを招待する
 
-メールでLoomioのグループにメンバーを招待したり、招待リンクを共有したり、参加申請を受け付けたりできます。まず、グループページの**メンバー**タブを開きます。
+メールでLoomioのグループにメンバーを招待したり、招待リンクを共有したり、参加申請を受け付けたりできます。まず、**メンバー**カードの**招待する**を選択するか、グループページの**メンバー**を開きます。
 
 ![](group_join_group_invite.png)
 
@@ -74,11 +74,11 @@ title_generated: 8443acb671cc4a96
 
 ## グループへのリンクを共有する
 
-**共有**を選択すると、ニュースレター、チャットチャンネル、メール、ウェブサイトで使用できる、再利用可能な招待リンクを生成できます。
+**共有**を選択すると、ニュースレター、チャットチャンネル、メール、ウェブサイトで使用できる、再利用可能な招待リンクを生成できます。**紹介メッセージを含める**をオンにすると、リンクと一緒に短いメッセージをコピーできます。
 
 ![](group_invite_sharable_link.png)
 
-既存のリンクからの参加を停止するには、**このリンクをリセット**を選択します。古いリンクが無効になり、新しいリンクが作成されます。
+既存のリンクからの参加を停止するには、**リンクをリセットする**を選択します。古いリンクが無効になり、新しいリンクが作成されます。
 
 <!-- translation-section: request-to-join-group -->
 

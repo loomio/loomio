@@ -1,28 +1,28 @@
 ---
 title: Sisällön löytäminen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 91ceec48c5d29a37
   search: 5de14e45cc9ac6bc
   search-tips: 4d753a07ce09d99f
-  filter-discussions: f5e3ea1d6d34ca5c
-  category-tags: 1a82b7bb393c43a8
-  unread-discussions: 60a3bde974d63806
-  polls-awaiting-your-vote: 3a542d9458392a4c
-  bookmarks: 06b79827757caeeb
+  filter-discussions: d68e5cb2864afa2c
+  category-tags: b5cd24f91b729c3d
+  unread-discussions: 473dd3edf3cc3674
+  polls-awaiting-your-vote: f01b1b3f4219c4a5
+  bookmarks: d733891b082a2941
 generated:
   introduction: a5c50bacd68ae46a
   search: 3340cb7a4085cebc
   search-tips: b5a12ae167fd55eb
-  filter-discussions: 306aa61cd3b996dd
-  category-tags: 490675e3c09e8782
-  unread-discussions: bee61fb8356fce21
-  polls-awaiting-your-vote: 8672f85ff81c34f6
-  bookmarks: 6b45eb4aa8d22ff3
+  filter-discussions: c947cc18f0218ab3
+  category-tags: 0feebaf937a5bb2e
+  unread-discussions: 3d81890ef00c3327
+  polls-awaiting-your-vote: 2c59f952148c97ba
+  bookmarks: a121b7f219f55729
 title_source: 11acd4c6010fc176
 title_generated: 6c7ee66860203e3b
 ---
@@ -61,7 +61,7 @@ Kirjoita sana tai ilmaus ja paina Enter. Esimerkiksi haku sanalla **bottle** lö
 
 ## Keskustelujen suodattaminen
 
-Ryhmän **Keskustelut**-välilehdellä voit suodattaa ketjuja sen mukaan, ovatko ne avoimia vai suljettuja, tai luokittelutunnisteen perusteella. Yhdistä suodatin luettelon hakukenttään rajataksesi pitkää keskusteluluetteloa nopeasti.
+Ryhmän **Ketjut**-sivulla voit suodattaa ketjuja lukitustilan, lukemattoman toiminnan, luokittelutunnisteen tai alaryhmän perusteella (valitsemalla **Vain tämä ryhmä**, **Omat alaryhmäni** tai **Kaikki alaryhmät**). **Kaikki ryhmät** -sivulla voit suodattaa myös valinnoilla **Uutta sinulle** ja **Suorat** sekä luokittelutunnisteen perusteella tai rajata luetteloa **Hae**-toiminnolla.
 
 <!-- translation-section: category-tags -->
 
@@ -71,7 +71,7 @@ Tunnisteet kokoavat toisiinsa liittyviä keskusteluja, kyselyjä, johtopäätök
 
 ![](tags.png)
 
-Valitse tunniste **Keskustelut**-välilehdellä nähdäksesi keskustelut, joissa on kyseisellä tunnisteella merkittyä sisältöä. Valitse keskustelun sivupalkista tunniste nähdäksesi sillä merkityt kommentit, kyselyt tai johtopäätökset sekä sisällöt, joihin ne vastaavat.
+Valitse tunniste **Ketjut**-, **Kyselyt**- tai **Tehtävät**-sivulla nähdäksesi sillä merkityt sisällöt. Valitse keskustelun sivupalkista tunniste nähdäksesi sillä merkityt kommentit, kyselyt tai johtopäätökset sekä sisällöt, joihin ne vastaavat.
 
 Kirjoittajat voivat lisätä tunnisteita omiin julkaisuihinsa. Ryhmän ylläpitäjät, ketjun ylläpitäjät ja kaikki, joilla on oikeus muokata keskustelun kontekstia, voivat lisätä tunnisteita mihin tahansa sisältöön. Katso määritysten ja käyttöoikeuksien tiedot sivulta [Luokittelutunnisteet](/en/user_manual/discussions/tags).
 
@@ -79,16 +79,16 @@ Kirjoittajat voivat lisätä tunnisteita omiin julkaisuihinsa. Ryhmän ylläpit�
 
 ## Lukemattomat keskustelut
 
-Valitse sivupalkista **Lukemattomat keskustelut** nähdäksesi ketjut, joissa on uutta toimintaa. Siirry keskustelun aikajanalla lukemattomaan sisältöön ja tärkeisiin tapahtumiin.
+Valitse **Uutta sinulle** joko **Kaikki ryhmät** -sivulla tai ryhmän **Ketjut**-sivulla (tai valitse lukemattomien ketjujen määrä **Ketjut**-kortista) nähdäksesi ketjut, joissa on ollut uutta toimintaa viimeisten kuuden viikon aikana. Siirry keskustelun aikajanalla lukemattomaan sisältöön ja tärkeisiin tapahtumiin.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## Ääntäsi odottavat kyselyt
 
-Valitse sivupalkista **Äänestykset, joista äänestää** nähdäksesi avoimet kyselyt, joihin sinut on kutsuttu mutta joissa et ole vielä äänestänyt. Voit myös avata ryhmän **Kyselyt**-välilehden nähdäksesi sekä avoimet että suljetut kyselyt.
+Avaa **Kyselyt** **Kaikki ryhmät** -sivulla (tai valitse äänten määrä **Kyselyt**-kortista) nähdäksesi avoimet kyselyt, joihin sinut on kutsuttu mutta joissa et ole vielä äänestänyt. Voit myös suodattaa valinnoilla **Vaatii Äänestyksen**, **Avoin** ja **Suljettu** sekä kyselyn tyypin tai tunnisteen perusteella **Kaikki ryhmät** -sivulla tai minkä tahansa ryhmän sivulla.
 
 <!-- translation-section: bookmarks -->
 
 ## Kirjanmerkit
 
-Lisää keskustelu, kommentti, kysely, ääni tai johtopäätös kirjanmerkkeihin, kun haluat palata siihen myöhemmin. Avaa käyttäjävalikostasi **Kirjanmerkit** nähdäksesi kaiken tallentamasi sisällön. Katso lisätietoja sivulta [Kirjanmerkit](/en/user_manual/users/bookmarks).
+Lisää keskustelu, kommentti, kysely, ääni tai johtopäätös kirjanmerkkeihin, kun haluat palata siihen myöhemmin. Avaa **Kirjanmerkit** **Kaikki ryhmät** -sivulla nähdäksesi kaiken tallentamasi sisällön tai avaa **Kirjanmerkit** ryhmän sivulla nähdäksesi kyseisen ryhmän kirjanmerkit. Katso lisätietoja sivulta [Kirjanmerkit](/en/user_manual/users/bookmarks).

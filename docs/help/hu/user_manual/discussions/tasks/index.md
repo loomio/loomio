@@ -1,20 +1,20 @@
 ---
 title: Feladatok
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: fd68a07ebf3643e8
   add-a-task: e3d3f0a7637dda92
-  name-and-assign-the-task-to-a-person: 411346d90fa91ee0
+  name-and-assign-the-task-to-a-person: 6c8f7b5b8ae60352
   set-a-reminder: efc2426835ff8300
   mark-it-as-done: 477fca02cfcf1ab6
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ Használj @említést a feladatban, hogy hozzárendeld egy csoporttaghoz. Az **A
 
 ![](tasklist2.png)
 
-A hozzád rendelt feladatok a **Feladatok** oldaladon jelennek meg. Nyisd meg a **Feladatok** oldalt az oldalsávból, hogy szál vagy szavazás szerint csoportosítva lásd őket.
+Nyisd meg a **Feladatok** oldalt az **Összes csoport** nézetben, hogy lásd a csoportjaidban hozzád rendelt feladatokat, vagy nyisd meg a **Feladatok** oldalt egy csoport oldalán, hogy lásd az adott csoport feladatait. A feladatok szál vagy szavazás szerint vannak csoportosítva, és szűrheted őket állapot (**Teendő**, **Kész** vagy **Minden**), határidő (**Lejárt**, **Következő 7 nap**, **Később** vagy **Nincs határidő**), felelős (egy csoport oldalán), alcsoport vagy kategóriacímke szerint, illetve kereséssel.
 
 ![](task_list.png)
 

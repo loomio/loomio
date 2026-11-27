@@ -1,17 +1,17 @@
 ---
 title: Profiel
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/profile.md
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
+source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: 7ce32048f36c2cbf
+  introduction: e2247df3f6f7d735
   name-and-handle: 2e06fd8bad1f0232
   description: 00bd7f66449a9841
   cover-image-and-logo: 8fe13296d52ccc52
@@ -23,7 +23,7 @@ title_generated: 6eb1a5e8cfdd32bb
 
 # Groepsprofiel
 
-Op het tabblad Profiel stel je in hoe jouw groep wordt herkend en voorgesteld. Open **Bewerk groepsinstellingen** op de groepspagina en selecteer vervolgens **Profiel**.
+Op het tabblad Profiel stel je in hoe jouw groep wordt herkend en voorgesteld. Open **Instellingen** op de groepspagina, selecteer **Bewerk groepsinstellingen** en kies **Profiel**.
 
 ![Instellingen voor het groepsprofiel](group_profile.png)
 

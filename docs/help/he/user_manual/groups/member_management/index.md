@@ -1,16 +1,16 @@
 ---
 title: ניהול חברים
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: bc7d2de9abc2ea86
   administering-your-group: 7ae1b105c20977fc
   managing-subgroups: 2e4bdee3283e8ef8
   removing-members: d70807bdd968d594
-  leaving-group: 268f0c735b8e46d7
+  leaving-group: 69332aeda981c679
   set-title: eb9a52e3d6c21d43
   member-email-addresses: 0e800419a7bdacc6
 generated:
@@ -18,7 +18,7 @@ generated:
   administering-your-group: 852e689beca4cf10
   managing-subgroups: 99978ffbf7c08ff8
   removing-members: 843e19fe19866e35
-  leaving-group: ff8e33dae4954ee0
+  leaving-group: 255036e417ddb901
   set-title: 5e1b3b85cf15da47
   member-email-addresses: 0da62af6354d3e78
 title_source: 23ac3a7fe9ee72a2
@@ -82,11 +82,11 @@ title_generated: 4b3b48d6a2988ead
 
 ## עזיבת קבוצה
 
-כדי לעזוב קבוצה, יש לפתוח את תפריט הפעולות של הקבוצה ולבחור **עזוב את הקבוצה**.
+כדי לעזוב קבוצה, יש לפתוח את **הגדרות** בעמוד הקבוצה ולבחור **עזוב את הקבוצה**.
 
 לעזיבה יש אותה השפעה על הגישה לקבוצה ולתת־הקבוצות כמו להסרה בידי מנהל קבוצה.
 
-![הפעולה לעזיבת הקבוצה בתפריט ההגדרות של קואופרטיב Oatmilk](member_leave_group.png)
+![הפעולה לעזיבת הקבוצה בעמוד ההגדרות של קואופרטיב Oatmilk](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 

@@ -1,25 +1,25 @@
 ---
 title: カテゴリタグ
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: 1973574e0bd2987a
+  introduction: 4f278d6810001b5a
   apply-tags: c389e1c9bb77c09a
   create-tags: 1aa6fa11b76ee9b2
-  edit-tags: d05e1459529b093e
+  edit-tags: 274e3ec6d44ac193
   edit-tag-in-thread-or-poll: aa46caeeeb4dd76f
   template-tags: 4362f3714dade123
   tag-contributions: 5cb0d47e8234694c
@@ -37,7 +37,7 @@ title_generated: b00daefb15504e88
 
 タグは組織全体で共有されます。親グループで作成したタグはサブグループでも共有されるため、グループをまたいで関連する作業を追跡できます。Loomioではタグがアルファベット順に表示され、名前の横にタグの色を示す点が表示されます。
 
-グループページでスレッド一覧の上にある**タグ**を選択し、タグを選ぶと、そのタグが付いた項目を1つ以上含むスレッドが表示されます。タグの一覧が長い場合は、絞り込み欄に入力して検索できます。
+**すべてのグループ**またはグループページで、スレッド、アンケート、タスクの一覧の上にある**タグ**を選択し、タグを選ぶと、そのタグが付いた項目が表示されます。タグの一覧が長い場合は、絞り込み欄に入力して検索できます。
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ title_generated: b00daefb15504e88
 
 タグの名前や色の変更、統合、削除ができるのは、親グループの管理者だけです。変更は、すべてのサブグループを含む組織全体に適用されます。
 
-グループページで**タグ**を開き、**タグを編集**を選択します。
+グループページで**タグ**を開き、**タグを編集**を選択するか、**設定**を開いて**カテゴリタグ**を選択します。
 
 ![カテゴリタグを編集](tags_edit_new.png)
 

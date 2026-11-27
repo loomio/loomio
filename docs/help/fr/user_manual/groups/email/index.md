@@ -1,15 +1,15 @@
 ---
 title: Adresse e-mail
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: 2d7191ea421a0510
+  introduction: bd3e453aa2f7f702
   preventing-unauthorized-emails: d04817852f623353
 title_source: f2488fd4ef4adbc6
 title_generated: 8f9a920a57efeddf
@@ -21,9 +21,9 @@ title_generated: 8f9a920a57efeddf
 
 Chaque groupe Loomio dispose de sa propre adresse e-mail. Vous pouvez envoyer ou transférer un e-mail à cette adresse pour créer un nouveau fil dans le groupe.
 
-Vous pouvez consulter l’adresse e-mail du groupe sur la page du groupe :
+Vous pouvez consulter l’adresse e-mail du groupe dans **Paramètres** sur la page du groupe :
 
-![Emplacement de l’adresse e-mail sur la page du groupe](email_email_button.png)
+![Emplacement de l’adresse e-mail dans Paramètres sur la page du groupe](email_email_button.png)
 
 Lorsque vous envoyez un e-mail à cette adresse, Loomio crée un nouveau fil. L’objet de l’e-mail devient le titre du fil, le corps de l’e-mail devient sa description et les fichiers joints sont ajoutés au fil.
 

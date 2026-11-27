@@ -1,22 +1,22 @@
 ---
 title: チャット連携
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 46c095b75ad63f90
   what-it-looks-like-in-chat: f317dcdbffe349dc
   generate-a-webhook-url: ededdedfffbe6bcb
-  set-up-a-chat-integration: d671b54fe6ae3cd1
+  set-up-a-chat-integration: 5a727120f9967d49
   invite-to-poll: ffa06cde4354b243
   automatic-notifications: 21e1f83202af63e1
 generated:
   introduction: 6c617201d66f192b
   what-it-looks-like-in-chat: ecd3e57dcc39f4fe
   generate-a-webhook-url: ec36889a83521485
-  set-up-a-chat-integration: 96b9a05c52de7d36
+  set-up-a-chat-integration: 3ce2905d961dda88
   invite-to-poll: '048790c3d1aecfa3'
   automatic-notifications: 9ef065038a27431d
 title_source: 0eca19d30c6d7d3c
@@ -61,7 +61,7 @@ ZapierやRocket.Chatなど、HTMLまたはMarkdown形式の受信Webhookに対�
 
 チャット連携を追加または編集するには、グループ管理者である必要があります。
 
-1. チャットサービスを設定した後（上記参照）、Loomioでグループメニューを開き、**チャット連携**を選択します。
+1. チャットサービスを設定した後（上記参照）、Loomioのグループページで**設定**を開き、**チャット連携**を選択します。
 
    ![](loomio-group-settings.png)
 

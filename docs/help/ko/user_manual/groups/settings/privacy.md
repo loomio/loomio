@@ -1,6 +1,6 @@
 ---
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -9,7 +9,7 @@ sections:
   how-people-join: aca325fb6b4d6056
   group-directory: a9a41ea389fb10ba
 generated:
-  introduction: 28923d38eef16eff
+  introduction: 681302f35e427767
   open: 67f37483f5f8dbaf
   follow-an-open-group: 0d8cff020f71e58a
   closed: 74f06f2c31d4e47d
@@ -20,18 +20,18 @@ generated:
 title: 공개 범위
 title_source: 54a57c3147c49f33
 title_generated: a93ac7af37fd403c
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
 
 # 그룹 공개 범위
 
-공개 범위는 누가 그룹을 찾고 콘텐츠를 읽을 수 있는지 결정합니다. 그룹의 작업 메뉴에서 **그룹 설정 수정**을 연 다음 **공개 범위**를 선택하세요.
+공개 범위는 누가 그룹을 찾고 콘텐츠를 읽을 수 있는지 결정합니다. 그룹 페이지에서 **설정**을 열고 **그룹 설정 수정**을 선택한 다음 **공개 범위**를 선택하세요.
 
 ![그룹 공개 범위 설정](group_privacy_settings.png#width-90)
 

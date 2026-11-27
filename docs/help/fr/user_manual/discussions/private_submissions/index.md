@@ -1,21 +1,21 @@
 ---
 title: Recueillir des contributions privées
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/private_submissions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4ec7d13335b07a50
-  enable-private-submissions: dd5106b8411a85ba
+  enable-private-submissions: 013e00c5ac4d7a7e
   set-up-a-private-submission-process: cb0361b8044af3e3
-  make-a-submission: c04bd9ef30f8db97
+  make-a-submission: cbd92f58d6a8840e
   review-submissions: 267be9e3c705c196
 generated:
   introduction: 96cdacba0e5379e6
-  enable-private-submissions: 2f66625c53edf078
+  enable-private-submissions: 1ab33dc1c6710bd4
   set-up-a-private-submission-process: 2185b80b02592e83
-  make-a-submission: 9a45272f4fcdfc44
+  make-a-submission: 0c339128b0b170db
   review-submissions: f6d7dd2573cc5148
 title_source: e82ab76916d594f4
 title_generated: 0774715462c60afb
@@ -46,7 +46,7 @@ Ce processus préserve la confidentialité entre les personnes qui soumettent un
 Vous devez être administrateur du groupe ou du sous-groupe dans lequel vous souhaitez recueillir des contributions.
 
 1. Ouvrez le groupe.
-2. Sélectionnez **Paramètres** (ou **Plus**, puis **Modifier les paramètres du groupe**).
+2. Ouvrez **Paramètres**, puis sélectionnez **Modifier les paramètres du groupe**.
 3. Ouvrez **Permissions**.
 4. Activez **Les non-membres peuvent démarrer des discussions**.
 5. Enregistrez les paramètres du groupe.
@@ -73,9 +73,9 @@ L’activation de cette permission ne rend pas les discussions du groupe publiqu
 
 ## Soumettre une contribution
 
-La personne qui souhaite soumettre une contribution ouvre le sous-groupe et sélectionne **Lancer une discussion**. Loomio affiche les modèles de discussion du sous-groupe. La personne choisit le modèle approprié, répond aux questions et lance la discussion.
+La personne qui souhaite soumettre une contribution ouvre le sous-groupe et sélectionne **Nouveau fil**. Loomio affiche les modèles de discussion du sous-groupe. La personne choisit le modèle approprié, répond aux questions et lance la discussion.
 
-La discussion appartient au sous-groupe, et Loomio ajoute la personne qui l’a lancée en tant qu’invité à ce fil, sans qu’elle devienne membre du sous-groupe. Elle peut participer à son propre fil avec l’équipe chargée de l’examen, mais ne peut pas voir les autres discussions ou contributions privées du sous-groupe.
+La discussion appartient au sous-groupe, et Loomio ajoute la personne qui l’a lancée en tant qu’invitée à ce fil, sans qu’elle devienne membre du sous-groupe. Elle peut participer à son propre fil avec l’équipe chargée de l’examen, mais ne peut pas voir les autres discussions ou contributions privées du sous-groupe.
 
 <!-- translation-section: review-submissions -->
 

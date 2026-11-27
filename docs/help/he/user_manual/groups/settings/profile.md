@@ -1,17 +1,17 @@
 ---
 title: פרופיל
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/profile.md
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
+source_file: docs/help/en/user_manual/groups/settings/profile.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: 6342383c0b7fd365
+  introduction: ec55705bb0966c86
   name-and-handle: b932cfc15a8280f6
   description: a1277d2cd6df434a
   cover-image-and-logo: b43ddf4223b12077
 generated:
-  introduction: ed50144b50eb766e
+  introduction: c3e40320d9109407
   name-and-handle: 2fd2615d53398c8d
   description: d473ab169e8a5855
   cover-image-and-logo: 6ac65e228d2d1c75
@@ -23,7 +23,7 @@ title_generated: aa9852b5aa7fef2f
 
 # פרופיל הקבוצה
 
-לשונית הפרופיל קובעת כיצד הקבוצה מזוהה ומוצגת. יש לפתוח את **ערוך הגדרות קבוצה** מדף הקבוצה, ואז לבחור **פרופיל**.
+לשונית הפרופיל קובעת כיצד הקבוצה מזוהה ומוצגת. בדף הקבוצה, יש לפתוח את **הגדרות**, לבחור **ערוך הגדרות קבוצה**, ואז לבחור **פרופיל**.
 
 ![הגדרות פרופיל הקבוצה](group_profile.png)
 

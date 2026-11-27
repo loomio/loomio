@@ -1,19 +1,19 @@
 ---
 title: Favoritos
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/users/bookmarks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4526320029ca0268
   save-a-bookmark: 3855beff6126a218
-  view-your-bookmarks: 0512e42564819ba7
+  view-your-bookmarks: 36d441a4ada6425f
   remove-a-bookmark: 5e66cedf4b86c3fa
 generated:
   introduction: a96893e25ce23601
   save-a-bookmark: 69f8d7e34622b8ce
-  view-your-bookmarks: cd36c6ee861f29f1
+  view-your-bookmarks: 1424a26569b7a52e
   remove-a-bookmark: c4d683eae5798b70
 title_source: 96316f0f6404dbe1
 title_generated: ad2c8ba9ac94925f
@@ -45,7 +45,7 @@ Abra o menu de ações do item e selecione **Salvar marcador**. O menu de açõe
 
 ## Ver seus favoritos
 
-Abra a barra lateral e selecione **Favoritos**. O número ao lado do link mostra quantos favoritos você salvou.
+Abra **Favoritos** em **Todos os grupos** para ver tudo o que você salvou nos seus grupos, ou abra **Favoritos** na página de um grupo para ver os favoritos desse grupo (com um filtro de **Subgrupos** nos grupos principais).
 
 A página Favoritos lista primeiro os itens que você salvou mais recentemente. Cada linha mostra o tipo de item e seu autor. Selecione uma linha para acessar novamente o item salvo nos favoritos.
 

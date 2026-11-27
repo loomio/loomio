@@ -1,16 +1,16 @@
 ---
 sections:
-  introduction: 114ab8c916ca5fba
+  introduction: 31651f229b065ec2
 generated:
-  introduction: 00d94b0f0d32e864
+  introduction: bfa247ac41b02288
 title: Matrix
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -27,7 +27,7 @@ Matrix는 Loomio의 다른 채팅 연동과 달리 웹훅을 사용하지 않습
 
 1. Loomio용 Matrix 사용자 계정을 만들고, Element에서 해당 계정으로 로그인한 다음, 알림을 받을 Matrix 채팅방에 해당 계정을 초대하세요. 이 세션의 로그인 상태를 유지하세요. 로그아웃하면 액세스 토큰이 무효화됩니다.
 
-2. Loomio 그룹에서 그룹 메뉴를 열고 **채팅 연동**을 선택한 다음 **Matrix** 채팅 연동을 추가하세요.
+2. Loomio 그룹에서 **설정**을 열고 **채팅 연동**을 선택한 다음 **Matrix** 채팅 연동을 추가하세요.
 
    ![Loomio Matrix 봇 메뉴](loomio-add-matrix-bot.png)
 

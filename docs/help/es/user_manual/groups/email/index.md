@@ -1,15 +1,15 @@
 ---
 title: Dirección de correo electrónico
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: 83f1f1f35d9eb2af
+  introduction: 8da932b13dad23f2
   preventing-unauthorized-emails: 07e114cd0911f70a
 title_source: f2488fd4ef4adbc6
 title_generated: 8bd6a0c76042ef57
@@ -21,9 +21,9 @@ title_generated: 8bd6a0c76042ef57
 
 Cada grupo de Loomio tiene su propia dirección de correo electrónico. Puedes enviar o reenviar un correo a esta dirección para iniciar un nuevo hilo en el grupo.
 
-Puedes encontrar la dirección de correo electrónico del grupo en la página del grupo:
+Puedes encontrar la dirección de correo electrónico del grupo en **Configuración ** en la página del grupo:
 
-![Ubicación de la dirección de correo electrónico en la página del grupo](email_email_button.png)
+![Ubicación de la dirección de correo electrónico en Configuración en la página del grupo](email_email_button.png)
 
 Cuando envías un correo a esta dirección, Loomio crea un nuevo hilo. El asunto del correo se convierte en el título del hilo, el cuerpo se convierte en la descripción del hilo y los archivos adjuntos se añaden al hilo.
 

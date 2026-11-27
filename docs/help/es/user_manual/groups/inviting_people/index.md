@@ -1,16 +1,16 @@
 ---
 title: Invitar personas
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 74059ea9fbb835df
+  introduction: d5599801ce2435e1
   send-invitations-via-email: 31fb589497c62dd5
   invite-many-at-once: b16b041c438139ef
   invite-people-to-subgroups: ebabc8be61151327
-  share-a-link-to-your-group: 1d9e5c284cc370df
+  share-a-link-to-your-group: 71c0324e8713813f
   request-to-join-group: bf2adeaf16292fe4
   review-membership-requests: 7006378e870d8c63
   managing-invitations: 4213f2a1400cf35d
@@ -18,11 +18,11 @@ sections:
   cancelling-invitations: f45e19cbeaf8b752
   invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 188cab5cd6a13ffc
+  introduction: 9699a618aec74eea
   send-invitations-via-email: f78205bdeafc746a
   invite-many-at-once: c6ed8dc5059883c1
   invite-people-to-subgroups: 42ef6fe0aa01dd91
-  share-a-link-to-your-group: 0e2d9427c8823b79
+  share-a-link-to-your-group: c4156540fac2927d
   request-to-join-group: 8ad865eaad9399a1
   review-membership-requests: 118ab07f78d4773e
   managing-invitations: ec877dc808627fbd
@@ -39,7 +39,7 @@ needs_review:
 
 # Invitar personas a un grupo de Loomio
 
-Puedes invitar a personas a tu grupo de Loomio por correo electrónico, compartir un enlace de invitación o permitir que las personas soliciten el ingreso. Abre la pestaña **Integrantes** en la página de tu grupo para empezar.
+Puedes invitar a personas a tu grupo de Loomio por correo electrónico, compartir un enlace de invitación o permitir que las personas soliciten el ingreso. Selecciona **Invitar** en la tarjeta **Integrantes** o abre **Integrantes** en la página de tu grupo para empezar.
 
 ![](group_join_group_invite.png)
 
@@ -76,11 +76,11 @@ Cuando invitas a personas a un grupo principal, puedes añadirlas a uno o varios
 
 ## Compartir un enlace a tu grupo
 
-Selecciona **Compartir** para generar un enlace de invitación reutilizable para un boletín, un canal de chat, un correo electrónico o un sitio web.
+Selecciona **Compartir** para generar un enlace de invitación reutilizable para un boletín, un canal de chat, un correo electrónico o un sitio web. Activa **Incluir mensaje de presentación** para copiar un mensaje breve junto con el enlace.
 
 ![](group_invite_sharable_link.png)
 
-Para impedir que las personas se unan con un enlace existente, selecciona **Restablecer este enlace**. Esto invalida el enlace anterior y crea uno nuevo.
+Para impedir que las personas se unan con un enlace existente, selecciona **Restablecer el enlace**. Esto invalida el enlace anterior y crea uno nuevo.
 
 <!-- translation-section: request-to-join-group -->
 

@@ -1,18 +1,18 @@
 ---
 title: Eine Gruppe gründen
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 792e23f7fcb36aec
+  introduction: 87ff87d962c1b084
   group-details: 0fcf6c809c12050b
   group-name: 2ba5592281dfcbcb
   group-handle: 64928a4bbab65b9b
   group-description: 48af06ef795dd9a9
 generated:
-  introduction: 2c8d9f60670aa11d
+  introduction: 8c9d6cc2ea551e05
   group-details: ece5286b634ab922
   group-name: 29019458dfabd017
   group-handle: 7d4bab14e24aab7c
@@ -25,7 +25,7 @@ title_generated: 45d92887cc90ee70
 
 # Eine neue Gruppe gründen
 
-Wenn du Loomio zum ersten Mal nutzt, kannst du auf der [Loomio-Website](https://www.loomio.com/) eine Gruppe für eine kostenlose Testphase gründen. Wenn du Loomio bereits nutzt und eine weitere Gruppe gründen möchtest, wähle **Neue Gruppe** in der Seitenleiste.
+Wenn du Loomio zum ersten Mal nutzt, kannst du auf der [Loomio-Website](https://www.loomio.com/) eine Gruppe für eine kostenlose Testphase gründen. Während der kostenlosen Testphase erhält deine Gruppe 30 zusätzliche Tage mit aktivierten Untergruppen und Gästen, sobald drei Personen in einem Vorschlag oder einer Abstimmung ihre Stimme abgeben. Wenn du Loomio bereits nutzt und eine weitere Gruppe gründen möchtest, wähle **Neue Gruppe** in der Seitenleiste oder bei geschlossener Seitenleiste im Menü zum Wechseln der Gruppe oben auf der Seite.
 
 Die meisten Organisationen benötigen nur eine Hauptgruppe mit so vielen [Untergruppen](/en/user_manual/groups/subgroups), wie sie brauchen.
 

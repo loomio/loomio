@@ -2,27 +2,27 @@
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: aa636334b9322d42
   how-loomio-works: 9c2ce20cba63ddf5
-  groups: a960cb883a01d73c
+  groups: '085919e406667d39'
   discussions: 71554189a62321ed
-  polls-and-proposals: 601a5c095a4c5c32
+  polls-and-proposals: 60df66c685b277c3
   try-it-out: 57930d033a054983
   how-people-use-loomio: ab8141ff3880c654
 title: 시작하기
 title_source: 831d0f72d242b7d1
 title_generated: 8779a905898386e4
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -47,7 +47,7 @@ Loomio는 그룹, 토론, 투표라는 세 가지 주요 요소로 구성됩니�
 
 ### 그룹
 
-그룹은 조직, 팀 또는 공동체가 함께 활동하는 공간입니다. 그룹 홈페이지에서는 그룹의 목적을 설명하고 토론, 투표, 멤버, 파일로 연결되는 링크를 제공합니다.
+그룹은 조직, 팀 또는 공동체가 함께 활동하는 공간입니다. 그룹 홈페이지에서는 그룹의 목적을 설명하고 스레드, 투표, 멤버, 파일, 할 일, 북마크, 설정으로 연결되는 링크를 제공합니다.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ Loomio는 그룹, 토론, 투표라는 세 가지 주요 요소로 구성됩니�
 
 ![](orientation_proposal.png)
 
-투표는 토론의 일부로 진행하거나 그룹 페이지의 **투표** 탭에서 독립적으로 진행할 수 있습니다.
+투표는 토론의 일부로 진행하거나 그룹 페이지의 **투표**에서 독립적으로 진행할 수 있습니다.
 
 이러한 요소가 화면의 어디에 있는지 알아보려면 [간단한 둘러보기](/en/user_manual/overview/orientation)를 확인하세요. 참여를 시작하려면 [참여 방법](/en/user_manual/overview/how-to-participate)을 확인하세요.
 

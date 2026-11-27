@@ -1,17 +1,17 @@
 ---
 title: Налаштування групи
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/index.md
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
+source_file: docs/help/en/user_manual/groups/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-26'
 sections:
-  introduction: b975fe0dc7787563
+  introduction: e22d1f7356e9be93
   group-profile: 673d2b31980f069a
   group-privacy: c6031b3bd445f30e
   group-permissions: 3ddfc79177b464e5
 generated:
-  introduction: b2487d6c7c22b774
+  introduction: bdcaacab73248464
   group-profile: c94f9dfff04f29bc
   group-privacy: 23d689d326c9079f
   group-permissions: 9b2b6a25548d43d7
@@ -25,7 +25,7 @@ title_generated: 50e0a88ab1ef1f6a
 
 Налаштування групи визначають, як представлена ваша група, хто може знайти її та приєднатися до неї, а також що дозволено робити учасникам групи. Лише адміністратори групи можуть змінювати ці налаштування.
 
-На сторінці групи відкрийте меню дій і виберіть **Редагувати налаштування групи**.
+На сторінці групи відкрийте **Налаштування** і виберіть **Редагувати налаштування групи**.
 
 ![Редагування налаштувань групи зі сторінки групи](group_settings.png)
 

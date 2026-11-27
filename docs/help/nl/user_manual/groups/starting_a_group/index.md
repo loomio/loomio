@@ -1,18 +1,18 @@
 ---
 title: Een groep starten
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 792e23f7fcb36aec
+  introduction: 87ff87d962c1b084
   group-details: 0fcf6c809c12050b
   group-name: 2ba5592281dfcbcb
   group-handle: 64928a4bbab65b9b
   group-description: 48af06ef795dd9a9
 generated:
-  introduction: e6eb5481cb127e5d
+  introduction: 452cc466acd465a9
   group-details: e6c384328a7f7fbf
   group-name: b05481e44c2681c5
   group-handle: 8d8795e06b19888f
@@ -25,7 +25,7 @@ title_generated: 0d5fac820457fc1a
 
 # Een nieuwe groep starten
 
-Als je nieuw bent bij Loomio, kun je een groep starten met een gratis proefperiode via de [Loomio-website](https://www.loomio.com/). Als je Loomio al gebruikt en nog een groep wilt starten, selecteer je **Nieuwe groep** in de zijbalk.
+Als je nieuw bent bij Loomio, kun je een groep starten met een gratis proefperiode via de [Loomio-website](https://www.loomio.com/). Tijdens een gratis proefperiode krijgt jouw groep 30 extra dagen, met subgroepen en gasten ingeschakeld, zodra drie mensen stemmen op een voorstel of peiling. Als je Loomio al gebruikt en nog een groep wilt starten, selecteer je **Nieuwe groep** in de zijbalk, of in het groepswisselmenu bovenaan de pagina als de zijbalk gesloten is.
 
 De meeste organisaties hebben maar één hoofdgroep nodig, met daarin zoveel [subgroepen](/en/user_manual/groups/subgroups) als nodig zijn.
 

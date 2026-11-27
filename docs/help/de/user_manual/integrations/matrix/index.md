@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 114ab8c916ca5fba
+  introduction: 31651f229b065ec2
 generated:
-  introduction: 331fc418b25e8eef
+  introduction: d430b777fbd8c92c
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -27,7 +27,7 @@ Diese Anleitung verwendet den Element-Client.
 
 1. Erstelle ein Matrix-Konto für Loomio, melde dich damit in Element an und lade dieses Konto in den Matrix-Raum ein, in dem die Benachrichtigungen erscheinen sollen. Lass diese Sitzung angemeldet — beim Abmelden wird das Zugangstoken ungültig.
 
-2. Öffne in deiner Loomio-Gruppe das Gruppenmenü, wähle **Chat-Integrationen** und füge eine **Matrix**-Chat-Integration hinzu.
+2. Öffne in deiner Loomio-Gruppe **Einstellungen**, wähle **Chat-Integrationen** und füge eine **Matrix**-Chat-Integration hinzu.
 
    ![Menü zum Hinzufügen eines Matrix-Bots in Loomio](loomio-add-matrix-bot.png)
 

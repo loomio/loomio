@@ -1,16 +1,18 @@
 ---
 title: Matrix
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 114ab8c916ca5fba
+  introduction: 31651f229b065ec2
 generated:
-  introduction: c33ed929a4054b65
+  introduction: e7abdf509d830cb2
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
+needs_review:
+  introduction: check the interface label "**אסימון גישה**" for "**Access Token**"
 ---
 
 <!-- translation-section: introduction -->
@@ -27,7 +29,7 @@ Loomio יכולה לשלוח התראות לחדר ב-Matrix כאשר נוצרי
 
 1. יש ליצור חשבון משתמש ב-Matrix עבור Loomio, להתחבר אליו ב-Element ולהזמין אותו לחדר ב-Matrix שבו יוצגו ההתראות. יש להשאיר את החשבון מחובר — התנתקות מבטלת את תוקף אסימון הגישה.
 
-2. בקבוצה ב-Loomio, יש לפתוח את תפריט הקבוצה, לבחור **אינטגרציות צ'אט** ולהוסיף שילוב צ׳אט מסוג **מַטרִיצָה**.
+2. בקבוצה ב-Loomio, יש לפתוח את **הגדרות**, לבחור **אינטגרציות צ'אט** ולהוסיף שילוב צ׳אט מסוג **מַטרִיצָה**.
 
    ![תפריט הוספת בוט Matrix ב-Loomio](loomio-add-matrix-bot.png)
 
@@ -41,7 +43,7 @@ Loomio יכולה לשלוח התראות לחדר ב-Matrix כאשר נוצרי
 
    ![הגדרות Matrix](matrix-settings.png)
 
-5. יש להעתיק את **אסימון גישה** ולהדביק אותו בטופס ב-Loomio.
+5. יש להעתיק את **אסימון הגישה** ולהדביק אותו בטופס ב-Loomio.
 
    ![אסימון הגישה של Matrix](matrix-access-token.png)
 

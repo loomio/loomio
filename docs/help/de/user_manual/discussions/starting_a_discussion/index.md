@@ -1,13 +1,13 @@
 ---
 title: Diskussion starten
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: c5b9b07369869d1a
-  new-discussion: f29a3077b319eed5
+  new-discussion: c7a9866c8e2c3aee
   group: b130915850624908
   invite-and-notify: b0d88eb035263e60
   tags: 15916c7c3259c62c
@@ -15,7 +15,7 @@ sections:
   context: fdbdd9f406e00e29
 generated:
   introduction: 20381284475669b2
-  new-discussion: 9239296bc01788fc
+  new-discussion: b366003847741cfd
   group: 8cc33d833bd30d2a
   invite-and-notify: 86c1028678ddf540
   tags: 04fc21d4e6a243f4
@@ -39,11 +39,11 @@ Du kannst eine einfache Frage stellen oder ausführliche Informationen mit Links
 
 ## Neue Diskussion starten
 
-Wähle auf deiner Gruppenseite oder der Seite einer Untergruppe **Diskussion starten** aus.
+Wähle auf deiner Gruppenseite oder der Seite einer Untergruppe **Neuer Thread** aus.
 
 Loomio zeigt die [Diskussionsvorlagen](/en/user_manual/discussions/templates/) deiner Gruppe an. Wähle eine Vorlage oder **Leere Vorlage** aus, um das Diskussionsformular zu öffnen.
 
-![Schaltfläche Diskussion starten auf der Seite der Oatmilk Cooperative](new-discussion-button.png)
+![Schaltfläche Neuer Thread auf der Seite der Oatmilk Cooperative](new-discussion-button.png)
 
 ![Formular zum Starten einer Diskussion zur Planung des Mehrwegflaschenversuchs](new-discussion-example.png)
 

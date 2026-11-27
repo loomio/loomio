@@ -1,24 +1,24 @@
 ---
 title: Erste Schritte
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: 2afe00de215498ac
   how-loomio-works: 684d1b51e3e0fc88
-  groups: 464ea2f8efaab182
+  groups: 6f3f3026804fe62d
   discussions: 2cfec18ce29a80d2
-  polls-and-proposals: 3753b110181756cc
+  polls-and-proposals: ade7f80cd4ae7bd2
   try-it-out: 94722e34d708a5f9
   how-people-use-loomio: bf5563f2dd84de46
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ Loomio hat drei Hauptbereiche: Gruppen, Diskussionen und Abstimmungen.
 
 ### Gruppen
 
-Eine Gruppe ist ein Ort, an dem eine Organisation, ein Team oder eine Gemeinschaft zusammenarbeitet. Ihre Startseite erklärt den Zweck der Gruppe und verlinkt auf ihre Diskussionen, Abstimmungen, Mitglieder und Dateien.
+Eine Gruppe ist ein Ort, an dem eine Organisation, ein Team oder eine Gemeinschaft zusammenarbeitet. Ihre Startseite erklärt den Zweck der Gruppe und verlinkt auf ihre Threads, Abstimmungen, Mitglieder, Dateien, Aufgaben, Lesezeichen und Einstellungen.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ Abstimmungen helfen einer Gruppe, Präferenzen zu verstehen, Rat einzuholen und 
 
 ![](orientation_proposal.png)
 
-Abstimmungen können Teil einer Diskussion sein oder unabhängig davon über den Reiter **Abstimmungen** auf einer Gruppenseite stattfinden.
+Abstimmungen können Teil einer Diskussion sein oder unabhängig davon über **Abstimmungen** auf einer Gruppenseite stattfinden.
 
 Die [Kurze Einführung](/en/user_manual/overview/orientation) zeigt dir, wo du diese Bereiche in der Benutzeroberfläche findest. Wie du dich einbringen kannst, erfährst du unter [So nimmst du teil](/en/user_manual/overview/how-to-participate).
 

@@ -1,22 +1,22 @@
 ---
 title: אינטגרציות צ'אט
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 46c095b75ad63f90
   what-it-looks-like-in-chat: f317dcdbffe349dc
   generate-a-webhook-url: ededdedfffbe6bcb
-  set-up-a-chat-integration: d671b54fe6ae3cd1
+  set-up-a-chat-integration: 5a727120f9967d49
   invite-to-poll: ffa06cde4354b243
   automatic-notifications: 21e1f83202af63e1
 generated:
   introduction: 4ecbf58245e20395
   what-it-looks-like-in-chat: fbe3d2321eabfa98
   generate-a-webhook-url: 36b2bcbbf55c4c8c
-  set-up-a-chat-integration: f9579316afd8e12b
+  set-up-a-chat-integration: 21a31961a7596db1
   invite-to-poll: b47d8978a1fca65e
   automatic-notifications: 189039aacc77d7ae
 title_source: 0eca19d30c6d7d3c
@@ -61,7 +61,7 @@ Loomio תומך ב־Slack, Discord, Microsoft Teams, Matrix ו־Mattermost.
 
 נדרשת הרשאה של מנהל קבוצה כדי להוסיף או לערוך אינטגרציות צ'אט.
 
-1. לאחר הגדרת שירות הצ'אט (כמפורט למעלה), יש לפתוח את תפריט הקבוצה ב־Loomio ולבחור **אינטגרציות צ'אט**.
+1. לאחר הגדרת שירות הצ'אט (כמפורט למעלה), יש לפתוח את **הגדרות** בדף הקבוצה ב־Loomio ולבחור **אינטגרציות צ'אט**.
 
    ![](loomio-group-settings.png)
 

@@ -1,14 +1,14 @@
 ---
 title: 権限
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '0579f1943e715f4d'
+  introduction: b2e8aac6cada3cd1
 generated:
-  introduction: 3d00b531299fec8b
+  introduction: 4488e9659694097c
 title_source: abccc78cc93c0793
 title_generated: 1b8d4654ba9e54f7
 ---
@@ -17,7 +17,7 @@ title_generated: 1b8d4654ba9e54f7
 
 # グループの権限
 
-**権限** タブでは、メンバーがグループ内で行える操作を設定します。秘密のグループ以外では、メンバー以外の人が行える操作も設定できます。グループのアクションメニューから **グループ設定を編集する** を開き、**権限** を選択します。
+**権限** タブでは、メンバーがグループ内で行える操作を設定します。秘密のグループ以外では、メンバー以外の人が行える操作も設定できます。グループのページで **設定** を開き、**グループ設定を編集する** を選択して、**権限** を選択します。
 
 ![グループの権限設定](group_group_settings_permissions.png)
 

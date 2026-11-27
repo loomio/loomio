@@ -1,12 +1,12 @@
 ---
 title: Datenschutz
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -15,7 +15,7 @@ sections:
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: fda31624e8ad204a
+  introduction: d3c715a8e25d2405
   open: 774c43760c9ea71d
   follow-an-open-group: ca2c159faeefface
   closed: 476dba05a5a4baa5
@@ -31,7 +31,7 @@ title_generated: f624fcf0dcbb39c0
 
 # Datenschutz der Gruppe
 
-Die Datenschutzeinstellungen bestimmen, wer eine Gruppe finden und ihre Inhalte lesen kann. Öffne im Aktionsmenü der Gruppe **Gruppeneinstellungen bearbeiten** und wähle dann **Datenschutz**.
+Die Datenschutzeinstellungen bestimmen, wer eine Gruppe finden und ihre Inhalte lesen kann. Öffne auf der Gruppenseite **Einstellungen**, wähle **Gruppeneinstellungen bearbeiten** und dann **Datenschutz**.
 
 ![Datenschutzeinstellungen der Gruppe](group_privacy_settings.png#width-90)
 

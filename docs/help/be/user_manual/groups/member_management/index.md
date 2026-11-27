@@ -1,16 +1,16 @@
 ---
 title: Кіраванне ўдзельнікамі
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: bc7d2de9abc2ea86
   administering-your-group: 7ae1b105c20977fc
   managing-subgroups: 2e4bdee3283e8ef8
   removing-members: d70807bdd968d594
-  leaving-group: 268f0c735b8e46d7
+  leaving-group: 69332aeda981c679
   set-title: eb9a52e3d6c21d43
   member-email-addresses: 0e800419a7bdacc6
 generated:
@@ -18,7 +18,7 @@ generated:
   administering-your-group: 95e85c06c6219625
   managing-subgroups: 1498c638f9df20bc
   removing-members: 9703adbbaef4de26
-  leaving-group: fcc5743f5fd28b57
+  leaving-group: a918330912d5d2c1
   set-title: e8a4998c9adb44ba
   member-email-addresses: b0ac5d515f968b2f
 title_source: 23ac3a7fe9ee72a2
@@ -82,11 +82,11 @@ title_generated: aa6d15cc1d295159
 
 ## Выхад з групы
 
-Каб пакінуць групу, адкрыйце меню дзеянняў групы і выберыце **Пакінуць групу**.
+Каб пакінуць групу, адкрыйце **Налады** на старонцы групы і выберыце **Пакінуць групу**.
 
 Выхад з групы мае тыя ж наступствы для доступу да групы і падгруп, што і выдаленне адміністратарам групы.
 
-![Дзеянне «Пакінуць групу» ў меню налад Oatmilk Cooperative](member_leave_group.png)
+![Дзеянне «Пакінуць групу» на старонцы налад Oatmilk Cooperative](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 

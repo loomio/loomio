@@ -1,25 +1,25 @@
 ---
 title: Etichette di categoria
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: bf6ecd043c19cd78
+  introduction: 6cccb1690d444dd2
   apply-tags: dfa06440d6c97396
   create-tags: 97aa7a1a0f420951
-  edit-tags: c9978a1615026863
+  edit-tags: bb9dfb8a5abe7a27
   edit-tag-in-thread-or-poll: b71467aa1248d110
   template-tags: 3ddcc6c204aa843f
   tag-contributions: b42bdd723f9d5ddc
   find-tagged-contributions: 98ec0cbfdec75f7f
   global-search: 5a7777699988e006
 generated:
-  introduction: aecfe1abf4e661c9
+  introduction: cd47f84ba20c07b4
   apply-tags: c71f4f84706ffddf
   create-tags: c6d4c1db3efb040a
-  edit-tags: 4e7648b4e15bb49c
+  edit-tags: '012368fdd5d0c5b8'
   edit-tag-in-thread-or-poll: 1fe5ef9c6eda6223
   template-tags: 0a0643d35ddbb413
   tag-contributions: 997036bd2a640f13
@@ -37,7 +37,7 @@ I tag di categoria ti aiutano a trovare discussioni, sondaggi, conclusioni e com
 
 I tag appartengono all'intera organizzazione. Un tag creato in un gruppo principale è condiviso con i suoi sottogruppi, così puoi seguire attività correlate tra i gruppi. Loomio elenca i tag in ordine alfabetico con un punto colorato accanto a ciascun nome.
 
-Nella pagina del tuo gruppo, seleziona **Etichette** sopra l'elenco delle conversazioni e scegli un tag per mostrare le conversazioni che contengono almeno un elemento con quel tag. Digita nel campo di filtro per cercare in un elenco lungo.
+In **Tutti i gruppi** o nella pagina di un gruppo, seleziona **Etichette** sopra l'elenco delle conversazioni, dei sondaggi o dei compiti e scegli un tag per mostrare gli elementi con quel tag. Digita nel campo di filtro per cercare in un elenco lungo.
 
 ![](tags_view.png)
 
@@ -88,7 +88,7 @@ Quando qualcuno avvia una discussione o un sondaggio da un modello, Loomio appli
 
 Solo gli amministratori del gruppo principale possono rinominare i tag, cambiarne il colore, unirli o eliminarli. Le modifiche si applicano in tutta l'organizzazione, compresi tutti i sottogruppi.
 
-Nella pagina del gruppo, apri **Etichette** e seleziona **Modifica etichette**.
+Nella pagina del gruppo, apri **Etichette** e seleziona **Modifica etichette**, oppure apri **Configurazione** e seleziona **Etichette di categorizzazione**.
 
 ![modifica i tag di categoria](tags_edit_new.png)
 

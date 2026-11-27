@@ -1,15 +1,15 @@
 ---
 title: メールアドレス
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: '03039e0babf5a9b6'
+  introduction: 36b06c5b4604ac74
   preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: '041496a764a9ff37'
+  introduction: a011826b12cd8d85
   preventing-unauthorized-emails: c2bfda802efb2bd9
 title_source: f2488fd4ef4adbc6
 title_generated: dd4433300c45394f
@@ -21,9 +21,9 @@ title_generated: dd4433300c45394f
 
 Loomioの各グループには専用のメールアドレスがあります。このアドレスにメールを送信または転送すると、グループに新しいスレッドを作成できます。
 
-グループのメールアドレスは、グループページで確認できます。
+グループのメールアドレスは、グループページの**設定**で確認できます。
 
-![グループページのメールアドレスの表示位置](email_email_button.png)
+![グループページの設定にあるメールアドレスの表示位置](email_email_button.png)
 
 このアドレスにメールを送信すると、Loomioが新しいスレッドを作成します。メールの件名がスレッドのタイトルになり、本文がスレッドの説明になります。添付ファイルもスレッドに追加されます。
 

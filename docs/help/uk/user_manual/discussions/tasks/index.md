@@ -1,20 +1,20 @@
 ---
 title: Завдання
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: d01db41df07af808
   add-a-task: bb93ab48bcbb9550
-  name-and-assign-the-task-to-a-person: 44d1eba4574e3e88
+  name-and-assign-the-task-to-a-person: feaf6db00c98f044
   set-a-reminder: 821235f33f66c17c
   mark-it-as-done: 7ad89fe846b0ff75
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ title_generated: 6a5e4c59aead795b
 
 ![](tasklist2.png)
 
-Призначені вам завдання відображаються на вашій сторінці **Завдання**. Відкрийте **Завдання** на бічній панелі, щоб переглянути їх, згруповані за темою або опитуванням.
+Відкрийте **Завдання** в розділі **Усі групи**, щоб переглянути призначені вам завдання з усіх ваших груп, або відкрийте **Завдання** на сторінці групи, щоб переглянути завдання цієї групи. Завдання згруповано за темою або опитуванням. Ви можете фільтрувати їх за статусом (**До виконання**, **Виконано** або **Всі**), терміном виконання (**Прострочені**, **Наступні 7 днів**, **Пізніше** або **Без терміну**), виконавцем (на сторінці групи), підгрупою, тегом категорії або за допомогою пошуку.
 
 ![](task_list.png)
 

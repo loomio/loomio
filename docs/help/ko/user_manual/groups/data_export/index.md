@@ -1,7 +1,7 @@
 ---
 sections:
   introduction: 988679ffd3d29834
-  export-data: 9c2fb6ec7c75bcb6
+  export-data: '024783a0614721d2'
   export-group-data-as-csv: c0845f09bff828f2
   export-group-data-as-html: 659fd5e14956b00e
   export-group-data-as-json: 4c2131f4518b7469
@@ -9,7 +9,7 @@ sections:
   import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
   introduction: 65c415b618e3a305
-  export-data: d86467b30918c0c2
+  export-data: acf57d2e25656ba0
   export-group-data-as-csv: 644f1b52219789d4
   export-group-data-as-html: 464d78fcaa7b0541
   export-group-data-as-json: 3b28394d0738effa
@@ -18,11 +18,11 @@ generated:
 title: 데이터 내보내기
 title_source: 29049648f87b87f5
 title_generated: 91ea82c131b0a78b
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -45,9 +45,9 @@ loomio.com에서 지역별 서비스인 유럽용 loomio.eu 또는 호주 및 �
 
 ## 데이터 내보내기
 
-그룹 관리자만 그룹 데이터를 내보낼 수 있습니다. 그룹의 작업 메뉴를 열고 **그룹 데이터 내보내기**를 선택하세요.
+그룹 관리자만 그룹 데이터를 내보낼 수 있습니다. 그룹 페이지에서 **설정**을 열고 **그룹 데이터 내보내기**를 선택하세요.
 
-![Oatmilk Cooperative 메뉴의 그룹 데이터 내보내기 항목](group_export_group_data.png)
+![Oatmilk Cooperative 설정 페이지의 그룹 데이터 내보내기 항목](group_export_group_data.png)
 
 Loomio는 백그라운드에서 내보내기를 준비하고, 준비가 완료되면 다운로드 링크를 이메일로 보냅니다. 링크는 일주일 동안 사용할 수 있습니다.
 

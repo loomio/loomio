@@ -1,17 +1,17 @@
 ---
 title: Comment participer
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: a8163542495f8a53
   comment: 94c20a0a9a3ba16c
   reply-to-a-comment: '093c6ad2c2751cb8'
   get-someone-s-attention: 23529e6d4f47ed66
   reactions: 5f82546a69fda018
-  vote: 4e7ca73a897c6e60
+  vote: c16fea7f171856c8
   state-a-reason: 47f972ac0f8edc4e
   change-your-vote: a6a6a8d327f66483
   results: 375780d5868ee81d
@@ -22,7 +22,7 @@ generated:
   reply-to-a-comment: fad1e06e41ddbb4e
   get-someone-s-attention: 2d5e5f6ded08cb04
   reactions: 87062e8f0930ef85
-  vote: e930b40eb79a8a37
+  vote: 5f62615c17e554f2
   state-a-reason: be4d22f58b642996
   change-your-vote: 12740d9517a377b2
   results: 1c3744dc3e04a582
@@ -73,7 +73,7 @@ Ajoutez une réaction avec un émoji pour montrer que vous avez pris connaissanc
 
 ## Voter
 
-Ouvrez un sondage depuis une invitation par e-mail, une notification dans l’application ou l’onglet **Sondages** de votre groupe. Lisez le sondage et les éventuelles pièces jointes, puis sélectionnez votre choix.
+Ouvrez un sondage depuis une invitation par e-mail, une notification dans l’application, **Tous les groupes** ou la section **Sondages** de votre groupe. Lisez le sondage et les éventuelles pièces jointes, puis sélectionnez votre choix.
 
 Loomio propose plusieurs types de sondages. L’exemple ci-dessous présente une proposition avec les options **D’accord**, **Abstention** et **Désaccord**.
 

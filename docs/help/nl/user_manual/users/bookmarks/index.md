@@ -1,19 +1,19 @@
 ---
 title: Bladwijzers
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/users/bookmarks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 4526320029ca0268
   save-a-bookmark: 3855beff6126a218
-  view-your-bookmarks: 0512e42564819ba7
+  view-your-bookmarks: 36d441a4ada6425f
   remove-a-bookmark: 5e66cedf4b86c3fa
 generated:
   introduction: 692d443583067c8b
   save-a-bookmark: f7ef02cf09dc784d
-  view-your-bookmarks: 4d636d99b163a52b
+  view-your-bookmarks: e09d4eda3b5d1939
   remove-a-bookmark: 423c2e9458aa0add
 title_source: 96316f0f6404dbe1
 title_generated: 7fe1ad7ab2f24610
@@ -45,7 +45,7 @@ Open het actiemenu van het item en selecteer **Sla bladwijzer op**. Het actiemen
 
 ## Bekijk jouw bladwijzers
 
-Open de zijbalk en selecteer **Bladwijzers**. Het getal naast de link geeft aan hoeveel bladwijzers je hebt opgeslagen.
+Open **Bladwijzers** op **Alle groepen** om alles te zien wat je in jouw groepen hebt opgeslagen, of open **Bladwijzers** op een groepspagina om de bladwijzers in die groep te zien (met een filter **Subgroepen** bij hoofdgroepen).
 
 Op de pagina Bladwijzers staan jouw laatst opgeslagen items bovenaan. Elke rij toont het soort item en de auteur. Selecteer een rij om terug te keren naar het item waarvoor je een bladwijzer hebt opgeslagen.
 

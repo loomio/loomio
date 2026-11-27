@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 114ab8c916ca5fba
+  introduction: 31651f229b065ec2
 generated:
-  introduction: 1ff3359b85cb1093
+  introduction: c7a5a5c3e682cef3
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -27,7 +27,7 @@ Loomio може надсилати сповіщення до кімнати Matr
 
 1. Створіть обліковий запис користувача Matrix для Loomio, увійдіть у нього в Element і запросіть цей обліковий запис до кімнати Matrix, де ви хочете отримувати сповіщення. Залишайтеся в цьому сеансі — вихід робить маркер доступу недійсним.
 
-2. У вашій групі Loomio відкрийте меню групи, виберіть **Інтеграції чату** та додайте інтеграцію з чатом **Матриця**.
+2. У вашій групі Loomio відкрийте **Налаштування**, виберіть **Інтеграції чату** та додайте інтеграцію з чатом **Матриця**.
 
    ![меню додавання бота Matrix у Loomio](loomio-add-matrix-bot.png)
 

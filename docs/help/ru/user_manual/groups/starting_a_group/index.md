@@ -1,18 +1,18 @@
 ---
 title: Создание группы
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 792e23f7fcb36aec
+  introduction: 87ff87d962c1b084
   group-details: 0fcf6c809c12050b
   group-name: 2ba5592281dfcbcb
   group-handle: 64928a4bbab65b9b
   group-description: 48af06ef795dd9a9
 generated:
-  introduction: a7a1ea4134d3458a
+  introduction: 82a4230a8ebcc259
   group-details: ef6c9afbc38e1eb5
   group-name: 2c078ca9183f6778
   group-handle: 8d77493c574c0fa3
@@ -25,7 +25,7 @@ title_generated: a1c7219c9bb2f26e
 
 # Создание новой группы
 
-Если вы впервые пользуетесь Loomio, вы можете создать группу с бесплатным пробным периодом на [сайте Loomio](https://www.loomio.com/). Если вы уже пользуетесь Loomio и хотите создать ещё одну группу, выберите **Новая группа** в боковом меню.
+Если вы впервые пользуетесь Loomio, вы можете создать группу с бесплатным пробным периодом на [сайте Loomio](https://www.loomio.com/). Во время бесплатного пробного периода ваша группа получает ещё 30 дней с доступом к подгруппам и приглашению гостей, как только три человека проголосуют в предложении или опросе. Если вы уже пользуетесь Loomio и хотите создать ещё одну группу, выберите **Новая группа** в боковом меню или в меню переключения групп в верхней части страницы, когда боковое меню закрыто.
 
 Большинству организаций достаточно одной родительской группы с необходимым количеством [подгрупп](/en/user_manual/groups/subgroups) внутри неё.
 

@@ -1,28 +1,28 @@
 ---
 title: コンテンツを探す
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 91ceec48c5d29a37
   search: 5de14e45cc9ac6bc
   search-tips: 4d753a07ce09d99f
-  filter-discussions: f5e3ea1d6d34ca5c
-  category-tags: 1a82b7bb393c43a8
-  unread-discussions: 60a3bde974d63806
-  polls-awaiting-your-vote: 3a542d9458392a4c
-  bookmarks: 06b79827757caeeb
+  filter-discussions: d68e5cb2864afa2c
+  category-tags: b5cd24f91b729c3d
+  unread-discussions: 473dd3edf3cc3674
+  polls-awaiting-your-vote: f01b1b3f4219c4a5
+  bookmarks: d733891b082a2941
 generated:
   introduction: 722b477e36d38916
   search: ee061d5aae4e9830
   search-tips: 5c967489c4ba6cb8
-  filter-discussions: a36867ed2b1df5da
-  category-tags: 31042cf71ca24875
-  unread-discussions: eb20ddac1443fbdb
-  polls-awaiting-your-vote: 6958cee1579ff3b7
-  bookmarks: 4ca179694050520a
+  filter-discussions: c981c508149af45e
+  category-tags: 725f04d8a3d10d31
+  unread-discussions: d36b574f50743cd2
+  polls-awaiting-your-vote: c2aa717277ec9d37
+  bookmarks: e3e553ccbf81623b
 title_source: 11acd4c6010fc176
 title_generated: '0669fb2e7f84c3b9'
 ---
@@ -61,7 +61,7 @@ Loomioでは、参加しているグループのディスカッションや決�
 
 ## ディスカッションの絞り込み
 
-グループの**議論**タブでは、スレッドを進行中か終了済みかの状態、またはカテゴリタグで絞り込めます。フィルターと一覧の検索欄を組み合わせると、長いディスカッション一覧をすばやく絞り込めます。
+グループの**スレッド**ページでは、ロック状態、未読の更新、カテゴリタグ、またはサブグループ（**このグループのみ**、**参加中のサブグループ**、**すべてのサブグループ**から選択）でスレッドを絞り込めます。**すべてのグループ**では、**未読**、**ダイレクト**、カテゴリタグでも絞り込めます。また、**検索**を使って一覧を絞り込むこともできます。
 
 <!-- translation-section: category-tags -->
 
@@ -71,7 +71,7 @@ Loomioでは、参加しているグループのディスカッションや決�
 
 ![](tags.png)
 
-**議論**タブでタグを選択すると、そのタグが付いた項目を含むディスカッションが表示されます。ディスカッション内では、サイドバーでタグを選択すると、一致するコメント、アンケート、結論が、それぞれの返信先の項目とともに表示されます。
+**スレッド**、**アンケート**、**タスク**でタグを選択すると、そのタグが付いた項目が表示されます。ディスカッション内では、サイドバーでタグを選択すると、一致するコメント、アンケート、結論が、それぞれの返信先の項目とともに表示されます。
 
 作成者は自分の投稿にタグを付けられます。グループ管理者、スレッド管理者、およびディスカッションの背景説明を編集できる人は、どの項目にもタグを付けられます。設定と権限については、[カテゴリタグ](/en/user_manual/discussions/tags)を参照してください。
 
@@ -79,16 +79,16 @@ Loomioでは、参加しているグループのディスカッションや決�
 
 ## 未読のディスカッション
 
-サイドバーで**未読のディスカッション**を選択すると、新しい更新があるスレッドが表示されます。ディスカッション内では、タイムラインから未読の項目や重要な出来事に移動できます。
+**すべてのグループ**またはグループの**スレッド**ページで**未読**を選択するか、**スレッド**カードの未読件数を選択すると、過去6週間に新しい更新があるスレッドが表示されます。ディスカッション内では、タイムラインから未読の項目や重要な出来事に移動できます。
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## 未投票のアンケート
 
-サイドバーで**投票するアンケート**を選択すると、招待されている受付中のアンケートのうち、未投票のものが表示されます。グループの**アンケート**タブを開くと、受付中と締め切り済みの両方のアンケートを確認できます。
+**すべてのグループ**で**アンケート**を開くか、**アンケート**カードの投票数を選択すると、招待されている受付中のアンケートのうち、未投票のものが表示されます。**すべてのグループ**または各グループのページでは、**投票が必要です**、**議論中**、**締め切り済み**、アンケートの種類、タグでも絞り込めます。
 
 <!-- translation-section: bookmarks -->
 
 ## ブックマーク
 
-後で戻りたいディスカッション、コメント、アンケート、投票、結論をブックマークします。ユーザーメニューから**ブックマーク**を開くと、保存した項目をすべて確認できます。詳細は、[ブックマーク](/en/user_manual/users/bookmarks)を参照してください。
+後で戻りたいディスカッション、コメント、アンケート、投票、結論をブックマークします。**すべてのグループ**で**ブックマーク**を開くと、保存した項目をすべて確認できます。グループのページで**ブックマーク**を開くと、そのグループ内のブックマークを確認できます。詳細は、[ブックマーク](/en/user_manual/users/bookmarks)を参照してください。

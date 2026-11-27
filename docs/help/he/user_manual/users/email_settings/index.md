@@ -1,10 +1,10 @@
 ---
 title: התראות
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 25fc6fe9cb35c981
   two-ways-to-begin: 3b42b0d12bbd2ba0
@@ -13,7 +13,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -26,7 +26,7 @@ generated:
   choose-your-catch-up-schedule: 67d1e560ba9a6345
   mark-a-catch-up-as-read: 8f90a0ec1d2fed4d
   group-and-thread-notification-settings: 90cf8a31b45302a6
-  group-notification-settings: 80b09cd81fb7380d
+  group-notification-settings: 32f9133f993e3f58
   thread-notification-settings: 3f681adbf2ff9a81
   email-delivery: 392260454a105bf6
   enable-mobile-notifications-with-web-push: 15a8e37befc18dec
@@ -136,7 +136,7 @@ Loomio שולחת את מייל העדכונים בבוקר לפי אזור הז
 כדי לשנות את הגדרת ההתראות לקבוצה:
 
 1. יש לפתוח את עמוד הקבוצה.
-2. יש לפתוח את הגדרות ההתראות של הקבוצה.
+2. יש לפתוח את **הגדרות** ולבחור **הגדרות התראות**.
 
 ![הגדרות התראות בעמוד קבוצה](group_notifications.png)
 

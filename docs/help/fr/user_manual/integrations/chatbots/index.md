@@ -1,22 +1,22 @@
 ---
 title: Intégrations de chat
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 46c095b75ad63f90
   what-it-looks-like-in-chat: f317dcdbffe349dc
   generate-a-webhook-url: ededdedfffbe6bcb
-  set-up-a-chat-integration: d671b54fe6ae3cd1
+  set-up-a-chat-integration: 5a727120f9967d49
   invite-to-poll: ffa06cde4354b243
   automatic-notifications: 21e1f83202af63e1
 generated:
   introduction: 8b6de082f26f8c36
   what-it-looks-like-in-chat: e8e6aaebca84d7b9
   generate-a-webhook-url: c86f13133ad182a2
-  set-up-a-chat-integration: ca4c549b055eb858
+  set-up-a-chat-integration: bda58be3a17daa32
   invite-to-poll: 6daba8e5bf340965
   automatic-notifications: de1d1467c2bf5f8f
 title_source: 0eca19d30c6d7d3c
@@ -61,7 +61,7 @@ Vous pouvez aussi connecter d’autres services qui acceptent les webhooks entra
 
 Vous devez être administrateur du groupe pour ajouter ou modifier des intégrations de chat.
 
-1. Après avoir configuré votre service de chat (voir ci-dessus), ouvrez le menu du groupe dans Loomio et sélectionnez **Intégrations de chat**.
+1. Après avoir configuré votre service de chat (voir ci-dessus), ouvrez **Paramètres** sur la page de votre groupe dans Loomio et sélectionnez **Intégrations de chat**.
 
    ![](loomio-group-settings.png)
 

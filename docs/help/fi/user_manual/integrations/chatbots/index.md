@@ -1,22 +1,22 @@
 ---
 title: Chat-integraatiot
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 46c095b75ad63f90
   what-it-looks-like-in-chat: f317dcdbffe349dc
   generate-a-webhook-url: ededdedfffbe6bcb
-  set-up-a-chat-integration: d671b54fe6ae3cd1
+  set-up-a-chat-integration: 5a727120f9967d49
   invite-to-poll: ffa06cde4354b243
   automatic-notifications: 21e1f83202af63e1
 generated:
   introduction: 02f6dc825d340e35
   what-it-looks-like-in-chat: 34004d3b6c5fa6fa
   generate-a-webhook-url: 501f3ba1dfaf32a4
-  set-up-a-chat-integration: 9b5f7533fa19bac2
+  set-up-a-chat-integration: eaf1817c3b690ed5
   invite-to-poll: 278e527485b789d5
   automatic-notifications: c86a21b2d9d9df4a
 title_source: 0eca19d30c6d7d3c
@@ -61,7 +61,7 @@ Voit yhdistää myös muita palveluja, jotka hyväksyvät saapuvia webhook-kutsu
 
 Sinun on oltava ryhmän ylläpitäjä, jotta voit lisätä tai muokata chat-integraatioita.
 
-1. Kun olet määrittänyt chat-palvelusi (katso yllä), avaa ryhmän valikko Loomiossa ja valitse **Chat-integraatiot**.
+1. Kun olet määrittänyt chat-palvelusi (katso yllä), avaa ryhmäsi sivulla Loomiossa **asetukset** ja valitse **Chat-integraatiot**.
 
    ![](loomio-group-settings.png)
 

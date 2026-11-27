@@ -1,24 +1,24 @@
 ---
 title: Első lépések
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: fd85ee3c4ffbb5e6
+  groups: ce8a9f06135ddefe
   discussions: 8d14b581f16f5da2
-  polls-and-proposals: cf99f58fbdae0d7b
+  polls-and-proposals: 49ef84f1578aca12
   try-it-out: 362efa0fab0f53c9
   how-people-use-loomio: 20717884ca33e601
 generated:
   introduction: e08a064602063fdb
   how-loomio-works: 8835efeec60174ca
-  groups: e7705a756010765d
+  groups: fda9d634071f4ca9
   discussions: af7897d12c921718
-  polls-and-proposals: 9c66c2c3451a0cd0
+  polls-and-proposals: bea728a1fc807cc4
   try-it-out: a53119e783fa417c
   how-people-use-loomio: 13c8710f5fc2832a
 title_source: 831d0f72d242b7d1
@@ -47,7 +47,7 @@ A Loomio három fő részből áll: csoportokból, beszélgetésekből és szava
 
 ### Csoportok
 
-A csoport egy szervezet, csapat vagy közösség közös munkájának helye. A kezdőoldala bemutatja a csoport célját, és hivatkozásokat tartalmaz a beszélgetéseire, szavazásaira, tagjaira és fájljaira.
+A csoport egy szervezet, csapat vagy közösség közös munkájának helye. A kezdőoldala bemutatja a csoport célját, és hivatkozásokat tartalmaz a szálaira, szavazásaira, tagjaira, fájljaira, feladataira, könyvjelzőire és beállításaira.
 
 ![](orientation_group.png)
 
@@ -69,7 +69,7 @@ A szavazások segítenek a csoportnak megismerni a résztvevők preferenciáit, 
 
 ![](orientation_proposal.png)
 
-A szavazások lehetnek egy beszélgetés részei, vagy önállóan is indíthatók a csoport oldalának **Szavazások** lapjáról.
+A szavazások lehetnek egy beszélgetés részei, vagy önállóan is indíthatók a csoport oldalának **Szavazások** részéből.
 
 Ha szeretnéd megtudni, hol találod ezeket a részeket a felületen, nézd meg a [Gyors körút](/en/user_manual/overview/orientation) oldalt. A részvétel megkezdéséhez olvasd el a [Hogyan vehetsz részt](/en/user_manual/overview/how-to-participate) oldalt.
 

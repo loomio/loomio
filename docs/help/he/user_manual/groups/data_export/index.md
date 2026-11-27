@@ -1,13 +1,13 @@
 ---
 title: ייצוא נתונים
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 988679ffd3d29834
-  export-data: 9c2fb6ec7c75bcb6
+  export-data: '024783a0614721d2'
   export-group-data-as-csv: c0845f09bff828f2
   export-group-data-as-html: 659fd5e14956b00e
   export-group-data-as-json: 4c2131f4518b7469
@@ -15,7 +15,7 @@ sections:
   import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
   introduction: 8e1092202c539901
-  export-data: a7193cfc150ffcb6
+  export-data: 226034ffbdc22a5e
   export-group-data-as-csv: 8e5bcfb3c7a05aae
   export-group-data-as-html: 3c2dbd4320aed4d7
   export-group-data-as-json: 6c071868648f0fe7
@@ -45,9 +45,9 @@ title_generated: 5a4d0da747307b8b
 
 ## ייצוא נתונים
 
-לייצוא נתוני הקבוצה נדרשות הרשאות מנהל בקבוצה. יש לפתוח את תפריט הפעולות של הקבוצה ולבחור **יצוא נתונים מהקבוצה**.
+לייצוא נתוני הקבוצה נדרשות הרשאות מנהל בקבוצה. יש לפתוח את **הגדרות** בעמוד הקבוצה ולבחור **יצוא נתונים מהקבוצה**.
 
-![פעולת ייצוא נתונים מהקבוצה בתפריט של קואופרטיב Oatmilk](group_export_group_data.png)
+![פעולת ייצוא נתונים מהקבוצה בעמוד ההגדרות של קואופרטיב Oatmilk](group_export_group_data.png)
 
 Loomio מכינה את הייצוא ברקע ושולחת בדוא״ל קישור להורדה כשהוא מוכן. הקישור נשאר פעיל למשך שבוע.
 

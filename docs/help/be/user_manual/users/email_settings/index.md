@@ -1,10 +1,10 @@
 ---
 title: Апавяшчэнні
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 25fc6fe9cb35c981
   two-ways-to-begin: 3b42b0d12bbd2ba0
@@ -13,7 +13,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -26,7 +26,7 @@ generated:
   choose-your-catch-up-schedule: 8a32cf6db6ae96ac
   mark-a-catch-up-as-read: 637a1319b6b36ddb
   group-and-thread-notification-settings: 331c5177490059dc
-  group-notification-settings: 136baadfd7919493
+  group-notification-settings: e369ce1c417fcc57
   thread-notification-settings: e13b0f0e44490ab2
   email-delivery: c16047e749b8be07
   enable-mobile-notifications-with-web-push: ce3aaa3bd58dc93c
@@ -138,7 +138,7 @@ Loomio дасылае зводку раніцай паводле часавог�
 Каб змяніць наладу апавяшчэнняў для групы:
 
 1. Адкрыйце старонку групы.
-2. Адкрыйце налады апавяшчэнняў для групы.
+2. Адкрыйце **Налады** і абярыце **Налады апавяшчэнняў**.
 
 ![Налады апавяшчэнняў на старонцы групы](group_notifications.png)
 

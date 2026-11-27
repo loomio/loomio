@@ -1,20 +1,20 @@
 ---
 title: משימות
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-26'
 sections:
   introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
-  name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
+  name-and-assign-the-task-to-a-person: 7a3c928320e3c2a4
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
   introduction: fb417482ed1b3449
   add-a-task: abecd42f001bad41
-  name-and-assign-the-task-to-a-person: b7cc98db7db97728
+  name-and-assign-the-task-to-a-person: 7f7146b6d0cec2e9
   set-a-reminder: 9a281d6c0947b591
   mark-it-as-done: 6357563e8d2193c6
 title_source: b3a60e61a5233d05
@@ -43,7 +43,7 @@ title_generated: fe5193add2850fa7
 
 ![](tasklist2.png)
 
-משימות שהוקצו לך מופיעות בדף **משימות** שלך. ניתן לפתוח את **משימות** בסרגל הצד כדי לראות אותן מקובצות לפי שרשור או סקר.
+לצפייה במשימות שהוקצו לך בכל הקבוצות שלך, יש לפתוח את **משימות** תחת **כל הקבוצות**. לצפייה במשימות בקבוצה מסוימת, יש לפתוח את **משימות** בדף הקבוצה. המשימות מקובצות לפי שרשור או סקר, וניתן לסנן אותן לפי מצב (**לביצוע**, **בוצע** או **הכל**), תאריך יעד (**באיחור**, **ב־7 הימים הקרובים**, **בהמשך** או **ללא תאריך יעד**), האדם שהמשימה הוקצתה לו (בדף קבוצה), תת־קבוצה, תגית קטגוריה או חיפוש.
 
 ![](task_list.png)
 

@@ -1,10 +1,10 @@
 ---
 title: Käyttäjän API
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 2d91e17b37de30b4
   response-size-and-related-records: 3bdd69fb0fcdd958
@@ -12,7 +12,7 @@ sections:
   groups: 0473f1f7fb78f074
   list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: 3533fbb996deebf6
+  webhooks: 44f627e517bbd9e6
   list-webhooks: 3f5d857fe7f844bd
   create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
@@ -88,7 +88,7 @@ generated:
   groups: 90cb5d1f24e992a5
   list-groups: a30771b73250dcbc
   get-a-group: b9f61156e99d8e20
-  webhooks: e73d4cb7f83c25b4
+  webhooks: cae92a7f3b138805
   list-webhooks: 75eed371ae8e6bc2
   create-a-webhook: d2c49c1d9b72136c
   update-a-webhook: 753119a230c616b7
@@ -1111,7 +1111,7 @@ Käyttäjän API perustuu pyyntöihin: integraatio kutsuu Loomiota, kun se halua
 Webhookit määritetään ryhmäkohtaisesti, ja niiden hallinta vaatii ryhmän ylläpitäjän oikeudet. Voit hallita niitä Loomion käyttöliittymässä:
 
 1. Avaa ryhmä.
-2. Avaa ryhmän valikko ja valitse **Chat-integraatiot**.
+2. Avaa **asetukset** ja valitse **Chat-integraatiot**.
 3. Lisää integraatio, jonka viestimuodon rajapintapisteesi hyväksyy. Käytä yleiskäyttöiselle rajapintapisteelle Mattermost/Markdown-muotoa.
 4. Anna nimi ja kohteen URL-osoite.
 5. Valitse tapahtumat, jotka Loomion tulee lähettää automaattisesti.

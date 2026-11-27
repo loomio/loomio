@@ -1,18 +1,18 @@
 ---
 title: グループを始める
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: 792e23f7fcb36aec
+  introduction: 87ff87d962c1b084
   group-details: 0fcf6c809c12050b
   group-name: 2ba5592281dfcbcb
   group-handle: 64928a4bbab65b9b
   group-description: 48af06ef795dd9a9
 generated:
-  introduction: cd478c1a3c82aa53
+  introduction: 21b1c0188c32b90b
   group-details: daa11c1a5804aa90
   group-name: f442c33d848340d6
   group-handle: a639e6258c498ec4
@@ -25,7 +25,7 @@ title_generated: d7a3734d457e9b98
 
 # 新しいグループを始める
 
-Loomioを初めて利用する場合は、[Loomioのウェブサイト](https://www.loomio.com/)から無料トライアルでグループを始められます。すでにLoomioを利用していて、別のグループを始めたい場合は、サイドバーの**新しいグループ**を選択します。
+Loomioを初めて利用する場合は、[Loomioのウェブサイト](https://www.loomio.com/)から無料トライアルでグループを始められます。無料トライアル中に3人が提案またはアンケートに投票すると、トライアル期間が30日間延長され、サブグループとゲストの機能も利用できるようになります。すでにLoomioを利用していて、別のグループを始めたい場合は、サイドバーの**新しいグループ**を選択します。サイドバーが閉じている場合は、ページ上部のグループ切り替えメニューから選択します。
 
 ほとんどの組織では、親グループは1つで十分です。その中に必要な数だけ[サブグループ](/en/user_manual/groups/subgroups)を作成できます。
 

@@ -1,12 +1,12 @@
 ---
 title: Privacy
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 95ce9afd64c99656f67e05a09fa9fc8a77af51d7
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
-  introduction: fa83676f56f0d4bd
+  introduction: cdfbf70ebf9b92ae
   open: 3913f73fccf45868
   follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
@@ -15,7 +15,7 @@ sections:
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 625a6dafe2615e75
+  introduction: a6bc9efed067b86a
   open: 55e7843900f179fe
   follow-an-open-group: 88db05483219cc75
   closed: 693b6690f4701630
@@ -31,7 +31,7 @@ title_generated: 54a57c3147c49f33
 
 # Groepsprivacy
 
-Privacy bepaalt wie een groep kan vinden en wie de inhoud ervan kan lezen. Open **Bewerk groepsinstellingen** via het actiemenu van de groep en selecteer **Privacy**.
+Privacy bepaalt wie een groep kan vinden en wie de inhoud ervan kan lezen. Open **Instellingen** op de groepspagina, selecteer **Bewerk groepsinstellingen** en kies **Privacy**.
 
 ![Privacyinstellingen van de groep](group_privacy_settings.png#width-90)
 

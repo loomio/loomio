@@ -4,7 +4,7 @@ sections:
   administering-your-group: 7ae1b105c20977fc
   managing-subgroups: 2e4bdee3283e8ef8
   removing-members: d70807bdd968d594
-  leaving-group: 268f0c735b8e46d7
+  leaving-group: 69332aeda981c679
   set-title: eb9a52e3d6c21d43
   member-email-addresses: 0e800419a7bdacc6
 generated:
@@ -12,17 +12,17 @@ generated:
   administering-your-group: 77f072611d506c89
   managing-subgroups: f82d456449cdd0cb
   removing-members: f6fb7bf2cb2a63fa
-  leaving-group: c6cd031a617c84d0
+  leaving-group: 03b4f713b1ec1248
   set-title: d0af8f9d496c2dcf
   member-email-addresses: 656ec59383c0b084
 title: 멤버 관리
 title_source: 23ac3a7fe9ee72a2
 title_generated: 18362c237b482d80
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 ---
 
 <!-- translation-section: introduction -->
@@ -82,11 +82,11 @@ Loomio 그룹에는 **멤버**와 **그룹 관리자**, 두 가지 역할이 있
 
 ## 그룹 탈퇴
 
-그룹에서 탈퇴하려면 그룹의 작업 메뉴를 열고 **그룹 탈퇴**를 선택하세요.
+그룹에서 탈퇴하려면 그룹 페이지에서 **설정**을 열고 **그룹 탈퇴**를 선택하세요.
 
 탈퇴하면 그룹 관리자가 그룹에서 제외했을 때와 마찬가지로 그룹 및 하위 그룹 접근 권한이 사라집니다.
 
-![Oatmilk Cooperative 설정 메뉴의 그룹 탈퇴 항목](member_leave_group.png)
+![Oatmilk Cooperative 설정 페이지의 그룹 탈퇴 항목](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 

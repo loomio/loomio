@@ -1,10 +1,10 @@
 ---
 title: Értesítések
-source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_revision: 6e7aad6a91a50e55dca43a20edcc88d445ee4185
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-22'
+  'on': '2026-11-26'
 sections:
   introduction: 25fc6fe9cb35c981
   two-ways-to-begin: 3b42b0d12bbd2ba0
@@ -13,7 +13,7 @@ sections:
   choose-your-catch-up-schedule: 387d45e173b95706
   mark-a-catch-up-as-read: a1b0ec5366219ac4
   group-and-thread-notification-settings: 67cc4708e63cf8a8
-  group-notification-settings: 0f7b3299bd3c02ef
+  group-notification-settings: a50304c78d15d13e
   thread-notification-settings: cc8d337159dd4334
   email-delivery: 2f74c99b44ef0bd6
   enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
@@ -26,7 +26,7 @@ generated:
   choose-your-catch-up-schedule: 2753549b3555ce98
   mark-a-catch-up-as-read: caa28c9d0dc621b1
   group-and-thread-notification-settings: 1b88f26fcb3cd2cb
-  group-notification-settings: c30589267f351368
+  group-notification-settings: 3b0a6b925e0bd707
   thread-notification-settings: '03590c1636ceb631'
   email-delivery: 84c0e3e2ca975a68
   enable-mobile-notifications-with-web-push: 01dcdae733c0bfb6
@@ -136,7 +136,7 @@ A felhasználói menü **Értesítési beállítások** oldalán módosíthatod 
 Egy csoport értesítési beállításának módosításához:
 
 1. Nyisd meg a csoport oldalát.
-2. Nyisd meg a csoport értesítési beállításait.
+2. Nyisd meg a **Beállítások** menüt, és válaszd ki az **Értesítési beállítások** lehetőséget.
 
 ![Értesítési beállítások a csoport oldalán](group_notifications.png)
 
