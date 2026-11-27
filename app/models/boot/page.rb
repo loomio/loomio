@@ -23,7 +23,7 @@ module Boot
       if @user.is_logged_in?
         case @page
         when 'dashboard'
-          add_topics({offset: 0, limit: 30, order: 'id'}, limit: 30)
+          add_topics({offset: 0, limit: 25, filter: 'unlocked'}, limit: 25)
           params = {status: 'vote', limit: 100, offset: 0}
           polls = PollQuery.filter(chain: PollQuery.relevant_to(user: @user), params: params, user: @user).order(created_at: :desc, id: :desc)
           add('polls', params, polls.limit(100), PollSerializer, total: polls.count)
@@ -51,14 +51,18 @@ module Boot
       return unless @page == 'group_discussions'
 
       page = @params[:page].to_i
-      offset = [page - 1, 0].max * 25
+      limit = [25, 50, 100].include?(@params[:limit].to_i) ? @params[:limit].to_i : 25
+      offset = [page - 1, 0].max * limit
       params = {
-        group_id: group.id, topicable_type: 'Discussion',
-        subgroups: 'mine', per: 25, from: offset
+        group_id: group.id,
+        limit: limit,
+        offset: offset
       }
+      params[:subgroups] = @params[:subgroups] if %w[mine all].include?(@params[:subgroups])
       params[:filter] = @params[:t].presence || 'unlocked' unless @params[:t] == 'all'
       params[:tags] = @params[:tag] if @params[:tag]
-      add_topics(params, limit: 25, offset: offset)
+      params[:sort] = @params[:sort] if %w[newest oldest].include?(@params[:sort])
+      add_topics(params, limit: limit, offset: offset)
     end
 
     def add_topics(params, limit:, offset: 0)

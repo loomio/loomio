@@ -13,6 +13,7 @@ import Session from '@/shared/services/session';
 import TagsFilterMenu from '@/components/tags/filter_menu';
 import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
 import ListPagination from '@/components/common/list_pagination.vue';
+import { usePendingPolls } from '@/composables/usePendingPolls';
 
 const { dashboard, defaultStatus } = defineProps({
   dashboard: { type: Boolean, default: false },
@@ -27,6 +28,7 @@ const group = computed(() => (dashboard ? null : Records.groups.fuzzyFind(route.
 const loader = ref(null);
 const pollTypes = AppConfig.pollTypes;
 const dummyQuery = ref(null);
+const { loadPendingPolls, findPendingPolls, loading: pendingPollsLoading } = usePendingPolls();
 
 const pageSize = computed(() => {
   const n = parseInt(route.query.limit, 10);
@@ -134,7 +136,24 @@ const initLoader = () => {
   });
 };
 
+const isLivePendingPolls = computed(() => (
+  dashboard &&
+  effectiveStatus.value === 'vote' &&
+  !route.query.poll_type &&
+  !route.query.tag &&
+  sortOrder.value === 'newest' &&
+  page.value === 1
+));
+
+const isLoading = computed(() => (
+  isLivePendingPolls.value ? pendingPollsLoading.value : Boolean(loader.value?.loading)
+));
+
 const polls = computed(() => {
+  if (isLivePendingPolls.value) {
+    return findPendingPolls();
+  }
+
   const pageIds = loader.value?.pageIds?.[page.value];
   if (Array.isArray(pageIds)) {
     return pageIds
@@ -184,7 +203,9 @@ const polls = computed(() => {
   return chain.simplesort(sortField, sortDesc).limit(pageSize.value).data();
 });
 
-const fetch = () => loader.value.fetch(page.value);
+const fetch = () => (
+  isLivePendingPolls.value ? loadPendingPolls() : loader.value.fetch(page.value)
+);
 
 function emitCurrentComponent() {
   if (group.value) {
@@ -277,10 +298,10 @@ watch(() => route.query.page, fetch);
             :key="poll.id"
             :display-group-name="dashboard || includeSubgroups"
             :full-name="dashboard")
-        p.pa-4.text-center(v-if="polls.length == 0 && !loader.loading") {{ t('polls_panel.no_polls') }}
-        loading(v-if="loader.loading && polls.length == 0")
+        p.pa-4.text-center(v-if="polls.length == 0 && !isLoading") {{ effectiveStatus === 'vote' ? t('dashboard_page.no_polls_to_vote_on') : t('polls_panel.no_polls') }}
+        loading(v-if="isLoading && polls.length == 0")
     list-pagination(
-      v-if="polls.length && loader.status != 403"
+      v-if="polls.length && !isLivePendingPolls && loader.status != 403"
       :page="page"
       :total-pages="totalPages"
       :page-size="pageSize"

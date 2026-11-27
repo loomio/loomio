@@ -11,7 +11,7 @@ class TopicListQuery
   def records
     records = TopicQuery.relevant_to(
       user: user,
-      or_subgroups: %w[all mine].include?(params[:subgroups]),
+      or_subgroups: %w[all mine].include?(params[:subgroups]) || target_group&.is_subgroup?,
       group_ids: group_ids,
       only_direct: params.has_key?(:direct),
       only_unread: params.has_key?(:unread)
@@ -57,21 +57,26 @@ class TopicListQuery
     end
   end
 
-  def group_ids
-    return [] unless params[:group_id].present?
+  def target_group
+    return @target_group if defined?(@target_group)
 
-    group = Group.find(params[:group_id])
+    @target_group = params[:group_id].present? ? Group.find(params[:group_id]) : nil
+  end
+
+  def group_ids
+    return [] unless target_group
+
     case params[:subgroups]
     when 'all'
-      [group.id] + group.subgroup_ids
+      [target_group.id] + target_group.subgroup_ids
     when 'mine'
       if user.is_logged_in?
-        [group.id].concat(user.group_ids & group.id_and_subgroup_ids)
+        [target_group.id].concat(user.group_ids & target_group.id_and_subgroup_ids)
       else
-        [group.id]
+        [target_group.id]
       end
     else
-      [group.id]
+      [target_group.id]
     end.compact.uniq
   end
 end

@@ -431,7 +431,7 @@ div.discussions-panel(v-if="dashboard || group")
       .discussions-panel__content
         .discussions-panel__list--empty.pa-4(v-if="noThreads")
           template(v-if="dashboard")
-            p.text-center(v-if="noGroups" v-html="t('dashboard_page.no_groups.show_all')")
+            p.dashboard-page__empty.text-center(v-if="noGroups" v-html="t('dashboard_page.no_groups.show_all')")
             p.text-center(v-else-if="hasActiveFilters") {{ emptyFilterMessage }}
             p.text-center(v-else) {{ t('dashboard_page.no_threads.show_all') }}
           template(v-else)

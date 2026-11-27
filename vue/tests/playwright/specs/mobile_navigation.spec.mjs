@@ -6,7 +6,7 @@ test.use({viewport: {width: 390, height: 844}});
 
 test('opens cached threads while their refresh is pending', async ({page}) => {
   await page.goto('/dev/setup_dashboard');
-  await expect(page.locator('.dashboard-page__collections')).toContainText('Recent discussion');
+  await expect(page.locator('.discussions-panel__list')).toContainText('Recent discussion');
   await expect(page.locator('.dashboard-page__mobile-search')).toBeVisible();
   await expect(page.locator('.navbar__sidenav-toggle')).toHaveCount(0);
   await expect(page.locator('.navbar__search')).toHaveCount(0);

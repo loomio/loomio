@@ -10,7 +10,7 @@ export function syncSearchFromQuery(state, q) {
 </script>
 
 <script setup lang="js">
-import { computed, nextTick, reactive, ref, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, reactive, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { intersection, debounce, identity, map, pickBy, uniq } from 'lodash-es';
@@ -268,6 +268,17 @@ watch(
     refresh();
   }
 );
+
+function onMembersInvited(groupId) {
+  if (group.value && groupId === group.value.id) {
+    refresh();
+  }
+}
+
+EventBus.$on('membersInvited', onMembersInvited);
+onBeforeUnmount(() => {
+  EventBus.$off('membersInvited', onMembersInvited);
+});
 
 watch(() => route.query.page, fetchPage);
 watch(() => route.params.key, initGroup);

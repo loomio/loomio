@@ -164,6 +164,8 @@ test.describe('visiting a group', () => {
 
   test('shows threads from subgroups', async ({ page }) => {
     await page.goto('/dev/setup_group_with_subgroups');
+    await page.locator('.subgroups-filter-menu__button').click();
+    await page.locator('.subgroups-filter-menu__all').click();
     await expect(page.locator('.discussions-panel__list')).toContainText('Vaya con dios');
   });
 
