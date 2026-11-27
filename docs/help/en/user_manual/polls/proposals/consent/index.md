@@ -4,7 +4,7 @@
 
 A Consent proposal asks whether a course of action is safe to try. Participants either consent or raise an objection. An objection identifies a concrete risk or harm that the proposal should address.
 
-This page explains how to run one Consent proposal. See the [Consent process](/en/guides/making_decisions/consent_process) for the complete workflow, including questions, Sense check, amendments, objections, and outcome.
+This page explains how to run one Consent proposal. See the [Consent process](/guides/making-decisions/consent-process/) for the complete workflow, including questions, Sense check, amendments, objections, and outcome.
 
 <!-- translation-section: when-to-use-consent -->
 

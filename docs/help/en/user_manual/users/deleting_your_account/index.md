@@ -15,9 +15,9 @@ Deleting your account is permanent and cannot be undone. When you delete your ac
 
 Copies of your activity may already have been emailed to group members. Loomio cannot delete emails that have already been sent.
 
-Deleting your account does not cancel a paid subscription. To stop payments, see [Subscriptions](/en/policy/subscriptions/management#cancel-your-plan).
+Deleting your account does not cancel a paid subscription. To stop payments, see [Subscriptions](/policy/subscriptions/management/#cancel-your-plan).
 
-For details on how Loomio handles your data, see our [privacy policy](/en/policy/privacy) or [contact us](/contact). If you need a copy of a group's records first, a group admin can [export the group's data](/en/user_manual/groups/data_export).
+For details on how Loomio handles your data, see our [privacy policy](/policy/privacy/) or [contact us](/contact). If you need a copy of a group's records first, a group admin can [export the group's data](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 

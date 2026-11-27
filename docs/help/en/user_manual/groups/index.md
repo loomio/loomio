@@ -16,4 +16,4 @@ If you are preparing a new group, see [Introducing Loomio to your group](/en/use
 
 ## Code of conduct
 
-A code of conduct helps members understand how to participate and how the group responds to inappropriate behavior. See the [Facilitator's Guide](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) for guidance on setting expectations.
+A code of conduct helps members understand how to participate and how the group responds to inappropriate behavior. See the [Facilitator's Guide](/guides/facilitators-guide/commencing/#culture-protocol-expectations) for guidance on setting expectations.

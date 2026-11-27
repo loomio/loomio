@@ -15,7 +15,7 @@ These parts of the manual answer different questions:
 | Choose what participants should express | [Proposals](../proposals/) or [Polls](../proposal_types/) |
 | Run a specific proposal template | [Sense check](../proposals/sense_check/), [Advice](../proposals/advice/), [Consent](../proposals/consent/), or [Consensus](../proposals/consensus/) |
 | Configure the templates available to a group | [Poll templates](../poll_templates/) |
-| Facilitate a decision from discussion to outcome | [Making decisions](/en/guides/making_decisions/) |
+| Facilitate a decision from discussion to outcome | [Making decisions](/guides/making-decisions/) |
 
 A **voting method** defines how people respond and how results are calculated. A **poll template** is a reusable configuration built on a voting method, with preset instructions, options, and settings. A **decision process** may use a discussion and several templates before the group reaches an outcome.
 

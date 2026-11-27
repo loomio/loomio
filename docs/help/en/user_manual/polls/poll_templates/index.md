@@ -4,7 +4,7 @@
 
 Poll templates are reusable starting points shown when someone selects **Start a vote** or **New poll**. A template combines a voting method with preset guidance, response options, and settings.
 
-Use this page to configure which templates are available to a group or create one for your own process. To choose a template for a specific vote, see [Proposals](../proposals/) or [Polls](../proposal_types/). To facilitate a complete decision process, see [Making decisions](/en/guides/making_decisions/).
+Use this page to configure which templates are available to a group or create one for your own process. To choose a template for a specific vote, see [Proposals](../proposals/) or [Polls](../proposal_types/). To facilitate a complete decision process, see [Making decisions](/guides/making-decisions/).
 
 When starting a vote, select the **Proposal** or **Poll** tab and choose a template available to the group.
 

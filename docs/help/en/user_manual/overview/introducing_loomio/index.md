@@ -86,7 +86,7 @@ Start a discussion about how decisions should be made. Instead of beginning with
 - How will we respond to objections, tied results, or insufficient participation?
 - How will we communicate, record, review, and change a decision?
 
-The answers may be different for an operational decision, a policy, an election, and a constitutional change. See [Making decisions](/en/guides/making_decisions) to compare several complete processes.
+The answers may be different for an operational decision, a policy, an election, and a constitutional change. See [Making decisions](/guides/making-decisions/) to compare several complete processes.
 
 If the group is not ready to settle every rule, agree on a provisional process for one low-risk decision. State what the result will mean before asking people to participate, publish an outcome, then review how the process worked. Record what the group learns in its description, governance documents, or reusable templates.
 
@@ -144,4 +144,4 @@ A first process should demonstrate the complete pattern:
 
 The outcome closes the loop and creates a record that members can return to later. Afterward, ask what worked, adjust the process, and choose the next recurring piece of work to run in Loomio.
 
-For a facilitated sequence from discussion to decision, see [Making decisions](/en/guides/making_decisions). For board-specific practices, see [Introducing Loomio to your board](/en/guides/board_processes/introduce).
+For a facilitated sequence from discussion to decision, see [Making decisions](/guides/making-decisions/). For meeting and formal voting workflows, see [Better meetings](/guides/better-meetings/) and [AGMs and formal resolutions](/guides/agms-and-resolutions/).

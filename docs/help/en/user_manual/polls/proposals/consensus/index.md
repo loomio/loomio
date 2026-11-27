@@ -4,7 +4,7 @@
 
 A Consensus proposal seeks collective agreement from everyone involved. The default responses let participants agree, abstain, disagree, or block.
 
-This page explains how to run one Consensus proposal. See the [Consensus process](/en/guides/making_decisions/consensus_process) for the complete workflow from discussion and Sense check through amendment and outcome.
+This page explains how to run one Consensus proposal. See the [Consensus process](/guides/making-decisions/consensus-process/) for the complete workflow from discussion and Sense check through amendment and outcome.
 
 <!-- translation-section: when-to-use-consensus -->
 

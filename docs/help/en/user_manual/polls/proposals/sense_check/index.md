@@ -4,7 +4,7 @@
 
 Sense check gathers reactions while an idea is still being developed. Its options—**Looks good**, **Could be better**, and **Needs a rethink**—show whether the group is ready to proceed or should revise the idea first.
 
-This page explains how to run one Sense check. See the [Simple decision process](/en/guides/making_decisions/simple_decision_process), [Consent process](/en/guides/making_decisions/consent_process), or [Consensus process](/en/guides/making_decisions/consensus_process) for examples of using Sense check as one stage of a larger process.
+This page explains how to run one Sense check. See the [Simple decision process](/guides/making-decisions/simple-decision-process/), [Consent process](/guides/making-decisions/consent-process/), or [Consensus process](/guides/making-decisions/consensus-process/) for examples of using Sense check as one stage of a larger process.
 
 <!-- translation-section: when-to-use-sense-check -->
 

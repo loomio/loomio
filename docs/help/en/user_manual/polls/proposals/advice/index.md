@@ -4,7 +4,7 @@
 
 An Advice proposal gathers input for a decision that a person or team is responsible for making. Participants can offer advice or indicate that they have no advice to add.
 
-This page explains the Advice proposal form, voting, and results. See the [Advice process](/en/guides/making_decisions/advice_process) for the complete workflow from framing the decision to publishing an outcome.
+This page explains the Advice proposal form, voting, and results. See the [Advice process](/guides/making-decisions/advice-process/) for the complete workflow from framing the decision to publishing an outcome.
 
 <!-- translation-section: when-to-use-advice -->
 
